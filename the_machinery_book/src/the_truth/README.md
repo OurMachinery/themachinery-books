@@ -20,6 +20,5 @@ In The Truth, **references are represented by IDs**. Each object has a unique ID
 
 Sub-objects in The Truth are references to *owned* objects. They work just as references, but have special behaviours in some situations. For examples, when an object is cloned, all its sub-objects will be cloned too, while its references will not.
 
-
-
 For more information checkout the [documentation](https://ourmachinery.com/apidoc/foundation/the_truth.h.html) and these blog posts: [The Story behind The Truth: Designing a Data Model](https://ourmachinery.com/post/the-story-behind-the-truth-designing-a-data-model/)  or this [one](https://ourmachinery.com/post/multi-threading-the-truth/).
+
