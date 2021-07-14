@@ -176,21 +176,21 @@ changes. It even has full support for real-time collaboration. Multiple people c
 the same game project, Google Docs-style. Since all of these features are built into the data model
 itself, your custom, game-specific data will get them automatically, without you having to write a
 line of code.</p>
-<p>This section shall introduce you to some more complex topics such as <a href="the_truth/%7B%7Bbase_url%7D%7D/the_truth/custom_asset/index.html"><em>How to create your own asset.</em></a></p>
+<p>This section shall introduce you to some more complex topics such as <a href="https://ourmachinery.github.io/themachinery-books//the_truth/custom_asset/index.html"><em>How to create your own asset.</em></a></p>
 <p>For more information checkout the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html">documentation</a> and these blog posts: <a href="https://ourmachinery.com/post/the-story-behind-the-truth-designing-a-data-model/">The Story behind The Truth: Designing a Data Model</a>  or this <a href="https://ourmachinery.com/post/multi-threading-the-truth/">one</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-custom-asset"><a class="header" href="#creating-a-custom-asset">Creating a custom asset</a></h1>
-<p>This walkthrough series shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough series shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>In the parts 1 - 3 we will cover the following topics:</p>
 <ul>
-<li><a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/tutorials/the_truth/custom_asset/part1.html#creating-an-asset-the-truth-type">How to create your asset</a></li>
-<li><a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/tutorials/the_truth/custom_asset/part1.html#what-is-the-difference-between-truth-type-and-asset">What is the difference between a Truth Type and an Asset?</a></li>
-<li><a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/tutorials/the_truth/custom_asset/part1.html#appendix-adding-an-asset-via-code-to-the-asset-browser">Add a asset via code to the project</a></li>
-<li><a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/tutorials/the_truth/custom_asset/part2.html#text-file-asset">How to associate data with your asset</a></li>
-<li><a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/tutorials/the_truth/custom_asset/part2.html#custom-ui">How to add a custom UI to your asset</a></li>
-<li><a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/tutorials/the_truth/custom_asset/part3.html#custom-importer-for-text-files">How to create your importer</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part1.html#creating-an-asset-the-truth-type">How to create your asset</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part1.html#what-is-the-difference-between-truth-type-and-asset">What is the difference between a Truth Type and an Asset?</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part1.html#appendix-adding-an-asset-via-code-to-the-asset-browser">Add a asset via code to the project</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part2.html#text-file-asset">How to associate data with your asset</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part2.html#custom-ui">How to add a custom UI to your asset</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part3.html#custom-importer-for-text-files">How to create your importer</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-asset-part-1"><a class="header" href="#create-a-custom-asset-part-1">Create a custom asset part 1</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>In the parts 1 - 3 we will cover the following topics:</p>
 <ul>
 <li>How to create your asset</li>
@@ -420,13 +420,13 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-asset-part-2"><a class="header" href="#create-a-custom-asset-part-2">Create a custom asset part 2</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>This part will cover the following topics:</p>
 <ul>
 <li>How to store data in a buffer that is associated with the asset file</li>
 <li>How to add a custom UI to be associated with the asset.</li>
 </ul>
-<p>When you have finished this part in the <a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/tutorials/the_truth/custom_asset/part3.html">next one</a>, we will show you how to write your importer.</p>
+<p>When you have finished this part in the <a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part3.html">next one</a>, we will show you how to write your importer.</p>
 <blockquote>
 <p>You can find the whole source code in its git repo: <a href="https://github.com/simon-ourmachinery/example-text-file-asset">example-text-file-asset</a></p>
 </blockquote>
@@ -758,7 +758,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-asset-part-3"><a class="header" href="#create-a-custom-asset-part-3">Create a custom asset part 3</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="the_truth/custom_asset/%7B%7Bbase_url%7D%7D/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>This part will cover the following topics:</p>
 <ul>
 <li>How to write an importer</li>
@@ -1441,9 +1441,9 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>This walkthrough we will learn how to use The Machinery <a href="https://ourmachinery.com/apidoc/plugins/ui">UI system</a>.</p>
 <p>In the parts 1 - 3 we will cover the following topics:</p>
 <ul>
-<li><a href="ui/build_custom_ui_controls/%7B%7Bbase_url%7D%7D/tutorials/ui/build_custom_ui_controls/part1.html">Create a custom circular button</a></li>
-<li><a href="ui/build_custom_ui_controls/%7B%7Bbase_url%7D%7D/tutorials/ui/build_custom_ui_controls/part2.html">Add a texture to our custom control</a></li>
-<li><a href="ui/build_custom_ui_controls/%7B%7Bbase_url%7D%7D/tutorials/ui/build_custom_ui_controls/part3.html">Setup a UI Renderer</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/ui/build_custom_ui_controls/part1.html">Create a custom circular button</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/ui/build_custom_ui_controls/part2.html">Add a texture to our custom control</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books//tutorials/ui/build_custom_ui_controls/part3.html">Setup a UI Renderer</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="build-custom-ui-controls-part-i"><a class="header" href="#build-custom-ui-controls-part-i">Build Custom UI Controls, Part I</a></h1>
 <p>Hi, we are starting a 3-part tutorial series about The Machinery UI system. In Part I, we’ll talk about the basics and create a custom circular button. In Part II, we’ll create a custom button with textures support. To show the results of the first two parts, we’ll be using a simple custom tab, so in Part III, we’ll see how to set up your UI and render it on screen.</p>
