@@ -14,4 +14,4 @@ renderer = ["html"]
 marker = "* auto-gen TOC;\n{:toc}"
 
 [preprocessor.tera]
-command = "mdbook-tera ../context.toml"
+command = "mdbook-tera  --toml  ../context.toml"
