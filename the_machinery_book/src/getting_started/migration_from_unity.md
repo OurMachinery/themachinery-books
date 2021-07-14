@@ -9,15 +9,15 @@ The following table contains common Unity terms on the left and their The Machin
 | Unity                                                        | The Machinery                                                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | GameObjects                                                  | Are composed of Entities and Components and Systems          |
-| Prefabs                                                      | [Prototypes](/the_machinery_book/editing_workflows/prototypes.html) |
-| Materials, Shaders, Textures, Particle Effects, Mesh, Geometry, Shader Graph, Material Editor | [Creation Graph](/the_machinery_book/editing_workflows/creation_graphs_asset_pipeline.html) |
+| Prefabs                                                      | [Prototypes]({{base_url}}/the_machinery_book/editing_workflows/prototypes.html) |
+| Materials, Shaders, Textures, Particle Effects, Mesh, Geometry, Shader Graph, Material Editor | [Creation Graph]({{base_url}}/the_machinery_book/editing_workflows/creation_graphs_asset_pipeline.html) |
 | **UI**                                                       |                                                              |
-| Hierarchy Panel                                              | [Entity Tree](/the_machinery_book/the_editor/entity_tree_tab.html) |
-| Inspector                                                    | [Properties Tab](/the_machinery_book/the_editor/properties_tab.html) |
-| Project Browser                                              | [Asset Browser](/the_machinery_book/the_editor/asset_browser.html) |
-| Scene View                                                   | [Scene Tab](/the_machinery_book/the_editor/asset_browser.html) |
+| Hierarchy Panel                                              | [Entity Tree]({{base_url}}/the_machinery_book/the_editor/entity_tree_tab.html) |
+| Inspector                                                    | [Properties Tab]({{base_url}}/the_machinery_book/the_editor/properties_tab.html) |
+| Project Browser                                              | [Asset Browser]({{base_url}}/the_machinery_book/the_editor/asset_browser.html) |
+| Scene View                                                   | [Scene Tab]({{base_url}}/the_machinery_book/the_editor/asset_browser.html) |
 | **Programming**                                              |                                                              |
-| Blot                                                         | [Entity Graph](/the_machinery_book/editing_workflows/visual-scripting.html) |
+| Blot                                                         | [Entity Graph]({{base_url}}/the_machinery_book/editing_workflows/visual-scripting.html) |
 | C#                                                           | C                                                            |
 
 ## Questions you might have

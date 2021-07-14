@@ -19,7 +19,7 @@ You can import an asset by selecting **File > Import...** in the main menu, pres
 
 During the import step, The Machinery only runs a bare minimum of data processing, just enough so that we can display a visual representation of the asset in the *Preview* tab. Imports run in the background so you can continue to work uninterrupted. When the import finishes the asset will show up in the *Asset Browser*. Note that import of large assets can take a significant amount of time. You can monitor the progress of the import operation in the status bar.
 
-For more in detail explanation about how to import assets checkout the [Asset Import Part](/the_machinery_book/editing_workflows/import_assets.html).
+For more in detail explanation about how to import assets checkout the [Asset Import Part]({{base_url}}/the_machinery_book/editing_workflows/import_assets.html).
 
 ### Basic entity rigging, with image and material extraction
 

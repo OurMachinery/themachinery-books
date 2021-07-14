@@ -1,13 +1,13 @@
 # Create a custom asset part 2
 
-This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](/the_machinery_book/extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to write a text file asset.
+This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{base_url}}/the_machinery_book/extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to write a text file asset.
 
 This part will cover the following topics:
 
 - How to store data in a buffer that is associated with the asset file
 - How to add a custom UI to be associated with the asset.
 
-When you have finished this part in the [next one](/tutorials/the_truth/custom_asset/part3.html), we will show you how to write your importer.
+When you have finished this part in the [next one]({{base_url}}/tutorials/the_truth/custom_asset/part3.html), we will show you how to write your importer.
 
 >  You can find the whole source code in its git repo: [example-text-file-asset](https://github.com/simon-ourmachinery/example-text-file-asset)
 

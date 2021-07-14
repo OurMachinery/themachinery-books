@@ -26,7 +26,6 @@ jobs:
         run: |
           export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
           chmod +x ./mdbook_tera/bin/mdbook-tera
-          mdbook-tera --help
       - name: Setup mdbook
         run: |
           mkdir tools

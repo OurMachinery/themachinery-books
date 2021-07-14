@@ -9,15 +9,15 @@ The following table contains common UE4 terms on the left and their The Machiner
 | UE4                                                          | The Machinery                                                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Actor, Pawn                                                  | Are composed of Entities and Components and Systems          |
-| Blueprint Class (only the inheritance aspect and that they can represent actors) | [Prototypes](/the_machinery_book/editing_workflows/prototypes.html) |
-| Material Instance, Shaders, Textures, Particle Effects, Static Mesh, Geometry,Skeletal Mesh, Material Editor | [Creation Graph](/the_machinery_book/editing_workflows/creation_graphs_asset_pipeline.html) |
+| Blueprint Class (only the inheritance aspect and that they can represent actors) | [Prototypes]({{base_url}}/the_machinery_book/editing_workflows/prototypes.html) |
+| Material Instance, Shaders, Textures, Particle Effects, Static Mesh, Geometry,Skeletal Mesh, Material Editor | [Creation Graph]({{base_url}}/the_machinery_book/editing_workflows/creation_graphs_asset_pipeline.html) |
 | **UI**                                                       |                                                              |
-| World Outliner                                               | [Entity Tree](/the_machinery_book/the_editor/entity_tree_tab.html) |
-| Details Panel                                                | [Properties Tab](/the_machinery_book/the_editor/properties_tab.html) |
-| Content Browser                                              | [Asset Browser](/the_machinery_book/the_editor/asset_browser.html) |
-| Viewport                                                     | [Scene Tab](/the_machinery_book/the_editor/asset_browser.html) |
+| World Outliner                                               | [Entity Tree]({{base_url}}/the_machinery_book/the_editor/entity_tree_tab.html) |
+| Details Panel                                                | [Properties Tab]({{base_url}}/the_machinery_book/the_editor/properties_tab.html) |
+| Content Browser                                              | [Asset Browser]({{base_url}}/the_machinery_book/the_editor/asset_browser.html) |
+| Viewport                                                     | [Scene Tab]({{base_url}}/the_machinery_book/the_editor/asset_browser.html) |
 | **Programming**                                              |                                                              |
-| Blueprints                                                   | [Entity Graph](/the_machinery_book/editing_workflows/visual-scripting.html) |
+| Blueprints                                                   | [Entity Graph]({{base_url}}/the_machinery_book/editing_workflows/visual-scripting.html) |
 | C++                                                          | C                                                            |
 
 ## Questions you might have

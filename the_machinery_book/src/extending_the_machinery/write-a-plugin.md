@@ -7,7 +7,7 @@ You will learn about:
 - What is needed to write a plugin
 - How to write a plugin
 
-This walk through expects you to have the basic understanding about the plugin system. Otherwise you can read more [here](/the_machinery_book/extending_the_machinery/the_plugin_system.html).
+This walk through expects you to have the basic understanding about the plugin system. Otherwise you can read more [here]({{base_url}}/the_machinery_book/extending_the_machinery/the_plugin_system.html).
 
 The Machinery is built around a plugin model. All features, even the built-in ones, are provided
 through plugins. You can extend The Machinery by writing your own plugins. When The Machinery

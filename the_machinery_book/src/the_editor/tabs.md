@@ -29,7 +29,7 @@ In the context menu, you have more options for pinning. These allow you to manag
 | Pin to View 🗖   | This Pins the tab's content to another tab view that is currently open in the current window. You can pin a tab to multiple other tabs at the same time. |
 | Pin to Window 🗗 | It pins the current tab to the selected window. For example, if you pin the Properties tab to Window 2. and choose an asset from the Asset Browser, the properties tab in Window 1. will display the selected asset. |
 
-Besides, it is possible to extend the Engine with custom tabs. You can do this via the **File → New Plugin → Editor Tabs.** How to write your custom tab is out of the scope of this article but is covered [here](/the_machinery_book/extending_the_machinery/write-a-plugin.html).
+Besides, it is possible to extend the Engine with custom tabs. You can do this via the **File → New Plugin → Editor Tabs.** How to write your custom tab is out of the scope of this article but is covered [here]({{base_url}}/the_machinery_book/extending_the_machinery/write-a-plugin.html).
 
 **Keyboard bindings**
 

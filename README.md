@@ -10,15 +10,23 @@ If you want to contribute to this project please read the [CONTRIBUTING.md](CONT
 
 ## Requirements
 
-Building the book requires [mdBook](https://github.com/rust-lang-nursery/mdBook) and [mdbook-toc](https://github.com/badboy/mdbook-toc). To get it:
+Building the book requires 
+- [mdBook](https://github.com/rust-lang-nursery/mdBook)
+- [mdbook-toc](https://github.com/badboy/mdbook-toc)
+- [mdbook-tera](https://github.com/avitex/mdbook-tera)
+
+To get them:
 
 ```bash
 $ cargo install mdbook
 $ cargo install mdbook-toc
+$ cargo install mdbook-tera
 ```
 
-Alternatively you can download the latest executables from this
-[link](https://github.com/rust-lang/mdBook/releases/) and [mdbook-toc](https://github.com/badboy/mdbook-toc/releases).
+Alternatively you can download the latest executables for:
+
+- [mdbook](https://github.com/rust-lang/mdBook/releases/)
+- [mdbook-toc](https://github.com/badboy/mdbook-toc/releases)
 
 ## Writing
 
