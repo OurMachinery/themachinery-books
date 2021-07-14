@@ -35,7 +35,7 @@ jobs:
           cd ../
           mkdir public
           cp index.html public/index.html
-          mv mdbook_tera/* tools/
+          mv ./mdbook_tera/bin/* tools/
           mdbook-tera --help
       - name: Build introduction
         run: |
