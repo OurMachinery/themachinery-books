@@ -43,6 +43,7 @@ $ cd tutorials && mdbook serve
 If you want to add new pages to the system just add them to `SUMMARY.md`. As soon as they are in there they will be used for the book.
 
 *About Links*
+
 If you want to link anything within the book please make use of `{{base_url}}` this will be replaced
 on build with the correct base URL.
 
