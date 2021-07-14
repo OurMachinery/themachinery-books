@@ -41,12 +41,14 @@ jobs:
           cp index.html public/index.html
       - name: Build introduction
         run: |
+          export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
           export PATH="${{github.workspace}}/tools/:$PATH"
           cd the_machinery_book
           mdbook build
           mv book ../public/the_machinery_book
       - name: Build introduction
         run: |
+          export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
           export PATH="${{github.workspace}}/tools/:$PATH"
           cd tutorials
           mdbook build
