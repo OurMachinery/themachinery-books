@@ -11,6 +11,17 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: ./
+      - name: Cache mdbook-tera
+        id: cache-mdbook-tera
+        uses: actions/cache@v2
+        with:
+          path: ./mdbook_tera
+          key: ${{ runner.os }}-mdbook-tera
+      - uses: actions-rs/cargo@v1
+        if: steps.cache-mdbook-tera.outputs.cache-hit != 'true'
+        with:
+          command: install
+          args: mdbook-tera --root ./mdbook_tera
       - name: Setup mdbook
         run: |
           mkdir tools
@@ -24,6 +35,8 @@ jobs:
           cd ../
           mkdir public
           cp index.html public/index.html
+          mv mdbook_tera/* tools/
+          mdbook-tera --help
       - name: Build introduction
         run: |
           export PATH="${{github.workspace}}/tools/:$PATH"
