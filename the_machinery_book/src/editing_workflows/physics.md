@@ -2,7 +2,7 @@
 
 The Machinery integrates Nvidia's PhysX toolkit and uses it for physics simulation of entities. This
 section will not attempt to describe in detail how physics simulation works, for that we refer to
-the PhysX documentation. We will only talk about how physics is set up in The Machinery.
+[the PhysX documentation](https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Index.html). We will only talk about how physics is set up in The Machinery.
 
 The physics simulation system introduces two new assets: *Physics Material* and *Physics Collision*
 as well as four new components: *Physics Shape Component*, *Physics Body Component*, *Physics
