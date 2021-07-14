@@ -22,6 +22,11 @@ jobs:
         with:
           command: install
           args: mdbook-tera --root ./mdbook_tera
+      - name: add mdbook-tera to PATH
+        run: |
+          export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
+          chmod +x ./mdbook_tera/bin/mdbook-tera
+          mdbook-tera --help
       - name: Setup mdbook
         run: |
           mkdir tools
@@ -35,8 +40,6 @@ jobs:
           cd ../
           mkdir public
           cp index.html public/index.html
-          mv ./mdbook_tera/bin/* tools/
-          mdbook-tera --help
       - name: Build introduction
         run: |
           export PATH="${{github.workspace}}/tools/:$PATH"
