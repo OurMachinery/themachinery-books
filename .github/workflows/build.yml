@@ -28,6 +28,7 @@ jobs:
           chmod +x ./mdbook_tera/bin/mdbook-tera
           cp context.toml ./the_machinery_book/context.toml
           cp context.toml ./tutorials/context.toml
+      - run: sudo apt update && sudo apt install zip
       - name: Setup mdbook
         run: |
           mkdir tools
@@ -38,6 +39,9 @@ jobs:
           wget https://github.com/badboy/mdbook-toc/releases/download/0.7.0/mdbook-toc-0.7.0-x86_64-unknown-linux-gnu.tar.gz -O mdbook-toc.tar.gz
           tar -xf  mdbook-toc.tar.gz
           chmod +x mdbook-toc
+          wget https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v0.7.4/mdbook-linkcheck.v0.7.4.x86_64-unknown-linux-gnu.zip -O mdbook-linkcheck.zip
+          unzip  mdbook-linkcheck.zip
+          chmod +x mdbook-linkcheck
           cd ../
           mkdir public
           cp index.html public/index.html

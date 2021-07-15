@@ -14,6 +14,7 @@ Building the book requires
 - [mdBook](https://github.com/rust-lang-nursery/mdBook)
 - [mdbook-toc](https://github.com/badboy/mdbook-toc)
 - [mdbook-tera](https://github.com/avitex/mdbook-tera)
+- [mdbook-linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck)
 
 To get them:
 
@@ -21,12 +22,14 @@ To get them:
 $ cargo install mdbook
 $ cargo install mdbook-toc
 $ cargo install mdbook-tera
+$ cargo install mdbook-linkcheck
 ```
 
 Alternatively you can download the latest executables for:
 
 - [mdbook](https://github.com/rust-lang/mdBook/releases/)
 - [mdbook-toc](https://github.com/badboy/mdbook-toc/releases)
+- [mdbook-linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases)
 
 ## Writing
 
