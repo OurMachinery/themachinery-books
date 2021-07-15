@@ -41,6 +41,18 @@ jobs:
           cd ../
           mkdir public
           cp index.html public/index.html
+      - name: download css and js dependencies
+        run: |
+          cd public
+          mkdir css
+          cd css
+          wget https://ourmachinery.com/css/bootstrap.min.css
+          wget https://ourmachinery.com/css/style.min.css
+          cd ..
+          mkdir js
+          cd js
+          wget https://ourmachinery.com/js/bootstrap.bundle.min.js
+          wget https://ourmachinery.com/js/page.min.js
       - name: Build introduction
         run: |
           export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
