@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Physics - The Machinery Tutorial Book</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="../creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li class="chapter-item expanded "><a href="../physics/index.html" class="active"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="../the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="../the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="../the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Machinery Tutorial Book</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/OurMachinery/themachinery-books" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="physics"><a class="header" href="#physics">Physics</a></h2>
+<p>The Machinery integrates Nvidia's PhysX toolkit and uses it for physics simulation of entities. This
+section will not attempt to describe in detail how physics simulation works, for that we refer to
+<a href="https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Index.html">the PhysX documentation</a>. We will only talk about how physics is set up in The Machinery.</p>
+<p>The physics simulation system introduces two new assets: <em>Physics Material</em> and <em>Physics Collision</em>
+as well as four new components: <em>Physics Shape Component</em>, <em>Physics Body Component</em>, <em>Physics
+Joint Component</em>, and <em>Physics Mover Component</em>.</p>
+<p>A <em>Physics Material</em> asset specifies the physical properties of a physics object: <em>friction</em> (how
+&quot;slippery&quot; the object is) and <em>restitution</em> (how &quot;bouncy&quot; the object is). Note that if you don't
+assign a material to a physics shape it will get default values for <em>friction</em> and <em>constitution</em>.</p>
+<p>A <em>Physics Collision</em> asset describes a <em>collision class</em>. <em>Collision Classes</em> control which physics
+shapes collide with each other. For example, a common thing to do is to have a <em>debris</em> class for
+small objects and set it up so that <em>debris</em> collide with regular objects, but not with other
+<em>debris</em>. That way, you are not wasting resources on computing collisions between lots of tiny
+objects. (Note that the debris objects still need to collide with regular objects, or they would
+just fall through the world.)</p>
+<p>In addition to deciding who collides with who, the collision class also decides which collisions
+generate callback events. These events can be handled in the <em>Entity Graph</em>.</p>
+<p>If you don't assign a collision class to a physics shape, it will get the <em>Default</em> collision class.</p>
+<p>The <em>Physics Shape Component</em> can be added to an entity to give it a collision shape for physics.
+Entities with shape components will collide with each other when physics is simulated.</p>
+<p>A physics shape can either be specified as geometry (sphere, capsule, plane, box) or it can be
+computed from a graphics mesh (convex, mesh). Note that if you use computed geometry, you must press
+the <strong>Cook</strong> button in the Properties UI to explicitly compute the geometry for the object.</p>
+<p><img src="https://www.dropbox.com/s/v5jnthc50vsa1oi/convex-physics-shape.png?dl=1" alt="Convex shape." /></p>
+<p>If you just give an entity a <em>Physics Shape Component</em> it will become a static physics object. Other
+moving objects can still collide with it, but the object itself won't move.</p>
+<p>To create a moving physics object, you need to add a <em>Physics Body Component</em>. The body component
+lets you specify dynamic properties such as damping, mass, and inertia tensor. It also lets you
+specify whether the object should be <em>kinematic</em> or not. A <em>kinematic</em> object is being moved by
+<em>animation</em>. Its movement is not affected by physics, but it can still affect other physical
+objects by colliding with them and pushing them around. In contrast, if the object is <em>not
+kinematic</em> it will be completely controlled by physics. If you place it above ground, it will fall
+down as soon as you start the simulation.</p>
+<p>Note that parameters such as <em>damping</em> and <em>mass</em> do not really affect kinematic objects, since
+the animations will move them the same way, regardless of their mass or damping. However, these
+parameters can still be important because gameplay code could at some point change the object
+from being kinematic to non-kinematic. If the gameplay code never makes the body non-kinematic, the
+mass doesn't matter.</p>
+<p>The <em>Physics Joint Component</em> can be used to add <em>joints</em> to the physics simulation. Joints can tie
+together physics bodies in various ways. For example, if you tie together two bodies with a hinge
+joint they will swing as if they were connected by a hinge. For a more thorough description of
+joints, we refer to the PhysX documentation.</p>
+<p>The <em>Physics Mover Component</em> implements a physics-based character controller. If you add it to an
+entity, it will keep the entity's feet on the ground, prevent it from going through walls, etc. For
+an example of how to use the character controller, check out the <code>animation</code> or <code>gameplay</code> sample
+projects.</p>
+<p>Note that The Machinery doesn't currently support all the features found in PhysX. The most
+glaring omissions are:</p>
+<ul>
+<li>D6 joints and joint motors.</li>
+<li>Vehicles.</li>
+</ul>
+<p>We will add more support going forward.</p>
+<p>For an example of how to use physics, see the <code>physics</code> sample project.</p>
+<h3 id="physics-scripting"><a class="header" href="#physics-scripting">Physics scripting</a></h3>
+<p>Physics can be scripted using the visual scripting language in the <em>Entity Graph</em>.</p>
+<p>We can divide the PhysX scripting nodes into a few categories.</p>
+<p><strong>Nodes that query the state of a physics body:</strong></p>
+<ul>
+<li>Get Angular Velocity</li>
+<li>Get Velocity</li>
+<li>Is Joint Broken</li>
+<li>Is Kinematic</li>
+</ul>
+<p><strong>Nodes that manipulate physics bodies:</strong></p>
+<ul>
+<li>Add Force</li>
+<li>Add Torque</li>
+<li>Break Joint</li>
+<li>Push</li>
+<li>Set Angular Velocity</li>
+<li>Set Kinematic</li>
+<li>Set Velocity</li>
+</ul>
+<p><strong>Event nodes that get triggered when something happens in the scene:</strong></p>
+<ul>
+<li>On Contact Event</li>
+<li>On Joint Break Event</li>
+<li>On Trigger Event</li>
+</ul>
+<p><strong>Nodes that query the world for physics bodies:</strong></p>
+<ul>
+<li>Overlap</li>
+<li>Raycast</li>
+<li>Sweep</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong> that the query nodes may return more than one result. They will do that by triggering their
+<em>Out</em> event multiple times, each time with one of the result objects. (In the future we might change
+this and have the nodes actually return arrays of objects.)</p>
+</blockquote>
+<h2 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h2>
+<p>For more information and guides checkout out the <a href="https://ourmachinery.github.io/themachinery-books//tutorials">The Machinery Tutorials Book</a> as well as our <a href="https://ourmachinery.com/samples.html">Physics Sample</a>.</p>
+<p>In this section we will discuss some of the Samples in more detail. </p>
+<p>You can download the Physics Sample projects from the Download Tab: <em><strong>Help -&gt; Download Sample Projects</strong></em> </p>
+<p><img src="https://www.dropbox.com/s/1w81dsmhazf6pfn/tm_tut_physics_sample_download.png?dl=1" alt="Where to find the samples" /></p>
+<p>After you have downloaded the Physic Sample Project, you can open it. Its folder structure looks as following in the default view:</p>
+<p><img src="https://www.dropbox.com/s/igj4b4ao1ntb4zw/tm_tut_physics_scenes.png?dl=1" alt="Where to find the scene" /></p>
+<p>All examples are in the folder <code>Scenes</code>. When you open that folder, you can see all the sample Scenes (Entities). Double click on the Sample of your choice, and the Editor will load the Scene for you.</p>
+<p>Each of the Sample Scenes is composed of multiple Entity Prototypes. You can find them in the &quot;Special Objects&quot; or in the &quot;Shapes&quot; folder in the Asset Browser.</p>
+<p><img src="https://www.dropbox.com/s/cafrzpkal6sd1y7/tm_tut_physics_special_objects.png?dl=1" alt="Special Objects folder" /></p>
+<p><em>Special Objects</em> are entities with Graph Component attached and have the logic with them.</p>
+<p><img src="https://www.dropbox.com/s/og7wipthmw1hl7d/tm_tut_physics_shapes.png?dl=1" alt="" /></p>
+<p><em>Shapes</em> are reused Entities to demonstrate different kind of Physic Bodies.</p>
+<blockquote>
+<p>**Note: **If you change any of those Prototypes all the none modified instances will change as well. Keep this in mind when playing around with the samples.</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../creation_graph/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../physics/triggers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../creation_graph/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../physics/triggers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>

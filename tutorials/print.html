@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">3.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">3.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">3.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">3.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">3.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">4.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">4.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li></ol></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -149,8 +149,7 @@
                     <main>
                         <h1 id="welcome"><a class="header" href="#welcome">Welcome</a></h1>
 <p>Hi,</p>
-<p>This book is here to give you guidance on how to work with the engine. We are constantly working on
-improving the onboarding as much as possible.</p>
+<p>This book is here to give you guidance on how to work with the engine. We are constantly working on improving the onboarding as much as possible. If you have not read about the basic concepts of the engine you might want to start at there before you move on to this book. <a href="https://ourmachinery.github.io/themachinery-books//the_machinery_book/index.html">The Machinery Book</a></p>
 <p>Besides this book we have several other resources which might be good to checkout:</p>
 <ul>
 <li><a href="https://ourmachinery.com/apidoc/apidoc.html">Our API Documentation</a></li>
@@ -176,14 +175,219 @@ you.</p>
 <li><a href="https://ourmachinery.com/post/more-on-creation-graphs/">More on Creation Graphs</a></li>
 <li><a href="https://ourmachinery.com/post/summer-fun-with-creation-graphs/">Summer Fun with Creation Graphs</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="physics"><a class="header" href="#physics">Physics</a></h2>
+<p>The Machinery integrates Nvidia's PhysX toolkit and uses it for physics simulation of entities. This
+section will not attempt to describe in detail how physics simulation works, for that we refer to
+<a href="https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Index.html">the PhysX documentation</a>. We will only talk about how physics is set up in The Machinery.</p>
+<p>The physics simulation system introduces two new assets: <em>Physics Material</em> and <em>Physics Collision</em>
+as well as four new components: <em>Physics Shape Component</em>, <em>Physics Body Component</em>, <em>Physics
+Joint Component</em>, and <em>Physics Mover Component</em>.</p>
+<p>A <em>Physics Material</em> asset specifies the physical properties of a physics object: <em>friction</em> (how
+&quot;slippery&quot; the object is) and <em>restitution</em> (how &quot;bouncy&quot; the object is). Note that if you don't
+assign a material to a physics shape it will get default values for <em>friction</em> and <em>constitution</em>.</p>
+<p>A <em>Physics Collision</em> asset describes a <em>collision class</em>. <em>Collision Classes</em> control which physics
+shapes collide with each other. For example, a common thing to do is to have a <em>debris</em> class for
+small objects and set it up so that <em>debris</em> collide with regular objects, but not with other
+<em>debris</em>. That way, you are not wasting resources on computing collisions between lots of tiny
+objects. (Note that the debris objects still need to collide with regular objects, or they would
+just fall through the world.)</p>
+<p>In addition to deciding who collides with who, the collision class also decides which collisions
+generate callback events. These events can be handled in the <em>Entity Graph</em>.</p>
+<p>If you don't assign a collision class to a physics shape, it will get the <em>Default</em> collision class.</p>
+<p>The <em>Physics Shape Component</em> can be added to an entity to give it a collision shape for physics.
+Entities with shape components will collide with each other when physics is simulated.</p>
+<p>A physics shape can either be specified as geometry (sphere, capsule, plane, box) or it can be
+computed from a graphics mesh (convex, mesh). Note that if you use computed geometry, you must press
+the <strong>Cook</strong> button in the Properties UI to explicitly compute the geometry for the object.</p>
+<p><img src="https://www.dropbox.com/s/v5jnthc50vsa1oi/convex-physics-shape.png?dl=1" alt="Convex shape." /></p>
+<p>If you just give an entity a <em>Physics Shape Component</em> it will become a static physics object. Other
+moving objects can still collide with it, but the object itself won't move.</p>
+<p>To create a moving physics object, you need to add a <em>Physics Body Component</em>. The body component
+lets you specify dynamic properties such as damping, mass, and inertia tensor. It also lets you
+specify whether the object should be <em>kinematic</em> or not. A <em>kinematic</em> object is being moved by
+<em>animation</em>. Its movement is not affected by physics, but it can still affect other physical
+objects by colliding with them and pushing them around. In contrast, if the object is <em>not
+kinematic</em> it will be completely controlled by physics. If you place it above ground, it will fall
+down as soon as you start the simulation.</p>
+<p>Note that parameters such as <em>damping</em> and <em>mass</em> do not really affect kinematic objects, since
+the animations will move them the same way, regardless of their mass or damping. However, these
+parameters can still be important because gameplay code could at some point change the object
+from being kinematic to non-kinematic. If the gameplay code never makes the body non-kinematic, the
+mass doesn't matter.</p>
+<p>The <em>Physics Joint Component</em> can be used to add <em>joints</em> to the physics simulation. Joints can tie
+together physics bodies in various ways. For example, if you tie together two bodies with a hinge
+joint they will swing as if they were connected by a hinge. For a more thorough description of
+joints, we refer to the PhysX documentation.</p>
+<p>The <em>Physics Mover Component</em> implements a physics-based character controller. If you add it to an
+entity, it will keep the entity's feet on the ground, prevent it from going through walls, etc. For
+an example of how to use the character controller, check out the <code>animation</code> or <code>gameplay</code> sample
+projects.</p>
+<p>Note that The Machinery doesn't currently support all the features found in PhysX. The most
+glaring omissions are:</p>
+<ul>
+<li>D6 joints and joint motors.</li>
+<li>Vehicles.</li>
+</ul>
+<p>We will add more support going forward.</p>
+<p>For an example of how to use physics, see the <code>physics</code> sample project.</p>
+<h3 id="physics-scripting"><a class="header" href="#physics-scripting">Physics scripting</a></h3>
+<p>Physics can be scripted using the visual scripting language in the <em>Entity Graph</em>.</p>
+<p>We can divide the PhysX scripting nodes into a few categories.</p>
+<p><strong>Nodes that query the state of a physics body:</strong></p>
+<ul>
+<li>Get Angular Velocity</li>
+<li>Get Velocity</li>
+<li>Is Joint Broken</li>
+<li>Is Kinematic</li>
+</ul>
+<p><strong>Nodes that manipulate physics bodies:</strong></p>
+<ul>
+<li>Add Force</li>
+<li>Add Torque</li>
+<li>Break Joint</li>
+<li>Push</li>
+<li>Set Angular Velocity</li>
+<li>Set Kinematic</li>
+<li>Set Velocity</li>
+</ul>
+<p><strong>Event nodes that get triggered when something happens in the scene:</strong></p>
+<ul>
+<li>On Contact Event</li>
+<li>On Joint Break Event</li>
+<li>On Trigger Event</li>
+</ul>
+<p><strong>Nodes that query the world for physics bodies:</strong></p>
+<ul>
+<li>Overlap</li>
+<li>Raycast</li>
+<li>Sweep</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong> that the query nodes may return more than one result. They will do that by triggering their
+<em>Out</em> event multiple times, each time with one of the result objects. (In the future we might change
+this and have the nodes actually return arrays of objects.)</p>
+</blockquote>
+<h2 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h2>
+<p>For more information and guides checkout out the <a href="https://ourmachinery.github.io/themachinery-books//tutorials">The Machinery Tutorials Book</a> as well as our <a href="https://ourmachinery.com/samples.html">Physics Sample</a>.</p>
+<p>In this section we will discuss some of the Samples in more detail. </p>
+<p>You can download the Physics Sample projects from the Download Tab: <em><strong>Help -&gt; Download Sample Projects</strong></em> </p>
+<p><img src="https://www.dropbox.com/s/1w81dsmhazf6pfn/tm_tut_physics_sample_download.png?dl=1" alt="Where to find the samples" /></p>
+<p>After you have downloaded the Physic Sample Project, you can open it. Its folder structure looks as following in the default view:</p>
+<p><img src="https://www.dropbox.com/s/igj4b4ao1ntb4zw/tm_tut_physics_scenes.png?dl=1" alt="Where to find the scene" /></p>
+<p>All examples are in the folder <code>Scenes</code>. When you open that folder, you can see all the sample Scenes (Entities). Double click on the Sample of your choice, and the Editor will load the Scene for you.</p>
+<p>Each of the Sample Scenes is composed of multiple Entity Prototypes. You can find them in the &quot;Special Objects&quot; or in the &quot;Shapes&quot; folder in the Asset Browser.</p>
+<p><img src="https://www.dropbox.com/s/cafrzpkal6sd1y7/tm_tut_physics_special_objects.png?dl=1" alt="Special Objects folder" /></p>
+<p><em>Special Objects</em> are entities with Graph Component attached and have the logic with them.</p>
+<p><img src="https://www.dropbox.com/s/og7wipthmw1hl7d/tm_tut_physics_shapes.png?dl=1" alt="" /></p>
+<p><em>Shapes</em> are reused Entities to demonstrate different kind of Physic Bodies.</p>
+<blockquote>
+<p>**Note: **If you change any of those Prototypes all the none modified instances will change as well. Keep this in mind when playing around with the samples.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="triggers"><a class="header" href="#triggers">Triggers</a></h2>
+<p>This walkthrough shows you how to create a trigger with the Graph Component. You can find the &quot;source code&quot; in our <a href="https://ourmachinery.com/samples.html">Physic Samples</a>.</p>
+<p><strong>Table of Content</strong></p>
+<ul>
+<li><a href="physics/triggers.html#assemble-a-trigger">Assemble a Trigger</a>
+<ul>
+<li><a href="physics/triggers.html#create-the-trigger-entity">Create the Trigger Entity</a></li>
+<li><a href="physics/triggers.html#add-the-logic-to-the-graph">Add the logic to the graph</a></li>
+<li><a href="physics/triggers.html#create-the-ball">Create the ball</a></li>
+<li><a href="physics/triggers.html#creating-the-scene">Creating the Scene</a></li>
+<li><a href="physics/triggers.html#spawn-balls">Spawn balls</a></li>
+</ul>
+</li>
+<li><a href="physics/triggers.html#conclusion">Conclusion</a></li>
+</ul>
+<h2 id="assemble-a-trigger"><a class="header" href="#assemble-a-trigger">Assemble a Trigger</a></h2>
+<p>What is a trigger? </p>
+<p>Something that reacts when something intersects/touches them, either constantly or just the first/last time.</p>
+<blockquote>
+<p><strong>Note:</strong> In Unreal Engine, this might be called Trigger Actors / Trigger Box. </p>
+</blockquote>
+<p>In the Machinery, we have two types of triggers we can use:</p>
+<ul>
+<li>PhysX's Trigger- Physical Based Trigger</li>
+<li>Volume-Component - The Trigger is based on the Volume Component.</li>
+</ul>
+<p>In this walkthrough, we are focused on <strong>PhysX's Trigger</strong> <strong>Event.</strong></p>
+<p>This walkthrough will be to create a Trigger that adds Velocity to a Ball Shot from the Camera. Therefore we need to make the following Entities:</p>
+<ul>
+<li>The Trigger</li>
+<li>A world (plane)</li>
+<li>A Ball</li>
+</ul>
+<h3 id="create-the-trigger-entity"><a class="header" href="#create-the-trigger-entity">Create the Trigger Entity</a></h3>
+<p>Let us create a folder in the Project root and call it &quot;Special Objects&quot;. It will be the folder in which we keep all our <em>Special Objects</em> for now and for what might come.</p>
+<p>In this folder, we create an Entity with the name &quot;Trigger&quot;. We add two extra components:</p>
+<ul>
+<li>A Graph Component for some logic</li>
+<li>A Physic Shape to make sure the Physics World can see it</li>
+</ul>
+<p>When adding the Physic Shape, we need to consider the Type. By default, the Type is Sphere, but that would not suit our needs since we want it to be a red box. We change the Type to Box and tick the Checkbox &quot;Is Trigger&quot; to make sure it is a Trigger. We can also change the Half Extent value if we like.</p>
+<p>If you look now into the Scene Tab, you see nothing. To change that, you can turn on the Debug Visualization:</p>
+<p><img src="https://www.dropbox.com/s/jp8oxoz8zl0f5d7/tm_tut_physics_viz.png?dl=1" alt="" /></p>
+<p>Having a Trigger that cannot be seen might be applicable for some games. In our case, we choose to make the Trigger Visible with a box.</p>
+<p>Luckily the core provides a Box Entity for us: <code>core/geometry/box.entity</code>. </p>
+<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1" alt="" /></p>
+<p>This location is something we keep in mind!</p>
+<p>Let us also add the Box (<code>core/geometry/box.entity</code>) from the core to our Entity as a child. This Box makes it easier for us to test it later because we can see it in the Scene Window.</p>
+<h3 id="add-the-logic-to-the-graph"><a class="header" href="#add-the-logic-to-the-graph">Add the logic to the graph</a></h3>
+<p>We double-click the Graph Component to open the Graph Editor. The Graph Editor is Empty. We want to add an <code>Init Event</code> and then a &quot;Physx On Trigger Event&quot;. We need to connect the Start Listing connector with the &quot;Init Event Connector&quot;.</p>
+<p>To get the current Entity, we add the node &quot;Scene Entity&quot; and connect the outgoing connector with the &quot;Physx On Trigger Event&quot; Entity connector. </p>
+<p>The goal was to apply Velocity to any entity that touches the Trigger the first time. That is why we add a connector from the &quot;First Touch&quot; to the newly added Physx Set Velocity node.</p>
+<p>We connect the Entity from the &quot;Physx Set Velocity&quot; entity connector to the <em>Touched Entity Connector</em> at the &quot;Physx On Trigger Event&quot; node. </p>
+<p>We need to get the current Velocity of this Entity. We can do this by using the &quot;Physx Get Velocity&quot; node. The result we modify with, let us say -1 and apply it at the end. (<em>The smaller the value, the stronger the ball will bounce off.</em>)</p>
+<p><img src="https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?dl=1" alt="" /></p>
+<p>This is how our trigger Entity looks like:</p>
+<p><img src="https://www.dropbox.com/s/njipx8mfsjsqcgj/tm_tut_physics_trigger_entity.png?dl=1" alt="" /></p>
+<blockquote>
+<p><strong>Note:</strong> The Box Entity will be displayed yellow because it is a prototype instance of the Entity within the <code>core/geometry/</code> folder. Any changes to this prototype will apply to this instance as well. </p>
+</blockquote>
+<h3 id="create-the-ball"><a class="header" href="#create-the-ball">Create the ball</a></h3>
+<p>The Trigger is quite useless unless it can interact with something! That is why we want to shoot a ball from the Camera to the player.</p>
+<p>Again the core comes to our rescue and provides us with a Sphere in the <code>core/geometry/</code>! We will use this for our ball!</p>
+<p>We open the &quot;Special Objects&quot; folder and add a new Entity called &quot;Ball&quot;. With a double-click, we open it and add a &quot;Physics Shape&quot; and &quot;Physics Body&quot; Component. In the  &quot;Physics Shape Component,&quot; we leave the Type to Sphere. </p>
+<blockquote>
+<p><strong>Note:</strong> We can also visualize the Sphere Physics Shape in the Scene the same way we visualized them for the Box.</p>
+</blockquote>
+<p>After this, we need to ensure that our ball has CCD is enabled. Also, the Inertia Tensor should be set to 0.4, and Angular Damping should be set to 0.05.</p>
+<p>Now that we have adjusted all the components let us add the actual ball. Again we can drag and drop the <code>sphere.entity</code> from the <code>core/geometry/</code> folder onto our Entity.</p>
+<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1" alt="" /></p>
+<h3 id="creating-the-scene"><a class="header" href="#creating-the-scene">Creating the Scene</a></h3>
+<p>After we have nearly all the components to create our little Scene, all that is missing is the playground. The playground can be defined as just a plane with a trigger on it.</p>
+<p>We can create a new Folder in the Asset Browser root and call it &quot;Scenes&quot;. In there, we create a new Entity and call it &quot;Triggers&quot;. We open this Entity.</p>
+<p>The first thing we do is add a new Empty Child entity. We call it Floor or Plane. </p>
+<blockquote>
+<p><strong>Note:</strong> Right-click on the Main Entity &quot;Add Child Entity.&quot;</p>
+</blockquote>
+<p>We add a Physics Shape Component to this Entity and change its Type to Plane.</p>
+<p>If we do not use the Physics Visualization mode, we see nothing in the Scene Tab. We can change this by adding a new Child Entity to our floor Entity. We right-click on the Plane / Floor Entity <strong>-&gt;Add Child Entity -&gt; From Asset</strong>, and we search for the Plane Entity. It is also located in the core.</p>
+<p>When we look at the Scene Tab now, we see our new floor entity! Let us drag in our Trigger. We need to drag and drop the Trigger Entity from the Asset Browser in the Scene and adjust it with the Tools within the Scene Tab.</p>
+<p>The result could look like this:</p>
+<p><img src="https://www.dropbox.com/s/w4xqxvhcblinopu/tm_tut_physics_trigger_scene.png?dl=1" alt="" /></p>
+<blockquote>
+<p><strong>Note:</strong> We should add a Light Entity. Otherwise, it might be quite dark. Luckily the core has our back also here. We can just right-click the main Entity and <strong>Add Child Entity -&gt; From Asset -&gt; Light</strong>.</p>
+</blockquote>
+<h3 id="spawn-balls"><a class="header" href="#spawn-balls">Spawn balls</a></h3>
+<p>The Scene itself is not what we want because we cannot spawn balls yet. To do this, we add a graph to the Scene itself.</p>
+<p>In there, we add a &quot;Tick Event&quot; we need to poll every tick if the space key has was pressed. If you pressed space, we would spawn the ball from the camera direction. </p>
+<p>We push the ball via &quot;Physx Push&quot; with a calculated velocity.</p>
+<p><img src="https://www.dropbox.com/s/q9k4qp08lumgzef/tm_tut_physics_graph_spawn_ball.png?dl=1" alt="" /></p>
+<h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
+<p>All of the above described &quot;code you can&quot; find when you download the Physics Sample projects from the Download Tab: <em><strong>Help -&gt; Download Sample Projects</strong></em> </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-truth"><a class="header" href="#the-truth">The Truth</a></h1>
-<p>The Machinery uses a powerful data model to represent edited assets. This model has built-in support
-for serialization, streaming, copy/paste, drag-and-drop as well as unlimited undo/redo. It supports
-an advanced hierarchical prefab model for making derivative object instances and propagating
-changes. It even has full support for real-time collaboration. Multiple people can work together in
-the same game project, Google Docs-style. Since all of these features are built into the data model
-itself, your custom, game-specific data will get them automatically, without you having to write a
-line of code.</p>
+<p>The Machinery uses a powerful data model to represent edited assets. This model has built-in support for serialization, streaming, copy/paste, drag-and-drop as well as unlimited undo/redo. It supports an advanced hierarchical prefab model for making derivative object instances and propagating changes. It even has full support for real-time collaboration. Multiple people can work together in the same game project, Google Docs-style. Since all of these features are built into the data model itself, your custom, game-specific data will get them automatically, without you having to write a line of code.</p>
+<h2 id="the-data-model"><a class="header" href="#the-data-model">The Data Model</a></h2>
+<p>The Machinery stores its data as <strong>objects with properties</strong>. Each object has a type and the type defines what properties the object has. Available property types are <em>bools, integers, floats, strings, buffers, references</em>, <em>sub-objects</em> and <em>sets of references or sub-objects</em>.</p>
+<p>The object/properties model gives us us <em>forward and backward compatibility</em> and allows us to implement operations such as <em>cloning</em> without knowing any details about the data. We can also represent modifications to the data in a uniform way <code>(object, property, old-value, new-value)</code> for undo/redo and collaboration.</p>
+<p>The model is <strong>memory-based</strong> rather than disk-based. I.e. the in-memory representation of the data is considered <em>authoritative.</em> Read/write access to the data is provided by a thread-safe API. If two systems want to co-operate, they do so by talking to the same in-memory model, not by sharing files on disk. Of course, we still need to save data out disk at some point for persistence, but this is just a “backup” of the memory model and we might use different disk formats for different purposes (i.e. a git-friendly representation for collaborative work vs single binary for solo projects).</p>
+<p>Since we have a memory-based model which supports cloning and change tracking, copy/paste and undo can be defined in terms of the data model. Real-time collaboration is also supported, by serializing modifications and transmitting them over the network. Since the runtime has equal access to the data model, modifying the data from within a VR session is also possible.</p>
+<p>We make a clear <strong>distinction between “buffer data” and “object data”</strong>. <em>Object data</em> is stuff that can be reasoned about on a per-property level. I.e. if user A changes one property of an object, and user B changes another, we can merge those changes. <em>Buffer data</em> are binary blobs of data that are opaque to the data model. We use it for large pieces of binary data, such as textures, meshes and sound files. Since the data model cannot reason about the content of these blobs it can’t for example merge changes made to the same texture by different users.</p>
+<p>Making the distinction between buffer data and object data is important because we pay an overhead for representing data as objects. We only want to pay that overhead when the benefits outweigh the costs. Most of a game’s data (in terms of bytes) is found in things like textures, meshes, audio data, etc and does not really gain anything from being stored in a JSON-like object tree.</p>
+<p>In The Truth, <strong>references are represented by IDs</strong>. Each object has a unique ID and we reference other objects by their IDs. Since references have their own property type in The Truth, it is easy for us to reason about references and find all the dependencies of an object.</p>
+<p>Sub-objects in The Truth are references to <em>owned</em> objects. They work just as references, but have special behaviours in some situations. For examples, when an object is cloned, all its sub-objects will be cloned too, while its references will not.</p>
+<p>For more information checkout the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html">documentation</a> and these blog posts: <a href="https://ourmachinery.com/post/the-story-behind-the-truth-designing-a-data-model/">The Story behind The Truth: Designing a Data Model</a>  or this <a href="https://ourmachinery.com/post/multi-threading-the-truth/">one</a>.</p>
+<h2 id="tutorials-1"><a class="header" href="#tutorials-1">Tutorials</a></h2>
 <p>This section shall introduce you to some more complex topics such as <a href="https://ourmachinery.github.io/themachinery-books//the_truth/custom_asset/index.html"><em>How to create your own asset.</em></a></p>
 <p>For more information checkout the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html">documentation</a> and these blog posts: <a href="https://ourmachinery.com/post/the-story-behind-the-truth-designing-a-data-model/">The Story behind The Truth: Designing a Data Model</a>  or this <a href="https://ourmachinery.com/post/multi-threading-the-truth/">one</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-custom-asset"><a class="header" href="#creating-a-custom-asset">Creating a custom asset</a></h1>
