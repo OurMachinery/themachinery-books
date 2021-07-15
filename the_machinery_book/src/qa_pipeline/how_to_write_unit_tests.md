@@ -34,7 +34,7 @@ It can be helpful on CI Server where build and test servers are different. The b
 
 ## **How to write your tests**
 
-All that is needed is to write tests is to register them via the [TM_UNIT_TEST_INTERFACE_NAME](http://#). You can find the interface in the [unit_tests.h](http://#). [TM_UNIT_TEST_INTERFACE_NAME](http://#) expects a pointer of the type [tm_unit_test_i](http://#). This interface expects a name and a function pointer to the test entry function.
+All that is needed is to write tests is to register them via the [TM_UNIT_TEST_INTERFACE_NAME](https://ourmachinery.com//apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name). You can find the interface in the [unit_tests.h](https://ourmachinery.com//apidoc/foundation/unit_test.h.html). [TM_UNIT_TEST_INTERFACE_NAME](https://ourmachinery.com//apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name) expects a pointer of the type [tm_unit_test_i](https://ourmachinery.com//apidoc/foundation/unit_test.h.html#structtm_unit_test_i). This interface expects a name and a function pointer to the test entry function.
 
 
 ```c

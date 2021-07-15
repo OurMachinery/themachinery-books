@@ -30,7 +30,7 @@ You handle the main project management steps through the **File Menu.** Such as 
 In The Machinery, we do not have a concept of scenes in the traditional sense. All we have are Entities. Therefore any Entity can function as a scene. All you need is to add child entities to a parent Entity. The Editor will remember the last opened Entity. 
 When publishing a Game, the Engine will ask you to select your "world" entity. You can decide to choose any of your entities as "world" Entity.
 
-> For more information on publishing, check [here](editing_workflows/publish.html).
+> For more information on publishing, check [here]({{base_url}}/the_machinery_book/editing_workflows/publish.html).
 
 # New Project
 
@@ -42,7 +42,7 @@ A new project is not empty. It comes with the so-called "**Core**," a collection
 
 > A prototype in The Machinery is an entity that has been saved as an Asset. Prototypes are indicated by yellow text in the Entity Tree View. 
 >
-> For more information about Prototypes, click [here](editing_workflows/prototypes.html).
+> For more information about Prototypes, click [here]({{base_url}}/the_machinery_book/editing_workflows/prototypes.html).
 
 
 ![the content of the world entity](https://paper-attachments.dropbox.com/s_09462F237550F87F4C86951FAA779F713337E632E917FE6E6B8E3406BD58F125_1615455893513_image.png)
