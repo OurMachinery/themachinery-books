@@ -63,14 +63,14 @@ jobs:
           export PATH="${{github.workspace}}/tools/:$PATH"
           cd the_machinery_book
           mdbook build
-          mv book ../public/the_machinery_book
+          mv book/html ../public/the_machinery_book
       - name: Build introduction
         run: |
           export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
           export PATH="${{github.workspace}}/tools/:$PATH"
           cd tutorials
           mdbook build
-          mv book ../public/tutorials
+          mv book/html ../public/tutorials
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
