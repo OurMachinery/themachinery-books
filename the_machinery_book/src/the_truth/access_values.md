@@ -27,7 +27,7 @@ With this knowledge we can assemble the following function that logs the width o
 
 ```c
 void log_with(tm_the_truth_o *tt, tm_tt_id_t my_object){   
-	const float wdith = tm_the_truth_api->get_float(tt,tm_tt_read(tt,my_object),my_object_w,TM_TT_PROP__RECT__W);
+	const float wdith = tm_the_truth_api->get_float(tt,tm_tt_read(tt,my_object),TM_TT_PROP__RECT__W);
     TM_LOG("the width is %f",width);
 }
 ```
