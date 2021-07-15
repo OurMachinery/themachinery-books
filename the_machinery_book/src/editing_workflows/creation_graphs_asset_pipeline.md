@@ -100,6 +100,7 @@ copied into new projects. How they are used when working with assets is exposed 
 ![Default Import Settings.](https://www.dropbox.com/s/sr52qac8i1i757l/import-settings.png?dl=1)
 
 By exposing these settings through an asset it is possible to easily change the default behavior of
-how imported assets are treated when placed under a specific folder. It's worth noting that this is
-somewhat of a power-user feature and not something you need to have a detailed
-understanding of to get started working with The Machinery.
+how imported assets are treated when placed under a specific folder. 
+
+> **Note:** It's worth noting that this is somewhat of a power-user feature and not something you need to have a detailed
+> understanding of to get started working with The Machinery.

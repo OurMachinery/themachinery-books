@@ -105,6 +105,12 @@ We can divide the PhysX scripting nodes into a few categories.
 - Raycast
 - Sweep
 
-Note that the query nodes may return more than one result. They will do that by triggering their
-*Out* event multiple times, each time with one of the result objects. (In the future we might change
-this and have the nodes actually return arrays of objects.)
+> **Note** that the query nodes may return more than one result. They will do that by triggering their
+> *Out* event multiple times, each time with one of the result objects. (In the future we might change
+> this and have the nodes actually return arrays of objects.)
+
+
+
+## Tutorials
+
+For more information and guides checkout out the [The Machinery Tutorials Book]({{base_url}}/tutorials) as well as our [Physics Sample](https://ourmachinery.com/samples.html).

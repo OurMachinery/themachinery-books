@@ -6,11 +6,16 @@ This part will cover the following topics:
 
 - Import Asset pipeline
 
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
+
 Related videos to these topics are:
 
 <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/loaYaeSl-_g?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=ourmachinery.com"></iframe>
 
-# How to import assets into the project
+## How to import assets into the project
 
 The Machinery has three different ways of importing assets. The first method of important an asset is via the **File** menu. There, we have an entry called *Import,* which will open a file dialog. Here one can import any of the supported file formats. At the time of writing this walkthrough, The Machinery is supporting the following formats:
 
@@ -39,9 +44,17 @@ Entity assets define a prototype in The Machinery. They are distinguished in the
 
 ## About Import Setting
 
-Every DCC asset allows changing of the extraction configuration. In those settings, it is possible to define the extraction locations. Moreover, the creation graph prototypes can be defined there as well. For example, when we extract the materials, the specified creation graph will be used to define this material. It is the same for meshes and textures. Those settings also allow us to define if we want to be able to rig a entity from it.
+You can define the import creation graph prototype there as well.
 
-Instead of importing assets and change per asset the configuration, it is possible to define per folder an import setting. All which is needed is to add an "Import Settings Asset" in the correct folder. This can be done via the asset browser.
+- For Images
+- For Materials
+- For Meshes
+
+Every DCC asset allows changing of the extraction configuration. Therefore it is possible to define the extraction locations for outputs, images and materials.
+
+Instead of importing assets and change their the configuration per asset , it is possible to define them per folder. All you need to do is add an "*Import Settings Asset*" in the correct folder. This can be done via the asset browser. **Right Click -> New -> Import Settings**
 
 ![](https://paper-attachments.dropbox.com/s_8A68AE93396574AC0D937BFA8CFC626D302DBC4E0617A82A7B5162043ADD88EF_1615469368165_image.png)
 
+> **Note:** worth noting that this is somewhat of a power-user feature and not something you need to have a detailed
+> understanding of to get started working with The Machinery.
