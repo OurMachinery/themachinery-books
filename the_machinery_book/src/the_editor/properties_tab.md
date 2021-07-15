@@ -15,6 +15,7 @@ You can pin content by clicking the *Pin* icon on Properties Tab. It will bind t
 Moreover, if you dock a *Preview* tab in the same window as an *Asset Browser*, it will show a preview of the selected asset in that browser.
 
 **About Prototypes**
+
 The Machinery has a prototype system that allows entity assets to be used within each other. Therefore you can create an Entity-Asset that represents a room and then create a house Entity with a bunch of these room entities placed within. 
 We call the room asset a *prototype*, and we call each placed room entity an *instance* of this prototype. 
 

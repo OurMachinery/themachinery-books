@@ -2,7 +2,13 @@
 
 The **Scene** tab is the view into your world. You can use the **Scene tab** to select, manipulate assets, and position new ones in your world. 
 
-**Navigate through your Scene**
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
+
+
+## Navigate through your Scene
 The Scene Tab allows for different ways of navigating through your world. The primary method of navigating through the Scene is via the mouse and the keyboard. 
 
 **Movement**
@@ -19,7 +25,7 @@ The Scene Tab allows for different ways of navigating through your world. The pr
 
 - **Press F**: To frame the currently selected entity or if you have nothing selected the Scene. Alternatively, you can double click on an entity the Entity Tree Tab.
 
-**Opening an Entity Asset**
+### Opening an Entity Asset
 Through a double click on an Entity Asset in the Asset Browser, you will load the asset. If you want to move between previously loaded entities, the toolbar provides a back and forth navigation option.
 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428401593_image.png)
@@ -29,8 +35,7 @@ Alternatively, you can use the context menu of the tab label and navigate throug
 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428456420_image.png)
 
-
-**Working in the Scene**
+## Working in the Scene
 The Scene tab comes with tools that allow for editing and moving entities in the current Scene.
 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428493292_image.png)
@@ -51,7 +56,8 @@ If you do not like the layout of the current toolbar, you can change its layout 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428649231_new_order_toolbars.gif)
 
 
-**Simulate your Scene or change** visualization modes
+
+## Simulate your Scene or change visualization modes
 You can simulate your current Scene and manipulate the way your Scene's visualization with this toolbar:
 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428527987_image.png)
@@ -73,11 +79,7 @@ You can simulate your current Scene and manipulate the way your Scene's visualiz
     - Visualize EV100
     - Visualize Histogram
 
-**Missing**
-
-- Other toolbar content
-
-**Keyboard bindings**
+## Keyboard bindings
 
 | Key                     | Description                                                  |
 | ----------------------- | ------------------------------------------------------------ |

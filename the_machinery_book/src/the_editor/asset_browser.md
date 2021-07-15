@@ -4,8 +4,13 @@ The **Asset Browser** shows all your project's assets and enables you to manage 
 
 ![The asset browser’s grid view](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625429028821_image.png)
 
-
 As the image shows, the asset browser contains two components: The Directory Tree View of your project and the actual Asset View Panel.
+
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
+
 
 ## Structure
 
@@ -27,7 +32,6 @@ All of those actions can be either done via the Main Menu or via the context men
 The Asset View Panel comes in three different views: **Grid (default),** **Detail, and List-View.**  You can change the views via the context menu or the *Change View* button next to the search field. Besides, there are also shortcuts to change the views: **Shift + C** will switch to the Grid View, **Shift + L** will change to the List view, and **Shift + D** will change to the details view. 
 
 ![Detail View](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625429106698_image.png)
-
 
 **Different View Modes**
 
@@ -68,10 +72,12 @@ Double clicks on an asset may open the asset in their corresponding tab or windo
 A single click will always focus a associated Properties Tab on the selected asset.
 
 *Dragging assets into the Scene*
+
 You can drag assets around in the asset browser. It allows for quick reorganization of assets. It is also possible to drag assets from the asset browser directly into the Scene. Assets can be dragged from the Asset Browser Tab to other tabs if they support the asset type.
 You can also drag assets from the Windows-Explorer into your project. This action supports the same formats as the regular importer via **File → Import Assets.** 
 
-*Asset Labeling*
+*Asset Labelling*
+
 To organize your project, you can use Asset Labels. An asset can be associated with one or more different asset labels. You can use them to filter your asset in the asset browser or plugins via the [asset label api](https://ourmachinery.com//apidoc/plugins/editor_views/asset_label.h.html#structtm_asset_label_api).
 
 There are two types of Asset labels: 
@@ -82,6 +88,7 @@ There are two types of Asset labels:
 The user can manage them like any other asset and delete user-defined Asset Labels via the asset browser. There you can also rename them, and this will automatically propagate to all users of those asset labels.
 
 *Add an Asset Label to as Asset* 
+
 You can add asset Labels via the property view to any asset:
 
 - You select an Asset.
@@ -92,7 +99,7 @@ You can add asset Labels via the property view to any asset:
 ![1. Asset Label View in the Asset Property View Tab 2. The home of all your asset labels.](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625429529838_image.png)
 
 
-**Keyboard bindings**
+## Keyboard bindings
 
 | Key              | Descriptions                                                 |
 | ---------------- | ------------------------------------------------------------ |
