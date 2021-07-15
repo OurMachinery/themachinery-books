@@ -22,4 +22,4 @@ Each of the Sample Scenes is composed of multiple Entity Prototypes. You can fin
 
 *Shapes* are reused Entities to demonstrate different kind of Physic Bodies.
 
->  **Note: **If you change any of those Prototypes all the none modified instances will change as well. Keep this in mind when playing around with the samples.
+>  **Note:** If you change any of those Prototypes all the none modified instances will change as well. Keep this in mind when playing around with the samples.
