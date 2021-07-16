@@ -1,19 +1,23 @@
 # Getting Started with a New Project
 
-**Engine Version: 2021.2**
-
 This walkthrough shows how to create a new project. It will also show you what comes by default with the Engine.
 
 This part will cover the following topics:
 
 - Project Pipeline
-  - What are the different formats the Machinery supports?
+  - What is the difference between a directory project and a database project?
+  - What is a Scene in The Machinery?
   - What comes by default with a project?
 
 
 Related videos to these topics are:
 
 <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/oQGghpCqBhI?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=http://ourmachinery.com"></iframe>
+
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
 
 
 # About Projects
@@ -48,7 +52,7 @@ A new project is not empty. It comes with the so-called "**Core**," a collection
 ![the content of the world entity](https://paper-attachments.dropbox.com/s_09462F237550F87F4C86951FAA779F713337E632E917FE6E6B8E3406BD58F125_1615455893513_image.png)
 
 
-**The Core**
+### The Core
 Let us discuss the Core a bit. As mentioned before, the Core contains a couple of useful utilities. They are illustrating the core concepts of the Engine, and they are a great starting point. They can be found in the Asset browser under the core folder:
 
 ![](https://paper-attachments.dropbox.com/s_09462F237550F87F4C86951FAA779F713337E632E917FE6E6B8E3406BD58F125_1615456601483_image.png)
@@ -89,4 +93,6 @@ A content overview of the core folder and its subfolders may looks like this:
 ## How to add some life to your project
 
 All gameplay can be written in C or a C in any binding language such as C++ or Zig. You can also create gameplay code via the Entity Graph. The Entity Graph would live inside of a Graph Component. You can add that to an Entity. 
+
+You can find more information about gameplay coding in the ["Gameplay Coding" Section]({{base_url}}/the_machinery_book/gameplay_coding/index.html)
 

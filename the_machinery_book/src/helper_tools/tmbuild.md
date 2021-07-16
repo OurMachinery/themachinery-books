@@ -23,6 +23,12 @@ Also, you will learn some more advanced topics such as:
 
 - How to build/manipulate tmbuild
 
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
+
+
 
 ## **Installing tmbuild**
 
@@ -33,6 +39,7 @@ When you download and unzip [The Machinery](https://ourmachinery.com/) either vi
 Before we use tmbuild, we need to ensure that we have installed either *build-essentials* under Linux, *XCode* on Mac, or *Visual Studio 2017 or 2019* (Either the Editor such as the Community Edition or the Build Tools). 
 
 **Windows Side nodes:**
+
 On Windows, it is essential to install the C/C++ Build tools. 
 If you run into the issue that tmbuild cannot find Visual Studios 2019 on Windows, it could be because you installed it on a typical path.  No problem, you can just set the environment variable `TM_VS2017_DIR` or `TM_VS2019_DIR` to the root `C:\Program Files (x86)\Microsoft Visual Studio\2019`. The tool will find the right installed version automagically.
 
@@ -54,6 +61,7 @@ If the following variable is not set, the tool will assume that you intend to us
 **How to add environment variables?**
 
 **Windows**
+
 On Windows all you need to do is you need to add the folder where you installed The Machinery to your environment variables. You can do this like this:
 **Start > Edit the system environment variables > environment variables > system varaibles > click New... >** add `TM_SDK_DIR` or `TM_LIB_DIR` as the Variable Name and the needed path as the Variable Value.
 Close and restart the terminal or Visual Studio / Visual Studio Code.
@@ -63,6 +71,7 @@ As an alternative, you can set an environment variable via PowerShell before you
 
 
 **Debian/Ubuntu Linux**
+
 You open the terminal or edit with your favorite text editor `~/.bashrc` and you add the following lines:
 
     #...
@@ -70,6 +79,8 @@ You open the terminal or edit with your favorite text editor `~/.bashrc` and you
     export TM_LIB_DIR=path/to/themachinery/libs
 
 (e.g. via nano nano `~/.bashrc`)
+
+
 
 ## **Let us Build a plugin**.
 
@@ -127,6 +138,7 @@ You can build tmbuild via tmbuild. All you need to do is navigate the `code\util
 If you do not have access to a build version of tmbuild but to the whole source, you have to follow the following steps:
 
 **Windows 10**
+
 Make sure you have Visual Studio 19 and the Build Tools installed. Besides, check if you can find `msbuild` in the terminal. You can install `msbuild / vs studio` via PowerShell: [https://github.com/Microsoft/vssetup.powershell](https://github.com/Microsoft/vssetup.powershell)
 
 To check just run:
@@ -140,6 +152,7 @@ if you cannot find it just add it to your environment path variables: with e.g.
 `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\`
 
 **To build from source:**
+
 Open a PowerShell instance in The Machinery folder and run the following commands:
 
 ```powershell
@@ -167,6 +180,7 @@ msbuild.exe "build/tmbuild/tmbuild.vcxproj" /p:Configuration="Debug Win64" /p:Pl
 *Make sure that you either choose vs2019 or vs2017 not* [vs2019|vs2017]
 
 **On Debian/Ubuntu**
+
 Open a terminal instance and run the following commands:
 
 ```bash
@@ -196,6 +210,7 @@ cd code/utils
 # run make:
 make tmbuild
 ```
+
 
 
 ## How to add tmbuild globally accessible?

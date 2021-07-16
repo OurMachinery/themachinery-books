@@ -1,12 +1,20 @@
 ## Physics
 
-The Machinery integrates Nvidia's PhysX toolkit and uses it for physics simulation of entities. This
-section will not attempt to describe in detail how physics simulation works, for that we refer to
-[the PhysX documentation](https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Index.html). We will only talk about how physics is set up in The Machinery.
+The Machinery integrates Nvidia's PhysX toolkit and uses it for physics simulation of entities. This section will not attempt to describe in detail how physics simulation works, for that we refer to [the PhysX documentation](https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Index.html). 
+We will only talk about how physics is set up in The Machinery.
+
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
+
+## The physics simulation system
 
 The physics simulation system introduces two new assets: *Physics Material* and *Physics Collision*
 as well as four new components: *Physics Shape Component*, *Physics Body Component*, *Physics
 Joint Component*, and *Physics Mover Component*.
+
+### Physics Assets
 
 A *Physics Material* asset specifies the physical properties of a physics object: *friction* (how
 "slippery" the object is) and *restitution* (how "bouncy" the object is). Note that if you don't
@@ -23,6 +31,8 @@ In addition to deciding who collides with who, the collision class also decides 
 generate callback events. These events can be handled in the *Entity Graph*.
 
 If you don't assign a collision class to a physics shape, it will get the *Default* collision class.
+
+### Physics Components
 
 The *Physics Shape Component* can be added to an entity to give it a collision shape for physics.
 Entities with shape components will collide with each other when physics is simulated.
@@ -60,19 +70,9 @@ entity, it will keep the entity's feet on the ground, prevent it from going thro
 an example of how to use the character controller, check out the `animation` or `gameplay` sample
 projects.
 
-Note that The Machinery doesn't currently support all the features found in PhysX. The most
-glaring omissions are:
+## Physics scripting
 
-* D6 joints and joint motors.
-* Vehicles.
-
-We will add more support going forward.
-
-For an example of how to use physics, see the `physics` sample project.
-
-### Physics scripting
-
-Physics can be scripted using the visual scripting language in the *Entity Graph*.
+Physics can be scripted using the visual scripting language in the [*Entity Graph*]({{base_url}}the_machinery_book/editing_workflows/visual-scripting.html).
 
 We can divide the PhysX scripting nodes into a few categories.
 
@@ -109,6 +109,19 @@ We can divide the PhysX scripting nodes into a few categories.
 > *Out* event multiple times, each time with one of the result objects. (In the future we might change
 > this and have the nodes actually return arrays of objects.)
 
+From C you can access those features via the [`tm_physx_scene_api`](https://ourmachinery.com//apidoc/plugins/physx/physx_scene.h.html#structtm_physx_scene_api).
+
+## Missing Features
+
+Note that The Machinery doesn't currently support all the features found in PhysX. The most
+glaring omissions are:
+
+* D6 joints and joint motors.
+* Vehicles.
+
+We will add more support going forward.
+
+For an example of how to use physics, see the [Physics Sample Project](https://ourmachinery.com/samples.html).
 
 
 ## Tutorials
