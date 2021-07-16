@@ -1,21 +1,15 @@
 # Toolbars and Overlays
 
-In the Machinery, tabs can provide toolbars. If you wish to use custom toolbars within The Machinery tabs, you do not need to use anything within [tm_toolbar_api](https://ourmachinery.com//apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api). The docking system will ask your tab for a list of toolbars to draw each frame. See tm_tab_vt->toolbars()](https://ourmachinery.com//apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()).
+In the Machinery, tabs can provide toolbars. If you wish to use custom toolbars within The Machinery tabs, you do not need to use anything within [tm_toolbar_api](https://ourmachinery.com//apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api). The docking system will ask your tab for a list of toolbars to draw each frame. See [tm_tab_vt->toolbars()](https://ourmachinery.com//apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()).
 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428649231_new_order_toolbars.gif)
 
 In this walkthrough, we will learn how to write our little toolbar for our newly added tab! This walkthrough requires you to know how our plugin system works.
 
-
-
 **Table of Content**
 
 * auto-gen TOC;
 {:toc}
-
-
-
-
 ## Implement a Toolbar in a Tab
 
 To begin with, we need to create a new tab plugin. We go on **File -> New Plugin -> Tab.** 

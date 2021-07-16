@@ -4,6 +4,16 @@ The **Properties** tab shows the properties of the currently selected object. Yo
 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428761738_image.png)
 
+### Use mathematical expression
+
+We’ve also have support for mathematical expression to our property editor. So you can now type both numerical values and expressions.
+
+You can use `x` in the expression to mean whatever value the property had before, so if you type `x + 1` you will increase the current value by 1.
+
+
+![Using expressions in the property editor.](https://paper-attachments.dropbox.com/s_AF44CABDD4BF19FA7D54C2D4574B155CAAE2ED895AFB490AC3671972A5F81DC2_1617121646846_expressions.gif)
+
+### Multiple tabs with different properties
 
 You can have multiple tabs of different properties open if you wish. In this case, it comes very handily that you can pin Properties Tabs to a specific Object. 
 Otherwise, the property tab will reflect the next selected object, and you would have multiple times the same thing open. 

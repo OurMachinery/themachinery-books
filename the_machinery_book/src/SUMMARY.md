@@ -47,6 +47,7 @@
     - [Plugin assets](./extending_the_machinery/plugin-assets.md)
     - [Writing a plugin](./extending_the_machinery/write-a-plugin.md)
     - [Create a custom Truth Type](./the_truth/custom_truth_type.md)
+    - [Toolbars and Overlays](./extending_the_machinery/toolbars-overlays.md)
 - [Gameplay coding](./gameplay_coding/README.md)
     - [Simulate Entry in C](./gameplay_coding/simulate_entry.md)
     - [Extending the visual scripting language](./gameplay_coding/extend_the_visual_scripting_language.md)
