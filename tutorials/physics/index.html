@@ -147,12 +147,25 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="physics"><a class="header" href="#physics">Physics</a></h2>
-<p>The Machinery integrates Nvidia's PhysX toolkit and uses it for physics simulation of entities. This
-section will not attempt to describe in detail how physics simulation works, for that we refer to
-<a href="https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Index.html">the PhysX documentation</a>. We will only talk about how physics is set up in The Machinery.</p>
+<p>The Machinery integrates Nvidia's PhysX toolkit and uses it for physics simulation of entities. This section will not attempt to describe in detail how physics simulation works, for that we refer to <a href="https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Index.html">the PhysX documentation</a>. 
+We will only talk about how physics is set up in The Machinery.</p>
+<p><strong>Table of Content</strong></p>
+<ul>
+<li><a href="#the-physics-simulation-system">The physics simulation system</a>
+<ul>
+<li><a href="#physics-assets">Physics Assets</a></li>
+<li><a href="#physics-components">Physics Components</a></li>
+</ul>
+</li>
+<li><a href="#physics-scripting">Physics scripting</a></li>
+<li><a href="#missing-features">Missing Features</a></li>
+<li><a href="#tutorials">Tutorials</a></li>
+</ul>
+<h2 id="the-physics-simulation-system"><a class="header" href="#the-physics-simulation-system">The physics simulation system</a></h2>
 <p>The physics simulation system introduces two new assets: <em>Physics Material</em> and <em>Physics Collision</em>
 as well as four new components: <em>Physics Shape Component</em>, <em>Physics Body Component</em>, <em>Physics
 Joint Component</em>, and <em>Physics Mover Component</em>.</p>
+<h3 id="physics-assets"><a class="header" href="#physics-assets">Physics Assets</a></h3>
 <p>A <em>Physics Material</em> asset specifies the physical properties of a physics object: <em>friction</em> (how
 &quot;slippery&quot; the object is) and <em>restitution</em> (how &quot;bouncy&quot; the object is). Note that if you don't
 assign a material to a physics shape it will get default values for <em>friction</em> and <em>constitution</em>.</p>
@@ -165,6 +178,7 @@ just fall through the world.)</p>
 <p>In addition to deciding who collides with who, the collision class also decides which collisions
 generate callback events. These events can be handled in the <em>Entity Graph</em>.</p>
 <p>If you don't assign a collision class to a physics shape, it will get the <em>Default</em> collision class.</p>
+<h3 id="physics-components"><a class="header" href="#physics-components">Physics Components</a></h3>
 <p>The <em>Physics Shape Component</em> can be added to an entity to give it a collision shape for physics.
 Entities with shape components will collide with each other when physics is simulated.</p>
 <p>A physics shape can either be specified as geometry (sphere, capsule, plane, box) or it can be
@@ -193,16 +207,8 @@ joints, we refer to the PhysX documentation.</p>
 entity, it will keep the entity's feet on the ground, prevent it from going through walls, etc. For
 an example of how to use the character controller, check out the <code>animation</code> or <code>gameplay</code> sample
 projects.</p>
-<p>Note that The Machinery doesn't currently support all the features found in PhysX. The most
-glaring omissions are:</p>
-<ul>
-<li>D6 joints and joint motors.</li>
-<li>Vehicles.</li>
-</ul>
-<p>We will add more support going forward.</p>
-<p>For an example of how to use physics, see the <code>physics</code> sample project.</p>
-<h3 id="physics-scripting"><a class="header" href="#physics-scripting">Physics scripting</a></h3>
-<p>Physics can be scripted using the visual scripting language in the <em>Entity Graph</em>.</p>
+<h2 id="physics-scripting"><a class="header" href="#physics-scripting">Physics scripting</a></h2>
+<p>Physics can be scripted using the visual scripting language in the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/visual-scripting.html"><em>Entity Graph</em></a>.</p>
 <p>We can divide the PhysX scripting nodes into a few categories.</p>
 <p><strong>Nodes that query the state of a physics body:</strong></p>
 <ul>
@@ -238,6 +244,16 @@ glaring omissions are:</p>
 <em>Out</em> event multiple times, each time with one of the result objects. (In the future we might change
 this and have the nodes actually return arrays of objects.)</p>
 </blockquote>
+<p>From C you can access those features via the <a href="https://ourmachinery.com//apidoc/plugins/physx/physx_scene.h.html#structtm_physx_scene_api"><code>tm_physx_scene_api</code></a>.</p>
+<h2 id="missing-features"><a class="header" href="#missing-features">Missing Features</a></h2>
+<p>Note that The Machinery doesn't currently support all the features found in PhysX. The most
+glaring omissions are:</p>
+<ul>
+<li>D6 joints and joint motors.</li>
+<li>Vehicles.</li>
+</ul>
+<p>We will add more support going forward.</p>
+<p>For an example of how to use physics, see the <a href="https://ourmachinery.com/samples.html">Physics Sample Project</a>.</p>
 <h2 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h2>
 <p>For more information and guides checkout out the <a href="https://ourmachinery.github.io/themachinery-books//tutorials">The Machinery Tutorials Book</a> as well as our <a href="https://ourmachinery.com/samples.html">Physics Sample</a>.</p>
 <p>In this section we will discuss some of the Samples in more detail. </p>
