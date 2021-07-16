@@ -52,7 +52,7 @@
     - [Entity Component System](./gameplay_coding/ecs/README.md)
         - [Write a custom component](./gameplay_coding/ecs/write_a_custom_component.md)
         - [Write a Systems & Engines](./gameplay_coding/ecs/write_a_system_or_engine.md)
-    - [How to build my Plugin](./helper_tools/tmbuild.md)
+    - [How to build my plugin](./helper_tools/tmbuild.md)
 - [QA Pipeline](./qa_pipeline/README.md)
     - [Write your own unit tests](./qa_pipeline/how_to_write_unit_tests.md)
     - [Write your own integration tests](./qa_pipeline/how_to_write_integration_tests.md)

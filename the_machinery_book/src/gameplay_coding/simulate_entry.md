@@ -23,7 +23,7 @@ and each frame respectively. Make sure that `id` is unique. When your plugin loa
 register this implementation of `tm_simulate_entry_i` on the `TM_SIMULATE_ENTRY_INTERFACE_NAME`
 interface name, like so:
 
-```
+```c
 tm_add_or_remove_implementation(reg, load, TM_SIMULATE_ENTRY_INTERFACE_NAME, &simulate_entry_i);
 ```
 
@@ -35,6 +35,10 @@ entities:
 When you inspect the the properties of this new `Simulate Entry` asset, have a look in the
 Simulate Entry dropdown menu. Given that you registered your implementation of `tm_simulate_entry_i`
 correctly, it should appear in this list.
+
+
+
+## How will the Engine determine which one to pick?
 
 Now, whenever you start simulating a certain entity, such as your main game world, the Simulate Tab
 will look in the directory next to the entity you're simulating and check if there is a Simulate

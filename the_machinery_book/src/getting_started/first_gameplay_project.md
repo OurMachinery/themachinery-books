@@ -6,6 +6,10 @@ This part will cover the following topics:
 
 - How to create with the visual scripting language (The Entity Graph) a simple playable
 
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
 
 ## How to add some life to your project
 
