@@ -22,4 +22,6 @@ The Truth comes with several useful common types. You can find them in the `the_
 | [`TM_TT_TYPE__COLOR_RGBA`](https://ourmachinery.com//apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgba) /[`TM_TT_TYPE_HASH__COLOR_RGBA`](https://ourmachinery.com//apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgba) | Represents a RGBA colour.                                    |
 | [`TM_TT_TYPE__RECT`](https://ourmachinery.com//apidoc/foundation/the_truth_types.h.html#tm_tt_type__rect) /[`TM_TT_TYPE_HASH__RECT`](https://ourmachinery.com//apidoc/foundation/the_truth_types.h.html#tm_tt_type__rect) | The first property contains the x value and the second the y value and the third the width value while the last one contains the height value. |
 
-There is a helper API to handle all of these types in a easy way, to reduce the boilerplate code: `tm_the_truth_common_types_api`.
+There is a helper API to handle all of these types in a easy way, to reduce the boilerplate code: `tm_the_truth_common_types_api`. 
+
+> **Note:** There is a list of all Truth Types the Engine comes with available on our [API Documentation](https://ourmachinery.com/apidoc/truth_types.html)

@@ -57,6 +57,23 @@ If you do not like the layout of the current toolbar, you can change its layout 
 
 
 
+### Box Select in the Scene Tab
+
+The Machinery now supports a long awaited feature — box selection.
+
+To select multiple items in the scene, simply drag out a selection rectangle with the mouse:
+
+
+![Box dragging to select multiple entities.](https://paper-attachments.dropbox.com/s_AF44CABDD4BF19FA7D54C2D4574B155CAAE2ED895AFB490AC3671972A5F81DC2_1617220755615_image.png)
+
+
+The touched entities will become selected in the scene:
+
+
+![The resulting selection.](https://paper-attachments.dropbox.com/s_AF44CABDD4BF19FA7D54C2D4574B155CAAE2ED895AFB490AC3671972A5F81DC2_1617220785668_image.png)
+
+
+
 ## Simulate your Scene or change visualization modes
 You can simulate your current Scene and manipulate the way your Scene's visualization with this toolbar:
 

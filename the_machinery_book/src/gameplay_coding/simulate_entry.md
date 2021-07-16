@@ -38,6 +38,10 @@ correctly, it should appear in this list.
 
 
 
+> **Note:** In our sample section you can find the "gameplay-interaction-system" sample. This one is a great sample to see this workflow in action.
+
+
+
 ## How will the Engine determine which one to pick?
 
 Now, whenever you start simulating a certain entity, such as your main game world, the Simulate Tab

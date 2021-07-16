@@ -2,10 +2,16 @@
 
 The Machinery comes with some built-in tools to support you in building games.
 
-- Unit Test Framework
-- Integration Test Framework
-- Profiler and profiling framework
-- Memory leak Detection
+- [Unit Test Framework](https://ourmachinery.com//apidoc/foundation/unit_test.h.html#unit_test.h)
+- [Integration Test Framework](https://ourmachinery.com//apidoc/foundation/integration_test.h.html#integration_test.h)
+- [Profiler and profiling framework](https://ourmachinery.com//apidoc/foundation/profiler.h.html#profiler.h)
+- [Memory leak Detection](https://ourmachinery.com//apidoc/foundation/memory_tracker.h.html#memory_tracker.h)
+
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
+
 
 
 ## Profiler Tab
@@ -15,7 +21,7 @@ The profiler tab will display all scopes that have been added to the profiler AP
 ![](https://paper-attachments.dropbox.com/s_5086E710AFB88B222C81207791AF7092731DB9D2900AFABEA044A0AC0B80DFFB_1625602954215_image.png)
 
 You can use the profiler API defined in the [foundation/profiler](https://ourmachinery.com//apidoc/foundation/profiler.h.html#profiler.h).h. in your own projects.
-After you have loaded the `[tm_profiler_api](https://ourmachinery.com//apidoc/foundation/profiler.h.html#structtm_profiler_api)` in your plugin load function.
+After you have loaded the [`tm_profiler_api`](https://ourmachinery.com//apidoc/foundation/profiler.h.html#structtm_profiler_api) in your plugin load function.
 
 | Profiler Macros                                              |
 | ------------------------------------------------------------ |
@@ -42,7 +48,7 @@ The memory tab will display all memory consumed via any allocator. Temporary all
 
 
 
-## Statisitc Tab
+## Statistic Tab
 
 Allows you to visualize different statistics from different sources. 
 
