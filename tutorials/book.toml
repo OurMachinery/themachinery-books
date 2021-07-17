@@ -21,8 +21,8 @@ follow-web-links = true
 exclude = [ 'https://ourmachinery\.com/apidoc/' ]
 
 
-[preprocessor.autolink]
-renderer = ["html"]
-folder = "../"
-books = ["the_machinery_book","tutorials"]
-command = "python ../autogenerete_doc_links.py"
+#[preprocessor.autolink]
+#renderer = ["html"]
+#folder = "../"
+#books = ["the_machinery_book","tutorials"]
+#command = "python ../autogenerete_doc_links.py"
