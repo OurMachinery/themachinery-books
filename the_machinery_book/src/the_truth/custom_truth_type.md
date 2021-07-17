@@ -174,7 +174,7 @@ In The Truth, an Object-Type is made of one or multiple properties. Properties c
 
 *What is the difference between a reference and a subobject?*
 
-To see the difference, consider how [clone_object()](https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_api.clone_object()) works in both cases:
+To see the difference, consider how [clone_object()]({{docs}}foundation/the_truth.h.html#structtm_the_truth_api.clone_object()) works in both cases:
 
 - When you clone an object with references, the clone will reference the same objects as the original, i.e. they now have multiple references to them.
 - When you clone an object with subobjects, all the subobjects will be cloned too. After the clone operation, there is no link between the object's subobjects and the clone's subobjects.
@@ -187,7 +187,7 @@ When you destroy an object that has subobjects, all the subobjects are destroyed
 
 
 
->  **Note:** For more information please check: [The API Documentation](https://ourmachinery.com//apidoc/foundation/the_truth.h.html#the_truth.h) 
+>  **Note:** For more information please check: [The API Documentation]({{docs}}foundation/the_truth.h.html#the_truth.h) 
 
 
 
@@ -265,7 +265,7 @@ typedef struct tm_the_truth_property_definition_t
 } tm_the_truth_property_definition_t;
 ```
 
-([API Documentation](https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t))
+([API Documentation]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t))
 
 
 

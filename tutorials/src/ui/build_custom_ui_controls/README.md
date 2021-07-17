@@ -1,6 +1,6 @@
 # Build Custom UI Controls
 
-These walkthroughs we will teach you how to extend The Machinery's [UI system](https://ourmachinery.com/apidoc/plugins/ui).
+These walkthroughs we will teach you how to extend The Machinery's [UI system]({{docs}}plugins/ui).
 
 
 

@@ -78,7 +78,7 @@ You can also drag assets from the Windows-Explorer into your project. This actio
 
 *Asset Labelling*
 
-To organize your project, you can use Asset Labels. An asset can be associated with one or more different asset labels. You can use them to filter your asset in the asset browser or plugins via the [asset label api](https://ourmachinery.com//apidoc/plugins/editor_views/asset_label.h.html#structtm_asset_label_api).
+To organize your project, you can use Asset Labels. An asset can be associated with one or more different asset labels. You can use them to filter your asset in the asset browser or plugins via the [asset label api]({{docs}}plugins/editor_views/asset_label.h.html#structtm_asset_label_api).
 
 There are two types of Asset labels: 
 

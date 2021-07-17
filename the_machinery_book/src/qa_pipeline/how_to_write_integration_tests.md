@@ -17,12 +17,12 @@ By their very nature, integration tests are slower and more fragile than unit te
 
 **Where to find the integration test framework?**
 
-The integration test framework can be found in the [integration_test.h](https://ourmachinery.com//apidoc/foundation/integration_test.h.html) ,and is part of the foundation library. We need to include this header file, and then we can start writing our tests.
+The integration test framework can be found in the [integration_test.h]({{docs}}foundation/integration_test.h.html) ,and is part of the foundation library. We need to include this header file, and then we can start writing our tests.
 
 
     #include <foundation/integration_test.h>
 
-To write a test you need to register it via the [TM_INTEGRATION_TEST_INTERFACE_NAME](https://ourmachinery.com//apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name). It expects a pointer of the type [tm_integration_test_i](https://ourmachinery.com//apidoc/foundation/integration_test.h.html#structtm_integration_test_i). This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: `TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR`.
+To write a test you need to register it via the [TM_INTEGRATION_TEST_INTERFACE_NAME]({{docs}}foundation/integration_test.h.html#tm_integration_test_interface_name). It expects a pointer of the type [tm_integration_test_i]({{docs}}foundation/integration_test.h.html#structtm_integration_test_i). This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: `TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR`.
 
 
 ```c
@@ -93,7 +93,7 @@ static void my_test_tick(tm_integration_test_runner_i *test_runner)
 }
 ```
 
-The test runner variable `test_runner` is needed to communicate back to the test suite about failures etc.  The following [macros](https://ourmachinery.com//apidoc/foundation/integration_test.h.html) will help you write tests. They are the heart of the tests.
+The test runner variable `test_runner` is needed to communicate back to the test suite about failures etc.  The following [macros]({{docs}}foundation/integration_test.h.html) will help you write tests. They are the heart of the tests.
 
 | **Macro**    | **Arguments**          | **Description**                                              |
 | ------------ | ---------------------- | ------------------------------------------------------------ |

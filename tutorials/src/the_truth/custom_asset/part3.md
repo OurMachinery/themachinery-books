@@ -32,7 +32,7 @@ After we have included all the needed header files and retrieved all the APIs fr
 
 > Note: `tm_api_registry_api` can be retrived from the reg parameter in the `tm_load_plugin` function. `tm_global_api_registry = reg;`
 
-The Machinery has a generic interface for asset importers. It requires a bunch of functions to be able to work as intended. The struct we need to implement is called [tm_asset_io_i](https://ourmachinery.com//apidoc/foundation/asset_io.h.html#structtm_asset_io_import). It requires us to set the following members:
+The Machinery has a generic interface for asset importers. It requires a bunch of functions to be able to work as intended. The struct we need to implement is called [tm_asset_io_i]({{docs}}foundation/asset_io.h.html#structtm_asset_io_import). It requires us to set the following members:
 
 | Member                      | Description                                                  |
 | --------------------------- | ------------------------------------------------------------ |
@@ -88,9 +88,9 @@ Let us go through them:
 - The `asset_io__can_reimport` compares the object type of the given object with the object of our type. 
 
 
->  `TM_TT_PROP__ASSET__OBJECT` is the property of the [TM_TT_TYPE__ASSET](https://ourmachinery.com//apidoc/foundation/the_truth_assets.h.html#tm_tt_type__asset) type which holds the object associated with the asset.
+>  `TM_TT_PROP__ASSET__OBJECT` is the property of the [TM_TT_TYPE__ASSET]({{docs}}foundation/the_truth_assets.h.html#tm_tt_type__asset) type which holds the object associated with the asset.
 
-The last two functions will append the file extension `.txt` to the file extensions and description. Note that the argument output is a [carray](https://ourmachinery.com//apidoc/foundation/carray.inl.html#carray.inl). That is why we can use the `tm_carray_temp_printf` function.
+The last two functions will append the file extension `.txt` to the file extensions and description. Note that the argument output is a [carray]({{docs}}foundation/carray.inl.html#carray.inl). That is why we can use the `tm_carray_temp_printf` function.
 
 
 >  Note: The `carray_print.h` requires the `tm_sprintf_api`. Therefore, we need to include the right header here.
@@ -112,7 +112,7 @@ struct task__import_txt
 };
 ```
 
-The `asset_io` header has a nice utility struct predefined the [tm_asset_io_import](https://ourmachinery.com//apidoc/foundation/asset_io.h.html#structtm_asset_io_import). When an asset is being imported the caller of the  `asset_io__import_asset()` will hand through all the needed details: 
+The `asset_io` header has a nice utility struct predefined the [tm_asset_io_import]({{docs}}foundation/asset_io.h.html#structtm_asset_io_import). When an asset is being imported the caller of the  `asset_io__import_asset()` will hand through all the needed details: 
 
 
 - The right Truth object
@@ -142,7 +142,7 @@ static uint64_t asset_io__import_asset(struct tm_asset_io_o *inst, const char *f
 This line `task_system->run_task(task__import_txt, task, "Import Text File");` will run a task and return its id. The actual task is the function `task__import_txt()`. 
 
 
-> Info: For more information on the task system check the [documentation](https://ourmachinery.com//apidoc/foundation/task_system.h.html#structtm_task_system_api.run_task()).
+> Info: For more information on the task system check the [documentation]({{docs}}foundation/task_system.h.html#structtm_task_system_api.run_task()).
 
 
 ## Import task implementation
@@ -161,7 +161,7 @@ static void task__import_txt(void *data, uint64_t task_id)
 The data `ptr` needs to be cast into our defined data type: `task__import_txt`. You could use the task id to update its progress. We do not need to do it in this example.
 
 
->  For more information on how to update the status of a task. It will be shown in the editor check out the [documentation](https://ourmachinery.com//apidoc/foundation/progress_report.h.html#structtm_progress_report_api).
+>  For more information on how to update the status of a task. It will be shown in the editor check out the [documentation]({{docs}}foundation/progress_report.h.html#structtm_progress_report_api).
 
 We are left with the following steps:
 
@@ -301,7 +301,7 @@ We are getting the API first, because we do not need it anywhere else than in th
 >
 > This lets you reason about parts of a string, which you are not able to do with standard NULL-terminated strings.
 >
-> [documentation](https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_str_t)
+> [documentation]({{docs}}foundation/api_types.h.html#structtm_str_t)
 
 After this step we need to get the current folder. Therefore we are asking the `tm_asset_browser_add_asset_api` what the current folder is. Then we decide if want to select the file. At the end we are calling add function of the `tm_asset_browser_add_asset_api->add()`. 
 
@@ -463,7 +463,7 @@ The last step before this part is over is to refactor the initial import of the 
 You might argue that it is the same process as just reimporting an asset when we change the path. That's correct!
 
 We can reuse our Import-Task. Before we can launch a task, we need to ensure we have the right setup!
-We can check the documentation of [tm_asset_io_import](https://ourmachinery.com//apidoc/foundation/asset_io.h.html#structtm_asset_io_import) to ensure we do not forget anything important. 
+We can check the documentation of [tm_asset_io_import]({{docs}}foundation/asset_io.h.html#structtm_asset_io_import) to ensure we do not forget anything important. 
 
 After we have done that, we will find that the reimport task needs besides the file name:
 

@@ -34,7 +34,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 }
 ```
 
-To make this more useful, what we can do is add some properties to the type. We can do this via an array of the type [tm_the_truth_property_definition_t](https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t). In this array we can define all the properties we want. 
+To make this more useful, what we can do is add some properties to the type. We can do this via an array of the type [tm_the_truth_property_definition_t]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t). In this array we can define all the properties we want. 
 
 
 ## Text file asset
@@ -58,7 +58,7 @@ Consequently, we are defining the *import path* property to “reimport” our t
     };
 ```
 
->  **Note:** The type [*tm_the_truth_property_definition_t*](https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t) has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation [*here*](https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t)*.*
+>  **Note:** The type [*tm_the_truth_property_definition_t*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t) has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation [*here*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t)*.*
 
 After we have thought about this, we need to provide the `create_object_type` function with the new information:
 
@@ -118,9 +118,9 @@ This asset file is still not quite how we want it because we have not loaded a t
 
 To archive our first manual loading, we need to add a custom UI associated with our type. We can do this via the properties aspect `TM_TT_ASPECT__PROPERTIES`. It means we need to go back to the `create_truth_types` function and add a new Aspect and a new object associated with this Aspect.
 
-The Aspect expects a [`tm_properties_aspect_i`](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i) object. When defining the object, we are focused only on is the custom_ui field. 
+The Aspect expects a [`tm_properties_aspect_i`]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i) object. When defining the object, we are focused only on is the custom_ui field. 
 
-> Note: This struct has many different fields which are not interesting to us now. (If you want more information on them, check out the [documentation](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i).
+> Note: This struct has many different fields which are not interesting to us now. (If you want more information on them, check out the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i).
 
 The `custom_ui` expected s function pointer of the type `float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)`.
 
@@ -130,9 +130,9 @@ Let us quickly go over this:
 
 | **Argument**    | **Data Type**                                                | **Description**                                              |
 | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1 (`args`)      | [tm_properties_ui_args_t](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t) | A bundled type of important information. For example this is the way you would retrieve your ui instance as well as your uistyle instance. For more information check the [documentation](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t). |
-| 2 (`item_rect`) | [tm_rect_t](https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_rect_t) | The ui rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned. |
-| 3 (`object`)    | [tm_tt_id_t](https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_tt_id_t) | The truth object id of the current object. Can be used to read information of. |
+| 1 (`args`)      | [tm_properties_ui_args_t]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t) | A bundled type of important information. For example this is the way you would retrieve your ui instance as well as your uistyle instance. For more information check the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t). |
+| 2 (`item_rect`) | [tm_rect_t]({{docs}}foundation/api_types.h.html#structtm_rect_t) | The ui rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned. |
+| 3 (`object`)    | [tm_tt_id_t]({{docs}}foundation/api_types.h.html#structtm_tt_id_t) | The truth object id of the current object. Can be used to read information of. |
 | 4 (`indent`)    | `uint32_t`                                                   | Used for intention.                                          |
 
 *Return values*
@@ -141,7 +141,7 @@ Let us quickly go over this:
 | -------- | ------------------------------------------------------------ |
 | float    | This is the being used as the next y value of the following element. |
 
-We need to define a static instance of the [tm_properties_aspect_i*](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i) and a custom UI function.
+We need to define a static instance of the [tm_properties_aspect_i*]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i) and a custom UI function.
 
 
 ```c
@@ -176,9 +176,9 @@ In the editor, the change is imminently visible. The UI is gone because we have 
 
 It is time to add the imported file property back to the UI panel. The first step is to think about what our property shall represent:
 When we defined it, we described it as type `TM_THE_TRUTH_PROPERTY_TYPE_STRING`. 
-It is essential to know because the [properties header file](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#properties.h) has the [properties view API](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api), which has many built-in functions for default behavior.
+It is essential to know because the [properties header file]({{docs}}plugins/editor_views/properties.h.html#properties.h) has the [properties view API]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api), which has many built-in functions for default behavior.
 
-One of the things we can find in there is the [ui_open_path](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()) which sounds perfect for the import path. The buffer (data) does not need to be displayed yet. Before using any Properties-View API functions, we need to request the API in our load plugin function.
+One of the things we can find in there is the [ui_open_path]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()) which sounds perfect for the import path. The buffer (data) does not need to be displayed yet. Before using any Properties-View API functions, we need to request the API in our load plugin function.
 
 
 ```c
@@ -194,7 +194,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 } 
 ```
 
-Now we can use and implement the path opening function. Let us look at its [signature](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()) first:
+Now we can use and implement the path opening function. Let us look at its [signature]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()) first:
 
 `float (*ui_open_path)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, const char *name, const char *tooltip, tm_tt_id_t object, uint32_t property, const char *extensions, const char *description, bool *picked)`
 
@@ -202,11 +202,11 @@ Now we can use and implement the path opening function. Let us look at its [sign
 
 | **Argument**      | **Data Type**                                                | **Description**                                              |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1 (`args`)        | [tm_properties_ui_args_t](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t) | A bundled type of important information. For example this is the way you would retrieve your UI instance as well as your `uistyle` instance. For more information check the [documentation](https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t). |
-| 2 (`item_rect`)   | [tm_rect_t](https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_rect_t) | The UI rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned. |
+| 1 (`args`)        | [tm_properties_ui_args_t]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t) | A bundled type of important information. For example this is the way you would retrieve your UI instance as well as your `uistyle` instance. For more information check the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t). |
+| 2 (`item_rect`)   | [tm_rect_t]({{docs}}foundation/api_types.h.html#structtm_rect_t) | The UI rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned. |
 | 3 (`n`ame)        | `const char*`                                                | This is the name the Properties tab will display as the title in front of the text field. |
 | 4 (`t`ooltip)     | `const char*`                                                | Extra information if needed. (Optional)                      |
-| 5 (object)        | [tm_tt_id_t](https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_tt_id_t) | The truth object id of the current object. Can be used to read information of. |
+| 5 (object)        | [tm_tt_id_t]({{docs}}foundation/api_types.h.html#structtm_tt_id_t) | The truth object id of the current object. Can be used to read information of. |
 | 6 (property)      | `uint32_t`                                                   | Property index                                               |
 | 7 (`extensions`)  | `const char*`                                                | List of potential file extension supported by the open dialog |
 | 8 (`description`) | `const char*`                                                | List of descriptions for the potential file extensions       |
@@ -269,7 +269,7 @@ When we compiled this we can test it in the engine, just by adding a new text fi
 
 The next step is using the OS API to load a file from the disc and store it in the buffer. This process works after the same principle as adding the properties view API. 
 
-The OS API ([tm_os_api](https://ourmachinery.com//apidoc/foundation/os.h.html#structtm_os_api)) lives in the `os.h` and has a member called [file_io](https://ourmachinery.com//apidoc/foundation/os.h.html#structtm_os_file_io_api), allowing access to the `tm_os_file_io_api`. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. 
+The OS API ([tm_os_api]({{docs}}foundation/os.h.html#structtm_os_api)) lives in the `os.h` and has a member called [file_io]({{docs}}foundation/os.h.html#structtm_os_file_io_api), allowing access to the `tm_os_file_io_api`. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. 
 
 
 ```c
@@ -306,14 +306,14 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 ```
 
 First, we need to read out the file path from our The Truth object. After that, we can create the buffer we want to add to our *data* property (index 1 or `TM_TT_PROP___MY_ASSET__DATA`). 
-The buffers live in the `buffer.h`. We create the buffer via The Truth, and it also owns the memory. We are using the [file_system API](https://ourmachinery.com//apidoc/foundation/os.h.html#structtm_os_file_system_api) to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. 
+The buffers live in the `buffer.h`. We create the buffer via The Truth, and it also owns the memory. We are using the [file_system API]({{docs}}foundation/os.h.html#structtm_os_file_system_api) to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. 
 
 > Note: We should also check if the file exists. It has been left out because we just picked the file. 
 
-Then we are reading the file from the disc and store its content in the allocated buffer. The next step is to add the buffer to the Truth buffers via the [buffers->add(buffers->inst, buffer, stat.size, 0);](https://ourmachinery.com//apidoc/foundation/buffer.h.html#structtm_buffers_i.add()) call. It adds a buffer containing the specified data of size. It returns an ID identifying the new buffer. For more information, read [here](https://ourmachinery.com//apidoc/foundation/buffer.h.html#structtm_buffers_i.add()).
+Then we are reading the file from the disc and store its content in the allocated buffer. The next step is to add the buffer to the Truth buffers via the [buffers->add(buffers->inst, buffer, stat.size, 0);]({{docs}}foundation/buffer.h.html#structtm_buffers_i.add()) call. It adds a buffer containing the specified data of size. It returns an ID identifying the new buffer. For more information, read [here]({{docs}}foundation/buffer.h.html#structtm_buffers_i.add()).
 
 Now we need to ask the Truth to give us a writeable object. Objects from the Truth are immutable in their default state and can only be made mutable by asking explicitly for a writable object.
-This happens via the [tm_the_truth_object_o *asset_obj = tm_the_truth_api->write(tt, object);](https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_api.write()) call.
+This happens via the [tm_the_truth_object_o *asset_obj = tm_the_truth_api->write(tt, object);]({{docs}}foundation/the_truth.h.html#structtm_the_truth_api.write()) call.
 
 With the writeable object, we can set the buffer, and then we can commit the changes to the Truth itself.
 

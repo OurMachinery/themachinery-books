@@ -55,5 +55,5 @@ const 	float wdith = tm_the_truth_api->get_float(tt,tm_tt_read(tt,my_object),my_
 }
 ```
 
-> **Note:** Check out the logger documentation for more information on it. [log.h](https://ourmachinery.com//apidoc/foundation/log.h.html#log.h)
+> **Note:** Check out the logger documentation for more information on it. [log.h]({{docs}}foundation/log.h.html#log.h)
 

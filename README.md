@@ -73,6 +73,29 @@ _Open the in the browser using http://localhost:3000_.
 
 If everything works and looks like it supposed to you can commit to master and push.
 
+### Working in paper
+
+In case you have written your article in [dropbox paper](https://paper.dropbox.com/) you can export your work as following:
+
+1. Open your document
+2. Open the **᠁** Symbol (Menu)
+3. Search for the "Export" point
+4. Export as `.md` file
+
+Open your markdown editor of choice (e.g. [Typora](https://typora.io/)) and check if the formatting is correct. If yes copy and paste the file into the correct location in the book. After this open the `SUMMARY.md` of the corresponding book and add a entry.
+
+To verify everything run: (choose the correct book)
+
+```bash
+# For the_machinery_book
+$ cd the_machinery_book && mdbook serve
+
+# For the tutorials
+$ cd tutorials && mdbook serve
+```
+
+If everything works commit to master and push.
+
 ## Building
 
 To build the book, type:

@@ -109,7 +109,7 @@ We can divide the PhysX scripting nodes into a few categories.
 > *Out* event multiple times, each time with one of the result objects. (In the future we might change
 > this and have the nodes actually return arrays of objects.)
 
-From C you can access those features via the [`tm_physx_scene_api`](https://ourmachinery.com//apidoc/plugins/physx/physx_scene.h.html#structtm_physx_scene_api).
+From C you can access those features via the [`tm_physx_scene_api`]({{docs}}plugins/physx/physx_scene.h.html#structtm_physx_scene_api).
 
 ## Missing Features
 

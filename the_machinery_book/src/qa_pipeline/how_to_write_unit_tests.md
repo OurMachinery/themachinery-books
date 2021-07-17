@@ -34,7 +34,7 @@ It can be helpful on CI Server where build and test servers are different. The b
 
 ## **How to write your tests**
 
-All that is needed is to write tests is to register them via the [TM_UNIT_TEST_INTERFACE_NAME](https://ourmachinery.com//apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name). You can find the interface in the [unit_tests.h](https://ourmachinery.com//apidoc/foundation/unit_test.h.html). [TM_UNIT_TEST_INTERFACE_NAME](https://ourmachinery.com//apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name) expects a pointer of the type [tm_unit_test_i](https://ourmachinery.com//apidoc/foundation/unit_test.h.html#structtm_unit_test_i). This interface expects a name and a function pointer to the test entry function.
+All that is needed is to write tests is to register them via the [TM_UNIT_TEST_INTERFACE_NAME]({{docs}}foundation/unit_test.h.html#tm_unit_test_interface_name). You can find the interface in the [unit_tests.h]({{docs}}foundation/unit_test.h.html). [TM_UNIT_TEST_INTERFACE_NAME]({{docs}}foundation/unit_test.h.html#tm_unit_test_interface_name) expects a pointer of the type [tm_unit_test_i]({{docs}}foundation/unit_test.h.html#structtm_unit_test_i). This interface expects a name and a function pointer to the test entry function.
 
 
 ```c
@@ -100,7 +100,7 @@ static void test_function(tm_unit_test_runner_i *test_runner, tm_allocator_i *al
 }
 ```
 
-The test runner variable test_runner is needed to communicate back to the test suite about failures etc. The following [macros](https://ourmachinery.com//apidoc/foundation/unit_test.h.html#tm_unit_test()) will help you write tests. They are the heart of the actual tests.
+The test runner variable test_runner is needed to communicate back to the test suite about failures etc. The following [macros]({{docs}}foundation/unit_test.h.html#tm_unit_test()) will help you write tests. They are the heart of the actual tests.
 
 | **Macro**       | **Arguments**                         | **Description**                                              |
 | --------------- | ------------------------------------- | ------------------------------------------------------------ |
@@ -108,7 +108,7 @@ The test runner variable test_runner is needed to communicate back to the test s
 | TM_UNIT_TESTF   | (test_runner, assertion, format, ...) | As `TM_UNIT_TEST()` but records a formatted string in case of error. |
 | TM_EXPECT_ERROR | (test_runner, error)                  | Expect the error message `error`. If the error message doesn't appear before the next call to `record()`, or if another error message appears before it, this will be considered a unit test failure.<br><br>Note that for `TM_EXPECT_ERROR` to work properly, you must redirect error messages to go through the test runner, so that it can check that the error message matches what's expected. |
 
-It's time for some tests. Let us write some tests for [carrays](https://ourmachinery.com//apidoc/foundation/carray.inl.html#carray.inl)
+It's time for some tests. Let us write some tests for [carrays]({{docs}}foundation/carray.inl.html#carray.inl)
 
 ```c
 #include <foundation/unit_test.h>

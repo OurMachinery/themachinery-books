@@ -27,7 +27,7 @@ tm_tt_id_t create_my_type_object(tm_the_truth_o *tt){
 
 
 
-> **Note:**  need to pass `-1` to tell the function that we are at the end of the creation process. More info [here](https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_api.quick_create_object()).
+> **Note:**  need to pass `-1` to tell the function that we are at the end of the creation process. More info [here]({{docs}}foundation/the_truth.h.html#structtm_the_truth_api.quick_create_object()).
 
 
 

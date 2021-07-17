@@ -6,7 +6,7 @@ This book is here to give you a little bit of background and information about w
 
 Besides this book we have several other resources which might be good to checkout:
 
-- [Our API Documentation](https://ourmachinery.com/apidoc/apidoc.html)
+- [Our API Documentation]({{docs}}apidoc.html)
 - [Our Blog](https://ourmachinery.com/post/)
 - [Our Podcast](https://anchor.fm/ourmachinery)
 - [Our Discord](https://discord.gg/SHHSZaH)

@@ -1,6 +1,6 @@
 # UI
 
-The Machinery's [UI system](https://ourmachinery.com/apidoc/plugins/ui), is a Immediate Mode GUI (IMGUI). Besides the information you can find here or in our API Documentation there are several Blog Posts you should check out:
+The Machinery's [UI system]({{docs}}plugins/ui), is a Immediate Mode GUI (IMGUI). Besides the information you can find here or in our API Documentation there are several Blog Posts you should check out:
 
 
 
