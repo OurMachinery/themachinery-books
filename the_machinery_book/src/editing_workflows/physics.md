@@ -41,7 +41,7 @@ A physics shape can either be specified as geometry (sphere, capsule, plane, box
 computed from a graphics mesh (convex, mesh). Note that if you use computed geometry, you must press
 the **Cook** button in the Properties UI to explicitly compute the geometry for the object.
 
-![Convex shape.](https://www.dropbox.com/s/v5jnthc50vsa1oi/convex-physics-shape.png?dl=1)
+![Convex shape.](#)
 
 If you just give an entity a *Physics Shape Component* it will become a static physics object. Other
 moving objects can still collide with it, but the object itself won't move.
@@ -109,7 +109,7 @@ We can divide the PhysX scripting nodes into a few categories.
 > *Out* event multiple times, each time with one of the result objects. (In the future we might change
 > this and have the nodes actually return arrays of objects.)
 
-From C you can access those features via the [`tm_physx_scene_api`]({{docs}}plugins/physx/physx_scene.h.html#structtm_physx_scene_api).
+From C you can access those features via the [tm_physx_scene_api]({{docs}}plugins/physx/physx_scene.h.html#structtm_physx_scene_api).
 
 ## Missing Features
 

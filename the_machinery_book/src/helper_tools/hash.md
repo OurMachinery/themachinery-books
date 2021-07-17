@@ -8,13 +8,13 @@ You will learn about:
 
 ## How to use hash.exe and TM_STATIC_HASH
 
-While working with The Machinery, you will have surely noticed that its systems often expect a hashed version of a string as input. In this document, we will be dealing with static hashes defined with [TM_STATIC_HASH]({{docs}}foundation/api_types.h.html#tm_static_hash()) to identify, for example, a type in our data model, [The Truth]({{base_url}}the_truth.html). If you are searching documentation on runtime hashes, you’ll want to check out the [murmurhash64a.inl]({{docs}}foundation/murmurhash64a.inl.html#murmurhash64a.inl) files.
+While working with The Machinery, you will have surely noticed that its systems often expect a hashed version of a string as input. In this document, we will be dealing with static hashes defined with [TM_STATIC_HASH]({{docs}}foundation/api_types.h.html#tm_static_hash()) to identify, for example, a type in our data model, [The Truth]({{base_url}}the_truth/index.html). If you are searching documentation on runtime hashes, you’ll want to check out the [murmurhash64a.inl]({{docs}}foundation/murmurhash64a.inl.html#murmurhash64a.inl) files.
 
 In this document, we will be using hash.exe to generate new hash values or update the changed ones. The hash.exe utility checks the entire source code and makes sure that wherever you use `TM_STATIC_HASH`, the numeric value v matches the actual hash of the string s (if not, the code is updated). If you do not run the executable before you build, you will have compile errors. 
 
 >  **Note**: `tmbuild` has the option to run hash.exe before it builds. `tmbuild --gen-hash`.
 
-Let us look at where this tool is useful and is being used a lot:  In [The Truth]({{base_url}}the_truth.html).
+Let us look at where this tool is useful and is being used a lot:  In [The Truth]({{base_url}}the_truth/index.html).
 
 For example, When defining Truth Objects or Types, we are using this tool to hash the name of the type statically
 

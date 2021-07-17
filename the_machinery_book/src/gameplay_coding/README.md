@@ -5,7 +5,7 @@ In this section, you will learn everything about Gameplay Coding in *The Machine
 - Using our C APIs [API Documentation]({{docs}}apidoc.html).
 - Using the Visual Scripting Language, which you can extend as well.
 
-The Machinery uses an Entity Component System; therefore, most of your gameplay code will run via Engines or Systems. To learn more about these, please follow this [link]({{base_url}}ecs/index.html).
+The Machinery uses an Entity Component System; therefore, most of your gameplay code will run via Engines or Systems. To learn more about these, please follow this [link]({{base_url}}/gameplay_coding/ecs/index.html).
 
 
 

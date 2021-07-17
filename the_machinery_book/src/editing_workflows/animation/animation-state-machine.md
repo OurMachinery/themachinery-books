@@ -3,7 +3,7 @@
 The *Animation State Machine Asset* represents an *Animation State Machine*. If you double-click an
 Animation State Machine Asset in the Asset Browser, an Animation State Machine Editor will open:
 
-![Animation State Machine Editor](https://www.dropbox.com/s/fdte16tqekqhev6/asm-editor.png?dl=1)
+![Animation State Machine Editor](#)
 
 The Animation State Machine (ASM) introduces a number of concepts: *Layers*, *States*,
 *Transitions*, *Events*, *Variables*, and *Blend Sets*.
@@ -82,7 +82,7 @@ Allows you to make a 1D or 2D blend between animations based on the value of var
 used for locomotion. You can use different animations based on the characters running speed and whether
 the character is turning left or right and position them on a map to blend between them.
 
-![Animation Blending](https://www.dropbox.com/s/p9yc7qyoaml4l70/animation-blending.png?dl=1)
+![Animation Blending](#)
 
 Once you have created an Animation State Machine, you can assign it to a character by giving it an
 Animation State Machine Component.

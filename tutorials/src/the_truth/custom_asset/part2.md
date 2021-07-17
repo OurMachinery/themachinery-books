@@ -1,13 +1,13 @@
 # Create a custom asset part 2
 
-This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{base_url}}/the_machinery_book/extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to write a text file asset.
+This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{the_machinery_book}}extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to write a text file asset.
 
 This part will cover the following topics:
 
 - How to store data in a buffer that is associated with the asset file
 - How to add a custom UI to be associated with the asset.
 
-When you have finished this part in the [next one]({{base_url}}/tutorials/the_truth/custom_asset/part3.html), we will show you how to write your importer.
+When you have finished this part in the [next one]({{base_url}}the_truth/custom_asset/part3.html), we will show you how to write your importer.
 
 >  You can find the whole source code in its git repo: [example-text-file-asset](https://github.com/simon-ourmachinery/example-text-file-asset)
 
@@ -118,7 +118,7 @@ This asset file is still not quite how we want it because we have not loaded a t
 
 To archive our first manual loading, we need to add a custom UI associated with our type. We can do this via the properties aspect `TM_TT_ASPECT__PROPERTIES`. It means we need to go back to the `create_truth_types` function and add a new Aspect and a new object associated with this Aspect.
 
-The Aspect expects a [`tm_properties_aspect_i`]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i) object. When defining the object, we are focused only on is the custom_ui field. 
+The Aspect expects a [tm_properties_aspect_i]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i) object. When defining the object, we are focused only on is the custom_ui field. 
 
 > Note: This struct has many different fields which are not interesting to us now. (If you want more information on them, check out the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i).
 

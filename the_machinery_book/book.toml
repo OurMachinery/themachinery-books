@@ -17,3 +17,12 @@ marker = "* auto-gen TOC;\n{:toc}"
 command = "mdbook-tera  --toml  ./context.toml"
 
 [output.linkcheck]
+follow-web-links = true
+exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com'  ]
+
+
+[preprocessor.autolink]
+renderer = ["html"]
+folder = "../"
+books = ["the_machinery_book","tutorials"]
+command = "python ../autogenerete_doc_links.py"

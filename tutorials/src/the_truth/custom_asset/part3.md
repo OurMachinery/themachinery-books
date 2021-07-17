@@ -1,6 +1,6 @@
 # Create a custom asset part 3
 
-This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{base_url}}/the_machinery_book/extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to write a text file asset.
+This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{the_machinery_book}}extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to write a text file asset.
 
 This part will cover the following topics:
 
@@ -100,6 +100,7 @@ The last two functions will append the file extension `.txt` to the file extensi
 The importer function `asset_io__import_asset` can spawn a task with the task system and pass through the needed information. We need to create a data structure to hold all our data.
 
 *What data does our task need?* 
+
 This task needs to know where to find the file. Moreover it needs to access some essential types such as the Truth and allocator. The struct could look like this:
 
 

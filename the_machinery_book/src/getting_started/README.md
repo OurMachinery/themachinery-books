@@ -16,7 +16,7 @@ sudo apt-get install libxcb-ewmh2 libxcb-cursor0 libxcb-xrm0 unzip
 
 Quick steps to get up and running:
 
-1. Download The Machinery at [https://ourmachinery.com/download.html](https://ourmachinery.com/download.html.).
+1. Download The Machinery at [https://ourmachinery.com/download.html](https://ourmachinery.com/download.html).
 
 2. Sign up for an [ourmachinery.com](https://ourmachinery.com/) account [here](https://ourmachinery.com/sign-up.html). (It's free!)
 

@@ -2,7 +2,7 @@
 
 This walkthrough shows you how to create a type for the Truth. The Truth is our centralized data model for editing data in the Engine. For more details on the system itself, click here: [The Truth]({{base_url}}the_truth/index.html). 
 
-You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html). 
+You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{the_machinery_book}}extending_the_machinery/the_plugin_system.html). 
 
 
 
@@ -11,7 +11,7 @@ We will cover the following topics:
 - How to define a Type.
 - Type Properties
 
-After this walkthrough you could checkout the ["Create a custom asset"]({{base_url}}/tutorials/the_truth/custom_asset/index.html) tutorial! 
+After this walkthrough you could checkout the ["Create a custom asset"]({{tutorials}}/the_truth/custom_asset/index.html) tutorial! 
 
 
 
@@ -290,4 +290,4 @@ That is all we need to do to define properties for our Type! Also thanks to our 
 
 ## What is next?
 
-You can find more in depth and practical tutorials in the [tutorial book]({{base_url}}tutorials/the_truth/index.html)
+You can find more in depth and practical tutorials in the [tutorial book]({{tutorials}}/the_truth/index.html)

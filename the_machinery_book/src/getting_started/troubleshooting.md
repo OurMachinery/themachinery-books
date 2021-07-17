@@ -30,7 +30,7 @@ You can submit bugs on our public [GitHub issues page](https://github.com/OurMac
 
 
 1. If you have any problems running the software, encounter crashes, etc, report them on our [public bug tracker](https://github.com/OurMachinery/themachinery-public/issues) as soon as possible. We will fix bugs as soon as we can and provide updated executables for download on the website.
-2. If you have other feedback or questions, post them on our [forum](http://forums.ourmachinery.com/c/beta). We appreciate candid, honest opinions.
+2. If you have other feedback or questions, post them on our [forum](https://github.com/OurMachinery/themachinery-public/discussions). We appreciate candid, honest opinions.
 
 Note that you need to create a separate login to log in to the forum. (We might unify the logins in the future.)
 You can also drop in on our [Discord Server](https://discord.gg/SHHSZaH). You will frequently find us there, answering questions. We'll pay special attention on Thursdays.
