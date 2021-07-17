@@ -72,7 +72,7 @@ projects.
 
 ## Physics scripting
 
-Physics can be scripted using the visual scripting language in the [*Entity Graph*]({{base_url}}the_machinery_book/editing_workflows/visual-scripting.html).
+Physics can be scripted using the visual scripting language in the [*Entity Graph*]({{the_machinery_book}}editing_workflows/visual-scripting.html).
 
 We can divide the PhysX scripting nodes into a few categories.
 
@@ -126,4 +126,4 @@ For an example of how to use physics, see the [Physics Sample Project](https://o
 
 ## Tutorials
 
-For more information and guides checkout out the [The Machinery Tutorials Book]({{base_url}}/tutorials) as well as our [Physics Sample](https://ourmachinery.com/samples.html).
+For more information and guides checkout out the [The Machinery Tutorials Book]({{base_url}}) as well as our [Physics Sample](https://ourmachinery.com/samples.html).

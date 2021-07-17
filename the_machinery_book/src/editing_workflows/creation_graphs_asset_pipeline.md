@@ -6,12 +6,14 @@ artists or rigging an entity from the meshes present in the asset. In The Machin
 control over how data enters the engine and what data-processing steps that get executed, allowing
 technical artists to better optimize content and setup custom, game-specific asset pipelines.
 
-This is handled through *Creation Graphs*. A *Creation Graph* is essentially a generic framework for
+This is handled through [*Creation Graphs*]({{base_url}}creation_graphs/concept.html). A *Creation Graph* is essentially a generic framework for
 processing arbitrary data on the CPUs and GPUs, exposed through a graph front-end view. While we can
-use *Creation Graphs* for any type of data processing, we will for the rest of this section be
-focusing on how to set up a simple entity from an imported `dcc_asset`. If you wish to see other use
-cases such as particle systems, sky rendering and sprite sheets, then have a look in the
-`creation_graphs` sample that we provide.
+use *Creation Graphs* for any type of data processing. 
+
+For more information visit the [*Creation Graphs*]({{base_url}}creation_graphs/concept.html) section. For the rest of this section we focus on how to set up a simple entity from an imported `dcc_asset`. 
+
+> **Tip:**  if you wish to see other use cases such as particle systems, sky rendering and sprite sheets, then have a look in the
+> [`creation_graphs`](https://ourmachinery.com/samples.html) sample that we provide. 
 
 # Importing a DCC asset
 
@@ -19,7 +21,7 @@ You can import an asset by selecting **File > Import...** in the main menu, pres
 
 During the import step, The Machinery only runs a bare minimum of data processing, just enough so that we can display a visual representation of the asset in the *Preview* tab. Imports run in the background so you can continue to work uninterrupted. When the import finishes the asset will show up in the *Asset Browser*. Note that import of large assets can take a significant amount of time. You can monitor the progress of the import operation in the status bar.
 
-For more in detail explanation about how to import assets checkout the [Asset Import Part]({{base_url}}/the_machinery_book/editing_workflows/import_assets.html).
+For more in detail explanation about how to import assets checkout the [Asset Import Part]({{base_url}}editing_workflows/import_assets.html).
 
 ### Basic entity rigging, with image and material extraction
 

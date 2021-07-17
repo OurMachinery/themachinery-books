@@ -47,7 +47,16 @@ If you want to add new pages to the system just add them to `SUMMARY.md`. As soo
 
 *About Links*
 
-If you want to link anything within the book please make use of `{{base_url}}` this will be replaced on build with the correct base URL. Besides the build process will check all links if they are valid. If not you will not be able to build the game.
+If you want to link anything within the book please make use of 
+
+- `{{base_url}}` for the base address of your current book
+- `{{the_machinery_book}}` to cross link to this book
+- `{{tutorials}}` to cross link to this book
+- `{{docs}}` to link to the documentation e.g. `{{docs}}plugins/physx/physx_scene.h.html#structtm_physx_scene_api`
+
+They will be replaced on build with the correct URL's. 
+
+Besides the build process will check all links if they are valid. If not you will not be able to build the game.
 
 ### Working in dropbox paper
 

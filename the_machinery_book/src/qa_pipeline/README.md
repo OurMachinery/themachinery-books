@@ -33,7 +33,7 @@ After you have loaded the [`tm_profiler_api`]({{docs}}foundation/profiler.h.html
 *Example:*
 
 ```c
-void my_function({{base_url}}/the_machinery_book/*some arguments*/){
+void my_function({{base_url}}*some arguments*/){
    TM_PROFILER_BEGIN_FUNC_SCOPE()
    // .. some code
    TM_PROFILER_END_FUNC_SCOPE()

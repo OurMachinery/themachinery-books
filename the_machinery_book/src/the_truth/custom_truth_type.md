@@ -1,6 +1,6 @@
 # Create a custom Truth Type
 
-This walkthrough shows you how to create a type for the Truth. The Truth is our centralized data model for editing data in the Engine. For more details on the system itself, click here: [The Truth]({{base_url}}/the_machinery_book/the_truth/index.html). 
+This walkthrough shows you how to create a type for the Truth. The Truth is our centralized data model for editing data in the Engine. For more details on the system itself, click here: [The Truth]({{base_url}}the_truth/index.html). 
 
 You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html). 
 

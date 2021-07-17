@@ -9,15 +9,15 @@ The following table contains common Unity terms on the left and their The Machin
 | Unity                                                        | The Machinery                                                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | GameObjects                                                  | Are composed of Entities and Components and Systems          |
-| Prefabs                                                      | [Prototypes]({{base_url}}/the_machinery_book/editing_workflows/prototypes.html) |
-| Materials, Shaders, Textures, Particle Effects, Mesh, Geometry, Shader Graph, Material Editor | [Creation Graph]({{base_url}}/the_machinery_book/editing_workflows/creation_graphs_asset_pipeline.html) |
+| Prefabs                                                      | [Prototypes]({{base_url}}editing_workflows/prototypes.html) |
+| Materials, Shaders, Textures, Particle Effects, Mesh, Geometry, Shader Graph, Material Editor | [Creation Graphs]({{base_url}}creation_graphs/concept.html) |
 | **UI**                                                       |                                                              |
-| Hierarchy Panel                                              | [Entity Tree]({{base_url}}/the_machinery_book/the_editor/entity_tree_tab.html) |
-| Inspector                                                    | [Properties Tab]({{base_url}}/the_machinery_book/the_editor/properties_tab.html) |
-| Project Browser                                              | [Asset Browser]({{base_url}}/the_machinery_book/the_editor/asset_browser.html) |
-| Scene View                                                   | [Scene Tab]({{base_url}}/the_machinery_book/the_editor/asset_browser.html) |
+| Hierarchy Panel                                              | [Entity Tree]({{base_url}}the_editor/entity_tree_tab.html) |
+| Inspector                                                    | [Properties Tab]({{base_url}}the_editor/properties_tab.html) |
+| Project Browser                                              | [Asset Browser]({{base_url}}the_editor/asset_browser.html) |
+| Scene View                                                   | [Scene Tab]({{base_url}}the_editor/asset_browser.html) |
 | **Programming**                                              |                                                              |
-| Blot                                                         | [Entity Graph]({{base_url}}/the_machinery_book/editing_workflows/visual-scripting.html) |
+| Blot                                                         | [Entity Graph]({{base_url}}editing_workflows/visual-scripting.html) |
 | C#                                                           | C                                                            |
 
 ## Questions you might have
@@ -38,7 +38,7 @@ On the other hand, a system is an update function that runs on the entire entity
 
 **Where are my Prefabs?**
 
-What Unity calls Prefabs is more or less what we call [Prototypes](). Our prototype system allows entity assets to be used inside other entities. Therefore, you can create an entity asset that represents a room and then creates a house entity that has a bunch of these room entities placed into it. For more information on Prototypes, check out its [guide]().
+What Unity calls Prefabs is more or less what we call [Prototypes]({{base_url}}editing_workflows/prototypes.html). Our prototype system allows entity assets to be used inside other entities. Therefore, you can create an entity asset that represents a room and then creates a house entity that has a bunch of these room entities placed into it. For more information on Prototypes, check out its [Prototypes]({{base_url}}editing_workflows/prototypes.html).
 
 
 
@@ -46,7 +46,7 @@ What Unity calls Prefabs is more or less what we call [Prototypes](). Our protot
 
 The Machinery supports two ways of gameplay coding by default:
 
-1. using our Visual Scripting Language ([Entity Graph]())
+1. using our Visual Scripting Language ([Entity Graph]({{base_url}}editing_workflows/visual-scripting.html))
 2. using our C API's to create your gameplay code. This way, you can create your Systems/Engines to handle your gameplay.
 
 You do not like C? Do not worry! You can use C++, Zig, Rust, or any other language that binds to C.
@@ -55,7 +55,7 @@ You do not like C? Do not worry! You can use C++, Zig, Rust, or any other langua
 
 **Where are my Materials, Shaders, Textures, Particle Effects?**
 
-All of these can be represented via the [Creation Graph]()
+All of these can be represented via the the [Creation Graphs]({{base_url}}creation_graphs/concept.html).
 
 
 
@@ -75,7 +75,7 @@ A single binary file project. It will contain all your assets and data. This for
 
 **Where do I put my assets?**
 
-At this point in time, you can only drag & drop your assets via the Asset Browser as well as via the Import Menu. See more in the section about importing assets. [How to import assets]()
+At this point in time, you can only drag & drop your assets via the Asset Browser as well as via the Import Menu. See more in the section about importing assets. [How to import assets]({{base_url}}editing_workflows/import_assets.html)
 
 
 
@@ -93,7 +93,7 @@ Our importer is based on Assimp. Therefore we support most things assimp support
 
 In the Machinery, all we care about is your plugins. Therefore if you want your plugins (tm_ prefixed shared libs.) to be globally accessible, please store them in the /plugins folder of the Engine. An alternative approach is to create plugin_asset in the Engine then your plugin becomes part of your project. 
 
-Please check out the introduction to the [Plugin System]() as well as the [Guide about Plugin Assets]().
+Please check out the introduction to the [Plugin System]({{base_url}}extending_the_machinery/the_plugin_system.html) as well as the  [Guide about Plugin Assets]({{base_url}}extending_the_machinery/plugin-assets.html).
 
 
 

@@ -25,5 +25,5 @@ Have you made something interesting in *The Machinery* that you want to share wi
 
 Other people can use the *Import from URL…* option to bring your assets into their own projects.
 
-> **Note**: Be aware when you download plugins from the internet, they might contain plugin assets. Only Trust them if you can trust the source! More on this [See Plugin Assets]({{base_url}}/the_machinery_book/extending_the_machinery/plugin-assets.html)
+> **Note**: Be aware when you download plugins from the internet, they might contain plugin assets. Only Trust them if you can trust the source! More on this [See Plugin Assets]({{base_url}}extending_the_machinery/plugin-assets.html)
 

@@ -4,7 +4,7 @@ This walkthrough introduces you to unit-tests.exe and shows you how to use it wi
 - How to constantly monitor your changes
 - How to write tests in your plugin
 
-This walkthrough expects basic knowledge on how to create a plugin and how a plugin is structured. If you are missing this knowledge, then you can find out more [here]({{base_url}}/the_machinery_book/extending_the_machinery/the_plugin_system.html).
+This walkthrough expects basic knowledge on how to create a plugin and how a plugin is structured. If you are missing this knowledge, then you can find out more [here]({{base_url}}extending_the_machinery/the_plugin_system.html).
 
 > **Note:** At this point, the testing framework is in the beginning stage. We are extending its capabilities overtime to meet the needs of modern game development QA pipelines.
 

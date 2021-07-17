@@ -7,7 +7,7 @@ You will learn about:
 - What is needed to write a plugin
 - How to write a plugin
 
-This walk through expects you to have the basic understanding about the plugin system. Otherwise you can read more [here]({{base_url}}/the_machinery_book/extending_the_machinery/the_plugin_system.html).
+This walk through expects you to have the basic understanding about the plugin system. Otherwise you can read more [here]({{base_url}}extending_the_machinery/the_plugin_system.html).
 
 **Table of Content**
 
@@ -88,7 +88,7 @@ tmbuild completed in: 23.471 s
 2. Run `premake5` to create a Visual Studio project from the `premake5.lua` script.
 3. Build the Visual Studio project to build the plugin.
 
-> **Note:** You can learn more about [tmbuild]({{base_url}}/the_machinery_book/helper_tools/tmbuild.html) in its own section.
+> **Note:** You can learn more about [tmbuild]({{base_url}}helper_tools/tmbuild.html) in its own section.
 
 In order to write a plugin, it is useful to understand a little bit about how the plugin system in *The
 Machinery* works.
