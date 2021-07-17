@@ -147,13 +147,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="create-a-custom-asset-part-2"><a class="header" href="#create-a-custom-asset-part-2">Create a custom asset part 2</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>This part will cover the following topics:</p>
 <ul>
 <li>How to store data in a buffer that is associated with the asset file</li>
 <li>How to add a custom UI to be associated with the asset.</li>
 </ul>
-<p>When you have finished this part in the <a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part3.html">next one</a>, we will show you how to write your importer.</p>
+<p>When you have finished this part in the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part3.html">next one</a>, we will show you how to write your importer.</p>
 <blockquote>
 <p>You can find the whole source code in its git repo: <a href="https://github.com/simon-ourmachinery/example-text-file-asset">example-text-file-asset</a></p>
 </blockquote>
@@ -180,7 +180,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
 }
 </code></pre>
-<p>To make this more useful, what we can do is add some properties to the type. We can do this via an array of the type <a href="https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">tm_the_truth_property_definition_t</a>. In this array we can define all the properties we want. </p>
+<p>To make this more useful, what we can do is add some properties to the type. We can do this via an array of the type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">tm_the_truth_property_definition_t</a>. In this array we can define all the properties we want. </p>
 <h2 id="text-file-asset"><a class="header" href="#text-file-asset">Text file asset</a></h2>
 <p>Now we are changing the <code>my_asset</code> to be able to store text in it. </p>
 <p>First, we need to answer the question: <em>How is a text file defined?</em> </p>
@@ -197,7 +197,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     };
 </code></pre>
 <blockquote>
-<p><strong>Note:</strong> The type <a href="https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t"><em>tm_the_truth_property_definition_t</em></a> has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation <a href="https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t"><em>here</em></a><em>.</em></p>
+<p><strong>Note:</strong> The type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t"><em>tm_the_truth_property_definition_t</em></a> has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t"><em>here</em></a><em>.</em></p>
 </blockquote>
 <p>After we have thought about this, we need to provide the <code>create_object_type</code> function with the new information:</p>
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
@@ -240,24 +240,24 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 <p>This asset file is still not quite how we want it because we have not loaded a text file yet. Therefore let us load a file next. At first, we will do it by <em>hand</em> via loading a file whenever we are changing the path, and then later on (in the next chapter) we are writing our importer. It will allow us to drag and drop files into the Engine as well or use the <em>Import Menu.</em></p>
 <h3 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h3>
 <p>To archive our first manual loading, we need to add a custom UI associated with our type. We can do this via the properties aspect <code>TM_TT_ASPECT__PROPERTIES</code>. It means we need to go back to the <code>create_truth_types</code> function and add a new Aspect and a new object associated with this Aspect.</p>
-<p>The Aspect expects a <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i"><code>tm_properties_aspect_i</code></a> object. When defining the object, we are focused only on is the custom_ui field. </p>
+<p>The Aspect expects a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i"><code>tm_properties_aspect_i</code></a> object. When defining the object, we are focused only on is the custom_ui field. </p>
 <blockquote>
-<p>Note: This struct has many different fields which are not interesting to us now. (If you want more information on them, check out the <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>.</p>
+<p>Note: This struct has many different fields which are not interesting to us now. (If you want more information on them, check out the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>.</p>
 </blockquote>
 <p>The <code>custom_ui</code> expected s function pointer of the type <code>float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)</code>.</p>
 <p>Let us quickly go over this:</p>
 <p><em>Function Arguments:</em></p>
 <table><thead><tr><th><strong>Argument</strong></th><th><strong>Data Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
-<tr><td>1 (<code>args</code>)</td><td><a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">tm_properties_ui_args_t</a></td><td>A bundled type of important information. For example this is the way you would retrieve your ui instance as well as your uistyle instance. For more information check the <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">documentation</a>.</td></tr>
-<tr><td>2 (<code>item_rect</code>)</td><td><a href="https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_rect_t">tm_rect_t</a></td><td>The ui rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned.</td></tr>
-<tr><td>3 (<code>object</code>)</td><td><a href="https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a></td><td>The truth object id of the current object. Can be used to read information of.</td></tr>
+<tr><td>1 (<code>args</code>)</td><td><a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">tm_properties_ui_args_t</a></td><td>A bundled type of important information. For example this is the way you would retrieve your ui instance as well as your uistyle instance. For more information check the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">documentation</a>.</td></tr>
+<tr><td>2 (<code>item_rect</code>)</td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_rect_t">tm_rect_t</a></td><td>The ui rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned.</td></tr>
+<tr><td>3 (<code>object</code>)</td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a></td><td>The truth object id of the current object. Can be used to read information of.</td></tr>
 <tr><td>4 (<code>indent</code>)</td><td><code>uint32_t</code></td><td>Used for intention.</td></tr>
 </tbody></table>
 <p><em>Return values</em></p>
 <table><thead><tr><th><strong>Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>float</td><td>This is the being used as the next y value of the following element.</td></tr>
 </tbody></table>
-<p>We need to define a static instance of the <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i*</a> and a custom UI function.</p>
+<p>We need to define a static instance of the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i*</a> and a custom UI function.</p>
 <pre><code class="language-c">//.. other code
 static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
 {
@@ -282,8 +282,8 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609928409366_image.png" alt="" /></p>
 <p>It is time to add the imported file property back to the UI panel. The first step is to think about what our property shall represent:
 When we defined it, we described it as type <code>TM_THE_TRUTH_PROPERTY_TYPE_STRING</code>. 
-It is essential to know because the <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#properties.h">properties header file</a> has the <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">properties view API</a>, which has many built-in functions for default behavior.</p>
-<p>One of the things we can find in there is the <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()">ui_open_path</a> which sounds perfect for the import path. The buffer (data) does not need to be displayed yet. Before using any Properties-View API functions, we need to request the API in our load plugin function.</p>
+It is essential to know because the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#properties.h">properties header file</a> has the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">properties view API</a>, which has many built-in functions for default behavior.</p>
+<p>One of the things we can find in there is the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()">ui_open_path</a> which sounds perfect for the import path. The buffer (data) does not need to be displayed yet. Before using any Properties-View API functions, we need to request the API in our load plugin function.</p>
 <pre><code class="language-c">// -- api's
 static struct tm_properties_view_api *tm_properties_view_api;
 //.. other code 
@@ -295,15 +295,15 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 //.. other code 
 } 
 </code></pre>
-<p>Now we can use and implement the path opening function. Let us look at its <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()">signature</a> first:</p>
+<p>Now we can use and implement the path opening function. Let us look at its <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()">signature</a> first:</p>
 <p><code>float (*ui_open_path)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, const char *name, const char *tooltip, tm_tt_id_t object, uint32_t property, const char *extensions, const char *description, bool *picked)</code></p>
 <p><em>Function Arguments:</em></p>
 <table><thead><tr><th><strong>Argument</strong></th><th><strong>Data Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
-<tr><td>1 (<code>args</code>)</td><td><a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">tm_properties_ui_args_t</a></td><td>A bundled type of important information. For example this is the way you would retrieve your UI instance as well as your <code>uistyle</code> instance. For more information check the <a href="https://ourmachinery.com//apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">documentation</a>.</td></tr>
-<tr><td>2 (<code>item_rect</code>)</td><td><a href="https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_rect_t">tm_rect_t</a></td><td>The UI rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned.</td></tr>
+<tr><td>1 (<code>args</code>)</td><td><a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">tm_properties_ui_args_t</a></td><td>A bundled type of important information. For example this is the way you would retrieve your UI instance as well as your <code>uistyle</code> instance. For more information check the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">documentation</a>.</td></tr>
+<tr><td>2 (<code>item_rect</code>)</td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_rect_t">tm_rect_t</a></td><td>The UI rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned.</td></tr>
 <tr><td>3 (<code>n</code>ame)</td><td><code>const char*</code></td><td>This is the name the Properties tab will display as the title in front of the text field.</td></tr>
 <tr><td>4 (<code>t</code>ooltip)</td><td><code>const char*</code></td><td>Extra information if needed. (Optional)</td></tr>
-<tr><td>5 (object)</td><td><a href="https://ourmachinery.com//apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a></td><td>The truth object id of the current object. Can be used to read information of.</td></tr>
+<tr><td>5 (object)</td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a></td><td>The truth object id of the current object. Can be used to read information of.</td></tr>
 <tr><td>6 (property)</td><td><code>uint32_t</code></td><td>Property index</td></tr>
 <tr><td>7 (<code>extensions</code>)</td><td><code>const char*</code></td><td>List of potential file extension supported by the open dialog</td></tr>
 <tr><td>8 (<code>description</code>)</td><td><code>const char*</code></td><td>List of descriptions for the potential file extensions</td></tr>
@@ -349,7 +349,7 @@ enum {
 <p>When we compiled this we can test it in the engine, just by adding a new text file click on the Import Path:</p>
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609931496164_image.png" alt="" /></p>
 <p>The next step is using the OS API to load a file from the disc and store it in the buffer. This process works after the same principle as adding the properties view API. </p>
-<p>The OS API (<a href="https://ourmachinery.com//apidoc/foundation/os.h.html#structtm_os_api">tm_os_api</a>) lives in the <code>os.h</code> and has a member called <a href="https://ourmachinery.com//apidoc/foundation/os.h.html#structtm_os_file_io_api">file_io</a>, allowing access to the <code>tm_os_file_io_api</code>. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. </p>
+<p>The OS API (<a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_api">tm_os_api</a>) lives in the <code>os.h</code> and has a member called <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_io_api">file_io</a>, allowing access to the <code>tm_os_file_io_api</code>. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. </p>
 <pre><code class="language-c">//other includes
 #include &lt;foundation/os.h&gt;
 #include &lt;foundation/buffer.h&gt;
@@ -382,13 +382,13 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 }
 </code></pre>
 <p>First, we need to read out the file path from our The Truth object. After that, we can create the buffer we want to add to our <em>data</em> property (index 1 or <code>TM_TT_PROP___MY_ASSET__DATA</code>). 
-The buffers live in the <code>buffer.h</code>. We create the buffer via The Truth, and it also owns the memory. We are using the <a href="https://ourmachinery.com//apidoc/foundation/os.h.html#structtm_os_file_system_api">file_system API</a> to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. </p>
+The buffers live in the <code>buffer.h</code>. We create the buffer via The Truth, and it also owns the memory. We are using the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_system_api">file_system API</a> to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. </p>
 <blockquote>
 <p>Note: We should also check if the file exists. It has been left out because we just picked the file. </p>
 </blockquote>
-<p>Then we are reading the file from the disc and store its content in the allocated buffer. The next step is to add the buffer to the Truth buffers via the <a href="https://ourmachinery.com//apidoc/foundation/buffer.h.html#structtm_buffers_i.add()">buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);</a> call. It adds a buffer containing the specified data of size. It returns an ID identifying the new buffer. For more information, read <a href="https://ourmachinery.com//apidoc/foundation/buffer.h.html#structtm_buffers_i.add()">here</a>.</p>
+<p>Then we are reading the file from the disc and store its content in the allocated buffer. The next step is to add the buffer to the Truth buffers via the <a href="https://ourmachinery.com/apidoc/foundation/buffer.h.html#structtm_buffers_i.add()">buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);</a> call. It adds a buffer containing the specified data of size. It returns an ID identifying the new buffer. For more information, read <a href="https://ourmachinery.com/apidoc/foundation/buffer.h.html#structtm_buffers_i.add()">here</a>.</p>
 <p>Now we need to ask the Truth to give us a writeable object. Objects from the Truth are immutable in their default state and can only be made mutable by asking explicitly for a writable object.
-This happens via the <a href="https://ourmachinery.com//apidoc/foundation/the_truth.h.html#structtm_the_truth_api.write()">tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, object);</a> call.</p>
+This happens via the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_api.write()">tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, object);</a> call.</p>
 <p>With the writeable object, we can set the buffer, and then we can commit the changes to the Truth itself.</p>
 <p>This iteration is the first, but the issue with it is that we cannot import or drag and drop a .txt file into the Engine. We will tackle this issue in the <a href="#">next part</a>.</p>
 <h2 id="what-is-next"><a class="header" href="#what-is-next">What is next?</a></h2>
