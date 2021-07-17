@@ -41,6 +41,7 @@
     - [Create an object](./the_truth/create_an_object.md)
     - [Modify an object](./the_truth/modify_an_object.md)
     - [Common Types](./the_truth/common_types.md)
+- [Creation Graphs](./creation_graphs/concept.md)
 - [Extending The Machinery](./extending_the_machinery/README.md)
     - [The Plugin System](./extending_the_machinery/the_plugin_system.md)
     - [Hot-reloading](./extending_the_machinery/hot-reloading.md)
