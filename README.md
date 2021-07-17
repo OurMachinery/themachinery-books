@@ -58,6 +58,14 @@ They will be replaced on build with the correct URL's.
 
 Besides the build process will check all links if they are valid. If not you will not be able to build the game.
 
+*Linking to API types*
+
+If you want to link to functions or API's you can just write in your markdown: 
+```
+`tm_physx_scene_api`
+```
+On deploy the book will automaically find those terms and replaces them with proper linking.
+
 ### Working in dropbox paper
 
 In case you have written your article in [dropbox paper](https://paper.dropbox.com/) you can export your work as following:
