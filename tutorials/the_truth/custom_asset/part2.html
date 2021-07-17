@@ -147,13 +147,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="create-a-custom-asset-part-2"><a class="header" href="#create-a-custom-asset-part-2">Create a custom asset part 2</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>This part will cover the following topics:</p>
 <ul>
 <li>How to store data in a buffer that is associated with the asset file</li>
 <li>How to add a custom UI to be associated with the asset.</li>
 </ul>
-<p>When you have finished this part in the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part3.html">next one</a>, we will show you how to write your importer.</p>
+<p>When you have finished this part in the <a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/part3.html">next one</a>, we will show you how to write your importer.</p>
 <blockquote>
 <p>You can find the whole source code in its git repo: <a href="https://github.com/simon-ourmachinery/example-text-file-asset">example-text-file-asset</a></p>
 </blockquote>
@@ -239,8 +239,8 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926772154_image.png" alt="" /></p>
 <p>This asset file is still not quite how we want it because we have not loaded a text file yet. Therefore let us load a file next. At first, we will do it by <em>hand</em> via loading a file whenever we are changing the path, and then later on (in the next chapter) we are writing our importer. It will allow us to drag and drop files into the Engine as well or use the <em>Import Menu.</em></p>
 <h3 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h3>
-<p>To archive our first manual loading, we need to add a custom UI associated with our type. We can do this via the properties aspect <code>TM_TT_ASPECT__PROPERTIES</code>. It means we need to go back to the <code>create_truth_types</code> function and add a new Aspect and a new object associated with this Aspect.</p>
-<p>The Aspect expects a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i"><code>tm_properties_aspect_i</code></a> object. When defining the object, we are focused only on is the custom_ui field. </p>
+<p>To archive our first manual loading, we need to add a custom UI associated with our type. We can do this via the properties aspect <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_aspect__properties">TM_TT_ASPECT__PROPERTIES</a>. It means we need to go back to the <code>create_truth_types</code> function and add a new Aspect and a new object associated with this Aspect.</p>
+<p>The Aspect expects a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> object. When defining the object, we are focused only on is the custom_ui field. </p>
 <blockquote>
 <p>Note: This struct has many different fields which are not interesting to us now. (If you want more information on them, check out the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>.</p>
 </blockquote>
@@ -281,7 +281,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <p>In the editor, the change is imminently visible. The UI is gone because we have chosen to provide our custom UI.</p>
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609928409366_image.png" alt="" /></p>
 <p>It is time to add the imported file property back to the UI panel. The first step is to think about what our property shall represent:
-When we defined it, we described it as type <code>TM_THE_TRUTH_PROPERTY_TYPE_STRING</code>. 
+When we defined it, we described it as type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#enumtm_the_truth_property_type">TM_THE_TRUTH_PROPERTY_TYPE_STRING</a>. 
 It is essential to know because the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#properties.h">properties header file</a> has the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">properties view API</a>, which has many built-in functions for default behavior.</p>
 <p>One of the things we can find in there is the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()">ui_open_path</a> which sounds perfect for the import path. The buffer (data) does not need to be displayed yet. Before using any Properties-View API functions, we need to request the API in our load plugin function.</p>
 <pre><code class="language-c">// -- api's
@@ -349,7 +349,7 @@ enum {
 <p>When we compiled this we can test it in the engine, just by adding a new text file click on the Import Path:</p>
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609931496164_image.png" alt="" /></p>
 <p>The next step is using the OS API to load a file from the disc and store it in the buffer. This process works after the same principle as adding the properties view API. </p>
-<p>The OS API (<a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_api">tm_os_api</a>) lives in the <code>os.h</code> and has a member called <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_io_api">file_io</a>, allowing access to the <code>tm_os_file_io_api</code>. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. </p>
+<p>The OS API (<a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_api">tm_os_api</a>) lives in the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#os.h">os.h</a> and has a member called <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_io_api">file_io</a>, allowing access to the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_io_api">tm_os_file_io_api</a>. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. </p>
 <pre><code class="language-c">//other includes
 #include &lt;foundation/os.h&gt;
 #include &lt;foundation/buffer.h&gt;
@@ -382,7 +382,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 }
 </code></pre>
 <p>First, we need to read out the file path from our The Truth object. After that, we can create the buffer we want to add to our <em>data</em> property (index 1 or <code>TM_TT_PROP___MY_ASSET__DATA</code>). 
-The buffers live in the <code>buffer.h</code>. We create the buffer via The Truth, and it also owns the memory. We are using the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_system_api">file_system API</a> to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. </p>
+The buffers live in the <a href="https://ourmachinery.com/apidoc/foundation/buffer.h.html#buffer.h">buffer.h</a>. We create the buffer via The Truth, and it also owns the memory. We are using the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_system_api">file_system API</a> to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. </p>
 <blockquote>
 <p>Note: We should also check if the file exists. It has been left out because we just picked the file. </p>
 </blockquote>

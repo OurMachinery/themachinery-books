@@ -150,8 +150,8 @@
 <p>This walkthrough show you how to write a simulate entry and what a simulate entry is.</p>
 <p>If you wish to program gameplay using C code, then you need some place where this code execution
 enters. This is provided by the Simulate Entry interface. In order to use it, begin by implementing
-the the interface <code>tm_simulate_entry_i</code> (see <code>simulate_entry.h</code>). Make an object of the
-<code>tm_simulate_entry_i</code> struct like this (see any of the gameplay samples for examples with more
+the the interface <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> (see <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#simulate_entry.h">simulate_entry.h</a>). Make an object of the
+<a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> struct like this (see any of the gameplay samples for examples with more
 context):</p>
 <pre><code class="language-c">static tm_simulate_entry_i simulate_entry_i = {
     .id = TM_STATIC_HASH(&quot;tm_my_game_simulate_entry&quot;, 0xe240e2d67a0aa93ULL),
@@ -163,7 +163,7 @@ context):</p>
 </code></pre>
 <p>where <code>start()</code>, <code>stop()</code> and <code>tick()</code> are the functions that you want called when the game starts, ends
 and each frame respectively. Make sure that <code>id</code> is unique. When your plugin loads, make sure to
-register this implementation of <code>tm_simulate_entry_i</code> on the <code>TM_SIMULATE_ENTRY_INTERFACE_NAME</code>
+register this implementation of <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> on the <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#tm_simulate_entry_interface_name">TM_SIMULATE_ENTRY_INTERFACE_NAME</a>
 interface name, like so:</p>
 <pre><code class="language-c">tm_add_or_remove_implementation(reg, load, TM_SIMULATE_ENTRY_INTERFACE_NAME, &amp;simulate_entry_i);
 </code></pre>
@@ -171,7 +171,7 @@ interface name, like so:</p>
 entities:</p>
 <p><img src="https://www.dropbox.com/s/qchhejkfbbjfw7h/create-new-simulate-entrry.png?dl=1" alt="Creating a Simulate Entry asset" /></p>
 <p>When you inspect the the properties of this new <code>Simulate Entry</code> asset, have a look in the
-Simulate Entry dropdown menu. Given that you registered your implementation of <code>tm_simulate_entry_i</code>
+Simulate Entry dropdown menu. Given that you registered your implementation of <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a>
 correctly, it should appear in this list.</p>
 <blockquote>
 <p><strong>Note:</strong> In our sample section you can find the &quot;gameplay-interaction-system&quot; sample. This one is a great sample to see this workflow in action.</p>
@@ -179,12 +179,12 @@ correctly, it should appear in this list.</p>
 <h2 id="how-will-the-engine-determine-which-one-to-pick"><a class="header" href="#how-will-the-engine-determine-which-one-to-pick">How will the Engine determine which one to pick?</a></h2>
 <p>Now, whenever you start simulating a certain entity, such as your main game world, the Simulate Tab
 will look in the directory next to the entity you're simulating and check if there is a Simulate
-Entry asset there. If there is, it will use the referenced <code>tm_simulate_entry_i</code> implementation in
+Entry asset there. If there is, it will use the referenced <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> implementation in
 order to enter into gameplay code. If the Simulate Tab fails to find a Simulate Entry asset in the
 same directory, it will look in each parent directory. This makes it possible to put a &quot;catch-all&quot;
 Simulate Entry in the root directory of your project. You can also put entities that need different
 Simulate Entry code in separate directories, with a Simulate Entry asset next to each, which can
-reference different implementations of the the <code>tm_simulate_entry_i</code> interface.</p>
+reference different implementations of the the <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> interface.</p>
 
                     </main>
 

@@ -173,7 +173,7 @@ It can be helpful on CI Server where build and test servers are different. The b
 <h2 id="how-to-write-your-tests"><a class="header" href="#how-to-write-your-tests"><strong>How to write your tests</strong></a></h2>
 <p>All that is needed is to write tests is to register them via the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a>. You can find the interface in the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html">unit_tests.h</a>. <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a> expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#structtm_unit_test_i">tm_unit_test_i</a>. This interface expects a name and a function pointer to the test entry function.</p>
 <pre><code class="language-c">// Interface for running unit tests. To find all unit test, query the API registry for
-// `TM_UNIT_TEST_INTERFACE_NAME` implementations.
+// [TM_UNIT_TEST_INTERFACE_NAME](https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name) implementations.
 typedef struct tm_unit_test_i
 {
     // Name of this unit test.
@@ -203,7 +203,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, TM_UNIT_TEST_INTERFACE_NAME, my_unit_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <code>TM_UNIT_TEST_INTERFACE_NAME</code>.</p>
+<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a>.</p>
 <p><em>How could this interface look like?</em>
 After we have done this, all we need to do is declarer our <code>my_unit_tests</code>. It is as easy as it gets:</p>
 <pre><code class="language-c">#include &lt;foundation/unit_test.h&gt;
@@ -224,7 +224,7 @@ All that's left is to write the test. Let us write this test. In its core all we
 <table><thead><tr><th><strong>Macro</strong></th><th><strong>Arguments</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>TM_UNIT_TEST</td><td>(test_runner, assertion)</td><td>Unit test macro. Tests the <code>assertion</code> using the test runner <code>test_runner</code>.</td></tr>
 <tr><td>TM_UNIT_TESTF</td><td>(test_runner, assertion, format, ...)</td><td>As <code>TM_UNIT_TEST()</code> but records a formatted string in case of error.</td></tr>
-<tr><td>TM_EXPECT_ERROR</td><td>(test_runner, error)</td><td>Expect the error message <code>error</code>. If the error message doesn't appear before the next call to <code>record()</code>, or if another error message appears before it, this will be considered a unit test failure.<br><br>Note that for <code>TM_EXPECT_ERROR</code> to work properly, you must redirect error messages to go through the test runner, so that it can check that the error message matches what's expected.</td></tr>
+<tr><td>TM_EXPECT_ERROR</td><td>(test_runner, error)</td><td>Expect the error message <code>error</code>. If the error message doesn't appear before the next call to <code>record()</code>, or if another error message appears before it, this will be considered a unit test failure.<br><br>Note that for <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_expect_error()">TM_EXPECT_ERROR</a> to work properly, you must redirect error messages to go through the test runner, so that it can check that the error message matches what's expected.</td></tr>
 </tbody></table>
 <p>It's time for some tests. Let us write some tests for <a href="https://ourmachinery.com/apidoc/foundation/carray.inl.html#carray.inl">carrays</a></p>
 <pre><code class="language-c">#include &lt;foundation/unit_test.h&gt;

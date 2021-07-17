@@ -162,7 +162,7 @@ the plugin may in turn rely on APIs exposed by other plugins.</p>
 <p>A central object called the <em>API registry</em> is used to keep track of all the APIs. When you want to
 use an API from another plugin, you ask the API registry for it. Similarly, you expose your APIs to
 the world by registering them with the API registry.</p>
-<p>This may seem a bit abstract at this point, so let’s look at a concrete example, <code>unicode.h</code> which
+<p>This may seem a bit abstract at this point, so let’s look at a concrete example, <a href="https://ourmachinery.com/apidoc/foundation/unicode.h.html#unicode.h">unicode.h</a> which
 exposes an API for encoding and decoding Unicode strings:</p>
 <pre><code class="language-c">// This header has been abridged and commented from the original to make things
 // clearer.
@@ -201,7 +201,7 @@ for <code>&lt;api_types.h&gt;</code>). This helps keep compile times down, but i
 code. When you read a header file you don’t have to follow a long chain of other header files to understand
 what is happening.</p>
 <p>Next follows a block of forward struct declarations (in this case only one).</p>
-<p>Next, we have the name of this API defined as a constant <code>TM_UNICODE_API_NAME</code>, followed by the
+<p>Next, we have the name of this API defined as a constant <a href="https://ourmachinery.com/apidoc/foundation/unicode.h.html#tm_unicode_api_name">TM_UNICODE_API_NAME</a>, followed by the
 <code>struct tm_unicode_api</code> that defines the functions in the API.</p>
 <p>To use this API, you would first use the API registry to query for the API pointer, then using that
 pointer, call the functions of the API:</p>
@@ -224,8 +224,8 @@ whereas interfaces can have many implementations. For example, all code that can
 implements the unit test interface. Unit test programs can query the API registry to find all these
 implementations and run all the unit tests.</p>
 <p>To extend the editor you add implementations to the interfaces used by the editor. For example, you
-can add implementations of the <code>TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</code>  in order to create new
-data types in The Truth, and add implementations of the <code>TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME</code>
+can add implementations of the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a>  in order to create new
+data types in The Truth, and add implementations of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_interface_name">TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME</a>
 in order to define new entity components. See the sample plugin examples.</p>
 <p>It does not matter in which order the plugins are loaded. If you query for a plugin that hasn’t yet
 been registered, you get a pointer to a nulled struct back. When the plugin is loaded, that struct

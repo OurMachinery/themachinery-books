@@ -147,7 +147,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="create-a-custom-asset-part-1"><a class="header" href="#create-a-custom-asset-part-1">Create a custom asset part 1</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>In the parts 1 - 3 we will cover the following topics:</p>
 <ul>
 <li>How to create your asset</li>
@@ -195,9 +195,9 @@
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0xc0995d6c144ac64aULL)
 </code></pre>
-<p>(Do not forget to run hash.exe when you create a <code>TM_STATIC_HASH</code>, mode information here.)</p>
+<p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>, mode information here.)</p>
 <p>Now we need to define the layout of our asset type. We should always do this during plugin load. (<code>tm_load_plugin</code>) 
-During this call we need to register a function to the <code>TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</code> interface. 
+During this call we need to register a function to the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a> interface. 
 This function is typically called <code>create_truth_types</code>, but its name can be arbitrary.</p>
 <blockquote>
 <p><strong>Note:</strong> An interface is an abstract structure that maps a struct (the interface) to a hash value/name. It allows for customization points. In The Machinery, the Engine uses this extensively.</p>
@@ -228,8 +228,8 @@ We use the function <code>tm_the_truth_api-&gt;create_object_type(tm_the_truth_o
     TM_TT_PROP__ASSET__THUMBNAIL, // buffer
 };
 </code></pre>
-<p>The truth type of the text file we just created will live as a subobject of the Asset Truth Type in the property field: <code>TM_TT_PROP__ASSET__OBJECT</code>.</p>
-<p>Let us move on and go back and finish the definition of our type. Let us add a file extension to our type. All we need to do is add an aspect of type <code>TM_TT_ASPECT__FILE_EXTENSION</code> to our Truth Type. You can find it in the following header file <code>foundation/the_truth_assets.h</code>.</p>
+<p>The truth type of the text file we just created will live as a subobject of the Asset Truth Type in the property field: <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#enumtm_tt_prop__asset">TM_TT_PROP__ASSET__OBJECT</a>.</p>
+<p>Let us move on and go back and finish the definition of our type. Let us add a file extension to our type. All we need to do is add an aspect of type <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#tm_tt_aspect__file_extension">TM_TT_ASPECT__FILE_EXTENSION</a> to our Truth Type. You can find it in the following header file <code>foundation/the_truth_assets.h</code>.</p>
 <blockquote>
 <p><strong>Note:</strong> The Machinery will automatically prefix your file extension with <strong>tm_</strong></p>
 </blockquote>
@@ -242,7 +242,7 @@ We use the function <code>tm_the_truth_api-&gt;create_object_type(tm_the_truth_o
 </code></pre>
 <p>We create a type of name <code>TM_TT_TYPE__MY_ASSET</code> with no properties and a file extension my_asset (<code>.tm_my_asset</code> in your explorer). </p>
 <h2 id="making-the-asset-browser-able-to-create-it"><a class="header" href="#making-the-asset-browser-able-to-create-it">Making the Asset Browser able to create it</a></h2>
-<p>Now that there is a basic asset type, you might want the asset browser to create it via the <code>New Asset</code> context menu. All you need to do is register the asset to the <code>TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME</code> interface. This interface requires an implementation of the type <code>tm_asset_browser_create_asset_i</code>:</p>
+<p>Now that there is a basic asset type, you might want the asset browser to create it via the <code>New Asset</code> context menu. All you need to do is register the asset to the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#tm_asset_browser_create_asset_interface_name">TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME</a> interface. This interface requires an implementation of the type <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_create_asset_i">tm_asset_browser_create_asset_i</a>:</p>
 <pre><code class="language-c">typedef struct tm_asset_browser_create_asset_i
 {
     struct tm_asset_browser_create_asset_o *inst;
@@ -287,9 +287,9 @@ tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_N
 <p>What happens is not existing! But we are getting there! Check out the <a href="#">next part</a> for more complex and existing actions.</p>
 <h2 id="what-is-next"><a class="header" href="#what-is-next">What is next?</a></h2>
 <p>The next part will refactor the current code and show you how to make your code and asset more useful by implementing the action asset.</p>
-<p>[Part 2]tutorials/the_truth/custom_asset/part3.html)</p>
+<p><a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/custom_asset/part2.html">Part 2</a></p>
 <h2 id="appendix-adding-an-asset-via-code-to-the-asset-browser"><a class="header" href="#appendix-adding-an-asset-via-code-to-the-asset-browser">Appendix: Adding an asset via code to the Asset Browser</a></h2>
-<p>Sometimes it is necessary to create an asset via code. The Asset Browser plugin provides a solution for this the <code>tm_asset_browser_add_asset_api</code>. With this API assets can be created and added to the current project.</p>
+<p>Sometimes it is necessary to create an asset via code. The Asset Browser plugin provides a solution for this the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a>. With this API assets can be created and added to the current project.</p>
 <p>To add an asset to the asset browser a few steps are needed. </p>
 <ol>
 <li>First, we need to pick the correct type. We need to request it from the truth via the type hash (in this example, <code>TM_TT_TYPE_HASH__MY_ASSET</code>). </li>
@@ -300,9 +300,9 @@ tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_N
 <p>If we already requested the API, we do not need to do this step and can use the already defined instance of the API.</p>
 </blockquote>
 <ol start="4">
-<li>We need to create a undo scope. (We could also use <code>TM_TT_NO_UNDO_SCOPE</code>) but its not recommended!</li>
+<li>We need to create a undo scope. (We could also use <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a>) but its not recommended!</li>
 <li>Then, we should decide if we should highlight the new asset in the Asset Browser. (<code>should_select=true</code>) If that's needed, an instance of the current UI is required. </li>
-<li>Then, the magic can happen and we can call the function <code>add</code> of the <code>tm_asset_browser_add_asset_api</code> </li>
+<li>Then, the magic can happen and we can call the function <code>add</code> of the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a> </li>
 </ol>
 <p>The following code example will demonstrate how to add my_asset via code to the current project.</p>
 <pre><code class="language-c">// ... other includes
@@ -333,7 +333,7 @@ add_asset-&gt;add(add_asset-&gt;inst, target_dir, asset_id, asset_name, undo_sco
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 </code></pre>
-<p>(Do not forget to run hash.exe when you create a <code>TM_STATIC_HASH</code>)</p>
+<p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>)</p>
 <p><code>my_asset.c</code></p>
 <pre><code class="language-c">// -- api's
 static struct tm_the_truth_api *tm_the_truth_api;

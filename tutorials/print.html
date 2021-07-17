@@ -149,7 +149,7 @@
                     <main>
                         <h1 id="welcome"><a class="header" href="#welcome">Welcome</a></h1>
 <p>Hi,</p>
-<p>This book is here to give you guidance on how to work with the engine. We are constantly working on improving the onboarding as much as possible. If you have not read about the basic concepts of the engine you might want to start at there before you move on to this book <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/index.html">The Machinery Book</a>.</p>
+<p>This book is here to give you guidance on how to work with the engine. We are constantly working on improving the onboarding as much as possible. If you have not read about the basic concepts of the engine you might want to start at there before you move on to this book <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/index.html">The Machinery Book</a>.</p>
 <p>Besides this book we have several other resources which might be good to checkout:</p>
 <ul>
 <li><a href="https://ourmachinery.com/apidoc/apidoc.html">Our API Documentation</a></li>
@@ -164,7 +164,7 @@
 <p>In The Machinery, we provide full control over how data enters the engine and what data-processing
 steps that get executed, allowing technical artists to better optimize content and setup custom,
 game-specific asset pipelines. </p>
-<p>This is handled through <em>Creation Graphs</em>. A <em>Creation Graph</em> is essentially a generic framework for
+<p>This is handled through <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html"><em>Creation Graphs</em></a>. A <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html"><em>Creation Graphs</em></a> is essentially a generic framework for
 processing arbitrary data on the CPUs and GPUs, exposed through a graph front-end view. While we can
 use <em>Creation Graphs</em> for any type of data processing.</p>
 <p>The following section will guide you from basic use cases to more advanced use cases.</p>
@@ -213,7 +213,7 @@ Entities with shape components will collide with each other when physics is simu
 <p>A physics shape can either be specified as geometry (sphere, capsule, plane, box) or it can be
 computed from a graphics mesh (convex, mesh). Note that if you use computed geometry, you must press
 the <strong>Cook</strong> button in the Properties UI to explicitly compute the geometry for the object.</p>
-<p><img src="https://www.dropbox.com/s/v5jnthc50vsa1oi/convex-physics-shape.png?dl=1" alt="Convex shape." /></p>
+<p><img src="physics/index.html#" alt="Convex shape." /></p>
 <p>If you just give an entity a <em>Physics Shape Component</em> it will become a static physics object. Other
 moving objects can still collide with it, but the object itself won't move.</p>
 <p>To create a moving physics object, you need to add a <em>Physics Body Component</em>. The body component
@@ -273,7 +273,7 @@ projects.</p>
 <em>Out</em> event multiple times, each time with one of the result objects. (In the future we might change
 this and have the nodes actually return arrays of objects.)</p>
 </blockquote>
-<p>From C you can access those features via the <a href="https://ourmachinery.com/apidoc/plugins/physx/physx_scene.h.html#structtm_physx_scene_api"><code>tm_physx_scene_api</code></a>.</p>
+<p>From C you can access those features via the <a href="https://ourmachinery.com/apidoc/plugins/physx/physx_scene.h.html#structtm_physx_scene_api">tm_physx_scene_api</a>.</p>
 <h2 id="missing-features"><a class="header" href="#missing-features">Missing Features</a></h2>
 <p>Note that The Machinery doesn't currently support all the features found in PhysX. The most
 glaring omissions are:</p>
@@ -407,18 +407,18 @@ glaring omissions are:</p>
 <p>This section shall introduce you to some more complex topics such as <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/custom_asset/index.html"><em>How to create your own asset.</em></a></p>
 <p>For more information checkout the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html">documentation</a> and these blog posts: <a href="https://ourmachinery.com/post/the-story-behind-the-truth-designing-a-data-model/">The Story behind The Truth: Designing a Data Model</a>  or this <a href="https://ourmachinery.com/post/multi-threading-the-truth/">one</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-custom-asset"><a class="header" href="#creating-a-custom-asset">Creating a custom asset</a></h1>
-<p>This walkthrough series shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough series shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>In the parts 1 - 3 we will cover the following topics:</p>
 <ul>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part1.html#creating-an-asset-the-truth-type">How to create your asset</a></li>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part1.html#what-is-the-difference-between-truth-type-and-asset">What is the difference between a Truth Type and an Asset?</a></li>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part1.html#appendix-adding-an-asset-via-code-to-the-asset-browser">Add a asset via code to the project</a></li>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part2.html#text-file-asset">How to associate data with your asset</a></li>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part2.html#custom-ui">How to add a custom UI to your asset</a></li>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part3.html#custom-importer-for-text-files">How to create your importer</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/part1.html#creating-an-asset-the-truth-type">How to create your asset</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/part1.html#what-is-the-difference-between-truth-type-and-asset">What is the difference between a Truth Type and an Asset?</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/part1.html#appendix-adding-an-asset-via-code-to-the-asset-browser">Add a asset via code to the project</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/part2.html#text-file-asset">How to associate data with your asset</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/part2.html#custom-ui">How to add a custom UI to your asset</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/part3.html#custom-importer-for-text-files">How to create your importer</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-asset-part-1"><a class="header" href="#create-a-custom-asset-part-1">Create a custom asset part 1</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>In the parts 1 - 3 we will cover the following topics:</p>
 <ul>
 <li>How to create your asset</li>
@@ -466,9 +466,9 @@ glaring omissions are:</p>
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0xc0995d6c144ac64aULL)
 </code></pre>
-<p>(Do not forget to run hash.exe when you create a <code>TM_STATIC_HASH</code>, mode information here.)</p>
+<p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>, mode information here.)</p>
 <p>Now we need to define the layout of our asset type. We should always do this during plugin load. (<code>tm_load_plugin</code>) 
-During this call we need to register a function to the <code>TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</code> interface. 
+During this call we need to register a function to the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a> interface. 
 This function is typically called <code>create_truth_types</code>, but its name can be arbitrary.</p>
 <blockquote>
 <p><strong>Note:</strong> An interface is an abstract structure that maps a struct (the interface) to a hash value/name. It allows for customization points. In The Machinery, the Engine uses this extensively.</p>
@@ -499,8 +499,8 @@ We use the function <code>tm_the_truth_api-&gt;create_object_type(tm_the_truth_o
     TM_TT_PROP__ASSET__THUMBNAIL, // buffer
 };
 </code></pre>
-<p>The truth type of the text file we just created will live as a subobject of the Asset Truth Type in the property field: <code>TM_TT_PROP__ASSET__OBJECT</code>.</p>
-<p>Let us move on and go back and finish the definition of our type. Let us add a file extension to our type. All we need to do is add an aspect of type <code>TM_TT_ASPECT__FILE_EXTENSION</code> to our Truth Type. You can find it in the following header file <code>foundation/the_truth_assets.h</code>.</p>
+<p>The truth type of the text file we just created will live as a subobject of the Asset Truth Type in the property field: <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#enumtm_tt_prop__asset">TM_TT_PROP__ASSET__OBJECT</a>.</p>
+<p>Let us move on and go back and finish the definition of our type. Let us add a file extension to our type. All we need to do is add an aspect of type <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#tm_tt_aspect__file_extension">TM_TT_ASPECT__FILE_EXTENSION</a> to our Truth Type. You can find it in the following header file <code>foundation/the_truth_assets.h</code>.</p>
 <blockquote>
 <p><strong>Note:</strong> The Machinery will automatically prefix your file extension with <strong>tm_</strong></p>
 </blockquote>
@@ -513,7 +513,7 @@ We use the function <code>tm_the_truth_api-&gt;create_object_type(tm_the_truth_o
 </code></pre>
 <p>We create a type of name <code>TM_TT_TYPE__MY_ASSET</code> with no properties and a file extension my_asset (<code>.tm_my_asset</code> in your explorer). </p>
 <h2 id="making-the-asset-browser-able-to-create-it"><a class="header" href="#making-the-asset-browser-able-to-create-it">Making the Asset Browser able to create it</a></h2>
-<p>Now that there is a basic asset type, you might want the asset browser to create it via the <code>New Asset</code> context menu. All you need to do is register the asset to the <code>TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME</code> interface. This interface requires an implementation of the type <code>tm_asset_browser_create_asset_i</code>:</p>
+<p>Now that there is a basic asset type, you might want the asset browser to create it via the <code>New Asset</code> context menu. All you need to do is register the asset to the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#tm_asset_browser_create_asset_interface_name">TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME</a> interface. This interface requires an implementation of the type <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_create_asset_i">tm_asset_browser_create_asset_i</a>:</p>
 <pre><code class="language-c">typedef struct tm_asset_browser_create_asset_i
 {
     struct tm_asset_browser_create_asset_o *inst;
@@ -558,9 +558,9 @@ tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_N
 <p>What happens is not existing! But we are getting there! Check out the <a href="the_truth/custom_asset/part1.html#">next part</a> for more complex and existing actions.</p>
 <h2 id="what-is-next"><a class="header" href="#what-is-next">What is next?</a></h2>
 <p>The next part will refactor the current code and show you how to make your code and asset more useful by implementing the action asset.</p>
-<p>[Part 2]tutorials/the_truth/custom_asset/part3.html)</p>
+<p><a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/custom_asset/part2.html">Part 2</a></p>
 <h2 id="appendix-adding-an-asset-via-code-to-the-asset-browser"><a class="header" href="#appendix-adding-an-asset-via-code-to-the-asset-browser">Appendix: Adding an asset via code to the Asset Browser</a></h2>
-<p>Sometimes it is necessary to create an asset via code. The Asset Browser plugin provides a solution for this the <code>tm_asset_browser_add_asset_api</code>. With this API assets can be created and added to the current project.</p>
+<p>Sometimes it is necessary to create an asset via code. The Asset Browser plugin provides a solution for this the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a>. With this API assets can be created and added to the current project.</p>
 <p>To add an asset to the asset browser a few steps are needed. </p>
 <ol>
 <li>First, we need to pick the correct type. We need to request it from the truth via the type hash (in this example, <code>TM_TT_TYPE_HASH__MY_ASSET</code>). </li>
@@ -571,9 +571,9 @@ tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_N
 <p>If we already requested the API, we do not need to do this step and can use the already defined instance of the API.</p>
 </blockquote>
 <ol start="4">
-<li>We need to create a undo scope. (We could also use <code>TM_TT_NO_UNDO_SCOPE</code>) but its not recommended!</li>
+<li>We need to create a undo scope. (We could also use <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a>) but its not recommended!</li>
 <li>Then, we should decide if we should highlight the new asset in the Asset Browser. (<code>should_select=true</code>) If that's needed, an instance of the current UI is required. </li>
-<li>Then, the magic can happen and we can call the function <code>add</code> of the <code>tm_asset_browser_add_asset_api</code> </li>
+<li>Then, the magic can happen and we can call the function <code>add</code> of the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a> </li>
 </ol>
 <p>The following code example will demonstrate how to add my_asset via code to the current project.</p>
 <pre><code class="language-c">// ... other includes
@@ -604,7 +604,7 @@ add_asset-&gt;add(add_asset-&gt;inst, target_dir, asset_id, asset_name, undo_sco
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 </code></pre>
-<p>(Do not forget to run hash.exe when you create a <code>TM_STATIC_HASH</code>)</p>
+<p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>)</p>
 <p><code>my_asset.c</code></p>
 <pre><code class="language-c">// -- api's
 static struct tm_the_truth_api *tm_the_truth_api;
@@ -648,13 +648,13 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-asset-part-2"><a class="header" href="#create-a-custom-asset-part-2">Create a custom asset part 2</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>This part will cover the following topics:</p>
 <ul>
 <li>How to store data in a buffer that is associated with the asset file</li>
 <li>How to add a custom UI to be associated with the asset.</li>
 </ul>
-<p>When you have finished this part in the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/the_truth/custom_asset/part3.html">next one</a>, we will show you how to write your importer.</p>
+<p>When you have finished this part in the <a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/part3.html">next one</a>, we will show you how to write your importer.</p>
 <blockquote>
 <p>You can find the whole source code in its git repo: <a href="https://github.com/simon-ourmachinery/example-text-file-asset">example-text-file-asset</a></p>
 </blockquote>
@@ -740,8 +740,8 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926772154_image.png" alt="" /></p>
 <p>This asset file is still not quite how we want it because we have not loaded a text file yet. Therefore let us load a file next. At first, we will do it by <em>hand</em> via loading a file whenever we are changing the path, and then later on (in the next chapter) we are writing our importer. It will allow us to drag and drop files into the Engine as well or use the <em>Import Menu.</em></p>
 <h3 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h3>
-<p>To archive our first manual loading, we need to add a custom UI associated with our type. We can do this via the properties aspect <code>TM_TT_ASPECT__PROPERTIES</code>. It means we need to go back to the <code>create_truth_types</code> function and add a new Aspect and a new object associated with this Aspect.</p>
-<p>The Aspect expects a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i"><code>tm_properties_aspect_i</code></a> object. When defining the object, we are focused only on is the custom_ui field. </p>
+<p>To archive our first manual loading, we need to add a custom UI associated with our type. We can do this via the properties aspect <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_aspect__properties">TM_TT_ASPECT__PROPERTIES</a>. It means we need to go back to the <code>create_truth_types</code> function and add a new Aspect and a new object associated with this Aspect.</p>
+<p>The Aspect expects a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> object. When defining the object, we are focused only on is the custom_ui field. </p>
 <blockquote>
 <p>Note: This struct has many different fields which are not interesting to us now. (If you want more information on them, check out the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>.</p>
 </blockquote>
@@ -782,7 +782,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <p>In the editor, the change is imminently visible. The UI is gone because we have chosen to provide our custom UI.</p>
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609928409366_image.png" alt="" /></p>
 <p>It is time to add the imported file property back to the UI panel. The first step is to think about what our property shall represent:
-When we defined it, we described it as type <code>TM_THE_TRUTH_PROPERTY_TYPE_STRING</code>. 
+When we defined it, we described it as type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#enumtm_the_truth_property_type">TM_THE_TRUTH_PROPERTY_TYPE_STRING</a>. 
 It is essential to know because the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#properties.h">properties header file</a> has the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">properties view API</a>, which has many built-in functions for default behavior.</p>
 <p>One of the things we can find in there is the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()">ui_open_path</a> which sounds perfect for the import path. The buffer (data) does not need to be displayed yet. Before using any Properties-View API functions, we need to request the API in our load plugin function.</p>
 <pre><code class="language-c">// -- api's
@@ -850,7 +850,7 @@ enum {
 <p>When we compiled this we can test it in the engine, just by adding a new text file click on the Import Path:</p>
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609931496164_image.png" alt="" /></p>
 <p>The next step is using the OS API to load a file from the disc and store it in the buffer. This process works after the same principle as adding the properties view API. </p>
-<p>The OS API (<a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_api">tm_os_api</a>) lives in the <code>os.h</code> and has a member called <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_io_api">file_io</a>, allowing access to the <code>tm_os_file_io_api</code>. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. </p>
+<p>The OS API (<a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_api">tm_os_api</a>) lives in the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#os.h">os.h</a> and has a member called <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_io_api">file_io</a>, allowing access to the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_io_api">tm_os_file_io_api</a>. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. </p>
 <pre><code class="language-c">//other includes
 #include &lt;foundation/os.h&gt;
 #include &lt;foundation/buffer.h&gt;
@@ -883,7 +883,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 }
 </code></pre>
 <p>First, we need to read out the file path from our The Truth object. After that, we can create the buffer we want to add to our <em>data</em> property (index 1 or <code>TM_TT_PROP___MY_ASSET__DATA</code>). 
-The buffers live in the <code>buffer.h</code>. We create the buffer via The Truth, and it also owns the memory. We are using the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_system_api">file_system API</a> to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. </p>
+The buffers live in the <a href="https://ourmachinery.com/apidoc/foundation/buffer.h.html#buffer.h">buffer.h</a>. We create the buffer via The Truth, and it also owns the memory. We are using the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_file_system_api">file_system API</a> to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. </p>
 <blockquote>
 <p>Note: We should also check if the file exists. It has been left out because we just picked the file. </p>
 </blockquote>
@@ -986,7 +986,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-asset-part-3"><a class="header" href="#create-a-custom-asset-part-3">Create a custom asset part 3</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>This part will cover the following topics:</p>
 <ul>
 <li>How to write an importer</li>
@@ -1015,7 +1015,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </tbody></table>
 <p>After we have included all the needed header files and retrieved all the APIs from the registry, we can start to write an importer.</p>
 <blockquote>
-<p>Note: <code>tm_api_registry_api</code> can be retrived from the reg parameter in the <code>tm_load_plugin</code> function. <code>tm_global_api_registry = reg;</code></p>
+<p>Note: <a href="https://ourmachinery.com/apidoc/foundation/api_registry.h.html#structtm_api_registry_api">tm_api_registry_api</a> can be retrived from the reg parameter in the <code>tm_load_plugin</code> function. <code>tm_global_api_registry = reg;</code></p>
 </blockquote>
 <p>The Machinery has a generic interface for asset importers. It requires a bunch of functions to be able to work as intended. The struct we need to implement is called <a href="https://ourmachinery.com/apidoc/foundation/asset_io.h.html#structtm_asset_io_import">tm_asset_io_i</a>. It requires us to set the following members:</p>
 <table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody>
@@ -1024,7 +1024,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <tr><td>can_reimport</td><td>A function ptr that returns <code>true</code> if this asset IO interface can re-import the specified truth asset (of type <code>TM_TT_TYPE_ASSET</code>). Optional, if not implemented, nothing can be re-importe</td></tr>
 <tr><td>importer_extensions_string</td><td>A function ptr that shall append the correct file extention string to the list of possible file extenstions</td></tr>
 <tr><td>importer_description_string</td><td>A function ptr that shall append the correct file extention descriptions string to the list of possible file extenstions descriptions.</td></tr>
-<tr><td>import_asset</td><td>The actual function that starts a import task. If non-zero, the return value is the ID of the background task from <code>tm_task_system_api</code> that does the import.</td></tr>
+<tr><td>import_asset</td><td>The actual function that starts a import task. If non-zero, the return value is the ID of the background task from <a href="https://ourmachinery.com/apidoc/foundation/task_system.h.html#structtm_task_system_api">tm_task_system_api</a> that does the import.</td></tr>
 </tbody></table>
 <p>All these members expect a function pointer. Therefore, we need to provide the functionality.</p>
 <p>To implement the first functions, we need to do the following steps:</p>
@@ -1061,22 +1061,22 @@ static void asset_io__importer_description_string(struct tm_asset_io_o *inst, ch
 <li>The <code>asset_io__can_import</code> will compare the given extension with the one we want to support.</li>
 </ul>
 <blockquote>
-<p>Note: <code>tm_strcmp_ignore_case</code> requires a localizer. That is why we need the localizer API and the localizer header file. It is not needed if the importer shall be case-sensitive.</p>
+<p>Note: <a href="https://ourmachinery.com/apidoc/foundation/string.inl.html#tm_strcmp_ignore_case()">tm_strcmp_ignore_case</a> requires a localizer. That is why we need the localizer API and the localizer header file. It is not needed if the importer shall be case-sensitive.</p>
 </blockquote>
 <ul>
 <li>The <code>asset_io__can_reimport</code> compares the object type of the given object with the object of our type. </li>
 </ul>
 <blockquote>
-<p><code>TM_TT_PROP__ASSET__OBJECT</code> is the property of the <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#tm_tt_type__asset">TM_TT_TYPE__ASSET</a> type which holds the object associated with the asset.</p>
+<p><a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#enumtm_tt_prop__asset">TM_TT_PROP__ASSET__OBJECT</a> is the property of the <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#tm_tt_type__asset">TM_TT_TYPE__ASSET</a> type which holds the object associated with the asset.</p>
 </blockquote>
-<p>The last two functions will append the file extension <code>.txt</code> to the file extensions and description. Note that the argument output is a <a href="https://ourmachinery.com/apidoc/foundation/carray.inl.html#carray.inl">carray</a>. That is why we can use the <code>tm_carray_temp_printf</code> function.</p>
+<p>The last two functions will append the file extension <code>.txt</code> to the file extensions and description. Note that the argument output is a <a href="https://ourmachinery.com/apidoc/foundation/carray.inl.html#carray.inl">carray</a>. That is why we can use the <a href="https://ourmachinery.com/apidoc/foundation/carray_print.inl.html#tm_carray_temp_printf()">tm_carray_temp_printf</a> function.</p>
 <blockquote>
-<p>Note: The <code>carray_print.h</code> requires the <code>tm_sprintf_api</code>. Therefore, we need to include the right header here.</p>
+<p>Note: The <code>carray_print.h</code> requires the <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a>. Therefore, we need to include the right header here.</p>
 </blockquote>
 <h2 id="import-task-set-up"><a class="header" href="#import-task-set-up">Import Task set up</a></h2>
 <p>The importer function <code>asset_io__import_asset</code> can spawn a task with the task system and pass through the needed information. We need to create a data structure to hold all our data.</p>
-<p><em>What data does our task need?</em> 
-This task needs to know where to find the file. Moreover it needs to access some essential types such as the Truth and allocator. The struct could look like this:</p>
+<p><em>What data does our task need?</em> </p>
+<p>This task needs to know where to find the file. Moreover it needs to access some essential types such as the Truth and allocator. The struct could look like this:</p>
 <pre><code class="language-c">struct task__import_txt
 {
     uint64_t bytes;
@@ -1226,16 +1226,16 @@ tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffe
 tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
  tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
 </code></pre>
-<p>After that, we are using the <code>tm_asset_browser_add_asset_api</code> to add the asset to the asset browser. </p>
+<p>After that, we are using the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a> to add the asset to the asset browser. </p>
 <pre><code class="language-c">tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
 </code></pre>
-<p>We are getting the API first, because we do not need it anywhere else than in this case. Then we need to extract the file name of the imported file. You can do this with the <em>path API</em>'s <code> tm_path_api-&gt;base()</code> function. Be aware this function requires a <code>tm_str_t</code> which you an create from a normal c string (<code>const char*</code>) via <code>tm_str()</code>. To access the underlaying c string again just call <code>.data</code> on the <code>tm_str_t</code>.</p>
+<p>We are getting the API first, because we do not need it anywhere else than in this case. Then we need to extract the file name of the imported file. You can do this with the <em>path API</em>'s <code> tm_path_api-&gt;base()</code> function. Be aware this function requires a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">tm_str_t</a> which you an create from a normal c string (<code>const char*</code>) via <code>tm_str()</code>. To access the underlaying c string again just call <code>.data</code> on the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">tm_str_t</a>.</p>
 <blockquote>
 <p>Used to represent a string slice with pointer and length.</p>
 <p>This lets you reason about parts of a string, which you are not able to do with standard NULL-terminated strings.</p>
 <p><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">documentation</a></p>
 </blockquote>
-<p>After this step we need to get the current folder. Therefore we are asking the <code>tm_asset_browser_add_asset_api</code> what the current folder is. Then we decide if want to select the file. At the end we are calling add function of the <code>tm_asset_browser_add_asset_api-&gt;add()</code>. </p>
+<p>After this step we need to get the current folder. Therefore we are asking the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a> what the current folder is. Then we decide if want to select the file. At the end we are calling add function of the <code>tm_asset_browser_add_asset_api-&gt;add()</code>. </p>
 <blockquote>
 <p><strong>Note:</strong> We do not have any asset labels for our current asset therefore we do not pass them to the add function, otherwise the last 2 arguments would be different than <code>0</code> and <code>0</code>.</p>
 </blockquote>
@@ -1300,7 +1300,7 @@ tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_f
 </code></pre>
 <h2 id="enabling-reimport"><a class="header" href="#enabling-reimport">Enabling reimport</a></h2>
 <p>The previous import task would never be able to reimport an asset. Let us fix this quickly!
-The <code>tm_asset_io_import</code> has a field called <code>reimport_into</code> of type <code>tm_tt_id_t</code>, which we did not set. If the current context is an import, otherwise a valid the truth id. It enables us to check if the current context is an import or reimport. To achieve this, we need to update the <code>reimport_into</code> object with the newly created object asset_obj, and you can do this via The Truth API function <code>retarget_write.</code> It takes an object and updates it with the new content. Commit the change and destroy the temporary object (asset_obj).</p>
+The <a href="https://ourmachinery.com/apidoc/foundation/asset_io.h.html#structtm_asset_io_import">tm_asset_io_import</a> has a field called <code>reimport_into</code> of type <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>, which we did not set. If the current context is an import, otherwise a valid the truth id. It enables us to check if the current context is an import or reimport. To achieve this, we need to update the <code>reimport_into</code> object with the newly created object asset_obj, and you can do this via The Truth API function <code>retarget_write.</code> It takes an object and updates it with the new content. Commit the change and destroy the temporary object (asset_obj).</p>
 <pre><code class="language-c">            if (args-&gt;reimport_into.u64)
             {
                 tm_the_truth_api-&gt;retarget_write(tt, asset_obj, args-&gt;reimport_into);
@@ -1676,9 +1676,9 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>These walkthroughs we will teach you how to extend The Machinery's <a href="https://ourmachinery.com/apidoc/plugins/ui">UI system</a>.</p>
 <p>In following following parts 1 - 3 we will cover the following topics:</p>
 <ul>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/ui/build_custom_ui_controls/part1.html">Create a custom circular button</a></li>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/ui/build_custom_ui_controls/part2.html">Add a texture to our custom control</a></li>
-<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//tutorials/ui/build_custom_ui_controls/part3.html">Setup a UI Renderer</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//ui/build_custom_ui_controls/part1.html">Create a custom circular button</a></li>
+<li><a href="ui/build_custom_ui_controls/index.html#">Add a texture to our custom control</a></li>
+<li><a href="ui/build_custom_ui_controls/index.html#">Setup a UI Renderer</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="build-custom-ui-controls-part-i"><a class="header" href="#build-custom-ui-controls-part-i">Build Custom UI Controls, Part I</a></h1>
 <p>Hi, we are starting a 3-part tutorial series about The Machinery UI system. In Part I, we’ll talk about the basics and create a custom circular button. In Part II, we’ll create a custom button with textures support. To show the results of the first two parts, we’ll be using a simple custom tab, so in Part III, we’ll see how to set up your UI and render it on screen.</p>
@@ -1706,7 +1706,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>The Machinery uses an immediate-mode UI. You can read more about it on <a href="https://ourmachinery.com/post/one-draw-call-ui/">One Draw Call UI</a> blog post. To draw 2D shapes, we’ll be using the <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_draw2d_api"><code>tm_draw2d_api</code></a> implemented in <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html"><code>draw2d.h</code></a>, which supplies functions to draw basic 2D shapes. As we are implementing a circular button, we’ll we need to draw a circle using the following function:</p>
 <pre><code>tm_draw2d_api→fill_circle(tm_draw2d_vbuffer_t *vbuffer, tm_draw2d_ibuffer_t *ibuffer, const tm_draw2d_style_t *style, tm_vec2_t pos, float radius)
 </code></pre>
-<p>You can note this function takes a vertex and an index buffer as arguments. In the following tutorials, we’ll learn more about it, but for now, you only need to know is that <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_draw2d_api"><code>tm_draw2d_api</code></a> will fill them, and we need to call <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api.buffers()"><code>tm_ui_api-&gt;buffers()</code></a> to get the buffers. Later the engine will use <a href="https://ourmachinery.com/apidoc/plugins/ui/ui_renderer.h.html#structtm_ui_renderer_api"><code>tm_ui_renderer_api</code></a> to draw the UI using one draw call.</p>
+<p>You can note this function takes a vertex and an index buffer as arguments. In the following tutorials, we’ll learn more about it, but for now, you only need to know is that <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_draw2d_api"><code>tm_draw2d_api</code></a> will fill them, and we need to call <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api.buffers()"><code>tm_ui_api-&gt;buffers()</code></a> to get the buffers. Later the engine will use <a href="https://ourmachinery.com/apidoc/plugins/ui/ui_renderer.h.html#structtm_ui_renderer_api">tm_ui_renderer_api</a> to draw the UI using one draw call.</p>
 <p>Let’s add some more information <code>tm_ui_circular_button_t</code> and use it on <code>circular_button()</code>:</p>
 <ul>
 <li>ui_custom_controls.h:</li>
@@ -1746,7 +1746,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     
     ...
 </code></pre>
-<p>For control interaction logic, we'll need interfaces from <a href="https://ourmachinery.com/apidoc/plugins/ui/ui_custom.h.html#ui_custom.h"><code>ui_custom.h</code></a>, actually all editor's UI is implemented using them.  <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_buffers_t"><code>tm_ui_buffers_t</code></a> that we got earlier has two important members, <a href="https://ourmachinery.com/apidoc/plugins/ui/ui_custom.h.html#structtm_ui_activation_t"><code>tm_ui_activation_t</code></a> one keeps the information about activation and hovering state of UI controls, and <a href="https://ourmachinery.com/apidoc/plugins/ui/ui_custom.h.html#structtm_ui_input_state_t"><code>tm_ui_input_state_t</code></a> maintains the input state. The table below lists some important concepts of our UI system. You can read it at once, or skip for now and return when necessary:</p>
+<p>For control interaction logic, we'll need interfaces from <a href="https://ourmachinery.com/apidoc/plugins/ui/ui_custom.h.html#ui_custom.h">ui_custom.h</a>, actually all editor's UI is implemented using them.  <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_buffers_t">tm_ui_buffers_t</a> that we got earlier has two important members, <a href="https://ourmachinery.com/apidoc/plugins/ui/ui_custom.h.html#structtm_ui_activation_t">tm_ui_activation_t</a> one keeps the information about activation and hovering state of UI controls, and <a href="https://ourmachinery.com/apidoc/plugins/ui/ui_custom.h.html#structtm_ui_input_state_t">tm_ui_input_state_t</a> maintains the input state. The table below lists some important concepts of our UI system. You can read it at once, or skip for now and return when necessary:</p>
 <table><thead><tr><th><strong>Concept</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>ID</td><td>Each control in the UI has a unique 64-bit identifier. Since controls are not explicitly created and destroyed, the ID is the only thing that identifies a control from one frame to the next.<br><br>You create a new ID by calling <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api.make_id()"><code>tm_ui_api-&gt;make_id()</code></a>. IDs are assigned sequentially by the UI. You have to be a bit careful with this if you have controls that sometimes are visible and sometimes not, such as <em>context menus</em>. If you only generate the ID for the context menu when it is visible, it will change the numbering of the subsequent controls depending on whether the menu is visible or not. Since controls are identified by their IDs, this can lead to controls being misidentified.<br><br>A good strategy is to generate the IDs for all the controls that you <em>might</em> show upfront, so that the ID assignment is stable.<br><br>Note: We may change this in the future if we can find a more stable way of assigning IDs.</td></tr>
 <tr><td>Hover</td><td>The UI system keeps track of which control the mouse pointer is <em>hovering</em> over, by storing its ID in a <em>hover</em> variable.<br><br>You never set the <em>hover</em> variable directly. Instead, in your control’s update, you check if the mouse is over your control with <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api.is_hovering()"><code>tm_ui_api-&gt;is_hovering()</code></a>, and if it is you set <code>next_hover</code> to its ID. At the end of the frame, the UI assigns the value of <code>next_hover</code> to the <code>hover</code> variable.<br><br>The reason for this two-step process is that multiple controls or objects might be drawn on top of each other in the same area of the UI. The last object drawn will be on top and we want the <em>hover</em> variable to reflect whatever the user sees on the screen.</td></tr>
@@ -1851,7 +1851,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     ...
 </code></pre>
 <h2 id="drawing-text"><a class="header" href="#drawing-text">Drawing text</a></h2>
-<p>The last thing we need is to draw some text inside our button. You'll need to call <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_draw2d_api.draw_glyphs()"><code>tm_draw2d_api→draw_glyphs()</code></a> to fill UI buffers with text information. It takes as one of its arguments an array of glyphs indices that point to the corresponding <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_font_glyph_t"><code>tm_font_glyph_t</code></a> glyph inside the <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_font_t"><code>tm_font_t</code></a> structure. To get this information, we first need to convert the desired text to an array of codepoints using <a href="https://ourmachinery.com/apidoc/foundation/unicode.h.html#structtm_unicode_api.utf8_decode_n()"><code>tm_unicode_api→utf8_decode_n()</code></a> and pass them to <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_font_api.glyphs()"><code>tm_font_api→glyphs()</code></a> . Thus, add the following lines to the source code:</p>
+<p>The last thing we need is to draw some text inside our button. You'll need to call <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_draw2d_api.draw_glyphs()"><code>tm_draw2d_api→draw_glyphs()</code></a> to fill UI buffers with text information. It takes as one of its arguments an array of glyphs indices that point to the corresponding <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_font_glyph_t">tm_font_glyph_t</a> glyph inside the <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_font_t">tm_font_t</a> structure. To get this information, we first need to convert the desired text to an array of codepoints using <a href="https://ourmachinery.com/apidoc/foundation/unicode.h.html#structtm_unicode_api.utf8_decode_n()"><code>tm_unicode_api→utf8_decode_n()</code></a> and pass them to <a href="https://ourmachinery.com/apidoc/plugins/ui/draw2d.h.html#structtm_font_api.glyphs()"><code>tm_font_api→glyphs()</code></a> . Thus, add the following lines to the source code:</p>
 <p>With this in mind, the complete code will be the following:</p>
 <ul>
 <li>ui_custom_controls.h:</li>

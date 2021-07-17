@@ -148,13 +148,13 @@
                     <main>
                         <h1 id="create-a-custom-truth-type"><a class="header" href="#create-a-custom-truth-type">Create a custom Truth Type</a></h1>
 <p>This walkthrough shows you how to create a type for the Truth. The Truth is our centralized data model for editing data in the Engine. For more details on the system itself, click here: <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_truth/index.html">The Truth</a>. </p>
-<p>You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. </p>
+<p>You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. </p>
 <p>We will cover the following topics:</p>
 <ul>
 <li>How to define a Type.</li>
 <li>Type Properties</li>
 </ul>
-<p>After this walkthrough you could checkout the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//tutorials/the_truth/custom_asset/index.html">&quot;Create a custom asset&quot;</a> tutorial! </p>
+<p>After this walkthrough you could checkout the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/custom_asset/index.html">&quot;Create a custom asset&quot;</a> tutorial! </p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="#define-a-type">Define a Type</a></li>
@@ -171,7 +171,7 @@
 <blockquote>
 <p><strong>Example:</strong> There is a Project Truth to keep all the project-related settings and an Engine/Application Truth that holds all the application-wide settings.</p>
 </blockquote>
-<p>Generally speaking, you want to define Truth Types at the beginning of the Engine's life cycle. Therefore the designated place is the <code>tm_load_plugin</code> function. The Truth has an <em>interface</em> to register a truth type creation function: <code>TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</code>. </p>
+<p>Generally speaking, you want to define Truth Types at the beginning of the Engine's life cycle. Therefore the designated place is the <code>tm_load_plugin</code> function. The Truth has an <em>interface</em> to register a truth type creation function: <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a>. </p>
 <p>This interface expects a function of the signature: <code>void create_truth_types(tm_the_truth_o *tt)</code>. Whenever the Engine creates a Truth, it invokes this interface on all loaded plugins, and their types are registered. You do not need to register your Type to the interface if you want to register your Type to a specific Truth.</p>
 <blockquote>
 <p><strong>Note:</strong> Mostly this function is called: <code>create_truth_types</code></p>
@@ -197,9 +197,9 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 #define TM_TT_TYPE_HASH___MY_TYPE TM_STATIC_HASH(&quot;tm_my_type&quot;, 0xde0e763ccd72b89aULL)
 </code></pre>
 <blockquote>
-<p><strong>Tip:</strong> Do not forget to run <code>hash.exe.</code> Otherwise, the <code>TM_STATIC_HASH</code> macro will cause an error. You can also run <code>tmbuild --gen-hash</code></p>
+<p><strong>Tip:</strong> Do not forget to run <code>hash.exe.</code> Otherwise, the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> macro will cause an error. You can also run <code>tmbuild --gen-hash</code></p>
 </blockquote>
-<p>It is good practice to place the types into a header file so others can use these types as well!  When that is done we can call the <code>tm_the_truth_api-&gt;create_object_type()</code> to create the actual type. It will return a <code>tm_tt_type_t</code> which is the identifier of our type. The <code>tm_tt_id_t</code> will also refer to the type here! </p>
+<p>It is good practice to place the types into a header file so others can use these types as well!  When that is done we can call the <code>tm_the_truth_api-&gt;create_object_type()</code> to create the actual type. It will return a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a> which is the identifier of our type. The <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> will also refer to the type here! </p>
 <p>The function expects:</p>
 <table><thead><tr><th>Argument</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>tm_the_truth_o *tt</code></td><td>The Truth instance. This function will add the type to this instance</td></tr>
@@ -266,7 +266,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p><strong>Note:</strong> For more information please check: <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#the_truth.h">The API Documentation</a> </p>
 </blockquote>
 <h2 id="adding-properties"><a class="header" href="#adding-properties">Adding properties</a></h2>
-<p>Let us add some properties to our Type! As you remember, when we created the Type, the function <code>create_object_type()</code> required a pointer to the definition of properties. You can define properties via the <code>tm_the_truth_property_definition_t</code> struct.</p>
+<p>Let us add some properties to our Type! As you remember, when we created the Type, the function <code>create_object_type()</code> required a pointer to the definition of properties. You can define properties via the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">tm_the_truth_property_definition_t</a> struct.</p>
 <pre><code class="language-c">typedef struct tm_the_truth_property_definition_t
 {
     // Name of the property, e.g. &quot;cast_shadows&quot;.
@@ -336,8 +336,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 } tm_the_truth_property_definition_t;
 </code></pre>
 <p>(<a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">API Documentation</a>)</p>
-<p>Within our <code>create_truth_types</code> we create a array of type <code>tm_the_truth_property_definition_t</code>. For this example, we define the properties of type bool and string.</p>
-<pre><code class="language-c">// include `macros.h` to access TM_ARRAY_COUNT for convinace:
+<p>Within our <code>create_truth_types</code> we create a array of type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">tm_the_truth_property_definition_t</a>. For this example, we define the properties of type bool and string.</p>
+<pre><code class="language-c">// include [macros.h](https://ourmachinery.com/apidoc/foundation/macros.h.html#macros.h) to access TM_ARRAY_COUNT for convinace:
 #include &lt;foundation/macros.h&gt;
 //..code
 void create_truth_types(tm_the_truth_o *tt){
@@ -350,7 +350,7 @@ void create_truth_types(tm_the_truth_o *tt){
 </code></pre>
 <p>That is all we need to do to define properties for our Type! Also thanks to our automatic &quot;reflection&quot; system you do not have to worry about providing a UI for the type. The Properties View will automatically provide a UI for this type.</p>
 <h2 id="what-is-next"><a class="header" href="#what-is-next">What is next?</a></h2>
-<p>You can find more in depth and practical tutorials in the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/tutorials/the_truth/index.html">tutorial book</a></p>
+<p>You can find more in depth and practical tutorials in the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/index.html">tutorial book</a></p>
 
                     </main>
 

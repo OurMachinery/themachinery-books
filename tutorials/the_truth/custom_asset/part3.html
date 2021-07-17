@@ -147,7 +147,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="create-a-custom-asset-part-3"><a class="header" href="#create-a-custom-asset-part-3">Create a custom asset part 3</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
+<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal for this walkthrough is to write a text file asset.</p>
 <p>This part will cover the following topics:</p>
 <ul>
 <li>How to write an importer</li>
@@ -176,7 +176,7 @@
 </tbody></table>
 <p>After we have included all the needed header files and retrieved all the APIs from the registry, we can start to write an importer.</p>
 <blockquote>
-<p>Note: <code>tm_api_registry_api</code> can be retrived from the reg parameter in the <code>tm_load_plugin</code> function. <code>tm_global_api_registry = reg;</code></p>
+<p>Note: <a href="https://ourmachinery.com/apidoc/foundation/api_registry.h.html#structtm_api_registry_api">tm_api_registry_api</a> can be retrived from the reg parameter in the <code>tm_load_plugin</code> function. <code>tm_global_api_registry = reg;</code></p>
 </blockquote>
 <p>The Machinery has a generic interface for asset importers. It requires a bunch of functions to be able to work as intended. The struct we need to implement is called <a href="https://ourmachinery.com/apidoc/foundation/asset_io.h.html#structtm_asset_io_import">tm_asset_io_i</a>. It requires us to set the following members:</p>
 <table><thead><tr><th>Member</th><th>Description</th></tr></thead><tbody>
@@ -185,7 +185,7 @@
 <tr><td>can_reimport</td><td>A function ptr that returns <code>true</code> if this asset IO interface can re-import the specified truth asset (of type <code>TM_TT_TYPE_ASSET</code>). Optional, if not implemented, nothing can be re-importe</td></tr>
 <tr><td>importer_extensions_string</td><td>A function ptr that shall append the correct file extention string to the list of possible file extenstions</td></tr>
 <tr><td>importer_description_string</td><td>A function ptr that shall append the correct file extention descriptions string to the list of possible file extenstions descriptions.</td></tr>
-<tr><td>import_asset</td><td>The actual function that starts a import task. If non-zero, the return value is the ID of the background task from <code>tm_task_system_api</code> that does the import.</td></tr>
+<tr><td>import_asset</td><td>The actual function that starts a import task. If non-zero, the return value is the ID of the background task from <a href="https://ourmachinery.com/apidoc/foundation/task_system.h.html#structtm_task_system_api">tm_task_system_api</a> that does the import.</td></tr>
 </tbody></table>
 <p>All these members expect a function pointer. Therefore, we need to provide the functionality.</p>
 <p>To implement the first functions, we need to do the following steps:</p>
@@ -222,22 +222,22 @@ static void asset_io__importer_description_string(struct tm_asset_io_o *inst, ch
 <li>The <code>asset_io__can_import</code> will compare the given extension with the one we want to support.</li>
 </ul>
 <blockquote>
-<p>Note: <code>tm_strcmp_ignore_case</code> requires a localizer. That is why we need the localizer API and the localizer header file. It is not needed if the importer shall be case-sensitive.</p>
+<p>Note: <a href="https://ourmachinery.com/apidoc/foundation/string.inl.html#tm_strcmp_ignore_case()">tm_strcmp_ignore_case</a> requires a localizer. That is why we need the localizer API and the localizer header file. It is not needed if the importer shall be case-sensitive.</p>
 </blockquote>
 <ul>
 <li>The <code>asset_io__can_reimport</code> compares the object type of the given object with the object of our type. </li>
 </ul>
 <blockquote>
-<p><code>TM_TT_PROP__ASSET__OBJECT</code> is the property of the <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#tm_tt_type__asset">TM_TT_TYPE__ASSET</a> type which holds the object associated with the asset.</p>
+<p><a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#enumtm_tt_prop__asset">TM_TT_PROP__ASSET__OBJECT</a> is the property of the <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#tm_tt_type__asset">TM_TT_TYPE__ASSET</a> type which holds the object associated with the asset.</p>
 </blockquote>
-<p>The last two functions will append the file extension <code>.txt</code> to the file extensions and description. Note that the argument output is a <a href="https://ourmachinery.com/apidoc/foundation/carray.inl.html#carray.inl">carray</a>. That is why we can use the <code>tm_carray_temp_printf</code> function.</p>
+<p>The last two functions will append the file extension <code>.txt</code> to the file extensions and description. Note that the argument output is a <a href="https://ourmachinery.com/apidoc/foundation/carray.inl.html#carray.inl">carray</a>. That is why we can use the <a href="https://ourmachinery.com/apidoc/foundation/carray_print.inl.html#tm_carray_temp_printf()">tm_carray_temp_printf</a> function.</p>
 <blockquote>
-<p>Note: The <code>carray_print.h</code> requires the <code>tm_sprintf_api</code>. Therefore, we need to include the right header here.</p>
+<p>Note: The <code>carray_print.h</code> requires the <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a>. Therefore, we need to include the right header here.</p>
 </blockquote>
 <h2 id="import-task-set-up"><a class="header" href="#import-task-set-up">Import Task set up</a></h2>
 <p>The importer function <code>asset_io__import_asset</code> can spawn a task with the task system and pass through the needed information. We need to create a data structure to hold all our data.</p>
-<p><em>What data does our task need?</em> 
-This task needs to know where to find the file. Moreover it needs to access some essential types such as the Truth and allocator. The struct could look like this:</p>
+<p><em>What data does our task need?</em> </p>
+<p>This task needs to know where to find the file. Moreover it needs to access some essential types such as the Truth and allocator. The struct could look like this:</p>
 <pre><code class="language-c">struct task__import_txt
 {
     uint64_t bytes;
@@ -387,16 +387,16 @@ tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffe
 tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
  tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
 </code></pre>
-<p>After that, we are using the <code>tm_asset_browser_add_asset_api</code> to add the asset to the asset browser. </p>
+<p>After that, we are using the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a> to add the asset to the asset browser. </p>
 <pre><code class="language-c">tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
 </code></pre>
-<p>We are getting the API first, because we do not need it anywhere else than in this case. Then we need to extract the file name of the imported file. You can do this with the <em>path API</em>'s <code> tm_path_api-&gt;base()</code> function. Be aware this function requires a <code>tm_str_t</code> which you an create from a normal c string (<code>const char*</code>) via <code>tm_str()</code>. To access the underlaying c string again just call <code>.data</code> on the <code>tm_str_t</code>.</p>
+<p>We are getting the API first, because we do not need it anywhere else than in this case. Then we need to extract the file name of the imported file. You can do this with the <em>path API</em>'s <code> tm_path_api-&gt;base()</code> function. Be aware this function requires a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">tm_str_t</a> which you an create from a normal c string (<code>const char*</code>) via <code>tm_str()</code>. To access the underlaying c string again just call <code>.data</code> on the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">tm_str_t</a>.</p>
 <blockquote>
 <p>Used to represent a string slice with pointer and length.</p>
 <p>This lets you reason about parts of a string, which you are not able to do with standard NULL-terminated strings.</p>
 <p><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">documentation</a></p>
 </blockquote>
-<p>After this step we need to get the current folder. Therefore we are asking the <code>tm_asset_browser_add_asset_api</code> what the current folder is. Then we decide if want to select the file. At the end we are calling add function of the <code>tm_asset_browser_add_asset_api-&gt;add()</code>. </p>
+<p>After this step we need to get the current folder. Therefore we are asking the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a> what the current folder is. Then we decide if want to select the file. At the end we are calling add function of the <code>tm_asset_browser_add_asset_api-&gt;add()</code>. </p>
 <blockquote>
 <p><strong>Note:</strong> We do not have any asset labels for our current asset therefore we do not pass them to the add function, otherwise the last 2 arguments would be different than <code>0</code> and <code>0</code>.</p>
 </blockquote>
@@ -461,7 +461,7 @@ tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_f
 </code></pre>
 <h2 id="enabling-reimport"><a class="header" href="#enabling-reimport">Enabling reimport</a></h2>
 <p>The previous import task would never be able to reimport an asset. Let us fix this quickly!
-The <code>tm_asset_io_import</code> has a field called <code>reimport_into</code> of type <code>tm_tt_id_t</code>, which we did not set. If the current context is an import, otherwise a valid the truth id. It enables us to check if the current context is an import or reimport. To achieve this, we need to update the <code>reimport_into</code> object with the newly created object asset_obj, and you can do this via The Truth API function <code>retarget_write.</code> It takes an object and updates it with the new content. Commit the change and destroy the temporary object (asset_obj).</p>
+The <a href="https://ourmachinery.com/apidoc/foundation/asset_io.h.html#structtm_asset_io_import">tm_asset_io_import</a> has a field called <code>reimport_into</code> of type <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>, which we did not set. If the current context is an import, otherwise a valid the truth id. It enables us to check if the current context is an import or reimport. To achieve this, we need to update the <code>reimport_into</code> object with the newly created object asset_obj, and you can do this via The Truth API function <code>retarget_write.</code> It takes an object and updates it with the new content. Commit the change and destroy the temporary object (asset_obj).</p>
 <pre><code class="language-c">            if (args-&gt;reimport_into.u64)
             {
                 tm_the_truth_api-&gt;retarget_write(tt, asset_obj, args-&gt;reimport_into);

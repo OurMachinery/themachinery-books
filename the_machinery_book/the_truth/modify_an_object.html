@@ -147,7 +147,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="modify-an-object"><a class="header" href="#modify-an-object">Modify an object</a></h1>
-<p>To manipulate an object, you need to have its ID (<code>tm_tt_id_t</code>). When you create an object, you should keep its ID around if you intend to edit it later.</p>
+<p>To manipulate an object, you need to have its ID (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>). When you create an object, you should keep its ID around if you intend to edit it later.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="#1-make-the-object-writable">1. Make the object writable</a></li>
@@ -181,7 +181,7 @@
     TM_TT_PROP__RECT__H, // float
 };
 </code></pre>
-<p>In our example we want to set the width to <code>100</code>. The width is stored in <code>TM_TT_PROP__RECT__W</code>.</p>
+<p>In our example we want to set the width to <code>100</code>. The width is stored in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#enumtm_tt_prop__rect">TM_TT_PROP__RECT__W</a>.</p>
 <p>When we know what we want to edit, we call the correct function and change the value.</p>
 <p>The function we need to call:</p>
 <pre><code class="language-c">void (*set_float)(tm_the_truth_o *tt, tm_the_truth_object_o *obj, uint32_t property,float value);
@@ -194,7 +194,7 @@
 }
 </code></pre>
 <h2 id="3-save-the-change"><a class="header" href="#3-save-the-change">3. Save the change</a></h2>
-<p>In the end, we need to commit our change to the system. In this example we do not care about the undo scope. That is why we provide the <code>TM_TT_NO_UNDO_SCOPE</code> define. This means this action is not undoable.</p>
+<p>In the end, we need to commit our change to the system. In this example we do not care about the undo scope. That is why we provide the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a> define. This means this action is not undoable.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
 	tm_the_truth_object_o *my_object_w = tm_the_truth_api-&gt;write(tt, my_object);
     tm_the_truth_api-&gt;set_float(tt,my_object_w,TM_TT_PROP__RECT__W,100);
@@ -211,7 +211,7 @@
 </code></pre>
 <p>Now this action can be reverted in the Editor.</p>
 <h2 id="4-get-a-value"><a class="header" href="#4-get-a-value">4. Get a value</a></h2>
-<p>Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro <code>tm_tt_read</code>. This will give us a immutable (read only) pointer to the underlaying object. This allows us to read the data from it.</p>
+<p>Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_read()">tm_tt_read</a>. This will give us a immutable (read only) pointer to the underlaying object. This allows us to read the data from it.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),my_object_w,TM_TT_PROP__RECT__W);
     wdith += 100;
@@ -222,11 +222,11 @@
 }
 </code></pre>
 <blockquote>
-<p><strong>Note:</strong> If we had a lot of read actions we should only call <code>tm_tt_read</code> once and store the result in a  <code>const tm_the_truth_object_o*</code> variable and reuse.</p>
+<p><strong>Note:</strong> If we had a lot of read actions we should only call <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_read()">tm_tt_read</a> once and store the result in a  <code>const tm_the_truth_object_o*</code> variable and reuse.</p>
 </blockquote>
 <h2 id="5-make-the-code-robust"><a class="header" href="#5-make-the-code-robust">5. Make the code robust</a></h2>
 <p>To ensure we are actually handling the right type we should check this at the beginning of our function. If the type is not correct we should early out.</p>
-<p>All we need to do is compare the <code>tm_tt_type_t</code>'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a <code>tm_tt_id_t</code> we can obtain the type by calling <code>tm_tt_type()</code> on them. <code>tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);</code> will give us back the object type from a given hash. After that we can do our comparison.</p>
+<p>All we need to do is compare the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a>'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> we can obtain the type by calling <code>tm_tt_type()</code> on them. <code>tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);</code> will give us back the object type from a given hash. After that we can do our comparison.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
     const tm_tt_type_t type = tm_tt_type(my_object);
     const tm_tt_type_t expected_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__RECT);

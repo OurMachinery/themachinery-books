@@ -250,10 +250,10 @@ implementation in C++ if you want to. (At Our Machinery, we write the implementa
 <h3 id="write-your-own-plugin"><a class="header" href="#write-your-own-plugin">Write your own plugin</a></h3>
 <p>To write a plugin you need to implement a <code>tm_load_plugin()</code> function that is called whenever the
 plugin DLL is loaded/unloaded. In this function, you can interact with various engine interfaces. For
-example, you can implement <code>TM_UNIT_TEST_INTERFACE_NAME</code> to implement unit tests that get run
-together with the engine unit tests, you can implement <code>TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</code> to
+example, you can implement <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a> to implement unit tests that get run
+together with the engine unit tests, you can implement <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a> to
 extend our data model, The Truth, with your own data types or implement
-<code>TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME</code> to extend our entity model with your own component
+<a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_interface_name">TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME</a> to extend our entity model with your own component
 types.</p>
 <h3 id="write-your-own-api"><a class="header" href="#write-your-own-api">Write your own API</a></h3>
 <p>You can also create your own APIs that other plugins can query for. If you create your own APIs, you

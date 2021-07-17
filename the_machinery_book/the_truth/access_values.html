@@ -147,7 +147,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="access-values"><a class="header" href="#access-values">Access values</a></h1>
-<p>The truth objects (<code>tm_tt_id_t</code>) are immutable objects unless you explicitly make them writable. Therefore we do not be afraid of accidently changing a value when reading from a object property.</p>
+<p>The truth objects (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>) are immutable objects unless you explicitly make them writable. Therefore we do not be afraid of accidently changing a value when reading from a object property.</p>
 <p>To read from a object property we need access to the correct Truth Instance as well as to a object id.  We also need to know what kind of property we want to access. That is why we always want to define our properties in a Header-File. Which allows us and others to find quickly our type definitions. A good practice is to comment on what kind of data type property contains.</p>
 <p>Let us assume our object is of type <code>TM_TT_TYPE__RECT</code>:</p>
 <pre><code>enum {
@@ -157,7 +157,7 @@
     TM_TT_PROP__RECT__H, // float
 };
 </code></pre>
-<p>When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of a object. The width is stored in <code>TM_TT_PROP__RECT__W</code>.</p>
+<p>When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of a object. The width is stored in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#enumtm_tt_prop__rect">TM_TT_PROP__RECT__W</a>.</p>
 <p>The function we need to call:</p>
 <pre><code class="language-c">void (*get_float)(tm_the_truth_o *tt,const tm_the_truth_object_o *obj, uint32_t property);
 </code></pre>
@@ -169,7 +169,7 @@
 </code></pre>
 <h2 id="make-the-code-robust"><a class="header" href="#make-the-code-robust">Make the code robust</a></h2>
 <p>To ensure we are actually handling the right type we should check this at the beginning of our function. If the type is not correct we should early out and log a warning.</p>
-<p>All we need to do is compare the <code>tm_tt_type_t</code>'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a <code>tm_tt_id_t</code> we can obtain the type by calling <code>tm_tt_type()</code> on them. <code>tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);</code> will give us back the object type from a given hash. After that we can do our comparison.</p>
+<p>All we need to do is compare the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a>'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> we can obtain the type by calling <code>tm_tt_type()</code> on them. <code>tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);</code> will give us back the object type from a given hash. After that we can do our comparison.</p>
 <pre><code class="language-c">    void log_with(tm_the_truth_o *tt, tm_tt_id_t my_object){   
     const tm_tt_type_t type = tm_tt_type(my_object);
     const tm_tt_type_t expected_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__RECT);

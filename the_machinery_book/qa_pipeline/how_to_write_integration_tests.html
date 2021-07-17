@@ -162,7 +162,7 @@ Its generally used after unit testing to ensure that the composition of the soft
 <p>The integration test framework can be found in the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html">integration_test.h</a> ,and is part of the foundation library. We need to include this header file, and then we can start writing our tests.</p>
 <pre><code>#include &lt;foundation/integration_test.h&gt;
 </code></pre>
-<p>To write a test you need to register it via the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>. It expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#structtm_integration_test_i">tm_integration_test_i</a>. This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: <code>TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</code>.</p>
+<p>To write a test you need to register it via the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>. It expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#structtm_integration_test_i">tm_integration_test_i</a>. This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_context__the_machinery_editor">TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</a>.</p>
 <pre><code class="language-c">// Interface for integration tests.
 typedef struct tm_integration_test_i
 {
@@ -193,7 +193,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, TM_INTEGRATION_TEST_INTERFACE_NAME, my_integration_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <code>TM_INTEGRATION_TEST_INTERFACE_NAME</code>.</p>
+<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>.</p>
 <p><em>How could this interface look like?</em></p>
 <p>After we have done this, we need to declare our <code>my_integration_tests.</code> </p>
 <pre><code class="language-c">tm_integration_test_i my_integration_tests = {
@@ -203,7 +203,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     .tick = my_test_tick,
 };
 </code></pre>
-<p>The name field is important because, later on, we need to use this name when we want to run the test. The context makes sure that it runs and boots up the Editor. <code>TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</code> is defined in <code>#include &lt;foundation/integration_test.h&gt;</code>. The function <code>my_test_tick</code> gets called and the magic can happen.</p>
+<p>The name field is important because, later on, we need to use this name when we want to run the test. The context makes sure that it runs and boots up the Editor. <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_context__the_machinery_editor">TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</a> is defined in <code>#include &lt;foundation/integration_test.h&gt;</code>. The function <code>my_test_tick</code> gets called and the magic can happen.</p>
 <p><em>How does a test itself look like?</em></p>
 <p>Let us write this test. We need to write a function of the signature: <code>(tm_integration_test_runner_i *)</code>.  In its body, we can define our tests.</p>
 <pre><code class="language-c">static void my_test_tick(tm_integration_test_runner_i *test_runner)
@@ -217,7 +217,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <tr><td>TM_WAIT_LOOP</td><td>test_runner, second, i</td><td>Since <code>TM_WAIT()</code> uses the <code>__LINE__</code> macro to uniquely identify wait points, it doesn't work when called in a loop. In this case you can use <code>TM_WAIT_LOOP()</code> instead. It takes an iteration parameter <code>i</code> that uniquely identifies this iteration of the loop (typically it would just be the iteration index). This together with <code>__LINE__</code> gives a unique identifier for the wait point.</td></tr>
 </tbody></table>
 <blockquote>
-<p><strong><code>TM_WAIT_LOOP</code> WARNING</strong></p>
+<p><strong><a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_wait_loop()">TM_WAIT_LOOP()</a> WARNING</strong></p>
 <p>If you have multiple nested loops, be aware that using just the inner loop index j is not enough to uniquely identify the wait point since it is repeated for each outer loop iteration. Instead, you want to combine the outer and inner indexes.</p>
 </blockquote>
 <p>Lets write some example:</p>

@@ -197,7 +197,7 @@ user / year.</p>
 <p>Quick steps to get up and running:</p>
 <ol>
 <li>
-<p>Download The Machinery at <a href="https://ourmachinery.com/download.html.">https://ourmachinery.com/download.html</a>.</p>
+<p>Download The Machinery at <a href="https://ourmachinery.com/download.html">https://ourmachinery.com/download.html</a>.</p>
 </li>
 <li>
 <p>Sign up for an <a href="https://ourmachinery.com/">ourmachinery.com</a> account <a href="https://ourmachinery.com/sign-up.html">here</a>. (It's free!)</p>
@@ -493,7 +493,7 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <h2 id="where-to-report-bugs-or-feedback"><a class="header" href="#where-to-report-bugs-or-feedback">Where to report bugs or feedback</a></h2>
 <ol>
 <li>If you have any problems running the software, encounter crashes, etc, report them on our <a href="https://github.com/OurMachinery/themachinery-public/issues">public bug tracker</a> as soon as possible. We will fix bugs as soon as we can and provide updated executables for download on the website.</li>
-<li>If you have other feedback or questions, post them on our <a href="http://forums.ourmachinery.com/c/beta">forum</a>. We appreciate candid, honest opinions.</li>
+<li>If you have other feedback or questions, post them on our <a href="https://github.com/OurMachinery/themachinery-public/discussions">forum</a>. We appreciate candid, honest opinions.</li>
 </ol>
 <p>Note that you need to create a separate login to log in to the forum. (We might unify the logins in the future.)
 You can also drop in on our <a href="https://discord.gg/SHHSZaH">Discord Server</a>. You will frequently find us there, answering questions. We'll pay special attention on Thursdays.</p>
@@ -1357,7 +1357,7 @@ Entities with shape components will collide with each other when physics is simu
 <p>A physics shape can either be specified as geometry (sphere, capsule, plane, box) or it can be
 computed from a graphics mesh (convex, mesh). Note that if you use computed geometry, you must press
 the <strong>Cook</strong> button in the Properties UI to explicitly compute the geometry for the object.</p>
-<p><img src="https://www.dropbox.com/s/v5jnthc50vsa1oi/convex-physics-shape.png?dl=1" alt="Convex shape." /></p>
+<p><img src="editing_workflows/physics.html#" alt="Convex shape." /></p>
 <p>If you just give an entity a <em>Physics Shape Component</em> it will become a static physics object. Other
 moving objects can still collide with it, but the object itself won't move.</p>
 <p>To create a moving physics object, you need to add a <em>Physics Body Component</em>. The body component
@@ -1417,7 +1417,7 @@ projects.</p>
 <em>Out</em> event multiple times, each time with one of the result objects. (In the future we might change
 this and have the nodes actually return arrays of objects.)</p>
 </blockquote>
-<p>From C you can access those features via the <a href="https://ourmachinery.com/apidoc/plugins/physx/physx_scene.h.html#structtm_physx_scene_api"><code>tm_physx_scene_api</code></a>.</p>
+<p>From C you can access those features via the <a href="https://ourmachinery.com/apidoc/plugins/physx/physx_scene.h.html#structtm_physx_scene_api">tm_physx_scene_api</a>.</p>
 <h2 id="missing-features"><a class="header" href="#missing-features">Missing Features</a></h2>
 <p>Note that The Machinery doesn't currently support all the features found in PhysX. The most
 glaring omissions are:</p>
@@ -1458,7 +1458,7 @@ animations you should use an <em>Animation State Machine</em> instead.</p>
 <div style="break-before: page; page-break-before: always;"></div><h3 id="animation-state-machines"><a class="header" href="#animation-state-machines">Animation state machines</a></h3>
 <p>The <em>Animation State Machine Asset</em> represents an <em>Animation State Machine</em>. If you double-click an
 Animation State Machine Asset in the Asset Browser, an Animation State Machine Editor will open:</p>
-<p><img src="https://www.dropbox.com/s/fdte16tqekqhev6/asm-editor.png?dl=1" alt="Animation State Machine Editor" /></p>
+<p><img src="editing_workflows/animation/animation-state-machine.html#" alt="Animation State Machine Editor" /></p>
 <p>The Animation State Machine (ASM) introduces a number of concepts: <em>Layers</em>, <em>States</em>,
 <em>Transitions</em>, <em>Events</em>, <em>Variables</em>, and <em>Blend Sets</em>.</p>
 <p>The ASM represents a complex animation setup with multiple animations that can be played on a
@@ -1516,7 +1516,7 @@ the layers below it shine through.</p>
 <p>Allows you to make a 1D or 2D blend between animations based on the value of variables. This is often
 used for locomotion. You can use different animations based on the characters running speed and whether
 the character is turning left or right and position them on a map to blend between them.</p>
-<p><img src="https://www.dropbox.com/s/p9yc7qyoaml4l70/animation-blending.png?dl=1" alt="Animation Blending" /></p>
+<p><img src="editing_workflows/animation/animation-state-machine.html#" alt="Animation Blending" /></p>
 <p>Once you have created an Animation State Machine, you can assign it to a character by giving it an
 Animation State Machine Component.</p>
 <p>For an example of how the animation system works, have a look at the <code>mannequin</code> sample project.</p>
@@ -1648,7 +1648,7 @@ of the sound playing nodes in the visual scripting language.</p>
 <p>Sub-objects in The Truth are references to <em>owned</em> objects. They work just as references, but have special behaviours in some situations. For examples, when an object is cloned, all its sub-objects will be cloned too, while its references will not.</p>
 <p>For more information checkout the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html">documentation</a> and these blog posts: <a href="https://ourmachinery.com/post/the-story-behind-the-truth-designing-a-data-model/">The Story behind The Truth: Designing a Data Model</a>  or this <a href="https://ourmachinery.com/post/multi-threading-the-truth/">one</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="access-values"><a class="header" href="#access-values">Access values</a></h1>
-<p>The truth objects (<code>tm_tt_id_t</code>) are immutable objects unless you explicitly make them writable. Therefore we do not be afraid of accidently changing a value when reading from a object property.</p>
+<p>The truth objects (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>) are immutable objects unless you explicitly make them writable. Therefore we do not be afraid of accidently changing a value when reading from a object property.</p>
 <p>To read from a object property we need access to the correct Truth Instance as well as to a object id.  We also need to know what kind of property we want to access. That is why we always want to define our properties in a Header-File. Which allows us and others to find quickly our type definitions. A good practice is to comment on what kind of data type property contains.</p>
 <p>Let us assume our object is of type <code>TM_TT_TYPE__RECT</code>:</p>
 <pre><code>enum {
@@ -1658,7 +1658,7 @@ of the sound playing nodes in the visual scripting language.</p>
     TM_TT_PROP__RECT__H, // float
 };
 </code></pre>
-<p>When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of a object. The width is stored in <code>TM_TT_PROP__RECT__W</code>.</p>
+<p>When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of a object. The width is stored in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#enumtm_tt_prop__rect">TM_TT_PROP__RECT__W</a>.</p>
 <p>The function we need to call:</p>
 <pre><code class="language-c">void (*get_float)(tm_the_truth_o *tt,const tm_the_truth_object_o *obj, uint32_t property);
 </code></pre>
@@ -1670,7 +1670,7 @@ of the sound playing nodes in the visual scripting language.</p>
 </code></pre>
 <h2 id="make-the-code-robust"><a class="header" href="#make-the-code-robust">Make the code robust</a></h2>
 <p>To ensure we are actually handling the right type we should check this at the beginning of our function. If the type is not correct we should early out and log a warning.</p>
-<p>All we need to do is compare the <code>tm_tt_type_t</code>'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a <code>tm_tt_id_t</code> we can obtain the type by calling <code>tm_tt_type()</code> on them. <code>tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);</code> will give us back the object type from a given hash. After that we can do our comparison.</p>
+<p>All we need to do is compare the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a>'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> we can obtain the type by calling <code>tm_tt_type()</code> on them. <code>tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);</code> will give us back the object type from a given hash. After that we can do our comparison.</p>
 <pre><code class="language-c">    void log_with(tm_the_truth_o *tt, tm_tt_id_t my_object){   
     const tm_tt_type_t type = tm_tt_type(my_object);
     const tm_tt_type_t expected_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__RECT);
@@ -1690,8 +1690,8 @@ const 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),
 <div style="break-before: page; page-break-before: always;"></div><h2 id="create-an-object"><a class="header" href="#create-an-object">Create an Object</a></h2>
 <p>You can create an object of a Truth Type via two steps:</p>
 <ol>
-<li>You need to obtain the Type from the type hash. We call the <code>object_type_from_name_hash</code> to obtain the <code>tm_tt_type_t</code></li>
-<li>You need to create an Object from that Type. We call <code>create_object_of_type</code> to create a object <code>tm_tt_id_t</code> . We pass <code>TM_TT_NO_UNDO_SCOPE</code> because we do not need a undo scope for our example.</li>
+<li>You need to obtain the Type from the type hash. We call the <code>object_type_from_name_hash</code> to obtain the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a></li>
+<li>You need to create an Object from that Type. We call <code>create_object_of_type</code> to create a object <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> . We pass <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a> because we do not need a undo scope for our example.</li>
 </ol>
 <p>First, we need to have access to a Truth instance. Otherwise, we could not create an object. In this example, we create a function.</p>
 <pre><code class="language-c">tm_tt_id_t create_my_type_object(tm_the_truth_o *tt){
@@ -1712,7 +1712,7 @@ const 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),
 <h2 id="what-is-next-1"><a class="header" href="#what-is-next-1">What is next?</a></h2>
 <p>If you want to learn more about how to create your own custom type, follow the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//the_truth/custom_truth_type.html">&quot;Custom Truth Type&quot;</a> walkthrough.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="modify-an-object"><a class="header" href="#modify-an-object">Modify an object</a></h1>
-<p>To manipulate an object, you need to have its ID (<code>tm_tt_id_t</code>). When you create an object, you should keep its ID around if you intend to edit it later.</p>
+<p>To manipulate an object, you need to have its ID (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>). When you create an object, you should keep its ID around if you intend to edit it later.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="the_truth/modify_an_object.html#1-make-the-object-writable">1. Make the object writable</a></li>
@@ -1746,7 +1746,7 @@ const 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),
     TM_TT_PROP__RECT__H, // float
 };
 </code></pre>
-<p>In our example we want to set the width to <code>100</code>. The width is stored in <code>TM_TT_PROP__RECT__W</code>.</p>
+<p>In our example we want to set the width to <code>100</code>. The width is stored in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#enumtm_tt_prop__rect">TM_TT_PROP__RECT__W</a>.</p>
 <p>When we know what we want to edit, we call the correct function and change the value.</p>
 <p>The function we need to call:</p>
 <pre><code class="language-c">void (*set_float)(tm_the_truth_o *tt, tm_the_truth_object_o *obj, uint32_t property,float value);
@@ -1759,7 +1759,7 @@ const 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),
 }
 </code></pre>
 <h2 id="3-save-the-change"><a class="header" href="#3-save-the-change">3. Save the change</a></h2>
-<p>In the end, we need to commit our change to the system. In this example we do not care about the undo scope. That is why we provide the <code>TM_TT_NO_UNDO_SCOPE</code> define. This means this action is not undoable.</p>
+<p>In the end, we need to commit our change to the system. In this example we do not care about the undo scope. That is why we provide the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a> define. This means this action is not undoable.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
 	tm_the_truth_object_o *my_object_w = tm_the_truth_api-&gt;write(tt, my_object);
     tm_the_truth_api-&gt;set_float(tt,my_object_w,TM_TT_PROP__RECT__W,100);
@@ -1776,7 +1776,7 @@ const 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),
 </code></pre>
 <p>Now this action can be reverted in the Editor.</p>
 <h2 id="4-get-a-value"><a class="header" href="#4-get-a-value">4. Get a value</a></h2>
-<p>Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro <code>tm_tt_read</code>. This will give us a immutable (read only) pointer to the underlaying object. This allows us to read the data from it.</p>
+<p>Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_read()">tm_tt_read</a>. This will give us a immutable (read only) pointer to the underlaying object. This allows us to read the data from it.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),my_object_w,TM_TT_PROP__RECT__W);
     wdith += 100;
@@ -1787,11 +1787,11 @@ const 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),
 }
 </code></pre>
 <blockquote>
-<p><strong>Note:</strong> If we had a lot of read actions we should only call <code>tm_tt_read</code> once and store the result in a  <code>const tm_the_truth_object_o*</code> variable and reuse.</p>
+<p><strong>Note:</strong> If we had a lot of read actions we should only call <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_read()">tm_tt_read</a> once and store the result in a  <code>const tm_the_truth_object_o*</code> variable and reuse.</p>
 </blockquote>
 <h2 id="5-make-the-code-robust"><a class="header" href="#5-make-the-code-robust">5. Make the code robust</a></h2>
 <p>To ensure we are actually handling the right type we should check this at the beginning of our function. If the type is not correct we should early out.</p>
-<p>All we need to do is compare the <code>tm_tt_type_t</code>'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a <code>tm_tt_id_t</code> we can obtain the type by calling <code>tm_tt_type()</code> on them. <code>tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);</code> will give us back the object type from a given hash. After that we can do our comparison.</p>
+<p>All we need to do is compare the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a>'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> we can obtain the type by calling <code>tm_tt_type()</code> on them. <code>tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);</code> will give us back the object type from a given hash. After that we can do our comparison.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
     const tm_tt_type_t type = tm_tt_type(my_object);
     const tm_tt_type_t expected_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__RECT);
@@ -1808,25 +1808,25 @@ const 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="common-types"><a class="header" href="#common-types">Common Types</a></h1>
-<p>The Truth comes with several useful common types. You can find them in the <code>the_truth_types.h</code> (<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#structtm_the_truth_common_types_api">API Documentation</a>).</p>
+<p>The Truth comes with several useful common types. You can find them in the <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#the_truth_types.h">the_truth_types.h</a> (<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#structtm_the_truth_common_types_api">API Documentation</a>).</p>
 <table><thead><tr><th>Macro</th><th>Description</th></tr></thead><tbody>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__bool"><code>TM_TT_TYPE__BOOL</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__bool"><code>TM_TT_TYPE_HASH__BOOL</code></a></td><td>The first property contains the value.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__bool">TM_TT_TYPE__BOOL</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__bool) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__bool"><code>TM_TT_TYPE_HASH__BOOL</code></a></td><td>The first property contains the value.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__uint32_t"><code>TM_TT_TYPE__UINT32_T</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__uint32_t"><code>TM_TT_TYPE_HASH__UINT32_T</code></a></td><td>The first property contains the value.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__uint64_t"><code>TM_TT_TYPE__UINT64_T</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__uint64_t"><code>TM_TT_TYPE_HASH__UINT64_T</code></a></td><td>The first property contains the value.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__float"><code>TM_TT_TYPE__FLOAT</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__float"><code>TM_TT_TYPE_HASH__FLOAT</code></a></td><td>The first property contains the value.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__double"><code>TM_TT_TYPE__DOUBLE</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__double"><code>TM_TT_TYPE_HASH__DOUBLE</code></a></td><td>The first property contains the value.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__string"><code>TM_TT_TYPE__STRING</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__string"><code>TM_TT_TYPE_HASH__STRING</code></a></td><td>The first property contains the value.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__float">TM_TT_TYPE__FLOAT</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__float) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__float"><code>TM_TT_TYPE_HASH__FLOAT</code></a></td><td>The first property contains the value.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__double">TM_TT_TYPE__DOUBLE</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__double) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__double"><code>TM_TT_TYPE_HASH__DOUBLE</code></a></td><td>The first property contains the value.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__string">TM_TT_TYPE__STRING</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__string) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__string"><code>TM_TT_TYPE_HASH__STRING</code></a></td><td>The first property contains the value.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__vec2"><code>TM_TT_TYPE__VEC2</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__vec2"><code>TM_TT_TYPE_HASH__VEC2</code></a></td><td>The first property contains the x value and the second the y value.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__vec3"><code>TM_TT_TYPE__VEC3</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__vec3"><code>TM_TT_TYPE_HASH__VEC3</code></a></td><td>The first property contains the x value and the second the y value and the third the z value.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__vec4"><code>TM_TT_TYPE__VEC4</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__vec4"><code>TM_TT_TYPE_HASH__VEC4</code></a></td><td>The first property contains the x value and the second the y value and the third the z value while the last one contains the w value.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__position"><code>TM_TT_TYPE__POSITION</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__position"><code>TM_TT_TYPE_HASH__POSITION</code></a></td><td>Same as <code>vec4</code>.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rotation"><code>TM_TT_TYPE__ROTATION</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rotation"><code>TM_TT_TYPE_HASH__ROTATION</code></a></td><td>Based on a <code>vec4</code>. Used to represent the rotation of a object via quaternions.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__scale"><code>TM_TT_TYPE__SCALE</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__scale"><code>TM_TT_TYPE_HASH__SCALE</code></a></td><td>Same as <code>vec3.</code></td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgb"><code>TM_TT_TYPE__COLOR_RGB</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgb"><code>TM_TT_TYPE_HASH__COLOR_RGB</code></a></td><td>Represents a RGB colour.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgba"><code>TM_TT_TYPE__COLOR_RGBA</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgba"><code>TM_TT_TYPE_HASH__COLOR_RGBA</code></a></td><td>Represents a RGBA colour.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rect"><code>TM_TT_TYPE__RECT</code></a> /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rect"><code>TM_TT_TYPE_HASH__RECT</code></a></td><td>The first property contains the x value and the second the y value and the third the width value while the last one contains the height value.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__position">TM_TT_TYPE__POSITION</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__position) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__position"><code>TM_TT_TYPE_HASH__POSITION</code></a></td><td>Same as <code>vec4</code>.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rotation">TM_TT_TYPE__ROTATION</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rotation) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rotation"><code>TM_TT_TYPE_HASH__ROTATION</code></a></td><td>Based on a <code>vec4</code>. Used to represent the rotation of a object via quaternions.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__scale">TM_TT_TYPE__SCALE</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__scale) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__scale"><code>TM_TT_TYPE_HASH__SCALE</code></a></td><td>Same as <code>vec3.</code></td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgb">TM_TT_TYPE__COLOR_RGB</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgb) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgb"><code>TM_TT_TYPE_HASH__COLOR_RGB</code></a></td><td>Represents a RGB colour.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgba">TM_TT_TYPE__COLOR_RGBA</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgba) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgba"><code>TM_TT_TYPE_HASH__COLOR_RGBA</code></a></td><td>Represents a RGBA colour.</td></tr>
+<tr><td>[<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rect">TM_TT_TYPE__RECT</a>](https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rect) /<a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rect"><code>TM_TT_TYPE_HASH__RECT</code></a></td><td>The first property contains the x value and the second the y value and the third the width value while the last one contains the height value.</td></tr>
 </tbody></table>
-<p>There is a helper API to handle all of these types in a easy way, to reduce the boilerplate code: <code>tm_the_truth_common_types_api</code>. </p>
+<p>There is a helper API to handle all of these types in a easy way, to reduce the boilerplate code: <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#structtm_the_truth_common_types_api">tm_the_truth_common_types_api</a>. </p>
 <blockquote>
 <p><strong>Note:</strong> There is a list of all Truth Types the Engine comes with available on our <a href="https://ourmachinery.com/apidoc/truth_types.html">API Documentation</a></p>
 </blockquote>
@@ -1867,7 +1867,7 @@ the plugin may in turn rely on APIs exposed by other plugins.</p>
 <p>A central object called the <em>API registry</em> is used to keep track of all the APIs. When you want to
 use an API from another plugin, you ask the API registry for it. Similarly, you expose your APIs to
 the world by registering them with the API registry.</p>
-<p>This may seem a bit abstract at this point, so let’s look at a concrete example, <code>unicode.h</code> which
+<p>This may seem a bit abstract at this point, so let’s look at a concrete example, <a href="https://ourmachinery.com/apidoc/foundation/unicode.h.html#unicode.h">unicode.h</a> which
 exposes an API for encoding and decoding Unicode strings:</p>
 <pre><code class="language-c">// This header has been abridged and commented from the original to make things
 // clearer.
@@ -1906,7 +1906,7 @@ for <code>&lt;api_types.h&gt;</code>). This helps keep compile times down, but i
 code. When you read a header file you don’t have to follow a long chain of other header files to understand
 what is happening.</p>
 <p>Next follows a block of forward struct declarations (in this case only one).</p>
-<p>Next, we have the name of this API defined as a constant <code>TM_UNICODE_API_NAME</code>, followed by the
+<p>Next, we have the name of this API defined as a constant <a href="https://ourmachinery.com/apidoc/foundation/unicode.h.html#tm_unicode_api_name">TM_UNICODE_API_NAME</a>, followed by the
 <code>struct tm_unicode_api</code> that defines the functions in the API.</p>
 <p>To use this API, you would first use the API registry to query for the API pointer, then using that
 pointer, call the functions of the API:</p>
@@ -1929,8 +1929,8 @@ whereas interfaces can have many implementations. For example, all code that can
 implements the unit test interface. Unit test programs can query the API registry to find all these
 implementations and run all the unit tests.</p>
 <p>To extend the editor you add implementations to the interfaces used by the editor. For example, you
-can add implementations of the <code>TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</code>  in order to create new
-data types in The Truth, and add implementations of the <code>TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME</code>
+can add implementations of the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a>  in order to create new
+data types in The Truth, and add implementations of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_interface_name">TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME</a>
 in order to define new entity components. See the sample plugin examples.</p>
 <p>It does not matter in which order the plugins are loaded. If you query for a plugin that hasn’t yet
 been registered, you get a pointer to a nulled struct back. When the plugin is loaded, that struct
@@ -2132,10 +2132,10 @@ implementation in C++ if you want to. (At Our Machinery, we write the implementa
 <h3 id="write-your-own-plugin"><a class="header" href="#write-your-own-plugin">Write your own plugin</a></h3>
 <p>To write a plugin you need to implement a <code>tm_load_plugin()</code> function that is called whenever the
 plugin DLL is loaded/unloaded. In this function, you can interact with various engine interfaces. For
-example, you can implement <code>TM_UNIT_TEST_INTERFACE_NAME</code> to implement unit tests that get run
-together with the engine unit tests, you can implement <code>TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</code> to
+example, you can implement <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a> to implement unit tests that get run
+together with the engine unit tests, you can implement <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a> to
 extend our data model, The Truth, with your own data types or implement
-<code>TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME</code> to extend our entity model with your own component
+<a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_interface_name">TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME</a> to extend our entity model with your own component
 types.</p>
 <h3 id="write-your-own-api"><a class="header" href="#write-your-own-api">Write your own API</a></h3>
 <p>You can also create your own APIs that other plugins can query for. If you create your own APIs, you
@@ -2203,13 +2203,13 @@ variables so that we don’t have to use the registry to query for them every ti
 them. Finally, we add our own API to the registry, so others can query for and use it.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-truth-type"><a class="header" href="#create-a-custom-truth-type">Create a custom Truth Type</a></h1>
 <p>This walkthrough shows you how to create a type for the Truth. The Truth is our centralized data model for editing data in the Engine. For more details on the system itself, click here: <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_truth/index.html">The Truth</a>. </p>
-<p>You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books//the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. </p>
+<p>You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. </p>
 <p>We will cover the following topics:</p>
 <ul>
 <li>How to define a Type.</li>
 <li>Type Properties</li>
 </ul>
-<p>After this walkthrough you could checkout the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//tutorials/the_truth/custom_asset/index.html">&quot;Create a custom asset&quot;</a> tutorial! </p>
+<p>After this walkthrough you could checkout the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/custom_asset/index.html">&quot;Create a custom asset&quot;</a> tutorial! </p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="the_truth/custom_truth_type.html#define-a-type">Define a Type</a></li>
@@ -2226,7 +2226,7 @@ them. Finally, we add our own API to the registry, so others can query for and u
 <blockquote>
 <p><strong>Example:</strong> There is a Project Truth to keep all the project-related settings and an Engine/Application Truth that holds all the application-wide settings.</p>
 </blockquote>
-<p>Generally speaking, you want to define Truth Types at the beginning of the Engine's life cycle. Therefore the designated place is the <code>tm_load_plugin</code> function. The Truth has an <em>interface</em> to register a truth type creation function: <code>TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</code>. </p>
+<p>Generally speaking, you want to define Truth Types at the beginning of the Engine's life cycle. Therefore the designated place is the <code>tm_load_plugin</code> function. The Truth has an <em>interface</em> to register a truth type creation function: <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a>. </p>
 <p>This interface expects a function of the signature: <code>void create_truth_types(tm_the_truth_o *tt)</code>. Whenever the Engine creates a Truth, it invokes this interface on all loaded plugins, and their types are registered. You do not need to register your Type to the interface if you want to register your Type to a specific Truth.</p>
 <blockquote>
 <p><strong>Note:</strong> Mostly this function is called: <code>create_truth_types</code></p>
@@ -2252,9 +2252,9 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 #define TM_TT_TYPE_HASH___MY_TYPE TM_STATIC_HASH(&quot;tm_my_type&quot;, 0xde0e763ccd72b89aULL)
 </code></pre>
 <blockquote>
-<p><strong>Tip:</strong> Do not forget to run <code>hash.exe.</code> Otherwise, the <code>TM_STATIC_HASH</code> macro will cause an error. You can also run <code>tmbuild --gen-hash</code></p>
+<p><strong>Tip:</strong> Do not forget to run <code>hash.exe.</code> Otherwise, the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> macro will cause an error. You can also run <code>tmbuild --gen-hash</code></p>
 </blockquote>
-<p>It is good practice to place the types into a header file so others can use these types as well!  When that is done we can call the <code>tm_the_truth_api-&gt;create_object_type()</code> to create the actual type. It will return a <code>tm_tt_type_t</code> which is the identifier of our type. The <code>tm_tt_id_t</code> will also refer to the type here! </p>
+<p>It is good practice to place the types into a header file so others can use these types as well!  When that is done we can call the <code>tm_the_truth_api-&gt;create_object_type()</code> to create the actual type. It will return a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a> which is the identifier of our type. The <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> will also refer to the type here! </p>
 <p>The function expects:</p>
 <table><thead><tr><th>Argument</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>tm_the_truth_o *tt</code></td><td>The Truth instance. This function will add the type to this instance</td></tr>
@@ -2321,7 +2321,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p><strong>Note:</strong> For more information please check: <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#the_truth.h">The API Documentation</a> </p>
 </blockquote>
 <h2 id="adding-properties"><a class="header" href="#adding-properties">Adding properties</a></h2>
-<p>Let us add some properties to our Type! As you remember, when we created the Type, the function <code>create_object_type()</code> required a pointer to the definition of properties. You can define properties via the <code>tm_the_truth_property_definition_t</code> struct.</p>
+<p>Let us add some properties to our Type! As you remember, when we created the Type, the function <code>create_object_type()</code> required a pointer to the definition of properties. You can define properties via the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">tm_the_truth_property_definition_t</a> struct.</p>
 <pre><code class="language-c">typedef struct tm_the_truth_property_definition_t
 {
     // Name of the property, e.g. &quot;cast_shadows&quot;.
@@ -2391,8 +2391,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 } tm_the_truth_property_definition_t;
 </code></pre>
 <p>(<a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">API Documentation</a>)</p>
-<p>Within our <code>create_truth_types</code> we create a array of type <code>tm_the_truth_property_definition_t</code>. For this example, we define the properties of type bool and string.</p>
-<pre><code class="language-c">// include `macros.h` to access TM_ARRAY_COUNT for convinace:
+<p>Within our <code>create_truth_types</code> we create a array of type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">tm_the_truth_property_definition_t</a>. For this example, we define the properties of type bool and string.</p>
+<pre><code class="language-c">// include [macros.h](https://ourmachinery.com/apidoc/foundation/macros.h.html#macros.h) to access TM_ARRAY_COUNT for convinace:
 #include &lt;foundation/macros.h&gt;
 //..code
 void create_truth_types(tm_the_truth_o *tt){
@@ -2405,7 +2405,7 @@ void create_truth_types(tm_the_truth_o *tt){
 </code></pre>
 <p>That is all we need to do to define properties for our Type! Also thanks to our automatic &quot;reflection&quot; system you do not have to worry about providing a UI for the type. The Properties View will automatically provide a UI for this type.</p>
 <h2 id="what-is-next-2"><a class="header" href="#what-is-next-2">What is next?</a></h2>
-<p>You can find more in depth and practical tutorials in the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/tutorials/the_truth/index.html">tutorial book</a></p>
+<p>You can find more in depth and practical tutorials in the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/index.html">tutorial book</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="toolbars-and-overlays"><a class="header" href="#toolbars-and-overlays">Toolbars and Overlays</a></h1>
 <p>In the Machinery, tabs can provide toolbars. If you wish to use custom toolbars within The Machinery tabs, you do not need to use anything within <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api">tm_toolbar_api</a>. The docking system will ask your tab for a list of toolbars to draw each frame. See <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()">tm_tab_vt-&gt;toolbars()</a>.</p>
 <p><img src="https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428649231_new_order_toolbars.gif" alt="" /></p>
@@ -2457,11 +2457,11 @@ static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
 }
 </code></pre>
 <p>Within this function, we define our toolbars. Our toolbar will have an essential job! It will have a button that prints &quot;Hello World&quot;.</p>
-<p>To make this work, we need to create a C-Array of <code>tm_toolbar_i</code> objects and add our toolbar to it. This interface expects the following things:</p>
+<p>To make this work, we need to create a C-Array of <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i">tm_toolbar_i</a> objects and add our toolbar to it. This interface expects the following things:</p>
 <table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody>
 <tr><td>id</td><td>An application-wide unique ID for the toolbar. <strong>Cannot be zero.</strong></td></tr>
 <tr><td>owner</td><td>A pointer that can be accessed through the <code>toolbar</code> argument to the functions of this struct. Often used to store state for the toolbar, for example if you drawing toolbars inside a tab then you might want to store a pointer to that tab here.</td></tr>
-<tr><td>ui</td><td>Called when <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api.ui()"><code>ui()</code></a> of <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api"><code>tm_toolbar_api</code></a> wants to draw the toolbar. Make sure to respect <code>draw_mode</code> and return the rect that encompasses all the drawn controls. For toolbars inside horizontal and vertical containers, you can use <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#tm_toolbar_rect_split_off()"><code>tm_toolbar_rect_split_off()</code></a> and <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#tm_toolbar_rect_advance()"><code>tm_toolbar_rect_advance()</code></a> to easily manage the rect sizes while drawing your toolbar.</br>If you need to store state, the make sure to set <code>owner</code> when you create the <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i"><code>tm_toolbar_i</code></a> object and get it from the passed <code>toolbar</code> pointer.</td></tr>
+<tr><td>ui</td><td>Called when <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api.ui()"><code>ui()</code></a> of [<a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api">tm_toolbar_api</a>](https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api) wants to draw the toolbar. Make sure to respect <code>draw_mode</code> and return the rect that encompasses all the drawn controls. For toolbars inside horizontal and vertical containers, you can use <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#tm_toolbar_rect_split_off()"><code>tm_toolbar_rect_split_off()</code></a> and <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#tm_toolbar_rect_advance()"><code>tm_toolbar_rect_advance()</code></a> to easily manage the rect sizes while drawing your toolbar.</br>If you need to store state, the make sure to set <code>owner</code> when you create the [<a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i">tm_toolbar_i</a>](https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i) object and get it from the passed <code>toolbar</code> pointer.</td></tr>
 <tr><td>draw_mode_mask</td><td>A combination of supported draw modes, ORed together values of <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode"><code>enum tm_toolbar_draw_mode</code></a>. The <code>ui</code> function will be passed the currently used draw mode and is expected to handle it.</td></tr>
 </tbody></table>
 <blockquote>
@@ -2490,7 +2490,7 @@ struct tm_toolbar_i *toolbars = 0;
         ta);
 }
 </code></pre>
-<p>In our UI function, we can add the button via the <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api"><code>tm_ui_api</code></a>. Then log the string &quot;Hello World&quot; to the screen with the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#log.h">logger API</a>.</p>
+<p>In our UI function, we can add the button via the [<a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api">tm_ui_api</a>](https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api). Then log the string &quot;Hello World&quot; to the screen with the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#log.h">logger API</a>.</p>
 <blockquote>
 <p><strong>Note:</strong> You need include the <code>plugins/ui/ui.h</code> and the <code>foundation/log.h</code> as well as get the API's first!</p>
 </blockquote>
@@ -2508,7 +2508,7 @@ struct tm_toolbar_i *toolbars = 0;
 <li>A rendering visualization overlay. Found in <code>Render → Lighting Module → Show as overlay</code> in the top right toolbar.</li>
 <li>A Statistics button (also top right toolbar) that makes it possible to popup statistics overlays, previously found within the Statistics tab.</li>
 </ul>
-<p>The tab should return all toolbars it wishes to draw each frame, see <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()"><code>tm_tab_vt-&gt;toolbars()</code></a>. If you wish to support widget mode drawing, then make sure to set the bitmask <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_tab_toolbar_i.draw_mode_mask"><code>tm_toolbar_i-&gt;draw_mode_mask</code></a> a value that contains <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode"><code>TM_TOOLBAR_DRAW_MODE_WIDGET</code></a>.</p>
+<p>The tab should return all toolbars it wishes to draw each frame, see <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()"><code>tm_tab_vt-&gt;toolbars()</code></a>. If you wish to support widget mode drawing, then make sure to set the bitmask <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_tab_toolbar_i.draw_mode_mask"><code>tm_toolbar_i-&gt;draw_mode_mask</code></a> a value that contains [<a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode">TM_TOOLBAR_DRAW_MODE_WIDGET</a>](https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode).</p>
 <p>Toolbars are generalized and they are not coupled to the docking system and the tabs, so you could use them within other contexts if you wish. </p>
 <h2 id="how-to-use-toolbars-outside-of-the-machinery-tabs"><a class="header" href="#how-to-use-toolbars-outside-of-the-machinery-tabs">How to use toolbars outside of The Machinery tabs</a></h2>
 <p>See the documentation under <code>How to use toolbars outside of The Machinery tabs</code> in <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html">toolbar.h</a>.</p>
@@ -2518,14 +2518,14 @@ struct tm_toolbar_i *toolbars = 0;
 <li>Using our C APIs <a href="https://ourmachinery.com/apidoc/apidoc.html">API Documentation</a>.</li>
 <li>Using the Visual Scripting Language, which you can extend as well.</li>
 </ul>
-<p>The Machinery uses an Entity Component System; therefore, most of your gameplay code will run via Engines or Systems. To learn more about these, please follow this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/ecs/index.html">link</a>.</p>
+<p>The Machinery uses an Entity Component System; therefore, most of your gameplay code will run via Engines or Systems. To learn more about these, please follow this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">link</a>.</p>
 <p>The Engine also offers you a Simulation Entry that can be updated every frame and can offer you a place for ECS independent logic. For more information click <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/simulate_entry.html">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="simulate-entry-writing-gameplay-code-in-c"><a class="header" href="#simulate-entry-writing-gameplay-code-in-c">Simulate Entry (writing gameplay code in C)</a></h2>
 <p>This walkthrough show you how to write a simulate entry and what a simulate entry is.</p>
 <p>If you wish to program gameplay using C code, then you need some place where this code execution
 enters. This is provided by the Simulate Entry interface. In order to use it, begin by implementing
-the the interface <code>tm_simulate_entry_i</code> (see <code>simulate_entry.h</code>). Make an object of the
-<code>tm_simulate_entry_i</code> struct like this (see any of the gameplay samples for examples with more
+the the interface <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> (see <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#simulate_entry.h">simulate_entry.h</a>). Make an object of the
+<a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> struct like this (see any of the gameplay samples for examples with more
 context):</p>
 <pre><code class="language-c">static tm_simulate_entry_i simulate_entry_i = {
     .id = TM_STATIC_HASH(&quot;tm_my_game_simulate_entry&quot;, 0xe240e2d67a0aa93ULL),
@@ -2537,7 +2537,7 @@ context):</p>
 </code></pre>
 <p>where <code>start()</code>, <code>stop()</code> and <code>tick()</code> are the functions that you want called when the game starts, ends
 and each frame respectively. Make sure that <code>id</code> is unique. When your plugin loads, make sure to
-register this implementation of <code>tm_simulate_entry_i</code> on the <code>TM_SIMULATE_ENTRY_INTERFACE_NAME</code>
+register this implementation of <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> on the <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#tm_simulate_entry_interface_name">TM_SIMULATE_ENTRY_INTERFACE_NAME</a>
 interface name, like so:</p>
 <pre><code class="language-c">tm_add_or_remove_implementation(reg, load, TM_SIMULATE_ENTRY_INTERFACE_NAME, &amp;simulate_entry_i);
 </code></pre>
@@ -2545,7 +2545,7 @@ interface name, like so:</p>
 entities:</p>
 <p><img src="https://www.dropbox.com/s/qchhejkfbbjfw7h/create-new-simulate-entrry.png?dl=1" alt="Creating a Simulate Entry asset" /></p>
 <p>When you inspect the the properties of this new <code>Simulate Entry</code> asset, have a look in the
-Simulate Entry dropdown menu. Given that you registered your implementation of <code>tm_simulate_entry_i</code>
+Simulate Entry dropdown menu. Given that you registered your implementation of <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a>
 correctly, it should appear in this list.</p>
 <blockquote>
 <p><strong>Note:</strong> In our sample section you can find the &quot;gameplay-interaction-system&quot; sample. This one is a great sample to see this workflow in action.</p>
@@ -2553,12 +2553,12 @@ correctly, it should appear in this list.</p>
 <h2 id="how-will-the-engine-determine-which-one-to-pick"><a class="header" href="#how-will-the-engine-determine-which-one-to-pick">How will the Engine determine which one to pick?</a></h2>
 <p>Now, whenever you start simulating a certain entity, such as your main game world, the Simulate Tab
 will look in the directory next to the entity you're simulating and check if there is a Simulate
-Entry asset there. If there is, it will use the referenced <code>tm_simulate_entry_i</code> implementation in
+Entry asset there. If there is, it will use the referenced <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> implementation in
 order to enter into gameplay code. If the Simulate Tab fails to find a Simulate Entry asset in the
 same directory, it will look in each parent directory. This makes it possible to put a &quot;catch-all&quot;
 Simulate Entry in the root directory of your project. You can also put entities that need different
 Simulate Entry code in separate directories, with a Simulate Entry asset next to each, which can
-reference different implementations of the the <code>tm_simulate_entry_i</code> interface.</p>
+reference different implementations of the the <a href="https://ourmachinery.com/apidoc/plugins/simulate/simulate_entry.h.html#structtm_simulate_entry_i">tm_simulate_entry_i</a> interface.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="extending-the-visual-scripting-language"><a class="header" href="#extending-the-visual-scripting-language">Extending the Visual Scripting Language</a></h1>
 <p>This walkthrough shows you how to extend the visual scripting language for the entity graph and use the <code>generate-graph-nodes.exe</code>. You will learn about:</p>
 <ul>
@@ -2600,7 +2600,7 @@ GGN_END();
 <li>The <code>generate-graph-nodes.exe</code> auto-generates the <code>my_graph_nodes.inl</code> for you. It would be best if you do not edit this file. Otherwise, the generator will overwrite your changes next time.</li>
 </ul>
 <p>For a full documentation of all <code>GGN_*</code> macros see [plugins/graph_interpreter/graph_node_macros.h](http://#).
-The code we write is relatively slight. We need to ensure that we have some header files, including the <code>graph_node_macros.h</code>, which we are using to tell the generator to generate code for us. </p>
+The code we write is relatively slight. We need to ensure that we have some header files, including the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#graph_node_macros.h">graph_node_macros.h</a>, which we are using to tell the generator to generate code for us. </p>
 <p>The following list makes sure that the nodes work on their own.</p>
 <pre><code class="language-c">#include &lt;plugins/editor_views/graph.h&gt;
 #include &lt;plugins/graph_interpreter/graph_node_helpers.inl&gt;
@@ -2628,7 +2628,7 @@ The code we write is relatively slight. We need to ensure that we have some head
 </ol>
 <p>The last step before we can compile is to make sure that we run the <code>generate-graph-nodes.exe</code> application. This helper utility processes all <code>GGN_* macros.</code> This program generates glue code that ties your function into the graph system -- creating connectors that correspond to your function parameters, etc. 
 The glue code is stored in an <code>.inl</code> file with the same name as the <code>.c</code> file that contains the graph nodes. 
-Do not forget that if you have used some new <code>TM_STATIC_HASH</code> values, run hash.exe to make sure that those get hashed. 
+Do not forget that if you have used some new <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> values, run hash.exe to make sure that those get hashed. 
 Then you are ready to run <code>tmbuild</code>. It will compile your plugin, and then when you start the Engine or have it run in hot-reload mode it will show you your new nodes in the editor.</p>
 <blockquote>
 <p><strong>Note:</strong> You can also run <code>tmbuild</code> with a argument: <code>tmbuild --gen-nodes</code> . This will make sure that <code>tmbuild</code> runs <code>generate-graph-nodes.exe</code> before it builds.</p>
@@ -2668,7 +2668,7 @@ must be copied over to the new type.</li>
 </ul>
 <h2 id="components"><a class="header" href="#components">Components</a></h2>
 <ul>
-<li>A component is defined by <code>tm_component_i</code> — it consists of a fixed-size piece of POD data.</li>
+<li>A component is defined by <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_component_i">tm_component_i</a> — it consists of a fixed-size piece of POD data.</li>
 <li>This data is stored in a huge buffer for each entity type, and indexed by the index.</li>
 <li>In addition, a component can have a <em>manager</em>. The manager is notified when the component is added
 or removed.</li>
@@ -2919,7 +2919,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <p>The profiler tab will display all scopes that have been added to the profiler API. With the tab, you can record for a few moments all scopes and then afterward analyze them.</p>
 <p><img src="https://paper-attachments.dropbox.com/s_5086E710AFB88B222C81207791AF7092731DB9D2900AFABEA044A0AC0B80DFFB_1625602954215_image.png" alt="" /></p>
 <p>You can use the profiler API defined in the <a href="https://ourmachinery.com/apidoc/foundation/profiler.h.html#profiler.h">foundation/profiler</a>.h. in your own projects.
-After you have loaded the <a href="https://ourmachinery.com/apidoc/foundation/profiler.h.html#structtm_profiler_api"><code>tm_profiler_api</code></a> in your plugin load function.</p>
+After you have loaded the [<a href="https://ourmachinery.com/apidoc/foundation/profiler.h.html#structtm_profiler_api">tm_profiler_api</a>](https://ourmachinery.com/apidoc/foundation/profiler.h.html#structtm_profiler_api) in your plugin load function.</p>
 <table><thead><tr><th>Profiler Macros</th></tr></thead><tbody>
 <tr><td><strong><a href="https://ourmachinery.com/apidoc/foundation/profiler.h.html#tm_profiler_begin_func_scope()">TM_PROFILER_BEGIN_FUNC_SCOPE()</a> / <a href="https://ourmachinery.com/apidoc/foundation/profiler.h.html#tm_profiler_end_func_scope()">TM_PROFILER_END_FUNC_SCOPE()</a></strong></td></tr>
 <tr><td>Starts a profiling scope for the current function. The scope in the profiler will have this name.</td></tr>
@@ -2968,7 +2968,7 @@ It can be helpful on CI Server where build and test servers are different. The b
 <h2 id="how-to-write-your-tests"><a class="header" href="#how-to-write-your-tests"><strong>How to write your tests</strong></a></h2>
 <p>All that is needed is to write tests is to register them via the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a>. You can find the interface in the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html">unit_tests.h</a>. <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a> expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#structtm_unit_test_i">tm_unit_test_i</a>. This interface expects a name and a function pointer to the test entry function.</p>
 <pre><code class="language-c">// Interface for running unit tests. To find all unit test, query the API registry for
-// `TM_UNIT_TEST_INTERFACE_NAME` implementations.
+// [TM_UNIT_TEST_INTERFACE_NAME](https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name) implementations.
 typedef struct tm_unit_test_i
 {
     // Name of this unit test.
@@ -2998,7 +2998,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, TM_UNIT_TEST_INTERFACE_NAME, my_unit_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <code>TM_UNIT_TEST_INTERFACE_NAME</code>.</p>
+<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a>.</p>
 <p><em>How could this interface look like?</em>
 After we have done this, all we need to do is declarer our <code>my_unit_tests</code>. It is as easy as it gets:</p>
 <pre><code class="language-c">#include &lt;foundation/unit_test.h&gt;
@@ -3019,7 +3019,7 @@ All that's left is to write the test. Let us write this test. In its core all we
 <table><thead><tr><th><strong>Macro</strong></th><th><strong>Arguments</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>TM_UNIT_TEST</td><td>(test_runner, assertion)</td><td>Unit test macro. Tests the <code>assertion</code> using the test runner <code>test_runner</code>.</td></tr>
 <tr><td>TM_UNIT_TESTF</td><td>(test_runner, assertion, format, ...)</td><td>As <code>TM_UNIT_TEST()</code> but records a formatted string in case of error.</td></tr>
-<tr><td>TM_EXPECT_ERROR</td><td>(test_runner, error)</td><td>Expect the error message <code>error</code>. If the error message doesn't appear before the next call to <code>record()</code>, or if another error message appears before it, this will be considered a unit test failure.<br><br>Note that for <code>TM_EXPECT_ERROR</code> to work properly, you must redirect error messages to go through the test runner, so that it can check that the error message matches what's expected.</td></tr>
+<tr><td>TM_EXPECT_ERROR</td><td>(test_runner, error)</td><td>Expect the error message <code>error</code>. If the error message doesn't appear before the next call to <code>record()</code>, or if another error message appears before it, this will be considered a unit test failure.<br><br>Note that for <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_expect_error()">TM_EXPECT_ERROR</a> to work properly, you must redirect error messages to go through the test runner, so that it can check that the error message matches what's expected.</td></tr>
 </tbody></table>
 <p>It's time for some tests. Let us write some tests for <a href="https://ourmachinery.com/apidoc/foundation/carray.inl.html#carray.inl">carrays</a></p>
 <pre><code class="language-c">#include &lt;foundation/unit_test.h&gt;
@@ -3067,7 +3067,7 @@ Its generally used after unit testing to ensure that the composition of the soft
 <p>The integration test framework can be found in the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html">integration_test.h</a> ,and is part of the foundation library. We need to include this header file, and then we can start writing our tests.</p>
 <pre><code>#include &lt;foundation/integration_test.h&gt;
 </code></pre>
-<p>To write a test you need to register it via the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>. It expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#structtm_integration_test_i">tm_integration_test_i</a>. This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: <code>TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</code>.</p>
+<p>To write a test you need to register it via the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>. It expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#structtm_integration_test_i">tm_integration_test_i</a>. This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_context__the_machinery_editor">TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</a>.</p>
 <pre><code class="language-c">// Interface for integration tests.
 typedef struct tm_integration_test_i
 {
@@ -3098,7 +3098,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, TM_INTEGRATION_TEST_INTERFACE_NAME, my_integration_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <code>TM_INTEGRATION_TEST_INTERFACE_NAME</code>.</p>
+<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>.</p>
 <p><em>How could this interface look like?</em></p>
 <p>After we have done this, we need to declare our <code>my_integration_tests.</code> </p>
 <pre><code class="language-c">tm_integration_test_i my_integration_tests = {
@@ -3108,7 +3108,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     .tick = my_test_tick,
 };
 </code></pre>
-<p>The name field is important because, later on, we need to use this name when we want to run the test. The context makes sure that it runs and boots up the Editor. <code>TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</code> is defined in <code>#include &lt;foundation/integration_test.h&gt;</code>. The function <code>my_test_tick</code> gets called and the magic can happen.</p>
+<p>The name field is important because, later on, we need to use this name when we want to run the test. The context makes sure that it runs and boots up the Editor. <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_context__the_machinery_editor">TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</a> is defined in <code>#include &lt;foundation/integration_test.h&gt;</code>. The function <code>my_test_tick</code> gets called and the magic can happen.</p>
 <p><em>How does a test itself look like?</em></p>
 <p>Let us write this test. We need to write a function of the signature: <code>(tm_integration_test_runner_i *)</code>.  In its body, we can define our tests.</p>
 <pre><code class="language-c">static void my_test_tick(tm_integration_test_runner_i *test_runner)
@@ -3122,7 +3122,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <tr><td>TM_WAIT_LOOP</td><td>test_runner, second, i</td><td>Since <code>TM_WAIT()</code> uses the <code>__LINE__</code> macro to uniquely identify wait points, it doesn't work when called in a loop. In this case you can use <code>TM_WAIT_LOOP()</code> instead. It takes an iteration parameter <code>i</code> that uniquely identifies this iteration of the loop (typically it would just be the iteration index). This together with <code>__LINE__</code> gives a unique identifier for the wait point.</td></tr>
 </tbody></table>
 <blockquote>
-<p><strong><code>TM_WAIT_LOOP</code> WARNING</strong></p>
+<p><strong><a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_wait_loop()">TM_WAIT_LOOP()</a> WARNING</strong></p>
 <p>If you have multiple nested loops, be aware that using just the inner loop index j is not enough to uniquely identify the wait point since it is repeated for each outer loop iteration. Instead, you want to combine the outer and inner indexes.</p>
 </blockquote>
 <p>Lets write some example:</p>
@@ -3320,15 +3320,15 @@ You open the terminal or edit with your favorite text editor <code>~/.bashrc</co
 <p>This walkthrough introduces you to hash.exe and shows you how to use it with The Machinery. </p>
 <p>You will learn about:</p>
 <ul>
-<li>How to use <code>hash.exe</code> and  <code>TM_STATIC_HASH</code></li>
+<li>How to use <code>hash.exe</code> and  <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a></li>
 </ul>
 <h2 id="how-to-use-hashexe-and-tm_static_hash"><a class="header" href="#how-to-use-hashexe-and-tm_static_hash">How to use hash.exe and TM_STATIC_HASH</a></h2>
-<p>While working with The Machinery, you will have surely noticed that its systems often expect a hashed version of a string as input. In this document, we will be dealing with static hashes defined with <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> to identify, for example, a type in our data model, <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_truth.html">The Truth</a>. If you are searching documentation on runtime hashes, you’ll want to check out the <a href="https://ourmachinery.com/apidoc/foundation/murmurhash64a.inl.html#murmurhash64a.inl">murmurhash64a.inl</a> files.</p>
-<p>In this document, we will be using hash.exe to generate new hash values or update the changed ones. The hash.exe utility checks the entire source code and makes sure that wherever you use <code>TM_STATIC_HASH</code>, the numeric value v matches the actual hash of the string s (if not, the code is updated). If you do not run the executable before you build, you will have compile errors. </p>
+<p>While working with The Machinery, you will have surely noticed that its systems often expect a hashed version of a string as input. In this document, we will be dealing with static hashes defined with <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> to identify, for example, a type in our data model, <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_truth/index.html">The Truth</a>. If you are searching documentation on runtime hashes, you’ll want to check out the <a href="https://ourmachinery.com/apidoc/foundation/murmurhash64a.inl.html#murmurhash64a.inl">murmurhash64a.inl</a> files.</p>
+<p>In this document, we will be using hash.exe to generate new hash values or update the changed ones. The hash.exe utility checks the entire source code and makes sure that wherever you use <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>, the numeric value v matches the actual hash of the string s (if not, the code is updated). If you do not run the executable before you build, you will have compile errors. </p>
 <blockquote>
 <p><strong>Note</strong>: <code>tmbuild</code> has the option to run hash.exe before it builds. <code>tmbuild --gen-hash</code>.</p>
 </blockquote>
-<p>Let us look at where this tool is useful and is being used a lot:  In <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_truth.html">The Truth</a>.</p>
+<p>Let us look at where this tool is useful and is being used a lot:  In <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_truth/index.html">The Truth</a>.</p>
 <p>For example, When defining Truth Objects or Types, we are using this tool to hash the name of the type statically</p>
 <pre><code class="language-c">//...
 
@@ -3351,7 +3351,7 @@ enum {
 //...
 </code></pre>
 <p>In the above example we have the definition of the Truth Type tm_asset. The <code>#define TM_TT_TYPE_HASH__ASSET TM_STATIC_HASH(&quot;tm_asset&quot;, 0xca71127abbb72960ULL)</code> was generated by the hash utility. Before the tool ran the code looked similar to this: <code>#define TM_TT_TYPE_HASH__ASSET TM_STATIC_HASH(&quot;tm_asset&quot;)</code></p>
-<p>For example later on we can use it  to create a object of this type. If we do not have the corresponding type id <code>tm_tt_type_t</code> we need to ask The Truth: </p>
+<p>For example later on we can use it  to create a object of this type. If we do not have the corresponding type id <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a> we need to ask The Truth: </p>
 <pre><code class="language-c">tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ASSET);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tmbuild-package-json-reference"><a class="header" href="#tmbuild-package-json-reference">tmbuild package json Reference</a></h1>
