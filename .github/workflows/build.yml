@@ -26,8 +26,6 @@ jobs:
         run: |
           export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
           chmod +x ./mdbook_tera/bin/mdbook-tera
-          cp context.toml ./the_machinery_book/context.toml
-          cp context.toml ./tutorials/context.toml
       - run: sudo apt update && sudo apt install zip
       - name: Setup mdbook
         run: |
