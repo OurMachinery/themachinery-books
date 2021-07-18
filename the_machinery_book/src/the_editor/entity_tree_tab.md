@@ -1,6 +1,13 @@
 # **Entity Tree Tab**
 
-The **Entity Tree** shows the hierarchy of the entity you choose to edit. This view allows you to organize and add new entities as well as new components to the entities. Just be aware that the Entity Tree does not reflect the current runtime state. 
+The **Entity Tree** shows the hierarchy of the entity you choose to edit. This view allows you to organize and add new entities as well as new components to the entities.
+
+
+
+> **Note:**  Just be aware that the Entity Tree does not reflect the current runtime state. 
+
+
+
 Besides, it is essential to remember is that *The Machinery* does not have specific *Scene* assets. A scene in *The Machinery* is just an entity with a lot of child entities.
 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625427931504_image.png)

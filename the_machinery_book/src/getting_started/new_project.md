@@ -96,3 +96,16 @@ All gameplay can be written in C or a C in any binding language such as C++ or Z
 
 You can find more information about gameplay coding in the ["Gameplay Coding" Section]({{base_url}}gameplay_coding/index.html)
 
+
+
+## Project Structure Recommendation
+
+It is recommended to separate your gameplay source code, plugin code from the actual project and store them in a separate folder.
+
+```
+my_project/game_project // the directory project
+my_project/game_plugins // the main folder for all your gameplay code, plugins
+```
+
+
+

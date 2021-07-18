@@ -41,3 +41,5 @@ they will automatically get the plugin too -- they don't have to manually instal
 You hot-reload plugin assets by checking the *Import When Changed* checkbox in the plugin
 properties. If checked, the editor will monitor the plugin's import path for changes and if it
 detects a file change, it will reimport the plugin.
+
+![plugin asset settings](https://www.dropbox.com/s/h2uzbwsf45o28ba/tm_guide_plugin_asset_settings.png?dl=1)

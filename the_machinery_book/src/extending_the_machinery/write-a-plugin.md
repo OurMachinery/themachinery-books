@@ -35,7 +35,7 @@ you can find plugin samples:
    samples.
 
 3. You can create a new plugin with the menu command **File > New Plugin**. This will create a
-   new `.c` file for the plugin together with some helper files for compiling it.
+   new `.c` file for the plugin together with some helper files for compiling it. ([Follow this guide](#write-your-own-plugin))
 
 The distribution already comes with pre-built .dlls for the sample plugins, such as
 `bin/plugins/tm_pong_tab.dll`. You can see this plugin in action by selecting **Tab > Pong** in the
@@ -84,14 +84,11 @@ tmbuild completed in: 23.471 s
 `tmbuild.exe` will perform the following steps to build your executable:
 
 1. Create a `libs` folder and download `premake5` into it. (You can set the `TM_LIB_DIR` environment
-   variable to use a shared `libs` dir for all your projects.)
+   variable to use a shared `libs` directory for all your projects.)
 2. Run `premake5` to create a Visual Studio project from the `premake5.lua` script.
 3. Build the Visual Studio project to build the plugin.
 
 > **Note:** You can learn more about [tmbuild]({{base_url}}helper_tools/tmbuild.html) in its own section.
-
-In order to write a plugin, it is useful to understand a little bit about how the plugin system in *The
-Machinery* works.
 
 ## Programming in C
 
@@ -110,6 +107,89 @@ together with the engine unit tests, you can implement `TM_THE_TRUTH_CREATE_TYPE
 extend our data model, The Truth, with your own data types or implement
 `TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME` to extend our entity model with your own component
 types.
+
+
+
+The following guides might help you:
+
+- [How to add a new component type]({{base_url}}/gameplay_coding/ecs/write_a_custom_component.html)
+- [How to create a new Truth Type]({{base_url}}/the_truth/custom_truth_type.html)
+- [How to write a tab]({{tutorials}})
+- [How to write unit tests]({{base_url}}qa_pipeline/how_to_write_unit_tests.html)
+- [How to write integration tests]({{base_url}}qa_pipeline/how_to_write_integration_tests.html)
+
+
+
+The Engine provides a easy way to create plugins for you via the **File -> New Plugins** menu. There you can choose default plugin templates. They come with default files:
+
+![custom tab folder view](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1)
+
+*The folder structure for a custom tab called `custom_tab`.*
+
+
+
+- `premake5.lua` - Your build configuration, on Windows it will generate a `.sln` file for you.
+- `libs.json` - Defines the binary dependencies of your projects. `tmbuild` will automatically download them for you.
+- `*.c` - Your source file. It contains the sample template code to give you some guidance on what is needed.
+- `build.bat` / `build.sh` - quick build files to make building simpler for you.
+
+> **Note:** By default the plugin will not be copied into your Engine's `plugins` folder. You can modify the `premake` file or copy it manually in the folder. You can also make use of a Plugin Asset.
+
+### Structure of a plugin
+
+Every plugin has `tm_load_plugin()` as its entry point, in there we register everything we need to register to the Engines Plugin System. It is important that you do not execute heavy code in this function or relay on other plugins, since they might not be loaded yet! This function is just there to perform load and register operations.
+
+#### Where does my gameplay code live?
+
+Your gameplay lives within the [Systems / Engines]({{base_url}}/gameplay_coding/ecs/index.html) of the ECS or in the [Simulate Entry]({{base_url}}gameplay_coding/simulate_entry.html) and they have their own entry points.
+
+#### How do I update my tool / tab content?
+
+- The `tm_tab_vt` defines three functions for your tab to be updated:
+  - `tm_tab_vt.ui()` - Callback for drawing the content of the tab into the specified rect.
+  - `tm_tab_vt.ui_serial()` - *Optional.* If implemented, called from the main UI job once all parallel UI rendering (fork/join) has finished. This can be used for parts of the UI that needs to run serially, for example because they call out to non-thread-safe function.
+  - `tm_tab_vt.hidden_update()` - *Optional*. If the tab wants to do some processing when it is *not* the selected tab in its tabwell, it can implement this callback. This will be called for all created tabs whose content is currently *not* visible.
+
+For more information follow the ["Write a tab"]({{tutorials}}) walkthrough.
+
+#### Plugin callbacks (Init, Sutdown, Tick)
+
+The plugin system provides also for plugin callbacks. **It is recommended to rely on these calls as little as possible.** You should not rely on those for your gameplay code!
+
+- `TM_PLUGIN_INIT_INTERFACE_NAME` - Is typically called as early as possible after all plugins have been loaded.
+
+> **Note:** It is not called when a plugin is reloaded.
+
+- `TM_PLUGIN_SHUTDOWN_INTERFACE_NAME` - Is typically be called as early as possible during the application shutdown sequence
+
+> **Note:** Is not called when a plugin is reloaded.
+
+- `TM_PLUGIN_TICK_INTERFACE_NAME` - Is typically called as early as possible in the application main loop “tick”.
+
+They are stored in the `foundation/plugin_callbacks.h`.   
+
+#### How do I deal with static variables?
+
+The use of static variables in DLLs can be problematic, because when the DLL is reloaded, the new instance of the DLL will get a new freshly initialized static variable, losing whatever content the variable had before reload. The `tm_api_registry_api` provides a way to solve this issue:  `tm_api_registry_api.static_variable()`
+
+By using this function instead of defining it globally, the variable data is saved in permanent memory.
+
+```c
+uint64_t *count_ptr;
+
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    count_ptr = (uint64_t *)reg->static_variable(TM_STATIC_HASH("my_count", 0xa287d4b3ec9c2109ULL),
+        sizeof(uint64_t), __FILE__, __LINE__);
+}
+
+void f()
+{
+    ++*count_ptr;
+}
+```
+
+
 
 ### Write your own API
 
@@ -184,4 +264,3 @@ We store the API registry pointer in a static variable so that we can use it eve
 We also `get()` some of the API pointers that we will use frequently and store them in static
 variables so that we don’t have to use the registry to query for them every time we want to use
 them. Finally, we add our own API to the registry, so others can query for and use it.
-
