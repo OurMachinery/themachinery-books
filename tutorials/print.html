@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item expanded "><a href="ui/toolbars-overlays.html"><strong aria-hidden="true">5.2.</strong> Toolbars and Overlays</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -1903,6 +1903,112 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     ...
 </code></pre>
 <p>We now have a custom button implementation that can be used across your projects. Please extend it and show us your results.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="toolbars-and-overlays"><a class="header" href="#toolbars-and-overlays">Toolbars and Overlays</a></h1>
+<p>In the Machinery, tabs can provide toolbars. If you wish to use custom toolbars within The Machinery tabs, you do not need to use anything within <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api">tm_toolbar_api</a>. The docking system will ask your tab for a list of toolbars to draw each frame. See <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()">tm_tab_vt-&gt;toolbars()</a>.</p>
+<p><img src="https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428649231_new_order_toolbars.gif" alt="" /></p>
+<p>In this walkthrough, we will learn how to write our little toolbar for our newly added tab! This walkthrough requires you to know how our plugin system works.</p>
+<p><strong>Table of Content</strong></p>
+<ul>
+<li><a href="ui/toolbars-overlays.html#implement-a-toolbar-in-a-tab">Implement a Toolbar in a Tab</a></li>
+<li><a href="ui/toolbars-overlays.html#tab-overlays">Tab Overlays</a></li>
+<li><a href="ui/toolbars-overlays.html#how-to-use-toolbars-outside-of-the-machinery-tabs">How to use toolbars outside of The Machinery tabs</a></li>
+</ul>
+<h2 id="implement-a-toolbar-in-a-tab"><a class="header" href="#implement-a-toolbar-in-a-tab">Implement a Toolbar in a Tab</a></h2>
+<p>To begin with, we need to create a new tab plugin. We go on <strong>File -&gt; New Plugin -&gt; Tab.</strong> </p>
+<p>A file dialog pops up, and we can decide where to store our plugin.</p>
+<p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1" alt="" /></p>
+<p>We open the <code>custom_tab.c</code> (or however we called it) file with our favorite editor.</p>
+<p>We search for the line in which we define the tab itself:</p>
+<pre><code class="language-c">//...code
+static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
+    .name = TM_CUSTOM_TAB_VT_NAME,
+    .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
+    .create_menu_name = tab__create_menu_name,
+    .create = tab__create,
+    .destroy = tab__destroy,
+    .title = tab__title,
+    .ui = tab__ui
+};
+//...code
+</code></pre>
+<p>To our definition, we add a <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()"><code>toolbars()</code></a>. This function returns a C-Array of toolbar definitions.  The array is allocated with the passed in the temporary allocator.</p>
+<blockquote>
+<p><strong>Note:</strong> A temporary allocator (<a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html">tm_temp_allocator_api</a>) Provides a system for temporary memory allocations. I.e., short-lived memory allocations that are automatically freed when the allocator is destroyed. Temp allocators typically use a pointer bump allocator to allocate memory from one or more big memory blocks and then free the entire block when the allocator is destroyed.</p>
+<p><strong>Important:</strong> You need to include  the api first<code>#include &lt;foundation/temp_allocator.h&gt;</code> and get the api from the registry!</p>
+</blockquote>
+<pre><code class="language-c">static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
+    .name = TM_CUSTOM_TAB_VT_NAME,
+    .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
+    .create_menu_name = tab__create_menu_name,
+    .create = tab__create,
+    .destroy = tab__destroy,
+    .title = tab__title,
+    .ui = tab__ui
+    .toolbars = tab__toolbars, // we added this line
+};
+</code></pre>
+<p>After we have added this, we need actually to define the function itself:</p>
+<pre><code class="language-c">static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab, tm_temp_allocator_i *ta)
+{
+// code
+}
+</code></pre>
+<p>Within this function, we define our toolbars. Our toolbar will have an essential job! It will have a button that prints &quot;Hello World&quot;.</p>
+<p>To make this work, we need to create a C-Array of <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i">tm_toolbar_i</a> objects and add our toolbar to it. This interface expects the following things:</p>
+<table><thead><tr><th>Field</th><th>Description</th></tr></thead><tbody>
+<tr><td>id</td><td>An application-wide unique ID for the toolbar. <strong>Cannot be zero.</strong></td></tr>
+<tr><td>owner</td><td>A pointer that can be accessed through the <code>toolbar</code> argument to the functions of this struct. Often used to store state for the toolbar, for example if you drawing toolbars inside a tab then you might want to store a pointer to that tab here.</td></tr>
+<tr><td>ui</td><td>Called when <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api.ui()"><code>ui()</code></a> of [<a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api">tm_toolbar_api</a>](https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_api) wants to draw the toolbar. Make sure to respect <code>draw_mode</code> and return the rect that encompasses all the drawn controls. For toolbars inside horizontal and vertical containers, you can use <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#tm_toolbar_rect_split_off()"><code>tm_toolbar_rect_split_off()</code></a> and <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#tm_toolbar_rect_advance()"><code>tm_toolbar_rect_advance()</code></a> to easily manage the rect sizes while drawing your toolbar.</br>If you need to store state, the make sure to set <code>owner</code> when you create the [<a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i">tm_toolbar_i</a>](https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i) object and get it from the passed <code>toolbar</code> pointer.</td></tr>
+<tr><td>draw_mode_mask</td><td>A combination of supported draw modes, ORed together values of <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode"><code>enum tm_toolbar_draw_mode</code></a>. The <code>ui</code> function will be passed the currently used draw mode and is expected to handle it.</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> For a complete list please check the <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i">documentation</a></p>
+</blockquote>
+<table><thead><tr><th>Mask</th><th>Description</th></tr></thead><tbody>
+<tr><td>TM_TOOLBAR_DRAW_MODE_HORIZONTAL</td><td>You an draw the toolbar horizontal.</td></tr>
+<tr><td>TM_TOOLBAR_DRAW_MODE_VERTICAL</td><td>You an draw the toolbar vertical.</td></tr>
+<tr><td>TM_TOOLBAR_DRAW_MODE_WIDGET</td><td>The toolbar is an overlay</td></tr>
+</tbody></table>
+<p>Let us provide the essential things:</p>
+<ol>
+<li>The id is to be able to identify the toolbar.</li>
+<li>The UI function is to be able to draw something.</li>
+<li>The draw_mode_mask to indicate where we want the toolbar to be drawn.</li>
+</ol>
+<pre><code class="language-c">static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab, tm_temp_allocator_i *ta)
+{
+struct tm_toolbar_i *toolbars = 0;
+    tm_carray_temp_push(toolbars,
+        ((tm_toolbar_i){
+            .id = TM_STRHASH_U64(TM_STATIC_HASH(&quot;my_tab&quot;, 0xcffc3169d97098acULL)),
+            .ui = ui,
+            .draw_mode_mask = TM_TOOLBAR_DRAW_MODE_HORIZONTAL | TM_TOOLBAR_DRAW_MODE_VERTICAL,
+        }),
+        ta);
+}
+</code></pre>
+<p>In our UI function, we can add the button via the [<a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api">tm_ui_api</a>](https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api). Then log the string &quot;Hello World&quot; to the screen with the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#log.h">logger API</a>.</p>
+<blockquote>
+<p><strong>Note:</strong> You need include the <code>plugins/ui/ui.h</code> and the <code>foundation/log.h</code> as well as get the API's first!</p>
+</blockquote>
+<pre><code class="language-c">static tm_rect_t ui(tm_toolbar_i *toolbar, struct tm_ui_o *ui, const struct tm_ui_style_t *uistyle, tm_rect_t toolbar_r, enum tm_toolbar_draw_mode dm)
+{
+    // TODO: add code
+}
+</code></pre>
+<h2 id="tab-overlays"><a class="header" href="#tab-overlays">Tab Overlays</a></h2>
+<p><img src="https://paper-attachments.dropbox.com/s_538DCFE5C2E14B8A7C343B96D5CD2C3E2C191E06DD3EF47F66924FDF7AE2C192_1617105468374_image.png" alt="An image with visualization modes enabled using the Visualize overlay, as well as a Renderer Statistics overlay. The Visualize overlay is found in Top right toolbar → Render → Lighting Module → Show as overlay. The Statistics overlay is found in Top right toolbar → Statistics." /></p>
+<p>As an extension to the dockable toolbars the engine support overlays that hover on top of the tabs. Also, any toolbar can be pulled off and be made into a hovering overlay.</p>
+<p>An overlay is just a toolbar that does not belong to any of the four toolbar containers that run along the edge of the tab. Toolbars have three rendering modes — horizontal, vertical, and widget. The widget mode is new, it is the richer, window-like mode seen in the picture above. </p>
+<p>In the scene and simulate tabs, we’ve added:</p>
+<ul>
+<li>A rendering visualization overlay. Found in <code>Render → Lighting Module → Show as overlay</code> in the top right toolbar.</li>
+<li>A Statistics button (also top right toolbar) that makes it possible to popup statistics overlays, previously found within the Statistics tab.</li>
+</ul>
+<p>The tab should return all toolbars it wishes to draw each frame, see <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()"><code>tm_tab_vt-&gt;toolbars()</code></a>. If you wish to support widget mode drawing, then make sure to set the bitmask <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_tab_toolbar_i.draw_mode_mask"><code>tm_toolbar_i-&gt;draw_mode_mask</code></a> a value that contains [<a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode">TM_TOOLBAR_DRAW_MODE_WIDGET</a>](https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode).</p>
+<p>Toolbars are generalized and they are not coupled to the docking system and the tabs, so you could use them within other contexts if you wish. </p>
+<h2 id="how-to-use-toolbars-outside-of-the-machinery-tabs"><a class="header" href="#how-to-use-toolbars-outside-of-the-machinery-tabs">How to use toolbars outside of The Machinery tabs</a></h2>
+<p>See the documentation under <code>How to use toolbars outside of The Machinery tabs</code> in <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html">toolbar.h</a>.</p>
 
                     </main>
 
