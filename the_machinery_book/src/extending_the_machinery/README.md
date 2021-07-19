@@ -6,4 +6,9 @@ The Engine explicitly aims to be simple, minimalistic, and easy to understand. A
 
 
 
-To create your plugin, follow the [Write your Plugin Introduction]({{base_url}}extending_the_machinery/write-a-plugin.html).
+**Guides to follow:**
+
+- Basic understanding on how to [write a plugin]({{base_url}}extending_the_machinery/write-a-plugin.html).
+- Basic understanding about [gameplay coding]({{base_url}}gameplay_coding/index.html).
+- More complex tutorials about custom plugins check out the [Tutorials Book]({{tutorials}})
+

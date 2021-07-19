@@ -1,4 +1,4 @@
-## Writing a plugin
+## Write a plugin
 
 This walkthrough show you how to extend the engine with a custom plugin.
 
