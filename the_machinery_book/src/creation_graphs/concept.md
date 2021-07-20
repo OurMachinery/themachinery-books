@@ -6,7 +6,7 @@ A creation graph thus defines the asset’s pipeline into its final state. For i
 
 A more familiar example might be a material shader. In The Machinery this is also defined using a creation graph. This case maps very well to Unity’s shader assets and Unreal’s material assets. In the image below you can see a simple default material with a saturated red base color.
 
-![Simple red material](https://paper-attachments.dropbox.com/s_04714ABB7614AA7E464946A69D4D155B5E36439454460DD779DF6945F603E630_1626443247406_image.png)
+![Simple red material](https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?dl=1)
 
 
 Image loading and material creation are just a few examples of what can be achieved with the creation graph. The table below shows when a creation graph is used compared to the tools one could use in Unity and Unreal.
@@ -22,7 +22,7 @@ Image loading and material creation are just a few examples of what can be achie
 
 Another example for the creation graph is mesh processing. A graph like this will define how the mesh should be draw or traced against. The graph below takes two inputs, a material creation graph and the mesh data from a DCC asset. This data is than imported and passed to the various outputs of our mesh pipeline. In this case those are: a ray tracing instance, a normal draw call, a bounding volume, and a physics shape. Note that not all of these outputs have to be used, rather the code that uses this creation graph might only look for the rendering outputs and ignore the physics shape, whilst some other code might only care about the physics shape output.
 
-![Mesh processing](https://paper-attachments.dropbox.com/s_04714ABB7614AA7E464946A69D4D155B5E36439454460DD779DF6945F603E630_1626501134315_image.png)
+![Mesh processing](https://www.dropbox.com/s/103bvtqaz6lnsog/tm_guide_creation_graph_mesh_processing.png?dl=1)
 
 
 Like the entity graph, the creation graph can executes nodes in sequence from an event. Some examples of this are the `Tick`, `Init`, and `Compile` events which are executed at known intervals. Most of the creation graphs however work with a reverse flow, compiling the graph into a sequence of nodes for a specific output. The two examples presented earlier show this workflow. Some outputs are: `Draw Call`, `Shader Instance`, `Image`, and `Physics Shape`. Note that these outputs are just blobs of data, an implementation can define more output type in code.
