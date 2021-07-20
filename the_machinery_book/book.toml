@@ -18,7 +18,7 @@ command = "mdbook-tera  --toml  ./context.toml"
 
 [output.linkcheck]
 follow-web-links = true
-exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com'  ]
+exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com','https://marketplace\.visualstudio\.com'  ]
 
 
 #[preprocessor.autolink]

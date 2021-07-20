@@ -46,6 +46,7 @@
 	- [Creation Graphs for Untiy Dev's](./creation_graphs/intro_unity.md)
 	- [Creation Graphs for Unreal 4 Dev's](./creation_graphs/intro_unreal.md)
 	- [Node Types](./creation_graphs/node_types.md)
+	- [Shader System Interaction](./creation_graphs/shader_system.md)
 - [Extending The Machinery](./extending_the_machinery/README.md)
     - [The Plugin System](./extending_the_machinery/the_plugin_system.md)
     - [Hot-reloading](./extending_the_machinery/hot-reloading.md)
