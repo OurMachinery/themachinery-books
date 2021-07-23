@@ -18,4 +18,8 @@ if (dp)
     dp->debug_print(tt, o);
 ```
 
->  **Note** that plugins can extend the system with completely new aspects.
+>  **Note**: that plugins can extend the system with completely new aspects.
+
+
+
+The best example of how the Engine is using the aspect system is the `TM_TT_ASPECT__PROPERTIES` which helps us to defines custom UIs for Truth objects.

@@ -22,9 +22,11 @@ launches, it loads all the plugins named `tm_*.dll` in its `plugins/` folder. If
 plugins, name them so that they start with `tm_` and put them in this folder, they will be loaded
 together with the built-in plugins.
 
+> **Note:** When you create a new plugin via the Engine, the `premake` file will **not** copy the plugin into your global plugin folder. The reason behind this is that we do not know if you want to create a plugin asset. *This workflow is currently under review.*
+>
+> **Important:** The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the `premake` file to make it point to the correc version. This workflow is currently under review.
 
-
-## Use a example "Pong Tab"
+## Inspect a existing example to get inspiration
 
 The easiest way to build a plugin is to start with an existing example. There are three places where
 you can find plugin samples:
@@ -43,15 +45,15 @@ editor to open up its tab:
 
 ![Pong tab.](https://www.dropbox.com/s/hats2jgr3wroahz/pong-tab.png?dl=1)
 
-### Build Requirements
+### What are the build Requirements
 
-To build the sample plugins (and your own) you need three things:
+To build plugins you need three things:
 
 1. You need to have Visual Studio 2019 installed including the MS C++ Build Tools on your computer.
-   Note that the Community Edition works fine.
+   Note that the Community Edition works fine. (Or clang and the build essentials on Linux)
 2. You need to set the `TM_SDK_DIR` environment variable to the path of the SDK package that you
    installed on your computer. When you compile a plugin, it looks for The Machinery headers in the
-   `%TM_SDK_DIR%/headers` folder.
+   `%TM_SDK_DIR%/headers` folder. 
 3. You need the `tmbuild.exe` from the SDK package. `tmbuild.exe` does all the steps needed to
    compile the plugin. Put it in your `PATH` or copy it to your plugin folder so that you can run it
    easily from the command line.

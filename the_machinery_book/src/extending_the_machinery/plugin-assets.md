@@ -38,8 +38,22 @@ they will automatically get the plugin too -- they don't have to manually instal
 >     (for example as a plugin asset in a project), you must make sure that they use the exact same
 >     version of The Machinery. Otherwise, the plugin will most likely crash.
 
-You hot-reload plugin assets by checking the *Import When Changed* checkbox in the plugin
+# How to create a plugin asset
+
+You can create a plugin asset in the Asset Browser. **Righ Click -> New -> New Plugin**. This will create a plugin asset in your asset browser. On its own this is quite useless. When you select it you can set the DLL Path for your plugin on windows or on linux. The moment you have selected the path to the dll. It will be imported and stored in the asset.
+
+> **Note:** The asset plugin will store the path absolute.
+
+## My plugin asset is not updating after changes?
+
+You would have to repeat the above described worklfow everytime you change the code of your plugin. This is very annoying, but do not worry hot-reloading comes to resuce!
+
+You can enable hot-reload for plugin assets by checking the *Import When Changed* checkbox in the plugin
 properties. If checked, the editor will monitor the plugin's import path for changes and if it
 detects a file change, it will reimport the plugin.
 
 ![plugin asset settings](https://www.dropbox.com/s/h2uzbwsf45o28ba/tm_guide_plugin_asset_settings.png?dl=1)
+
+## I have a third party dll which is needed for my game project only, what do I do?
+
+In this case you repeat the above workflow and check the `Is Helper` checkbox, the magic is done.

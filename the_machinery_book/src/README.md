@@ -11,6 +11,7 @@ Besides this book we have several other resources which might be good to checkou
 - [Our Podcast](https://anchor.fm/ourmachinery)
 - [Our Discord](https://discord.gg/SHHSZaH)
 - [Our Github Discussion Board](https://github.com/OurMachinery/themachinery-public/discussions)
+- [Tutorials and Workflow Book]({{tutorials}})
 
 Enjoy!
 

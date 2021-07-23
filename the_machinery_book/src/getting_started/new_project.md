@@ -22,9 +22,17 @@ Related videos to these topics are:
 
 # About Projects
 
-Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project. The difference between both is that a database project results in one file rather than multiple files. It has the file ending .the_machinery_db. This database will contain all your assets. In contrast, a directory project saves all your assets, etc., in a specified project folder. It is possible to save a database project as a directory project and vise versa. 
+Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project. The difference between both is that a database project results in one file rather than multiple files. It has the file ending `.the_machinery_db`. This database will contain all your assets. In contrast, a directory project saves all your assets, etc., in a specified project folder. It is possible to save a database project as a directory project and vise versa. 
 
-> Note: If resaving a Database project as a Directory project or vice versa, be aware that these are two different projects. Hence changes to one will not apply to the other.
+> **Note:** If resaving a Database project as a Directory project or vice versa, be aware that these are two different projects. Hence changes to one will not apply to the other.
+
+**Can I directly add Assets to my project from the File Explorer of my OS?**
+
+**No**, the editor will not import assets directly added to the project folder via your OS File Explorer. However you can modify The Machinery files (in a directory project) during runtime or before. If you do this the Engine will warn you.
+
+> Changes to the project on disk where detected: [Import] [Ignore]
+
+More information of this topic [here](https://github.com/OurMachinery/themachinery-public/issues/435).
 
 You handle the main project management steps through the **File Menu.** Such as Create and Save. By default, The Machinery will save your project as a directory project.
 

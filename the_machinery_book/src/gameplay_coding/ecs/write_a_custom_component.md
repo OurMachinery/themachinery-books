@@ -399,7 +399,7 @@ The Engine provides a bunch of useful Blackboard values. They are defined in the
 
 
 
-Now we can loop over all our components. The `tm_engine_update_set_t` gives us access to the needed data, and we can modify our component.
+The `tm_engine_update_set_t` gives us access to the needed data, and we can modify our component. The first important information we get are the number of entity types (also known Archetypes). This number is stored in `data->num_arrays`. Now that we know this information we can iterate over them and access the components per entity type. `tm_engine_update_array_t a =  data->arrays` (Gives us the current entity type's components). `a->n` is the number of matching components / entities of this entity type.
 
 ```c
 
@@ -419,7 +419,19 @@ Now we can loop over all our components. The `tm_engine_update_set_t` gives us a
     }
 ```
 
+> **Note**: In case you are not that familiar with C this loop:
+>
+> ```c
+>  for (tm_engine_update_array_t* a = data->arrays; a < data->arrays + data->num_arrays; ++a) {
+> ```
+>
+> is kind of the C equivalent to C++'s for each loop: `for(auto a : data->arrays)`
+
 As the last step, we add a notifier function call to notify all entities that their components have changed.
+
+```c
+    tm_entity_api->notify(ctx, data->engine->components[1], mod_transform, (uint32_t)tm_carray_size(mod_transform));
+```
 
 
 

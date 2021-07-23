@@ -12,6 +12,8 @@ On Linux, you also need to install the following packages for the runtime:
 sudo apt-get install libxcb-ewmh2 libxcb-cursor0 libxcb-xrm0 unzip
 ~~~
 
+*This does not work on your distro*? No problem, visit our [Linux installation process across distributions guide](https://github.com/OurMachinery/themachinery-public/discussions/616).
+
 ## Getting up and running
 
 Quick steps to get up and running:
