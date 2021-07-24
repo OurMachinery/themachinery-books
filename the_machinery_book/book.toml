@@ -20,8 +20,8 @@ command = "mdbook-tera  --toml  ./context.toml"
 follow-web-links = true
 exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com','https://marketplace\.visualstudio\.com'  ]
 
-[preprocessor.autolink]
-renderer = ["html"]
-folder = "../"
-books = ["the_machinery_book","tutorials"]
-command = "python ../autogenerete_doc_links.py"
+#[preprocessor.autolink]
+#renderer = ["html"]
+#folder = "../"
+#books = ["the_machinery_book","tutorials"]
+#command = "python ../autogenerete_doc_links.py"
