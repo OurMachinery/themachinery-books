@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item expanded "><a href="ui/toolbars-overlays.html"><strong aria-hidden="true">5.2.</strong> Toolbars and Overlays</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="creation_graph/from_code.html"><strong aria-hidden="true">2.1.</strong> Calling Creation Graphs from code</a></li></ol></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item expanded "><a href="ui/toolbars-overlays.html"><strong aria-hidden="true">5.2.</strong> Toolbars and Overlays</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -164,7 +164,7 @@
 <p>In The Machinery, we provide full control over how data enters the engine and what data-processing
 steps that get executed, allowing technical artists to better optimize content and setup custom,
 game-specific asset pipelines. </p>
-<p>This is handled through <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html"><em>Creation Graphs</em></a>. A <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html"><em>Creation Graphs</em></a> is essentially a generic framework for
+<p>This is handled through <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html"><em>Creation Graphs</em></a>. A Creation Graph is essentially a generic framework for
 processing arbitrary data on the CPUs and GPUs, exposed through a graph front-end view. While we can
 use <em>Creation Graphs</em> for any type of data processing.</p>
 <p>The following section will guide you from basic use cases to more advanced use cases.</p>
@@ -175,6 +175,320 @@ you.</p>
 <li><a href="https://ourmachinery.com/post/more-on-creation-graphs/">More on Creation Graphs</a></li>
 <li><a href="https://ourmachinery.com/post/summer-fun-with-creation-graphs/">Summer Fun with Creation Graphs</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="calling-creation-graphs-from-code"><a class="header" href="#calling-creation-graphs-from-code">Calling creation graphs from code</a></h1>
+<p>In this tutorial we will create a very simple component that uses a <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html">creation graph</a> to render to the viewport. The creation graph used for this example can be seen in the image below.</p>
+<p>The goal of this creation graph is to create an image output that we can copy to the viewport. In this example the image is created by the creation graph and the viewport UV is rendered onto it using and unlit pass. Notice that no geometry has to be defined as we use the <code>Construct Quad</code> node in clip space, this will procedurally encompass the entire viewport.</p>
+<p><strong>Contents</strong></p>
+<ul>
+<li><a href="creation_graph/from_code.html#using-the-creation-graph-api">Using the creation graph API</a></li>
+<li><a href="creation_graph/from_code.html#remarks">Remarks</a></li>
+<li><a href="creation_graph/from_code.html#full-code">Full Code</a></li>
+</ul>
+<p><img src="https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?dl=1" alt="" /></p>
+<h2 id="using-the-creation-graph-api"><a class="header" href="#using-the-creation-graph-api">Using the creation graph API</a></h2>
+<p>The component itself is very simple, it only has a single property which is our creation graph asset.</p>
+<pre><code class="language-c">static const tm_the_truth_property_definition_t properties[] = {
+	[TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH] = { &quot;creation_graph&quot;, TM_THE_TRUTH_PROPERTY_TYPE_SUBOBJECT, .type_hash = TM_TT_TYPE_HASH__CREATION_GRAPH }
+};
+</code></pre>
+<p>However multiple fields are defined in the runtime component struct, all of these are dependent on our creation graph.</p>
+<pre><code class="language-c">typedef struct tm_component_t
+{
+	// The truth ID of the creation graph subobject.
+	tm_tt_id_t creation_graph;
+	// An instance of the `creation_graph` (created in `shader_ci__init`).
+	tm_creation_graph_instance_t instance;
+
+	// The handle to the output image.
+	tm_renderer_handle_t image_handle;
+	// The resource state of the output image.
+	uint32_t resource_state;
+	// The description of the output image.
+	tm_renderer_image_desc_t desc;
+	// The name of the output image.
+	tm_strhash_t name;
+} tm_component_t;
+</code></pre>
+<p>In the example we only call the creation graph once (during the initialization phase). The workflow is as follows. 
+The creation graph subobject is added by The Truth, so we don’t have to do any UI or linking code for it. 
+In the initialize function we instantiate this creation graph asset with a default context. 
+This updates our image output node and all the nodes it is dependent upon. </p>
+<pre><code class="language-c">tm_creation_graph_context_t ctx = {
+	.rb = manager-&gt;rb,
+	.device_affinity_mask = TM_RENDERER_DEVICE_AFFINITY_MASK_ALL,
+	.entity_ctx = manager-&gt;ctx,
+	.tt = tm_entity_api-&gt;the_truth(manager-&gt;ctx)
+};
+
+for (uint32_t i = 0; i &lt; num_components; ++i) {
+	
+	// Skip any component that don't have a creation graph defined.
+	tm_component_t *cur = cdata[i];
+	if (!cur-&gt;creation_graph.u64)
+		continue;
+
+	// Instantiate the creation graph if this is the first time.
+	if (!cur-&gt;instance.graph.u64)
+		cur-&gt;instance = tm_creation_graph_api-&gt;create_instance(ctx.tt, cur-&gt;creation_graph, &amp;ctx);
+}
+</code></pre>
+<p>Next we query all the image output nodes from the graph, and pick the first one. This information we get from the output node is enough to copy our image to the viewport. </p>
+<pre><code class="language-c">// Query the creation graph for image outputs, if non are defined then we skip the update step.
+tm_creation_graph_output_t image_outputs = tm_creation_graph_api-&gt;output(&amp;cur-&gt;instance, TM_CREATION_GRAPH__IMAGE__OUTPUT_NODE_HASH, &amp;ctx, NULL);
+if (image_outputs.num_output_objects &gt; 0) {
+	const tm_creation_graph_image_data_t *image_data = (const tm_creation_graph_image_data_t *)image_outputs.output;
+
+	cur-&gt;image_handle = image_data-&gt;handle;
+	cur-&gt;resource_state = image_data-&gt;resource_state;
+	cur-&gt;desc = image_data-&gt;desc;
+	cur-&gt;name = image_data-&gt;resource_name;
+}
+</code></pre>
+<p>To do this we register it to the viewports render graph using <code>register_gpu_image</code> and then pass it to the <code>debug_visualization_resources</code> for easy rendering to the screen.</p>
+<pre><code class="language-c">// Loop through all components until we find one that has a valid image output.
+uint32_t i;
+const tm_component_t **cdata = (const tm_component_t **)data;
+for (i = 0; i &lt; num_components; ++i) {
+	const tm_component_t *cur = cdata[i];
+	if (!cur-&gt;image_handle.resource)
+		continue;
+
+	tm_render_graph_api-&gt;register_gpu_image(args-&gt;render_graph, cur-&gt;name, cur-&gt;image_handle, cur-&gt;resource_state, &amp;cur-&gt;desc);
+	break;
+}
+
+// None of the components had a valid image output, so skip the copy step.
+if (i == num_components)
+	return;
+
+// Instead of making our own copy call, the debug visualization pass is used to copy to the viewport.
+// This is not a proper copy, but it's good enough for this tutorial.
+tm_render_graph_blackboard_value value;
+tm_render_graph_api-&gt;read_blackboard(args-&gt;render_graph, TM_STATIC_HASH(&quot;debug_visualization_resources&quot;, 0xd0d50436a0f3fcb9ULL), &amp;value);
+tm_debug_visualization_resources_t *resources = (tm_debug_visualization_resources_t *)value.data;
+
+const uint32_t slot = resources-&gt;num_resources;
+resources-&gt;resources[slot].name = cdata[i]-&gt;name,
+resources-&gt;resources[slot].contents = CONTENT_COLOR_RGB;
+++resources-&gt;num_resources;
+</code></pre>
+<h2 id="remarks"><a class="header" href="#remarks">Remarks</a></h2>
+<p>Note that this is a very simple example of the creation graph, we don’t update it every frame so it will only render once. This makes use of the <code>Time</code> node useless in this example. Note as well that we are not triggering any wires, this also means that the <code>Init event</code> node will never be called by the component. </p>
+<p>Note as well that all destruction code has been omitted from the code sample to shorten it. In a production implementation the creation graph instance and the component should be destroyed.</p>
+<h2 id="full-code"><a class="header" href="#full-code">Full Code</a></h2>
+<pre><code class="language-c">static struct tm_allocator_api *tm_allocator_api;
+static struct tm_api_registry_api *tm_api_registry_api;
+static struct tm_creation_graph_api *tm_creation_graph_api;
+static struct tm_entity_api *tm_entity_api;
+static struct tm_render_graph_api *tm_render_graph_api;
+static struct tm_shader_system_api *tm_shader_system_api;
+static struct tm_the_truth_api *tm_the_truth_api;
+
+#include &lt;foundation/allocator.h&gt;
+#include &lt;foundation/api_registry.h&gt;
+#include &lt;foundation/macros.h&gt;
+#include &lt;foundation/the_truth.h&gt;
+
+#include &lt;plugins/creation_graph/creation_graph.h&gt;
+#include &lt;plugins/creation_graph/creation_graph_output.inl&gt;
+#include &lt;plugins/creation_graph/image_nodes.h&gt;
+#include &lt;plugins/editor_views/graph.h&gt;
+#include &lt;plugins/entity/entity.h&gt;
+#include &lt;plugins/render_graph/render_graph.h&gt;
+#include &lt;plugins/render_graph_toolbox/toolbox_common.h&gt;
+#include &lt;plugins/renderer/render_backend.h&gt;
+#include &lt;plugins/renderer/render_command_buffer.h&gt;
+#include &lt;plugins/shader_system/shader_system.h&gt;
+#include &lt;plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h&gt;
+#include &lt;plugins/the_machinery_shared/component_interfaces/shader_interface.h&gt;
+#include &lt;plugins/the_machinery_shared/render_context.h&gt;
+
+#include &lt;string.h&gt;
+
+#define TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT &quot;tm_creation_graph_test_component&quot;
+
+enum {
+	TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH
+};
+
+typedef struct tm_component_t
+{
+	// The truth ID of the creation graph subobject.
+	tm_tt_id_t creation_graph;
+	// An instance of the `creation_graph` (created in `shader_ci__init`).
+	tm_creation_graph_instance_t instance;
+
+	// The handle to the output image.
+	tm_renderer_handle_t image_handle;
+	// The resource state of the output image.
+	uint32_t resource_state;
+	// The description of the output image.
+	tm_renderer_image_desc_t desc;
+	// The name of the output image.
+	tm_strhash_t name;
+} tm_component_t;
+
+typedef struct tm_component_manager_o
+{
+	tm_allocator_i allocator;
+	tm_entity_context_o *ctx;
+	tm_renderer_backend_i *rb;
+} tm_component_manager_o;
+
+// This function is called when the component is initialized,
+// this happens at engine startup for the scene tab, 
+// at the start of the simulation for the simulate tab,
+// or once an entity is selected for the preview tab.
+static void shader_ci__init(tm_component_manager_o *manager, const tm_entity_t *entities, const uint32_t *entity_indices, void **data, uint32_t num_components)
+{
+	tm_component_t **cdata = (tm_component_t **)data;
+
+	// Create the context for the creation graph, only the bare minimum is defined for this tutorial.
+	// This is not production-level code.
+	tm_creation_graph_context_t ctx = {
+		.rb = manager-&gt;rb,
+		.device_affinity_mask = TM_RENDERER_DEVICE_AFFINITY_MASK_ALL,
+		.entity_ctx = manager-&gt;ctx,
+		.tt = tm_entity_api-&gt;the_truth(manager-&gt;ctx)
+	};
+
+	for (uint32_t i = 0; i &lt; num_components; ++i) {
+		
+		// Skip any component that don't have a creation graph defined.
+		tm_component_t *cur = cdata[i];
+		if (!cur-&gt;creation_graph.u64)
+			continue;
+
+		// Instantiate the creation graph if this is the first time.
+		if (!cur-&gt;instance.graph.u64)
+			cur-&gt;instance = tm_creation_graph_api-&gt;create_instance(ctx.tt, cur-&gt;creation_graph, &amp;ctx);
+
+		// Query the creation graph for image outputs, if non are defined then we skip the update step.
+		tm_creation_graph_output_t image_outputs = tm_creation_graph_api-&gt;output(&amp;cur-&gt;instance, TM_CREATION_GRAPH__IMAGE__OUTPUT_NODE_HASH, &amp;ctx, NULL);
+		if (image_outputs.num_output_objects &gt; 0) {
+			const tm_creation_graph_image_data_t *image_data = (const tm_creation_graph_image_data_t *)image_outputs.output;
+
+			cur-&gt;image_handle = image_data-&gt;handle;
+			cur-&gt;resource_state = image_data-&gt;resource_state;
+			cur-&gt;desc = image_data-&gt;desc;
+			cur-&gt;name = image_data-&gt;resource_name;
+		}
+	}
+}
+
+// This function is called every frame and allows us to update our shader variables.
+static void shader_ci__update(tm_component_manager_o *manager, tm_render_args_t *args, const tm_entity_t *entities,
+	const struct tm_transform_component_t *transforms, const uint32_t *entity_indices, void **data,
+	uint32_t num_components, const uint8_t *frustum_visibilty)
+{
+
+	// Loop through all components until we find one that has a valid image output.
+	uint32_t i;
+	const tm_component_t **cdata = (const tm_component_t **)data;
+	for (i = 0; i &lt; num_components; ++i) {
+		const tm_component_t *cur = cdata[i];
+		if (!cur-&gt;image_handle.resource)
+			continue;
+
+		tm_render_graph_api-&gt;register_gpu_image(args-&gt;render_graph, cur-&gt;name, cur-&gt;image_handle, cur-&gt;resource_state, &amp;cur-&gt;desc);
+		break;
+	}
+
+	// None of the components had a valid image output, so skip the copy step.
+	if (i == num_components)
+		return;
+
+	// Instead of making our own copy call, the debug visualization pass is used to copy to the viewport.
+	// This is not a proper copy, but it's good enough for this tutorial.
+	tm_render_graph_blackboard_value value;
+	tm_render_graph_api-&gt;read_blackboard(args-&gt;render_graph, TM_STATIC_HASH(&quot;debug_visualization_resources&quot;, 0xd0d50436a0f3fcb9ULL), &amp;value);
+	tm_debug_visualization_resources_t *resources = (tm_debug_visualization_resources_t *)value.data;
+
+	const uint32_t slot = resources-&gt;num_resources;
+	resources-&gt;resources[slot].name = cdata[i]-&gt;name,
+	resources-&gt;resources[slot].contents = CONTENT_COLOR_RGB;
+	++resources-&gt;num_resources;
+}
+
+static void create_truth_types(struct tm_the_truth_o *tt)
+{
+	static tm_ci_editor_ui_i editor_aspect = { 0 };
+
+	static tm_ci_shader_i shader_aspect = {
+		.init = shader_ci__init,
+		.update = shader_ci__update
+	};
+
+	static const tm_the_truth_property_definition_t properties[] = {
+		[TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH] = { &quot;creation_graph&quot;, TM_THE_TRUTH_PROPERTY_TYPE_SUBOBJECT, .type_hash = TM_TT_TYPE_HASH__CREATION_GRAPH }
+	};
+
+	const tm_tt_type_t component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT, properties, TM_ARRAY_COUNT(properties));
+	tm_creation_graph_api-&gt;create_truth_types(tt);
+	tm_the_truth_api-&gt;set_default_object_to_create_subobjects(tt, component_type);
+
+	// The editor aspect has to be defined if we want our component to be usable in the editor.
+	// The shader aspect is used to update the creation graph and our final output.
+	tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_EDITOR_UI, &amp;editor_aspect);
+	tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_SHADER, &amp;shader_aspect);
+}
+
+static bool component__load_asset(tm_component_manager_o *manager, tm_entity_t e, void *data, const tm_the_truth_o *tt, tm_tt_id_t asset)
+{
+	tm_component_t *c = data;
+	tm_tt_id_t creation_graph = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, asset), TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH);
+
+	// We only want update if the creation graph has changed,
+	// Note that we set the entire component to zero if this happens,
+	// this is because all fields are dependent on the creation graph.
+	if (c-&gt;creation_graph.u64 != creation_graph.u64) {
+		memset(c, 0, sizeof(tm_component_t));
+		c-&gt;creation_graph = creation_graph;
+		return true;
+	}
+
+	return false;
+}
+
+static void component__create_manager(tm_entity_context_o *ctx)
+{
+	tm_allocator_i a;
+	tm_entity_api-&gt;create_child_allocator(ctx, TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT, &amp;a);
+
+	uint32_t num_backends;
+	tm_renderer_backend_i **backends = (tm_renderer_backend_i **)tm_api_registry_api-&gt;implementations(TM_RENDER_BACKEND_INTERFACE_NAME, &amp;num_backends);
+
+	tm_component_manager_o *manager = tm_alloc(&amp;a, sizeof(tm_component_manager_o));
+	*manager = (tm_component_manager_o){
+		.allocator = a,
+		.ctx = ctx,
+		.rb = backends[0]
+	};
+
+	const tm_component_i component = {
+		.name = TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT,
+		.bytes = sizeof(tm_component_t),
+		.manager = manager,
+		.load_asset = component__load_asset
+	};
+
+	tm_entity_api-&gt;register_component(ctx, &amp;component);
+}
+
+TM_DLL_EXPORT void load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+	tm_allocator_api = reg-&gt;get(TM_ALLOCATOR_API_NAME);
+	tm_api_registry_api = reg;
+	tm_creation_graph_api = reg-&gt;get(TM_CREATION_GRAPH_API_NAME);
+	tm_entity_api = reg-&gt;get(TM_ENTITY_API_NAME);
+	tm_render_graph_api = reg-&gt;get(TM_RENDER_GRAPH_API_NAME);
+	tm_shader_system_api = reg-&gt;get(TM_SHADER_SYSTEM_API_NAME);
+	tm_the_truth_api = reg-&gt;get(TM_THE_TRUTH_API_NAME);
+
+	tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
+	tm_add_or_remove_implementation(reg, load, TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME, component__create_manager);
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="physics"><a class="header" href="#physics">Physics</a></h2>
 <p>The Machinery integrates Nvidia's PhysX toolkit and uses it for physics simulation of entities. This section will not attempt to describe in detail how physics simulation works, for that we refer to <a href="https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/Index.html">the PhysX documentation</a>. 
 We will only talk about how physics is set up in The Machinery.</p>
