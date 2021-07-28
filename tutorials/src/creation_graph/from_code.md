@@ -1,20 +1,123 @@
 # Calling creation graphs from code
 
-In this tutorial we will create a very simple component that uses a creation graph to render to the viewport. The creation graph used for this example can be seen in the image below.
+In this tutorial we will create a very simple component that uses a [creation graph]({{the_machinery_book}}/creation_graphs/concept.html) to render to the viewport. The creation graph used for this example can be seen in the image below.
 
 The goal of this creation graph is to create an image output that we can copy to the viewport. In this example the image is created by the creation graph and the viewport UV is rendered onto it using and unlit pass. Notice that no geometry has to be defined as we use the `Construct Quad` node in clip space, this will procedurally encompass the entire viewport.
 
+**Contents**
+* auto-gen TOC;
+{:toc}
+
 ![](https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?dl=1)
 
+## Using the creation graph API
 The component itself is very simple, it only has a single property which is our creation graph asset.
+
+```c
+static const tm_the_truth_property_definition_t properties[] = {
+	[TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH] = { "creation_graph", TM_THE_TRUTH_PROPERTY_TYPE_SUBOBJECT, .type_hash = TM_TT_TYPE_HASH__CREATION_GRAPH }
+};
+```
+
 However multiple fields are defined in the runtime component struct, all of these are dependent on our creation graph.
 
-In the example we only call the creation graph once (during the initialization phase). The workflow is as follows. The creation graph subobject is added by The Truth, so we don’t have to do any UI or linking code for it. In the initialize function we instantiate this creation graph asset with a default context. This updates our image output node and all the nodes it is dependent upon. Next we query all the image output nodes from the graph, and pick the first one. This information we get from the output node is enough to copy our image to the viewport. To do this we register it to the viewports render graph using `register_gpu_image` and then pass it to the `debug_visualization_resources` for easy rendering to the screen.
+```c
+typedef struct tm_component_t
+{
+	// The truth ID of the creation graph subobject.
+	tm_tt_id_t creation_graph;
+	// An instance of the `creation_graph` (created in `shader_ci__init`).
+	tm_creation_graph_instance_t instance;
 
+	// The handle to the output image.
+	tm_renderer_handle_t image_handle;
+	// The resource state of the output image.
+	uint32_t resource_state;
+	// The description of the output image.
+	tm_renderer_image_desc_t desc;
+	// The name of the output image.
+	tm_strhash_t name;
+} tm_component_t;
+```
+
+In the example we only call the creation graph once (during the initialization phase). The workflow is as follows. 
+The creation graph subobject is added by The Truth, so we don’t have to do any UI or linking code for it. 
+In the initialize function we instantiate this creation graph asset with a default context. 
+This updates our image output node and all the nodes it is dependent upon. 
+
+```c
+tm_creation_graph_context_t ctx = {
+	.rb = manager->rb,
+	.device_affinity_mask = TM_RENDERER_DEVICE_AFFINITY_MASK_ALL,
+	.entity_ctx = manager->ctx,
+	.tt = tm_entity_api->the_truth(manager->ctx)
+};
+
+for (uint32_t i = 0; i < num_components; ++i) {
+	
+	// Skip any component that don't have a creation graph defined.
+	tm_component_t *cur = cdata[i];
+	if (!cur->creation_graph.u64)
+		continue;
+
+	// Instantiate the creation graph if this is the first time.
+	if (!cur->instance.graph.u64)
+		cur->instance = tm_creation_graph_api->create_instance(ctx.tt, cur->creation_graph, &ctx);
+}
+```
+
+Next we query all the image output nodes from the graph, and pick the first one. This information we get from the output node is enough to copy our image to the viewport. 
+
+```c
+// Query the creation graph for image outputs, if non are defined then we skip the update step.
+tm_creation_graph_output_t image_outputs = tm_creation_graph_api->output(&cur->instance, TM_CREATION_GRAPH__IMAGE__OUTPUT_NODE_HASH, &ctx, NULL);
+if (image_outputs.num_output_objects > 0) {
+	const tm_creation_graph_image_data_t *image_data = (const tm_creation_graph_image_data_t *)image_outputs.output;
+
+	cur->image_handle = image_data->handle;
+	cur->resource_state = image_data->resource_state;
+	cur->desc = image_data->desc;
+	cur->name = image_data->resource_name;
+}
+```
+
+To do this we register it to the viewports render graph using `register_gpu_image` and then pass it to the `debug_visualization_resources` for easy rendering to the screen.
+
+```c
+// Loop through all components until we find one that has a valid image output.
+uint32_t i;
+const tm_component_t **cdata = (const tm_component_t **)data;
+for (i = 0; i < num_components; ++i) {
+	const tm_component_t *cur = cdata[i];
+	if (!cur->image_handle.resource)
+		continue;
+
+	tm_render_graph_api->register_gpu_image(args->render_graph, cur->name, cur->image_handle, cur->resource_state, &cur->desc);
+	break;
+}
+
+// None of the components had a valid image output, so skip the copy step.
+if (i == num_components)
+	return;
+
+// Instead of making our own copy call, the debug visualization pass is used to copy to the viewport.
+// This is not a proper copy, but it's good enough for this tutorial.
+tm_render_graph_blackboard_value value;
+tm_render_graph_api->read_blackboard(args->render_graph, TM_STATIC_HASH("debug_visualization_resources", 0xd0d50436a0f3fcb9ULL), &value);
+tm_debug_visualization_resources_t *resources = (tm_debug_visualization_resources_t *)value.data;
+
+const uint32_t slot = resources->num_resources;
+resources->resources[slot].name = cdata[i]->name,
+resources->resources[slot].contents = CONTENT_COLOR_RGB;
+++resources->num_resources;
+```
+
+## Remarks
 Note that this is a very simple example of the creation graph, we don’t update it every frame so it will only render once. This makes use of the `Time` node useless in this example. Note as well that we are not triggering any wires, this also means that the `Init event` node will never be called by the component. 
 
 Note as well that all destruction code has been omitted from the code sample to shorten it. In a production implementation the creation graph instance and the component should be destroyed.
 
+## Full Code
 ```c
 static struct tm_allocator_api *tm_allocator_api;
 static struct tm_api_registry_api *tm_api_registry_api;

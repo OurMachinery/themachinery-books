@@ -4,7 +4,7 @@ In The Machinery, we provide full control over how data enters the engine and wh
 steps that get executed, allowing technical artists to better optimize content and setup custom,
 game-specific asset pipelines. 
 
-This is handled through [*Creation Graphs*]({{the_machinery_book}}/creation_graphs/concept.html). A [*Creation Graphs*]({{the_machinery_book}}/creation_graphs/concept.html) is essentially a generic framework for
+This is handled through [*Creation Graphs*]({{the_machinery_book}}/creation_graphs/concept.html). A Creation Graph is essentially a generic framework for
 processing arbitrary data on the CPUs and GPUs, exposed through a graph front-end view. While we can
 use *Creation Graphs* for any type of data processing.
 
