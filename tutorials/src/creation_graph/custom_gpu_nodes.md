@@ -2,7 +2,7 @@
 
 The [*Creation Graph*]({{the_machinery_book}}/creation_graphs/concept.html) is a powerful visual scripting language that can generate shader code through its GPU nodes. Extending this with custom nodes allows for more complex algorithms, custom material types and much more. In this tutorial we will demonstrate how to create some basic GPU nodes. To learn the difference between CPU and GPU nodes, check out [*Node Types*]({{the_machinery_book}}/creation_graphs/node_types.html). 
 
-A creation graph CPU node needs to be in a `.tmsl` file, these can be compiled by the shader system. Note that there can only be **one** creation graph node per `.tmsl` file, additional definitions will be ignored. If these shaders are places in the `bin/data/shaders/` directory then they will be loaded automatically. For a full reference on the shader files, check out the [Shader System Reference](https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html).
+A creation graph CPU node needs to be in a `.tmsl` file, these can be compiled by the shader system. Note that there can only be **one** creation graph node per `.tmsl` file, additional definitions will be ignored. If these shaders are places in the `bin/data/shaders/` directory then they will be loaded automatically. For a full reference on the shader files, check out the [Shader System Reference]({{docs}}doc/shader_system_reference.md.html).
 
 
 ## Cube Node
@@ -37,7 +37,7 @@ In this example the `creation_graph_node` has several fields, but more can be de
 - `inputs` is an array of input parameters for this node, a type can be specified, but it is not required which allows for generic types.
 - `outputs` is an array of output parameters for this node.
 
-Note that we didn’t specify a `type` parameter for our input field. This makes it a fuzzy input and anything that supports the multiplication operator can be passed. Our output parameter does have a `type` field, but instead of defining a fixed type it uses a generic syntax that sets the output type to whatever the input type was. For more information about this syntax see the [Shader System Reference](https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html).
+Note that we didn’t specify a `type` parameter for our input field. This makes it a fuzzy input and anything that supports the multiplication operator can be passed. Our output parameter does have a `type` field, but instead of defining a fixed type it uses a generic syntax that sets the output type to whatever the input type was. For more information about this syntax see the [Shader System Reference]({{docs}}doc/shader_system_reference.md.html).
 
 
 
