@@ -3847,25 +3847,25 @@ After you have loaded the [<a href="https://ourmachinery.com/apidoc/foundation/p
 </tbody></table>
 <p>You can register a support for your own custom type via the <code>tm_sprintf_api.add_printer()</code>.</p>
 <h3 id="more-a-hrefhttpsourmachinerycomapidocfoundationsprintfhhtmlstructtm_sprintf_apitm_sprintf_apia-formatting-cheats"><a class="header" href="#more-a-hrefhttpsourmachinerycomapidocfoundationsprintfhhtmlstructtm_sprintf_apitm_sprintf_apia-formatting-cheats">More <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a> formatting cheats</a></h3>
-<p>| Fmt                      | Value                                | Result                                      |
-| -----------------------  | -----------------------------------  | ------------------------------------------  |
-| <code>%I64d</code>                  | <code>(uint64_t)100</code>                      | <code>100</code>                                       |
-| <code>%'d</code>                    | <code>12345</code>                              | <code>12,345</code>                                    |
-| <code>%$d</code>                    | <code>12345</code>                              | <code>12.3 k</code>                                    |
-| <code>%$d</code>                    | <code>1000</code>                               | <code>1.0 k</code>                                     |
-| <code>%$.2d</code>                  | <code>2536000</code>                            | <code>2.53 M</code>                                    |
-| <code>%$$d</code>                   | <code>2536000</code>                            | <code>2.42 Mi</code>                                   |
-| <code>%$$$d</code>                  | <code>2536000</code>                            | <code>2.42 M</code>                                    |
-| <code>%_$d</code>                   | <code>2536000</code>                            | <code>2.53M</code>                                     |
-| <code>%b</code>                     | <code>36</code>                                 | <code>100100</code>                                    |
-| <code>%p{bool}</code>               | <code>&amp;(bool){true}</code>                      | <code>true</code>                                      |
-| <code>%p{tm_vec3_t}</code>          | <code>&amp;(tm_vec3_t){ 1, 2, 3 }</code>            | <code>{ 1, 2, 3 }</code>                               |
-| <code>%p{tm_vec3_t}</code>          | <code>0</code>                                  | <code>(null)</code>                                    |
-| <code>%p{unknown_type}</code>       | <code>&amp;(tm_vec3_t){ 1, 2, 3 }</code>            | <code>%p{unknown_type}</code>                          |
-| <code>%p{unknown_type:args}</code>  | <code>&amp;(tm_vec3_t){ 1, 2, 3 }</code>            | <code>%p{unknown_type:args}</code>                     |
-| <code>%p{tm_vec3_t</code>           | <code>&amp;(tm_vec3_t){ 1, 2, 3 }</code>            | <code>(error)</code>                                   |
-| <code>%p{tm_rect_t}</code>          | <code>&amp;(tm_rect_t){ 10, 20, 100, 200 })</code>  | <code>{ 10, 20, 100, 200 }</code>                      |
-| <code>%p{tm_color_srgb_t}</code>    | <code>&amp;TM_RGB(0xff7f00)</code>                  | <code>{ .r = 255, .g = 127, .b = 0, .a = 255 }</code>  |</p>
+<table><thead><tr><th>Fmt</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td><code>%I64d</code></td><td><code>(uint64_t)100</code></td><td><code>100</code></td></tr>
+<tr><td><code>%'d</code></td><td><code>12345</code></td><td><code>12,345</code></td></tr>
+<tr><td><code>%$d</code></td><td><code>12345</code></td><td><code>12.3 k</code></td></tr>
+<tr><td><code>%$d</code></td><td><code>1000</code></td><td><code>1.0 k</code></td></tr>
+<tr><td><code>%$.2d</code></td><td><code>2536000</code></td><td><code>2.53 M</code></td></tr>
+<tr><td><code>%$$d</code></td><td><code>2536000</code></td><td><code>2.42 Mi</code></td></tr>
+<tr><td><code>%$$$d</code></td><td><code>2536000</code></td><td><code>2.42 M</code></td></tr>
+<tr><td><code>%_$d</code></td><td><code>2536000</code></td><td><code>2.53M</code></td></tr>
+<tr><td><code>%b</code></td><td><code>36</code></td><td><code>100100</code></td></tr>
+<tr><td><code>%p{bool}</code></td><td><code>&amp;(bool){true}</code></td><td><code>true</code></td></tr>
+<tr><td><code>%p{tm_vec3_t}</code></td><td><code>&amp;(tm_vec3_t){ 1, 2, 3 }</code></td><td><code>{ 1, 2, 3 }</code></td></tr>
+<tr><td><code>%p{tm_vec3_t}</code></td><td><code>0</code></td><td><code>(null)</code></td></tr>
+<tr><td><code>%p{unknown_type}</code></td><td><code>&amp;(tm_vec3_t){ 1, 2, 3 }</code></td><td><code>%p{unknown_type}</code></td></tr>
+<tr><td><code>%p{unknown_type:args}</code></td><td><code>&amp;(tm_vec3_t){ 1, 2, 3 }</code></td><td><code>%p{unknown_type:args}</code></td></tr>
+<tr><td><code>%p{tm_vec3_t</code></td><td><code>&amp;(tm_vec3_t){ 1, 2, 3 }</code></td><td><code>(error)</code></td></tr>
+<tr><td><code>%p{tm_rect_t}</code></td><td><code>&amp;(tm_rect_t){ 10, 20, 100, 200 })</code></td><td><code>{ 10, 20, 100, 200 }</code></td></tr>
+<tr><td><code>%p{tm_color_srgb_t}</code></td><td><code>&amp;TM_RGB(0xff7f00)</code></td><td><code>{ .r = 255, .g = 127, .b = 0, .a = 255 }</code></td></tr>
+</tbody></table>
 <h2 id="write-a-custom-logger"><a class="header" href="#write-a-custom-logger">Write a custom logger</a></h2>
 <p>If you desire to add your own logger sink to the eco system there are a few steps you need to take:</p>
 <ol>
