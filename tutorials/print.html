@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="creation_graph/from_code.html"><strong aria-hidden="true">2.1.</strong> Calling Creation Graphs from code</a></li></ol></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item expanded "><a href="ui/toolbars-overlays.html"><strong aria-hidden="true">5.2.</strong> Toolbars and Overlays</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">2.1.</strong> Creating custom GPU nodes</a></li><li class="chapter-item expanded "><a href="creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">2.2.</strong> Creating custom CPU nodes</a></li><li class="chapter-item expanded "><a href="creation_graph/from_code.html"><strong aria-hidden="true">2.3.</strong> Calling Creation Graphs from code</a></li></ol></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item expanded "><a href="ui/toolbars-overlays.html"><strong aria-hidden="true">5.2.</strong> Toolbars and Overlays</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -175,6 +175,206 @@ you.</p>
 <li><a href="https://ourmachinery.com/post/more-on-creation-graphs/">More on Creation Graphs</a></li>
 <li><a href="https://ourmachinery.com/post/summer-fun-with-creation-graphs/">Summer Fun with Creation Graphs</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="custom-gpu-nodes"><a class="header" href="#custom-gpu-nodes">Custom GPU nodes</a></h1>
+<p>The <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html"><em>Creation Graph</em></a> is a powerful visual scripting language that can generate shader code through its GPU nodes. Extending this with custom nodes allows for more complex algorithms, custom material types and much more. In this tutorial we will demonstrate how to create some basic GPU nodes. To learn the difference between CPU and GPU nodes, check out <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/node_types.html"><em>Node Types</em></a>. </p>
+<p>A creation graph CPU node needs to be in a <code>.tmsl</code> file, these can be compiled by the shader system. Note that there can only be <strong>one</strong> creation graph node per <code>.tmsl</code> file, additional definitions will be ignored. If these shaders are places in the <code>bin/data/shaders/</code> directory then they will be loaded automatically. For a full reference on the shader files, check out the <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">Shader System Reference</a>.</p>
+<h2 id="cube-node"><a class="header" href="#cube-node">Cube Node</a></h2>
+<p><img src="https://www.dropbox.com/s/z6faxvwm0sb7i9o/tut_creation_graph_custom_cube.png?dl=1" alt="" /></p>
+<pre><code class="language-json">function: [[
+	output.res = x * x * x;
+]]
+
+creation_graph_node: {
+	name: &quot;tm_cube_node&quot;
+	display_name: &quot;Cube&quot;
+	category: &quot;Shader/Math&quot;
+
+	inputs: [ 
+		{ name: &quot;x&quot; display_name: &quot;X&quot; } 
+	]
+	outputs: [
+		{ name: &quot;res&quot; display_name: &quot;Result&quot; type: { type_of: &quot;x&quot; } }
+	]
+}
+</code></pre>
+<p>This node show you the absolute basics of making a creation graph GPU node. All GPU nodes require two blocks. The <code>function</code> block is where you actual shader code will end up. The <code>creation_graph_node</code> is a meta node that defines you node I/O and general information.</p>
+<p>In this example the <code>creation_graph_node</code> has several fields, but more can be defined:</p>
+<ul>
+<li><code>name</code> is the unique identifier for you node, it’s a good idea to prefix this with your namespace.</li>
+<li><code>display_name</code> specifies an optional name of the node shown in the editor UI, if this is not defined then the node will get an automatically generated name based on the <code>name</code> field.</li>
+<li><code>category</code> is an optional path-type string that allows you to group related nodes.</li>
+<li><code>inputs</code> is an array of input parameters for this node, a type can be specified, but it is not required which allows for generic types.</li>
+<li><code>outputs</code> is an array of output parameters for this node.</li>
+</ul>
+<p>Note that we didn’t specify a <code>type</code> parameter for our input field. This makes it a fuzzy input and anything that supports the multiplication operator can be passed. Our output parameter does have a <code>type</code> field, but instead of defining a fixed type it uses a generic syntax that sets the output type to whatever the input type was. For more information about this syntax see the <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">Shader System Reference</a>.</p>
+<h2 id="depth-output-node"><a class="header" href="#depth-output-node">Depth Output Node</a></h2>
+<p><img src="https://www.dropbox.com/s/o947fbjy9uddltn/tut_creation_graph_custom_depth_output.png?dl=1" alt="" /></p>
+<p>Output nodes are more complex than function nodes. Instead of a single <code>function</code> block these nodes that the form of a render pass that can have variations based on the systems used with it and the connected inputs. The example above creates a very simple material node that displays a gray-scale interpretation of the object’s distance to the viewing camera.</p>
+<pre><code class="language-json">depth_stencil_states: {
+	depth_test_enable: true
+	depth_write_enable: true
+	depth_compare_op: &quot;greater_equal&quot;
+}
+
+raster_states: {
+	front_face: &quot;ccw&quot;
+}
+
+imports: [
+	{ name: &quot;tm&quot; type: &quot;float4x4&quot; }
+]
+
+vertex_shader: {
+	import_system_semantics: [ &quot;vertex_id&quot; ]
+
+	code: [[
+		tm_vertex_loader_context ctx;
+		init_vertex_loader_context(ctx);
+		float4 vp = load_position(ctx, vertex_id, 0);
+
+		float4 wp = mul(vp, load_tm());
+		output.position = mul(wp, load_camera_view_projection());
+		return output;
+	]]
+}
+
+pixel_shader: {
+	code: [[
+		float2 near_far = load_camera_near_far();
+		float depth = linearize_depth(input.position.z, near_far.x, near_far.y) * 0.01f;
+
+		output.buffer0 = float4(linear_to_gamma2(depth), 1); // Base color, alpha
+		output.buffer1 = float4(1, 1, 0, 1); // Normal (encoded in signed oct)
+		output.buffer2 = float4(0, 0, 0, 1); // Specular, Roughness
+		output.velocity = float2(0, 0);
+		return output;
+	]]
+}
+</code></pre>
+<p>The <code>creation_graph_node</code> block for this node is very small. If no outputs are specified then the output will be a <code>Shader Instance</code>. These can be passed to other nodes for rendering like the <code>Draw Call</code> and <code>Shader Instance</code> output node.</p>
+<pre><code class="language-json">creation_graph_node: {
+	name: &quot;depth_output&quot;
+	display_name: &quot;Depth&quot;
+	category: &quot;Shader/Output&quot;
+}
+</code></pre>
+<p>In this example the <code>compile</code> block has the following fields:</p>
+<ul>
+<li><code>includes</code> specify which common shaders this shader is dependent on. In this example that is the <code>common.tmsl</code> shader because we use the <code>linear_to_gamma2</code> function.</li>
+<li><code>contexts</code> specifies how this pass should be executed depending on the context. In this example we only support one context, the <code>viewport</code>. In this context we want to run during the <code>gbuffer</code> phase so we specify that as our layer. We also want to enable the <code>gbuffer_system</code> as we will be writing to it. Finally we specify that in this context we will enable the <code>gbuffer</code> configuration.</li>
+<li><code>configurations</code> are groups of settings. In this example we have one configuration group: <code>gbuffer</code>. This configuration requests three systems, if these systems are not present then we cannot run:
+<ul>
+<li>The <code>viewer_system</code> is needed to query the camera information.</li>
+<li>The <code>gbuffer_system</code> allows us to render to the G-Buffer in the opaque pass of the default-render-pipeline.</li>
+<li>The <code>vertex_buffer_system</code> allows us to query vertex information from the mesh.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-json">compile: {
+	includes: [ &quot;common&quot; ]
+
+	configurations: {
+		gbuffer: [{ 
+			variations: [{ 
+				systems: [ &quot;viewer_system&quot;, &quot;gbuffer_system&quot;, &quot;vertex_buffer_system&quot; ]
+			}]
+		}]
+	}
+
+	contexts: {
+		viewport: [
+			{ layer: &quot;gbuffer&quot; enable_systems: [ &quot;gbuffer_system&quot; ] configuration: &quot;gbuffer&quot; }
+		]
+	}
+}
+</code></pre>
+<blockquote>
+<p><strong>Note</strong> that the available contexts are defined by the application. Some example of these in The Machinery editor are <code>viewport</code>, <code>shadow_caster</code> and <code>ray_trace_material</code>. </p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong> that layers are defined by the render pipeline used. Some examples from the default render pipeline are: <code>gbuffer</code>, <code>skydome</code>, <code>hdr-transparency</code>, <code>ui</code>. </p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-custom-cpu-nodes"><a class="header" href="#creating-custom-cpu-nodes">Creating custom CPU nodes</a></h1>
+<p>In this tutorial we will create a simple CPU node for the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html"><em>Creation Graph</em></a>. The definition for these nodes is based on the entity graph nodes, so there is some overlap. The goal for our example node is a random <code>uint32_t</code> node with a settable maximum. To learn the difference between CPU and GPU nodes, check out <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/node_types.html"><em>Node Types</em></a>.</p>
+<p><img src="https://www.dropbox.com/s/04s5rzhmg9iwz68/tut_creation_graph_cpu_random.png?dl=1" alt="" /></p>
+<p>Let’s first create the code for this node. This function will be called by the creation graph every time it needs to evaluate the node. Our only input to this function is the context of the creation graph. The first thing we will do is read our input from the context. We can query wires from the <a href="https://ourmachinery.com/apidoc/plugins/creation_graph/creation_graph_interpreter.h.html#structtm_creation_graph_interpreter_api">tm_creation_graph_interpreter_api</a> using the <code>read_wire</code> function. If this wire is not connect (or set directly) we early out with an error. After this we start writing to our output wire, note that this uses a very similar syntax, expect that we write to a pre-allocated pointer.</p>
+<blockquote>
+<p><strong>Note</strong> that the indices of these wires is relative to the way they are defined. Our input wire is defined first so its index is zero. The output wire is defined second so it gets the index one.</p>
+</blockquote>
+<pre><code class="language-c">static void random_node__run(tm_creation_graph_interpreter_context_t *ctx)
+{
+	tm_creation_graph_interpreter_wire_content_t max_wire = tm_creation_graph_interpreter_api-&gt;read_wire(ctx-&gt;instance, ctx-&gt;wires[0]);
+	if (!TM_ASSERT(max_wire.n, tm_error_api-&gt;def, &quot;Max wire was not connected to random node!&quot;))
+		return;
+
+	uint32_t *res = (uint32_t *)tm_creation_graph_interpreter_api-&gt;write_wire(ctx-&gt;instance, ctx-&gt;wires[1], TM_TT_TYPE_HASH__UINT32_T, 1, sizeof(uint32_t));
+	*res = tm_random_to_uint32_t(tm_random_api-&gt;next()) % *(uint32_t *)max_wire.data;
+}
+</code></pre>
+<p>We need to register this node to the creation graph API. This is done through the creation graph node interface. We define the general information to the node like its <code>name</code>, <code>display_name</code> and I/O connectors (wires), and the actual function to run.</p>
+<pre><code class="language-c">static tm_creation_graph_node_type_i random_node = {
+	.name = &quot;tm_random&quot;,
+	.display_name = &quot;Random Uint&quot;,
+	.static_connectors.in = {
+		{ .name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T }
+	},
+	.static_connectors.num_in = 1,
+	.static_connectors.out = {
+		{ .name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T }
+	},
+	.static_connectors.num_out = 1,
+	.run = random_node__run
+};
+
+tm_add_or_remove_implementation(reg, load, TM_CREATION_GRAPH_NODE_INTERFACE_NAME, &amp;random_node);
+</code></pre>
+<p>This is the full code to define this creation graph CPU node.</p>
+<pre><code class="language-c">static struct tm_error_api *tm_error_api;
+static struct tm_random_api *tm_random_api;
+static struct tm_creation_graph_interpreter_api *tm_creation_graph_interpreter_api;
+
+#include &lt;foundation/api_registry.h&gt;
+#include &lt;foundation/error.h&gt;
+#include &lt;foundation/random.h&gt;
+#include &lt;foundation/the_truth_types.h&gt;
+
+#include &lt;plugins/creation_graph/creation_graph.h&gt;
+#include &lt;plugins/creation_graph/creation_graph_interpreter.h&gt;
+#include &lt;plugins/creation_graph/creation_graph_node_type.h&gt;
+
+static void random_node__run(tm_creation_graph_interpreter_context_t *ctx)
+{
+	tm_creation_graph_interpreter_wire_content_t max_wire = tm_creation_graph_interpreter_api-&gt;read_wire(ctx-&gt;instance, ctx-&gt;wires[0]);
+	if (!TM_ASSERT(max_wire.n, tm_error_api-&gt;def, &quot;Max wire was not connected to random node!&quot;))
+		return;
+
+	uint32_t *res = (uint32_t *)tm_creation_graph_interpreter_api-&gt;write_wire(ctx-&gt;instance, ctx-&gt;wires[1], TM_TT_TYPE_HASH__UINT32_T, 1, sizeof(uint32_t));
+	*res = tm_random_to_uint32_t(tm_random_api-&gt;next()) % *(uint32_t *)max_wire.data;
+}
+
+static tm_creation_graph_node_type_i random_node = {
+	.name = &quot;tm_random&quot;,
+	.display_name = &quot;Random Uint&quot;,
+	.static_connectors.in = {
+		{ .name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T }
+	},
+	.static_connectors.num_in = 1,
+	.static_connectors.out = {
+		{ .name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T }
+	},
+	.static_connectors.num_out = 1,
+	.run = random_node__run
+};
+
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+	tm_error_api = reg-&gt;get(TM_ERROR_API_NAME);
+	tm_random_api = reg-&gt;get(TM_RANDOM_API_NAME);
+	tm_creation_graph_interpreter_api = reg-&gt;get(TM_CREATION_GRAPH_INTERPRETER_API_NAME);
+
+	tm_add_or_remove_implementation(reg, load, TM_CREATION_GRAPH_NODE_INTERFACE_NAME, &amp;random_node);
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="calling-creation-graphs-from-code"><a class="header" href="#calling-creation-graphs-from-code">Calling creation graphs from code</a></h1>
 <p>In this tutorial we will create a very simple component that uses a <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//creation_graphs/concept.html">creation graph</a> to render to the viewport. The creation graph used for this example can be seen in the image below.</p>
 <p>The goal of this creation graph is to create an image output that we can copy to the viewport. In this example the image is created by the creation graph and the viewport UV is rendered onto it using and unlit pass. Notice that no geometry has to be defined as we use the <code>Construct Quad</code> node in clip space, this will procedurally encompass the entire viewport.</p>
