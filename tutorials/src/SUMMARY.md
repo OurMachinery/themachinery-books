@@ -2,6 +2,7 @@
 
 - [Welcome](./README.md)
 - [Creation Graph](./creation_graph/README.md)
+	- [Creating custom GPU nodes](./creation_graph/custom_gpu_nodes.md)
 	- [Calling Creation Graphs from code](./creation_graph/from_code.md)
 - [Physics](./physics/README.md)
     - [Triggers](./physics/triggers.md)
