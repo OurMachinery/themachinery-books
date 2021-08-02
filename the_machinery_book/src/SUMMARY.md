@@ -60,6 +60,7 @@
         - [Write a custom component](./gameplay_coding/ecs/write_a_custom_component.md)
         - [Write a Systems & Engines](./gameplay_coding/ecs/write_a_system_or_engine.md)
         - [How can Entities Interact?](./gameplay_coding/ecs/how_entites_can_interact.md)
+        - [Tagging/Filter Entities](./gameplay_coding/ecs/tagging_entities.html)
     - [How to build my plugin](./helper_tools/tmbuild.md)
 - [Collaboration](./collaboration.md)
 - [QA Pipeline](./qa_pipeline/README.md)
