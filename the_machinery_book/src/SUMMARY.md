@@ -25,6 +25,7 @@
     - [Creation graphs and asset pipeline](./editing_workflows/creation_graphs_asset_pipeline.md)
         - [Import Assets](./editing_workflows/import_assets.md)
         - [Import Projects](./editing_workflows/import_projects.md)
+        - [Meshes / Materials / Shaders](./creation_graphs/concept.md)
     - [Prototypes](./editing_workflows/prototypes.md)
     - [Simulation](./editing_workflows/simulation.md)
     - [Visual Scripting: Entity Graphs](./editing_workflows/visual-scripting.md)
