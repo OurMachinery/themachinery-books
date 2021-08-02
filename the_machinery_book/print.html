@@ -3637,7 +3637,122 @@ for (const tm_entity_blackboard_value_t* bb = data-&gt;blackboard_start; bb != d
 <blockquote>
 <p><strong>IMPORTANT:</strong> When the data changes, the problem changes. Therefore, we have to properly evaluate with the descriptive method the possible outcome and maybe change the implementation.</p>
 </blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="taggingfilter-entities"><a class="header" href="#taggingfilter-entities">Tagging/Filter Entities</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="tagging-and-filtering-entities"><a class="header" href="#tagging-and-filtering-entities">Tagging and Filtering Entities</a></h1>
+<p>The Machinery knows 2 kind of ways to Tag Entities:</p>
+<ol>
+<li>using the <code>Tag Component</code></li>
+<li>using a <code>Tag Component</code> to filter the Entity Type's</li>
+</ol>
+<p><strong>Table of Content</strong></p>
+<ul>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#using-the-tag-component">Using the Tag Component</a>
+<ul>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#adding-them-via-the-editor">Adding them via The Editor</a></li>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#adding-and-accessing-tags-via-c">Adding and Accessing Tags via C</a></li>
+</ul>
+</li>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#tag-components---entity-type-filter">Tag Components - Entity Type Filter</a>
+<ul>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#real-world-example">Real World Example:</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="using-the-tag-component"><a class="header" href="#using-the-tag-component">Using the Tag Component</a></h2>
+<p>The difference is that the first solution can be used via the <code>tag_component_api</code> and you can add Tags via the Editor to any Entity that has a Tag Component. Later on in your System or Engine you can access the Taged Entity.</p>
+<blockquote>
+<p><strong>Note:</strong> This is not the most performant solution but a easy way for entities which do not exist many times in the world. Its a nice way to identify one or two specifc entities for some specific logic.</p>
+</blockquote>
+<h3 id="adding-them-via-the-editor"><a class="header" href="#adding-them-via-the-editor">Adding them via The Editor</a></h3>
+<p>You need to select a Entity and <strong>Right Click -&gt; Add Component</strong></p>
+<p><img src="https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?dl=1" alt="" /></p>
+<p>This will add the <em>Entity Tag</em> Component. When selected you have the chance to add Tags to the Entity by using a simple auto complete text box. </p>
+<p><strong>Beaware:</strong> The Engine will create a entity tag folder in your root folder. This is also the place where the Entity Tag API will search for the assets.</p>
+<p><img src="https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?dl=1" alt="" /></p>
+<h3 id="adding-and-accessing-tags-via-c"><a class="header" href="#adding-and-accessing-tags-via-c">Adding and Accessing Tags via C</a></h3>
+<p>You can also add tags via the <code>tag_component_api</code> but you need access to the <code>Tag Component Manager</code>. In your System or on Simulate Entry <code>start()</code>:</p>
+<pre><code class="language-c">tm_tag_component_manager_o *tag_mgr = (tm_tag_component_manager_o *)tm_entity_api-&gt;component_manager(ctx, tag_component);
+tm_tag_component_api-&gt;add_tag(tag_mgr, my_to_tagged_entity, TM_STATIC_HASH(&quot;player&quot;, 0xafff68de8a0598dfULL));
+</code></pre>
+<p>You can also recive entities like this:</p>
+<pre><code class="language-c">tm_tag_component_manager_o *tag_mgr = (tm_tag_component_manager_o *)tm_entity_api-&gt;component_manager(ctx, tag_component);
+tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM_STATIC_HASH(&quot;upper_bounding_box&quot;, 0x1afc9d34ecb740ecULL));
+</code></pre>
+<p>And than you can read the data from the entity via <code>get_component</code>. This is where you will perform a random look up and this might be slow. Therefore it is mostly recommend to use this for simple interactions where performance is not needed.</p>
+<blockquote>
+<p><strong>Note:</strong> Tags do not need to exist in the Asset Browser, therefore you can add any label to the entity. Keep in mind that they will <strong>not</strong> be created in the Asset Browser!</p>
+</blockquote>
+<h2 id="tag-components---entity-type-filter"><a class="header" href="#tag-components---entity-type-filter">Tag Components - Entity Type Filter</a></h2>
+<p>On the other hand you can define a <code>Tag</code> Component which should not be confused with the priviously explained <code>Tag Component</code>. A tag component is a simple typedef of a <code>unit64_t</code> (or something else) or an empty struct in C++ to a component without properties. The function of this component is it to modify the Entity Type / Archetype to group entities together with them.</p>
+<p><em>Example:</em></p>
+<p>You have the following components:</p>
+<ul>
+<li>Component A</li>
+<li>Component B</li>
+</ul>
+<p>And 2 systems :</p>
+<ul>
+<li>System A </li>
+<li>System B</li>
+</ul>
+<p>They both shall operate on Component A &amp; B but have different logic based on what the Components represent. To archive this you just add to a Entity a tag component:</p>
+<pre><code>#1 Entity:
+- Component A
+- Component B
+- My Tag For System A
+#2 Entity:
+- Component A
+- Component B
+- My Tag for System A
+</code></pre>
+<p>In this example System B would not operate on both Entities if we use the <code>.excluded</code> filter to exclude <code>My Tag For System A</code> from the System.</p>
+<h3 id="real-world-example"><a class="header" href="#real-world-example">Real World Example:</a></h3>
+<p>You have a Movement / Input System which should always work. At some point you do not want a entity to receive any input. </p>
+<p><em>Solution 1</em></p>
+<p>To solve this issue you could remove the Movement Component but that would be annyoing because you would lose it state, which might be important.</p>
+<p><em>Better Solution</em></p>
+<p>First you define the component:</p>
+<pre><code class="language-c">#define TM_TT_TYPE__PLAYER_NO_MOVE_TAG_COMPONENT &quot;tm_player_no_move_t&quot;
+#define TM_TT_HASH__PLAYER_NO_MOVE_TAG_COMPONENT TM_STATIC_HASH(&quot;tm_player_no_move_t&quot;, 0xc58cb6ade683ca88ULL)
+static void component__create(struct tm_entity_context_o *ctx)
+{
+       tm_component_i component = (tm_component_i){
+        .name = TM_TT_TYPE__PLAYER_NO_MOVE_TAG_COMPONENT,
+        .bytes = sizeof(uint64_t), // since we do not care of its content we can just pick any 8 byte type
+    };
+    tm_entity_api-&gt;register_component(ctx, &amp;component);
+}
+}
+</code></pre>
+<p>Then you filter in your update for the Input Engine/ Movement Engine any Entity that has a No Movement Tag:</p>
+<pre><code class="language-c">    const tm_engine_i movement_engine = {
+        .ui_name = &quot;movement_engine&quot;,
+        .hash = TM_STATIC_HASH(&quot;movement_engine&quot;, 0x336880a23d06646dULL),
+        .num_components = 3,
+        .components = { movement_component, transform_component, mover_component },
+        .writes = { false, true, true },
+        .excluded = { no_movement_tag_component },
+        .num_excluded = 1,
+        .update = movement_update,
+        .inst = (tm_engine_o *)ctx,
+    };
+    tm_entity_api-&gt;register_engine(ctx, &amp;movement_engine);
+</code></pre>
+<p>When ever another <code>engine/system</code> decides that a entity should not move anymore it just adds a <code>no_movement_tag_component</code> to the entity.</p>
+<pre><code class="language-c">static void my_other_system(tm_engine_o *inst, tm_engine_update_set_t *data)
+{
+    // code ..
+	for (tm_engine_update_array_t *a = data-&gt;arrays; a &lt; data-&gt;arrays + data-&gt;num_arrays; ++a) {
+    // code...
+    for (uint32_t x = 0; x &lt; a-&gt;n; ++x) {
+        // code...
+        if(player_should_not_walk_anymore){
+             tm_entity_api-&gt;add_component(ctx, d-&gt;entities[i], no_movement);
+        }
+    }
+    }
+}
+</code></pre>
+<p>As you an see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-use-tmbuild"><a class="header" href="#how-to-use-tmbuild">How to use tmbuild</a></h1>
 <p>We described <code>tmbuild</code>'s core idea in our blog-post <a href="https://ourmachinery.com/post/one-button-source-code-builds/"><em>One-button source code builds</em></a>. <code>tmbuild</code> is our custom one-click &quot;build system.&quot; and it is quite a powerful tool. It allows you to do the most important tasks when developing with The Machinery: Building your plugin or the whole engine.</p>
 <p>You can execute the tool from any terminal such as PowerShell or the VS Code internal Console window.</p>
