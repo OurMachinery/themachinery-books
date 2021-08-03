@@ -1,4 +1,4 @@
-# Tagging and Filtering Entities
+# Tagging Entities
 
 The Machinery knows 2 kind of ways to Tag Entities:
 
@@ -82,65 +82,6 @@ They both shall operate on Component A & B but have different logic based on wha
 
 In this example System B would not operate on both Entities if we use the `.excluded` filter to exclude `My Tag For System A` from the System.
 
-### Real World Example:
+## Filtering
 
-You have a Movement / Input System which should always work. At some point you do not want a entity to receive any input. 
-
-*Solution 1*
-
-To solve this issue you could remove the Movement Component but that would be annyoing because you would lose it state, which might be important.
-
-*Better Solution*
-
-First you define the component:
-
-```c
-#define TM_TT_TYPE__PLAYER_NO_MOVE_TAG_COMPONENT "tm_player_no_move_t"
-#define TM_TT_HASH__PLAYER_NO_MOVE_TAG_COMPONENT TM_STATIC_HASH("tm_player_no_move_t", 0xc58cb6ade683ca88ULL)
-static void component__create(struct tm_entity_context_o *ctx)
-{
-       tm_component_i component = (tm_component_i){
-        .name = TM_TT_TYPE__PLAYER_NO_MOVE_TAG_COMPONENT,
-        .bytes = sizeof(uint64_t), // since we do not care of its content we can just pick any 8 byte type
-    };
-    tm_entity_api->register_component(ctx, &component);
-}
-}
-```
-
-Then you filter in your update for the Input Engine/ Movement Engine any Entity that has a No Movement Tag:
-
-```c
-    const tm_engine_i movement_engine = {
-        .ui_name = "movement_engine",
-        .hash = TM_STATIC_HASH("movement_engine", 0x336880a23d06646dULL),
-        .num_components = 3,
-        .components = { movement_component, transform_component, mover_component },
-        .writes = { false, true, true },
-        .excluded = { no_movement_tag_component },
-        .num_excluded = 1,
-        .update = movement_update,
-        .inst = (tm_engine_o *)ctx,
-    };
-    tm_entity_api->register_engine(ctx, &movement_engine);
-```
-
-When ever another `engine/system` decides that a entity should not move anymore it just adds a `no_movement_tag_component` to the entity.
-
-```c
-static void my_other_system(tm_engine_o *inst, tm_engine_update_set_t *data)
-{
-    // code ..
-	for (tm_engine_update_array_t *a = data->arrays; a < data->arrays + data->num_arrays; ++a) {
-    // code...
-    for (uint32_t x = 0; x < a->n; ++x) {
-        // code...
-        if(player_should_not_walk_anymore){
-             tm_entity_api->add_component(ctx, d->entities[i], no_movement);
-        }
-    }
-    }
-}
-```
-
-As you an see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.
+To see a realworld application of Tag components to filter entity types checkout the next chapter: [Filtering]()

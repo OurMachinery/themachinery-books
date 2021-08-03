@@ -33,6 +33,7 @@ The Entity Context is the simulation world. It contains all the Entites and Syst
   the same asset.
 - Changes to entity assets can be propagated into a context where those assets are spawned. This is
   the main way in which we will provide a “preview” of assets in a simulation context.
+- An entity always belongs to a specific context and entity IDs are only unique within the contexts. Entity IDs act as weak references. If you have an ID you can ask the context whether that entity is still alive or not. `tm_entity_api.is_alive()`
 
 
 
