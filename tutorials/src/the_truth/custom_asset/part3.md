@@ -406,50 +406,35 @@ static void task__import_txt(void *data, uint64_t task_id)
     const char *txt_file = task->file;
     tm_the_truth_o *tt = args->tt;
     tm_file_stat_t stat = tm_os_api->file_system->stat(txt_file);
-    if (stat.exists)
-    {
+    if (stat.exists) {
         tm_buffers_i *buffers = tm_the_truth_api->buffers(tt);
         void *buffer = buffers->allocate(buffers->inst, stat.size, false);
         tm_file_o f = tm_os_api->file_io->open_input(txt_file);
         const int64_t read = tm_os_api->file_io->read(f, buffer, stat.size);
         tm_os_api->file_io->close(f);
-        if (read == (int64_t)stat.size)
-        {
+        if (read == (int64_t)stat.size) {
             const uint32_t buffer_id = buffers->add(buffers->inst, buffer, stat.size, 0);
-            const uint64_t plugin_asset_type = tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+            const tm_tt_type_t plugin_asset_type = tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
             const tm_tt_id_t asset_id = tm_the_truth_api->create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
             tm_the_truth_object_o *asset_obj = tm_the_truth_api->write(tt, asset_id);
-            tm_the_truth_api->set_buffer(tt, asset_obj, 1, buffer_id);
-            tm_the_truth_api->set_string(tt, asset_obj, 0, txt_file);
-            if (args->reimport_into.u64)
-            {
+            tm_the_truth_api->set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
+            tm_the_truth_api->set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
+            if (args->reimport_into.u64) {
                 tm_the_truth_api->retarget_write(tt, asset_obj, args->reimport_into);
                 tm_the_truth_api->commit(tt, asset_obj, args->undo_scope);
                 tm_the_truth_api->destroy_object(tt, asset_id, args->undo_scope);
-            }
-            else
-            {
+            } else {
                 tm_the_truth_api->commit(tt, asset_obj, args->undo_scope);
-                TM_INIT_TEMP_ALLOCATOR(ta);
-                const char *ext;
-                const char *name = tm_path_api->split(txt_file, &ext);
-                const char *asset_name = tm_temp_allocator_api->printf(ta, "%.*s", ext - name, name);
-                tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry->get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+                const char *asset_name = tm_path_api->base(tm_str(txt_file)).data;
+                struct tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry->get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
                 const tm_tt_id_t current_dir = add_asset->current_directory(add_asset->inst, args->ui);
                 const bool should_select = args->asset_browser.u64 && tm_the_truth_api->version(tt, args->asset_browser) == args->asset_browser_version_at_start;
-                // we do not have any asset label therefore we do not need to pass them thats why the last
-                // 2 arguments are 0 and 0!
-                add_asset->add(add_asset->inst, current_dir, asset_id, asset_name, args->undo_scope, should_select, args->ui,0,0);
-                TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+                add_asset->add(add_asset->inst, current_dir, asset_id, asset_name, args->undo_scope, should_select, args->ui, 0, 0);
             }
-        }
-        else
-        {
+        } else {
             tm_logger_api->printf(TM_LOG_TYPE_INFO, "import txt:cound not read %s\n", txt_file);
         }
-    }
-    else
-    {
+    } else {
         tm_logger_api->printf(TM_LOG_TYPE_INFO, "import txt:cound not find %s \n", txt_file);
     }
     tm_free(args->allocator, task, task->bytes);
