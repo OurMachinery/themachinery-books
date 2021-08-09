@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">2.1.</strong> Creating custom GPU nodes</a></li><li class="chapter-item expanded "><a href="creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">2.2.</strong> Creating custom CPU nodes</a></li><li class="chapter-item expanded "><a href="creation_graph/from_code.html"><strong aria-hidden="true">2.3.</strong> Calling Creation Graphs from code</a></li></ol></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1 - Create an Asset Truth Type, Addable via Asset Browser</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2 - Custom UI</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3 - Custom Importer</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/drag_and_drop.html"><strong aria-hidden="true">4.2.</strong> Adding Drag and Drop to Assets</a></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item expanded "><a href="ui/toolbars-overlays.html"><strong aria-hidden="true">5.2.</strong> Toolbars and Overlays</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">2.1.</strong> Creating custom GPU nodes</a></li><li class="chapter-item expanded "><a href="creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">2.2.</strong> Creating custom CPU nodes</a></li><li class="chapter-item expanded "><a href="creation_graph/from_code.html"><strong aria-hidden="true">2.3.</strong> Calling Creation Graphs from code</a></li></ol></li><li class="chapter-item expanded "><a href="physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1 - Create an Asset Truth Type, Addable via Asset Browser</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2 - Custom UI</a></li><li class="chapter-item expanded "><a href="the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3 - Custom Importer</a></li></ol></li><li class="chapter-item expanded "><a href="the_truth/drag_and_drop.html"><strong aria-hidden="true">4.2.</strong> Adding Drag and Drop to Assets</a></li><li class="chapter-item expanded "><a href="the_truth/open_asset.html"><strong aria-hidden="true">4.3.</strong> Open Asset in Tab</a></li></ol></li><li class="chapter-item expanded "><a href="ui/index.html"><strong aria-hidden="true">5.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">5.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">5.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item expanded "><a href="ui/toolbars-overlays.html"><strong aria-hidden="true">5.2.</strong> Toolbars and Overlays</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -2164,7 +2164,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="adding-drag-and-drop-to-assets"><a class="header" href="#adding-drag-and-drop-to-assets">Adding Drag and Drop to Assets</a></h1>
-<p>This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal of this walkthrough is to enable you to drag and drop your asset into the Scene!</p>
+<p>This walkthrough shows you how to enable a asset to be drag and dropped. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. The goal of this walkthrough is to enable you to drag and drop your asset into the Scene!</p>
 <p>You will learn:</p>
 <ul>
 <li>how to use an aspect in practice</li>
@@ -2185,6 +2185,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <li><a href="the_truth/drag_and_drop.html#custom-ui">Custom UI</a></li>
 </ul>
 </li>
+<li><a href="the_truth/drag_and_drop.html#using-the-asset-picker-property-aspect">Using the Asset Picker Property Aspect</a></li>
 <li><a href="the_truth/drag_and_drop.html#drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity">Drag and drop a Text Asset into the Scene and create an entity</a></li>
 <li><a href="the_truth/drag_and_drop.html#modify-a-already-existing-asset">Modify a already existing asset</a></li>
 </ul>
@@ -2256,6 +2257,7 @@ static tm_ci_editor_ui_i *editor_aspect = &amp;(tm_ci_editor_ui_i){
     .category = component__category
 };
 
+// This code can be eliminated if needed / wanted by using the [TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER](https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__asset_picker)
 static float properties__component_custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
 {
     TM_INIT_TEMP_ALLOCATOR(ta);
@@ -2426,7 +2428,8 @@ static void component__destroy(tm_component_manager_o *manager)
 }
 </code></pre>
 <h4 id="custom-ui-1"><a class="header" href="#custom-ui-1">Custom UI</a></h4>
-<p>We also need to provide a custom UI for our reference to the asset! When we define our Truth type we tell the system that it should be a reference <strong>only</strong> of type <code>TM_TT_TYPE_HASH__TXT_ASSET</code>.</p>
+<p><strong>This part is optional!</strong>, see next part where we use the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__asset_picker">TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER</a>.</p>
+<p>We also can to provide a custom UI for our reference to the asset! When we define our Truth type we tell the system that it should be a reference <strong>only</strong> of type <code>TM_TT_TYPE_HASH__TXT_ASSET</code>.</p>
 <pre><code class="language-c">    tm_the_truth_property_definition_t story_component_properties[] = {
         [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__TXT_ASSET }
     };
@@ -2472,6 +2475,25 @@ static void component__destroy(tm_component_manager_o *manager)
 <p>The type can only be created a part of the asset at this point!</p>
 </blockquote>
 <p>This information is important because we need a name for our asset and therefore we just iterate over all our TXT Assets and check if they are owned by a Truth Asset type. If yes we get the name from it and store it in a names array. At the end we add all the IDs of the objects in a array so the user can select them in the drop down menu of the <code>tm_properties_view_api.ui_reference_popup_picker()</code>.</p>
+<h2 id="using-the-asset-picker-property-aspect"><a class="header" href="#using-the-asset-picker-property-aspect">Using the Asset Picker Property Aspect</a></h2>
+<p>Instead of implementing our own UI, which can be full of boilerplate code we can also use the following aspect on our truth type: <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__asset_picker">TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER</a> or if we want to store a entity an provide a entity from the scene: <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__use_local_entity_picker">TM_TT_PROP_ASPECT__PROPERTIES__USE_LOCAL_ENTITY_PICKER</a>. The following code can be adjusted. In your <code>create_truth_types()</code> we need to add this aspect to our type property like this:</p>
+<pre><code class="language-c">// -- create truth type
+static void create_truth_types(struct tm_the_truth_o *tt)
+{
+// ..other code
+    tm_the_truth_property_definition_t story_component_properties[] = {
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__TXT_ASSET }
+    };
+    static tm_properties_aspect_i properties_component_aspect = {
+        .custom_ui = properties__component_custom_ui,
+    };
+
+    const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
+    tm_the_truth_api-&gt;set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER, TM_TT_TYPE_HASH__TXT_ASSET);
+}
+</code></pre>
 <h2 id="drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity"><a class="header" href="#drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity">Drag and drop a Text Asset into the Scene and create an entity</a></h2>
 <p>Finally, we can do what we came here to do: Make our Asset drag and droppable! We make use of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#tm_tt_aspect__asset_scene">TM_TT_ASPECT__ASSET_SCENE</a>!</p>
 <p>We define the aspect as described above:</p>
@@ -2684,6 +2706,493 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 }
 </code></pre>
 <p>In here we get the <code>asset_type</code> from the Truth. Important here is we need to make sure the type exists already! if not it makes no sense to add the aspect to it. More over we need to make sure that the asset has not already this aspect. Since a Object can have only one aspect at the same time!</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="open-a-special-tab-for-an-asset"><a class="header" href="#open-a-special-tab-for-an-asset">Open a special tab for an Asset</a></h1>
+<p>This walkthrough shows you how to enable an asset to open a specific tab. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a>. This walkthrough aims to enable you to double-click an asset and open it in a specific tab.</p>
+<p>You will learn:</p>
+<ul>
+<li>Create a basic tab</li>
+<li>Open an asset</li>
+<li>How to use a temporary temporray allocator</li>
+</ul>
+<p>This walkthrough will refer to the text asset example as the asset we want to extend! If you have not followed it, here is the link: <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/custom_asset/index.html">Custom Asset</a>.</p>
+<p><strong>Table of Content</strong></p>
+<ul>
+<li><a href="the_truth/open_asset.html#new-tab">New Tab</a>
+<ul>
+<li><a href="the_truth/open_asset.html#implementing-the-functions">Implementing the functions</a>
+<ul>
+<li><a href="the_truth/open_asset.html#the-create-function">The Create Function</a></li>
+<li><a href="the_truth/open_asset.html#the-update-function">The Update Function</a></li>
+<li><a href="the_truth/open_asset.html#the-set-root--root-function">The set root / root function</a></li>
+</ul>
+</li>
+<li><a href="the_truth/open_asset.html#let-us-test-the-tab">Let us test the Tab</a></li>
+<li><a href="the_truth/open_asset.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li><a href="the_truth/open_asset.html#open-the-tab">Open the Tab</a></li>
+</ul>
+<h2 id="new-tab"><a class="header" href="#new-tab">New Tab</a></h2>
+<p>The first cause of action is to create the Tab we want to open. </p>
+<blockquote>
+<p><strong>Note:</strong> We can use the basic tab Template from the Engine: <strong>File -&gt; New Plugin -&gt; New Tab.</strong> </p>
+</blockquote>
+<p>In this walkthrough, we aim to have a simple tab that shows the content of our text file.</p>
+<p>The Steps of creating a tab are similar to the ones of a standard plugin:</p>
+<ol>
+<li>We create a new file. For example: <code>txt_tab.c</code></li>
+<li>We need to include some files for a tab plugin:</li>
+</ol>
+<pre><code class="language-c">static struct tm_api_registry_api *tm_global_api_registry;
+
+static struct tm_ui_api *tm_ui_api;
+static struct tm_temp_allocator_api *tm_temp_allocator_api;
+
+extern struct tm_the_truth_api *tm_the_truth_api;
+static struct tm_localizer_api *tm_localizer_api;
+
+#include &lt;foundation/allocator.h&gt;
+#include &lt;foundation/api_registry.h&gt;
+#include &lt;foundation/string.inl&gt;
+#include &lt;foundation/temp_allocator.h&gt;
+#include &lt;foundation/the_truth.h&gt;
+
+#include &lt;plugins/ui/docking.h&gt;
+#include &lt;plugins/ui/ui.h&gt;
+
+#include &lt;the_machinery/the_machinery_tab.h&gt;
+
+#include &quot;txt.h&quot;
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> With extern we can use the truth api from the <code>txt.c</code> file so we do not need to get it from the registry!</p>
+</blockquote>
+<ul>
+<li>The docking header file provides us the default tab type</li>
+<li>The UI header gives us access to the UI API</li>
+<li>The txt header gives us access to our custom types</li>
+</ul>
+<ol>
+<li>We create a new load function on the bottom of the file:</li>
+</ol>
+<pre><code class="language-c">void load_txt_tab(struct tm_api_registry_api *reg, bool load)
+{
+    tm_global_api_registry = reg;
+
+    tm_ui_api = reg-&gt;get(TM_UI_API_NAME);
+    tm_temp_allocator_api = reg-&gt;get(TM_TEMP_ALLOCATOR_API_NAME);
+}
+</code></pre>
+<p>In our main file the <code>txt.c</code> we need to add this function and call it:</p>
+<pre><code class="language-c">extern void load_txt_tab(struct tm_api_registry_api* reg, bool load);
+
+// -- load plugin
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    // more code
+    load_txt_tab(reg,load);
+}
+</code></pre>
+<ol start="2">
+<li>Above this function we initialize a object of the type <a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery_tab.h.html#structtm_the_machinery_tab_vt">tm_the_machinery_tab_vt</a></li>
+</ol>
+<pre><code class="language-c">static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
+// ...
+};
+
+void load_txt_tab(struct tm_api_registry_api *reg, bool load){
+    //...
+}
+</code></pre>
+<ol start="3">
+<li>We add to the <code>txt.h</code> the name of our Tab as well as its hash</li>
+</ol>
+<pre><code class="language-c">#define TM_TXT_TAB_VT_NAME &quot;tm_txt_tab&quot;
+#define TM_TXT_TAB_VT_NAME_HASH TM_STATIC_HASH(&quot;tm_txt_tab&quot;, 0x2cd261be98a99bc3ULL)
+</code></pre>
+<ol start="4">
+<li>To this Virtual Table, we add the name and its hash as well as the following functions:</li>
+</ol>
+<pre><code class="language-c">static const char *tab__create_menu_name(void)
+{
+    return &quot;Text Tab&quot;;
+}
+
+static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
+{
+    return &quot;Text Tab&quot;;
+}
+
+static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
+    .name = TM_TXT_TAB_VT_NAME,
+    .name_hash = TM_TXT_TAB_VT_NAME_HASH,
+    .create_menu_name = tab__create_menu_name,
+    .create = tab__create,
+    .destroy = tab__destroy,
+    .title = tab__title,
+    .ui = tab__ui,
+    .set_root = tab__set_root,
+    .root = tab__root,
+};
+</code></pre>
+<ol start="5">
+<li>On top of our file, we define the opaque type: <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_o">tm_tab_o</a> and provide some fields to it:</li>
+</ol>
+<pre><code class="language-c">struct tm_tab_o
+{
+    tm_tab_i tm_tab_i;
+    tm_allocator_i *allocator;
+
+    tm_tt_id_t asset;
+    tm_the_truth_o *tt;
+};
+</code></pre>
+<p>The most important fields here are the <strong>asset</strong> and <strong>tt</strong> filed. They will store the currently used asset and truth. Those fields allow us to access both in various functions.</p>
+<h3 id="implementing-the-functions"><a class="header" href="#implementing-the-functions">Implementing the functions</a></h3>
+<p>Now that we have done all the boilerplate code, let us focus on the three functions that count:</p>
+<ul>
+<li>The create function</li>
+<li>The UI Update</li>
+<li>The Set Root function</li>
+</ul>
+<h4 id="the-create-function"><a class="header" href="#the-create-function">The Create Function</a></h4>
+<pre><code class="language-c">static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
+{
+    tm_allocator_i *allocator = context-&gt;allocator;
+    uint64_t *id = context-&gt;id;
+
+    static tm_the_machinery_tab_vt *vt = 0;
+    if (!vt)
+        vt = tm_global_api_registry-&gt;get(TM_TXT_TAB_VT_NAME);
+
+    tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
+    *tab = (tm_tab_o){
+        .tm_tab_i = {
+            .vt = (tm_tab_vt *)vt,
+            .inst = (tm_tab_o *)tab,
+            .root_id = *id,
+        },
+        .allocator = allocator,
+    };
+
+    *id += 1000000;
+    return &amp;tab-&gt;tm_tab_i;
+}
+</code></pre>
+<p>In this function, we store the allocator first. </p>
+<blockquote>
+<p><strong>Tipp:</strong> if you wanted to create a child allocator, you could do this for your Tab. A child allocator may be very useful when doing many allocations: <code>tm_allocator_api.create_child()</code>.</p>
+</blockquote>
+<p>As the next step, we initialize the virtual table of or Tab, but only if the static variable was not initialized. </p>
+<pre><code class="language-c">    static tm_the_machinery_tab_vt *vt = 0;
+    if (!vt)
+        vt = tm_global_api_registry-&gt;get(TM_TXT_TAB_VT_NAME);
+</code></pre>
+<p>We need to initialize the tab interface so other engine parts can communicate with a generic interface to the Tab. We store a pointer to our Tab within this interface so other callers of the standard generic interface can access this instance and pass it along to the functions. After this, we allocate the Tab itself.</p>
+<pre><code class="language-c">    tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
+    *tab = (tm_tab_o){
+        .tm_tab_i = {
+            .vt = (tm_tab_vt *)vt,
+            .inst = (tm_tab_o *)tab,
+            .root_id = *id,
+        },
+        .allocator = allocator,
+    };
+</code></pre>
+<p>In the end, we return the pointer to the interface, so the docking system has it</p>
+<h4 id="the-update-function"><a class="header" href="#the-update-function">The Update Function</a></h4>
+<pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
+{
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
+    if (tab-&gt;asset.u64) {
+        TM_INIT_TEMP_ALLOCATOR(ta);
+        tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
+        char *content = tm_temp_alloc(ta, buffer.size + 1);
+        tm_strncpy_safe(content, buffer.data, buffer.size);
+
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .text = content, .rect = rect };
+        tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
+        TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+    } else {
+        rect.h = 20;
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
+        tm_ui_api-&gt;text(ui, uistyle, text);
+    }
+}
+</code></pre>
+<p>At first, we create a copy of the UI Style. With this copy, we can do what we want since the input style is a const pointer. After this, we check if the asset is present. If not, we print a message on the Tab that the user must select a <code>txt</code> asset.</p>
+<pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
+{  
+tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
+    if (tab-&gt;asset.u64) {
+        //...
+    } else {
+        rect.h = 20;
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
+        tm_ui_api-&gt;text(ui, uistyle, text);
+    }
+}
+</code></pre>
+<p>We need an allocator to copy the data of the buffer into a proper string. The allocator is needed since we never added a null terminator to the end of the string when we save it into the buffer.</p>
+<p>In this case, we need a temporary allocator. Since we do not want to keep the memory forever, we need to initialize a temp allocator with <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_init_temp_allocator()">TM_INIT_TEMP_ALLOCATOR</a> and provide a name. Do not forget to free the memory at the end. </p>
+<pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
+{
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
+    if (tab-&gt;asset.u64) {
+        TM_INIT_TEMP_ALLOCATOR(ta);
+            //..
+        TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+    } else {
+        rect.h = 20;
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
+        tm_ui_api-&gt;text(ui, uistyle, text);
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> If the memory is smaller than 1024 bytes, the memory is allocated to the stack. Moreover, an alternative is the frame allocator in which the memory is freed every frame.</p>
+</blockquote>
+<p>The next step is it to ask the truth for the buffer and allocate the right amount of memory. Since we want to copy the data into a null-terminated string, we should add 1 to the data size.</p>
+<pre><code class="language-c"> tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
+char *content = tm_temp_alloc(ta, buffer.size + 1);
+</code></pre>
+<p>To ensure our string is clean and filled with nulls, we use the inline string file (hence we add the <code>foundation/string.inl</code> to our includes). We have the <a href="https://ourmachinery.com/apidoc/foundation/string.inl.html#tm_strncpy_safe()">tm_strncpy_safe</a> within this header file, which fills up a string with null terminator.</p>
+<pre><code class="language-c">tm_strncpy_safe(content, buffer.data, buffer.size);
+</code></pre>
+<p>The last step before we are done is actually to make the text appear on the screen. We make use of the <code>tm_ui_api.wrapped_text()</code> since this function will print the string in multiple lines if need be.</p>
+<pre><code class="language-c">tm_ui_text_t *text = &amp;(tm_ui_text_t){ .text = content, .rect = rect };
+tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
+</code></pre>
+<h4 id="the-set-root--root-function"><a class="header" href="#the-set-root--root-function">The set root / root function</a></h4>
+<p>The last function which we need is the set root function. This function allows us to set a root object of the Tab from the outside. Its code is quite straightforward:</p>
+<pre><code class="language-c">void tab__set_root(tm_tab_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t root)
+{
+    inst-&gt;asset = root;
+    inst-&gt;tt = tt;
+}
+
+static tm_tab_vt_root_t tab__root(tm_tab_o *tab)
+{
+    return (tm_tab_vt_root_t){ tab-&gt;tt, tab-&gt;asset };
+}
+</code></pre>
+<h3 id="let-us-test-the-tab"><a class="header" href="#let-us-test-the-tab">Let us test the Tab</a></h3>
+<p>Let us open the Tab from the <strong>Tabs</strong> menu!</p>
+<p>[image]</p>
+<h3 id="source-code"><a class="header" href="#source-code">Source Code</a></h3>
+<pre><code class="language-c">static struct tm_api_registry_api *tm_global_api_registry;
+
+static struct tm_ui_api *tm_ui_api;
+static struct tm_temp_allocator_api *tm_temp_allocator_api;
+
+extern struct tm_the_truth_api *tm_the_truth_api;
+static struct tm_localizer_api *tm_localizer_api;
+
+#include &lt;foundation/allocator.h&gt;
+#include &lt;foundation/api_registry.h&gt;
+#include &lt;foundation/string.inl&gt;
+#include &lt;foundation/temp_allocator.h&gt;
+#include &lt;foundation/the_truth.h&gt;
+
+#include &lt;plugins/ui/docking.h&gt;
+#include &lt;plugins/ui/ui.h&gt;
+
+#include &lt;the_machinery/the_machinery_tab.h&gt;
+
+
+#include &quot;txt.h&quot;
+
+struct tm_tab_o
+{
+    tm_tab_i tm_tab_i;
+    tm_allocator_i *allocator;
+
+    tm_tt_id_t asset;
+    tm_the_truth_o *tt;
+};
+
+static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
+{
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
+    if (tab-&gt;asset.u64) {
+        TM_INIT_TEMP_ALLOCATOR(ta);
+        tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
+        char *content = tm_temp_alloc(ta, buffer.size + 1);
+        tm_strncpy_safe(content, buffer.data, buffer.size);
+
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .text = content, .rect = rect };
+        tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
+        TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+    } else {
+        rect.h = 20;
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
+        tm_ui_api-&gt;text(ui, uistyle, text);
+    }
+}
+
+static const char *tab__create_menu_name(void)
+{
+    return &quot;Text Tab&quot;;
+}
+
+static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
+{
+    return &quot;Text Tab&quot;;
+}
+
+static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
+{
+    tm_allocator_i *allocator = context-&gt;allocator;
+    uint64_t *id = context-&gt;id;
+
+    static tm_the_machinery_tab_vt *vt = 0;
+    if (!vt)
+        vt = tm_global_api_registry-&gt;get(TM_TXT_TAB_VT_NAME);
+
+    tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
+    *tab = (tm_tab_o){
+        .tm_tab_i = {
+            .vt = (tm_tab_vt *)vt,
+            .inst = (tm_tab_o *)tab,
+            .root_id = *id,
+        },
+        .allocator = allocator,
+    };
+
+    *id += 1000000;
+    return &amp;tab-&gt;tm_tab_i;
+}
+
+static void tab__destroy(tm_tab_o *tab)
+{
+    tm_free(tab-&gt;allocator, tab, sizeof(*tab));
+}
+
+void tab__set_root(tm_tab_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t root)
+{
+    inst-&gt;asset = root;
+    inst-&gt;tt = tt;
+}
+
+static tm_tab_vt_root_t tab__root(tm_tab_o *tab)
+{
+    return (tm_tab_vt_root_t){ tab-&gt;tt, tab-&gt;asset };
+}
+
+static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
+    .name = TM_TXT_TAB_VT_NAME,
+    .name_hash = TM_TXT_TAB_VT_NAME_HASH,
+    .create_menu_name = tab__create_menu_name,
+    .create = tab__create,
+    .destroy = tab__destroy,
+    .title = tab__title,
+    .ui = tab__ui,
+    .set_root = tab__set_root,
+    .root = tab__root,
+};
+
+void load_txt_tab(struct tm_api_registry_api *reg, bool load)
+{
+    tm_global_api_registry = reg;
+
+    tm_ui_api = reg-&gt;get(TM_UI_API_NAME);
+    tm_temp_allocator_api = reg-&gt;get(TM_TEMP_ALLOCATOR_API_NAME);
+
+    tm_set_or_remove_api(reg, load, TM_TXT_TAB_VT_NAME, tab_vt);
+    tm_add_or_remove_implementation(reg, load, TM_TAB_VT_INTERFACE_NAME, tab_vt);
+}
+
+</code></pre>
+<h2 id="open-the-tab"><a class="header" href="#open-the-tab">Open the Tab</a></h2>
+<p>After all the previous steps, we can finally make our Text Asset open this Tab!</p>
+<p>At first, we need to remove the static of our truth API since we require it in the <code>txt_tab.c</code>.</p>
+<pre><code class="language-c">struct tm_the_truth_api *tm_the_truth_api;
+</code></pre>
+<p>When that is done, we need to include two more files and get two  more APIs.</p>
+<pre><code class="language-c">// open asset
+static struct tm_the_machinery_api* tm_the_machinery_api;
+static struct tm_docking_api* tm_docking_api;
+//...
+
+#include &lt;plugins/ui/docking.h&gt;
+#include &lt;the_machinery/the_machinery_tab.h&gt;
+#include &lt;the_machinery/the_machinery.h&gt;
+//...
+extern void load_txt_tab(struct tm_api_registry_api* reg, bool load);
+
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    //...
+    // loads the txt tab!
+    tm_the_machinery_api = reg-&gt;get(TM_THE_MACHINERY_API_NAME);
+    tm_docking_api = reg-&gt;get(TM_DOCKING_API_NAME);
+    load_txt_tab(reg,load);
+      //...
+}
+</code></pre>
+<p>To open an asset, we need to add another aspect to our type. It is the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#tm_tt_aspect__asset_open">TM_TT_ASPECT__ASSET_OPEN</a> aspect! This aspect requires a implementation of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_open_aspect_i">tm_asset_open_aspect_i</a>. </p>
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
+{
+    //...
+    tm_the_truth_api-&gt;set_aspect(tt,type,TM_TT_ASPECT__ASSET_OPEN,open_i);
+    //...
+}
+</code></pre>
+<p>We add this implementation of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_open_aspect_i">tm_asset_open_aspect_i</a> above the <code>create_truth_types</code> function.</p>
+<pre><code class="language-c">void open_asset(struct tm_application_o *app, struct tm_ui_o *ui, struct tm_tab_i *from_tab,
+        tm_the_truth_o *tt, tm_tt_id_t asset, enum tm_asset_open_mode open_mode){
+    
+    const tm_docking_find_tab_opt_t opt = {
+        .from_tab = from_tab,
+        .in_ui = ui,
+        .exclude_pinned = true,
+    };
+
+    const bool pin = open_mode == TM_ASSET_OPEN_MODE_CREATE_TAB_AND_PIN;
+    tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app,ui,TM_TXT_TAB_VT_NAME,&amp;opt);
+
+    if (pin)
+        tm_docking_api-&gt;pin_object(tab, tt, asset);
+    else
+        tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);   
+    
+}
+
+static tm_asset_open_aspect_i* open_i = &amp;(tm_asset_open_aspect_i){
+    .open = open_asset,
+};
+
+static void create_truth_types(struct tm_the_truth_o *tt)
+{
+    //...
+}
+</code></pre>
+<p>The open function gives us all the important information:</p>
+<ol>
+<li>The App data</li>
+<li>The UI</li>
+<li>Which Tab requested this action</li>
+<li>The current Truth</li>
+<li>the asset</li>
+<li>How we will open the Tab.</li>
+</ol>
+<p>At first, we define the search criteria for the <code>create_or_select_tab</code> of the Machinery API. In this case we want to exclude pinned tabs since the user might have a reason for why they are pinned!</p>
+<pre><code class="language-c">    const tm_docking_find_tab_opt_t opt = {
+        .from_tab = from_tab,
+        .in_ui = ui,
+        .exclude_pinned = true,
+    };
+</code></pre>
+<p>Now we can create or select a tab by calling the <code>create_or_select_tab</code> function.</p>
+<pre><code class="language-c">tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app,ui,TM_TXT_TAB_VT_NAME,&amp;opt);
+</code></pre>
+<p>The last step is actually to pass some data along! In this case, we need to check if something is pinned or not! Hence we check if the <code>open_mode</code> is equal to pinning. If yes, we ask the docking API to pin our Tab.</p>
+<pre><code class="language-c">    const bool pin = open_mode == TM_ASSET_OPEN_MODE_CREATE_TAB_AND_PIN;
+    if (pin)
+        tm_docking_api-&gt;pin_object(tab, tt, asset);
+    else
+        tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);   
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ui"><a class="header" href="#ui">UI</a></h1>
 <p>The Machinery's <a href="https://ourmachinery.com/apidoc/plugins/ui">UI system</a>, is a Immediate Mode GUI (IMGUI). Besides the information you can find here or in our API Documentation there are several Blog Posts you should check out:</p>
 <ul>
