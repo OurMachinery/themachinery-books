@@ -1,6 +1,6 @@
 # Adding Drag and Drop to Assets
 
-This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html). The goal of this walkthrough is to enable you to drag and drop your asset into the Scene!
+This walkthrough shows you how to enable a asset to be drag and dropped. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html). The goal of this walkthrough is to enable you to drag and drop your asset into the Scene!
 
 You will learn:
 
@@ -87,6 +87,7 @@ static tm_ci_editor_ui_i *editor_aspect = &(tm_ci_editor_ui_i){
     .category = component__category
 };
 
+// This code can be eliminated if needed / wanted by using the `TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER`
 static float properties__component_custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
 {
     TM_INIT_TEMP_ALLOCATOR(ta);
@@ -274,7 +275,9 @@ static void component__destroy(tm_component_manager_o *manager)
 
 #### Custom UI
 
-We also need to provide a custom UI for our reference to the asset! When we define our Truth type we tell the system that it should be a reference **only** of type `TM_TT_TYPE_HASH__TXT_ASSET`.
+**This part is optional!**, see next part where we use the `TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER`.
+
+We also can to provide a custom UI for our reference to the asset! When we define our Truth type we tell the system that it should be a reference **only** of type `TM_TT_TYPE_HASH__TXT_ASSET`.
 
 ```c
     tm_the_truth_property_definition_t story_component_properties[] = {
@@ -330,6 +333,29 @@ In there we get all objects of type `TM_TT_TYPE_HASH__TXT_ASSET` we know that th
 > The type can only be created a part of the asset at this point!
 
 This information is important because we need a name for our asset and therefore we just iterate over all our TXT Assets and check if they are owned by a Truth Asset type. If yes we get the name from it and store it in a names array. At the end we add all the IDs of the objects in a array so the user can select them in the drop down menu of the `tm_properties_view_api.ui_reference_popup_picker()`.
+
+## Using the Asset Picker Property Aspect
+
+Instead of implementing our own UI, which can be full of boilerplate code we can also use the following aspect on our truth type: `TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER` or if we want to store a entity an provide a entity from the scene: `TM_TT_PROP_ASPECT__PROPERTIES__USE_LOCAL_ENTITY_PICKER`. The following code can be adjusted. In your `create_truth_types()` we need to add this aspect to our type property like this:
+
+```c
+// -- create truth type
+static void create_truth_types(struct tm_the_truth_o *tt)
+{
+// ..other code
+    tm_the_truth_property_definition_t story_component_properties[] = {
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = { "story_asset", .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__TXT_ASSET }
+    };
+    static tm_properties_aspect_i properties_component_aspect = {
+        .custom_ui = properties__component_custom_ui,
+    };
+
+    const tm_tt_type_t story_component_type = tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
+    tm_the_truth_api->set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
+    tm_the_truth_api->set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &properties_component_aspect);
+    tm_the_truth_api->set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER, TM_TT_TYPE_HASH__TXT_ASSET);
+}
+```
 
 
 

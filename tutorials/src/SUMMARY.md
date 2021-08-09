@@ -13,6 +13,7 @@
         - [Part 2 - Custom UI](./the_truth/custom_asset/part2.md)
         - [Part 3 - Custom Importer](./the_truth/custom_asset/part3.md)
     - [Adding Drag and Drop to Assets](./the_truth/drag_and_drop.md)
+    - [Open Asset in Tab](./the_truth/open_asset.md)
 - [UI](./ui/README.md)
     - [Build Custom UI Controls](./ui/build_custom_ui_controls/README.md)
         - [Part 1](./ui/build_custom_ui_controls/part1.md)
