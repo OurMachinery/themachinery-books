@@ -66,6 +66,7 @@
             - [Write a custom component](./gameplay_coding/ecs/write_a_custom_component.md)
             - [Tagging Entities](./gameplay_coding/ecs/tagging_entities.md)
             - [Filtering Entities](./gameplay_coding/ecs/filtering_entities.md)
+        - [Simulation Lifecycle](./gameplay_coding/ecs/simulation_lifecycle.md)
     - [How to build my plugin](./helper_tools/tmbuild.md)
 - [Collaboration](./collaboration.md)
 - [QA Pipeline](./qa_pipeline/README.md)
