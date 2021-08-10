@@ -19,34 +19,50 @@ While Systems are just a update with a provided access to the entity context. Wh
 
 * auto-gen TOC;
 {:toc}
-## Entity Context
+## What is an Entity?
+
+An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. Itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore a entity acts as an identifier or key to the data stored in components.
+
+![](https://www.dropbox.com/s/5956267ltb4l14x/tm_guide_entity.png?dl=1)
+
+> **Note:** In this example both entities have the same set of components, but they do not own the data they just refer to it!
+
+Entities are managed by the Entity API and exist within an Entity Context. An Entity struct refers to an entity, but is not a real reference. Rather the Entity struct contains an index used to access entity data.
+
+## What is an Entity Context?
 
 The Entity Context is the simulation world. It contains all the Entites and Systems/Engines as well owns all the Component Data. There can be multiple Entity Contexts in the Editor. For example the Simulate tag, Preview Tab have both a Entity Context. When you Register A System/Engine you an decide in which context they shall run. The Default is in all contexts. 
 
 
 
-## Entities and The Truth
+## Where do Entities live?
 
 - Entities **do not live in The Truth**. The truth is for *assets*, not for *simulation.*
-- Entity data is owned by the context and thrown away when the context is destroyed.
+- Entity data is owned by the entity context and thrown away when the entity context is destroyed.
 - Entities can be spawned from *entity assets* in The Truth. Multiple entities can be spawned from
   the same asset.
 - Changes to entity assets can be propagated into a context where those assets are spawned. This is
   the main way in which we will provide a “preview” of assets in a simulation context.
-- An entity always belongs to a specific context and entity IDs are only unique within the contexts. Entity IDs act as weak references. If you have an ID you can ask the context whether that entity is still alive or not. `tm_entity_api.is_alive()`
+- An entity always belongs to a specific entity context and entity IDs are only unique within the entity contexts. Entity IDs act as weak references. If you have an ID you can ask the context whether that entity is still alive or not. `tm_entity_api.is_alive()`
 
 
 
-## Entity data storage
+## How is the data stored?
 
 - An entity is a 64-bit value divided into a 32-bit index and a 32-bit generation.
 - The index points to a slot where entity data is stored.
-- The generation is increased every time we recycle a slot. This allows us to detect stale entitiy
+- The generation is increased every time we recycle a slot. This allows us to detect stale entity
   IDs (i.e., weak referencing through `is_alive()`.
 
 
 
-## Entity types / Archetype
+## What is an Entity types / Archetype?
+
+An Entity Types is a unique combination of component types. The Entity API uses the entity type to group all entities that have the same sets of components.
+
+![](https://www.dropbox.com/s/453d1nqrwnsntbw/tm_guide_entity_entity_type.png?dl=1)
+
+> **Note:** In this example Entities A-B are of the same entity type while C has a different entity type!
 
 - An entity type is shared by all entities with a certain component mask.
 - When components are added to or removed from an entity, it’s entity type changes, thus its data
@@ -55,33 +71,29 @@ The Entity Context is the simulation world. It contains all the Entites and Syst
 
 
 
-## Components
-
-- A component is defined by `tm_component_i` — it consists of a fixed-size piece of POD data.
-- This data is stored in a huge buffer for each entity type, and indexed by the index.
-- In addition, a component can have a *manager*. The manager is notified when the component is added
-  or removed.
-- The manager can store additional data for the component that doesn’t fit in the POD data — such as
-  lists, strings, buffers, etc.
+{{#include what_are_components.md}}
 
 
 
-> **Note**:  Keep in mind they do not need a Truth Representation. If They do not have one the Engine cannot display them in the Entity Tree View. This is useful for runtime only components.
-
- 
-
-## Component Manager 
+## What is a Component Manager?
 
 - Can store persitsent data from the beginning of the Entity Context till the end
+
 - Can provide a way to allocate data on adding/removing a component
-- The manager is notified when the component is added or removed.
 
+  
 
+![](https://www.dropbox.com/s/kre84a4vqouq37z/tm_guide_component_manager.png?dl=1)
 
+## Game Logic
 
-## Engines
+The behavior is defined in Systems and Engines which process those components. Systems and Engines can be seen as data transfromation actions. They take some input (components) and process them to some output (changed component data, different rendering) and a chain of small system together makes up your game!
 
-> Note: in some entity systems, these are referred to as *systems* instead, but we choose *engine*, because it is less ambiguous.
+ ![](https://www.dropbox.com/s/5wqvcf27vvx5b7v/engines.png?dl=1)
+
+### What are Engines?
+
+> **Note**: in some entity systems, these are referred to as *systems* instead, but we choose *engine*, because it is less ambiguous.
 
 - An engine is an update that runs for all components matching a certain *component mask*.
 
@@ -91,9 +103,13 @@ The Entity Context is the simulation world. It contains all the Entites and Syst
   Before running, an engine waits for the previous engines that wrote to the components that the
   engine is interested in.
   
+  The following image shows how a time based movement System could look like:
+  
+  ![](https://www.dropbox.com/s/vn3n7ai2y28u695/tm_guide_ecs_engine_flow.png?dl=1)
+  
   
 
-## Systems
+### What are Systems?
 
 - General Update loop that has access to the Entity Context.
 - Can be used for none component specific interactions
@@ -101,16 +117,13 @@ The Entity Context is the simulation world. It contains all the Entites and Syst
 
 
 
-## Assets
+## How are Entity Assets translated to ECS Entities?
 
-- An entity asset has a list of components and child entities.
+Since the Truth is a editor concept and our main data model, your scene is stored in the Truth. When you start the simulation your Assets get translated to the ECS via the `asset_load()` function! In your `tm_component_i` you can provide this function if you want your component to translate to the ECS world. In there you have access to the Truth, afterwards not anymore! Besides you can provide some other callbacks for differnt stages of the translation process. 
 
-- Parsing of component data is done by a `load_asset()` function that is registered together with
-  the component.
-  
-- Component assets may reference other entity assets within the same entity tree.
+![](https://www.dropbox.com/s/ao6cs4fpyx9i078/truth_ecs%20%282%29.png?dl=1)
 
-**Important:** A Component representation in The Truth may **not** reflect the runtime ECS representation. This can be used to separate a Truth representation into smaller bits for gameplay programming sake but keep the simplicty for the Front End user.
+>  **Important:** A Component representation in The Truth may **not** reflect the runtime ECS representation. This can be used to separate a Truth representation into smaller bits for gameplay programming sake but keep the simplicty for the Front End user.
 
 *Example:*
 

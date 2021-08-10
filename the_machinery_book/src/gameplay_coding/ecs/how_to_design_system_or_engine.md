@@ -2,6 +2,8 @@
 
 In the Machinery, you provide the behavior for your gameplay code via Engines and Systems. The difference between Engines and Systems is that Engines provide an explicitly defined subset of components while Systems give you only access to the Entity Context.
 
+> **Note:** Unsure what a System or a Engine is? Please read  [here]({{the_machinery_book}}/gameplay_coding/ecs/index.html)
+
 This separation means that Engines are better used for high-frequency operations on many entities. At the same time, Systems are better used for broader operations such as input on a few Entities / Single entities.
 
 
