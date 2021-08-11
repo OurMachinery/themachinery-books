@@ -3,6 +3,7 @@
 - [Welcome](./README.md)
 - [What is The Machinery](./what_is_the_machinery.md)
 - [Licenses](./licenses.md)
+- [Glossary](./glossary.md)
 - [Getting Started](./getting_started/README.md)
     - [What is in this package](./getting_started/what_is_in_the_package.md)
     - [Sign In](./getting_started/logging_in.md)
