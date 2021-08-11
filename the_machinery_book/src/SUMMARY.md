@@ -71,6 +71,7 @@
     - [How to build my plugin](./helper_tools/tmbuild.md)
 - [Graphics](./graphics/README.md)
     - [Default Render Pipeline](./graphics/default_render_pipeline.md)
+    - [Meshes / Materials / Shaders](./creation_graphs/concept.md)
 - [Collaboration](./collaboration.md)
 - [QA Pipeline](./qa_pipeline/README.md)
     - [Statistics Tab](./qa_pipeline/statistics.md)
