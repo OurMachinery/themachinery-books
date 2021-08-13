@@ -1,6 +1,6 @@
 ## What are Components?
 
-They are data, that is all they are. This data together composed makes up an Entity. It an be changed at runtime, how ever it is required. This data is transformed in Systems/Engines and therefore Systems / Engines provide the Behaviour of our game based on the input/output of other Systems/Engines.
+They are data, that is all they are. Designing them is the most important task you will find yoursefl doing in a ESC driven game. The reason is that if you change a component you have to update all systems that use it. This data together composed makes up an Entity. It an be changed at runtime, how ever it is required. This data is transformed in Systems/Engines and therefore Systems / Engines provide the Behaviour of our game based on the input/output of other Systems/Engines.
 
 > **Note**:  Keep in mind they do not need a Truth Representation. If they do not have one, the Engine cannot display them in the Entity Tree View. This is useful for runtime only components.
 
@@ -19,3 +19,11 @@ You can add callbacks to the component interface which allow you to perform acti
 > **It's all about the data**
 >
 > Data is all we have. Data is what we need to transform in order to create a user experience. Data is what we load when we open a document. Data is the graphics on the screen and the pulses from the buttons on your game pad and the cause of your speakers and headphones producing waves in the air and the method by which you level up and how the bad guy knew where you were to shoot at you and how long the dynamite took to explode and how many rings you dropped when you fell on the spikes and the current velocity of every particle in the beautiful scene that ended the game, that was loaded off the disc and into your life. Any application is nothing without its data. Photoshop without the images is nothing. Word is nothing without the characters. Cubase is worthless without the events. All the applications that have ever been written have been written to output data based on some input data. The form of that data can be extremely complex, or so simple it requires no documentation at all, but all applications produce and need data. ([Source](https://www.dataorienteddesign.com/dodmain/node3.html))
+
+
+
+### Best Practice
+
+- **Component Size:** Keep them small and atomic. The main reason for this is  that it improves caching performance. Besides having a lot of small components allowes for more reusablity and compostability!  Besides if they are atomic units of data, they increase their value to be reused across projects better and can provide more combinations. *The biggest disadvanatge* is that smal components make it harder to find them, the larger your project is.
+- **Complex component data:** Generally speaking you want to avoid storing complex data such as arrays or heap allocated data in a component. It is possible and sometimes not possible to avoid, but it is always good to ask yourelf if its needed.
+
