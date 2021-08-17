@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Extending the Visual Scripting Language - The Machinery Tutorial Book</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item expanded "><a href="../creation_graph/index.html"><strong aria-hidden="true">2.</strong> Creation Graph</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">2.1.</strong> Creating custom GPU nodes</a></li><li class="chapter-item expanded "><a href="../creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">2.2.</strong> Creating custom CPU nodes</a></li><li class="chapter-item expanded "><a href="../creation_graph/from_code.html"><strong aria-hidden="true">2.3.</strong> Calling Creation Graphs from code</a></li></ol></li><li class="chapter-item expanded "><a href="../physics/index.html"><strong aria-hidden="true">3.</strong> Physics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../physics/triggers.html"><strong aria-hidden="true">3.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="../the_truth/index.html"><strong aria-hidden="true">4.</strong> The Truth</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../the_truth/custom_asset/index.html"><strong aria-hidden="true">4.1.</strong> Creating a custom asset</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../the_truth/custom_asset/part1.html"><strong aria-hidden="true">4.1.1.</strong> Part 1 - Create an Asset Truth Type, Addable via Asset Browser</a></li><li class="chapter-item expanded "><a href="../the_truth/custom_asset/part2.html"><strong aria-hidden="true">4.1.2.</strong> Part 2 - Custom UI</a></li><li class="chapter-item expanded "><a href="../the_truth/custom_asset/part3.html"><strong aria-hidden="true">4.1.3.</strong> Part 3 - Custom Importer</a></li></ol></li><li class="chapter-item expanded "><a href="../the_truth/drag_and_drop.html"><strong aria-hidden="true">4.2.</strong> Adding Drag and Drop to Assets</a></li><li class="chapter-item expanded "><a href="../the_truth/open_asset.html"><strong aria-hidden="true">4.3.</strong> Open Asset in Tab</a></li></ol></li><li class="chapter-item expanded "><a href="../gameplay_coding/index.html"><strong aria-hidden="true">5.</strong> Gameplay Coding</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../gameplay_coding/extend_the_visual_scripting_language.html" class="active"><strong aria-hidden="true">5.1.</strong> Extending the Visual Scripting Language</a></li></ol></li><li class="chapter-item expanded "><a href="../ui/index.html"><strong aria-hidden="true">6.</strong> UI</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">6.1.</strong> Build Custom UI Controls</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">6.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item expanded "><a href="../ui/toolbars-overlays.html"><strong aria-hidden="true">6.2.</strong> Toolbars and Overlays</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Machinery Tutorial Book</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/OurMachinery/themachinery-books" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="extending-the-visual-scripting-language"><a class="header" href="#extending-the-visual-scripting-language">Extending the Visual Scripting Language</a></h1>
+<p>This walkthrough shows you how to extend the visual scripting language for the entity graph and use the <code>generate-graph-nodes.exe</code>. You will learn about:</p>
+<ul>
+<li>How to develop the visual scripting language with your nodes.</li>
+<li>When to run <code>generate-graph-nodes.exe</code></li>
+</ul>
+<h2 id="how-to-extend-the-visual-scripting-language"><a class="header" href="#how-to-extend-the-visual-scripting-language"><strong>How to extend the visual scripting language</strong></a></h2>
+<p>You can extend the visual scripting language with your nodes. All you need to do is write the code that implements the node's action, together with some macros that specify how to create a visual scripting node from that code. Then you run the <code>generate-graph-nodes.exe</code> executable to generate an <code>*.inl</code> file with glue code.</p>
+<ol>
+<li><strong>Create the file</strong></li>
+</ol>
+<p>Our goal is to create a node that computes the square of a floating-point number. We can either add to an existing plugin a new file or create a new plugin. </p>
+<blockquote>
+<p><strong>Important</strong> is it to make sure that the filename contains the graph_nodes string. Otherwise, the node generator will ignore the file.</p>
+<p>For example: <code>my_nodes.c</code> will be ignored by the tool, while <code>my_graph_nodes.c</code> wont be ignored.</p>
+</blockquote>
+<ol start="2">
+<li><strong>Write the code</strong></li>
+</ol>
+<pre><code class="language-c">GGN_BEGIN(&quot;Sample/Math/Float&quot;);
+GGN_NODE_QUERY();
+static inline void sample_float_square(float a, float *res)
+{
+    *res = a * a;
+}
+GGN_GEN_REGISTER_FUNCTION();
+GGN_END();
+#include &quot;my_graph_nodes.inl&quot;
+</code></pre>
+<p>Let us digest the code example above. There are some things to note here:</p>
+<ul>
+<li>Node functions always return their results in pointer parameters(the reason is that they can have more than one result). Pointer parameters are seen as out parameters if they are mutable by the node-generator.</li>
+<li>The function parameter names are also used for the naming of the input/output wires.</li>
+<li>Two special macros surround all the code for the node(s): <code>GGN_BEGIN()</code> and <code>GGN_END()</code>.</li>
+<li>The Engine will use the function name <code>sample_float_square</code> later: <code>Sample Float Square</code>, and you will find it in the defined category: <code>Sample/Math/Float</code></li>
+<li>The <code>GGN_NODE_QUERY()</code> macro marks this node as a Query node. Query nodes are triggered automatically when their output is requested. Nodes that don't just purely modify data need to be triggered by an explicit event. Such as Tick or Init.</li>
+<li>The <code>GGN_GEN_REGISTER_FUNCTION()</code> macro automatically creates a register function for registering the node with the visual scripting system. Otherwise, you need to write this function yourself.</li>
+<li>The <code>#include &quot;my_graph_nodes.inl&quot;</code> will include the autogenerated graph node implementations. It needs to be somewhere in the file. (before the <code>tm_load_plugin</code> function)</li>
+<li>The <code>generate-graph-nodes.exe</code> auto-generates the <code>my_graph_nodes.inl</code> for you. It would be best if you do not edit this file. Otherwise, the generator will overwrite your changes next time.</li>
+</ul>
+<p>For a full documentation of all <code>GGN_*</code> macros see [plugins/graph_interpreter/graph_node_macros.h](http://#).
+The code we write is relatively slight. We need to ensure that we have some header files, including the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#graph_node_macros.h">graph_node_macros.h</a>, which we are using to tell the generator to generate code for us. </p>
+<p>The following list makes sure that the nodes work on their own.</p>
+<pre><code class="language-c">#include &lt;plugins/editor_views/graph.h&gt;
+#include &lt;plugins/graph_interpreter/graph_node_helpers.inl&gt;
+#include &lt;plugins/graph_interpreter/graph_node_macros.h&gt;
+</code></pre>
+<p>If we now think <em>'yeah, we can compile',</em> we are wrong; We need some other header files to ensure that the generated magic in the <code>my_graph_nodes.inl</code> file works. </p>
+<p>We need to include the following files as well:</p>
+<pre><code class="language-c">#include &lt;foundation/api_registry.h&gt; //Is needed for `GGN_GEN_REGISTER_FUNCTION()`
+#include &lt;foundation/localizer.h&gt; // it automatically localizes your category name
+#include &lt;foundation/macros.h&gt;
+#include &lt;foundation/the_truth_types.h&gt; // is needed for the description of the wire input types
+</code></pre>
+<p>The next question is, <em><strong>Are we done now?</strong></em>  The answer is <strong>yes nearly</strong>.  What's left is registering our nodes in the plugin load function. It may look than like this:</p>
+<pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    tm_global_api_registry = reg;
+    tm_graph_interpreter_api = reg-&gt;get(TM_GRAPH_INTERPRETER_API_NAME);
+    // This is auto generated from the graph node generator, you just need to call it.
+    generated__register_graph_nodes(reg, load);
+}
+</code></pre>
+<p>Here we just call the <code>generated__register_graph_nodes</code> function, defined in <code>my_graph_nodes.inl</code> and auto-generated. You can find the complete example here <code>samples/plugins/graph_nodes</code>.</p>
+<ol start="3">
+<li><strong>Run the node generator &amp;</strong>  <code>tmbuild</code></li>
+</ol>
+<p>The last step before we can compile is to make sure that we run the <code>generate-graph-nodes.exe</code> application. This helper utility processes all <code>GGN_* macros.</code> This program generates glue code that ties your function into the graph system -- creating connectors that correspond to your function parameters, etc. 
+The glue code is stored in an <code>.inl</code> file with the same name as the <code>.c</code> file that contains the graph nodes. 
+Do not forget that if you have used some new <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> values, run hash.exe to make sure that those get hashed. 
+Then you are ready to run <code>tmbuild</code>. It will compile your plugin, and then when you start the Engine or have it run in hot-reload mode it will show you your new nodes in the editor.</p>
+<blockquote>
+<p><strong>Note:</strong> You can also run <code>tmbuild</code> with a argument: <code>tmbuild --gen-nodes</code> . This will make sure that <code>tmbuild</code> runs <code>generate-graph-nodes.exe</code> before it builds.</p>
+</blockquote>
+<p><img src="https://paper-attachments.dropbox.com/s_BE512D5FE8135D0385DC0047FF64445B552F54BFA20F2F17110D3CCE8DFC6050_1608038436418_image.png" alt="Created nodes in the entity graph view" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../gameplay_coding/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../ui/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../gameplay_coding/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../ui/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
