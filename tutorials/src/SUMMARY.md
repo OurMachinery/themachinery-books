@@ -14,6 +14,8 @@
         - [Part 3 - Custom Importer](./the_truth/custom_asset/part3.md)
     - [Adding Drag and Drop to Assets](./the_truth/drag_and_drop.md)
     - [Open Asset in Tab](./the_truth/open_asset.md)
+- [Gameplay Coding](./gameplay_coding/README.md)
+    - [Extending the Visual Scripting Language](./gameplay_coding/extend_the_visual_scripting_language.md)
 - [UI](./ui/README.md)
     - [Build Custom UI Controls](./ui/build_custom_ui_controls/README.md)
         - [Part 1](./ui/build_custom_ui_controls/part1.md)
