@@ -21,6 +21,11 @@ There are a lot of different nodes in the system and I will not attempt to descr
 Instead, here is a simple example that adds a super simple animation to an entity using the graph
 component:
 
-![Adding a simple behavior.](https://youtu.be/3DupUNK9GNc)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3DupUNK9GNc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## What is next?
+
+For more information go and checkout the [Gameplay Coding / Visual Scripting Chapter]({{the_machinery_book}}/visual_scripting/index.html)
 
 For more examples, check out the `pong` and `animation` projects in the samples.
+
