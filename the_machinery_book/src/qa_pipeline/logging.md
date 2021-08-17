@@ -27,6 +27,32 @@ You can log custom types. This is enabled via the `tm_sprintf_api`. You can log 
 
 You can register a support for your own custom type via the `tm_sprintf_api.add_printer()`.
 
+*example:*
+
+First you define a function with a signature of the type `tm_sprintf_printer`. `int tm_sprintf_printer(char *buf, int count, tm_str_t type, tm_str_t args, const void *data);`
+
+```c
+static int printer__custom_color_srgb_t(char *buf, int count, tm_str_t type, tm_str_t args, const void *data)
+{
+    const custom_color_srgb_t *v = data;
+    return print(buf, count, "{ .r = %d, .g = %d, .b = %d, .a = %d , .hash = %llu }", v->r, v->g, v->b, v->a, v->hash);
+}
+```
+
+After that you register it via the `tm_sprintf_api` to the `add_printer()` function.
+
+```c
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    tm_sprintf_api = reg->get(TM_SPRINTF_API_NAME);
+    if(tm_sprintf_api->add_printer){
+        tm_sprintf_api->add_printer("custom_color_srgb_t", printer__custom_color_srgb_t);
+    }
+}
+```
+
+
+
 ### More `tm_sprintf_api` formatting cheats
 
 | Fmt                      | Value                                | Result                                      |
@@ -63,7 +89,7 @@ If you desire to add your own logger sink to the eco system there are a few step
 
 *Example:*
 
-```
+```c
 #include <foundation/log.h>
 // some more code
 
