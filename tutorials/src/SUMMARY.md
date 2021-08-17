@@ -1,6 +1,8 @@
 # Summary
 
 - [Welcome](./README.md)
+- [How to create prototypes](./workflows/how_to_create_prototypes.md)
+- [How to instantiate prototypes](./workflows/how_to_instantiate_prototypes.md)
 - [Creation Graph](./creation_graph/README.md)
 	- [Creating custom GPU nodes](./creation_graph/custom_gpu_nodes.md)
 	- [Creating custom CPU nodes](./creation_graph/custom_cpu_nodes.md)
