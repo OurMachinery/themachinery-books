@@ -18,6 +18,8 @@ static tm_simulate_entry_i simulate_entry_i = {
 };
 ```
 
+> **Note:** to genereate the `TM_STATIC_HASH` you need to run `hash.exe` or `tmbuild.exe --gen-hash` for more info open the [hash.exe guide]({{the_machinery_book}}/helper_tools/hash.html)
+
 where `start()`, `stop()` and `tick()` are the functions that you want called when the game starts, ends
 and each frame respectively. Make sure that `id` is unique. When your plugin loads, make sure to
 register this implementation of `tm_simulate_entry_i` on the `TM_SIMULATE_ENTRY_INTERFACE_NAME`
