@@ -1,15 +1,9 @@
 # Entity Component System
 
-The purpose of the entity system is to provide a flexible model for *objects in a simulation*, that
-allows us to compose complex objects from simpler components in a flexible and performant way.
+This section of the book shall help you understand how to make use of our Entity Component System. Designing games with a ECS can be overwhelming. Especially if you come from a more traditional background: Object Oriented Approaches. This chapter will provide you with the basic understanding of what a ECS is and how you can use it!. 
 
-An *entity* is a game object composed of *components*. Entities live in a *entity context* — an
-isolated world of entities. 
-
-Components are there to hold the needed data while *Engines*/*Systems* are there to provide behaviour.
-
-Each context (*entity context*) can have a number of *engines* or *systems* registered. *(ECS)* Engines updates
-are running on subset of entities that posses some set of components. 
+Let us begin with the purpose of the entity system! Its purpose is it to provide a flexible model for *objects in a simulation*, that
+allows us to compose complex objects from simpler components in a flexible and performant way. An *entity* is a game object composed of *components*. Entities live in a *entity context* — an isolated world of entities. In the Machinery each of the following tabs has its own Entity Context: Simulate Tab, Scene Tab, Preview Tab. Entities within those tabs only exist within these contexts! Each new instance of the tab has a different context! Entities are composed of components. They are there to hold the needed data while *Engines*/*Systems* are there to provide behaviour. Each context (*entity context*) can have a number of *engines* or *systems* registered. *(ECS)* Engines updates are running on subset of entities that posses some set of components. 
 
 > **Note**: in some entity systems, these are referred to as *systems* instead, but we choose *engine*, because it is less ambiguous.
 
@@ -35,7 +29,7 @@ The Entity Context is the simulation world. It contains all the Entites and Syst
 
 
 
-## Where do Entities live?
+## Where do Entities live? (Lifecycle)
 
 - Entities **do not live in The Truth**. The truth is for *assets*, not for *simulation.*
 - Entity data is owned by the entity context and thrown away when the entity context is destroyed.
@@ -43,7 +37,7 @@ The Entity Context is the simulation world. It contains all the Entites and Syst
   the same asset.
 - Changes to entity assets can be propagated into a context where those assets are spawned. This is
   the main way in which we will provide a “preview” of assets in a simulation context.
-- An entity always belongs to a specific entity context and entity IDs are only unique within the entity contexts. Entity IDs act as weak references. If you have an ID you can ask the context whether that entity is still alive or not. `tm_entity_api.is_alive()`
+- An entity always belongs to a specific entity context and entity IDs are only unique within the entity contexts. Entities can be created and deleted dynamically. When entities are deleted, the existing handles to that entity are no longer valid. Entity IDs act as weak references. If you have an ID you can ask the context whether that entity is still alive or not. `tm_entity_api.is_alive()`
 
 
 

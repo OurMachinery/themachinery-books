@@ -8,7 +8,7 @@ This separation means that Engines are better used for high-frequency operations
 
 
 
-> **Documentation:** The difference between *engines* and *systems* is that engines are fed component data, where assystems are not. Thus, systems are useful when the data is stored externally from the components (for example to update a physics simulation), whereas *engines* are more efficient when the data  is stored in the components. (You could use a *system* to update data in components, but it would be inefficient, because you would have to perform a lot of lookups to access the component data.)
+> **Documentation:** The difference between *engines* and *systems* is that engines are fed component data, where as systems are not. Thus, systems are useful when the data is stored externally from the components (for example to update a physics simulation), whereas *engines* are more efficient when the data  is stored in the components. (You could use a *system* to update data in components, but it would be inefficient, because you would have to perform a lot of lookups to access the component data.)
 
 
 
@@ -34,7 +34,12 @@ At the end of this, you should be able to answer the following questions:
 
 Those answers are important for the automatic scheduling of the Systems/Engines. Based on all those inputs, the Entity System can determine when and how to schedule what.
 
-*Example:*
+## Best Practice
+
+- **System/Engine Scope:** Systems should be designed to have one job only. This can be difficult at times, especially when designing new features. Therefore its fine to create first a bigger system and than with the time make them smaller. If you find that your engine/system does a lot of things, don't worry. In an ECS things are decoupled from everything else, therefore it is generally pretty easy to split them up into smaller unites. This allows you to increase reusability of systems
+- **System/Engine Scheduling:** Always provide a write list and an list of components your Engine/System is operating on. This is important so the scheduler can do its best! Also do not forget to make use of `.before_me`, `.after_me` and `.phase` more about this in the next chapter!
+
+## Example 
 
 ```c
     const tm_engine_i movement_engine = {
@@ -56,9 +61,9 @@ This movement engine will operate on:
 - `transform_component`
 - `mover_component`
 
-components. The scheduler can now look for those components in other engines and deterimine based on the .`write` field how to schedule it efficent.
+components. The scheduler can now look for those components in other engines and determine based on the .`write` field how to schedule it efficient.
 
-In this example the scheduler can schedule any engine that writes to the keyboard and the movement component ath the same time as this engine if they do not write to the transfrom and mover component!
+In this example the scheduler can schedule any engine that writes to the keyboard and the movement component that the same time as this engine if they do not write to the transform and mover component!
 
 ## What is next?
 

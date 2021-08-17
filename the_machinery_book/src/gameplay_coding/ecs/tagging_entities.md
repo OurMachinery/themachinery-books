@@ -53,7 +53,7 @@ And than you can read the data from the entity via `get_component`. This is wher
 
 ## Tag Components - Entity Type Filter
 
-On the other hand you can define a `Tag` Component which should not be confused with the priviously explained `Tag Component`. A tag component is a simple typedef of a `unit64_t` (or something else) or an empty struct in C++ to a component without properties. The function of this component is it to modify the Entity Type / Archetype to group entities together with them.
+On the other hand you can define a `Tag` Component which should not be confused with the priviously explained `Tag Component`. A tag component is a simple typedef of a `unit64_t` (or something else) or an empty struct in C++ to a component without properties. A tag is a component that does not have any data.  The function of this component is it to modify the Entity Type / Archetype to group entities together with them.
 
 *Example:*
 
