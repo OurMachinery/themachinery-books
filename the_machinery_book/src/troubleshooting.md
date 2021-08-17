@@ -15,6 +15,28 @@ In order to obtain log files you have to go to the same folder where you can fin
 In case of a none typical installation of Visual Studios you have to provide to tmbuild the correct environment variables: `TM_VS2017_DIR` or `TM_VS2019_DIR`. They need to point to the root directory of your Visual Studio installation.
 
 
+
+## tmbuild cannot find environment variables
+
+Before we can build any project, we need to set up our environment. You need to set the following environment variable: (If this one has not been set the tool will not be able to build)
+
+- `TM_SDK_DIR` - This is the path to find the folder `headers` and the folder `lib`
+
+If the following variable is not set, the tool will assume that you intend to use the current working directory:
+
+- `TM_LIB_DIR` - The folder which determines where to download and install all dependencies (besides the build environments)
+
+Make sure you have added the needed enviroment variables. Follow this guide on [tmbuild]({{the_machinery_book}}/helper_tools/tmbuild.html).
+
+
+
+## clang-format pollutes my git commits
+
+Make sure that you are using the `clang-format` version the engine downloads for you and add to the `TM_LIB_DIR`. The engine uses the version 6.0. In case you are using visual studio or visual studio code make sure it points to the right executable!
+
+
+
+
 ## Graphics
 
 In case of a crash you will get an error message, this will give some information about the details of the crash. The first step in a Vulkan related crash is to update your graphics drivers. If this didn’t help then please report the issue to us with the following information.
