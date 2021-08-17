@@ -167,6 +167,23 @@
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_strhash_t">tm_strhash_t</a></td><td><code>TM_LOG(&quot;%p{tm_strhash_t}&quot;,&amp;my_value);</code></td></tr>
 </tbody></table>
 <p>You can register a support for your own custom type via the <code>tm_sprintf_api.add_printer()</code>.</p>
+<p><em>example:</em></p>
+<p>First you define a function with a signature of the type <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#tm_sprintf_printer">tm_sprintf_printer</a>. <code>int tm_sprintf_printer(char *buf, int count, tm_str_t type, tm_str_t args, const void *data);</code></p>
+<pre><code class="language-c">static int printer__custom_color_srgb_t(char *buf, int count, tm_str_t type, tm_str_t args, const void *data)
+{
+    const custom_color_srgb_t *v = data;
+    return print(buf, count, &quot;{ .r = %d, .g = %d, .b = %d, .a = %d , .hash = %llu }&quot;, v-&gt;r, v-&gt;g, v-&gt;b, v-&gt;a, v-&gt;hash);
+}
+</code></pre>
+<p>After that you register it via the <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a> to the <code>add_printer()</code> function.</p>
+<pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    tm_sprintf_api = reg-&gt;get(TM_SPRINTF_API_NAME);
+    if(tm_sprintf_api-&gt;add_printer){
+        tm_sprintf_api-&gt;add_printer(&quot;custom_color_srgb_t&quot;, printer__custom_color_srgb_t);
+    }
+}
+</code></pre>
 <h3 id="more-a-hrefhttpsourmachinerycomapidocfoundationsprintfhhtmlstructtm_sprintf_apitm_sprintf_apia-formatting-cheats"><a class="header" href="#more-a-hrefhttpsourmachinerycomapidocfoundationsprintfhhtmlstructtm_sprintf_apitm_sprintf_apia-formatting-cheats">More <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a> formatting cheats</a></h3>
 <table><thead><tr><th>Fmt</th><th>Value</th><th>Result</th></tr></thead><tbody>
 <tr><td><code>%I64d</code></td><td><code>(uint64_t)100</code></td><td><code>100</code></td></tr>
@@ -200,7 +217,7 @@
 <li>After all of this you can call the <code>tm_logger_api.add_logger()</code>  function to register your logger</li>
 </ol>
 <p><em>Example:</em></p>
-<pre><code>#include &lt;foundation/log.h&gt;
+<pre><code class="language-c">#include &lt;foundation/log.h&gt;
 // some more code
 
 static void my_log_function(struct tm_logger_o *inst, enum tm_log_type log_type, const char *msg)
