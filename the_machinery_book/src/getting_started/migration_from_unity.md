@@ -20,6 +20,29 @@ The following table contains common Unity terms on the left and their The Machin
 | Blot                                                         | [Entity Graph]({{base_url}}editing_workflows/visual-scripting.html) |
 | C#                                                           | C                                                            |
 
+## UI Differences
+
+**Unity**
+
+![](https://www.dropbox.com/s/0a47vz1walkm79r/tm_guide_unity_editor.png?dl=1)
+
+**The Machinery**
+
+![](https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?dl=1)
+
+1. The **Main Menu**: It allows you to navigate through the Engine, such as opening new tabs or import assets
+2. The **Entity Tree** shows a tree view of the entity you are editing. It shows the entity's components and child entities. You start editing an entity by double-clicking it in the asset browser. 
+3. The **Scene** shows an editable graphic view of the edited entity. You can manipulate components and child entities by selecting them. Use the *Move*, *Rotate*, and *Scale* gizmos for your desired action.
+4. The **Simulate current scene** button will open the **Simulate** tab that lets you "run" or "simulate" a scene.
+5. The **Properties** tab shows the properties of the currently selected object in the Scene. You can modify the properties by editing them in the properties window.
+6. The **Console** tab shows diagnostic messages from the application.
+7. The **Asset Browser** shows all the assets in the project and enables you to manage them.
+8. The **Preview** shows a preview of the currently selected asset in the asset browser.
+
+The Editor is a collection of editing *Tabs*, each with its specific purpose. You can drag tabs around to rearrange them. When you drag them out of the window, a new window opens. Use the *View* menu to open new tabs.
+
+
+
 ## Questions you might have
 
 **Where are my GameObjects?**

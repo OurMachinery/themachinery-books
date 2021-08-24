@@ -3,7 +3,7 @@
 After opening the Engine, you should see the Editor's interface with menus along the top of the interface, and the basic tabs opened. The following image will show you the default engine layout.
 Here's a brief description of what you can see:
 
-![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625426376136_image.png)
+![](https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?dl=1)
 
 1. The **Main Menu**: It allows you to navigate through the Engine, such as opening new tabs or import assets
 2. The **Entity Tree** shows a tree view of the entity you are editing. It shows the entity's components and child entities. You start editing an entity by double-clicking it in the asset browser. 
