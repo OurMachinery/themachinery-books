@@ -56,6 +56,7 @@
     - [Write a plugin](./extending_the_machinery/write-a-plugin.md)
     - [Write a tab](./extending_the_machinery/write-a-tab.md)
     - [Plugin assets](./extending_the_machinery/plugin-assets.md)
+    - [Application Hooks](./extending_the_machinery/application_hooks.md)
 - [Gameplay coding](./gameplay_coding/README.md)
     - [Simulate Entry in C](./gameplay_coding/simulate_entry.md)
     - [Visual Scripting](gameplay_coding/visual_scripting/README.md)
