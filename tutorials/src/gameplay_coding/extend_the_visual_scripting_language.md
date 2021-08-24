@@ -26,12 +26,12 @@ Our goal is to create a node that computes the square of a floating-point number
 
 ```c
 GGN_BEGIN("Sample/Math/Float");
+GGN_GEN_REGISTER_FUNCTION();
 GGN_NODE_QUERY();
 static inline void sample_float_square(float a, float *res)
 {
     *res = a * a;
 }
-GGN_GEN_REGISTER_FUNCTION();
 GGN_END();
 #include "my_graph_nodes.inl"
 ```
