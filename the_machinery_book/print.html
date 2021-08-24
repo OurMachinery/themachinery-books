@@ -565,6 +565,22 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <tr><td>Blot</td><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/visual-scripting.html">Entity Graph</a></td></tr>
 <tr><td>C#</td><td>C</td></tr>
 </tbody></table>
+<h2 id="ui-differences"><a class="header" href="#ui-differences">UI Differences</a></h2>
+<p><strong>Unity</strong></p>
+<p><img src="https://www.dropbox.com/s/0a47vz1walkm79r/tm_guide_unity_editor.png?dl=1" alt="" /></p>
+<p><strong>The Machinery</strong></p>
+<p><img src="https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?dl=1" alt="" /></p>
+<ol>
+<li>The <strong>Main Menu</strong>: It allows you to navigate through the Engine, such as opening new tabs or import assets</li>
+<li>The <strong>Entity Tree</strong> shows a tree view of the entity you are editing. It shows the entity's components and child entities. You start editing an entity by double-clicking it in the asset browser. </li>
+<li>The <strong>Scene</strong> shows an editable graphic view of the edited entity. You can manipulate components and child entities by selecting them. Use the <em>Move</em>, <em>Rotate</em>, and <em>Scale</em> gizmos for your desired action.</li>
+<li>The <strong>Simulate current scene</strong> button will open the <strong>Simulate</strong> tab that lets you &quot;run&quot; or &quot;simulate&quot; a scene.</li>
+<li>The <strong>Properties</strong> tab shows the properties of the currently selected object in the Scene. You can modify the properties by editing them in the properties window.</li>
+<li>The <strong>Console</strong> tab shows diagnostic messages from the application.</li>
+<li>The <strong>Asset Browser</strong> shows all the assets in the project and enables you to manage them.</li>
+<li>The <strong>Preview</strong> shows a preview of the currently selected asset in the asset browser.</li>
+</ol>
+<p>The Editor is a collection of editing <em>Tabs</em>, each with its specific purpose. You can drag tabs around to rearrange them. When you drag them out of the window, a new window opens. Use the <em>View</em> menu to open new tabs.</p>
 <h2 id="questions-you-might-have"><a class="header" href="#questions-you-might-have">Questions you might have</a></h2>
 <p><strong>Where are my GameObjects?</strong></p>
 <p>The Machinery has no concept of GameObjects in the sense as Unity does. The Engine is based around Entities and Components. In the game world, not the editor, everything lives within the Entity Component System (ECS). To be exact, it lives within the Entity Context, an isolated world of entities. Your GameObjects are split into data and Behaviour. </p>
@@ -736,7 +752,7 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-editor"><a class="header" href="#the-editor">The Editor</a></h1>
 <p>After opening the Engine, you should see the Editor's interface with menus along the top of the interface, and the basic tabs opened. The following image will show you the default engine layout.
 Here's a brief description of what you can see:</p>
-<p><img src="https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625426376136_image.png" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?dl=1" alt="" /></p>
 <ol>
 <li>The <strong>Main Menu</strong>: It allows you to navigate through the Engine, such as opening new tabs or import assets</li>
 <li>The <strong>Entity Tree</strong> shows a tree view of the entity you are editing. It shows the entity's components and child entities. You start editing an entity by double-clicking it in the asset browser. </li>
@@ -1370,31 +1386,46 @@ understanding of to get started working with The Machinery.</p>
 <p>Like the entity graph, the creation graph can executes nodes in sequence from an event. Some examples of this are the <code>Tick</code>, <code>Init</code>, and <code>Compile</code> events which are executed at known intervals. Most of the creation graphs however work with a reverse flow, compiling the graph into a sequence of nodes for a specific output. The two examples presented earlier show this workflow. Some outputs are: <code>Draw Call</code>, <code>Shader Instance</code>, <code>Image</code>, and <code>Physics Shape</code>. Note that these outputs are just blobs of data, an implementation can define more output type in code.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="prototypes"><a class="header" href="#prototypes">Prototypes</a></h2>
 <p>The Machinery has a prototype system that allows entity assets to be used inside
-other entities. So you can for example create an entity asset that represents a
+other entities. </p>
+<p><strong>Table of Content</strong></p>
+<ul>
+<li><a href="editing_workflows/prototypes.html#difference-between-a-prototype-an-instance-and-an-asset">Difference between a Prototype, an Instance and an Asset</a></li>
+<li><a href="editing_workflows/prototypes.html#instance-properties-inspect">Instance Properties: Inspect</a></li>
+<li><a href="editing_workflows/prototypes.html#instance-properties-override">Instance Properties: Override</a></li>
+<li><a href="editing_workflows/prototypes.html#instance-properties-reset-or-propagate">Instance Properties: Reset or Propagate</a></li>
+<li><a href="editing_workflows/prototypes.html#other-forms-of-prototypes-eg-graphs">Other forms of prototypes: e.g. Graphs</a></li>
+<li><a href="editing_workflows/prototypes.html#what-is-next">What is next?</a></li>
+</ul>
+<p>So you can for example create an entity asset that represents a
 room, and then create a house entity that has a bunch of these room entities
 placed into it:</p>
 <p><img src="https://www.dropbox.com/s/2hpnogh7bff9jge/house-entity.png?dl=1" alt="Three Room entities placed to form a House entity." /></p>
+<h2 id="difference-between-a-prototype-an-instance-and-an-asset"><a class="header" href="#difference-between-a-prototype-an-instance-and-an-asset">Difference between a Prototype, an Instance and an Asset</a></h2>
 <p>We call the room asset a <em>prototype</em>, and we call each placed room entity an
 <em>instance</em> of that prototype. Note that prototypes are not special assets, any
 entity asset can be used as a prototype, with instances of it placed in another
 entity asset.</p>
 <p>In the Entity Tree tab, prototype instances are shown in yellow to distinguish them from locally
 owned child entities (which are shown in white).</p>
+<h2 id="instance-properties-inspect"><a class="header" href="#instance-properties-inspect">Instance Properties: Inspect</a></h2>
 <p>If you expand an instance you will notice that most of its components and child entities are grayed
 out and can't be selected. This is because they are inherited from the prototype, and the prototype
 controls their values. If the prototype is modified — for example if we scatter some more props on
 the floor — those changes are reflected everywhere the prototype has been placed. In the example
 above, all three room instances would get the scattered objects.</p>
+<h2 id="instance-properties-override"><a class="header" href="#instance-properties-override">Instance Properties: Override</a></h2>
 <p>If we want to, however, we can choose to <em>override</em> some of the prototype’s
 properties. When we override a property, we modify its value for <em>this instance</em>
 of the prototype only. Other instances will keep the value from the prototype.</p>
-<p>To initiate an override, right-click the component or child entity whose
+<p>To initiate an override, right-click (or double click) the component or child entity whose
 properties you want to override and choose <strong>Override</strong> in the context
 menu. In addition to modifying properties, you can also add or remove components
 or child entities on the overridden entity.</p>
-<p>If you override the property of some node deep in the hierarchy of the placed entity, all its
+<blockquote>
+<p><strong>Note:</strong> If you override the property of some node deep in the hierarchy of the placed entity, all its
 parents will automatically get overridden too. Let's modify the position of the barrel in the
 front-most room:</p>
+</blockquote>
 <p><img src="https://www.dropbox.com/s/uy0rzwhrjzen42i/override.png?dl=1" alt="Barrel position overridden." /></p>
 <p>The overridden entities and components are drawn in blue. We change the x and z components of the
 position to move the barrel. Note how the changed values are shown in white, while the values that
@@ -1408,16 +1439,23 @@ position.</p>
 overridden are still inherited from the prototype. If we modify the prototype —
 for example change the barrel to a torch — all instances will get the change,
 since it was only the x and z positions of the object that we changed.</p>
+<h2 id="instance-properties-reset-or-propagate"><a class="header" href="#instance-properties-reset-or-propagate">Instance Properties: Reset or Propagate</a></h2>
 <p>The context menus can be used to perform other prototype operations. For example,
 you can <strong>Reset</strong> properties back to the prototype values. You can also
 <strong>Propagate</strong> the changes you have made to an overridden component or entity
 back to the prototype so that all instances get the changes. Finally, you can
 <strong>Remove</strong> the overrides and get the instance back to being an exact replica of
 the prototype.</p>
+<h2 id="other-forms-of-prototypes-eg-graphs"><a class="header" href="#other-forms-of-prototypes-eg-graphs">Other forms of prototypes: e.g. Graphs</a></h2>
 <p>Prototypes can also be used for other things than entities. For example, if you have a graph that
 you want to reuse in different places you can create a Graph Asset to hold the graph, and then
 instantiate that asset in the various places where you want to use it. Just as with the entity
 instances, you can override specific nodes in the graph instance to customize the behavior.</p>
+<h2 id="what-is-next-1"><a class="header" href="#what-is-next-1">What is next?</a></h2>
+<ul>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials//workflows/how_to_create_prototypes.html">How to create a prototype?</a></li>
+<li><a href="https://ourmachinery.github.io/themachinery-books/tutorials/workflows/how_to_instantiate_prototypes.html#how-to-instantiate-prototypes">How to instantiate Prototypes</a></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="simulation"><a class="header" href="#simulation">Simulation</a></h2>
 <p>In <em>The Machinery</em>, we make a distinction between <em>simulating</em> and <em>editing</em>. When you are <em>editing</em>,
 you see a static view of the scene. All the runtime behaviors like physics, animation, destruction,
@@ -1457,7 +1495,7 @@ to select it and edit its input data in the properties.</p>
 Instead, here is a simple example that adds a super simple animation to an entity using the graph
 component:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3DupUNK9GNc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<h2 id="what-is-next-1"><a class="header" href="#what-is-next-1">What is next?</a></h2>
+<h2 id="what-is-next-2"><a class="header" href="#what-is-next-2">What is next?</a></h2>
 <p>For more information go and checkout the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//visual_scripting/index.html">Gameplay Coding / Visual Scripting Chapter</a></p>
 <p>For more examples, check out the <code>pong</code> and <code>animation</code> projects in the samples.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="physics"><a class="header" href="#physics">Physics</a></h2>
@@ -1850,7 +1888,7 @@ const 	float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),
 <blockquote>
 <p><strong>Note:</strong>  need to pass <code>-1</code> to tell the function that we are at the end of the creation process. More info <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_api.quick_create_object()">here</a>.</p>
 </blockquote>
-<h2 id="what-is-next-2"><a class="header" href="#what-is-next-2">What is next?</a></h2>
+<h2 id="what-is-next-3"><a class="header" href="#what-is-next-3">What is next?</a></h2>
 <p>If you want to learn more about how to create your own custom type, follow the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//the_truth/custom_truth_type.html">&quot;Custom Truth Type&quot;</a> walkthrough.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="modify-an-object"><a class="header" href="#modify-an-object">Modify an object</a></h1>
 <p>To manipulate an object, you need to have its ID (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>). When you create an object, you should keep its ID around if you intend to edit it later.</p>
@@ -2194,7 +2232,7 @@ void create_truth_types(tm_the_truth_o *tt){
 }
 </code></pre>
 <p>That is all we need to do to define properties for our Type! Also thanks to our automatic &quot;reflection&quot; system you do not have to worry about providing a UI for the type. The Properties View will automatically provide a UI for this type.</p>
-<h2 id="what-is-next-3"><a class="header" href="#what-is-next-3">What is next?</a></h2>
+<h2 id="what-is-next-4"><a class="header" href="#what-is-next-4">What is next?</a></h2>
 <p>You can find more in depth and practical tutorials in the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/index.html">tutorial book</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creation-graphs-1"><a class="header" href="#creation-graphs-1">Creation Graphs</a></h1>
 <p>The creation graph is (as the name implies) a graph based tool for creating assets. It allows developers to define and alter various types of assets using visual scripting. More broadly speaking, the creation graph can be used for arbitrary data processing tasks.</p>
@@ -3232,7 +3270,7 @@ to open it in the Graph Editor:</p>
 <p><img src="https://www.dropbox.com/s/9fawc756lyf0k3h/tm_guide_entity_graph_loop.png?dl=1" alt="" /></p>
 <h3 id="subgraphs"><a class="header" href="#subgraphs">Subgraphs</a></h3>
 <p>You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a <code>.entity_graph</code> asset in your asset browser and allow it to be reused across your project! Which enables you to maximal flexibility! </p>
-<h2 id="what-is-next-4"><a class="header" href="#what-is-next-4">What is next?</a></h2>
+<h2 id="what-is-next-5"><a class="header" href="#what-is-next-5">What is next?</a></h2>
 <p>In the next chapter you will learn more about Subgraphs and the Debugger! In case you want to provide your own Nodes check out this tutorial <a href="https://ourmachinery.github.io/themachinery-books/tutorials//gameplay_coding/extend_the_visual_scripting_language.html">Extend the Visual Scripting Language</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="subgraphs-1"><a class="header" href="#subgraphs-1">Subgraphs</a></h1>
 <p>Subgraphs are a way to organize your graph better and create smaller units. They make them easier to maintain and easy to follow. In its essence a subgraph is a graph within a graph. They are interfaced via a subgraph node. They can produce Input and Output, such as a normal node could. They can also call and react to normal Events!</p>
@@ -3583,7 +3621,7 @@ lists, strings, buffers, etc.</li>
 </ul>
 <p>components. The scheduler can now look for those components in other engines and determine based on the .<code>write</code> field how to schedule it efficient.</p>
 <p>In this example the scheduler can schedule any engine that writes to the keyboard and the movement component that the same time as this engine if they do not write to the transform and mover component!</p>
-<h2 id="what-is-next-5"><a class="header" href="#what-is-next-5">What is next?</a></h2>
+<h2 id="what-is-next-6"><a class="header" href="#what-is-next-6">What is next?</a></h2>
 <p>More details on writing your own system or engine is explained in the next chapter</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="defining-a-system-and-engines"><a class="header" href="#defining-a-system-and-engines">Defining a System and Engines</a></h1>
 <p>You have to pass the  <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_system_i">tm_entity_system_i</a> or <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a> instance in your register function.</p>
@@ -3629,7 +3667,7 @@ lists, strings, buffers, etc.</li>
 <p>We can define the <code>.phase</code> to tell the system in which phase we want our operation to run.</p>
 <p><strong>What dependencies do I have?</strong></p>
 <p>We can define dependencies by saying: <code>.before_me</code> and <code>.after_me</code>. We just pass the string has of the other engine/system to this, and the scheduler does the rest.</p>
-<h2 id="what-is-next-6"><a class="header" href="#what-is-next-6">What is next?</a></h2>
+<h2 id="what-is-next-7"><a class="header" href="#what-is-next-7">What is next?</a></h2>
 <p>In the next chapter we translate this to actual code!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="registering-a-system-or-an-engine"><a class="header" href="#registering-a-system-or-an-engine">Registering a System or an Engine</a></h1>
 <p>To register Systems/Engines, you need to provide a register function to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_simulation_register_engines_interface_name">TM_ENTITY_SIMULATION_REGISTER_ENGINES_INTERFACE_NAME</a> interface. This function has the signature:</p>

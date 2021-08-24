@@ -163,6 +163,22 @@
 <tr><td>Blot</td><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/visual-scripting.html">Entity Graph</a></td></tr>
 <tr><td>C#</td><td>C</td></tr>
 </tbody></table>
+<h2 id="ui-differences"><a class="header" href="#ui-differences">UI Differences</a></h2>
+<p><strong>Unity</strong></p>
+<p><img src="https://www.dropbox.com/s/0a47vz1walkm79r/tm_guide_unity_editor.png?dl=1" alt="" /></p>
+<p><strong>The Machinery</strong></p>
+<p><img src="https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?dl=1" alt="" /></p>
+<ol>
+<li>The <strong>Main Menu</strong>: It allows you to navigate through the Engine, such as opening new tabs or import assets</li>
+<li>The <strong>Entity Tree</strong> shows a tree view of the entity you are editing. It shows the entity's components and child entities. You start editing an entity by double-clicking it in the asset browser. </li>
+<li>The <strong>Scene</strong> shows an editable graphic view of the edited entity. You can manipulate components and child entities by selecting them. Use the <em>Move</em>, <em>Rotate</em>, and <em>Scale</em> gizmos for your desired action.</li>
+<li>The <strong>Simulate current scene</strong> button will open the <strong>Simulate</strong> tab that lets you &quot;run&quot; or &quot;simulate&quot; a scene.</li>
+<li>The <strong>Properties</strong> tab shows the properties of the currently selected object in the Scene. You can modify the properties by editing them in the properties window.</li>
+<li>The <strong>Console</strong> tab shows diagnostic messages from the application.</li>
+<li>The <strong>Asset Browser</strong> shows all the assets in the project and enables you to manage them.</li>
+<li>The <strong>Preview</strong> shows a preview of the currently selected asset in the asset browser.</li>
+</ol>
+<p>The Editor is a collection of editing <em>Tabs</em>, each with its specific purpose. You can drag tabs around to rearrange them. When you drag them out of the window, a new window opens. Use the <em>View</em> menu to open new tabs.</p>
 <h2 id="questions-you-might-have"><a class="header" href="#questions-you-might-have">Questions you might have</a></h2>
 <p><strong>Where are my GameObjects?</strong></p>
 <p>The Machinery has no concept of GameObjects in the sense as Unity does. The Engine is based around Entities and Components. In the game world, not the editor, everything lives within the Entity Component System (ECS). To be exact, it lives within the Entity Context, an isolated world of entities. Your GameObjects are split into data and Behaviour. </p>
