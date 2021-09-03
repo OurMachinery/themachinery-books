@@ -10,12 +10,12 @@ The following table contains common Godot terms on the left and their The Machin
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Nodes                                                        | Are composed of Entities and Components and Systems          |
 | Materials, Shaders, Textures, Particle Effects, Mesh, Geometry, Shader Graph, Material Editor | [Creation Graphs]({{base_url}}creation_graphs/concept.html)  |
-| **UI**                                                       |                                                              |
+| **UI**                                                       | **UI**                                                       |
 | Scene                                                        | [Entity Tree]({{base_url}}the_editor/entity_tree_tab.html)   |
 | Inspector                                                    | [Properties Tab]({{base_url}}the_editor/properties_tab.html) |
 | FileSystem                                                   | [Asset Browser]({{base_url}}the_editor/asset_browser.html)   |
 | Viewport                                                     | [Scene Tab]({{base_url}}the_editor/asset_browser.html)       |
-| **Programming**                                              |                                                              |
+| **Programming**                                              | **Programming**                                              |
 | VisualScript                                                 | [Entity Graph]({{base_url}}editing_workflows/visual-scripting.html) |
 | C#, GDScript, C++                                            | C                                                            |
 

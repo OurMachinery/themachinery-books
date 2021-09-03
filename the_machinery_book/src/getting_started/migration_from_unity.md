@@ -9,15 +9,15 @@ The following table contains common Unity terms on the left and their The Machin
 | Unity                                                        | The Machinery                                                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | GameObjects                                                  | Are composed of Entities and Components and Systems          |
-| Prefabs                                                      | [Prototypes]({{base_url}}editing_workflows/prototypes.html) |
-| Materials, Shaders, Textures, Particle Effects, Mesh, Geometry, Shader Graph, Material Editor | [Creation Graphs]({{base_url}}creation_graphs/concept.html) |
-| **UI**                                                       |                                                              |
-| Hierarchy Panel                                              | [Entity Tree]({{base_url}}the_editor/entity_tree_tab.html) |
+| Prefabs                                                      | [Prototypes]({{base_url}}editing_workflows/prototypes.html)  |
+| Materials, Shaders, Textures, Particle Effects, Mesh, Geometry, Shader Graph, Material Editor | [Creation Graphs]({{base_url}}creation_graphs/concept.html)  |
+| **UI**                                                       | **UI**                                                       |
+| Hierarchy Panel                                              | [Entity Tree]({{base_url}}the_editor/entity_tree_tab.html)   |
 | Inspector                                                    | [Properties Tab]({{base_url}}the_editor/properties_tab.html) |
-| Project Browser                                              | [Asset Browser]({{base_url}}the_editor/asset_browser.html) |
-| Scene View                                                   | [Scene Tab]({{base_url}}the_editor/asset_browser.html) |
-| **Programming**                                              |                                                              |
-| Blot                                                         | [Entity Graph]({{base_url}}editing_workflows/visual-scripting.html) |
+| Project Browser                                              | [Asset Browser]({{base_url}}the_editor/asset_browser.html)   |
+| Scene View                                                   | [Scene Tab]({{base_url}}the_editor/asset_browser.html)       |
+| **Programming**                                              | **Programming**                                              |
+| Bolt                                                         | [Entity Graph]({{base_url}}editing_workflows/visual-scripting.html) |
 | C#                                                           | C                                                            |
 
 ## UI Differences
