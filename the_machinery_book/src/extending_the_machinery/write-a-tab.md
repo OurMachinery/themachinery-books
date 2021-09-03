@@ -30,6 +30,7 @@ static struct tm_api_registry_api* tm_global_api_registry;
 
 static struct tm_draw2d_api* tm_draw2d_api;
 static struct tm_ui_api* tm_ui_api;
+static struct tm_allocator_api* tm_allocator_api;
 
 #include <foundation/allocator.h>
 #include <foundation/api_registry.h>
@@ -43,14 +44,12 @@ static struct tm_ui_api* tm_ui_api;
 
 #include <stdio.h>
 
-TM_DLL_EXPORT void load_custom_tab_tab(struct tm_api_registry_api* reg, bool load);
-
 #define TM_CUSTOM_TAB_VT_NAME "tm_custom_tab"
 #define TM_CUSTOM_TAB_VT_NAME_HASH TM_STATIC_HASH("tm_custom_tab", 0xbc4e3e47fbf1cdc1ULL)
 
 struct tm_tab_o {
     tm_tab_i tm_tab_i;
-    tm_allocator_i* allocator;
+    tm_allocator_i allocator;
 };
 
 static void tab__ui(tm_tab_o* tab, tm_ui_o* ui, const tm_ui_style_t* uistyle_in, tm_rect_t rect)
@@ -76,14 +75,14 @@ static const char* tab__title(tm_tab_o* tab, struct tm_ui_o* ui)
 
 static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
 {
-    tm_allocator_i* allocator = context->allocator;
+    tm_allocator_i allocator = tm_allocator_api->create_child(context->allocator, "Custom Tab");
     uint64_t* id = context->id;
 
     static tm_the_machinery_tab_vt* vt = 0;
     if (!vt)
         vt = tm_global_api_registry->get(TM_CUSTOM_TAB_VT_NAME);
 
-    tm_tab_o* tab = tm_alloc(allocator, sizeof(tm_tab_o));
+    tm_tab_o* tab = tm_alloc(&allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
             .vt = (tm_tab_vt*)vt,
@@ -99,7 +98,9 @@ static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
 
 static void tab__destroy(tm_tab_o* tab)
 {
-    tm_free(tab->allocator, tab, sizeof(*tab));
+    tm_allocator_i a = tab->allocator;
+    tm_free(&a, tab, sizeof(*tab));
+    tm_allocator_api->destroy_child(&a);
 }
 
 static tm_the_machinery_tab_vt* custom_tab_vt = &(tm_the_machinery_tab_vt){
@@ -118,6 +119,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
 
     tm_draw2d_api = reg->get(TM_DRAW2D_API_NAME);
     tm_ui_api = reg->get(TM_UI_API_NAME);
+    tm_allocator_api = reg->get(TM_ALLOCATOR_API_NAME);
 
     tm_set_or_remove_api(reg, load, TM_CUSTOM_TAB_VT_NAME, custom_tab_vt);
     tm_add_or_remove_implementation(reg, load, TM_TAB_VT_INTERFACE_NAME, custom_tab_vt);
@@ -183,7 +185,7 @@ In the next section, we define the data the Tab can hold. It might be any data y
 ```c
 struct tm_tab_o {
     tm_tab_i tm_tab_i;
-    tm_allocator_i* allocator;
+    tm_allocator_i allocator;
 };
 ```
 
@@ -272,7 +274,7 @@ The create function provides you the `tm_tab_create_context_t` access to many es
 ```c
 static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
 {
-    tm_allocator_i* allocator = context->allocator;
+     tm_allocator_i allocator = tm_allocator_api->create_child(context->allocator, "my tab");
     static tm_the_machinery_tab_vt* vt = 0;
     if (!vt)
         vt = tm_global_api_registry->get(TM_CUSTOM_TAB_VT_NAME);
@@ -301,7 +303,7 @@ As you can notice, we ask the `tm_global_api_registry_api` if our Tab is already
 After this, we use the provided allocator to allocate the Tab struct, and then we initialize it with the data we deem to be needed. 
 
 ```c
-    tm_tab_o* tab = tm_alloc(allocator, sizeof(tm_tab_o));
+    tm_tab_o* tab = tm_alloc(&allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
             .vt = (tm_tab_vt*)vt,
@@ -325,7 +327,9 @@ When it comes to free the Tab data, we can just call `tm_free()` on our Tab:
 ```c
 static void tab__destroy(tm_tab_o* tab)
 {
-    tm_free(tab->allocator, tab, sizeof(*tab));
+    tm_allocator_i a = tab->allocator;
+    tm_free(&a, tab, sizeof(*tab));
+    tm_allocator_api->destroy_child(&a);
 }
 
 ```
@@ -402,6 +406,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
 
     tm_draw2d_api = reg->get(TM_DRAW2D_API_NAME);
     tm_ui_api = reg->get(TM_UI_API_NAME);
+    tm_allocator_api = reg->get(TM_ALLOCATOR_API_NAME);
 
     tm_set_or_remove_api(reg, load, TM_CUSTOM_TAB_VT_NAME, custom_tab_vt);
     tm_add_or_remove_implementation(reg, load, TM_TAB_VT_INTERFACE_NAME, custom_tab_vt);
