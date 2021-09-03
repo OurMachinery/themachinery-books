@@ -13,6 +13,12 @@ Besides this book we have several other resources which might be good to checkou
 - [Our Github Discussion Board](https://github.com/OurMachinery/themachinery-public/discussions)
 - [Tutorials and Workflow Book]({{tutorials}})
 
+Also feel free to checkout our internal
+
+- [Programming Guidebook](https://ourmachinery.com/apidoc/doc/guidebook.md.html)
+
+> The purpose of this [Programming Guidebook](https://ourmachinery.com/apidoc/doc/guidebook.md.html) is to lay down principles and guidelines for how to write code and work together at Our Machinery.
+
 Enjoy!
 
 *The Machinery Team*
