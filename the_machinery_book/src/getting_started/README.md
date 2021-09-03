@@ -40,6 +40,6 @@ your GPU drivers to the latest version. If that doesn't work, post an issue with
 tracker](https://github.com/OurMachinery/themachinery-public/issues) or ping us on
 [Discord](https://discord.gg/uJtkbVr) and we will help you.
 
-Here is an introduction video showing these steps:
+Related videos to these topics are:
 
-[Introduction to The Machinery.](https://www.youtube.com/watch?v=oQGghpCqBhI&list=PLjhMvDI5f-Iox5sKvVFGWKB9DdCiei-8L)
+<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/oQGghpCqBhI?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=http://ourmachinery.com"></iframe>
