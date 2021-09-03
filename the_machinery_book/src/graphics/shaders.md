@@ -34,3 +34,9 @@ The whole Shader System is explained in more detail within these posts:
 - [The Machinery Shader System (part 2)](https://ourmachinery.com/post/the-machinery-shader-system-part-2/)
 - [The Machinery Shader System (part 3)](https://ourmachinery.com/post/the-machinery-shader-system-part-3/)
 - [Efficient binding of shader resources](https://ourmachinery.com/post/efficient-binding-of-shader-resources/)
+
+
+
+## Custom shaders how?
+
+If you intend to write custom shaders you can. All your custom shaders need to be placed under the `bin\data\shaders` of the engine. They will be automatically compiled (if needed) on boot up of the Editor. For help with how to write a custom shader please follow the [`The Machinery Shading Language Guide`]({{the_machinery_book}}/graphics/the_machinery_shading_language.html)

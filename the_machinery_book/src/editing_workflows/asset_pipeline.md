@@ -1,8 +1,18 @@
-## Creation graphs and asset pipeline
+## The asset pipeline by Example
+
+This section we focus on how to set up a simple entity from an imported `dcc_asset`. 
+
+You will learn the basics about:
+
+- What the creation graph is
+- How the asset pipline works
+- How to create (rigg) an Entity from a imported asset
+
+## Introduction
 
 There are lots of things you might want to do to an imported asset coming from a DCC-tool. For
 example, extracting images and materials into a representation that can be further tweaked by your
-artists or rigging an entity from the meshes present in the asset. In The Machinery, we provide full
+artists or rigging (create) an entity from the meshes present in the asset. In The Machinery, we provide full
 control over how data enters the engine and what data-processing steps that get executed, allowing
 technical artists to better optimize content and setup custom, game-specific asset pipelines.
 
@@ -10,16 +20,14 @@ This is handled through [*Creation Graphs*]({{base_url}}creation_graphs/concept.
 processing arbitrary data on the CPUs and GPUs, exposed through a graph front-end view. While we can
 use *Creation Graphs* for any type of data processing. 
 
-For more information visit the [*Creation Graphs*]({{base_url}}creation_graphs/concept.html) section. For the rest of this section we focus on how to set up a simple entity from an imported `dcc_asset`. 
+For more information visit the [*Creation Graphs*]({{base_url}}creation_graphs/concept.html) section.
 
 > **Tip:**  if you wish to see other use cases such as particle systems, sky rendering and sprite sheets, then have a look in the
 > [`creation_graphs`](https://ourmachinery.com/samples.html) sample that we provide. 
 
-# Importing a DCC asset
+## Importing a DCC asset
 
-You can import an asset by selecting **File > Import...** in the main menu, pressing **Ctrl-I**, or dropping a DCC file on the Asset Browser tab. When you do this, it ends up in our data-model as a `dcc_asset`. A `dcc_asset` can hold all types of data that was used to build the asset in the DCC-tool, such as objects, images, materials, geometry and animation data.
-
-During the import step, The Machinery only runs a bare minimum of data processing, just enough so that we can display a visual representation of the asset in the *Preview* tab. Imports run in the background so you can continue to work uninterrupted. When the import finishes the asset will show up in the *Asset Browser*. Note that import of large assets can take a significant amount of time. You can monitor the progress of the import operation in the status bar.
+You can import an asset by selecting **File > Import...** in the main menu, pressing **Ctrl-I**, or dropping a DCC file on the Asset Browser tab. When you do this, it ends up in our data-model as a `dcc_asset`. 
 
 For more in detail explanation about how to import assets checkout the [Asset Import Part]({{base_url}}editing_workflows/import_assets.html).
 

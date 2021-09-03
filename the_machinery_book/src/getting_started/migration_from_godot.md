@@ -2,6 +2,12 @@
 
 When migrating from Godot to The Machinery, there are a few things that are different.
 
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
+
+
 **Quick Glossary**
 
 The following table contains common Godot terms on the left and their The Machinery equivalents (or rough equivalent) on the right.
@@ -21,7 +27,7 @@ The following table contains common Godot terms on the left and their The Machin
 
 ## Questions you might have
 
-**Where are my Nodes?**
+### Where are my Nodes?
 
 The Machinery has no concept of Nodes in the sense as Godot does. The Engine is based around Entities and Components.
 
@@ -48,7 +54,7 @@ The Movement Engine and Jump Engine will pick them up and apply the same logic t
 
 
 
-**What is the difference between a System and an Engine?**
+#### What is the difference between a System and an Engine?
 
 An Engine update is running on a subset of components that possess some set of components. Some entity component systems are referred to as *systems* instead, but we choose *Engine* because it is less ambiguous.
 
@@ -56,7 +62,7 @@ On the other hand, a system is an update function that runs on the entire entity
 
 
 
-**How do I script?**
+### How do I script?
 
 The Machinery supports two ways of gameplay coding by default:
 
@@ -65,11 +71,11 @@ The Machinery supports two ways of gameplay coding by default:
 
 You do not like C? Do not worry! You can use C++, Zig, Rust, or any other language that binds to C.
 
-**Where are my Materials, Shaders, Textures, Particle Effects?**
+### Where are my Materials, Shaders, Textures, Particle Effects?
 
 All of these can be represented via the [Creation Graphs](https://ourmachinery.github.io/themachinery-books/the_machinery_book/creation_graphs/concept.html).
 
-**Project data?**
+### Project data?
 
 The Machinery supports two types of Project formats:
 
@@ -83,13 +89,13 @@ A single binary file project. It will contain all your assets and data. This for
 
 
 
-**Where do I put my assets?**
+### Where do I put my assets?
 
 At this point in time, you can only drag & drop your assets via the Asset Browser as well as via the Import Menu. See more in the section about importing assets. [How to import assets](https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html)
 
 
 
-**What are common file formats supported?**
+### What are common file formats supported?
 
 | Asset Type | Supported Formats             |
 | :--------- | :---------------------------- |
@@ -101,7 +107,7 @@ Our importer is based on Assimp. Therefore we support most things assimp support
 
 
 
-**Where do my source code files go?**
+### Where do my source code files go?
 
 In the Machinery, all we care about is your plugins. Therefore if you want your plugins (tm_ prefixed shared libs.) to be globally accessible, please store them in the /plugins folder of the Engine. An alternative approach is to create plugin_asset in the Engine then your plugin becomes part of your project.
 
@@ -109,6 +115,6 @@ Please check out the introduction to the [Plugin System](https://ourmachinery.gi
 
 
 
-**Using Visual Scripting**
+### Using Visual Scripting
 
 Visual Scripting is a perfect solution for in-game logic flow (simple) and sequencing of actions. It is a great system for artists, designers, and visually oriented programmers. It is important to keep in mind that the Visual Scripting language comes with an overhead that you would not pay in C (or any other Language you may use for your gameplay code).
