@@ -166,12 +166,12 @@
 <li><strong>Write the code</strong></li>
 </ol>
 <pre><code class="language-c">GGN_BEGIN(&quot;Sample/Math/Float&quot;);
+GGN_GEN_REGISTER_FUNCTION();
 GGN_NODE_QUERY();
 static inline void sample_float_square(float a, float *res)
 {
     *res = a * a;
 }
-GGN_GEN_REGISTER_FUNCTION();
 GGN_END();
 #include &quot;my_graph_nodes.inl&quot;
 </code></pre>

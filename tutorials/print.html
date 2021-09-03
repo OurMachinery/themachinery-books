@@ -158,6 +158,13 @@
 <li><a href="https://discord.gg/SHHSZaH">Our Discord</a></li>
 <li><a href="https://github.com/OurMachinery/themachinery-public/discussions">Our Github Discussion Board</a></li>
 </ul>
+<p>Also feel free to checkout our internal</p>
+<ul>
+<li><a href="https://ourmachinery.com/apidoc/doc/guidebook.md.html">Programming Guidebook</a></li>
+</ul>
+<blockquote>
+<p>The purpose of this <a href="https://ourmachinery.com/apidoc/doc/guidebook.md.html">Programming Guidebook</a> is to lay down principles and guidelines for how to write code and work together at Our Machinery.</p>
+</blockquote>
 <p>Enjoy!</p>
 <p><em>The Machinery Team</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-create-prototypes"><a class="header" href="#how-to-create-prototypes">How to create prototypes</a></h1>
@@ -3269,12 +3276,12 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <li><strong>Write the code</strong></li>
 </ol>
 <pre><code class="language-c">GGN_BEGIN(&quot;Sample/Math/Float&quot;);
+GGN_GEN_REGISTER_FUNCTION();
 GGN_NODE_QUERY();
 static inline void sample_float_square(float a, float *res)
 {
     *res = a * a;
 }
-GGN_GEN_REGISTER_FUNCTION();
 GGN_END();
 #include &quot;my_graph_nodes.inl&quot;
 </code></pre>
