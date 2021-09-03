@@ -847,6 +847,27 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <p>Visual Scripting is a perfect solution for in-game logic flow (simple) and sequencing of actions. It is a great system for artists, designers, and visually oriented programmers. It is important to keep in mind that the Visual Scripting language comes with an overhead that you would not pay in C (or any other Language you may use for your gameplay code).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="introduction-into-c-programming"><a class="header" href="#introduction-into-c-programming">Introduction into C Programming</a></h1>
 <p>This page will link to useful resources about the C Programming language.</p>
+<p><strong>Table of Content</strong></p>
+<ul>
+<li><a href="getting_started/introduction_to_c.html#reference">Reference</a></li>
+<li><a href="getting_started/introduction_to_c.html#tutorials">Tutorials</a></li>
+<li><a href="getting_started/introduction_to_c.html#videos">Videos</a></li>
+<li><a href="getting_started/introduction_to_c.html#the-machinery-specials">The Machinery specials</a></li>
+<li><a href="getting_started/introduction_to_c.html#memory-managment">Memory Managment</a>
+<ul>
+<li><a href="getting_started/introduction_to_c.html#child-allocators">Child Allocators</a></li>
+<li><a href="getting_started/introduction_to_c.html#rule-of-the-thumb">Rule of the thumb</a></li>
+<li><a href="getting_started/introduction_to_c.html#temporary-allocator">Temporary Allocator</a></li>
+<li><a href="getting_started/introduction_to_c.html#great-use-case-formatted-strings">Great use case: Formatted String's</a></li>
+</ul>
+</li>
+<li><a href="getting_started/introduction_to_c.html#arrays-vectors-lists-where-is-my-stdvector-or-list">Arrays, Vectors, Lists where is my <code>std::vector&lt;&gt;</code> or <code>List&lt;&gt;</code></a>
+<ul>
+<li><a href="getting_started/introduction_to_c.html#how-to-access-a-element">How to access a element?</a></li>
+<li><a href="getting_started/introduction_to_c.html#iterate-over-them">Iterate over them</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="reference"><a class="header" href="#reference">Reference</a></h2>
 <ul>
 <li><a href="https://en.cppreference.com/w/c">C Reference</a></li>
@@ -864,6 +885,122 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <li><a href="https://www.youtube.com/watch?v=ix5jPkxsr7M&amp;list=PLWKjhJtqVAbmGw5fN5BQlwuug-8bDmabi">C Programming Language - Intro to Computer Science - Harvard's CS50 (2018)</a></li>
 <li><a href="https://www.youtube.com/watch?v=QpAhX-gsHMs">Modern C and What We Can Learn From It - Luca Sas [ ACCU 2021 ]</a></li>
 </ul>
+<h2 id="the-machinery-specials"><a class="header" href="#the-machinery-specials">The Machinery specials</a></h2>
+<p>These are things that differ from std C practices.</p>
+<h2 id="memory-managment"><a class="header" href="#memory-managment">Memory Managment</a></h2>
+<p>While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use <code>malloc, free or realloc</code>. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as <code>malloc</code>), we give a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> object down. This allows you to allocate memory like you would with <code>malloc</code>. Like in std C you need to free the memory allocated via a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> at the end of its use. Otherwise you may leak. Using our build in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. </p>
+<blockquote>
+<p><strong>Note:</strong> more about lea detection and memory usage check the chapter about the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/memory.html">Memory Usage Tab</a></p>
+</blockquote>
+<h3 id="child-allocators"><a class="header" href="#child-allocators">Child Allocators</a></h3>
+<p>In case you check our projects you will find that we are making extensivly use of child allocators. This allowes us to log the use of their memory in our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/memory.html">Memory Usage Tab</a>.</p>
+<p>In case you check our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/write-a-tab.html"><code>Write a custom Tab</code> example</a> you will find in its create function this code:</p>
+<pre><code class="language-c">static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
+{
+    tm_allocator_i allocator = tm_allocator_api-&gt;create_child(context-&gt;allocator, &quot;my tab&quot;);
+    uint64_t* id = context-&gt;id;
+
+    static tm_the_machinery_tab_vt* vt = 0;
+    if (!vt)
+        vt = tm_global_api_registry-&gt;get(TM_CUSTOM_TAB_VT_NAME);
+
+    tm_tab_o* tab = tm_alloc(&amp;allocator, sizeof(tm_tab_o));
+    *tab = (tm_tab_o){
+        .tm_tab_i = {
+            .vt = (tm_tab_vt*)vt,
+            .inst = (tm_tab_o*)tab,
+            .root_id = *id,
+        },
+        .allocator = allocator,
+    };
+
+    return &amp;tab-&gt;tm_tab_i;
+}
+
+static void tab__destroy(tm_tab_o* tab)
+{
+    tm_allocator_i a = tab-&gt;allocator;
+    tm_free(&amp;a, tab, sizeof(*tab));
+    tm_allocator_api-&gt;destroy_child(&amp;a);
+}
+</code></pre>
+<p>The tm_tab_create_context_t context gives you access to an allocator the system allocator. This one again allows you to create a child allocator. You can now use the new allocator in our tab. This is why we store it within our <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_o">tm_tab_o</a> object.
+In the end, we need to destroy our tab and, therefore free the tab object and destroy the child allocator. <code>tm_allocator_api-&gt;destroy_child(&amp;a);</code>
+If we now shut down the engine and we forgot to free any of the allocations done between create and destroy, we will get a nice log:</p>
+<pre><code class="language-bash">D:\git\themachinery\plugins\my_tab\my_tab.c(100): error leaked 1 allocations 4112 bytes
+D:\git\themachinery\foundation\memory_tracker.c(120): error: Allocation scope `application` has allocations
+</code></pre>
+<h3 id="rule-of-the-thumb"><a class="header" href="#rule-of-the-thumb">Rule of the thumb</a></h3>
+<p>Like in std C any allocation done with <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#tm_alloc()">tm_alloc</a> or <code>tm_alloc_at</code> and <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#tm_realloc()">tm_realloc</a> should be followed by a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#tm_free()">tm_free</a>!</p>
+<h3 id="temporary-allocator"><a class="header" href="#temporary-allocator">Temporary Allocator</a></h3>
+<p>Sometimes we need to allocate data within a function. Sadly we do have access to the default allocator or do not want to give access to an allocator. Do not worry. The temp allocator comes to the rescue and the frame allocator. These are two concepts for quick allocations that you can forget about because the memory will free them at the end of the function or the frame!</p>
+<p><strong>How to use the temp allocator?</strong></p>
+<p>The temp allocator is part of the foundation and lives in its header file: <code>foundation/temp_allocator.h</code> Some APIs require temp allocators as the input. They will use them to allocate data that is needed for processing. At first, we need to create an object by using the following macro: <code>TM_INIT_TEMP_ALLOCATOR(ta)</code></p>
+<p>A temp allocator is created and can be used now! Importantly do not forget to call <code>TM_SHUTDOWN_TEMP_ALLOCATOR(ta)</code> at the end; otherwise, you have a memory leak! Do not worry. You won't be able to compile without calling this function!
+Back to our example. Let's ask the Truth for all objects of a specific type:</p>
+<pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
+tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
+// do some magic
+TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+</code></pre>
+<p>The truth API will now use the temp allocator to create the list. We do not need to call tm_free anything this is all done at the end by <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>!</p>
+<p>Sometimes APIs require a normal <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a>, but you are not interested in creating an actual allocator or have access to a memory allocator! No worries, we have your back! The Temp Allocator gives you the following macro: <code>TM_INIT_TEMP_ALLOCATOR_WITH_ADAPTER(ta, a); It generates a normal [tm_allocator_i](https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i) uses the temp allocator as its backing allocator. Hence all allocations done with the allocator will be actually done via the </code>ta<code>allocator! Again at the end, all your memory is freed by</code>TM_SHUTDOWN_TEMP_ALLOCATOR(ta);`</p>
+<blockquote>
+<p><strong>Note</strong>: You also have <code>tm_temp_alloc()</code> they expect a <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_i">tm_temp_allocator_i</a> instead of the <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a>.</p>
+</blockquote>
+<p><strong>What is the Frame Allocator?</strong></p>
+<p>The <a href="https://ourmachinery.com//apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> has a frame allocator. A frame allocator allocates memory for one frame and than at the end of the frame the memory is whiped out. This means any allocation done with it will stay in memory until the end of the frame! The way of using it is: <code>tm_temp_allocator_api.frame_alloc()</code> or <code>tm_frame_alloc()</code></p>
+<h3 id="great-use-case-formatted-strings"><a class="header" href="#great-use-case-formatted-strings">Great use case: Formatted String's</a></h3>
+<p>Both the frame as well as the temp allocator are great for using when you need to have a string with formating! Infact the <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> provided a extra function for this: <code>tm_temp_allocator_api.printf()</code> /<code>tm_temp_allocator_api.frame_printf()</code></p>
+<blockquote>
+<p><strong>Note:</strong> About formatting checkout the <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a>  or <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/logging.html">the logging chapter</a></p>
+</blockquote>
+<h2 id="arrays-vectors-lists-where-is-my-stdvector-or-list"><a class="header" href="#arrays-vectors-lists-where-is-my-stdvector-or-list">Arrays, Vectors, Lists where is my <code>std::vector&lt;&gt;</code> or <code>List&lt;&gt;</code></a></h2>
+<p>In the foundation we have a great header file or better inline header file the <code>foundation/carray.inl</code> which contains our soultion for dynamic growing arrays, lists etc.  When used you are resonsible for its memory and have to free the used memory at the end! Do not worry the API makes it quite easy. </p>
+<p>Let us create a Array of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> all we need to do is declear our variable as a pointer of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>.</p>
+<pre><code class="language-c">tm_tt_id_t* our_ids = 0;
+</code></pre>
+<p>After this we can for example push / add some data to our array:</p>
+<pre><code class="language-c">tm_carray_push(our_ids,my_id,my_allocator);
+</code></pre>
+<p>Now the my_id will be stored in the our_ids and allocated with my_allocator! In the end when I do not need my array anymore, I can call: <code>tm_carray_free(our_ids,my_allocator)</code>, and my memory is freed!</p>
+<p>This doesn't look very pleasant when I am working with a lot of data that only needs to be a temporary list or something. For this case, you can use our temp allocator! Every <code>tm_carray_</code> macro has a <code>tm_carray_temp_</code> equivalent.</p>
+<blockquote>
+<p><strong>Note:</strong> It is also recommend to make use of <a href="https://ourmachinery.com/apidoc/foundation/carray.inl.html#tm_carray_resize()">tm_carray_resize</a> or <a href="https://ourmachinery.com/apidoc/foundation/carray.inl.html#tm_carray_temp_resize()">tm_carray_temp_resize</a> if you know how many elements your array might have. This will reduce the actual allocations.</p>
+</blockquote>
+<p>Going back to our previous example:</p>
+<pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
+tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
+// do some magic
+TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+</code></pre>
+<p><code>tm_the_truth_api-&gt;all_objects_of_type</code> actually returns a <code>carray</code> and you can operate on it with the normal C array methods: e.g. <code>tm_carray_size()</code> or <code>tm_carray_end()</code>. Since it is allocated with the temp allocator you an forget about the allocation at the end as long as you call <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>.</p>
+<h3 id="how-to-access-a-element"><a class="header" href="#how-to-access-a-element">How to access a element?</a></h3>
+<p>You can access a carray element normally like you would access it in a plain c array:</p>
+<pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
+tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
+if(all_objects[8].u64 == other_objects[8].u64){
+    // what happens now?
+}
+TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+</code></pre>
+<h3 id="iterate-over-them"><a class="header" href="#iterate-over-them">Iterate over them</a></h3>
+<p>You can iterate over the carray like you would iterate over a normal array:</p>
+<pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
+tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
+for(uint64_t i = 0;i &lt; tm_carray_size(all_objects);++i){
+    TM_LOG(&quot;%llu&quot;,all_objects[i].u64);// we could also use TM_LOG(&quot;%p{tm_tt_id_t}&quot;,&amp;all_objects[i]);
+}
+TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+</code></pre>
+<p>An alternative approch is a more for each like approch:</p>
+<pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
+tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
+for(tm_tt_id* id = all_objects;id != tm_carray_end(all_objects);++id){
+    TM_LOG(&quot;%llu&quot;,id-&gt;u64);// we could also use TM_LOG(&quot;%p{tm_tt_id_t}&quot;,id);
+}
+TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-editor"><a class="header" href="#the-editor">The Editor</a></h1>
 <p>After opening the Engine, you should see the Editor's interface with menus along the top of the interface, and the basic tabs opened. The following image will show you the default engine layout.
 Here's a brief description of what you can see:</p>
@@ -3107,6 +3244,7 @@ them. Finally, we add our own API to the registry, so others can query for and u
 
 static struct tm_draw2d_api* tm_draw2d_api;
 static struct tm_ui_api* tm_ui_api;
+static struct tm_allocator_api* tm_allocator_api;
 
 #include &lt;foundation/allocator.h&gt;
 #include &lt;foundation/api_registry.h&gt;
@@ -3120,14 +3258,12 @@ static struct tm_ui_api* tm_ui_api;
 
 #include &lt;stdio.h&gt;
 
-TM_DLL_EXPORT void load_custom_tab_tab(struct tm_api_registry_api* reg, bool load);
-
 #define TM_CUSTOM_TAB_VT_NAME &quot;tm_custom_tab&quot;
 #define TM_CUSTOM_TAB_VT_NAME_HASH TM_STATIC_HASH(&quot;tm_custom_tab&quot;, 0xbc4e3e47fbf1cdc1ULL)
 
 struct tm_tab_o {
     tm_tab_i tm_tab_i;
-    tm_allocator_i* allocator;
+    tm_allocator_i allocator;
 };
 
 static void tab__ui(tm_tab_o* tab, tm_ui_o* ui, const tm_ui_style_t* uistyle_in, tm_rect_t rect)
@@ -3153,14 +3289,14 @@ static const char* tab__title(tm_tab_o* tab, struct tm_ui_o* ui)
 
 static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
 {
-    tm_allocator_i* allocator = context-&gt;allocator;
+    tm_allocator_i allocator = tm_allocator_api-&gt;create_child(context-&gt;allocator, &quot;Custom Tab&quot;);
     uint64_t* id = context-&gt;id;
 
     static tm_the_machinery_tab_vt* vt = 0;
     if (!vt)
         vt = tm_global_api_registry-&gt;get(TM_CUSTOM_TAB_VT_NAME);
 
-    tm_tab_o* tab = tm_alloc(allocator, sizeof(tm_tab_o));
+    tm_tab_o* tab = tm_alloc(&amp;allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
             .vt = (tm_tab_vt*)vt,
@@ -3176,7 +3312,9 @@ static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
 
 static void tab__destroy(tm_tab_o* tab)
 {
-    tm_free(tab-&gt;allocator, tab, sizeof(*tab));
+    tm_allocator_i a = tab-&gt;allocator;
+    tm_free(&amp;a, tab, sizeof(*tab));
+    tm_allocator_api-&gt;destroy_child(&amp;a);
 }
 
 static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
@@ -3195,6 +3333,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
 
     tm_draw2d_api = reg-&gt;get(TM_DRAW2D_API_NAME);
     tm_ui_api = reg-&gt;get(TM_UI_API_NAME);
+    tm_allocator_api = reg-&gt;get(TM_ALLOCATOR_API_NAME);
 
     tm_set_or_remove_api(reg, load, TM_CUSTOM_TAB_VT_NAME, custom_tab_vt);
     tm_add_or_remove_implementation(reg, load, TM_TAB_VT_INTERFACE_NAME, custom_tab_vt);
@@ -3240,7 +3379,7 @@ TM_DLL_EXPORT void load_custom_tab_tab(struct tm_api_registry_api* reg, bool loa
 <p>In the next section, we define the data the Tab can hold. It might be any data you need for the Tab to work and do its job. The tab instance owns the data. It is not shared between Tabs instances. Therefore its lifetime is bound to the current instance.</p>
 <pre><code class="language-c">struct tm_tab_o {
     tm_tab_i tm_tab_i;
-    tm_allocator_i* allocator;
+    tm_allocator_i allocator;
 };
 </code></pre>
 <p>A <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_i">tm_tab_i</a> represents a tab object. A tab object is represented as a <code>vtable</code> that defines its function interface and an opaque pointer to the Tab's internal data. This design is used so that the application layer can extend the <code>vtable</code> with its own interface.</p>
@@ -3310,7 +3449,7 @@ static const char* tab__title(tm_tab_o* tab, struct tm_ui_o* ui)
 </blockquote>
 <pre><code class="language-c">static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
 {
-    tm_allocator_i* allocator = context-&gt;allocator;
+     tm_allocator_i allocator = tm_allocator_api-&gt;create_child(context-&gt;allocator, &quot;my tab&quot;);
     static tm_the_machinery_tab_vt* vt = 0;
     if (!vt)
         vt = tm_global_api_registry-&gt;get(TM_CUSTOM_TAB_VT_NAME);
@@ -3333,7 +3472,7 @@ static const char* tab__title(tm_tab_o* tab, struct tm_ui_o* ui)
         vt = tm_global_api_registry-&gt;get(TM_CUSTOM_TAB_VT_NAME);
 </code></pre>
 <p>After this, we use the provided allocator to allocate the Tab struct, and then we initialize it with the data we deem to be needed. </p>
-<pre><code class="language-c">    tm_tab_o* tab = tm_alloc(allocator, sizeof(tm_tab_o));
+<pre><code class="language-c">    tm_tab_o* tab = tm_alloc(&amp;allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
             .vt = (tm_tab_vt*)vt,
@@ -3350,7 +3489,9 @@ static const char* tab__title(tm_tab_o* tab, struct tm_ui_o* ui)
 <p>When it comes to free the Tab data, we can just call <code>tm_free()</code> on our Tab:</p>
 <pre><code class="language-c">static void tab__destroy(tm_tab_o* tab)
 {
-    tm_free(tab-&gt;allocator, tab, sizeof(*tab));
+    tm_allocator_i a = tab-&gt;allocator;
+    tm_free(&amp;a, tab, sizeof(*tab));
+    tm_allocator_api-&gt;destroy_child(&amp;a);
 }
 
 </code></pre>
@@ -3402,6 +3543,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
 
     tm_draw2d_api = reg-&gt;get(TM_DRAW2D_API_NAME);
     tm_ui_api = reg-&gt;get(TM_UI_API_NAME);
+    tm_allocator_api = reg-&gt;get(TM_ALLOCATOR_API_NAME);
 
     tm_set_or_remove_api(reg, load, TM_CUSTOM_TAB_VT_NAME, custom_tab_vt);
     tm_add_or_remove_implementation(reg, load, TM_TAB_VT_INTERFACE_NAME, custom_tab_vt);
