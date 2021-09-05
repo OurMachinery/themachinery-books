@@ -1,4 +1,4 @@
-# Creating a raymarch output node
+# Creating a raymarching creation graph output node
 In this tutorial, we'll learn a little more about the creation graph system by doing a custom raymarching output node. There are many resources about raymarching on the internet,
 so we'll focus only on integrating it on The Machinery. The fun about it is that we won't target any geometric figure in this tutorial, our node we'll only query the signed
 distance, so you can do any kind of geometric figure using the other creation graph nodes. You can extend it to play with volumetric effects or other kinds of nice effects.
