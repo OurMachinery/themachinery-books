@@ -24,6 +24,7 @@
     - [Asset Browser](./the_editor/asset_browser.md)
     - [Simulate Tab](./the_editor/simulate_tab.md)
     - [Preview Tab](./the_editor/preview_tab.md)
+    - [Customizations](./the_editor/customizations.md)
 - [Editing Workflows](./editing_workflows/README.md)
     - [Entities](./editing_workflows/entities.md)
     - [Import Assets](./editing_workflows/import_assets.md)
