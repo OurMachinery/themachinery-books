@@ -1,19 +1,35 @@
 # Creating a raymarching creation graph output node
-In this tutorial, we'll learn a little more about the creation graph system by doing a custom raymarching output node. There are many resources about raymarching on the internet,
-so we'll focus only on integrating it on The Machinery. The fun about it is that we won't target any geometric figure in this tutorial, our node we'll only query the signed
-distance, so you can do any kind of geometric figure using the other creation graph nodes. You can extend it to play with volumetric effects or other kinds of nice effects.
+In this tutorial, we'll learn a little bit more about the creation graph system by doing a custom raymarching output node. 
 
-When you create a shader for The Machinery, you'll need to put it in `bin/data/shaders`. We will improve this workflow, but for now, you can use a custom rule in premake5 to copy your custom shaders
-to the correct directory. The source code and a example project with a sdf plane and sphere can be found at [tm_raymarch_tutorial](https://github.com/raphael-ourmachinery/tm_raymarch_tutorial.git), and you can look at [shader_system_reference](https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html) for a complete overview of concepts used in this tutorial.
+> **Note:**  There are many resources about raymarching on the internet, so we'll focus only on **integrating** it on **The Machinery**. 
+
+**Table of Contents**
+
+* auto-gen TOC;
+{:toc}
+
+
+## Introduction
+
+A important aspect about this tutorial is that we won't target any geometric figure in this tutorial, our node will only query the signed distance. Therefore you can do any kind of geometric figure using the other creation graph nodes. You can extend it to play with volumetric effects or other kinds of nice effects.
+
+When you create a shader for The Machinery, you'll need to put it in `bin/data/shaders`. 
+
+> **Note:** We will improve this workflow, but for now, you can use a custom rule in premake5 to copy your custom shaders to the correct directory. 
+
+The source code and a example project with a sdf plane and sphere can be found at [tm_raymarch_tutorial](https://github.com/raphael-ourmachinery/tm_raymarch_tutorial.git), and you can look at [shader_system_reference](https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html) for a complete overview of concepts used in this tutorial.
+
+## What are our goals?
 
 Ok, so what are our requisites?
  - Use the scene camera as our start point for raymarching;
  - Blend our results with objects in the viewport;
  - To be able to query the signed distance in each loop interaction;
- 
- Let's forget for a moment that we're creating an output node. The shader language is basically hlsl inside JSON blocks. We start by defining some basic blocks.
- 
- - Enable alpha blending:
+
+Let's forget for a moment that we're creating an output node. The shader language is basically `hlsl` inside `JSON` blocks. We start by defining some basic blocks.
+
+## Enable alpha blending:
+
  ```c
 blend_states : {
     logical_operation_enable: false
@@ -24,8 +40,9 @@ blend_states : {
         destination_blend_factor_color : "one_minus_source_alpha"
     }
 } 
-```
-- Disable face culling:
+ ```
+## Disable face culling:
+
 ```c
 raster_states : {
     polygon_mode: "fill"
@@ -33,7 +50,10 @@ raster_states : {
     front_face : "ccw"
 }
 ```
-- We want to access entity's world transform, later we'll export it to shader function nodes, so our sdf can take it in account:
+## Getting the entities world transform
+
+We want to access entity's world transform, later we'll export it to shader function nodes, so our sdf can take it in account:
+
 ```c
 imports : [    
     { name: "tm" type: "float4x4" }
@@ -44,12 +64,17 @@ common : [[
 #define MAX_DIST 1000.0
 #define SURF_DIST 0.01
 ]]
- ```
- 
- Now we can look at vertex shader, our viewport quad is constructed with a tringle that we'll be clipped later, you can explicitly create a quad with four vertices too, we're doing this because it has some perfomance gain and is consistent with othe shaders in engine. The shader will consist of the following parts:
- - A import semantics blocks that we use to query vertex_id, which is translated to SV_VertexID;
+```
+
+## The Vertex Shader
+
+Now we can look at vertex shader, our viewport quad is constructed with a tringle that we'll be clipped later. You can explicitly create a quad with four vertices too. We are doing this because it has some performance gain and is consistent with other shaders in engine. 
+
+The shader will consist of the following parts:
+
+ - A import semantics blocks that we use to query `vertex_id`, which is translated to `SV_VertexID;`
  - A exports block used to export camera ray and world position, looking at shader below we see for the first time the channel concept, by adding `channel_requested: true`, the value can be requested by other nodes, and will define `TM_CHANNEL_AVAILABLE_i*` that other nodes can look. If some node request a channel `TM_CHANNEL_REQUESTED_*` will be defined too. `tm_graph_io_t` generated struct will have the `world_position` field, and we use it to expose entity's world position to the graph, at the end call `tm_graph_write()` that will write `world_position` to shader output.
- 
+
  ```c
 vertex_shader : {
     import_system_semantics : [ "vertex_id" ]
@@ -85,8 +110,11 @@ vertex_shader : {
 }
 
  ```
- 
- As mentioned before, our goal is to have a generic output node, the signed distance used for raymarching we be supplied by the graph, so now is good moment to define our creation graph node block:
+
+## The generic output node 
+
+As mentioned before, our goal is to have a generic output node, the signed distance used for raymarching we be supplied by the graph, so now is good moment to define our creation graph node block:
+
  ```c
 creation_graph_node : {
     name: "raymarch_output"
@@ -100,8 +128,16 @@ creation_graph_node : {
     ]
 }
  ```
- You can see that we can define the evaluation stage for inputs, in our case we'll only need these inputs in pixel shader. The way a shader access these inputs it's using the appropriate field of `tm_graph_io_t`, but before do that we have to call evaluate function, if not specified an evaluation context the input we'll be added to default evaluation context. Shader system will generate 
- `tm_graph_evaluate()` function for default context and `tm_graph_evaluate_context_name()` for remaining contexts, note that one input could be in more than one evalution context. All this we'll be usefull because we need query signed distance in every loop interaction, by using an evaluation context the process is cheaper, because only functions related to this input we'll be called. Below you can see the final pixel shader, as we need to evaluate the graph, we can't put the raymarching code in `common` block, as `tm_graph_io_t` for pixel shader isn't defined at this point:
+You can see that we can define the evaluation stage for inputs, in our case we'll only need these inputs in pixel shader. The way a shader access these inputs it's using the appropriate field of `tm_graph_io_t`. Before a shader can access them we have to call evaluate function. If we do not specify an evaluation context, the input will be added to the default evaluation context. The Shader system will generate `tm_graph_evaluate()` function for default context and `tm_graph_evaluate_context_name()` for remaining contexts.
+
+> **Note**: that one input could be in more than one evaluation context. 
+
+All this will be useful because we need query signed distance in every loop interaction, by using an evaluation context the process is cheaper, because only functions related to this input we'll be called. 
+
+## Pixel Shader
+
+Below you can see the final pixel shader, as we need to evaluate the graph, we can't put the raymarching code in `common` block, as `tm_graph_io_t` for pixel shader isn't defined at this point:
+
  ```c
 pixel_shader : {
     exports : [
@@ -207,9 +243,18 @@ pixel_shader : {
 }
 
  ```
- 
- Finnaly we'll define the compile block, we only need of `viewer_system` to access camera related constants and render our result at `hdr-transparency` layer:
- 
+
+## The compile block
+
+Finally we define the compile block. The compile block allows you to specify the compilation environment for the shader. This block **HAS** to be added in order for the shader to be compiled, the shader can still be included without this. There are two things you can do in this block:
+
+- Include additional shader files to be appended to this shader file.
+- Enable systems or configurations based on the shader conditional language or whether a system is active.
+
+The contexts defined in the `contexts` block define the compilation environment(s) for this shader. There will always be one ‘default’ instance of this shader compiled if no context is specified so context are optional. 
+
+We only need the `viewer_system` to access camera related constants and render our result at `hdr-transparency` layer:
+
  ```c
 compile : {
     configurations: {
@@ -230,4 +275,5 @@ compile : {
     }
 }
  ```
- 
+
+> **Note**: that the configuration block can become very complex because of it’s recursive nature. A configuration can have several `systems` that need to be enabled for the configuration to run. But it might also have `variations` on those systems. This can continue recursively.
