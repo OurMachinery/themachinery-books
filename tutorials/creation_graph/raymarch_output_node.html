@@ -147,21 +147,38 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="creating-a-raymarching-creation-graph-output-node"><a class="header" href="#creating-a-raymarching-creation-graph-output-node">Creating a raymarching creation graph output node</a></h1>
-<p>In this tutorial, we'll learn a little more about the creation graph system by doing a custom raymarching output node. There are many resources about raymarching on the internet,
-so we'll focus only on integrating it on The Machinery. The fun about it is that we won't target any geometric figure in this tutorial, our node we'll only query the signed
-distance, so you can do any kind of geometric figure using the other creation graph nodes. You can extend it to play with volumetric effects or other kinds of nice effects.</p>
-<p>When you create a shader for The Machinery, you'll need to put it in <code>bin/data/shaders</code>. We will improve this workflow, but for now, you can use a custom rule in premake5 to copy your custom shaders
-to the correct directory. The source code and a example project with a sdf plane and sphere can be found at <a href="https://github.com/raphael-ourmachinery/tm_raymarch_tutorial.git">tm_raymarch_tutorial</a>, and you can look at <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">shader_system_reference</a> for a complete overview of concepts used in this tutorial.</p>
+<p>In this tutorial, we'll learn a little bit more about the creation graph system by doing a custom raymarching output node. </p>
+<blockquote>
+<p><strong>Note:</strong>  There are many resources about raymarching on the internet, so we'll focus only on <strong>integrating</strong> it on <strong>The Machinery</strong>. </p>
+</blockquote>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#what-are-our-goals">What are our goals?</a></li>
+<li><a href="#enable-alpha-blending">Enable alpha blending:</a></li>
+<li><a href="#disable-face-culling">Disable face culling:</a></li>
+<li><a href="#getting-the-entities-world-transform">Getting the entities world transform</a></li>
+<li><a href="#the-vertex-shader">The Vertex Shader</a></li>
+<li><a href="#the-generic-output-node">The generic output node</a></li>
+<li><a href="#pixel-shader">Pixel Shader</a></li>
+<li><a href="#the-compile-block">The compile block</a></li>
+</ul>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>A important aspect about this tutorial is that we won't target any geometric figure in this tutorial, our node will only query the signed distance. Therefore you can do any kind of geometric figure using the other creation graph nodes. You can extend it to play with volumetric effects or other kinds of nice effects.</p>
+<p>When you create a shader for The Machinery, you'll need to put it in <code>bin/data/shaders</code>. </p>
+<blockquote>
+<p><strong>Note:</strong> We will improve this workflow, but for now, you can use a custom rule in premake5 to copy your custom shaders to the correct directory. </p>
+</blockquote>
+<p>The source code and a example project with a sdf plane and sphere can be found at <a href="https://github.com/raphael-ourmachinery/tm_raymarch_tutorial.git">tm_raymarch_tutorial</a>, and you can look at <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">shader_system_reference</a> for a complete overview of concepts used in this tutorial.</p>
+<h2 id="what-are-our-goals"><a class="header" href="#what-are-our-goals">What are our goals?</a></h2>
 <p>Ok, so what are our requisites?</p>
 <ul>
 <li>Use the scene camera as our start point for raymarching;</li>
 <li>Blend our results with objects in the viewport;</li>
 <li>To be able to query the signed distance in each loop interaction;</li>
 </ul>
-<p>Let's forget for a moment that we're creating an output node. The shader language is basically hlsl inside JSON blocks. We start by defining some basic blocks.</p>
-<ul>
-<li>Enable alpha blending:</li>
-</ul>
+<p>Let's forget for a moment that we're creating an output node. The shader language is basically <code>hlsl</code> inside <code>JSON</code> blocks. We start by defining some basic blocks.</p>
+<h2 id="enable-alpha-blending"><a class="header" href="#enable-alpha-blending">Enable alpha blending:</a></h2>
 <pre><code class="language-c">blend_states : {
    logical_operation_enable: false
    render_target_0 : {
@@ -172,18 +189,15 @@ to the correct directory. The source code and a example project with a sdf plane
    }
 } 
 </code></pre>
-<ul>
-<li>Disable face culling:</li>
-</ul>
+<h2 id="disable-face-culling"><a class="header" href="#disable-face-culling">Disable face culling:</a></h2>
 <pre><code class="language-c">raster_states : {
     polygon_mode: &quot;fill&quot;
     cull_mode: &quot;none&quot; 
     front_face : &quot;ccw&quot;
 }
 </code></pre>
-<ul>
-<li>We want to access entity's world transform, later we'll export it to shader function nodes, so our sdf can take it in account:</li>
-</ul>
+<h2 id="getting-the-entities-world-transform"><a class="header" href="#getting-the-entities-world-transform">Getting the entities world transform</a></h2>
+<p>We want to access entity's world transform, later we'll export it to shader function nodes, so our sdf can take it in account:</p>
 <pre><code class="language-c">imports : [    
     { name: &quot;tm&quot; type: &quot;float4x4&quot; }
 ]
@@ -194,9 +208,11 @@ common : [[
 #define SURF_DIST 0.01
 ]]
 </code></pre>
-<p>Now we can look at vertex shader, our viewport quad is constructed with a tringle that we'll be clipped later, you can explicitly create a quad with four vertices too, we're doing this because it has some perfomance gain and is consistent with othe shaders in engine. The shader will consist of the following parts:</p>
+<h2 id="the-vertex-shader"><a class="header" href="#the-vertex-shader">The Vertex Shader</a></h2>
+<p>Now we can look at vertex shader, our viewport quad is constructed with a tringle that we'll be clipped later. You can explicitly create a quad with four vertices too. We are doing this because it has some performance gain and is consistent with other shaders in engine. </p>
+<p>The shader will consist of the following parts:</p>
 <ul>
-<li>A import semantics blocks that we use to query vertex_id, which is translated to SV_VertexID;</li>
+<li>A import semantics blocks that we use to query <code>vertex_id</code>, which is translated to <code>SV_VertexID;</code></li>
 <li>A exports block used to export camera ray and world position, looking at shader below we see for the first time the channel concept, by adding <code>channel_requested: true</code>, the value can be requested by other nodes, and will define <code>TM_CHANNEL_AVAILABLE_i*</code> that other nodes can look. If some node request a channel <code>TM_CHANNEL_REQUESTED_*</code> will be defined too. <code>tm_graph_io_t</code> generated struct will have the <code>world_position</code> field, and we use it to expose entity's world position to the graph, at the end call <code>tm_graph_write()</code> that will write <code>world_position</code> to shader output.</li>
 </ul>
 <pre><code class="language-c">vertex_shader : {
@@ -233,6 +249,7 @@ common : [[
 }
 
 </code></pre>
+<h2 id="the-generic-output-node"><a class="header" href="#the-generic-output-node">The generic output node</a></h2>
 <p>As mentioned before, our goal is to have a generic output node, the signed distance used for raymarching we be supplied by the graph, so now is good moment to define our creation graph node block:</p>
 <pre><code class="language-c">creation_graph_node : {
    name: &quot;raymarch_output&quot;
@@ -246,8 +263,13 @@ common : [[
    ]
 }
 </code></pre>
-<p>You can see that we can define the evaluation stage for inputs, in our case we'll only need these inputs in pixel shader. The way a shader access these inputs it's using the appropriate field of <code>tm_graph_io_t</code>, but before do that we have to call evaluate function, if not specified an evaluation context the input we'll be added to default evaluation context. Shader system will generate 
-<code>tm_graph_evaluate()</code> function for default context and <code>tm_graph_evaluate_context_name()</code> for remaining contexts, note that one input could be in more than one evalution context. All this we'll be usefull because we need query signed distance in every loop interaction, by using an evaluation context the process is cheaper, because only functions related to this input we'll be called. Below you can see the final pixel shader, as we need to evaluate the graph, we can't put the raymarching code in <code>common</code> block, as <code>tm_graph_io_t</code> for pixel shader isn't defined at this point:</p>
+<p>You can see that we can define the evaluation stage for inputs, in our case we'll only need these inputs in pixel shader. The way a shader access these inputs it's using the appropriate field of <code>tm_graph_io_t</code>. Before a shader can access them we have to call evaluate function. If we do not specify an evaluation context, the input will be added to the default evaluation context. The Shader system will generate <code>tm_graph_evaluate()</code> function for default context and <code>tm_graph_evaluate_context_name()</code> for remaining contexts.</p>
+<blockquote>
+<p><strong>Note</strong>: that one input could be in more than one evaluation context. </p>
+</blockquote>
+<p>All this will be useful because we need query signed distance in every loop interaction, by using an evaluation context the process is cheaper, because only functions related to this input we'll be called. </p>
+<h2 id="pixel-shader"><a class="header" href="#pixel-shader">Pixel Shader</a></h2>
+<p>Below you can see the final pixel shader, as we need to evaluate the graph, we can't put the raymarching code in <code>common</code> block, as <code>tm_graph_io_t</code> for pixel shader isn't defined at this point:</p>
 <pre><code class="language-c">pixel_shader : {
    exports : [
        { name : &quot;color&quot; type: &quot;float4&quot; }
@@ -352,7 +374,14 @@ common : [[
 }
 
 </code></pre>
-<p>Finnaly we'll define the compile block, we only need of <code>viewer_system</code> to access camera related constants and render our result at <code>hdr-transparency</code> layer:</p>
+<h2 id="the-compile-block"><a class="header" href="#the-compile-block">The compile block</a></h2>
+<p>Finally we define the compile block. The compile block allows you to specify the compilation environment for the shader. This block <strong>HAS</strong> to be added in order for the shader to be compiled, the shader can still be included without this. There are two things you can do in this block:</p>
+<ul>
+<li>Include additional shader files to be appended to this shader file.</li>
+<li>Enable systems or configurations based on the shader conditional language or whether a system is active.</li>
+</ul>
+<p>The contexts defined in the <code>contexts</code> block define the compilation environment(s) for this shader. There will always be one ‘default’ instance of this shader compiled if no context is specified so context are optional. </p>
+<p>We only need the <code>viewer_system</code> to access camera related constants and render our result at <code>hdr-transparency</code> layer:</p>
 <pre><code class="language-c">compile : {
    configurations: {
        default: [
@@ -372,6 +401,9 @@ common : [[
    }
 }
 </code></pre>
+<blockquote>
+<p><strong>Note</strong>: that the configuration block can become very complex because of it’s recursive nature. A configuration can have several <code>systems</code> that need to be enabled for the configuration to run. But it might also have <code>variations</code> on those systems. This can continue recursively.</p>
+</blockquote>
 
                     </main>
 
