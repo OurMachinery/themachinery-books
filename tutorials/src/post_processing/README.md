@@ -6,4 +6,4 @@ Currently we support the following post-processing effects:
 - [Anti-Aliasing]({{tutorials}}post_processing/aa.html)
 - [Exposure]({{tutorials}}post_processing/exposure.html)
 - Bloom
-- Color grading
+- [Color grading]({{tutorials}}post_processing/color_grading.html)

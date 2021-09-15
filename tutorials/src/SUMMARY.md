@@ -11,6 +11,7 @@
 - [Post Processing](./post_processing/README.md)
 	- [Anti-Aliasing](./post_processing/aa.md)
 	- [Exposure](./post_processing/exposure.md)
+	- [Color Grading](./post_processing/color_grading.md)
 - [Physics](./physics/README.md)
     - [Triggers](./physics/triggers.md)
 - [The Truth](./the_truth/README.md)
