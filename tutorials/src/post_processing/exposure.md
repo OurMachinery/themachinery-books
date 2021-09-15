@@ -1,6 +1,6 @@
 # Adjusting exposure
 
-In photography, exposure is the amount of light per unit area. The Machinery uses physically based lighting, materials, and cameras so setting up the scene exposure correctly is important to getting the final image looking correct. To start using exposure add an `Exposure Component` to your scene.
+In photography, exposure is the amount of light per unit area. The Machinery uses physically based lighting, materials, and cameras so setting up the scene exposure correctly is important to getting the final image looking correct. To start using exposure add an [Exposure Component]({{docs}}plugins/default_render_pipe/post_processing/exposure_component.h.html) to your scene.
 
 
 ## Tools
@@ -16,7 +16,7 @@ The EV100 visualizer shows the luminance per pixel relative to the camera’s ex
 ![IRE Visualization](https://www.dropbox.com/s/6sygin0tafnxdfk/tm_tut_exposure_ire.png?dl=1)
 
 
-The IRE visualizer (false color) shows the luminance per pixel after exposure. This scale is relative to the dynamic range of sRGB. The view works by splitting the luminance range into bands (where red is fully clipped at the top range). This view is useful when exposing to a specific element in your scene. The [43, 47] (green) band is the typical range for middle grey and the [77, 84] band is a typical Caucasian skin tone.
+The IRE visualizer (false color) shows the luminance per pixel after exposure. This scale is relative to the dynamic range of [sRGB](https://en.wikipedia.org/wiki/SRGB). The view works by splitting the luminance range into bands (where red is fully clipped at the top range). This view is useful when exposing to a specific element in your scene. The [43, 47] (green) band is the typical range for middle grey and the [77, 84] band is a typical Caucasian skin tone.
 
 The machinery offers three workflows for metering exposure:
 
@@ -36,7 +36,7 @@ Manual exposure just has one setting to change, `Exposure Compensation`. This va
 ![](https://www.dropbox.com/s/reniyj1qgfgc3dr/tm_tut_exposure_camera_driven.png?dl=1)
 
 
-Camera driven exposure has no settings of its own. Instead the `Shutter Speed`, `Aperture`, and `ISO` settings are using from the viewing camera. This mode is best used if you have a good understanding of camera properties, but in general: lowering shutter speed darkens the scene, increasing aperture (f-number) darkens the scene, and lowering ISO darkens the scene.
+Camera driven exposure has no settings of its own. Instead the `Shutter Speed`, `Aperture`, and `ISO` settings are using from the viewing [camera]({{docs}}foundation/camera.h.html#structtm_camera_settings_t). This mode is best used if you have a good understanding of camera properties, but in general: lowering shutter speed darkens the scene, increasing aperture (f-number) darkens the scene, and lowering ISO darkens the scene.
 
 
 ## Using automatic exposure
@@ -73,6 +73,6 @@ You can see that the scene feels a lot brighter (and somewhat warmer) than befor
 
 ## Localized exposure
 
-Often times you want to have exposure settings localized to a specific region in your scene. This is done using the `Volume Component`. Once the camera enters a region defined by the volume component it will use the highest order exposure component it can find. In this example it would use the exposure component on the same entity as the volume component if the camera is inside the volume and the global exposure component if it’s outside the volume. For more information see the volume component documentation.
+Often times you want to have exposure settings localized to a specific region in your scene. This is done using the [Volume Component]({{docs}}plugins/default_render_pipe/volume_component.h.html). Once the camera enters a region defined by the volume component it will use the highest order exposure component it can find. In this example it would use the exposure component on the same entity as the volume component if the camera is inside the volume and the global exposure component if it’s outside the volume. For more information see the volume component documentation.
 
 ![](https://www.dropbox.com/s/pluala3w4h59gx9/tm_tut_exposure_volume.png?dl=1)
