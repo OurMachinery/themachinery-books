@@ -22,7 +22,7 @@ Where `start`, `stop` and `tick` are functions that are run when the simulation 
 
 > **Note:** There is also a plugin template available that does this, see `File -> New Plugin -> Simulation Entry` with The Machinery Editor. 
 
-> **Note:** to genereate the `TM_STATIC_HASH` you need to run `hash.exe` or `tmbuild.exe --gen-hash` for more info open the [hash.exe guide]({{the_machinery_book}}/helper_tools/hash.html)
+> **Note:** to generate the `TM_STATIC_HASH` you need to run `hash.exe` or `tmbuild.exe --gen-hash` for more info open the [hash.exe guide]({{the_machinery_book}}/helper_tools/hash.html)
 
 When your plugin loads (each plugin has a `tm_load_plugin` function), make sure to register this implementation of `tm_simulation_entry_i` on the `TM_SIMULATION_ENTRY_INTERFACE_NAME` interface name, like so:
 
