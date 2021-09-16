@@ -67,7 +67,7 @@
     - [Plugin assets](./extending_the_machinery/plugin-assets.md)
     - [Application Hooks](./extending_the_machinery/application_hooks.md)
 - [Gameplay coding](./gameplay_coding/README.md)
-    - [Simulate Entry in C](./gameplay_coding/simulate_entry.md)
+    - [Simulation Entry in C](./gameplay_coding/simulation_entry.md)
     - [Visual Scripting](gameplay_coding/visual_scripting/README.md)
         - [Subgraphs](gameplay_coding/visual_scripting/subgraphs.md)
         - [Debugger](gameplay_coding/visual_scripting/debugger.md)

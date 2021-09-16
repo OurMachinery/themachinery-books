@@ -9,6 +9,6 @@ In this section, you will learn the basics about Gameplay Coding in *The Machine
 
 The Machinery uses an Entity Component System; therefore, most of your gameplay code will run via Engines or Systems. To learn more about these, please follow this [link]({{base_url}}/gameplay_coding/ecs/index.html).
 
-## Coding independent from the ECS
+## General code entry points using Simulation Entry Component
 
-The Engine also offers you a Simulation Entry that can be updated every frame and can offer you a place for ECS independent logic. For more information click [here]({{base_url}}gameplay_coding/simulate_entry.html).
+The Machinery also offers you a Simulation Entry Component which will, when the parent entity is spawned, set up a system with that is used to run code at startup and each frame. Read more [here]({{base_url}}gameplay_coding/simulation_entry.html).
