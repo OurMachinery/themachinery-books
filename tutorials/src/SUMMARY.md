@@ -27,3 +27,4 @@
     - [Build Custom UI Controls](./ui/build_custom_ui_controls/README.md)
         - [Part 1](./ui/build_custom_ui_controls/part1.md)
     - [Toolbars and Overlays](./ui/toolbars-overlays.md)
+	- [Custom Tab Layouts](./ui/custom_layouts.md)
