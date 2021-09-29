@@ -35,7 +35,7 @@ These are things that differ from std C practices.
 
 While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use `malloc, free or realloc`. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as `malloc`), we give a `tm_allocator_i` object down. This allows you to allocate memory like you would with `malloc`. Like in std C you need to free the memory allocated via a `tm_allocator_i` at the end of its use. Otherwise you may leak. Using our build in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. 
 
-> **Note:** more about lea detection and memory usage check the chapter about the [Memory Usage Tab]({{the_machinery_book}}/qa_pipeline/memory.html)
+> **Note:** more about leak detection and memory usage check the chapter about the [Memory Usage Tab]({{the_machinery_book}}/qa_pipeline/memory.html)
 
 
 
