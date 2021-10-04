@@ -30,7 +30,7 @@
     - [Import Assets](./editing_workflows/import_assets.md)
     - [Import Projects](./editing_workflows/import_projects.md)
     - [Asset pipeline by Example](./editing_workflows/asset_pipeline.md)
-    - [Meshes / Materials / Shaders](./creation_graphs/concept.md)
+    - [Meshes / Materials / Shaders](./editing_workflows/shaders_materials.md)
     - [Prototypes](./editing_workflows/prototypes.md)
     - [Simulation](./editing_workflows/simulation.md)
     - [Visual Scripting: Entity Graphs](./editing_workflows/visual-scripting.md)

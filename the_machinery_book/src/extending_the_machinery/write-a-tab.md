@@ -120,7 +120,7 @@ In the cause of the rest of this walkthrough, we will discuss:`tab__create_menu_
 As we can see in our definition of the `custom_tab_vt` object we provide the `tm_tab_vt.create_menu_name()` and the `tm_tab_vt.title()`. The `create_menu_name` is an optional function to allow you to provide a name for the create tab menu. In contrast, the `title()` function is not optional and is needed. It provides the name of the Tab, which the editor shall show in the tab bar.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:39:47}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:39:47}}
 ```
 
 ### Define create and destroy the Tab
@@ -134,13 +134,13 @@ The create function provides you the `tm_tab_create_context_t` access to many es
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:49:68}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:49:68}}
 ```
 
 We use the provided allocator to allocate the Tab struct, and then we initialize it with the data we deem to be needed. 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:56:64}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:56:64}}
 ```
 
 Since we have allocated something, we need to keep track of the used allocator! Hence we have it as a member in our Tab struct.
@@ -154,7 +154,7 @@ In the end, we pass a pointer to the Tab interface.
 When it comes to free the Tab data, we can just call `tm_free()` on our Tab:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:70:75}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:70:75}}
 ```
 
 
@@ -170,7 +170,7 @@ If we wanted to make our Tab jobifed, we could make use of the `tm_tab_vt.hidden
 Let us digest the current code line by line:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:28:37}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:28:37}}
 ```
 
 The `tm_docking_api`, which will call our Tab's update, provides us with the essential information:
@@ -189,13 +189,13 @@ tm_ui_buffers_t uib = tm_ui_api->buffers(ui);
 After this, we define our local copy of the UI Style. Then we create an empty `tm_draw2d_style_t` instance. We need to create a Style from the UI Style. You need ` tm_draw2d_style_t* style` later for drawing anything with our draw 2d api.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:31:33}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:31:33}}
 ```
 
 Now we are set, and we can finally color our tab background to red. You can do this with the `tm_draw2d_api.fill_rect()` call. Beforehand we need to change our style's color to red and then call the `tm_draw2d_api.fill_rect()`. We need to pass in the vertex buffer and the index buffer pointer so the function can draw into them.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:35:36}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:35:36}}
 ```
 
 
@@ -209,6 +209,6 @@ Now we are set, and we can finally color our tab background to red. You can do t
 The last thing before we can compile our project and test it in the Engine is registering the Tab to the Plugin System. As mentioned before, you need to register the Tab to the: `tm_tab_vt` .
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:86:95}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:86:95}}
 ```
 
