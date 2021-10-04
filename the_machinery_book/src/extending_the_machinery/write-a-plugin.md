@@ -104,10 +104,10 @@ implementation in C++ if you want to. (At Our Machinery, we write the implementa
 
 To write a plugin you need to implement a `tm_load_plugin()` function that is called whenever the
 plugin DLL is loaded/unloaded. In this function, you can interact with various engine interfaces. For
-example, you can implement `TM_UNIT_TEST_INTERFACE_NAME` to implement unit tests that get run
-together with the engine unit tests, you can implement `TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME` to
+example, you can implement `tm_unit_test_i` to implement unit tests that get run
+together with the engine unit tests, you can implement `tm_the_truth_create_types_i` to
 extend our data model, The Truth, with your own data types or implement
-`TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME` to extend our entity model with your own component
+`tm_entity_create_component_i` to extend our entity model with your own component
 types.
 
 
@@ -143,7 +143,7 @@ Every plugin has `tm_load_plugin()` as its entry point, in there we register eve
 
 #### Where does my gameplay code live?
 
-Your gameplay lives within the [Systems / Engines]({{base_url}}/gameplay_coding/ecs/index.html) of the ECS or in the [Simulate Entry]({{base_url}}gameplay_coding/simulate_entry.html) and they have their own entry points.
+Your gameplay lives within the [Systems / Engines]({{base_url}}/gameplay_coding/ecs/index.html) of the ECS or in the [Simulation Entry]({{base_url}}gameplay_coding/simulate_entry.html) and they have their own entry points.
 
 #### How do I update my tool / tab content?
 
@@ -158,15 +158,15 @@ For more information follow the ["Write a tab"]({{tutorials}}) walkthrough.
 
 The plugin system provides also for plugin callbacks. **It is recommended to rely on these calls as little as possible.** You should not rely on those for your gameplay code!
 
-- `TM_PLUGIN_INIT_INTERFACE_NAME` - Is typically called as early as possible after all plugins have been loaded.
+- `tm_plugin_init_i` - Is typically called as early as possible after all plugins have been loaded.
 
 > **Note:** It is not called when a plugin is reloaded.
 
-- `TM_PLUGIN_SHUTDOWN_INTERFACE_NAME` - Is typically be called as early as possible during the application shutdown sequence
+- `tm_plugin_shutdown_i` - Is typically be called as early as possible during the application shutdown sequence
 
 > **Note:** Is not called when a plugin is reloaded.
 
-- `TM_PLUGIN_TICK_INTERFACE_NAME` - Is typically called as early as possible in the application main loop “tick”.
+- `tm_plugin_tick_i` - Is typically called as early as possible in the application main loop “tick”.
 
 They are stored in the `foundation/plugin_callbacks.h`.   
 
@@ -177,18 +177,7 @@ The use of static variables in DLLs can be problematic, because when the DLL is 
 By using this function instead of defining it globally, the variable data is saved in permanent memory.
 
 ```c
-uint64_t *count_ptr;
-
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-    count_ptr = (uint64_t *)reg->static_variable(TM_STATIC_HASH("my_count", 0xa287d4b3ec9c2109ULL),
-        sizeof(uint64_t), __FILE__, __LINE__);
-}
-
-void f()
-{
-    ++*count_ptr;
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/static_variable.c}}
 ```
 
 
@@ -197,72 +186,21 @@ void f()
 
 You can also create your own APIs that other plugins can query for. If you create your own APIs, you
 want to define them in your header file, so that other plugins can `#include` it and know how to
-call your APIs. Note that if you are not defining your own APIs, but just implementing some of the
-engine's ones, your plugin typically doesn't need a header file:
+call your APIs. 
+
+> Note that if you are not defining your own APIs, but just implementing some of the engine's ones, your plugin typically doesn't need a header file.
 
 **my_plugin.h:**
 
 ~~~c
-#include "foundation/api_types.h"
-
-#define MY_API_NAME "my_api"
-
-struct my_api
-{
-    void (*foo)(void);
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_api.h}}
 ~~~
 
 **my_plugin.c:**
 
 ~~~c
-static struct tm_api_registry_api *tm_global_api_registry;
-static struct tm_error_api *tm_error_api;
-static struct tm_logger_api *tm_logger_api;
-
-#include "my_plugin.h"
-
-#include "foundation/api_registry.h"
-#include "foundation/error.h"
-#include "foundation/log.h"
-#include "foundation/unit_test.h"
-
-static void foo(void)
-{
-    // ...
-}
-
-static struct my_api *my_api = &(struct my_api) {
-    .foo = foo,
-};
-
-static void my_unit_test(tm_unit_test_runner_i *tr, struct tm_allocator_i *a)
-{
-    // ...
-}
-
-static struct tm_unit_test_i *my_unit_test = &(struct tm_unit_test_i) {
-    .name = "my_api",
-    .test = my_unit_test,
-};
-
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-    tm_global_api_registry = reg;
-
-    tm_error_api = reg->get(TM_ERROR_API_NAME);
-    tm_logger_api = reg->get(TM_LOGGER_API_NAME);
-
-    tm_set_or_remove_api(reg, load, MY_API_NAME, my_api);
-
-    tm_add_or_remove_implementation(reg, load, TM_UNIT_TEST_INTERFACE_NAME, my_unit_test);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_plugin.c}}
 ~~~
 
-When The Machinery loads a plugin DLL, it looks for the `tm_load_plugin()` function and calls it.
-If it can't find the function, it prints an error message.
-
-We store the API registry pointer in a static variable so that we can use it everywhere in our DLL.
-We also `get()` some of the API pointers that we will use frequently and store them in static
-variables so that we don’t have to use the registry to query for them every time we want to use
-them. Finally, we add our own API to the registry, so others can query for and use it.
+When The Machinery loads a plugin DLL, it looks for the `tm_load_plugin()` function and calls it. If it can't find the function, it prints an error message. We store the API registry pointer in a static variable so that we can use it everywhere in our DLL.
+We also `tm_get_api()` some of the API pointers that we will use frequently and store them in static variables so that we don’t have to use the registry to query for them every time we want to use them. Finally, we add our own API to the registry, so others can query for and use it.

@@ -52,16 +52,14 @@ You can create a plugin asset in the Asset Browser. **Righ Click -> New -> New P
 
 > **Note:** The asset plugin will store the path absolute.
 
-## My plugin asset is not updating after changes?
+The plugin asset settings look as following:
 
-You would have to repeat the above described worklfow everytime you change the code of your plugin. This is very annoying, but do not worry hot-reloading comes to resuce!
+![](https://www.dropbox.com/s/hc12tcagz448ffz/tm_guide_plugin_asset.png?dl=1)
 
-You can enable hot-reload for plugin assets by checking the *Import When Changed* checkbox in the plugin
+You would have to repeat the above described workflow every time you change the code of your plugin. This is very annoying, but do not worry hot-reloading comes to rescue!
+
+You can enable hot-reload for plugin assets by checking the ***Import When Changed* checkbox (1)** in the plugin
 properties. If checked, the editor will monitor the plugin's import path for changes and if it
 detects a file change, it will reimport the plugin.
 
-![plugin asset settings](https://www.dropbox.com/s/h2uzbwsf45o28ba/tm_guide_plugin_asset_settings.png?dl=1)
-
-## I have a third party dll which is needed for my game project only, what do I do?
-
-In this case you repeat the above workflow and check the `Is Helper` checkbox, the magic is done.
+The **Windows & Linux DLL Path (2)** can be used to provide the path to the DLLs for the importing the plugin. Plugin Assets need to obey the same rules as normal plugins. Therefore they need to provide the `TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)` function. In case this is not possible because the DLL is a helper the helper check box can be called.

@@ -26,105 +26,7 @@ If there is an issue, we should ensure we have set up the Environment variables 
 Now we can open the `.c` file with our favorite IDE. The file will contain the following content:
 
 ```c
-static struct tm_api_registry_api* tm_global_api_registry;
-
-static struct tm_draw2d_api* tm_draw2d_api;
-static struct tm_ui_api* tm_ui_api;
-static struct tm_allocator_api* tm_allocator_api;
-
-#include <foundation/allocator.h>
-#include <foundation/api_registry.h>
-
-#include <plugins/ui/docking.h>
-#include <plugins/ui/draw2d.h>
-#include <plugins/ui/ui.h>
-#include <plugins/ui/ui_custom.h>
-
-#include <the_machinery/the_machinery_tab.h>
-
-#include <stdio.h>
-
-#define TM_CUSTOM_TAB_VT_NAME "tm_custom_tab"
-#define TM_CUSTOM_TAB_VT_NAME_HASH TM_STATIC_HASH("tm_custom_tab", 0xbc4e3e47fbf1cdc1ULL)
-
-struct tm_tab_o {
-    tm_tab_i tm_tab_i;
-    tm_allocator_i allocator;
-};
-
-static void tab__ui(tm_tab_o* tab, tm_ui_o* ui, const tm_ui_style_t* uistyle_in, tm_rect_t rect)
-{
-    tm_ui_buffers_t uib = tm_ui_api->buffers(ui);
-    tm_ui_style_t* uistyle = (tm_ui_style_t[]){ *uistyle_in };
-    tm_draw2d_style_t* style = &(tm_draw2d_style_t){ 0 };
-    tm_ui_api->to_draw_style(ui, style, uistyle);
-
-    style->color = (tm_color_srgb_t){ .a = 255, .r = 255 };
-    tm_draw2d_api->fill_rect(uib.vbuffer, *uib.ibuffers, style, rect);
-}
-
-static const char* tab__create_menu_name(void)
-{
-    return "Custom Tab";
-}
-
-static const char* tab__title(tm_tab_o* tab, struct tm_ui_o* ui)
-{
-    return "Custom Tab";
-}
-
-static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
-{
-    tm_allocator_i allocator = tm_allocator_api->create_child(context->allocator, "Custom Tab");
-    uint64_t* id = context->id;
-
-    static tm_the_machinery_tab_vt* vt = 0;
-    if (!vt)
-        vt = tm_global_api_registry->get(TM_CUSTOM_TAB_VT_NAME);
-
-    tm_tab_o* tab = tm_alloc(&allocator, sizeof(tm_tab_o));
-    *tab = (tm_tab_o){
-        .tm_tab_i = {
-            .vt = (tm_tab_vt*)vt,
-            .inst = (tm_tab_o*)tab,
-            .root_id = *id,
-        },
-        .allocator = allocator,
-    };
-
-    *id += 1000000;
-    return &tab->tm_tab_i;
-}
-
-static void tab__destroy(tm_tab_o* tab)
-{
-    tm_allocator_i a = tab->allocator;
-    tm_free(&a, tab, sizeof(*tab));
-    tm_allocator_api->destroy_child(&a);
-}
-
-static tm_the_machinery_tab_vt* custom_tab_vt = &(tm_the_machinery_tab_vt){
-    .name = TM_CUSTOM_TAB_VT_NAME,
-    .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
-    .create_menu_name = tab__create_menu_name,
-    .create = tab__create,
-    .destroy = tab__destroy,
-    .title = tab__title,
-    .ui = tab__ui
-};
-
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
-{
-    tm_global_api_registry = reg;
-
-    tm_draw2d_api = reg->get(TM_DRAW2D_API_NAME);
-    tm_ui_api = reg->get(TM_UI_API_NAME);
-    tm_allocator_api = reg->get(TM_ALLOCATOR_API_NAME);
-
-    tm_set_or_remove_api(reg, load, TM_CUSTOM_TAB_VT_NAME, custom_tab_vt);
-    tm_add_or_remove_implementation(reg, load, TM_TAB_VT_INTERFACE_NAME, custom_tab_vt);
-}
-
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c}}
 ```
 
 
@@ -140,27 +42,7 @@ Let us dissect the code structure and discuss all the points of interest.
 The file begins with all includes and API definitions: 
 
 ```c
-static struct tm_api_registry_api* tm_global_api_registry;
-
-static struct tm_draw2d_api* tm_draw2d_api;
-static struct tm_ui_api* tm_ui_api;
-
-#include <foundation/allocator.h>
-#include <foundation/api_registry.h>
-
-#include <plugins/ui/docking.h>
-#include <plugins/ui/draw2d.h>
-#include <plugins/ui/ui.h>
-#include <plugins/ui/ui_custom.h>
-
-#include <the_machinery/the_machinery_tab.h>
-
-#include <stdio.h>
-
-TM_DLL_EXPORT void load_custom_tab_tab(struct tm_api_registry_api* reg, bool load);
-
-#define TM_CUSTOM_TAB_VT_NAME "tm_custom_tab"
-#define TM_CUSTOM_TAB_VT_NAME_HASH TM_STATIC_HASH("tm_custom_tab", 0xbc4e3e47fbf1cdc1ULL)
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:0:20}}
 ```
 
 
@@ -170,8 +52,7 @@ The code will fill the API definitions with life in the `tm_load_plugin` functio
 The most important aspects here are the two defines on the bottom:
 
 ```c
-#define TM_CUSTOM_TAB_VT_NAME "tm_custom_tab"
-#define TM_CUSTOM_TAB_VT_NAME_HASH TM_STATIC_HASH("tm_custom_tab", 0xbc4e3e47fbf1cdc1ULL)
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:19:20}}
 ```
 
 The first one defines the name of our Tab and the second one represents its hash value. The hash value can be used later on to access, search the Tab in the `tm_docking_api`.
@@ -183,19 +64,16 @@ The first one defines the name of our Tab and the second one represents its hash
 In the next section, we define the data the Tab can hold. It might be any data you need for the Tab to work and do its job. The tab instance owns the data. It is not shared between Tabs instances. Therefore its lifetime is bound to the current instance.
 
 ```c
-struct tm_tab_o {
-    tm_tab_i tm_tab_i;
-    tm_allocator_i allocator;
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:22:26}}
 ```
 
 A `tm_tab_i` represents a tab object. A tab object is represented as a `vtable` that defines its function interface and an opaque pointer to the Tab's internal data. This design is used so that the application layer can extend the `vtable` with its own interface.
 
 ### Define the actual Tab
 
-Every Tab in The Machinery is based on the `tm_the_machinery_tab_vt` (which is based on `tm_tab_vt`) and registered to the `TM_TAB_VT_INTERFACE_NAME` in the `tm_load_plugin()` function.
+Every Tab in The Machinery is based on the `tm_tab_vt` and registered to the `tm_tab_vt` in the `tm_load_plugin()` function.
 
-The default `tm_the_machinery_tab_vt` offers multiple options and settings we can set for our Tab. 
+The default `tm_tab_vt` offers multiple options and settings we can set for our Tab. 
 
 | Name                                           | Description                                                  |
 | ---------------------------------------------- | ------------------------------------------------------------ |
@@ -232,15 +110,7 @@ The default `tm_the_machinery_tab_vt` offers multiple options and settings we ca
 In this example, we make use of the following options:
 
 ```c
-static tm_the_machinery_tab_vt* custom_tab_vt = &(tm_the_machinery_tab_vt){
-    .name = TM_CUSTOM_TAB_VT_NAME,
-    .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
-    .create_menu_name = tab__create_menu_name,
-    .create = tab__create,
-    .destroy = tab__destroy,
-    .title = tab__title,
-    .ui = tab__ui
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:77:85}}
 ```
 
 In the cause of the rest of this walkthrough, we will discuss:`tab__create_menu_name`,  `tab__create`, `tab__destroy` , `tab__title` and `tab__ui`.
@@ -250,15 +120,7 @@ In the cause of the rest of this walkthrough, we will discuss:`tab__create_menu_
 As we can see in our definition of the `custom_tab_vt` object we provide the `tm_tab_vt.create_menu_name()` and the `tm_tab_vt.title()`. The `create_menu_name` is an optional function to allow you to provide a name for the create tab menu. In contrast, the `title()` function is not optional and is needed. It provides the name of the Tab, which the editor shall show in the tab bar.
 
 ```c
-static const char* tab__create_menu_name(void)
-{
-    return "Custom Tab";
-}
-
-static const char* tab__title(tm_tab_o* tab, struct tm_ui_o* ui)
-{
-    return "Custom Tab";
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:39:47}
 ```
 
 ### Define create and destroy the Tab
@@ -272,46 +134,13 @@ The create function provides you the `tm_tab_create_context_t` access to many es
 
 
 ```c
-static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
-{
-     tm_allocator_i allocator = tm_allocator_api->create_child(context->allocator, "my tab");
-    static tm_the_machinery_tab_vt* vt = 0;
-    if (!vt)
-        vt = tm_global_api_registry->get(TM_CUSTOM_TAB_VT_NAME);
-
-    tm_tab_o* tab = tm_alloc(allocator, sizeof(tm_tab_o));
-    *tab = (tm_tab_o){
-        .tm_tab_i = {
-            .vt = (tm_tab_vt*)vt,
-            .inst = (tm_tab_o*)tab,
-            .root_id = *id,
-        },
-        .allocator = allocator,
-    };
-    return &tab->tm_tab_i;
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:49:68}
 ```
 
-As you can notice, we ask the `tm_global_api_registry_api` if our Tab is already registered. If yes, we use the static local variable. If not, we get it from the registry.
+We use the provided allocator to allocate the Tab struct, and then we initialize it with the data we deem to be needed. 
 
 ```c
-    static tm_the_machinery_tab_vt* vt = 0;
-    if (!vt)
-        vt = tm_global_api_registry->get(TM_CUSTOM_TAB_VT_NAME);
-```
-
-After this, we use the provided allocator to allocate the Tab struct, and then we initialize it with the data we deem to be needed. 
-
-```c
-    tm_tab_o* tab = tm_alloc(&allocator, sizeof(tm_tab_o));
-    *tab = (tm_tab_o){
-        .tm_tab_i = {
-            .vt = (tm_tab_vt*)vt,
-            .inst = (tm_tab_o*)tab,
-            .root_id = *id,
-        },
-        .allocator = allocator,
-    };
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:56:64}
 ```
 
 Since we have allocated something, we need to keep track of the used allocator! Hence we have it as a member in our Tab struct.
@@ -325,13 +154,7 @@ In the end, we pass a pointer to the Tab interface.
 When it comes to free the Tab data, we can just call `tm_free()` on our Tab:
 
 ```c
-static void tab__destroy(tm_tab_o* tab)
-{
-    tm_allocator_i a = tab->allocator;
-    tm_free(&a, tab, sizeof(*tab));
-    tm_allocator_api->destroy_child(&a);
-}
-
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:70:75}
 ```
 
 
@@ -347,17 +170,7 @@ If we wanted to make our Tab jobifed, we could make use of the `tm_tab_vt.hidden
 Let us digest the current code line by line:
 
 ```c
-
-static void tab__ui(tm_tab_o* tab, tm_ui_o* ui, const tm_ui_style_t* uistyle_in, tm_rect_t rect)
-{
-    tm_ui_buffers_t uib = tm_ui_api->buffers(ui);
-    tm_ui_style_t* uistyle = (tm_ui_style_t[]){ *uistyle_in };
-    tm_draw2d_style_t* style = &(tm_draw2d_style_t){ 0 };
-    tm_ui_api->to_draw_style(ui, style, uistyle);
-
-    style->color = (tm_color_srgb_t){ .a = 255, .r = 255 };
-    tm_draw2d_api->fill_rect(uib.vbuffer, *uib.ibuffers, style, rect);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:28:37}
 ```
 
 The `tm_docking_api`, which will call our Tab's update, provides us with the essential information:
@@ -376,16 +189,13 @@ tm_ui_buffers_t uib = tm_ui_api->buffers(ui);
 After this, we define our local copy of the UI Style. Then we create an empty `tm_draw2d_style_t` instance. We need to create a Style from the UI Style. You need ` tm_draw2d_style_t* style` later for drawing anything with our draw 2d api.
 
 ```c
-    tm_ui_style_t* uistyle = (tm_ui_style_t[]){ *uistyle_in };
-    tm_draw2d_style_t* style = &(tm_draw2d_style_t){ 0 };
-    tm_ui_api->to_draw_style(ui, style, uistyle);
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:31:33}
 ```
 
 Now we are set, and we can finally color our tab background to red. You can do this with the `tm_draw2d_api.fill_rect()` call. Beforehand we need to change our style's color to red and then call the `tm_draw2d_api.fill_rect()`. We need to pass in the vertex buffer and the index buffer pointer so the function can draw into them.
 
 ```c
-    style->color = (tm_color_srgb_t){ .a = 255, .r = 255 };
-    tm_draw2d_api->fill_rect(uib.vbuffer, *uib.ibuffers, style, rect);
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:35:36}
 ```
 
 
@@ -396,20 +206,9 @@ Now we are set, and we can finally color our tab background to red. You can do t
 
 ## Register the Tab
 
-The last thing before we can compile our project and test it in the Engine is registering the Tab to the Plugin System. As mentioned before, you need to register the Tab to the: `TM_TAB_VT_INTERFACE_NAME` and also register an API: `TM_CUSTOM_TAB_VT_NAME` to which you pass the `custom_tab_vt`.
+The last thing before we can compile our project and test it in the Engine is registering the Tab to the Plugin System. As mentioned before, you need to register the Tab to the: `tm_tab_vt` .
 
 ```c
-
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
-{
-    tm_global_api_registry = reg;
-
-    tm_draw2d_api = reg->get(TM_DRAW2D_API_NAME);
-    tm_ui_api = reg->get(TM_UI_API_NAME);
-    tm_allocator_api = reg->get(TM_ALLOCATOR_API_NAME);
-
-    tm_set_or_remove_api(reg, load, TM_CUSTOM_TAB_VT_NAME, custom_tab_vt);
-    tm_add_or_remove_implementation(reg, load, TM_TAB_VT_INTERFACE_NAME, custom_tab_vt);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_tab.c:86:95}
 ```
 

@@ -38,7 +38,7 @@ To add a Type to the system, you need access to the Truth instance. The Engine m
 
 
 
-Generally speaking, you want to define Truth Types at the beginning of the Engine's life cycle. Therefore the designated place is the `tm_load_plugin` function. The Truth has an *interface* to register a truth type creation function: `TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME`. 
+Generally speaking, you want to define Truth Types at the beginning of the Engine's life cycle. Therefore the designated place is the `tm_load_plugin` function. The Truth has an *interface* to register a truth type creation function: `tm_the_truth_create_types_i`. 
 
 This interface expects a function of the signature: `void create_truth_types(tm_the_truth_o *tt)`. Whenever the Engine creates a Truth, it invokes this interface on all loaded plugins, and their types are registered. You do not need to register your Type to the interface if you want to register your Type to a specific Truth.
 
@@ -51,18 +51,12 @@ This interface expects a function of the signature: `void create_truth_types(tm_
 Let us define a type. To do that, we need to get the `tm_truth_api` first:
 
 ```c
-// beginning of the source file
-static struct tm_the_truth_api *tm_the_truth_api;
-#include <foundation/api_registry.h>
-#include <foundation/the_truth.h>
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c:1:3}}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c:6}}
 // ... other code
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
- tm_the_truth_api = reg->get(TM_THE_TRUTH_API_NAME);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c:19:21}}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c:23}}
 ```
-
-
 
 After this, we define our type name once as a constant char define and one hashed version. There are some conventions to keep in mind:
 
@@ -73,8 +67,7 @@ After this, we define our type name once as a constant char define and one hashe
 
 
 ```c
-#define TM_TT_TYPE__MY_TYPE "tm_my_type"
-#define TM_TT_TYPE_HASH___MY_TYPE TM_STATIC_HASH("tm_my_type", 0xde0e763ccd72b89aULL)
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/my_type.h:4:5}}
 ```
 
 
@@ -101,12 +94,8 @@ The home of this function should be our `void create_truth_types(tm_the_truth_o 
 
 
 ```c
-void create_truth_types(tm_the_truth_o *tt){
-	tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__MY_TYPE, 0, 0);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_empty_type.c:7:10}}
 ```
-
-
 
 
 
@@ -115,11 +104,7 @@ The last step is to tell the plugin system that we intend to register our `regis
 
 
 ```c
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
- tm_the_truth_api = reg->get(TM_THE_TRUTH_API_NAME);
- tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_empty_type.c:12:16}}
 ```
 
 
@@ -129,10 +114,7 @@ The full source code should look like this:
 `my_type.h`
 
 ```c
-#pragma once
-#include <foundation/api_types.h>
-#define TM_TT_TYPE__MY_TYPE "tm_my_type"
-#define TM_TT_TYPE_HASH___MY_TYPE TM_STATIC_HASH("tm_my_type", 0xde0e763ccd72b89aULL)
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/my_type.h}}
 ```
 
 (Tip: Do not forget to run hash.exe)
@@ -140,20 +122,7 @@ The full source code should look like this:
 `my_type.c`
 
 ```c
-// beginning of the source file
-static struct tm_the_truth_api *tm_the_truth_api;
-#include <foundation/api_registry.h>
-#include <foundation/the_truth.h>
-
-void create_truth_types(tm_the_truth_o *tt){
-	tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__MY_TYPE, 0, 0);
-}
-
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
- tm_the_truth_api = reg->get(TM_THE_TRUTH_API_NAME);
- tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_empty_type.c}}
 ```
 
 
@@ -196,73 +165,7 @@ When you destroy an object that has subobjects, all the subobjects are destroyed
 Let us add some properties to our Type! As you remember, when we created the Type, the function `create_object_type()` required a pointer to the definition of properties. You can define properties via the `tm_the_truth_property_definition_t` struct.
 
 ```c
-typedef struct tm_the_truth_property_definition_t
-{
-    // Name of the property, e.g. "cast_shadows".
-    //
-    // This name is used both for serialization and for the UI of editing the property. When
-    // displayed in the UI, the name will be automatically capitalized (e.g. "Cast Shadows").
-    //
-    // The name shouldn't be longer than [[TM_THE_TRUTH_PROPERTY_NAME_LENGTH]] characters.
-    const char *name;
-
-    // [[enum tm_the_truth_property_type]] type of the property.
-    uint32_t type;
-
-    // [[enum tm_the_truth_editor]] enum defining what editor should be used for editing the property.
-    uint32_t editor;
-
-    // Editor specific settings.
-    union
-    {
-        tm_the_truth_editor_enum_t enum_editor;
-        tm_the_truth_editor_string_open_path_t string_open_path_editor;
-        tm_the_truth_editor_string_save_path_t string_save_path_editor;
-    };
-
-    // For properties referring to other objects (references & subobjects), specifies the type of
-    // objects that they can refer to. A value of [[TM_TT_TYPE__ANYTHING]] is used for an object
-    // that can refer to anything.
-    //
-    // Note: We currently don't have any system for representing "interfaces" or groups of types.
-    // I.e. you can't say "I want this to reference any type that inherits from the GRAPH_NODE_TYPE,
-    // but no other types." We may add this in the future.
-    tm_strhash_t type_hash;
-
-    // Specifies that the property is allowed to refer to other types than the `type_hash`.
-    //
-    // !!! NOTE: Note
-    //     This flag should not be used going forward. Instead, if a property can refer to multiple
-    //     types, you should use a `type_hash` of [[TM_TT_TYPE__ANYTHING]]. It is provided for
-    //     compatibility purposes, because some object types have a `type_hash` specified but
-    //     store subobjects of other types. We cannot simply change the `type_hash` of those objects
-    //     to [[TM_TT_TYPE__ANYTHING]], because there may be saved data that has serialized versions
-    //     of those objects that omits the object type (if it is `type_hash`). We can't deserialize
-    //     those objects if we don't know the `type_hash` of the type.
-    bool allow_other_types;
-    TM_PAD(7);
-
-    // For buffer properties, the extension (if any) used to represent the buffer type. This can
-    // either be hard-coded in `buffer_extension`, or computed by the `buffer_extension_f()`
-    // callback (set the unused option to `NULL`).
-    const char *buffer_extension;
-    const char *(*buffer_extension_f)(const tm_the_truth_o *tt, tm_tt_id_t object, uint32_t property);
-
-    // Tooltip used to describe the property in more detail. The tooltip text will be displayed in
-    // the property editor when the property is hovered over.
-    //
-    // The tooltip should be registered using [[TM_LOCALIZE_LATER()]]. It will be dynamically
-    // localized to the current interface language with [[TM_LOCALIZE_DYNAMIC()]] before being
-    // displayed in the UI.
-    const char *tooltip;
-
-    // If *true*, this property will be skipped during serialization.
-    bool not_serialized;
-    TM_PAD(7);
-
-    // If specified, this will be used instead of `name` for the UI.
-    const char *ui_name;
-} tm_the_truth_property_definition_t;
+{{$include {TM_SDK_DIR}/foundation/the_truth.h:407:473}}
 ```
 
 ([API Documentation]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t))
@@ -272,16 +175,7 @@ typedef struct tm_the_truth_property_definition_t
 Within our `create_truth_types` we create a array of type `tm_the_truth_property_definition_t`. For this example, we define the properties of type bool and string.
 
 ```c
-// include `macros.h` to access TM_ARRAY_COUNT for convinace:
-#include <foundation/macros.h>
-//..code
-void create_truth_types(tm_the_truth_o *tt){
-    tm_the_truth_property_definition_t properties[] = {
-        { "my_bool", TM_THE_TRUTH_PROPERTY_TYPE_BOOL },
-        { "my_string", TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-    };
-	tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__MY_TYPE, properties,TM_ARRAY_COUNT(properties);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c}}
 ```
 
 

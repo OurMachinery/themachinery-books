@@ -8,11 +8,7 @@ You can create an object of a Truth Type via two steps:
 First, we need to have access to a Truth instance. Otherwise, we could not create an object. In this example, we create a function.
 
 ```c
-tm_tt_id_t create_my_type_object(tm_the_truth_o *tt){
-    const tm_tt_type_t my_type= tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);
-    const tm_tt_id_t my_type_object = tm_the_truth_api->create_object_of_type(tt, my_type, TM_TT_NO_UNDO_SCOPE);
-    return my_type_object;
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_an_object.c:16:21}}
 ```
 
 Where ever we call this function we can than edit and modify the type and add content to it!
@@ -20,9 +16,7 @@ Where ever we call this function we can than edit and modify the type and add co
 The alternative approach is to use the "Quick Object Creation function".
 
 ```c
-tm_tt_id_t create_my_type_object(tm_the_truth_o *tt){
-    return tm_the_truth_api->quick_create_object(tt, TM_TT_NO_UNDO_SCOPE, TM_TT_TYPE_HASH__MY_TYPE, -1);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_an_object.c:23:26}}
 ```
 
 
