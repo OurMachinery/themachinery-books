@@ -24,8 +24,16 @@ follow-web-links = false
 exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com','https://marketplace\.visualstudio\.com'  ]
 
 
+[preprocessor.links]
+
 #[preprocessor.autolink]
 #renderer = ["html"]
 #folder = "../"
 #books = ["the_machinery_book","tutorials"]
 #command = "python ../autogenerete_doc_links.py"
+
+[preprocessor.auto_include]
+renderer = ["html"]
+folder = "../"
+books = ["the_machinery_book","tutorials"]
+command = "python ../auto_include.py"
