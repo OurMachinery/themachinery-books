@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TM_BOOK_CODE_SNIPPETS: ${{github.workspace}}/samples/examples
+      TM_SDK_DIR:  ${{github.workspace}}/sdk_dir
     steps:
       - name: Checkout website
         uses: actions/checkout@v2
@@ -19,6 +20,12 @@ jobs:
           path: samples
           repository: OurMachinery/themachinery-book-code-snippets
           token: ${{ secrets.SAMPLE_REPO_TOKEN }}
+      - name: download SDK
+        run: |
+          sudo apt install -y unzip wget
+          wget https://ourmachinery.com/releases/2021.9/the-machinery-2021.9-linux.zip
+          mkdir sdk_dir
+          unzip the-machinery-2021.9-linux.zip -d sdk_dir
       - name: Cache mdbook-tera
         id: cache-mdbook-tera
         uses: actions/cache@v2
