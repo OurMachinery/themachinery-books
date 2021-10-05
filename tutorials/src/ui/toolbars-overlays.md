@@ -25,17 +25,7 @@ We open the `custom_tab.c` (or however we called it) file with our favorite edit
 We search for the line in which we define the tab itself:
 
 ```c
-//...code
-static tm_the_machinery_tab_vt* custom_tab_vt = &(tm_the_machinery_tab_vt){
-    .name = TM_CUSTOM_TAB_VT_NAME,
-    .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
-    .create_menu_name = tab__create_menu_name,
-    .create = tab__create,
-    .destroy = tab__destroy,
-    .title = tab__title,
-    .ui = tab__ui
-};
-//...code
+{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:81:89}}
 ```
 
 
@@ -48,26 +38,16 @@ To our definition, we add a [`toolbars()`]({{docs}}plugins/ui/docking.h.html#str
 
 > **Note:** A temporary allocator ([tm_temp_allocator_api]({{docs}}foundation/temp_allocator.h.html)) Provides a system for temporary memory allocations. I.e., short-lived memory allocations that are automatically freed when the allocator is destroyed. Temp allocators typically use a pointer bump allocator to allocate memory from one or more big memory blocks and then free the entire block when the allocator is destroyed.
 >
-> **Important:** You need to include  the api first`#include <foundation/temp_allocator.h>` and get the api from the registry!
+> **Important:** You need to include  the api first `#include <foundation/temp_allocator.h>` and get the api from the registry!
 
 ```c
-static tm_the_machinery_tab_vt* custom_tab_vt = &(tm_the_machinery_tab_vt){
-    .name = TM_CUSTOM_TAB_VT_NAME,
-    .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
-    .create_menu_name = tab__create_menu_name,
-    .create = tab__create,
-    .destroy = tab__destroy,
-    .title = tab__title,
-    .ui = tab__ui
-    .toolbars = tab__toolbars, // we added this line
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:112:121}}
 ```
 
 After we have added this, we need actually to define the function itself:
 
 ```c
-static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab, tm_temp_allocator_i *ta)
-{
+{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:99:100}}
 // code
 }
 ```
@@ -87,11 +67,11 @@ To make this work, we need to create a C-Array of `tm_toolbar_i` objects and add
 
 > **Note:** For a complete list please check the [documentation]({{docs}}plugins/ui/toolbar.h.html#structtm_toolbar_i)
 
-| Mask                            | Description                         |
-| ------------------------------- | ----------------------------------- |
-| TM_TOOLBAR_DRAW_MODE_HORIZONTAL | You an draw the toolbar horizontal. |
-| TM_TOOLBAR_DRAW_MODE_VERTICAL   | You an draw the toolbar vertical.   |
-| TM_TOOLBAR_DRAW_MODE_WIDGET     | The toolbar is an overlay           |
+| Mask                              | Description                         |
+| --------------------------------- | ----------------------------------- |
+| `TM_TOOLBAR_DRAW_MODE_HORIZONTAL` | You an draw the toolbar horizontal. |
+| `TM_TOOLBAR_DRAW_MODE_VERTICAL`   | You an draw the toolbar vertical.   |
+| `TM_TOOLBAR_DRAW_MODE_WIDGET`     | The toolbar is an overlay           |
 
 Let us provide the essential things:
 
@@ -100,17 +80,7 @@ Let us provide the essential things:
 3. The draw_mode_mask to indicate where we want the toolbar to be drawn.
 
 ```c
-static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab, tm_temp_allocator_i *ta)
-{
-struct tm_toolbar_i *toolbars = 0;
-    tm_carray_temp_push(toolbars,
-        ((tm_toolbar_i){
-            .id = TM_STRHASH_U64(TM_STATIC_HASH("my_tab", 0xcffc3169d97098acULL)),
-            .ui = ui,
-            .draw_mode_mask = TM_TOOLBAR_DRAW_MODE_HORIZONTAL | TM_TOOLBAR_DRAW_MODE_VERTICAL,
-        }),
-        ta);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:99:110}}
 ```
 
 
@@ -120,10 +90,7 @@ In our UI function, we can add the button via the [`tm_ui_api`]({{docs}}plugins/
 > **Note:** You need include the `plugins/ui/ui.h` and the `foundation/log.h` as well as get the API's first!
 
 ```c
-static tm_rect_t ui(tm_toolbar_i *toolbar, struct tm_ui_o *ui, const struct tm_ui_style_t *uistyle, tm_rect_t toolbar_r, enum tm_toolbar_draw_mode dm)
-{
-    // TODO: add code
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:93:97}}
 ```
 
 

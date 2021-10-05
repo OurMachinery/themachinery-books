@@ -40,17 +40,13 @@ We need to define a globally accessible definition for the name of the type and 
 Example Header file: `my_asset.h`
 
 ```c
-#pragma once
-#include "entity_api_types.h"
-//... more code
-#define TM_TT_TYPE__MY_ASSET "tm_my_asset"
-#define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH("tm_my_asset", 0xc0995d6c144ac64aULL)
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.h}}
 ```
 
 (Do not forget to run hash.exe when you create a `TM_STATIC_HASH`, mode information here.)
 
 Now we need to define the layout of our asset type. We should always do this during plugin load. (`tm_load_plugin`) 
-During this call we need to register a function to the `TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME` interface. 
+During this call we need to register a function to the `tm_the_truth_create_types_i` interface. 
 This function is typically called `create_truth_types`, but its name can be arbitrary.
 
 
@@ -59,9 +55,7 @@ This function is typically called `create_truth_types`, but its name can be arbi
 Example `tm_load_plugin` function for `my_asset.c`
 
 ```c
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:35:38}}
 }
 ```
 
@@ -103,11 +97,7 @@ In code, this looks as follows:
 
 
 ```c
-static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    const tm_tt_type_t type = tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api->set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, "my_asset");
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:15:20}}
 ```
 
 We create a type of name `TM_TT_TYPE__MY_ASSET` with no properties and a file extension my_asset (`.tm_my_asset` in your explorer). 
@@ -115,7 +105,7 @@ We create a type of name `TM_TT_TYPE__MY_ASSET` with no properties and a file ex
 
 ## Making the Asset Browser able to create it
 
-Now that there is a basic asset type, you might want the asset browser to create it via the `New Asset` context menu. All you need to do is register the asset to the `TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME` interface. This interface requires an implementation of the type `tm_asset_browser_create_asset_i`:
+Now that there is a basic asset type, you might want the asset browser to create it via the `New Asset` context menu. All you need to do is register the asset to the `tm_asset_browser_create_asset_i` interface. This interface requires an implementation of the type `tm_asset_browser_create_asset_i`:
 
 
 ```c
@@ -137,17 +127,7 @@ Source: `plugins/editor_views/asset_browser.h`
 For our basic type, this interface can be defined as follows:
 
 ```c
-static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
-{
-    const tm_tt_type_t type = tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE__MY_ASSET);
-    return tm_the_truth_api->create_object_of_type(tt, type, undo_scope);
-}
-
-static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
-    .menu_name = TM_LOCALIZE_LATER("New My Asset"),
-    .asset_name = TM_LOCALIZE_LATER("New My Asset"),
-    .create = asset_browser_create,
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:22:32}}
 ```
 
 What is happening?
@@ -160,11 +140,7 @@ Now we register our code to the interface. We do this also in the load plugin fu
 Example `tm_load_plugin` function for `my_asset.c`
 
 ```c
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-   tm_add_or_remove_implementation(reg, load, TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME, &asset_browser_create_my_asset);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:35:40}}
 ```
 
 When we open the Engine, we can open the Asset Browser and create our asset:
@@ -209,15 +185,16 @@ The following code example will demonstrate how to add my_asset via code to the 
 #include "my_asset.h"
 //... other code
 
-static void add_my_asset_to_project(tm_the_truth_o *tt,struct tm_ui_o *ui,const char*asset_name, tm_tt_id_t target_dir){
-    const tm_tt_type_t my_asset_type_id= tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+static void add_my_asset_to_project(tm_the_truth_o *tt, struct tm_ui_o *ui, const char *asset_name, tm_tt_id_t target_dir)
+{
+    const tm_tt_type_t my_asset_type_id = tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
     const tm_tt_id_t asset_id = tm_the_truth_api->create_object_of_type(tt, my_asset_type_id, TM_TT_NO_UNDO_SCOPE);
-tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry->get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
-const tm_tt_undo_scope_t undo_scope = tm_the_truth_api->create_undo_scope(tt, TM_LOCALIZE("Add My Asset to Project"));
-bool should_select = true;
-// we do not have any asset label therefore we do not need to pass them thats why the last
-// 2 arguments are 0 and 0!
-add_asset->add(add_asset->inst, target_dir, asset_id, asset_name, undo_scope,should_select,ui,0,0);
+    struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
+    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api->create_undo_scope(tt, TM_LOCALIZE("Add My Asset to Project"));
+    bool should_select = true;
+    // we do not have any asset label therefore we do not need to pass them thats why the last
+    // 2 arguments are 0 and 0!
+    add_asset->add(add_asset->inst, target_dir, asset_id, asset_name, undo_scope, should_select, ui, 0, 0);
 }
 ```
 
@@ -228,11 +205,7 @@ add_asset->add(add_asset->inst, target_dir, asset_id, asset_name, undo_scope,sho
 `my_asset.h`
 
 ```c
-#pragma once
-#include <foundation/api_types.h>
-//... more code
-#define TM_TT_TYPE__MY_ASSET "tm_my_asset"
-#define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH("tm_my_asset", 0x1e12ba1f91b99960ULL)
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.h}}
 ```
 
 (Do not forget to run hash.exe when you create a `TM_STATIC_HASH`)
@@ -240,45 +213,6 @@ add_asset->add(add_asset->inst, target_dir, asset_id, asset_name, undo_scope,sho
 `my_asset.c`
 
 ```c
-// -- api's
-static struct tm_the_truth_api *tm_the_truth_api;
-// -- inlcudes
-#include <foundation/api_registry.h>
-#include <foundation/the_truth.h>
-#include <foundation/undo.h>
-#include <foundation/the_truth_assets.h>
-#include <foundation/localizer.h>
-
-#include <plugins/editor_views/asset_browser.h>
-
-#include "my_asset.h"
-
-// -- create truth type
-static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    // we have properties this is why the last arguments are "0, 0"
-    const tm_tt_type_t type = tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api->set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, "my_asset");
-}
-
-// -- asset browser regsiter interface
-static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
-{
-    const tm_tt_type_t type = tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
-    return tm_the_truth_api->create_object_of_type(tt, type, undo_scope);
-}
-static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
-    .menu_name = TM_LOCALIZE_LATER("New My Asset"),
-    .asset_name = TM_LOCALIZE_LATER("New My Asset"),
-    .create = asset_browser_create,
-};
-
-// -- load plugin
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-    tm_the_truth_api = reg->get(TM_THE_TRUTH_API_NAME);
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME, &asset_browser_create_my_asset);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c}}
 ```
 

@@ -26,12 +26,7 @@ Let us go back to the basic definition of the type `my_asset`. We defined the ty
 The current implementation looks as follows:
 
 ```c
-// -- create truth type
-static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    const tm_tt_type_t type = tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api->set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, "my_asset");
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:15:20}}
 ```
 
 To make this more useful, what we can do is add some properties to the type. We can do this via an array of the type [tm_the_truth_property_definition_t]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t). In this array we can define all the properties we want. 
@@ -52,10 +47,7 @@ Well, a text file has three properties:
 Consequently, we are defining the *import path* property to “reimport” our text asset and the data property to store the imported text.
 
 ```c
-    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { "import_path", TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { "data", TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:45:48}}
 ```
 
 >  **Note:** The type [*tm_the_truth_property_definition_t*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t) has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation [*here*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t)*.*
@@ -64,15 +56,7 @@ After we have thought about this, we need to provide the `create_object_type` fu
 
 
 ```c
-static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { "import_path", TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { "data", TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
-    const tm_tt_type_t type = tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, 2);
-    tm_the_truth_api->set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, "my_asset");
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:43:55}}
 ```
 
 Now we should change the asset name to something more meaningful than `my_asset`. Lets call it `txt`
@@ -87,18 +71,11 @@ The renaming has as a consequence that we need to change three places:
 This will change the code as follows:
 
 ```c
-//.. other code
-static void create_truth_types(struct tm_the_truth_o *tt)
-{
-//... the other code
-    tm_the_truth_api->set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, "txt");
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:43:44}}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:50}}
 }
 // .. other code
-static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
-    .menu_name = TM_LOCALIZE_LATER("New Text File"),
-    .asset_name = TM_LOCALIZE_LATER("New Text File"),
-    .create = asset_browser_create,
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:62:66}}
 ```
 
 Let's have a look at how it looks in the editor:
@@ -146,14 +123,12 @@ We need to define a static instance of the [tm_properties_aspect_i*]({{docs}}plu
 
 ```c
 //.. other code
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:21}}
 {
 // -- code
 }
 //.. other code    
-static tm_properties_aspect_i properties_aspect = {
-        .custom_ui = properties__custom_ui,
-    };
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:51:53}}
 // .. other code
 ```
 
@@ -164,7 +139,7 @@ Now the properties aspect needs to know about the existence of our custom UI. It
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
 //... the other code
-    tm_the_truth_api->set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &properties_aspect);
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:54}}
 }
 //... the other code
 ```
@@ -189,7 +164,7 @@ static struct tm_properties_view_api *tm_properties_view_api;
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
 //.. other code 
-    tm_properties_view_api = reg->get(TM_PROPERTIES_VIEW_API_NAME);
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:71}}
 //.. other code 
 } 
 ```
@@ -221,10 +196,7 @@ Now we can use and implement the path opening function. Let us look at its [sign
 To implement the function all that's needed to remember is what index the property had.
 
 ```c
-    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { "import_path", TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { "data", TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:45:48}}
 ```
 
 The index is 0 there for we are no ready to implement the function:
@@ -232,13 +204,10 @@ The index is 0 there for we are no ready to implement the function:
 
 ```c
 //custom ui
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:21}}
 {
     // -- code
-    bool picked = false;
-    item_rect.y = tm_properties_view_api->ui_open_path(args, item_rect, "Imported Path", "Path that the text file was imported from.", object, 0, "txt", "text files", &picked);
-    if (picked)
-    {
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:24:27}}
         // import...
     }
     return item_rect.y;
@@ -248,16 +217,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 Remembering all of those indices is quite cucumbersome! Therefore, it is better to define an enum in our header file. Define an `enum` for each property `TM_TT_PROP__[NAME_OF_TYPE]__[NAME_OF_PROPERTY]`
 
 ```c
-#pragma once
-#include <foundation/api_types.h>
-//... more code
-#define TM_TT_TYPE__MY_ASSET "tm_my_asset"
-#define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH("tm_my_asset", 0x1e12ba1f91b99960ULL)
-
-enum {
-    TM_TT_PROP__MY_ASSET__FILE,
-    TM_TT_PROP__MY_ASSET__DATA,
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.h}}
 ```
 
 (`txt.h`)
@@ -277,32 +237,7 @@ The OS API ([tm_os_api]({{docs}}foundation/os.h.html#structtm_os_api)) lives in 
 #include <foundation/os.h>
 #include <foundation/buffer.h>
 //.. other code
-//custom ui
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
-{
-    tm_the_truth_o *tt = args->tt;
-    bool picked = false;
-    item_rect.y = tm_properties_view_api->ui_open_path(args, item_rect, TM_LOCALIZE_LATER("Import Path"), TM_LOCALIZE_LATER("Path that the text file was imported from."), object, TM_TT_PROP__MY_ASSET__FILE, "txt", "text files", &picked);
-    if (picked)
-    {
-        const char *file = tm_the_truth_api->get_string(tt, tm_tt_read(tt, object), TM_TT_PROP__MY_ASSET__FILE);
-
-        tm_file_stat_t stat = tm_os_api->file_system->stat(file);
-
-        tm_buffers_i *buffers = tm_the_truth_api->buffers(tt);
-        void *buffer = buffers->allocate(buffers->inst, stat.size, false);
-
-        tm_file_o f = tm_os_api->file_io->open_input(file);
-        tm_os_api->file_io->read(f, buffer, stat.size);
-        tm_os_api->file_io->close(f);
-
-        const uint32_t buffer_id = buffers->add(buffers->inst, buffer, stat.size, 0);
-        tm_the_truth_object_o *asset_obj = tm_the_truth_api->write(tt, object);
-        tm_the_truth_api->set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id); // 1 = data property index.
-        tm_the_truth_api->commit(tt, asset_obj, TM_TT_NO_UNDO_SCOPE);
-    }
-    return item_rect.y;
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:21:41}}
 ```
 
 First, we need to read out the file path from our The Truth object. After that, we can create the buffer we want to add to our *data* property (index 1 or `TM_TT_PROP___MY_ASSET__DATA`). 
@@ -327,101 +262,20 @@ The next part will refactor the current code and show you how to make your code 
 
 [Part 3](#)
 
-## Full example source code
+## Full example of basic asset
 
-`txt.h`
+`my_asset.h`
 
 ```c
-#pragma once
-#include <foundation/api_types.h>
-//... more code
-#define TM_TT_TYPE__MY_ASSET "tm_my_asset"
-#define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH("tm_my_asset", 0x1e12ba1f91b99960ULL)
-
-enum {
-    TM_TT_PROP__MY_ASSET__FILE,
-    TM_TT_PROP__MY_ASSET__DATA,
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.h}}
 ```
 
-`txt.c`
+(Do not forget to run hash.exe when you create a `TM_STATIC_HASH`)
+
+`my_asset.c`
 
 ```c
-// -- api's
-static struct tm_the_truth_api *tm_the_truth_api;
-static struct tm_properties_view_api *tm_properties_view_api;
-static struct tm_os_api *tm_os_api;
-// -- inlcudes
-#include <foundation/api_registry.h>
-#include <foundation/the_truth.h>
-#include <foundation/undo.h>
-#include <foundation/the_truth_assets.h>
-#include <foundation/localizer.h>
-#include <foundation/macros.h>
-#include <foundation/os.h>
-#include <foundation/buffer.h>
-
-#include <plugins/editor_views/asset_browser.h>
-#include <plugins/editor_views/properties.h>
-
-#include "txt.h"
-
-//custom ui
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
-{
-    tm_the_truth_o *tt = args->tt;
-    bool picked = false;
-    item_rect.y = tm_properties_view_api->ui_open_path(args, item_rect, TM_LOCALIZE_LATER("Import Path"), TM_LOCALIZE_LATER("Path that the text file was imported from."), object, TM_TT_PROP__MY_ASSET__FILE, "txt", "text files", &picked);
-    if (picked)
-    {
-        const char *file = tm_the_truth_api->get_string(tt, tm_tt_read(tt, object), TM_TT_PROP__MY_ASSET__FILE);
-        tm_file_stat_t stat = tm_os_api->file_system->stat(file);
-        tm_buffers_i *buffers = tm_the_truth_api->buffers(tt);
-        void *buffer = buffers->allocate(buffers->inst, stat.size, false);
-        tm_file_o f = tm_os_api->file_io->open_input(file);
-        tm_os_api->file_io->read(f, buffer, stat.size);
-        tm_os_api->file_io->close(f);
-        const uint32_t buffer_id = buffers->add(buffers->inst, buffer, stat.size, 0);
-        tm_the_truth_object_o *asset_obj = tm_the_truth_api->write(tt, object);
-        tm_the_truth_api->set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
-        tm_the_truth_api->commit(tt, asset_obj, TM_TT_NO_UNDO_SCOPE);
-    }
-    return item_rect.y;
-}
-// -- create truth type
-static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {"import_path", TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {"data", TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
-    const tm_tt_type_t type = tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api->set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, "txt");
-    static tm_properties_aspect_i properties_aspect = {
-        .custom_ui = properties__custom_ui,
-    };
-    tm_the_truth_api->set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &properties_aspect);
-}
-// -- asset browser regsiter interface
-static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
-{
-    const tm_tt_type_t type = tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
-    return tm_the_truth_api->create_object_of_type(tt, type, undo_scope);
-}
-static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
-    .menu_name = TM_LOCALIZE_LATER("New Text File"),
-    .asset_name = TM_LOCALIZE_LATER("New Text File"),
-    .create = asset_browser_create,
-};
-// -- load plugin
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-    tm_the_truth_api = reg->get(TM_THE_TRUTH_API_NAME);
-    tm_properties_view_api = reg->get(TM_PROPERTIES_VIEW_API_NAME);
-    tm_os_api = reg->get(TM_OS_API_NAME);
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME, &asset_browser_create_my_asset);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c}}
 ```
 
 
