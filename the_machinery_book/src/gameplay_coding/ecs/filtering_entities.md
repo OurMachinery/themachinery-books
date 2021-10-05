@@ -31,22 +31,7 @@ Let us assume we have the following entities:
 Now we have a Engine that shall operate on `(Component A,Component B)` but we do not want it to operate on entities with `Component D` we could just check in our update loop:
 
 ```c
-// Runs on (component a, comnponent b)
-static void engine_update__custom_component(tm_engine_o* inst, tm_engine_update_set_t* data)
-{
-    struct tm_entity_context_o* ctx = (struct tm_entity_context_o*)inst;
-// code
-    for (tm_engine_update_array_t* a = data->arrays; a < data->arrays + data->num_arrays; ++a) {
-//.. code
-        for (uint32_t i = 0; i < a->n; ++i) {
-            // if the entity has no component it returns a NULL pointer 
-            if(!tm_entity_api->get_component_by_hash(ctx,a->entities[i],TM_TYPE_HASH__COMPONENT_D)){
-                //..code
-            }
-        }
-    }
-//...code
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:35:54}}
 ```
 
 or we could define a component mask and use this to filter but both methods are slow. This is because `get_component_by_hash` or `get_component` require us to look up internally the entity + the components and search for them. Its aka a random memory access! 
@@ -54,18 +39,7 @@ or we could define a component mask and use this to filter but both methods are 
 To avoid all of this we can just tell the engine to ignore all entity types which contain the `component_d` via the `.excluded` fied in the `tm_engine_i`.
 
 ```` c
-    const tm_engine_i my_system = {
-        .ui_name = "my_system",
-        .hash = TM_STATIC_HASH("movement_engine", 0x336880a23d06646dULL),
-        .num_components = 2,
-        .components = { component_a, component_b },
-        .writes = { false, true},
-        .excluded = { component_d },
-        .num_excluded = 1,
-        .update = movement_update,
-        .inst = (tm_engine_o *)ctx,
-    };
-    tm_entity_api->register_engine(ctx, &movement_engine);
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:42:53}}
 ````
 
 ## Filtering Entities by using Tag Components
@@ -83,52 +57,19 @@ To solve this issue you could remove the Movement Component but that would be an
 First you define the component:
 
 ```c
-#define TM_TT_TYPE__PLAYER_NO_MOVE_TAG_COMPONENT "tm_player_no_move_t"
-#define TM_TT_HASH__PLAYER_NO_MOVE_TAG_COMPONENT TM_STATIC_HASH("tm_player_no_move_t", 0xc58cb6ade683ca88ULL)
-static void component__create(struct tm_entity_context_o *ctx)
-{
-       tm_component_i component = (tm_component_i){
-        .name = TM_TT_TYPE__PLAYER_NO_MOVE_TAG_COMPONENT,
-        .bytes = sizeof(uint64_t), // since we do not care of its content we can just pick any 8 byte type
-    };
-    tm_entity_api->register_component(ctx, &component);
-}
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:56:65}}
 ```
 
 Then you filter in your update for the Input Engine/ Movement Engine any Entity that has a No Movement Tag:
 
 ```c
-    const tm_engine_i movement_engine = {
-        .ui_name = "movement_engine",
-        .hash = TM_STATIC_HASH("movement_engine", 0x336880a23d06646dULL),
-        .num_components = 3,
-        .components = { movement_component, transform_component, mover_component },
-        .writes = { false, true, true },
-        .excluded = { no_movement_tag_component },
-        .num_excluded = 1,
-        .update = movement_update,
-        .inst = (tm_engine_o *)ctx,
-    };
-    tm_entity_api->register_engine(ctx, &movement_engine);
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:69:85}}
 ```
 
 When ever another `engine/system` decides that a entity should not move anymore it just adds a `no_movement_tag_component` to the entity.
 
 ```c
-static void my_other_system(tm_engine_o *inst, tm_engine_update_set_t *data)
-{
-    // code ..
-	for (tm_engine_update_array_t *a = data->arrays; a < data->arrays + data->num_arrays; ++a) {
-    // code...
-    for (uint32_t x = 0; x < a->n; ++x) {
-        // code...
-        if(player_should_not_walk_anymore){
-             tm_entity_api->add_component(ctx, d->entities[i], no_movement);
-        }
-    }
-    }
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:90:107}}
 ```
 
 As you an see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.

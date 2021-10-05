@@ -42,16 +42,7 @@ Those answers are important for the automatic scheduling of the Systems/Engines.
 ## Example 
 
 ```c
-    const tm_engine_i movement_engine = {
-        .ui_name = "movement_engine",
-        .hash = TM_STATIC_HASH("movement_engine", 0x336880a23d06646dULL),
-        .num_components = 4,
-        .components = { keyboard_component, movement_component, transform_component, mover_component },
-        .writes = { false, false, true, true },
-        .update = movement_update,
-        .inst = (tm_engine_o *)ctx,
-    };
-    tm_entity_api->register_engine(ctx, &movement_engine);
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_system_engine.c:22:30}}
 ```
 
 This movement engine will operate on:

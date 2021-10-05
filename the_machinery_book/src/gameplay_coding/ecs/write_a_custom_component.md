@@ -26,151 +26,7 @@ After this, we see that the Engine created some files for us. Now we need to ens
 Now we can open the `.c` file with our favourite IDE. The file will contain the following content:
 
 ```c
-static struct tm_entity_api* tm_entity_api;
-static struct tm_transform_component_api* tm_transform_component_api;
-static struct tm_temp_allocator_api* tm_temp_allocator_api;
-static struct tm_the_truth_api* tm_the_truth_api;
-static struct tm_localizer_api* tm_localizer_api;
-
-#include <plugins/entity/entity.h>
-#include <plugins/entity/transform_component.h>
-#include <plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h>
-
-#include <foundation/api_registry.h>
-#include <foundation/carray.inl>
-#include <foundation/localizer.h>
-#include <foundation/math.inl>
-#include <foundation/the_truth.h>
-
-#define TM_TT_TYPE__CUSTOM_COMPONENT "tm_custom_component"
-#define TM_TT_TYPE_HASH__CUSTOM_COMPONENT TM_STATIC_HASH("tm_custom_component", 0x355309758b21930cULL)
-
-enum {
-    TM_TT_PROP__CUSTOM_COMPONENT__FREQUENCY, // float
-    TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE, // float
-};
-
-struct tm_custom_component_t {
-    float y0;
-    float frequency;
-    float amplitude;
-};
-
-static const char* component__category(void)
-{
-    return TM_LOCALIZE("Samples");
-}
-
-static tm_ci_editor_ui_i* editor_aspect = &(tm_ci_editor_ui_i){
-    .category = component__category
-};
-
-static void truth__create_types(struct tm_the_truth_o* tt)
-{
-    tm_the_truth_property_definition_t custom_component_properties[] = {
-        [TM_TT_PROP__CUSTOM_COMPONENT__FREQUENCY] = { "frequency", TM_THE_TRUTH_PROPERTY_TYPE_FLOAT },
-        [TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE] = { "amplitude", TM_THE_TRUTH_PROPERTY_TYPE_FLOAT },
-    };
-
-    const tm_tt_type_t custom_component_type = tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__CUSTOM_COMPONENT, custom_component_properties, TM_ARRAY_COUNT(custom_component_properties));
-    const tm_tt_id_t default_object = tm_the_truth_api->quick_create_object(tt, TM_TT_NO_UNDO_SCOPE, TM_TT_TYPE_HASH__CUSTOM_COMPONENT, TM_TT_PROP__CUSTOM_COMPONENT__FREQUENCY, 1.0f, TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE, 1.0f, -1);
-    tm_the_truth_api->set_default_object(tt, custom_component_type, default_object);
-
-    tm_the_truth_api->set_aspect(tt, custom_component_type, TM_CI_EDITOR_UI, editor_aspect);
-}
-
-static bool component__load_asset(tm_component_manager_o* man, tm_entity_t e, void* c_vp, const tm_the_truth_o* tt, tm_tt_id_t asset)
-{
-    struct tm_custom_component_t* c = c_vp;
-    const tm_the_truth_object_o* asset_r = tm_tt_read(tt, asset);
-    c->y0 = 0;
-    c->frequency = tm_the_truth_api->get_float(tt, asset_r, TM_TT_PROP__CUSTOM_COMPONENT__FREQUENCY);
-    c->amplitude = tm_the_truth_api->get_float(tt, asset_r, TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE);
-    return true;
-}
-
-static void component__create(struct tm_entity_context_o* ctx)
-{
-    tm_component_i component = {
-        .name = TM_TT_TYPE__CUSTOM_COMPONENT,
-        .bytes = sizeof(struct tm_custom_component_t),
-        .load_asset = component__load_asset,
-    };
-
-    tm_entity_api->register_component(ctx, &component);
-}
-
-// Runs on (custom_component, transform_component)
-static void engine_update__custom_component(tm_engine_o* inst, tm_engine_update_set_t* data)
-{
-    TM_INIT_TEMP_ALLOCATOR(ta);
-
-    tm_entity_t* mod_transform = 0;
-
-    struct tm_entity_context_o* ctx = (struct tm_entity_context_o*)inst;
-
-    double t = 0;
-    for (const tm_entity_blackboard_value_t* bb = data->blackboard_start; bb != data->blackboard_end; ++bb) {
-        if (TM_STRHASH_EQUAL(bb->id, TM_ENTITY_BB__TIME))
-            t = bb->double_value;
-    }
-
-    for (tm_engine_update_array_t* a = data->arrays; a < data->arrays + data->num_arrays; ++a) {
-        struct tm_custom_component_t* custom_component = a->components[0];
-        tm_transform_component_t* transform = a->components[1];
-
-        for (uint32_t i = 0; i < a->n; ++i) {
-            if (!custom_component[i].y0)
-                custom_component[i].y0 = transform[i].world.pos.y;
-            const float y = custom_component[i].y0 + custom_component[i].amplitude * sinf((float)t * custom_component[i].frequency);
-
-            transform[i].world.pos.y = y;
-            ++transform[i].version;
-            tm_carray_temp_push(mod_transform, a->entities[i], ta);
-        }
-    }
-
-    tm_entity_api->notify(ctx, data->engine->components[1], mod_transform, (uint32_t)tm_carray_size(mod_transform));
-
-    TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-}
-
-static bool engine_filter__custom_component(tm_engine_o* inst, const tm_component_type_t* components, uint32_t num_components, const tm_component_mask_t* mask)
-{
-    return tm_entity_mask_has_component(mask, components[0]) && tm_entity_mask_has_component(mask, components[1]);
-}
-
-static void component__register_engine(struct tm_entity_context_o* ctx)
-{
-    const tm_component_type_t custom_component = tm_entity_api->lookup_component_type(ctx, TM_TT_TYPE_HASH__CUSTOM_COMPONENT);
-    const tm_component_type_t transform_component = tm_entity_api->lookup_component_type(ctx, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
-
-    const tm_engine_i custom_component_engine = {
-        .ui_name = "Custom Component",
-        .hash  = TM_STATIC_HASH("CUSTOM_COMPONENT", 0xe093a8316a6c2d29ULL),
-        .num_components = 2,
-        .components = { custom_component, transform_component },
-        .writes = { false, true },
-        .update = engine_update__custom_component,
-        .filter = engine_filter__custom_component,
-        .inst = (tm_engine_o*)ctx,
-    };
-    tm_entity_api->register_engine(ctx, &custom_component_engine);
-}
-
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
-{
-    tm_entity_api = reg->get(TM_ENTITY_API_NAME);
-    tm_transform_component_api = reg->get(TM_TRANSFORM_COMPONENT_API_NAME);
-    tm_the_truth_api = reg->get(TM_THE_TRUTH_API_NAME);
-    tm_temp_allocator_api = reg->get(TM_TEMP_ALLOCATOR_API_NAME);
-    tm_localizer_api = reg->get(TM_LOCALIZER_API_NAME);
-
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, truth__create_types);
-    tm_add_or_remove_implementation(reg, load, TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME, component__create);
-    tm_add_or_remove_implementation(reg, load, TM_ENTITY_SIMULATION_REGISTER_ENGINES_INTERFACE_NAME, component__register_engine);
-}
-
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c}}
 ```
 
 
@@ -184,21 +40,7 @@ Let us dissect the code structure and discuss all the points of interest.
 The file begins with all includes and API definitions: 
 
 ```c
-static struct tm_entity_api* tm_entity_api;
-static struct tm_transform_component_api* tm_transform_component_api;
-static struct tm_temp_allocator_api* tm_temp_allocator_api;
-static struct tm_the_truth_api* tm_the_truth_api;
-static struct tm_localizer_api* tm_localizer_api;
-
-#include <plugins/entity/entity.h>
-#include <plugins/entity/transform_component.h>
-#include <plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h>
-
-#include <foundation/api_registry.h>
-#include <foundation/carray.inl>
-#include <foundation/localizer.h>
-#include <foundation/math.inl>
-#include <foundation/the_truth.h>
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:0:15}}
 ```
 
 The code will fill the API definitions with life in the `tm_load_plugin` function.
@@ -210,19 +52,7 @@ The next part contains the Truth Definition of the component and the plain old d
 > Note: All components should be plain old datatypes.
 
 ```c
-#define TM_TT_TYPE__CUSTOM_COMPONENT "tm_custom_component"
-#define TM_TT_TYPE_HASH__CUSTOM_COMPONENT TM_STATIC_HASH("tm_custom_component", 0x355309758b21930cULL)
-
-enum {
-    TM_TT_PROP__CUSTOM_COMPONENT__FREQUENCY, // float
-    TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE, // float
-};
-
-struct tm_custom_component_t {
-    float y0;
-    float frequency;
-    float amplitude;
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:17:31}}
 ```
 
 
@@ -236,14 +66,7 @@ We need to define a `tm_ci_editor_ui_i` object which uses this function.  Later 
 > **Note:** More about aspects you can read in the [aspects guide](#).
 
 ```c 
-static const char* component__category(void)
-{
-    return TM_LOCALIZE("Samples");
-}
-
-static tm_ci_editor_ui_i* editor_aspect = &(tm_ci_editor_ui_i){
-    .category = component__category
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:33:40}}
 ```
 
 
@@ -255,19 +78,7 @@ In this region, we create our component truth type. It is important to remember 
 Let us take this code apart one more time:
 
 ```c
-static void truth__create_types(struct tm_the_truth_o* tt)
-{
-    tm_the_truth_property_definition_t custom_component_properties[] = {
-        [TM_TT_PROP__CUSTOM_COMPONENT__FREQUENCY] = { "frequency", TM_THE_TRUTH_PROPERTY_TYPE_FLOAT },
-        [TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE] = { "amplitude", TM_THE_TRUTH_PROPERTY_TYPE_FLOAT },
-    };
-
-    const tm_tt_type_t custom_component_type = tm_the_truth_api->create_object_type(tt, TM_TT_TYPE__CUSTOM_COMPONENT, custom_component_properties, TM_ARRAY_COUNT(custom_component_properties));
-    const tm_tt_id_t default_object = tm_the_truth_api->quick_create_object(tt, TM_TT_NO_UNDO_SCOPE, TM_TT_TYPE_HASH__CUSTOM_COMPONENT, TM_TT_PROP__CUSTOM_COMPONENT__FREQUENCY, 1.0f, TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE, 1.0f, -1);
-    tm_the_truth_api->set_default_object(tt, custom_component_type, default_object);
-
-    tm_the_truth_api->set_aspect(tt, custom_component_type, TM_CI_EDITOR_UI, editor_aspect);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:41:53}}
 ```
 
 1. We define the component's properties.
@@ -279,7 +90,7 @@ static void truth__create_types(struct tm_the_truth_o* tt)
 
 ### Define your component
 
-You an register a component to the `TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME` in your plugin load function. This interface expects a function pointer to a create component function of the signature: `void tm_entity_create_component_i(struct tm_entity_context_o *ctx)`.
+You an register a component to the `tm_entity_create_component_i` in your plugin load function. This interface expects a function pointer to a create component function of the signature: `void tm_entity_create_component_i(struct tm_entity_context_o *ctx)`.
 
 The Engine will call this function whenever it creates a new Entity Context to populate the context with all the known components. It usually happens at the beginning of the Simulation.
 
@@ -290,30 +101,13 @@ Within this function, you can define your component and register it to the conte
 - A load asset function
 
 ```c
-static void component__create(struct tm_entity_context_o* ctx)
-{
-    tm_component_i component = {
-        .name = TM_TT_TYPE__CUSTOM_COMPONENT,
-        .bytes = sizeof(struct tm_custom_component_t),
-        .load_asset = component__load_asset,
-    };
-
-    tm_entity_api->register_component(ctx, &component);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:65:74}}
 ```
 
 As mentioned before, the Truth does not reflect the runtime data and only holds the data you can edit in the Editor. This is why there needs to be some translation between The Truth and the ECS. This magic is happening in the `tm_component_i.load_asset()`. This function allows you to translate a `tm_tt_id_t` asset to the plain old data of the component.
 
 ```c
-static bool component__load_asset(tm_component_manager_o* man, tm_entity_t e, void* c_vp, const tm_the_truth_o* tt, tm_tt_id_t asset)
-{
-    struct tm_custom_component_t* c = c_vp;
-    const tm_the_truth_object_o* asset_r = tm_tt_read(tt, asset);
-    c->y0 = 0;
-    c->frequency = tm_the_truth_api->get_float(tt, asset_r, TM_TT_PROP__CUSTOM_COMPONENT__FREQUENCY);
-    c->amplitude = tm_the_truth_api->get_float(tt, asset_r, TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE);
-    return true;
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:55:63}}
 ```
 
 The first step is that we cast the given `void*` of the component data `c_vp` to the correct data type. After that, we load the data from the Truth and store it in the component. In the end, we return true because no error occurred.
@@ -331,40 +125,7 @@ The first step is that we cast the given `void*` of the component data `c_vp` to
 This next section of the code is about defining an Engine.
 
 ```c
-// Runs on (custom_component, transform_component)
-static void engine_update__custom_component(tm_engine_o* inst, tm_engine_update_set_t* data)
-{
-    TM_INIT_TEMP_ALLOCATOR(ta);
-
-    tm_entity_t* mod_transform = 0;
-
-    struct tm_entity_context_o* ctx = (struct tm_entity_context_o*)inst;
-
-    double t = 0;
-    for (const tm_entity_blackboard_value_t* bb = data->blackboard_start; bb != data->blackboard_end; ++bb) {
-        if (TM_STRHASH_EQUAL(bb->id, TM_ENTITY_BB__TIME))
-            t = bb->double_value;
-    }
-
-    for (tm_engine_update_array_t* a = data->arrays; a < data->arrays + data->num_arrays; ++a) {
-        struct tm_custom_component_t* custom_component = a->components[0];
-        tm_transform_component_t* transform = a->components[1];
-
-        for (uint32_t i = 0; i < a->n; ++i) {
-            if (!custom_component[i].y0)
-                custom_component[i].y0 = transform[i].world.pos.y;
-            const float y = custom_component[i].y0 + custom_component[i].amplitude * sinf((float)t * custom_component[i].frequency);
-
-            transform[i].world.pos.y = y;
-            ++transform[i].version;
-            tm_carray_temp_push(mod_transform, a->entities[i], ta);
-        }
-    }
-
-    tm_entity_api->notify(ctx, data->engine->components[1], mod_transform, (uint32_t)tm_carray_size(mod_transform));
-
-    TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:76:112}}
 ```
 
 
@@ -374,12 +135,7 @@ The first thing we do is use a temp allocator for any future allocation that wil
 The next step is to get the time from the Blackboard Values. 
 
 ```c
-
-double t = 0;
-for (const tm_entity_blackboard_value_t* bb = data->blackboard_start; bb != data->blackboard_end; ++bb) {
-        if (TM_STRHASH_EQUAL(bb->id, TM_ENTITY_BB__TIME))
-            t = bb->double_value;
-    }
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:85:90}}
 ```
 
 
@@ -402,21 +158,7 @@ The Engine provides a bunch of useful Blackboard values. They are defined in the
 The `tm_engine_update_set_t` gives us access to the needed data, and we can modify our component. The first important information we get are the number of entity types (also known Archetypes). This number is stored in `data->num_arrays`. Now that we know this information we can iterate over them and access the components per entity type. `tm_engine_update_array_t a =  data->arrays` (Gives us the current entity type's components). `a->n` is the number of matching components / entities of this entity type.
 
 ```c
-
-    for (tm_engine_update_array_t* a = data->arrays; a < data->arrays + data->num_arrays; ++a) {
-        struct tm_custom_component_t* custom_component = a->components[0];
-        tm_transform_component_t* transform = a->components[1];
-
-        for (uint32_t i = 0; i < a->n; ++i) {
-            if (!custom_component[i].y0)
-                custom_component[i].y0 = transform[i].world.pos.y;
-            const float y = custom_component[i].y0 + custom_component[i].amplitude * sinf((float)t * custom_component[i].frequency);
-
-            transform[i].world.pos.y = y;
-            ++transform[i].version;
-            tm_carray_temp_push(mod_transform, a->entities[i], ta);
-        }
-    }
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:92:107}}
 ```
 
 > **Note**: In case you are not that familiar with C this loop:
@@ -437,30 +179,14 @@ As the last step, we add a notifier function call to notify all entities that th
 
 ### Register your Engine to the system
 
-You an register a component to the `TM_ENTITY_SIMULATION_REGISTER_ENGINES_INTERFACE_NAME` in your plugin load function. This interface expects a function pointer to a create component function of the signature: `void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)`. 
+You an register a component to the `tm_entity_register_engines_simulation_i` in your plugin load function. This interface expects a function pointer to a create component function of the signature: `void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)`. 
 
 
 
 The function itself looks as follows:
 
 ```c
-static void component__register_engine(struct tm_entity_context_o* ctx)
-{
-    const tm_component_type_t custom_component = tm_entity_api->lookup_component_type(ctx, TM_TT_TYPE_HASH__CUSTOM_COMPONENT);
-    const tm_component_type_t transform_component = tm_entity_api->lookup_component_type(ctx, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
-
-    const tm_engine_i custom_component_engine = {
-        .ui_name = "Custom Component",
-        .hash  = TM_STATIC_HASH("CUSTOM_COMPONENT", 0xe093a8316a6c2d29ULL),
-        .num_components = 2,
-        .components = { custom_component, transform_component },
-        .writes = { false, true },
-        .update = engine_update__custom_component,
-        .filter = engine_filter__custom_component,
-        .inst = (tm_engine_o*)ctx,
-    };
-    tm_entity_api->register_engine(ctx, &custom_component_engine);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:119:135}}
 ```
 
 The first thing we do is looking up the component type. Did we register the type? If not, we will not get the correct type. Here we are using the name we defined beforehand in our component create function.
@@ -478,10 +204,7 @@ Then we tell the system how many components the Engine shall operate on and whic
 At last, we provide the needed update function, which we have discussed earlier, and a filter function.
 
 ```c
-static bool engine_filter__custom_component(tm_engine_o* inst, const tm_component_type_t* components, uint32_t num_components, const tm_component_mask_t* mask)
-{
-    return tm_entity_mask_has_component(mask, components[0]) && tm_entity_mask_has_component(mask, components[1]);
-}
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:114:117}}
 ```
 
 
@@ -503,18 +226,6 @@ The last thing the register function needs to do is register the Engine to the E
 The most important lines here are the once in which we register our truth types, the component and the engine.
 
 ```c
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
-{
-    tm_entity_api = reg->get(TM_ENTITY_API_NAME);
-    tm_transform_component_api = reg->get(TM_TRANSFORM_COMPONENT_API_NAME);
-    tm_the_truth_api = reg->get(TM_THE_TRUTH_API_NAME);
-    tm_temp_allocator_api = reg->get(TM_TEMP_ALLOCATOR_API_NAME);
-    tm_localizer_api = reg->get(TM_LOCALIZER_API_NAME);
-
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, truth__create_types);
-    tm_add_or_remove_implementation(reg, load, TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME, component__create);
-    tm_add_or_remove_implementation(reg, load, TM_ENTITY_SIMULATION_REGISTER_ENGINES_INTERFACE_NAME, component__register_engine);
-}
-
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:137:148}}
 ```
 

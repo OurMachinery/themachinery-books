@@ -9,13 +9,7 @@ In order for your code to execute using a simulation entry you need two things. 
 Define a `tm_simulation_entry_i` in a plugin like this:
 
 ```c
-static tm_simulation_entry_i simulation_entry_i = {
-    .id = TM_STATIC_HASH("tm_my_game_simulation_entry", 0x2d5f7dad50097045ULL),
-    .display_name = TM_LOCALIZE_LATER("My Game Simulate Entry"),
-    .start = start,
-    .stop = stop,
-    .tick = tick,
-};
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/simulation_entry.c:52:59}}
 ```
 
 Where `start`, `stop` and `tick` are functions that are run when the simulation starts, stop and each frame respectively. Make sure that `id` is a unique identifier.
@@ -24,10 +18,10 @@ Where `start`, `stop` and `tick` are functions that are run when the simulation 
 
 > **Note:** to generate the `TM_STATIC_HASH` you need to run `hash.exe` or `tmbuild.exe --gen-hash` for more info open the [hash.exe guide]({{the_machinery_book}}/helper_tools/hash.html)
 
-When your plugin loads (each plugin has a `tm_load_plugin` function), make sure to register this implementation of `tm_simulation_entry_i` on the `TM_SIMULATION_ENTRY_INTERFACE_NAME` interface name, like so:
+When your plugin loads (each plugin has a `tm_load_plugin` function), make sure to register this implementation of `tm_simulation_entry_i` on the `tm_simulation_entry_i` interface name, like so:
 
 ```c
-tm_add_or_remove_implementation(reg, load, TM_SIMULATION_ENTRY_INTERFACE_NAME, &simulation_entry_i);
+tm_add_or_remove_implementation(reg, load, tm_simulation_entry_i, &simulation_entry_i);
 ```
 
 When this is done and your plugin is loaded, you can add a Simulation Entry Component to any entity and select your registered implementation. Now, whenever you run a simulation (using Simulate Tab or from a Published build) where this entity is present, your code will run.
@@ -39,3 +33,12 @@ The same Simulation Entry interface can be used from multiple Simulation Entry C
 ## What happens under the hood?
 
 When the Simulation Entry Component is loaded within the Simulate Tab or Runner, it will set up an entity system. This system will run your start, stop and tick functions. You may then ask, what is the difference between using a Simulation Entry and just registering a system from your plugin? The answer is the lifetime of the code. If you register a system from your plugin, then that system will run no matter what entity is spawned whereas the Simulation Entry Component will add and remove the system that runs your code when the entity is spawned and despawned.
+
+
+
+## Example: Source Code
+
+```c
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/simulation_entry.c}}
+```
+
