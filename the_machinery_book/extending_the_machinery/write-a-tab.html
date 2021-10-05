@@ -212,7 +212,7 @@ static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
     return &quot;Custom Tab&quot;;
 }
 
-static tm_tab_vt *vt = 0;
+static tm_tab_vt *custom_tab_vt;
 
 static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
 {
@@ -222,7 +222,7 @@ static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
     tm_tab_o *tab = tm_alloc(&amp;allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
-            .vt = vt,
+            .vt = custom_tab_vt,
             .inst = (tm_tab_o *)tab,
             .root_id = *id,
         },
@@ -367,7 +367,7 @@ static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
 <blockquote>
 <p><strong>Note:</strong> for more information check <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_create_context_t">tm_tab_create_context_t</a>'s documentation.</p>
 </blockquote>
-<pre><code class="language-c">static tm_tab_vt *vt = 0;
+<pre><code class="language-c">static tm_tab_vt *custom_tab_vt;
 
 static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
 {
@@ -377,7 +377,7 @@ static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
     tm_tab_o *tab = tm_alloc(&amp;allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
-            .vt = vt,
+            .vt = custom_tab_vt,
             .inst = (tm_tab_o *)tab,
             .root_id = *id,
         },
@@ -392,7 +392,7 @@ static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
 <pre><code class="language-c">    tm_tab_o *tab = tm_alloc(&amp;allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
-            .vt = vt,
+            .vt = custom_tab_vt,
             .inst = (tm_tab_o *)tab,
             .root_id = *id,
         },

@@ -162,31 +162,29 @@
 <p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1" alt="" /></p>
 <p>We open the <code>custom_tab.c</code> (or however we called it) file with our favorite editor.</p>
 <p>We search for the line in which we define the tab itself:</p>
-<pre><code class="language-c">//...code
-static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
+<pre><code class="language-c">static tm_tab_vt *custom_tab_vt = &amp;(tm_tab_vt){
     .name = TM_CUSTOM_TAB_VT_NAME,
     .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
     .create_menu_name = tab__create_menu_name,
     .create = tab__create,
     .destroy = tab__destroy,
     .title = tab__title,
-    .ui = tab__ui
+    .ui = tab__ui,
 };
-//...code
 </code></pre>
 <p>To our definition, we add a <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()"><code>toolbars()</code></a>. This function returns a C-Array of toolbar definitions.  The array is allocated with the passed in the temporary allocator.</p>
 <blockquote>
 <p><strong>Note:</strong> A temporary allocator (<a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html">tm_temp_allocator_api</a>) Provides a system for temporary memory allocations. I.e., short-lived memory allocations that are automatically freed when the allocator is destroyed. Temp allocators typically use a pointer bump allocator to allocate memory from one or more big memory blocks and then free the entire block when the allocator is destroyed.</p>
-<p><strong>Important:</strong> You need to include  the api first<code>#include &lt;foundation/temp_allocator.h&gt;</code> and get the api from the registry!</p>
+<p><strong>Important:</strong> You need to include  the api first <code>#include &lt;foundation/temp_allocator.h&gt;</code> and get the api from the registry!</p>
 </blockquote>
-<pre><code class="language-c">static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
+<pre><code class="language-c">static tm_tab_vt *custom_tab_vt_toolbars = &amp;(tm_tab_vt){
     .name = TM_CUSTOM_TAB_VT_NAME,
     .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
     .create_menu_name = tab__create_menu_name,
     .create = tab__create,
     .destroy = tab__destroy,
     .title = tab__title,
-    .ui = tab__ui
+    .ui = tab__ui,
     .toolbars = tab__toolbars, // we added this line
 };
 </code></pre>
@@ -208,9 +206,9 @@ static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
 <p><strong>Note:</strong> For a complete list please check the <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i">documentation</a></p>
 </blockquote>
 <table><thead><tr><th>Mask</th><th>Description</th></tr></thead><tbody>
-<tr><td>TM_TOOLBAR_DRAW_MODE_HORIZONTAL</td><td>You an draw the toolbar horizontal.</td></tr>
-<tr><td>TM_TOOLBAR_DRAW_MODE_VERTICAL</td><td>You an draw the toolbar vertical.</td></tr>
-<tr><td>TM_TOOLBAR_DRAW_MODE_WIDGET</td><td>The toolbar is an overlay</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode">TM_TOOLBAR_DRAW_MODE_HORIZONTAL</a></td><td>You an draw the toolbar horizontal.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode">TM_TOOLBAR_DRAW_MODE_VERTICAL</a></td><td>You an draw the toolbar vertical.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode">TM_TOOLBAR_DRAW_MODE_WIDGET</a></td><td>The toolbar is an overlay</td></tr>
 </tbody></table>
 <p>Let us provide the essential things:</p>
 <ol>
@@ -220,23 +218,25 @@ static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
 </ol>
 <pre><code class="language-c">static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab, tm_temp_allocator_i *ta)
 {
-struct tm_toolbar_i *toolbars = 0;
+    struct tm_toolbar_i *toolbars = 0;
     tm_carray_temp_push(toolbars,
-        ((tm_toolbar_i){
-            .id = TM_STRHASH_U64(TM_STATIC_HASH(&quot;my_tab&quot;, 0xcffc3169d97098acULL)),
-            .ui = ui,
-            .draw_mode_mask = TM_TOOLBAR_DRAW_MODE_HORIZONTAL | TM_TOOLBAR_DRAW_MODE_VERTICAL,
-        }),
-        ta);
+                        ((tm_toolbar_i){
+                            .id = TM_STRHASH_U64(TM_STATIC_HASH(&quot;my_tab&quot;, 0x833aa53d363283b5ULL)),
+                            .ui = toolbar__ui,
+                            .draw_mode_mask = TM_TOOLBAR_DRAW_MODE_HORIZONTAL | TM_TOOLBAR_DRAW_MODE_VERTICAL,
+                        }),
+                        ta);
+    return toolbars;
 }
 </code></pre>
 <p>In our UI function, we can add the button via the [<a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api">tm_ui_api</a>](https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api). Then log the string &quot;Hello World&quot; to the screen with the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#log.h">logger API</a>.</p>
 <blockquote>
 <p><strong>Note:</strong> You need include the <code>plugins/ui/ui.h</code> and the <code>foundation/log.h</code> as well as get the API's first!</p>
 </blockquote>
-<pre><code class="language-c">static tm_rect_t ui(tm_toolbar_i *toolbar, struct tm_ui_o *ui, const struct tm_ui_style_t *uistyle, tm_rect_t toolbar_r, enum tm_toolbar_draw_mode dm)
+<pre><code class="language-c">static tm_rect_t toolbar__ui(tm_toolbar_i *toolbar, struct tm_ui_o *ui, const struct tm_ui_style_t *uistyle, tm_rect_t toolbar_r, enum tm_toolbar_draw_mode dm)
 {
-    // TODO: add code
+    // ui code...
+    return toolbar_r;
 }
 </code></pre>
 <h2 id="tab-overlays"><a class="header" href="#tab-overlays">Tab Overlays</a></h2>

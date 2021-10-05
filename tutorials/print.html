@@ -353,30 +353,30 @@ pixel_shader: {
 </blockquote>
 <pre><code class="language-c">static void random_node__run(tm_creation_graph_interpreter_context_t *ctx)
 {
-	tm_creation_graph_interpreter_wire_content_t max_wire = tm_creation_graph_interpreter_api-&gt;read_wire(ctx-&gt;instance, ctx-&gt;wires[0]);
-	if (!TM_ASSERT(max_wire.n, tm_error_api-&gt;def, &quot;Max wire was not connected to random node!&quot;))
-		return;
+    tm_creation_graph_interpreter_wire_content_t max_wire = tm_creation_graph_interpreter_api-&gt;read_wire(ctx-&gt;instance, ctx-&gt;wires[0]);
+    if (!TM_ASSERT(max_wire.n, tm_error_api-&gt;def, &quot;Max wire was not connected to random node!&quot;))
+        return;
 
-	uint32_t *res = (uint32_t *)tm_creation_graph_interpreter_api-&gt;write_wire(ctx-&gt;instance, ctx-&gt;wires[1], TM_TT_TYPE_HASH__UINT32_T, 1, sizeof(uint32_t));
-	*res = tm_random_to_uint32_t(tm_random_api-&gt;next()) % *(uint32_t *)max_wire.data;
+    uint32_t *res = (uint32_t *)tm_creation_graph_interpreter_api-&gt;write_wire(ctx-&gt;instance, ctx-&gt;wires[1], TM_TT_TYPE_HASH__UINT32_T, 1, sizeof(uint32_t));
+    *res = tm_random_to_uint32_t(tm_random_api-&gt;next()) % *(uint32_t *)max_wire.data;
 }
 </code></pre>
 <p>We need to register this node to the creation graph API. This is done through the creation graph node interface. We define the general information to the node like its <code>name</code>, <code>display_name</code> and I/O connectors (wires), and the actual function to run.</p>
 <pre><code class="language-c">static tm_creation_graph_node_type_i random_node = {
-	.name = &quot;tm_random&quot;,
-	.display_name = &quot;Random Uint&quot;,
-	.static_connectors.in = {
-		{ .name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T }
-	},
-	.static_connectors.num_in = 1,
-	.static_connectors.out = {
-		{ .name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T }
-	},
-	.static_connectors.num_out = 1,
-	.run = random_node__run
+    .name = &quot;tm_random&quot;,
+    .display_name = &quot;Random Uint&quot;,
+    .static_connectors.in = {
+        {.name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T},
+    },
+    .static_connectors.num_in = 1,
+    .static_connectors.out = {
+        {.name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T},
+    },
+    .static_connectors.num_out = 1,
+    .run = random_node__run,
 };
-
-tm_add_or_remove_implementation(reg, load, TM_CREATION_GRAPH_NODE_INTERFACE_NAME, &amp;random_node);
+// register in the load function
+    tm_add_or_remove_implementation(reg, load, tm_creation_graph_node_type_i, &amp;random_node);
 </code></pre>
 <p>This is the full code to define this creation graph CPU node.</p>
 <pre><code class="language-c">static struct tm_error_api *tm_error_api;
@@ -394,35 +394,35 @@ static struct tm_creation_graph_interpreter_api *tm_creation_graph_interpreter_a
 
 static void random_node__run(tm_creation_graph_interpreter_context_t *ctx)
 {
-	tm_creation_graph_interpreter_wire_content_t max_wire = tm_creation_graph_interpreter_api-&gt;read_wire(ctx-&gt;instance, ctx-&gt;wires[0]);
-	if (!TM_ASSERT(max_wire.n, tm_error_api-&gt;def, &quot;Max wire was not connected to random node!&quot;))
-		return;
+    tm_creation_graph_interpreter_wire_content_t max_wire = tm_creation_graph_interpreter_api-&gt;read_wire(ctx-&gt;instance, ctx-&gt;wires[0]);
+    if (!TM_ASSERT(max_wire.n, tm_error_api-&gt;def, &quot;Max wire was not connected to random node!&quot;))
+        return;
 
-	uint32_t *res = (uint32_t *)tm_creation_graph_interpreter_api-&gt;write_wire(ctx-&gt;instance, ctx-&gt;wires[1], TM_TT_TYPE_HASH__UINT32_T, 1, sizeof(uint32_t));
-	*res = tm_random_to_uint32_t(tm_random_api-&gt;next()) % *(uint32_t *)max_wire.data;
+    uint32_t *res = (uint32_t *)tm_creation_graph_interpreter_api-&gt;write_wire(ctx-&gt;instance, ctx-&gt;wires[1], TM_TT_TYPE_HASH__UINT32_T, 1, sizeof(uint32_t));
+    *res = tm_random_to_uint32_t(tm_random_api-&gt;next()) % *(uint32_t *)max_wire.data;
 }
 
 static tm_creation_graph_node_type_i random_node = {
-	.name = &quot;tm_random&quot;,
-	.display_name = &quot;Random Uint&quot;,
-	.static_connectors.in = {
-		{ .name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T }
-	},
-	.static_connectors.num_in = 1,
-	.static_connectors.out = {
-		{ .name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T }
-	},
-	.static_connectors.num_out = 1,
-	.run = random_node__run
+    .name = &quot;tm_random&quot;,
+    .display_name = &quot;Random Uint&quot;,
+    .static_connectors.in = {
+        {.name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T},
+    },
+    .static_connectors.num_in = 1,
+    .static_connectors.out = {
+        {.name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T},
+    },
+    .static_connectors.num_out = 1,
+    .run = random_node__run,
 };
 
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-	tm_error_api = reg-&gt;get(TM_ERROR_API_NAME);
-	tm_random_api = reg-&gt;get(TM_RANDOM_API_NAME);
-	tm_creation_graph_interpreter_api = reg-&gt;get(TM_CREATION_GRAPH_INTERPRETER_API_NAME);
+    tm_error_api = tm_get_api(reg, tm_error_api);
+    tm_random_api = tm_get_api(reg, tm_random_api);
+    tm_creation_graph_interpreter_api = tm_get_api(reg, tm_creation_graph_interpreter_api);
 
-	tm_add_or_remove_implementation(reg, load, TM_CREATION_GRAPH_NODE_INTERFACE_NAME, &amp;random_node);
+    tm_add_or_remove_implementation(reg, load, tm_creation_graph_node_type_i, &amp;random_node);
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="calling-creation-graphs-from-code"><a class="header" href="#calling-creation-graphs-from-code">Calling creation graphs from code</a></h1>
@@ -437,90 +437,93 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p><img src="https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?dl=1" alt="" /></p>
 <h2 id="using-the-creation-graph-api"><a class="header" href="#using-the-creation-graph-api">Using the creation graph API</a></h2>
 <p>The component itself is very simple, it only has a single property which is our creation graph asset.</p>
-<pre><code class="language-c">static const tm_the_truth_property_definition_t properties[] = {
-	[TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH] = { &quot;creation_graph&quot;, TM_THE_TRUTH_PROPERTY_TYPE_SUBOBJECT, .type_hash = TM_TT_TYPE_HASH__CREATION_GRAPH }
-};
+<pre><code class="language-c">    static const tm_the_truth_property_definition_t properties[] = {
+        [TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH] = {&quot;creation_graph&quot;, TM_THE_TRUTH_PROPERTY_TYPE_SUBOBJECT, .type_hash = TM_TT_TYPE_HASH__CREATION_GRAPH}};
 </code></pre>
 <p>However multiple fields are defined in the runtime component struct, all of these are dependent on our creation graph.</p>
 <pre><code class="language-c">typedef struct tm_component_t
 {
-	// The truth ID of the creation graph subobject.
-	tm_tt_id_t creation_graph;
-	// An instance of the `creation_graph` (created in `shader_ci__init`).
-	tm_creation_graph_instance_t instance;
+    // The truth ID of the creation graph subobject.
+    tm_tt_id_t creation_graph;
+    // An instance of the `creation_graph` (created in `shader_ci__init`).
+    tm_creation_graph_instance_t instance;
 
-	// The handle to the output image.
-	tm_renderer_handle_t image_handle;
-	// The resource state of the output image.
-	uint32_t resource_state;
-	// The description of the output image.
-	tm_renderer_image_desc_t desc;
-	// The name of the output image.
-	tm_strhash_t name;
+    // The handle to the output image.
+    tm_renderer_handle_t image_handle;
+    // The resource state of the output image.
+    uint32_t resource_state;
+    // The description of the output image.
+    tm_renderer_image_desc_t desc;
+    // The name of the output image.
+    tm_strhash_t name;
 } tm_component_t;
 </code></pre>
 <p>In the example we only call the creation graph once (during the initialization phase). The workflow is as follows. 
 The creation graph subobject is added by The Truth, so we don’t have to do any UI or linking code for it. 
 In the initialize function we instantiate this creation graph asset with a default context. 
 This updates our image output node and all the nodes it is dependent upon. </p>
-<pre><code class="language-c">tm_creation_graph_context_t ctx = {
-	.rb = manager-&gt;rb,
-	.device_affinity_mask = TM_RENDERER_DEVICE_AFFINITY_MASK_ALL,
-	.entity_ctx = manager-&gt;ctx,
-	.tt = tm_entity_api-&gt;the_truth(manager-&gt;ctx)
-};
+<pre><code class="language-c">    // Create the context for the creation graph, only the bare minimum is defined for this tutorial.
+    // This is not production-level code.
+    tm_creation_graph_context_t ctx = {
+        .rb = manager-&gt;rb,
+        .device_affinity_mask = TM_RENDERER_DEVICE_AFFINITY_MASK_ALL,
+        .entity_ctx = manager-&gt;ctx,
+        .tt = tm_entity_api-&gt;the_truth(manager-&gt;ctx)};
 
-for (uint32_t i = 0; i &lt; num_components; ++i) {
-	
-	// Skip any component that don't have a creation graph defined.
-	tm_component_t *cur = cdata[i];
-	if (!cur-&gt;creation_graph.u64)
-		continue;
+    for (uint32_t i = 0; i &lt; num_components; ++i)
+    {
 
-	// Instantiate the creation graph if this is the first time.
-	if (!cur-&gt;instance.graph.u64)
-		cur-&gt;instance = tm_creation_graph_api-&gt;create_instance(ctx.tt, cur-&gt;creation_graph, &amp;ctx);
-}
+        // Skip any component that don't have a creation graph defined.
+        tm_component_t *cur = cdata[i];
+        if (!cur-&gt;creation_graph.u64)
+            continue;
+
+        // Instantiate the creation graph if this is the first time.
+        if (!cur-&gt;instance.graph.u64)
+            cur-&gt;instance = tm_creation_graph_api-&gt;create_instance(ctx.tt, cur-&gt;creation_graph, &amp;ctx);
+    }
 </code></pre>
 <p>Next we query all the image output nodes from the graph, and pick the first one. This information we get from the output node is enough to copy our image to the viewport. </p>
-<pre><code class="language-c">// Query the creation graph for image outputs, if non are defined then we skip the update step.
-tm_creation_graph_output_t image_outputs = tm_creation_graph_api-&gt;output(&amp;cur-&gt;instance, TM_CREATION_GRAPH__IMAGE__OUTPUT_NODE_HASH, &amp;ctx, NULL);
-if (image_outputs.num_output_objects &gt; 0) {
-	const tm_creation_graph_image_data_t *image_data = (const tm_creation_graph_image_data_t *)image_outputs.output;
+<pre><code class="language-c">        // Query the creation graph for image outputs, if non are defined then we skip the update step.
+        tm_creation_graph_output_t image_outputs = tm_creation_graph_api-&gt;output(&amp;cur-&gt;instance, TM_CREATION_GRAPH__IMAGE__OUTPUT_NODE_HASH, &amp;ctx, NULL);
+        if (image_outputs.num_output_objects &gt; 0)
+        {
+            const tm_creation_graph_image_data_t *image_data = (const tm_creation_graph_image_data_t *)image_outputs.output;
 
-	cur-&gt;image_handle = image_data-&gt;handle;
-	cur-&gt;resource_state = image_data-&gt;resource_state;
-	cur-&gt;desc = image_data-&gt;desc;
-	cur-&gt;name = image_data-&gt;resource_name;
-}
+            cur-&gt;image_handle = image_data-&gt;handle;
+            cur-&gt;resource_state = image_data-&gt;resource_state;
+            cur-&gt;desc = image_data-&gt;desc;
+            cur-&gt;name = image_data-&gt;resource_name;
+        }
 </code></pre>
 <p>To do this we register it to the viewports render graph using <code>register_gpu_image</code> and then pass it to the <code>debug_visualization_resources</code> for easy rendering to the screen.</p>
-<pre><code class="language-c">// Loop through all components until we find one that has a valid image output.
-uint32_t i;
-const tm_component_t **cdata = (const tm_component_t **)data;
-for (i = 0; i &lt; num_components; ++i) {
-	const tm_component_t *cur = cdata[i];
-	if (!cur-&gt;image_handle.resource)
-		continue;
+<pre><code class="language-c">    // Loop through all components until we find one that has a valid image output.
+    uint32_t i;
+    const tm_component_t **cdata = (const tm_component_t **)data;
+    for (i = 0; i &lt; num_components; ++i)
+    {
+        const tm_component_t *cur = cdata[i];
+        if (!cur-&gt;image_handle.resource)
+            continue;
 
-	tm_render_graph_api-&gt;register_gpu_image(args-&gt;render_graph, cur-&gt;name, cur-&gt;image_handle, cur-&gt;resource_state, &amp;cur-&gt;desc);
-	break;
-}
+        tm_render_graph_api-&gt;register_gpu_image(args-&gt;render_graph, cur-&gt;name, cur-&gt;image_handle, cur-&gt;resource_state, &amp;cur-&gt;desc);
+        break;
+    }
 
-// None of the components had a valid image output, so skip the copy step.
-if (i == num_components)
-	return;
+    // None of the components had a valid image output, so skip the copy step.
+    if (i == num_components)
+        return;
 
-// Instead of making our own copy call, the debug visualization pass is used to copy to the viewport.
-// This is not a proper copy, but it's good enough for this tutorial.
-tm_render_graph_blackboard_value value;
-tm_render_graph_api-&gt;read_blackboard(args-&gt;render_graph, TM_STATIC_HASH(&quot;debug_visualization_resources&quot;, 0xd0d50436a0f3fcb9ULL), &amp;value);
-tm_debug_visualization_resources_t *resources = (tm_debug_visualization_resources_t *)value.data;
+    // Instead of making our own copy call, the debug visualization pass is used to copy to the viewport.
+    // This is not a proper copy, but it's good enough for this tutorial.
+    tm_render_graph_blackboard_value value;
+    tm_render_graph_api-&gt;read_blackboard(args-&gt;render_graph, TM_STATIC_HASH(&quot;debug_visualization_resources&quot;, 0xd0d50436a0f3fcb9ULL), &amp;value);
+    tm_debug_visualization_resources_t *resources = (tm_debug_visualization_resources_t *)value.data;
 
-const uint32_t slot = resources-&gt;num_resources;
-resources-&gt;resources[slot].name = cdata[i]-&gt;name,
-resources-&gt;resources[slot].contents = CONTENT_COLOR_RGB;
-++resources-&gt;num_resources;
+    const uint32_t slot = resources-&gt;num_resources;
+    resources-&gt;resources[slot].name = cdata[i]-&gt;name,
+    resources-&gt;resources[slot].contents = CONTENT_COLOR_RGB;
+    ++resources-&gt;num_resources;
 </code></pre>
 <h2 id="remarks"><a class="header" href="#remarks">Remarks</a></h2>
 <p>Note that this is a very simple example of the creation graph, we don’t update it every frame so it will only render once. This makes use of the <code>Time</code> node useless in this example. Note as well that we are not triggering any wires, this also means that the <code>Init event</code> node will never be called by the component. </p>
@@ -557,186 +560,188 @@ static struct tm_the_truth_api *tm_the_truth_api;
 
 #define TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT &quot;tm_creation_graph_test_component&quot;
 
-enum {
-	TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH
+enum
+{
+    TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH
 };
 
 typedef struct tm_component_t
 {
-	// The truth ID of the creation graph subobject.
-	tm_tt_id_t creation_graph;
-	// An instance of the `creation_graph` (created in `shader_ci__init`).
-	tm_creation_graph_instance_t instance;
+    // The truth ID of the creation graph subobject.
+    tm_tt_id_t creation_graph;
+    // An instance of the `creation_graph` (created in `shader_ci__init`).
+    tm_creation_graph_instance_t instance;
 
-	// The handle to the output image.
-	tm_renderer_handle_t image_handle;
-	// The resource state of the output image.
-	uint32_t resource_state;
-	// The description of the output image.
-	tm_renderer_image_desc_t desc;
-	// The name of the output image.
-	tm_strhash_t name;
+    // The handle to the output image.
+    tm_renderer_handle_t image_handle;
+    // The resource state of the output image.
+    uint32_t resource_state;
+    // The description of the output image.
+    tm_renderer_image_desc_t desc;
+    // The name of the output image.
+    tm_strhash_t name;
 } tm_component_t;
 
 typedef struct tm_component_manager_o
 {
-	tm_allocator_i allocator;
-	tm_entity_context_o *ctx;
-	tm_renderer_backend_i *rb;
+    tm_allocator_i allocator;
+    tm_entity_context_o *ctx;
+    tm_renderer_backend_i *rb;
 } tm_component_manager_o;
 
 // This function is called when the component is initialized,
-// this happens at engine startup for the scene tab, 
+// this happens at engine startup for the scene tab,
 // at the start of the simulation for the simulate tab,
 // or once an entity is selected for the preview tab.
 static void shader_ci__init(tm_component_manager_o *manager, const tm_entity_t *entities, const uint32_t *entity_indices, void **data, uint32_t num_components)
 {
-	tm_component_t **cdata = (tm_component_t **)data;
+    tm_component_t **cdata = (tm_component_t **)data;
 
-	// Create the context for the creation graph, only the bare minimum is defined for this tutorial.
-	// This is not production-level code.
-	tm_creation_graph_context_t ctx = {
-		.rb = manager-&gt;rb,
-		.device_affinity_mask = TM_RENDERER_DEVICE_AFFINITY_MASK_ALL,
-		.entity_ctx = manager-&gt;ctx,
-		.tt = tm_entity_api-&gt;the_truth(manager-&gt;ctx)
-	};
+    // Create the context for the creation graph, only the bare minimum is defined for this tutorial.
+    // This is not production-level code.
+    tm_creation_graph_context_t ctx = {
+        .rb = manager-&gt;rb,
+        .device_affinity_mask = TM_RENDERER_DEVICE_AFFINITY_MASK_ALL,
+        .entity_ctx = manager-&gt;ctx,
+        .tt = tm_entity_api-&gt;the_truth(manager-&gt;ctx)};
 
-	for (uint32_t i = 0; i &lt; num_components; ++i) {
-		
-		// Skip any component that don't have a creation graph defined.
-		tm_component_t *cur = cdata[i];
-		if (!cur-&gt;creation_graph.u64)
-			continue;
+    for (uint32_t i = 0; i &lt; num_components; ++i)
+    {
 
-		// Instantiate the creation graph if this is the first time.
-		if (!cur-&gt;instance.graph.u64)
-			cur-&gt;instance = tm_creation_graph_api-&gt;create_instance(ctx.tt, cur-&gt;creation_graph, &amp;ctx);
+        // Skip any component that don't have a creation graph defined.
+        tm_component_t *cur = cdata[i];
+        if (!cur-&gt;creation_graph.u64)
+            continue;
 
-		// Query the creation graph for image outputs, if non are defined then we skip the update step.
-		tm_creation_graph_output_t image_outputs = tm_creation_graph_api-&gt;output(&amp;cur-&gt;instance, TM_CREATION_GRAPH__IMAGE__OUTPUT_NODE_HASH, &amp;ctx, NULL);
-		if (image_outputs.num_output_objects &gt; 0) {
-			const tm_creation_graph_image_data_t *image_data = (const tm_creation_graph_image_data_t *)image_outputs.output;
+        // Instantiate the creation graph if this is the first time.
+        if (!cur-&gt;instance.graph.u64)
+            cur-&gt;instance = tm_creation_graph_api-&gt;create_instance(ctx.tt, cur-&gt;creation_graph, &amp;ctx);
 
-			cur-&gt;image_handle = image_data-&gt;handle;
-			cur-&gt;resource_state = image_data-&gt;resource_state;
-			cur-&gt;desc = image_data-&gt;desc;
-			cur-&gt;name = image_data-&gt;resource_name;
-		}
-	}
+        // Query the creation graph for image outputs, if non are defined then we skip the update step.
+        tm_creation_graph_output_t image_outputs = tm_creation_graph_api-&gt;output(&amp;cur-&gt;instance, TM_CREATION_GRAPH__IMAGE__OUTPUT_NODE_HASH, &amp;ctx, NULL);
+        if (image_outputs.num_output_objects &gt; 0)
+        {
+            const tm_creation_graph_image_data_t *image_data = (const tm_creation_graph_image_data_t *)image_outputs.output;
+
+            cur-&gt;image_handle = image_data-&gt;handle;
+            cur-&gt;resource_state = image_data-&gt;resource_state;
+            cur-&gt;desc = image_data-&gt;desc;
+            cur-&gt;name = image_data-&gt;resource_name;
+        }
+    }
 }
 
 // This function is called every frame and allows us to update our shader variables.
 static void shader_ci__update(tm_component_manager_o *manager, tm_render_args_t *args, const tm_entity_t *entities,
-	const struct tm_transform_component_t *transforms, const uint32_t *entity_indices, void **data,
-	uint32_t num_components, const uint8_t *frustum_visibilty)
+                              const struct tm_transform_component_t *transforms, const uint32_t *entity_indices, void **data,
+                              uint32_t num_components, const uint8_t *frustum_visibilty)
 {
 
-	// Loop through all components until we find one that has a valid image output.
-	uint32_t i;
-	const tm_component_t **cdata = (const tm_component_t **)data;
-	for (i = 0; i &lt; num_components; ++i) {
-		const tm_component_t *cur = cdata[i];
-		if (!cur-&gt;image_handle.resource)
-			continue;
+    // Loop through all components until we find one that has a valid image output.
+    uint32_t i;
+    const tm_component_t **cdata = (const tm_component_t **)data;
+    for (i = 0; i &lt; num_components; ++i)
+    {
+        const tm_component_t *cur = cdata[i];
+        if (!cur-&gt;image_handle.resource)
+            continue;
 
-		tm_render_graph_api-&gt;register_gpu_image(args-&gt;render_graph, cur-&gt;name, cur-&gt;image_handle, cur-&gt;resource_state, &amp;cur-&gt;desc);
-		break;
-	}
+        tm_render_graph_api-&gt;register_gpu_image(args-&gt;render_graph, cur-&gt;name, cur-&gt;image_handle, cur-&gt;resource_state, &amp;cur-&gt;desc);
+        break;
+    }
 
-	// None of the components had a valid image output, so skip the copy step.
-	if (i == num_components)
-		return;
+    // None of the components had a valid image output, so skip the copy step.
+    if (i == num_components)
+        return;
 
-	// Instead of making our own copy call, the debug visualization pass is used to copy to the viewport.
-	// This is not a proper copy, but it's good enough for this tutorial.
-	tm_render_graph_blackboard_value value;
-	tm_render_graph_api-&gt;read_blackboard(args-&gt;render_graph, TM_STATIC_HASH(&quot;debug_visualization_resources&quot;, 0xd0d50436a0f3fcb9ULL), &amp;value);
-	tm_debug_visualization_resources_t *resources = (tm_debug_visualization_resources_t *)value.data;
+    // Instead of making our own copy call, the debug visualization pass is used to copy to the viewport.
+    // This is not a proper copy, but it's good enough for this tutorial.
+    tm_render_graph_blackboard_value value;
+    tm_render_graph_api-&gt;read_blackboard(args-&gt;render_graph, TM_STATIC_HASH(&quot;debug_visualization_resources&quot;, 0xd0d50436a0f3fcb9ULL), &amp;value);
+    tm_debug_visualization_resources_t *resources = (tm_debug_visualization_resources_t *)value.data;
 
-	const uint32_t slot = resources-&gt;num_resources;
-	resources-&gt;resources[slot].name = cdata[i]-&gt;name,
-	resources-&gt;resources[slot].contents = CONTENT_COLOR_RGB;
-	++resources-&gt;num_resources;
+    const uint32_t slot = resources-&gt;num_resources;
+    resources-&gt;resources[slot].name = cdata[i]-&gt;name,
+    resources-&gt;resources[slot].contents = CONTENT_COLOR_RGB;
+    ++resources-&gt;num_resources;
 }
 
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
-	static tm_ci_editor_ui_i editor_aspect = { 0 };
+    static tm_ci_editor_ui_i editor_aspect = {0};
 
-	static tm_ci_shader_i shader_aspect = {
-		.init = shader_ci__init,
-		.update = shader_ci__update
-	};
+    static tm_ci_shader_i shader_aspect = {
+        .init = shader_ci__init,
+        .update = shader_ci__update};
 
-	static const tm_the_truth_property_definition_t properties[] = {
-		[TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH] = { &quot;creation_graph&quot;, TM_THE_TRUTH_PROPERTY_TYPE_SUBOBJECT, .type_hash = TM_TT_TYPE_HASH__CREATION_GRAPH }
-	};
+    static const tm_the_truth_property_definition_t properties[] = {
+        [TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH] = {&quot;creation_graph&quot;, TM_THE_TRUTH_PROPERTY_TYPE_SUBOBJECT, .type_hash = TM_TT_TYPE_HASH__CREATION_GRAPH}};
 
-	const tm_tt_type_t component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT, properties, TM_ARRAY_COUNT(properties));
-	tm_creation_graph_api-&gt;create_truth_types(tt);
-	tm_the_truth_api-&gt;set_default_object_to_create_subobjects(tt, component_type);
+    const tm_tt_type_t component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT, properties, TM_ARRAY_COUNT(properties));
+    tm_creation_graph_api-&gt;create_truth_types(tt);
+    tm_the_truth_api-&gt;set_default_object_to_create_subobjects(tt, component_type);
 
-	// The editor aspect has to be defined if we want our component to be usable in the editor.
-	// The shader aspect is used to update the creation graph and our final output.
-	tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_EDITOR_UI, &amp;editor_aspect);
-	tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_SHADER, &amp;shader_aspect);
+    // The editor aspect has to be defined if we want our component to be usable in the editor.
+    // The shader aspect is used to update the creation graph and our final output.
+    tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_EDITOR_UI, &amp;editor_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_SHADER, &amp;shader_aspect);
 }
 
-static bool component__load_asset(tm_component_manager_o *manager, tm_entity_t e, void *data, const tm_the_truth_o *tt, tm_tt_id_t asset)
+static bool component__load_asset(tm_component_manager_o *manager, struct tm_entity_commands_o *commands, tm_entity_t e, void *data, const tm_the_truth_o *tt, tm_tt_id_t asset)
 {
-	tm_component_t *c = data;
-	tm_tt_id_t creation_graph = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, asset), TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH);
+    tm_component_t *c = data;
+    tm_tt_id_t creation_graph = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, asset), TM_TT_PROP__CREATION_GRAPH_TEST_COMPONENT__CREATION_GRAPH);
 
-	// We only want update if the creation graph has changed,
-	// Note that we set the entire component to zero if this happens,
-	// this is because all fields are dependent on the creation graph.
-	if (c-&gt;creation_graph.u64 != creation_graph.u64) {
-		memset(c, 0, sizeof(tm_component_t));
-		c-&gt;creation_graph = creation_graph;
-		return true;
-	}
+    // We only want update if the creation graph has changed,
+    // Note that we set the entire component to zero if this happens,
+    // this is because all fields are dependent on the creation graph.
+    if (c-&gt;creation_graph.u64 != creation_graph.u64)
+    {
+        memset(c, 0, sizeof(tm_component_t));
+        c-&gt;creation_graph = creation_graph;
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 static void component__create_manager(tm_entity_context_o *ctx)
 {
-	tm_allocator_i a;
-	tm_entity_api-&gt;create_child_allocator(ctx, TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT, &amp;a);
+    tm_allocator_i a;
+    tm_entity_api-&gt;create_child_allocator(ctx, TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT, &amp;a);
 
-	uint32_t num_backends;
-	tm_renderer_backend_i **backends = (tm_renderer_backend_i **)tm_api_registry_api-&gt;implementations(TM_RENDER_BACKEND_INTERFACE_NAME, &amp;num_backends);
+    tm_renderer_backend_i *backend = tm_single_implementation(tm_api_registry_api, tm_renderer_backend_i);
 
-	tm_component_manager_o *manager = tm_alloc(&amp;a, sizeof(tm_component_manager_o));
-	*manager = (tm_component_manager_o){
-		.allocator = a,
-		.ctx = ctx,
-		.rb = backends[0]
-	};
+    tm_component_manager_o *manager = tm_alloc(&amp;a, sizeof(tm_component_manager_o));
+    *manager = (tm_component_manager_o){
+        .allocator = a,
+        .ctx = ctx,
+        .rb = backend,
+    };
 
-	const tm_component_i component = {
-		.name = TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT,
-		.bytes = sizeof(tm_component_t),
-		.manager = manager,
-		.load_asset = component__load_asset
-	};
+    const tm_component_i component = {
+        .name = TM_TT_TYPE__CREATION_GRAPH_TEST_COMPONENT,
+        .bytes = sizeof(tm_component_t),
+        .manager = manager,
+        .load_asset = component__load_asset,
+    };
 
-	tm_entity_api-&gt;register_component(ctx, &amp;component);
+    tm_entity_api-&gt;register_component(ctx, &amp;component);
 }
 
 TM_DLL_EXPORT void load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-	tm_allocator_api = reg-&gt;get(TM_ALLOCATOR_API_NAME);
-	tm_api_registry_api = reg;
-	tm_creation_graph_api = reg-&gt;get(TM_CREATION_GRAPH_API_NAME);
-	tm_entity_api = reg-&gt;get(TM_ENTITY_API_NAME);
-	tm_render_graph_api = reg-&gt;get(TM_RENDER_GRAPH_API_NAME);
-	tm_shader_system_api = reg-&gt;get(TM_SHADER_SYSTEM_API_NAME);
-	tm_the_truth_api = reg-&gt;get(TM_THE_TRUTH_API_NAME);
 
-	tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-	tm_add_or_remove_implementation(reg, load, TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME, component__create_manager);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+    tm_api_registry_api = tm_get_api(reg, tm_api_registry_api);
+    tm_creation_graph_api = tm_get_api(reg, tm_creation_graph_api);
+    tm_entity_api = tm_get_api(reg, tm_entity_api);
+    tm_render_graph_api = tm_get_api(reg, tm_render_graph_api);
+    tm_shader_system_api = tm_get_api(reg, tm_shader_system_api);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_entity_create_component_i, component__create_manager);
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-a-raymarching-creation-graph-output-node"><a class="header" href="#creating-a-raymarching-creation-graph-output-node">Creating a raymarching creation graph output node</a></h1>
@@ -1344,14 +1349,14 @@ glaring omissions are:</p>
 <p>We need to define a globally accessible definition for the name of the type and its hash value. The usual place for this is a header file.</p>
 <p>Example Header file: <code>my_asset.h</code></p>
 <pre><code class="language-c">#pragma once
-#include &quot;entity_api_types.h&quot;
+#include &lt;foundation/api_types.h&gt;
 //... more code
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
-#define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0xc0995d6c144ac64aULL)
+#define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 </code></pre>
 <p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>, mode information here.)</p>
 <p>Now we need to define the layout of our asset type. We should always do this during plugin load. (<code>tm_load_plugin</code>) 
-During this call we need to register a function to the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_interface_name">TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME</a> interface. 
+During this call we need to register a function to the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_i">tm_the_truth_create_types_i</a> interface. 
 This function is typically called <code>create_truth_types</code>, but its name can be arbitrary.</p>
 <blockquote>
 <p><strong>Note:</strong> An interface is an abstract structure that maps a struct (the interface) to a hash value/name. It allows for customization points. In The Machinery, the Engine uses this extensively.</p>
@@ -1359,7 +1364,8 @@ This function is typically called <code>create_truth_types</code>, but its name 
 <p>Example <code>tm_load_plugin</code> function for <code>my_asset.c</code></p>
 <pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
 }
 </code></pre>
 <p>After we did this, let us implement the actual function. First, we need to create a Truth type:
@@ -1390,13 +1396,14 @@ We use the function <code>tm_the_truth_api-&gt;create_object_type(tm_the_truth_o
 <p>In code, this looks as follows:</p>
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
+    // we have properties this is why the last arguments are &quot;0, 0&quot;
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
 }
 </code></pre>
 <p>We create a type of name <code>TM_TT_TYPE__MY_ASSET</code> with no properties and a file extension my_asset (<code>.tm_my_asset</code> in your explorer). </p>
 <h2 id="making-the-asset-browser-able-to-create-it"><a class="header" href="#making-the-asset-browser-able-to-create-it">Making the Asset Browser able to create it</a></h2>
-<p>Now that there is a basic asset type, you might want the asset browser to create it via the <code>New Asset</code> context menu. All you need to do is register the asset to the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#tm_asset_browser_create_asset_interface_name">TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME</a> interface. This interface requires an implementation of the type <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_create_asset_i">tm_asset_browser_create_asset_i</a>:</p>
+<p>Now that there is a basic asset type, you might want the asset browser to create it via the <code>New Asset</code> context menu. All you need to do is register the asset to the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_create_asset_i">tm_asset_browser_create_asset_i</a> interface. This interface requires an implementation of the type <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_create_asset_i">tm_asset_browser_create_asset_i</a>:</p>
 <pre><code class="language-c">typedef struct tm_asset_browser_create_asset_i
 {
     struct tm_asset_browser_create_asset_o *inst;
@@ -1411,12 +1418,12 @@ We use the function <code>tm_the_truth_api-&gt;create_object_type(tm_the_truth_o
 </code></pre>
 <p>Source: <code>plugins/editor_views/asset_browser.h</code></p>
 <p>For our basic type, this interface can be defined as follows:</p>
-<pre><code class="language-c">static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
+<pre><code class="language-c">// -- asset browser regsiter interface
+static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
 {
-    const tm_tt_type_t type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE__MY_ASSET);
+    const tm_tt_type_t type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
     return tm_the_truth_api-&gt;create_object_of_type(tt, type, undo_scope);
 }
-
 static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
     .menu_name = TM_LOCALIZE_LATER(&quot;New My Asset&quot;),
     .asset_name = TM_LOCALIZE_LATER(&quot;New My Asset&quot;),
@@ -1432,8 +1439,9 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 <p>Example <code>tm_load_plugin</code> function for <code>my_asset.c</code></p>
 <pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-   tm_add_or_remove_implementation(reg, load, TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME, &amp;asset_browser_create_my_asset);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
 </code></pre>
 <p>When we open the Engine, we can open the Asset Browser and create our asset:</p>
@@ -1468,15 +1476,16 @@ tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_N
 #include &quot;my_asset.h&quot;
 //... other code
 
-static void add_my_asset_to_project(tm_the_truth_o *tt,struct tm_ui_o *ui,const char*asset_name, tm_tt_id_t target_dir){
-    const tm_tt_type_t my_asset_type_id= tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+static void add_my_asset_to_project(tm_the_truth_o *tt, struct tm_ui_o *ui, const char *asset_name, tm_tt_id_t target_dir)
+{
+    const tm_tt_type_t my_asset_type_id = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
     const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, my_asset_type_id, TM_TT_NO_UNDO_SCOPE);
-tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
-const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Add My Asset to Project&quot;));
-bool should_select = true;
-// we do not have any asset label therefore we do not need to pass them thats why the last
-// 2 arguments are 0 and 0!
-add_asset-&gt;add(add_asset-&gt;inst, target_dir, asset_id, asset_name, undo_scope,should_select,ui,0,0);
+    struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
+    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Add My Asset to Project&quot;));
+    bool should_select = true;
+    // we do not have any asset label therefore we do not need to pass them thats why the last
+    // 2 arguments are 0 and 0!
+    add_asset-&gt;add(add_asset-&gt;inst, target_dir, asset_id, asset_name, undo_scope, should_select, ui, 0, 0);
 }
 </code></pre>
 <h2 id="full-example-of-basic-asset"><a class="header" href="#full-example-of-basic-asset">Full example of basic asset</a></h2>
@@ -1493,14 +1502,14 @@ add_asset-&gt;add(add_asset-&gt;inst, target_dir, asset_id, asset_name, undo_sco
 static struct tm_the_truth_api *tm_the_truth_api;
 // -- inlcudes
 #include &lt;foundation/api_registry.h&gt;
-#include &lt;foundation/the_truth.h&gt;
-#include &lt;foundation/undo.h&gt;
-#include &lt;foundation/the_truth_assets.h&gt;
 #include &lt;foundation/localizer.h&gt;
+#include &lt;foundation/the_truth.h&gt;
+#include &lt;foundation/the_truth_assets.h&gt;
+#include &lt;foundation/undo.h&gt;
 
 #include &lt;plugins/editor_views/asset_browser.h&gt;
 
-#include &quot;my_asset.h&quot;
+#include &quot;txt.h&quot;
 
 // -- create truth type
 static void create_truth_types(struct tm_the_truth_o *tt)
@@ -1525,9 +1534,9 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 // -- load plugin
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-    tm_the_truth_api = reg-&gt;get(TM_THE_TRUTH_API_NAME);
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME, &amp;asset_browser_create_my_asset);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-asset-part-2"><a class="header" href="#create-a-custom-asset-part-2">Create a custom asset part 2</a></h1>
@@ -1551,15 +1560,15 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </ul>
 </li>
 <li><a href="the_truth/custom_asset/part2.html#what-is-next">What is next?</a></li>
-<li><a href="the_truth/custom_asset/part2.html#full-example-source-code">Full example source code</a></li>
+<li><a href="the_truth/custom_asset/part2.html#full-example-of-basic-asset">Full example of basic asset</a></li>
 </ul>
 <h2 id="extending-the-asset-the-truth-type"><a class="header" href="#extending-the-asset-the-truth-type">Extending the asset The Truth Type</a></h2>
 <p>The asset type we created is nice but it cannot do much. The Machinery can save anything to file that it can store in the Truth. This thought brings us back to the part: <strong>“What kind of asset do we want to create?”.</strong> </p>
 <p>Let us go back to the basic definition of the type <code>my_asset</code>. We defined the type without any properties.</p>
 <p>The current implementation looks as follows:</p>
-<pre><code class="language-c">// -- create truth type
-static void create_truth_types(struct tm_the_truth_o *tt)
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
+    // we have properties this is why the last arguments are &quot;0, 0&quot;
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
 }
@@ -1576,8 +1585,8 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 </ol>
 <p>Consequently, we are defining the <em>import path</em> property to “reimport” our text asset and the data property to store the imported text.</p>
 <pre><code class="language-c">    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
 </code></pre>
 <blockquote>
@@ -1587,11 +1596,15 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
-    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, 2);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
+    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    static tm_properties_aspect_i properties_aspect = {
+        .custom_ui = properties__custom_ui,
+    };
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
 }
 </code></pre>
 <p>Now we should change the asset name to something more meaningful than <code>my_asset</code>. Lets call it <code>txt</code></p>
@@ -1603,10 +1616,8 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <li>The source file: <code>my_asset.c/h</code> -&gt; <code>txt.c/h</code></li>
 </ul>
 <p>This will change the code as follows:</p>
-<pre><code class="language-c">//.. other code
-static void create_truth_types(struct tm_the_truth_o *tt)
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
-//... the other code
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
 }
 // .. other code
@@ -1648,7 +1659,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 // -- code
 }
 //.. other code    
-static tm_properties_aspect_i properties_aspect = {
+    static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
 // .. other code
@@ -1675,7 +1686,7 @@ static struct tm_properties_view_api *tm_properties_view_api;
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
 //.. other code 
-    tm_properties_view_api = reg-&gt;get(TM_PROPERTIES_VIEW_API_NAME);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
 //.. other code 
 } 
 </code></pre>
@@ -1699,8 +1710,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </tbody></table>
 <p>To implement the function all that's needed to remember is what index the property had.</p>
 <pre><code class="language-c">    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
 </code></pre>
 <p>The index is 0 there for we are no ready to implement the function:</p>
@@ -1709,7 +1720,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 {
     // -- code
     bool picked = false;
-    item_rect.y = tm_properties_view_api-&gt;ui_open_path(args, item_rect, &quot;Imported Path&quot;, &quot;Path that the text file was imported from.&quot;, object, 0, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
+    item_rect.y = tm_properties_view_api-&gt;ui_open_path(args, item_rect, TM_LOCALIZE_LATER(&quot;Import Path&quot;), TM_LOCALIZE_LATER(&quot;Path that the text file was imported from.&quot;), object, TM_TT_PROP__MY_ASSET__FILE, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
     if (picked)
     {
         // import...
@@ -1724,10 +1735,11 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 
-enum {
+enum
+{
     TM_TT_PROP__MY_ASSET__FILE,
     TM_TT_PROP__MY_ASSET__DATA,
-}
+};
 </code></pre>
 <p>(<code>txt.h</code>)</p>
 <p>When we compiled this we can test it in the engine, just by adding a new text file click on the Import Path:</p>
@@ -1738,7 +1750,6 @@ enum {
 #include &lt;foundation/os.h&gt;
 #include &lt;foundation/buffer.h&gt;
 //.. other code
-//custom ui
 static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
 {
     tm_the_truth_o *tt = args-&gt;tt;
@@ -1747,19 +1758,15 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
     if (picked)
     {
         const char *file = tm_the_truth_api-&gt;get_string(tt, tm_tt_read(tt, object), TM_TT_PROP__MY_ASSET__FILE);
-
         tm_file_stat_t stat = tm_os_api-&gt;file_system-&gt;stat(file);
-
         tm_buffers_i *buffers = tm_the_truth_api-&gt;buffers(tt);
         void *buffer = buffers-&gt;allocate(buffers-&gt;inst, stat.size, false);
-
         tm_file_o f = tm_os_api-&gt;file_io-&gt;open_input(file);
         tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
-
         const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
         tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, object);
-        tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id); // 1 = data property index.
+        tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
         tm_the_truth_api-&gt;commit(tt, asset_obj, TM_TT_NO_UNDO_SCOPE);
     }
     return item_rect.y;
@@ -1778,33 +1785,35 @@ This happens via the <a href="https://ourmachinery.com/apidoc/foundation/the_tru
 <h2 id="what-is-next-1"><a class="header" href="#what-is-next-1">What is next?</a></h2>
 <p>The next part will refactor the current code and show you how to make your code and asset more useful by showing you how to program an importer.</p>
 <p><a href="the_truth/custom_asset/part2.html#">Part 3</a></p>
-<h2 id="full-example-source-code"><a class="header" href="#full-example-source-code">Full example source code</a></h2>
-<p><code>txt.h</code></p>
+<h2 id="full-example-of-basic-asset-1"><a class="header" href="#full-example-of-basic-asset-1">Full example of basic asset</a></h2>
+<p><code>my_asset.h</code></p>
 <pre><code class="language-c">#pragma once
 #include &lt;foundation/api_types.h&gt;
 //... more code
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 
-enum {
+enum
+{
     TM_TT_PROP__MY_ASSET__FILE,
     TM_TT_PROP__MY_ASSET__DATA,
 };
 </code></pre>
-<p><code>txt.c</code></p>
+<p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>)</p>
+<p><code>my_asset.c</code></p>
 <pre><code class="language-c">// -- api's
 static struct tm_the_truth_api *tm_the_truth_api;
 static struct tm_properties_view_api *tm_properties_view_api;
 static struct tm_os_api *tm_os_api;
 // -- inlcudes
 #include &lt;foundation/api_registry.h&gt;
-#include &lt;foundation/the_truth.h&gt;
-#include &lt;foundation/undo.h&gt;
-#include &lt;foundation/the_truth_assets.h&gt;
+#include &lt;foundation/buffer.h&gt;
 #include &lt;foundation/localizer.h&gt;
 #include &lt;foundation/macros.h&gt;
 #include &lt;foundation/os.h&gt;
-#include &lt;foundation/buffer.h&gt;
+#include &lt;foundation/the_truth.h&gt;
+#include &lt;foundation/the_truth_assets.h&gt;
+#include &lt;foundation/undo.h&gt;
 
 #include &lt;plugins/editor_views/asset_browser.h&gt;
 #include &lt;plugins/editor_views/properties.h&gt;
@@ -1861,11 +1870,11 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 // -- load plugin
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-    tm_the_truth_api = reg-&gt;get(TM_THE_TRUTH_API_NAME);
-    tm_properties_view_api = reg-&gt;get(TM_PROPERTIES_VIEW_API_NAME);
-    tm_os_api = reg-&gt;get(TM_OS_API_NAME);
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME, &amp;asset_browser_create_my_asset);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_os_api = tm_get_api(reg, tm_os_api);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-asset-part-3"><a class="header" href="#create-a-custom-asset-part-3">Create a custom asset part 3</a></h1>
@@ -1884,7 +1893,11 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <li><a href="the_truth/custom_asset/part3.html#import-task-implementation">Import task implementation</a></li>
 <li><a href="the_truth/custom_asset/part3.html#enabling-reimport">Enabling reimport</a></li>
 <li><a href="the_truth/custom_asset/part3.html#refactor-the-custom-ui-import-functionality">Refactor the Custom UI import functionality</a></li>
-<li><a href="the_truth/custom_asset/part3.html#the-end">The end</a></li>
+<li><a href="the_truth/custom_asset/part3.html#the-end">The end</a>
+<ul>
+<li><a href="the_truth/custom_asset/part3.html#full-example-of-basic-asset">Full example of basic asset</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="custom-importer-for-text-files"><a class="header" href="#custom-importer-for-text-files">Custom importer for text files</a></h2>
 <p>In this part, we are adding the ability to import a text file into the Engine. To implement an importer, we need the following APIs:</p>
@@ -1927,7 +1940,7 @@ static bool asset_io__can_import(struct tm_asset_io_o *inst, const char *extensi
 static bool asset_io__can_reimport(struct tm_asset_io_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t asset)
 {
     const tm_tt_id_t object = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, asset), TM_TT_PROP__ASSET__OBJECT);
-    return tm_tt_type(object).u64 == tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET).u64;
+    return object.type == tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET).u64;
 }
 static void asset_io__importer_extensions_string(struct tm_asset_io_o *inst, char **output, struct tm_temp_allocator_i *ta, const char *separator)
 {
@@ -1973,8 +1986,7 @@ static void asset_io__importer_description_string(struct tm_asset_io_o *inst, ch
 <li>the correct allocator. </li>
 </ul>
 <p>The function itself looks like this:</p>
-<pre><code class="language-c">// .. other code
-static uint64_t asset_io__import_asset(struct tm_asset_io_o *inst, const char *file, const struct tm_asset_io_import *args)
+<pre><code class="language-c">static uint64_t asset_io__import_asset(struct tm_asset_io_o *inst, const char *file, const struct tm_asset_io_import *args)
 {
     const uint64_t bytes = sizeof(struct task__import_txt) + strlen(file);
     struct task__import_txt *task = tm_alloc(args-&gt;allocator, bytes);
@@ -2083,8 +2095,7 @@ Before we do all of this, let us first read the file and create the buffer.</p>
         const int64_t read = tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
         if (read == (int64_t)stat.size)
-        {
-        // ..code
+//..
         }
         else
         {
@@ -2096,21 +2107,21 @@ Before we do all of this, let us first read the file and create the buffer.</p>
     }
 }
 </code></pre>
-<p>With this out of the way, we can use our knowledge from the [last part](#): </p>
+<p>With this out of the way, we can use our knowledge from the last part.</p>
 <ul>
 <li>How to add an asset via code.</li>
 </ul>
 <p>The first step was to create the new object and add the data to it.</p>
-<pre><code class="language-c">const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
-const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
-const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
-tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
-tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
-tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
- tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
+<pre><code class="language-c">            const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
+            const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+            const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
+            tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
+            tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
+            tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
+                tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
 </code></pre>
 <p>After that, we are using the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a> to add the asset to the asset browser. </p>
-<pre><code class="language-c">tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+<pre><code class="language-c">                struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
 </code></pre>
 <p>We are getting the API first, because we do not need it anywhere else than in this case. Then we need to extract the file name of the imported file. You can do this with the <em>path API</em>'s <code> tm_path_api-&gt;base()</code> function. Be aware this function requires a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">tm_str_t</a> which you an create from a normal c string (<code>const char*</code>) via <code>tm_str()</code>. To access the underlaying c string again just call <code>.data</code> on the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">tm_str_t</a>.</p>
 <blockquote>
@@ -2123,12 +2134,10 @@ tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_f
 <p><strong>Note:</strong> We do not have any asset labels for our current asset therefore we do not pass them to the add function, otherwise the last 2 arguments would be different than <code>0</code> and <code>0</code>.</p>
 </blockquote>
 <pre><code class="language-c">                const char *asset_name = tm_path_api-&gt;base(tm_str(txt_file)).data;
-                tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+                struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
                 const tm_tt_id_t current_dir = add_asset-&gt;current_directory(add_asset-&gt;inst, args-&gt;ui);
                 const bool should_select = args-&gt;asset_browser.u64 &amp;&amp; tm_the_truth_api-&gt;version(tt, args-&gt;asset_browser) == args-&gt;asset_browser_version_at_start;
-                // we do not have any asset label therefore we do not need to pass them thats why the last
-                // 2 arguments are 0 and 0!
-                add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui,0,0);
+                add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui, 0, 0);
 </code></pre>
 <p>That's it for the import.  Before we move on, we need to clean up! No Allocation without deallocation!</p>
 <pre><code class="language-c">    tm_free(args-&gt;allocator, task, task-&gt;bytes);
@@ -2152,33 +2161,22 @@ tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_f
         const int64_t read = tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
         if (read == (int64_t)stat.size)
-        {
-const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
-const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
-const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
-tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
-tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
-tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
- tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
+            const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
+            const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+            const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
+            tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
+            tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
+            tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
-                const char *asset_name = tm_path_api-&gt;base(tm_str(txt_file)).data;
-                tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
-                const tm_tt_id_t current_dir = add_asset-&gt;current_directory(add_asset-&gt;inst, args-&gt;ui);
-                const bool should_select = args-&gt;asset_browser.u64 &amp;&amp; tm_the_truth_api-&gt;version(tt, args-&gt;asset_browser) == args-&gt;asset_browser_version_at_start;
-                // we do not have any asset label therefore we do not need to pass them thats why the last
-                // 2 arguments are 0 and 0!
-                add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui,0,0);
         }
         else
         {
             tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not read %s\n&quot;, txt_file);
         }
-    }
     else
     {
         tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not find %s \n&quot;, txt_file);
     }
-    tm_free(args-&gt;allocator, task, task-&gt;bytes);
 }
 </code></pre>
 <h2 id="enabling-reimport"><a class="header" href="#enabling-reimport">Enabling reimport</a></h2>
@@ -2199,35 +2197,44 @@ The <a href="https://ourmachinery.com/apidoc/foundation/asset_io.h.html#structtm
     const char *txt_file = task-&gt;file;
     tm_the_truth_o *tt = args-&gt;tt;
     tm_file_stat_t stat = tm_os_api-&gt;file_system-&gt;stat(txt_file);
-    if (stat.exists) {
+    if (stat.exists)
+    {
         tm_buffers_i *buffers = tm_the_truth_api-&gt;buffers(tt);
         void *buffer = buffers-&gt;allocate(buffers-&gt;inst, stat.size, false);
         tm_file_o f = tm_os_api-&gt;file_io-&gt;open_input(txt_file);
         const int64_t read = tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
-        if (read == (int64_t)stat.size) {
+        if (read == (int64_t)stat.size)
+        {
             const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
             const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
             const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
             tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
             tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
             tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
-            if (args-&gt;reimport_into.u64) {
+            if (args-&gt;reimport_into.u64)
+            {
                 tm_the_truth_api-&gt;retarget_write(tt, asset_obj, args-&gt;reimport_into);
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
                 tm_the_truth_api-&gt;destroy_object(tt, asset_id, args-&gt;undo_scope);
-            } else {
+            }
+            else
+            {
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
                 const char *asset_name = tm_path_api-&gt;base(tm_str(txt_file)).data;
-                struct tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+                struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
                 const tm_tt_id_t current_dir = add_asset-&gt;current_directory(add_asset-&gt;inst, args-&gt;ui);
                 const bool should_select = args-&gt;asset_browser.u64 &amp;&amp; tm_the_truth_api-&gt;version(tt, args-&gt;asset_browser) == args-&gt;asset_browser_version_at_start;
                 add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui, 0, 0);
             }
-        } else {
+        }
+        else
+        {
             tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not read %s\n&quot;, txt_file);
         }
-    } else {
+    }
+    else
+    {
         tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not find %s \n&quot;, txt_file);
     }
     tm_free(args-&gt;allocator, task, task-&gt;bytes);
@@ -2269,8 +2276,7 @@ struct task__import_txt
 </code></pre>
 <p>After that, we initialize our struct and its members with the needed data. Moreover, we copy the chars of the file name into our struct + extra bytes, and then we ask the task system to run the task.</p>
 <p>This, combined with the custom UI functions, should look similar to this:</p>
-<pre><code class="language-c">//custom ui
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+<pre><code class="language-c">static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
 {
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
@@ -2309,21 +2315,22 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 <li>How to provide a custom UI. </li>
 </ul>
 <p>If you wanted to see a more complex example of an importer, you could check the assimp importer example <code>samples\plugins\assimp</code>.</p>
-<p>All the source code is available on GitHub in the <a href="https://github.com/simon-ourmachinery/example-text-file-asset"><strong>example-text-file-asset</strong></a> repo.</p>
-<p><strong>Full Source Code</strong></p>
-<p><code>txt.h</code></p>
+<h3 id="full-example-of-basic-asset-2"><a class="header" href="#full-example-of-basic-asset-2">Full example of basic asset</a></h3>
+<p><code>my_asset.h</code></p>
 <pre><code class="language-c">#pragma once
 #include &lt;foundation/api_types.h&gt;
 //... more code
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 
-enum {
+enum
+{
     TM_TT_PROP__MY_ASSET__FILE,
     TM_TT_PROP__MY_ASSET__DATA,
 };
 </code></pre>
-<p><code>txt.c</code></p>
+<p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>)</p>
+<p><code>my_asset.c</code></p>
 <pre><code class="language-c">// -- api's
 static struct tm_api_registry_api *tm_global_api_registry;
 static struct tm_the_truth_api *tm_the_truth_api;
@@ -2379,35 +2386,44 @@ static void task__import_txt(void *data, uint64_t task_id)
     const char *txt_file = task-&gt;file;
     tm_the_truth_o *tt = args-&gt;tt;
     tm_file_stat_t stat = tm_os_api-&gt;file_system-&gt;stat(txt_file);
-    if (stat.exists) {
+    if (stat.exists)
+    {
         tm_buffers_i *buffers = tm_the_truth_api-&gt;buffers(tt);
         void *buffer = buffers-&gt;allocate(buffers-&gt;inst, stat.size, false);
         tm_file_o f = tm_os_api-&gt;file_io-&gt;open_input(txt_file);
         const int64_t read = tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
-        if (read == (int64_t)stat.size) {
+        if (read == (int64_t)stat.size)
+        {
             const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
             const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
             const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
             tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
             tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
             tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
-            if (args-&gt;reimport_into.u64) {
+            if (args-&gt;reimport_into.u64)
+            {
                 tm_the_truth_api-&gt;retarget_write(tt, asset_obj, args-&gt;reimport_into);
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
                 tm_the_truth_api-&gt;destroy_object(tt, asset_id, args-&gt;undo_scope);
-            } else {
+            }
+            else
+            {
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
                 const char *asset_name = tm_path_api-&gt;base(tm_str(txt_file)).data;
-                struct tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+                struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
                 const tm_tt_id_t current_dir = add_asset-&gt;current_directory(add_asset-&gt;inst, args-&gt;ui);
                 const bool should_select = args-&gt;asset_browser.u64 &amp;&amp; tm_the_truth_api-&gt;version(tt, args-&gt;asset_browser) == args-&gt;asset_browser_version_at_start;
                 add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui, 0, 0);
             }
-        } else {
+        }
+        else
+        {
             tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not read %s\n&quot;, txt_file);
         }
-    } else {
+    }
+    else
+    {
         tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not find %s \n&quot;, txt_file);
     }
     tm_free(args-&gt;allocator, task, task-&gt;bytes);
@@ -2451,8 +2467,7 @@ static struct tm_asset_io_i txt_asset_io = {
     .can_reimport = asset_io__can_reimport,
     .importer_extensions_string = asset_io__importer_extensions_string,
     .importer_description_string = asset_io__importer_description_string,
-    .import_asset = asset_io__import_asset
-};
+    .import_asset = asset_io__import_asset};
 
 // -- asset on its own
 
@@ -2462,7 +2477,8 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
     item_rect.y = tm_properties_view_api-&gt;ui_open_path(args, item_rect, TM_LOCALIZE_LATER(&quot;Import Path&quot;), TM_LOCALIZE_LATER(&quot;Path that the text file was imported from.&quot;), object, TM_TT_PROP__MY_ASSET__FILE, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
-    if (picked) {
+    if (picked)
+    {
         const char *file = tm_the_truth_api-&gt;get_string(tt, tm_tt_read(tt, object), TM_TT_PROP__MY_ASSET__FILE);
         {
             tm_allocator_i *allocator = tm_allocator_api-&gt;system;
@@ -2473,8 +2489,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
                 .args = {
                     .allocator = allocator,
                     .tt = tt,
-                    .reimport_into = object }
-            };
+                    .reimport_into = object}};
             strcpy(task-&gt;file, file);
             task_system-&gt;run_task(task__import_txt, task, &quot;Import Text File&quot;);
         }
@@ -2486,8 +2501,8 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
@@ -2512,24 +2527,24 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 // -- load plugin
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-    tm_the_truth_api = reg-&gt;get(TM_THE_TRUTH_API_NAME);
-    tm_properties_view_api = reg-&gt;get(TM_PROPERTIES_VIEW_API_NAME);
-    tm_os_api = reg-&gt;get(TM_OS_API_NAME);
-    tm_path_api = reg-&gt;get(TM_PATH_API_NAME);
-    tm_temp_allocator_api = reg-&gt;get(TM_TEMP_ALLOCATOR_API_NAME);
-    tm_allocator_api = reg-&gt;get(TM_ALLOCATOR_API_NAME);
-    tm_logger_api = reg-&gt;get(TM_LOGGER_API_NAME);
-    tm_localizer_api = reg-&gt;get(TM_LOCALIZER_API_NAME);
-    tm_asset_io_api = reg-&gt;get(TM_ASSET_IO_API_NAME);
-    task_system = reg-&gt;get(TM_TASK_SYSTEM_API_NAME);
-    tm_sprintf_api = reg-&gt;get(TM_SPRINTF_API_NAME);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_os_api = tm_get_api(reg, tm_os_api);
+    tm_path_api = tm_get_api(reg, tm_path_api);
+    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+    tm_logger_api = tm_get_api(reg, tm_logger_api);
+    tm_localizer_api = tm_get_api(reg, tm_localizer_api);
+    tm_asset_io_api = tm_get_api(reg, tm_asset_io_api);
+    task_system = tm_get_api(reg, tm_task_system_api);
+    tm_sprintf_api = tm_get_api(reg, tm_sprintf_api);
     tm_global_api_registry = reg;
     if (load)
         tm_asset_io_api-&gt;add_asset_io(&amp;txt_asset_io);
     else
         tm_asset_io_api-&gt;remove_asset_io(&amp;txt_asset_io);
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME, &amp;asset_browser_create_my_asset);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="adding-drag-and-drop-to-assets"><a class="header" href="#adding-drag-and-drop-to-assets">Adding Drag and Drop to Assets</a></h1>
@@ -2584,19 +2599,25 @@ typedef struct tm_debug_print_aspect_i
 <p>The best example of how the Engine is using the aspect system is the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_aspect__properties">TM_TT_ASPECT__PROPERTIES</a> which helps us to defines custom UIs for Truth objects.</p>
 <h2 id="adding-drag-and-drop-to-our-asset"><a class="header" href="#adding-drag-and-drop-to-our-asset">Adding Drag and Drop to our asset</a></h2>
 <p>In this example, we are going back to our text asset sample. In that sample, we have the following function to register the asset to the Truth:</p>
-<pre><code class="language-c">// -- create truth type
-static void create_truth_types(struct tm_the_truth_o *tt)
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
-    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__TXT_ASSET, my_asset_properties, TM_ARRAY_COUNT(txt_asset_properties));
+    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
+
+    tm_the_truth_property_definition_t story_component_properties[] = {
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
+    static tm_properties_aspect_i properties_component_aspect = {
+        .custom_ui = properties__component_custom_ui,
+    };
 }
 </code></pre>
 <p>We need to make use of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#tm_tt_aspect__asset_scene">TM_TT_ASPECT__ASSET_SCENE</a> aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the <code>plugins/the_machinery_shared/asset_aspects.h</code> header.</p>
@@ -2607,7 +2628,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <h2 id="the-story-component"><a class="header" href="#the-story-component">The story component</a></h2>
 <p>Let us create a use case for our text file. Let us assume we wanted to make a very simple story-based game, and all our text files are the basis for our stories. This means we need to create first a story component.</p>
 <blockquote>
-<p>Note: For more details on how to create a component, follow this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/write_a_custom_component.html">guide</a>.</p>
+<p><strong>Note</strong>: For more details on how to create a component, follow this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/write_a_custom_component.html">guide</a>.</p>
 </blockquote>
 <p>Here we have the whole source code for the story component:</p>
 <pre><code class="language-c">// more apis
@@ -2615,13 +2636,6 @@ static struct tm_entity_api *tm_entity_api;
 // more includes
 #include &lt;plugins/entity/entity.h&gt;
 #include &lt;plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h&gt;
-// other types
-struct tm_component_manager_o
-{
-    tm_entity_context_o *ctx;
-    tm_allocator_i allocator;
-};
-
 // more code
 
 static const char *component__category(void)
@@ -2630,44 +2644,25 @@ static const char *component__category(void)
 }
 
 static tm_ci_editor_ui_i *editor_aspect = &amp;(tm_ci_editor_ui_i){
-    .category = component__category
-};
-
-// This code can be eliminated if needed / wanted by using the [TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER](https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__asset_picker)
-static float properties__component_custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
-{
-    TM_INIT_TEMP_ALLOCATOR(ta);
-    tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(args-&gt;tt, TM_TT_TYPE_HASH__ASSET);
-    // get all instances of `TM_TT_TYPE_HASH__TXT_ASSET`
-    tm_tt_id_t *ids = tm_the_truth_api-&gt;all_objects_of_type(args-&gt;tt, tm_the_truth_api-&gt;object_type_from_name_hash(args-&gt;tt, TM_TT_TYPE_HASH__TXT_ASSET), ta);
-    tm_tt_id_t *items = 0;
-    const char **names = 0;
-    tm_carray_temp_push(names, &quot;Select&quot;, ta);
-    tm_carray_temp_push(items, (tm_tt_id_t){ 0 }, ta);
-    for (uint32_t i = 0; i &lt; tm_carray_size(ids); ++i) {
-        // we make sure a Asset Type is the owner of the object! This is important since
-        // the Asset Truth type has the name field! [TM_TT_PROP__ASSET__NAME](https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#enumtm_tt_prop__asset)
-        tm_tt_id_t owner = tm_the_truth_api-&gt;owner(args-&gt;tt, ids[i]);
-        if (tm_tt_type(owner).u64 == asset_type.u64) {
-            // if the owner is a asset we add it's name to our names array and use the id and add it to ower items!
-            tm_carray_temp_push(names, tm_the_truth_api-&gt;get_string(args-&gt;tt, tm_tt_read(args-&gt;tt, owner), TM_TT_PROP__ASSET__NAME), ta);
-            tm_carray_temp_push(items, ids[i], ta);
-        }
-    }
-    // creates a popup picker and the user can choose what reference they want to put into the property!
-    item_rect.y = tm_properties_view_api-&gt;ui_reference_popup_picker(args, item_rect, &quot;Asset&quot;, NULL, object, TM_TT_PROP__STORY_COMPONENT__ASSET, names, items, (uint32_t)tm_carray_size(items));
-    TM_SHUTDOWN_TEMP_ALLOCATOR(ta); // always make sure you call the shutdown function on the temp allocator
-    return item_rect.y;
-}
-
+    .category = component__category};
 
 // -- create truth type
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
-// ..other code
-    tm_the_truth_property_definition_t story_component_properties[] = {
-        [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__TXT_ASSET }
+    static tm_the_truth_property_definition_t my_asset_properties[] = {
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
+    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    static tm_properties_aspect_i properties_aspect = {
+        .custom_ui = properties__custom_ui,
+    };
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
+
+    tm_the_truth_property_definition_t story_component_properties[] = {
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
     static tm_properties_aspect_i properties_component_aspect = {
         .custom_ui = properties__component_custom_ui,
     };
@@ -2676,14 +2671,20 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
     tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
 }
-// ..other code
-// -- story component
-static bool component__load_asset(tm_component_manager_o *man, tm_entity_t e, void *c_vp, const tm_the_truth_o *tt, tm_tt_id_t asset)
+
+struct tm_component_manager_o
+{
+    tm_entity_context_o *ctx;
+    tm_allocator_i allocator;
+};
+
+static bool component__load_asset(tm_component_manager_o *man, struct tm_entity_commands_o *commands, tm_entity_t e, void *c_vp, const tm_the_truth_o *tt, tm_tt_id_t asset)
 {
     struct tm_story_component_t *c = c_vp;
     const tm_the_truth_object_o *asset_r = tm_tt_read(tt, asset);
     tm_tt_id_t id = tm_the_truth_api-&gt;get_reference(tt, asset_r, TM_TT_PROP__STORY_COMPONENT__ASSET);
-    if (id.u64) {
+    if (id.u64)
+    {
         tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tt, tm_tt_read(tt, id), TM_TT_PROP__MY_ASSET__DATA);
         c-&gt;text = tm_alloc(&amp;man-&gt;allocator, buffer.size);
         c-&gt;size = buffer.size;
@@ -2692,7 +2693,7 @@ static bool component__load_asset(tm_component_manager_o *man, tm_entity_t e, vo
     return true;
 }
 
-static void component__remove(tm_component_manager_o *manager, tm_entity_t e, void *data)
+static void component__remove(tm_component_manager_o *manager, struct tm_entity_commands_o *commands, tm_entity_t e, void *data)
 {
     tm_story_component_t *sc = (tm_story_component_t *)data;
     tm_free(&amp;manager-&gt;allocator, sc-&gt;text, sc-&gt;size);
@@ -2717,8 +2718,7 @@ static void component__create(struct tm_entity_context_o *ctx)
 
     *story_manager = (tm_component_manager_o){
         .ctx = ctx,
-        .allocator = allocator
-    };
+        .allocator = allocator};
 
     tm_component_i component = {
         .name = TM_TT_TYPE__STORY_COMPONENT,
@@ -2726,27 +2726,45 @@ static void component__create(struct tm_entity_context_o *ctx)
         .load_asset = component__load_asset,
         .destroy = component__destroy,
         .remove = component__remove,
-        .manager = (tm_component_manager_o *)story_manager
-    };
+        .manager = (tm_component_manager_o *)story_manager};
     tm_entity_api-&gt;register_component(ctx, &amp;component);
 };
 // -- load plugin
+
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-// other code
-    tm_entity_api = reg-&gt;get(TM_ENTITY_API_NAME);
-// ... other code
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME, component__create);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_os_api = tm_get_api(reg, tm_os_api);
+    tm_path_api = tm_get_api(reg, tm_path_api);
+    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+    tm_logger_api = tm_get_api(reg, tm_logger_api);
+    tm_localizer_api = tm_get_api(reg, tm_localizer_api);
+    tm_asset_io_api = tm_get_api(reg, tm_asset_io_api);
+    task_system = tm_get_api(reg, tm_task_system_api);
+    tm_sprintf_api = tm_get_api(reg, tm_sprintf_api);
+    tm_entity_api = tm_get_api(reg, tm_entity_api);
+    tm_scene_common_api = tm_get_api(reg, tm_scene_common_api);
+    tm_global_api_registry = reg;
+    if (load)
+        tm_asset_io_api-&gt;add_asset_io(&amp;txt_asset_io);
+    else
+        tm_asset_io_api-&gt;remove_asset_io(&amp;txt_asset_io);
+
+    tm_add_or_remove_implementation(reg, load, tm_entity_create_component_i, component__create);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
+
 </code></pre>
 <p>First, we create our component, and we need a way to guarantee that our truth data exists during runtime as well. Therefore, we use the Entity Manager to allocate our Story data and store just a pointer and its size to the allocated data in the Manager.</p>
-<pre><code class="language-c">
-struct tm_component_manager_o
+<pre><code class="language-c">struct tm_component_manager_o
 {
     tm_entity_context_o *ctx;
     tm_allocator_i allocator;
 };
+
 static void component__create(struct tm_entity_context_o *ctx)
 {
     // Allocate a new manager for this component type (freed in component__destroy).
@@ -2756,8 +2774,7 @@ static void component__create(struct tm_entity_context_o *ctx)
 
     *story_manager = (tm_component_manager_o){
         .ctx = ctx,
-        .allocator = allocator
-    };
+        .allocator = allocator};
 
     tm_component_i component = {
         .name = TM_TT_TYPE__STORY_COMPONENT,
@@ -2765,19 +2782,18 @@ static void component__create(struct tm_entity_context_o *ctx)
         .load_asset = component__load_asset,
         .destroy = component__destroy,
         .remove = component__remove,
-        .manager = (tm_component_manager_o *)story_manager
-    };
+        .manager = (tm_component_manager_o *)story_manager};
     tm_entity_api-&gt;register_component(ctx, &amp;component);
 };
-
 </code></pre>
 <p>The most important function here is the <code>component__load_asset</code> function, in which we translate the Truth Representation into an ECS representation. We load the text buffer, allocate it with the Manager, and store a pointer in our component. With this, we could create a reference-counted system in which multiple components point to the same story data, and only when the last component goes we deallocate this. Another alternative would be to avoid loading when we create the component, and the story is already allocated.</p>
-<pre><code class="language-c">static bool component__load_asset(tm_component_manager_o *man, tm_entity_t e, void *c_vp, const tm_the_truth_o *tt, tm_tt_id_t asset)
+<pre><code class="language-c">static bool component__load_asset(tm_component_manager_o *man, struct tm_entity_commands_o *commands, tm_entity_t e, void *c_vp, const tm_the_truth_o *tt, tm_tt_id_t asset)
 {
     struct tm_story_component_t *c = c_vp;
     const tm_the_truth_object_o *asset_r = tm_tt_read(tt, asset);
     tm_tt_id_t id = tm_the_truth_api-&gt;get_reference(tt, asset_r, TM_TT_PROP__STORY_COMPONENT__ASSET);
-    if (id.u64) {
+    if (id.u64)
+    {
         tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tt, tm_tt_read(tt, id), TM_TT_PROP__MY_ASSET__DATA);
         c-&gt;text = tm_alloc(&amp;man-&gt;allocator, buffer.size);
         c-&gt;size = buffer.size;
@@ -2787,7 +2803,7 @@ static void component__create(struct tm_entity_context_o *ctx)
 }
 </code></pre>
 <p>When the Entity context gets destroyed, we need to clean up and destroy our Manager. Important that we call <code>call_remove_on_all_entities</code> to make sure all instances of the component are gone.</p>
-<pre><code class="language-c">static void component__remove(tm_component_manager_o *manager, tm_entity_t e, void *data)
+<pre><code class="language-c">static void component__remove(tm_component_manager_o *manager, struct tm_entity_commands_o *commands, tm_entity_t e, void *data)
 {
     tm_story_component_t *sc = (tm_story_component_t *)data;
     tm_free(&amp;manager-&gt;allocator, sc-&gt;text, sc-&gt;size);
@@ -2807,8 +2823,7 @@ static void component__destroy(tm_component_manager_o *manager)
 <p><strong>This part is optional!</strong>, see next part where we use the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__asset_picker">TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER</a>.</p>
 <p>We also can to provide a custom UI for our reference to the asset! When we define our Truth type we tell the system that it should be a reference <strong>only</strong> of type <code>TM_TT_TYPE_HASH__TXT_ASSET</code>.</p>
 <pre><code class="language-c">    tm_the_truth_property_definition_t story_component_properties[] = {
-        [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__TXT_ASSET }
-    };
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
 </code></pre>
 <p>This makes sure that in the Editor the user cannot store any other Truth type in this property. The Truth will check for it</p>
 <p>We need to add the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_aspect__properties">TM_TT_ASPECT__PROPERTIES</a> aspect to our type to make sure it has a custom UI.</p>
@@ -2817,33 +2832,33 @@ static void component__destroy(tm_component_manager_o *manager)
     };
 
     const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
     tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
 </code></pre>
 <p>And than we need to define our custom UI:</p>
-<pre><code class="language-c">static float properties__component_custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
-    TM_INIT_TEMP_ALLOCATOR(ta);
-    tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(args-&gt;tt, TM_TT_TYPE_HASH__ASSET);
-    // get all instances of `TM_TT_TYPE_HASH__TXT_ASSET`
-    tm_tt_id_t *ids = tm_the_truth_api-&gt;all_objects_of_type(args-&gt;tt, tm_the_truth_api-&gt;object_type_from_name_hash(args-&gt;tt, TM_TT_TYPE_HASH__TXT_ASSET), ta);
-    tm_tt_id_t *items = 0;
-    const char **names = 0;
-    tm_carray_temp_push(names, &quot;Select&quot;, ta);
-    tm_carray_temp_push(items, (tm_tt_id_t){ 0 }, ta);
-    for (uint32_t i = 0; i &lt; tm_carray_size(ids); ++i) {
-        // we make sure a Asset Type is the owner of the object! This is important since
-        // the Asset Truth type has the name field! [TM_TT_PROP__ASSET__NAME](https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#enumtm_tt_prop__asset)
-        tm_tt_id_t owner = tm_the_truth_api-&gt;owner(args-&gt;tt, ids[i]);
-        if (tm_tt_type(owner).u64 == asset_type.u64) {
-            // if the owner is a asset we add it's name to our names array and use the id and add it to ower items!
-            tm_carray_temp_push(names, tm_the_truth_api-&gt;get_string(args-&gt;tt, tm_tt_read(args-&gt;tt, owner), TM_TT_PROP__ASSET__NAME), ta);
-            tm_carray_temp_push(items, ids[i], ta);
-        }
-    }
-    // creates a popup picker and the user can choose what reference they want to put into the property!
-    item_rect.y = tm_properties_view_api-&gt;ui_reference_popup_picker(args, item_rect, &quot;Asset&quot;, NULL, object, TM_TT_PROP__STORY_COMPONENT__ASSET, names, items, (uint32_t)tm_carray_size(items));
-    TM_SHUTDOWN_TEMP_ALLOCATOR(ta); // always make sure you call the shutdown function on the temp allocator
-    return item_rect.y;
+    static tm_the_truth_property_definition_t my_asset_properties[] = {
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+    };
+    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    static tm_properties_aspect_i properties_aspect = {
+        .custom_ui = properties__custom_ui,
+    };
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
+
+    tm_the_truth_property_definition_t story_component_properties[] = {
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
+    static tm_properties_aspect_i properties_component_aspect = {
+        .custom_ui = properties__component_custom_ui,
+    };
+
+    const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
 }
 </code></pre>
 <p>In there we get all objects of type <code>TM_TT_TYPE_HASH__TXT_ASSET</code> we know that this type can only exist as a sub object of the Asset Truth Type.</p>
@@ -2853,13 +2868,22 @@ static void component__destroy(tm_component_manager_o *manager)
 <p>This information is important because we need a name for our asset and therefore we just iterate over all our TXT Assets and check if they are owned by a Truth Asset type. If yes we get the name from it and store it in a names array. At the end we add all the IDs of the objects in a array so the user can select them in the drop down menu of the <code>tm_properties_view_api.ui_reference_popup_picker()</code>.</p>
 <h2 id="using-the-asset-picker-property-aspect"><a class="header" href="#using-the-asset-picker-property-aspect">Using the Asset Picker Property Aspect</a></h2>
 <p>Instead of implementing our own UI, which can be full of boilerplate code we can also use the following aspect on our truth type: <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__asset_picker">TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER</a> or if we want to store a entity an provide a entity from the scene: <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__use_local_entity_picker">TM_TT_PROP_ASPECT__PROPERTIES__USE_LOCAL_ENTITY_PICKER</a>. The following code can be adjusted. In your <code>create_truth_types()</code> we need to add this aspect to our type property like this:</p>
-<pre><code class="language-c">// -- create truth type
-static void create_truth_types(struct tm_the_truth_o *tt)
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
-// ..other code
-    tm_the_truth_property_definition_t story_component_properties[] = {
-        [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__TXT_ASSET }
+    static tm_the_truth_property_definition_t my_asset_properties[] = {
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
+    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    static tm_properties_aspect_i properties_aspect = {
+        .custom_ui = properties__custom_ui,
+    };
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
+
+    tm_the_truth_property_definition_t story_component_properties[] = {
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
     static tm_properties_aspect_i properties_component_aspect = {
         .custom_ui = properties__component_custom_ui,
     };
@@ -2884,8 +2908,8 @@ tm_asset_scene_api scene_api = {
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
@@ -2893,9 +2917,8 @@ tm_asset_scene_api scene_api = {
         .custom_ui = properties__custom_ui,
     };
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api); // &lt;&lt;---
-
-    // .. more code
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
+//..
 }
 </code></pre>
 <p>Than, we provide a <code>droppable()</code> function:</p>
@@ -2909,28 +2932,28 @@ tm_asset_scene_api scene_api = {
 #include &lt;plugins/the_machinery_shared/scene_common.h&gt;
 // ... more code
 tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, struct tm_undo_stack_i *undo_stack)
+                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
     const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
     tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
     tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
+    // add transform:
+    {
+        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
+        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
+        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
+        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
+        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
+    }
     // add story:
     {
         tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
         const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
         tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
         tm_the_truth_api-&gt;set_reference(tt, component_w, TM_TT_PROP__STORY_COMPONENT__ASSET, asset);
-        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
-        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
-    }
-    // add transform:
-    {
-        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
-        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
-        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
         tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
         tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
     }
@@ -2943,21 +2966,11 @@ tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *t
 
     return entity;
 }
-// -- load plugin
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-// other code
-     tm_scene_common_api = reg-&gt;get(TM_SCENE_COMMON_API_NAME);
-    tm_entity_api = reg-&gt;get(TM_ENTITY_API_NAME);
-// ... other code
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME, component__create);
-}
 </code></pre>
 <p>First, we create an entity:</p>
 <pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, struct tm_undo_stack_i *undo_stack)
+                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -2969,8 +2982,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </code></pre>
 <p>Suppose it needs a transform. If not, we don't! In this case, we add the transform to the entity, just to make a point:</p>
 <pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, struct tm_undo_stack_i *undo_stack)
+                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -2990,8 +3003,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </code></pre>
 <p>Then, we add the story component to the entity we follow the same steps as before.</p>
 <pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, struct tm_undo_stack_i *undo_stack)
+                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -3006,7 +3019,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
         tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
         tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
     }
-// add story:
+    // add story:
     {
         tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
         const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
@@ -3020,8 +3033,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>After all this, we can commit our changes to the Truth. After this we could place it in the scene with the <code>tm_scene_common_api.place_entity()</code>. This step is not needed but is nice to do!</p>
 <p>Do not forget to add the undo scope to make sure we can undo our action and return the created entity!</p>
 <pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, struct tm_undo_stack_i *undo_stack)
+                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -3036,7 +3049,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
         tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
         tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
     }
-// add story:
+    // add story:
     {
         tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
         const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
@@ -3045,14 +3058,15 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
         tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
         tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
     }
-tm_the_truth_api-&gt;commit(tt, entity_w, undo_scope);
+
+    tm_the_truth_api-&gt;commit(tt, entity_w, undo_scope);
 
     tm_scene_common_api-&gt;place_entity(tt, entity, local_transform, parent_entity, undo_scope);
 
     undo_stack-&gt;add(undo_stack-&gt;inst, tt, undo_scope);
 
     return entity;
-    }
+}
 </code></pre>
 <p>Now we have added the ability to add this to our asset!</p>
 <blockquote>
@@ -3060,24 +3074,40 @@ tm_the_truth_api-&gt;commit(tt, entity_w, undo_scope);
 </blockquote>
 <h2 id="modify-a-already-existing-asset"><a class="header" href="#modify-a-already-existing-asset">Modify a already existing asset</a></h2>
 <p>It is important to understand that you can add this to any truth type even if you do not define them in your plugin. Lets assume you have created a new plugin which uses the txt file asset. You are not the owner of this plugin and its source code so you cannot modify it like we did above. What you can do on the other hand you can add the aspect to the truth type:</p>
-<pre><code class="language-c">// -- load plugin
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+<pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-// other code
-     tm_scene_common_api = reg-&gt;get(TM_SCENE_COMMON_API_NAME);
-    tm_entity_api = reg-&gt;get(TM_ENTITY_API_NAME);
-// ... other code
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_os_api = tm_get_api(reg, tm_os_api);
+    tm_path_api = tm_get_api(reg, tm_path_api);
+    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+    tm_logger_api = tm_get_api(reg, tm_logger_api);
+    tm_localizer_api = tm_get_api(reg, tm_localizer_api);
+    tm_asset_io_api = tm_get_api(reg, tm_asset_io_api);
+    task_system = tm_get_api(reg, tm_task_system_api);
+    tm_sprintf_api = tm_get_api(reg, tm_sprintf_api);
+    tm_entity_api = tm_get_api(reg, tm_entity_api);
+    tm_scene_common_api = tm_get_api(reg, tm_scene_common_api);
+    tm_global_api_registry = reg;
+    if (load)
+        tm_asset_io_api-&gt;add_asset_io(&amp;txt_asset_io);
+    else
+        tm_asset_io_api-&gt;remove_asset_io(&amp;txt_asset_io);
+
+    tm_add_or_remove_implementation(reg, load, tm_entity_create_component_i, component__create);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
 </code></pre>
 <p>and then in the <code>create_truth_types</code> function you can add the aspect to the truth type:</p>
-<pre><code class="language-c">// -- create truth type
-static void create_truth_types(struct tm_the_truth_o *tt)
+<pre><code class="language-c">static void create_truth_types_modify(struct tm_the_truth_o *tt)
 {
-    tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TXT_ASSET);
-    if(asset_type.u64){
-        if(tm_the_truth_api-&gt;get_aspect(tt, asset_type, TM_TT_ASPECT__ASSET_SCENE))
-	    	tm_the_truth_api-&gt;set_aspect(tt, asset_type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
+    tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+    if (asset_type.u64)
+    {
+        if (tm_the_truth_api-&gt;get_aspect(tt, asset_type, TM_TT_ASPECT__ASSET_SCENE))
+            tm_the_truth_api-&gt;set_aspect(tt, asset_type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
     }
 }
 </code></pre>
@@ -3117,46 +3147,135 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <p>The Steps of creating a tab are similar to the ones of a standard plugin:</p>
 <ol>
 <li>We create a new file. For example: <code>txt_tab.c</code></li>
-<li>We need to include some files for a tab plugin:</li>
+<li>We make use of the default tab template provided by the engine:</li>
 </ol>
 <pre><code class="language-c">static struct tm_api_registry_api *tm_global_api_registry;
 
+static struct tm_draw2d_api *tm_draw2d_api;
 static struct tm_ui_api *tm_ui_api;
-static struct tm_temp_allocator_api *tm_temp_allocator_api;
-
-extern struct tm_the_truth_api *tm_the_truth_api;
-static struct tm_localizer_api *tm_localizer_api;
+static struct tm_allocator_api *tm_allocator_api;
 
 #include &lt;foundation/allocator.h&gt;
 #include &lt;foundation/api_registry.h&gt;
-#include &lt;foundation/string.inl&gt;
-#include &lt;foundation/temp_allocator.h&gt;
-#include &lt;foundation/the_truth.h&gt;
 
 #include &lt;plugins/ui/docking.h&gt;
+#include &lt;plugins/ui/draw2d.h&gt;
 #include &lt;plugins/ui/ui.h&gt;
+#include &lt;plugins/ui/ui_custom.h&gt;
 
 #include &lt;the_machinery/the_machinery_tab.h&gt;
 
-#include &quot;txt.h&quot;
-</code></pre>
-<blockquote>
-<p><strong>Note:</strong> With extern we can use the truth api from the <code>txt.c</code> file so we do not need to get it from the registry!</p>
-</blockquote>
-<ul>
-<li>The docking header file provides us the default tab type</li>
-<li>The UI header gives us access to the UI API</li>
-<li>The txt header gives us access to our custom types</li>
-</ul>
-<ol>
-<li>We create a new load function on the bottom of the file:</li>
-</ol>
-<pre><code class="language-c">void load_txt_tab(struct tm_api_registry_api *reg, bool load)
+#include &lt;stdio.h&gt;
+
+#define TM_CUSTOM_TAB_VT_NAME &quot;tm_custom_tab&quot;
+#define TM_CUSTOM_TAB_VT_NAME_HASH TM_STATIC_HASH(&quot;tm_custom_tab&quot;, 0xbc4e3e47fbf1cdc1ULL)
+
+struct tm_tab_o
+{
+    tm_tab_i tm_tab_i;
+    tm_allocator_i allocator;
+};
+
+static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
+{
+    tm_ui_buffers_t uib = tm_ui_api-&gt;buffers(ui);
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
+    tm_draw2d_style_t *style = &amp;(tm_draw2d_style_t){0};
+    tm_ui_api-&gt;to_draw_style(ui, style, uistyle);
+
+    style-&gt;color = (tm_color_srgb_t){.a = 255, .r = 255};
+    tm_draw2d_api-&gt;fill_rect(uib.vbuffer, *uib.ibuffers, style, rect);
+}
+
+static const char *tab__create_menu_name(void)
+{
+    return &quot;Custom Tab&quot;;
+}
+
+static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
+{
+    return &quot;Custom Tab&quot;;
+}
+
+static tm_tab_vt *custom_tab_vt;
+
+static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
+{
+    tm_allocator_i allocator = tm_allocator_api-&gt;create_child(context-&gt;allocator, &quot;Custom Tab&quot;);
+    uint64_t *id = context-&gt;id;
+
+    tm_tab_o *tab = tm_alloc(&amp;allocator, sizeof(tm_tab_o));
+    *tab = (tm_tab_o){
+        .tm_tab_i = {
+            .vt = custom_tab_vt,
+            .inst = (tm_tab_o *)tab,
+            .root_id = *id,
+        },
+        .allocator = allocator,
+    };
+
+    *id += 1000000;
+    return &amp;tab-&gt;tm_tab_i;
+}
+
+static void tab__destroy(tm_tab_o *tab)
+{
+    tm_allocator_i a = tab-&gt;allocator;
+    tm_free(&amp;a, tab, sizeof(*tab));
+    tm_allocator_api-&gt;destroy_child(&amp;a);
+}
+
+static tm_tab_vt *custom_tab_vt = &amp;(tm_tab_vt){
+    .name = TM_CUSTOM_TAB_VT_NAME,
+    .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
+    .create_menu_name = tab__create_menu_name,
+    .create = tab__create,
+    .destroy = tab__destroy,
+    .title = tab__title,
+    .ui = tab__ui};
+
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_global_api_registry = reg;
 
-    tm_ui_api = reg-&gt;get(TM_UI_API_NAME);
-    tm_temp_allocator_api = reg-&gt;get(TM_TEMP_ALLOCATOR_API_NAME);
+    tm_draw2d_api = tm_get_api(reg, tm_draw2d_api);
+    tm_ui_api = tm_get_api(reg, tm_ui_api);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+
+    tm_add_or_remove_implementation(reg, load, tm_tab_vt, custom_tab_vt);
+}
+</code></pre>
+<p>We modify the following parts of the sample:</p>
+<ul>
+<li><code>tab__create_menu_name</code> &amp; <code>tab__title</code> they shall return: <code>&quot;Text Tab&quot;</code></li>
+<li>We remove the <code>TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)</code> function since we replace it in the next step.</li>
+<li>To the <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_o">tm_tab_o</a> we add: a pointer to the Truth and a asset entry:</li>
+</ul>
+<pre><code class="language-c">struct tm_tab_o
+{
+    tm_tab_i tm_tab_i;
+    tm_allocator_i *allocator;
+
+    tm_tt_id_t asset;
+    tm_the_truth_o *tt;
+};
+</code></pre>
+<p>The most important fields here are the <strong>asset</strong> and <strong>tt</strong> filed. They will store the currently used asset and truth. Those fields allow us to access both in various functions.</p>
+<ul>
+<li>
+<p>We also change the defines to:</p>
+<pre><code class="language-c">#define TM_TXT_TAB_VT_NAME &quot;tm_txt_tab&quot;
+#define TM_TXT_TAB_VT_NAME_HASH TM_STATIC_HASH(&quot;tm_txt_tab&quot;, 0x2cd261be98a99bc3ULL)
+</code></pre>
+</li>
+</ul>
+<p>After those adjustments we continue with creating a new load function on the bottom of the file:</p>
+<pre><code class="language-c">    tm_global_api_registry = reg;
+
+    tm_ui_api = tm_get_api(reg, tm_ui_api);
+    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
+
+    tm_add_or_remove_implementation(reg, load, tm_tab_vt, tab_vt);
 }
 </code></pre>
 <p>In our main file the <code>txt.c</code> we need to add this function and call it:</p>
@@ -3169,61 +3288,6 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     load_txt_tab(reg,load);
 }
 </code></pre>
-<ol start="2">
-<li>Above this function we initialize a object of the type <a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery_tab.h.html#structtm_the_machinery_tab_vt">tm_the_machinery_tab_vt</a></li>
-</ol>
-<pre><code class="language-c">static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
-// ...
-};
-
-void load_txt_tab(struct tm_api_registry_api *reg, bool load){
-    //...
-}
-</code></pre>
-<ol start="3">
-<li>We add to the <code>txt.h</code> the name of our Tab as well as its hash</li>
-</ol>
-<pre><code class="language-c">#define TM_TXT_TAB_VT_NAME &quot;tm_txt_tab&quot;
-#define TM_TXT_TAB_VT_NAME_HASH TM_STATIC_HASH(&quot;tm_txt_tab&quot;, 0x2cd261be98a99bc3ULL)
-</code></pre>
-<ol start="4">
-<li>To this Virtual Table, we add the name and its hash as well as the following functions:</li>
-</ol>
-<pre><code class="language-c">static const char *tab__create_menu_name(void)
-{
-    return &quot;Text Tab&quot;;
-}
-
-static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
-{
-    return &quot;Text Tab&quot;;
-}
-
-static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
-    .name = TM_TXT_TAB_VT_NAME,
-    .name_hash = TM_TXT_TAB_VT_NAME_HASH,
-    .create_menu_name = tab__create_menu_name,
-    .create = tab__create,
-    .destroy = tab__destroy,
-    .title = tab__title,
-    .ui = tab__ui,
-    .set_root = tab__set_root,
-    .root = tab__root,
-};
-</code></pre>
-<ol start="5">
-<li>On top of our file, we define the opaque type: <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_o">tm_tab_o</a> and provide some fields to it:</li>
-</ol>
-<pre><code class="language-c">struct tm_tab_o
-{
-    tm_tab_i tm_tab_i;
-    tm_allocator_i *allocator;
-
-    tm_tt_id_t asset;
-    tm_the_truth_o *tt;
-};
-</code></pre>
-<p>The most important fields here are the <strong>asset</strong> and <strong>tt</strong> filed. They will store the currently used asset and truth. Those fields allow us to access both in various functions.</p>
 <h3 id="implementing-the-functions"><a class="header" href="#implementing-the-functions">Implementing the functions</a></h3>
 <p>Now that we have done all the boilerplate code, let us focus on the three functions that count:</p>
 <ul>
@@ -3232,19 +3296,17 @@ static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
 <li>The Set Root function</li>
 </ul>
 <h4 id="the-create-function"><a class="header" href="#the-create-function">The Create Function</a></h4>
-<pre><code class="language-c">static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
+<pre><code class="language-c">static tm_tab_vt *tab_vt;
+
+static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
 {
     tm_allocator_i *allocator = context-&gt;allocator;
     uint64_t *id = context-&gt;id;
 
-    static tm_the_machinery_tab_vt *vt = 0;
-    if (!vt)
-        vt = tm_global_api_registry-&gt;get(TM_TXT_TAB_VT_NAME);
-
     tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
-            .vt = (tm_tab_vt *)vt,
+            .vt = (tm_tab_vt *)tab_vt,
             .inst = (tm_tab_o *)tab,
             .root_id = *id,
         },
@@ -3252,23 +3314,16 @@ static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
     };
 
     *id += 1000000;
-    return &amp;tab-&gt;tm_tab_i;
-}
 </code></pre>
 <p>In this function, we store the allocator first. </p>
 <blockquote>
 <p><strong>Tipp:</strong> if you wanted to create a child allocator, you could do this for your Tab. A child allocator may be very useful when doing many allocations: <code>tm_allocator_api.create_child()</code>.</p>
 </blockquote>
-<p>As the next step, we initialize the virtual table of or Tab, but only if the static variable was not initialized. </p>
-<pre><code class="language-c">    static tm_the_machinery_tab_vt *vt = 0;
-    if (!vt)
-        vt = tm_global_api_registry-&gt;get(TM_TXT_TAB_VT_NAME);
-</code></pre>
 <p>We need to initialize the tab interface so other engine parts can communicate with a generic interface to the Tab. We store a pointer to our Tab within this interface so other callers of the standard generic interface can access this instance and pass it along to the functions. After this, we allocate the Tab itself.</p>
 <pre><code class="language-c">    tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
-            .vt = (tm_tab_vt *)vt,
+            .vt = (tm_tab_vt *)tab_vt,
             .inst = (tm_tab_o *)tab,
             .root_id = *id,
         },
@@ -3279,32 +3334,37 @@ static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
 <h4 id="the-update-function"><a class="header" href="#the-update-function">The Update Function</a></h4>
 <pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
 {
-    tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
-    if (tab-&gt;asset.u64) {
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
+    if (tab-&gt;asset.u64)
+    {
         TM_INIT_TEMP_ALLOCATOR(ta);
         tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
         char *content = tm_temp_alloc(ta, buffer.size + 1);
         tm_strncpy_safe(content, buffer.data, buffer.size);
 
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .text = content, .rect = rect };
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){.text = content, .rect = rect};
         tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
         TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-    } else {
+    }
+    else
+    {
         rect.h = 20;
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){.align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect};
         tm_ui_api-&gt;text(ui, uistyle, text);
     }
 }
 </code></pre>
 <p>At first, we create a copy of the UI Style. With this copy, we can do what we want since the input style is a const pointer. After this, we check if the asset is present. If not, we print a message on the Tab that the user must select a <code>txt</code> asset.</p>
 <pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
-{  
-tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
-    if (tab-&gt;asset.u64) {
-        //...
-    } else {
+{
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
+    if (tab-&gt;asset.u64)
+//...
+    }
+    else
+    {
         rect.h = 20;
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){.align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect};
         tm_ui_api-&gt;text(ui, uistyle, text);
     }
 }
@@ -3313,14 +3373,17 @@ tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
 <p>In this case, we need a temporary allocator. Since we do not want to keep the memory forever, we need to initialize a temp allocator with <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_init_temp_allocator()">TM_INIT_TEMP_ALLOCATOR</a> and provide a name. Do not forget to free the memory at the end. </p>
 <pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
 {
-    tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
-    if (tab-&gt;asset.u64) {
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
+    if (tab-&gt;asset.u64)
+    {
         TM_INIT_TEMP_ALLOCATOR(ta);
-            //..
+//..
         TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-    } else {
+    }
+    else
+    {
         rect.h = 20;
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){.align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect};
         tm_ui_api-&gt;text(ui, uistyle, text);
     }
 }
@@ -3329,15 +3392,16 @@ tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
 <p><strong>Note:</strong> If the memory is smaller than 1024 bytes, the memory is allocated to the stack. Moreover, an alternative is the frame allocator in which the memory is freed every frame.</p>
 </blockquote>
 <p>The next step is it to ask the truth for the buffer and allocate the right amount of memory. Since we want to copy the data into a null-terminated string, we should add 1 to the data size.</p>
-<pre><code class="language-c"> tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
-char *content = tm_temp_alloc(ta, buffer.size + 1);
+<pre><code class="language-c">        tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
+        char *content = tm_temp_alloc(ta, buffer.size + 1);
+        tm_strncpy_safe(content, buffer.data, buffer.size);
 </code></pre>
 <p>To ensure our string is clean and filled with nulls, we use the inline string file (hence we add the <code>foundation/string.inl</code> to our includes). We have the <a href="https://ourmachinery.com/apidoc/foundation/string.inl.html#tm_strncpy_safe()">tm_strncpy_safe</a> within this header file, which fills up a string with null terminator.</p>
-<pre><code class="language-c">tm_strncpy_safe(content, buffer.data, buffer.size);
+<pre><code class="language-c">        tm_strncpy_safe(content, buffer.data, buffer.size);
 </code></pre>
 <p>The last step before we are done is actually to make the text appear on the screen. We make use of the <code>tm_ui_api.wrapped_text()</code> since this function will print the string in multiple lines if need be.</p>
-<pre><code class="language-c">tm_ui_text_t *text = &amp;(tm_ui_text_t){ .text = content, .rect = rect };
-tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
+<pre><code class="language-c">        tm_ui_text_t *text = &amp;(tm_ui_text_t){.text = content, .rect = rect};
+        tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
 </code></pre>
 <h4 id="the-set-root--root-function"><a class="header" href="#the-set-root--root-function">The set root / root function</a></h4>
 <p>The last function which we need is the set root function. This function allows us to set a root object of the Tab from the outside. Its code is quite straightforward:</p>
@@ -3349,7 +3413,7 @@ tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
 
 static tm_tab_vt_root_t tab__root(tm_tab_o *tab)
 {
-    return (tm_tab_vt_root_t){ tab-&gt;tt, tab-&gt;asset };
+    return (tm_tab_vt_root_t){tab-&gt;tt, tab-&gt;asset};
 }
 </code></pre>
 <h3 id="let-us-test-the-tab"><a class="header" href="#let-us-test-the-tab">Let us test the Tab</a></h3>
@@ -3375,7 +3439,6 @@ static struct tm_localizer_api *tm_localizer_api;
 
 #include &lt;the_machinery/the_machinery_tab.h&gt;
 
-
 #include &quot;txt.h&quot;
 
 struct tm_tab_o
@@ -3389,19 +3452,22 @@ struct tm_tab_o
 
 static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
 {
-    tm_ui_style_t *uistyle = (tm_ui_style_t[]){ *uistyle_in };
-    if (tab-&gt;asset.u64) {
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
+    if (tab-&gt;asset.u64)
+    {
         TM_INIT_TEMP_ALLOCATOR(ta);
         tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
         char *content = tm_temp_alloc(ta, buffer.size + 1);
         tm_strncpy_safe(content, buffer.data, buffer.size);
 
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .text = content, .rect = rect };
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){.text = content, .rect = rect};
         tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
         TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-    } else {
+    }
+    else
+    {
         rect.h = 20;
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){ .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
+        tm_ui_text_t *text = &amp;(tm_ui_text_t){.align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect};
         tm_ui_api-&gt;text(ui, uistyle, text);
     }
 }
@@ -3416,19 +3482,17 @@ static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
     return &quot;Text Tab&quot;;
 }
 
+static tm_tab_vt *tab_vt;
+
 static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
 {
     tm_allocator_i *allocator = context-&gt;allocator;
     uint64_t *id = context-&gt;id;
 
-    static tm_the_machinery_tab_vt *vt = 0;
-    if (!vt)
-        vt = tm_global_api_registry-&gt;get(TM_TXT_TAB_VT_NAME);
-
     tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
     *tab = (tm_tab_o){
         .tm_tab_i = {
-            .vt = (tm_tab_vt *)vt,
+            .vt = (tm_tab_vt *)tab_vt,
             .inst = (tm_tab_o *)tab,
             .root_id = *id,
         },
@@ -3452,10 +3516,10 @@ void tab__set_root(tm_tab_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t root)
 
 static tm_tab_vt_root_t tab__root(tm_tab_o *tab)
 {
-    return (tm_tab_vt_root_t){ tab-&gt;tt, tab-&gt;asset };
+    return (tm_tab_vt_root_t){tab-&gt;tt, tab-&gt;asset};
 }
 
-static tm_the_machinery_tab_vt *tab_vt = &amp;(tm_the_machinery_tab_vt){
+static tm_tab_vt *tab_vt = &amp;(tm_tab_vt){
     .name = TM_TXT_TAB_VT_NAME,
     .name_hash = TM_TXT_TAB_VT_NAME_HASH,
     .create_menu_name = tab__create_menu_name,
@@ -3471,13 +3535,11 @@ void load_txt_tab(struct tm_api_registry_api *reg, bool load)
 {
     tm_global_api_registry = reg;
 
-    tm_ui_api = reg-&gt;get(TM_UI_API_NAME);
-    tm_temp_allocator_api = reg-&gt;get(TM_TEMP_ALLOCATOR_API_NAME);
+    tm_ui_api = tm_get_api(reg, tm_ui_api);
+    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
 
-    tm_set_or_remove_api(reg, load, TM_TXT_TAB_VT_NAME, tab_vt);
-    tm_add_or_remove_implementation(reg, load, TM_TAB_VT_INTERFACE_NAME, tab_vt);
+    tm_add_or_remove_implementation(reg, load, tm_tab_vt, tab_vt);
 }
-
 </code></pre>
 <h2 id="open-the-tab"><a class="header" href="#open-the-tab">Open the Tab</a></h2>
 <p>After all the previous steps, we can finally make our Text Asset open this Tab!</p>
@@ -3490,20 +3552,34 @@ static struct tm_the_machinery_api* tm_the_machinery_api;
 static struct tm_docking_api* tm_docking_api;
 //...
 
-#include &lt;plugins/ui/docking.h&gt;
-#include &lt;the_machinery/the_machinery_tab.h&gt;
-#include &lt;the_machinery/the_machinery.h&gt;
-//...
-extern void load_txt_tab(struct tm_api_registry_api* reg, bool load);
-
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-    //...
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_os_api = tm_get_api(reg, tm_os_api);
+    tm_path_api = tm_get_api(reg, tm_path_api);
+    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+    tm_logger_api = tm_get_api(reg, tm_logger_api);
+    tm_localizer_api = tm_get_api(reg, tm_localizer_api);
+    tm_asset_io_api = tm_get_api(reg, tm_asset_io_api);
+    task_system = tm_get_api(reg, tm_task_system_api);
+    tm_sprintf_api = tm_get_api(reg, tm_sprintf_api);
+    tm_entity_api = tm_get_api(reg, tm_entity_api);
+    tm_scene_common_api = tm_get_api(reg, tm_scene_common_api);
+    tm_global_api_registry = reg;
+    if (load)
+        tm_asset_io_api-&gt;add_asset_io(&amp;txt_asset_io);
+    else
+        tm_asset_io_api-&gt;remove_asset_io(&amp;txt_asset_io);
+
     // loads the txt tab!
-    tm_the_machinery_api = reg-&gt;get(TM_THE_MACHINERY_API_NAME);
-    tm_docking_api = reg-&gt;get(TM_DOCKING_API_NAME);
-    load_txt_tab(reg,load);
-      //...
+    tm_the_machinery_api = tm_get_api(reg, tm_the_machinery_api);
+    tm_docking_api = tm_get_api(reg, tm_docking_api);
+    load_txt_tab(reg, load);
+    tm_add_or_remove_implementation(reg, load, tm_entity_create_component_i, component__create);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
 </code></pre>
 <p>To open an asset, we need to add another aspect to our type. It is the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#tm_tt_aspect__asset_open">TM_TT_ASPECT__ASSET_OPEN</a> aspect! This aspect requires a implementation of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_open_aspect_i">tm_asset_open_aspect_i</a>. </p>
@@ -3516,8 +3592,9 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </code></pre>
 <p>We add this implementation of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_open_aspect_i">tm_asset_open_aspect_i</a> above the <code>create_truth_types</code> function.</p>
 <pre><code class="language-c">void open_asset(struct tm_application_o *app, struct tm_ui_o *ui, struct tm_tab_i *from_tab,
-        tm_the_truth_o *tt, tm_tt_id_t asset, enum tm_asset_open_mode open_mode){
-    
+                tm_the_truth_o *tt, tm_tt_id_t asset, enum tm_asset_open_mode open_mode)
+{
+
     const tm_docking_find_tab_opt_t opt = {
         .from_tab = from_tab,
         .in_ui = ui,
@@ -3525,23 +3602,17 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     };
 
     const bool pin = open_mode == TM_ASSET_OPEN_MODE_CREATE_TAB_AND_PIN;
-    tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app,ui,TM_TXT_TAB_VT_NAME,&amp;opt);
+    tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app, ui, TM_TXT_TAB_VT_NAME, &amp;opt);
 
     if (pin)
         tm_docking_api-&gt;pin_object(tab, tt, asset);
     else
-        tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);   
-    
+        tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);
 }
 
-static tm_asset_open_aspect_i* open_i = &amp;(tm_asset_open_aspect_i){
+static tm_asset_open_aspect_i *open_i = &amp;(tm_asset_open_aspect_i){
     .open = open_asset,
 };
-
-static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    //...
-}
 </code></pre>
 <p>The open function gives us all the important information:</p>
 <ol>
@@ -3553,21 +3624,20 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <li>How we will open the Tab.</li>
 </ol>
 <p>At first, we define the search criteria for the <code>create_or_select_tab</code> of the Machinery API. In this case we want to exclude pinned tabs since the user might have a reason for why they are pinned!</p>
+<pre><code class="language-c">    tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app, ui, TM_TXT_TAB_VT_NAME, &amp;opt);
+</code></pre>
+<p>Now we can create or select a tab by calling the <code>create_or_select_tab</code> function.</p>
 <pre><code class="language-c">    const tm_docking_find_tab_opt_t opt = {
         .from_tab = from_tab,
         .in_ui = ui,
         .exclude_pinned = true,
     };
 </code></pre>
-<p>Now we can create or select a tab by calling the <code>create_or_select_tab</code> function.</p>
-<pre><code class="language-c">tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app,ui,TM_TXT_TAB_VT_NAME,&amp;opt);
-</code></pre>
 <p>The last step is actually to pass some data along! In this case, we need to check if something is pinned or not! Hence we check if the <code>open_mode</code> is equal to pinning. If yes, we ask the docking API to pin our Tab.</p>
-<pre><code class="language-c">    const bool pin = open_mode == TM_ASSET_OPEN_MODE_CREATE_TAB_AND_PIN;
-    if (pin)
+<pre><code class="language-c">    if (pin)
         tm_docking_api-&gt;pin_object(tab, tt, asset);
     else
-        tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);   
+        tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="gameplay-coding-in-the-machinery"><a class="header" href="#gameplay-coding-in-the-machinery">Gameplay Coding in The Machinery</a></h1>
 <p>In this section, you will learn the basics about Gameplay Coding in <em>The Machinery.</em> There are two primary ways of creating a vivid and active world:</p>
@@ -3606,7 +3676,7 @@ static inline void sample_float_square(float a, float *res)
     *res = a * a;
 }
 GGN_END();
-#include &quot;my_graph_nodes.inl&quot;
+#include &quot;example_graph_nodes.inl&quot;
 </code></pre>
 <p>Let us digest the code example above. There are some things to note here:</p>
 <ul>
@@ -3616,10 +3686,10 @@ GGN_END();
 <li>The Engine will use the function name <code>sample_float_square</code> later: <code>Sample Float Square</code>, and you will find it in the defined category: <code>Sample/Math/Float</code></li>
 <li>The <code>GGN_NODE_QUERY()</code> macro marks this node as a Query node. Query nodes are triggered automatically when their output is requested. Nodes that don't just purely modify data need to be triggered by an explicit event. Such as Tick or Init.</li>
 <li>The <code>GGN_GEN_REGISTER_FUNCTION()</code> macro automatically creates a register function for registering the node with the visual scripting system. Otherwise, you need to write this function yourself.</li>
-<li>The <code>#include &quot;my_graph_nodes.inl&quot;</code> will include the autogenerated graph node implementations. It needs to be somewhere in the file. (before the <code>tm_load_plugin</code> function)</li>
+<li>The <code>#include &quot;example_graph_nodes.inl&quot;</code> will include the autogenerated graph node implementations. It needs to be somewhere in the file. (before the <code>tm_load_plugin</code> function)</li>
 <li>The <code>generate-graph-nodes.exe</code> auto-generates the <code>my_graph_nodes.inl</code> for you. It would be best if you do not edit this file. Otherwise, the generator will overwrite your changes next time.</li>
 </ul>
-<p>For a full documentation of all <code>GGN_*</code> macros see [plugins/graph_interpreter/graph_node_macros.h](http://#).
+<p>For a full documentation of all <code>GGN_*</code> macros see <code>plugins/graph_interpreter/graph_node_macros.h</code>.
 The code we write is relatively slight. We need to ensure that we have some header files, including the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#graph_node_macros.h">graph_node_macros.h</a>, which we are using to tell the generator to generate code for us. </p>
 <p>The following list makes sure that the nodes work on their own.</p>
 <pre><code class="language-c">#include &lt;plugins/editor_views/graph.h&gt;
@@ -3628,21 +3698,21 @@ The code we write is relatively slight. We need to ensure that we have some head
 </code></pre>
 <p>If we now think <em>'yeah, we can compile',</em> we are wrong; We need some other header files to ensure that the generated magic in the <code>my_graph_nodes.inl</code> file works. </p>
 <p>We need to include the following files as well:</p>
-<pre><code class="language-c">#include &lt;foundation/api_registry.h&gt; //Is needed for `GGN_GEN_REGISTER_FUNCTION()`
-#include &lt;foundation/localizer.h&gt; // it automatically localizes your category name
+<pre><code class="language-c">static struct tm_graph_interpreter_api *tm_graph_interpreter_api;
+#include &lt;foundation/api_registry.h&gt; //Is needed for `GGN_GEN_REGISTER_FUNCTION()`
+#include &lt;foundation/localizer.h&gt;    // it automatically localizes your category name
 #include &lt;foundation/macros.h&gt;
 #include &lt;foundation/the_truth_types.h&gt; // is needed for the description of the wire input types
 </code></pre>
 <p>The next question is, <em><strong>Are we done now?</strong></em>  The answer is <strong>yes nearly</strong>.  What's left is registering our nodes in the plugin load function. It may look than like this:</p>
 <pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-    tm_global_api_registry = reg;
-    tm_graph_interpreter_api = reg-&gt;get(TM_GRAPH_INTERPRETER_API_NAME);
+    tm_graph_interpreter_api = tm_get_api(reg, tm_graph_interpreter_api);
     // This is auto generated from the graph node generator, you just need to call it.
-    generated__register_graph_nodes(reg, load);
+    generated__register_example_graph_nodes(reg, load);
 }
 </code></pre>
-<p>Here we just call the <code>generated__register_graph_nodes</code> function, defined in <code>my_graph_nodes.inl</code> and auto-generated. You can find the complete example here <code>samples/plugins/graph_nodes</code>.</p>
+<p>Here we just call the <code>generated__register_example_graph_nodes</code> function, defined in <code>my_graph_nodes.inl</code> and auto-generated. You can find the complete example here <code>samples/plugins/graph_nodes</code>.</p>
 <ol start="3">
 <li><strong>Run the node generator &amp;</strong>  <code>tmbuild</code></li>
 </ol>
@@ -3654,6 +3724,34 @@ Then you are ready to run <code>tmbuild</code>. It will compile your plugin, and
 <p><strong>Note:</strong> You can also run <code>tmbuild</code> with a argument: <code>tmbuild --gen-nodes</code> . This will make sure that <code>tmbuild</code> runs <code>generate-graph-nodes.exe</code> before it builds.</p>
 </blockquote>
 <p><img src="https://paper-attachments.dropbox.com/s_BE512D5FE8135D0385DC0047FF64445B552F54BFA20F2F17110D3CCE8DFC6050_1608038436418_image.png" alt="Created nodes in the entity graph view" /></p>
+<h2 id="full-sample-code"><a class="header" href="#full-sample-code">Full sample code:</a></h2>
+<pre><code class="language-c">static struct tm_graph_interpreter_api *tm_graph_interpreter_api;
+#include &lt;foundation/api_registry.h&gt; //Is needed for `GGN_GEN_REGISTER_FUNCTION()`
+#include &lt;foundation/localizer.h&gt;    // it automatically localizes your category name
+#include &lt;foundation/macros.h&gt;
+#include &lt;foundation/the_truth_types.h&gt; // is needed for the description of the wire input types
+
+#include &lt;plugins/editor_views/graph.h&gt;
+#include &lt;plugins/graph_interpreter/graph_node_helpers.inl&gt;
+#include &lt;plugins/graph_interpreter/graph_node_macros.h&gt;
+
+GGN_BEGIN(&quot;Sample/Math/Float&quot;);
+GGN_GEN_REGISTER_FUNCTION();
+GGN_NODE_QUERY();
+static inline void sample_float_square(float a, float *res)
+{
+    *res = a * a;
+}
+GGN_END();
+#include &quot;example_graph_nodes.inl&quot;
+
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    tm_graph_interpreter_api = tm_get_api(reg, tm_graph_interpreter_api);
+    // This is auto generated from the graph node generator, you just need to call it.
+    generated__register_example_graph_nodes(reg, load);
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ui"><a class="header" href="#ui">UI</a></h1>
 <p>The Machinery's <a href="https://ourmachinery.com/apidoc/plugins/ui">UI system</a>, is a Immediate Mode GUI (IMGUI). Besides the information you can find here or in our API Documentation there are several Blog Posts you should check out:</p>
 <ul>
@@ -3909,31 +4007,29 @@ Then you are ready to run <code>tmbuild</code>. It will compile your plugin, and
 <p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1" alt="" /></p>
 <p>We open the <code>custom_tab.c</code> (or however we called it) file with our favorite editor.</p>
 <p>We search for the line in which we define the tab itself:</p>
-<pre><code class="language-c">//...code
-static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
+<pre><code class="language-c">static tm_tab_vt *custom_tab_vt = &amp;(tm_tab_vt){
     .name = TM_CUSTOM_TAB_VT_NAME,
     .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
     .create_menu_name = tab__create_menu_name,
     .create = tab__create,
     .destroy = tab__destroy,
     .title = tab__title,
-    .ui = tab__ui
+    .ui = tab__ui,
 };
-//...code
 </code></pre>
 <p>To our definition, we add a <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.toolbars()"><code>toolbars()</code></a>. This function returns a C-Array of toolbar definitions.  The array is allocated with the passed in the temporary allocator.</p>
 <blockquote>
 <p><strong>Note:</strong> A temporary allocator (<a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html">tm_temp_allocator_api</a>) Provides a system for temporary memory allocations. I.e., short-lived memory allocations that are automatically freed when the allocator is destroyed. Temp allocators typically use a pointer bump allocator to allocate memory from one or more big memory blocks and then free the entire block when the allocator is destroyed.</p>
-<p><strong>Important:</strong> You need to include  the api first<code>#include &lt;foundation/temp_allocator.h&gt;</code> and get the api from the registry!</p>
+<p><strong>Important:</strong> You need to include  the api first <code>#include &lt;foundation/temp_allocator.h&gt;</code> and get the api from the registry!</p>
 </blockquote>
-<pre><code class="language-c">static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
+<pre><code class="language-c">static tm_tab_vt *custom_tab_vt_toolbars = &amp;(tm_tab_vt){
     .name = TM_CUSTOM_TAB_VT_NAME,
     .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
     .create_menu_name = tab__create_menu_name,
     .create = tab__create,
     .destroy = tab__destroy,
     .title = tab__title,
-    .ui = tab__ui
+    .ui = tab__ui,
     .toolbars = tab__toolbars, // we added this line
 };
 </code></pre>
@@ -3955,9 +4051,9 @@ static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
 <p><strong>Note:</strong> For a complete list please check the <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i">documentation</a></p>
 </blockquote>
 <table><thead><tr><th>Mask</th><th>Description</th></tr></thead><tbody>
-<tr><td>TM_TOOLBAR_DRAW_MODE_HORIZONTAL</td><td>You an draw the toolbar horizontal.</td></tr>
-<tr><td>TM_TOOLBAR_DRAW_MODE_VERTICAL</td><td>You an draw the toolbar vertical.</td></tr>
-<tr><td>TM_TOOLBAR_DRAW_MODE_WIDGET</td><td>The toolbar is an overlay</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode">TM_TOOLBAR_DRAW_MODE_HORIZONTAL</a></td><td>You an draw the toolbar horizontal.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode">TM_TOOLBAR_DRAW_MODE_VERTICAL</a></td><td>You an draw the toolbar vertical.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#enumtm_toolbar_draw_mode">TM_TOOLBAR_DRAW_MODE_WIDGET</a></td><td>The toolbar is an overlay</td></tr>
 </tbody></table>
 <p>Let us provide the essential things:</p>
 <ol>
@@ -3967,23 +4063,25 @@ static tm_the_machinery_tab_vt* custom_tab_vt = &amp;(tm_the_machinery_tab_vt){
 </ol>
 <pre><code class="language-c">static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab, tm_temp_allocator_i *ta)
 {
-struct tm_toolbar_i *toolbars = 0;
+    struct tm_toolbar_i *toolbars = 0;
     tm_carray_temp_push(toolbars,
-        ((tm_toolbar_i){
-            .id = TM_STRHASH_U64(TM_STATIC_HASH(&quot;my_tab&quot;, 0xcffc3169d97098acULL)),
-            .ui = ui,
-            .draw_mode_mask = TM_TOOLBAR_DRAW_MODE_HORIZONTAL | TM_TOOLBAR_DRAW_MODE_VERTICAL,
-        }),
-        ta);
+                        ((tm_toolbar_i){
+                            .id = TM_STRHASH_U64(TM_STATIC_HASH(&quot;my_tab&quot;, 0x833aa53d363283b5ULL)),
+                            .ui = toolbar__ui,
+                            .draw_mode_mask = TM_TOOLBAR_DRAW_MODE_HORIZONTAL | TM_TOOLBAR_DRAW_MODE_VERTICAL,
+                        }),
+                        ta);
+    return toolbars;
 }
 </code></pre>
 <p>In our UI function, we can add the button via the [<a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api">tm_ui_api</a>](https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api). Then log the string &quot;Hello World&quot; to the screen with the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#log.h">logger API</a>.</p>
 <blockquote>
 <p><strong>Note:</strong> You need include the <code>plugins/ui/ui.h</code> and the <code>foundation/log.h</code> as well as get the API's first!</p>
 </blockquote>
-<pre><code class="language-c">static tm_rect_t ui(tm_toolbar_i *toolbar, struct tm_ui_o *ui, const struct tm_ui_style_t *uistyle, tm_rect_t toolbar_r, enum tm_toolbar_draw_mode dm)
+<pre><code class="language-c">static tm_rect_t toolbar__ui(tm_toolbar_i *toolbar, struct tm_ui_o *ui, const struct tm_ui_style_t *uistyle, tm_rect_t toolbar_r, enum tm_toolbar_draw_mode dm)
 {
-    // TODO: add code
+    // ui code...
+    return toolbar_r;
 }
 </code></pre>
 <h2 id="tab-overlays"><a class="header" href="#tab-overlays">Tab Overlays</a></h2>
@@ -4005,23 +4103,25 @@ struct tm_toolbar_i *toolbars = 0;
 <p>In order to create a layout for The Machinery editor we need access to the editor settings. This is done through <a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#structtm_the_machinery_api">tm_the_machinery_api</a>. This tutorial uses the <code>tm_the_machinery_create_layout_i</code> interface in order to gain access to the settings. In these settings we have access to the window layouts, which is the subobject we want to append our layout to. The first things we should do however is check whether our layout already exists so we don’t create a new one every time on startup.</p>
 <pre><code class="language-c">static void create_layout(tm_application_o *app)
 {
-	TM_INIT_TEMP_ALLOCATOR(ta);
+    TM_INIT_TEMP_ALLOCATOR(ta);
 
-	// Query the settings object and Truth from The Machinery API.
-	tm_tt_id_t app_settings_id;
-	tm_the_truth_o *tt = tm_the_machinery_api-&gt;settings(app, &amp;app_settings_id);
-	const tm_tt_id_t window_layouts_id = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, app_settings_id), TM_TT_PROP__APPLICATION_SETTINGS__WINDOW_LAYOUTS);
+    // Query the settings object and Truth from The Machinery API.
+    tm_tt_id_t app_settings_id;
+    tm_the_truth_o *tt = tm_the_machinery_api-&gt;settings(app, &amp;app_settings_id);
+    const tm_tt_id_t window_layouts_id = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, app_settings_id), TM_TT_PROP__APPLICATION_SETTINGS__WINDOW_LAYOUTS);
 
-	// Check whether our layout already exists.
-	const tm_tt_id_t *window_layouts = tm_the_truth_api-&gt;get_subobject_set(tt, tm_tt_read(tt, window_layouts_id), TM_TT_PROP__WINDOW_LAYOUTS__LAYOUTS, ta);
-	const uint32_t num_window_layouts = (uint32_t)tm_carray_size(window_layouts);
-	for (uint32_t i = 0; i &lt; num_window_layouts; ++i) {
-		const tm_strhash_t name_hash = tm_the_truth_api-&gt;get_string_hash(tt, tm_tt_read(tt, window_layouts[i]), TM_TT_PROP__WINDOW_LAYOUT__NAME);
-		if (TM_STRHASH_EQUAL(name_hash, TM_LAYOUT_NAME_HASH)) {
-			TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-			return;
-		}
-	}
+    // Check whether our layout already exists.
+    const tm_tt_id_t *window_layouts = tm_the_truth_api-&gt;get_subobject_set(tt, tm_tt_read(tt, window_layouts_id), TM_TT_PROP__WINDOW_LAYOUTS__LAYOUTS, ta);
+    const uint32_t num_window_layouts = (uint32_t)tm_carray_size(window_layouts);
+    for (uint32_t i = 0; i &lt; num_window_layouts; ++i)
+    {
+        const tm_strhash_t name_hash = tm_the_truth_api-&gt;get_string_hash(tt, tm_tt_read(tt, window_layouts[i]), TM_TT_PROP__WINDOW_LAYOUT__NAME);
+        if (TM_STRHASH_EQUAL(name_hash, TM_LAYOUT_NAME_HASH))
+        {
+            TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+            return;
+        }
+    }
 </code></pre>
 <p>After this we can start to define our actual tab layout. This is done through the <code>tm_tab_layout_t</code>. In this layout we can recursively define our tab layout with three distinct options per tabwell.</p>
 <ul>
@@ -4030,53 +4130,53 @@ struct tm_toolbar_i *toolbars = 0;
 <li>We can define (up to 3) tabs that should be in this tabwell.
 <img src="https://www.dropbox.com/s/ggiq4uv6htgwnpj/tm_tut_default_layout.png?dl=1" alt="" /></li>
 </ul>
-<pre><code class="language-c">tm_tab_layout_t tabs = {
-	.split = TM_TAB_LAYOUT_SPLIT_TYPE__HORIZONTAL,
-	.bias = 0.25f,
-	.top = &amp;(tm_tab_layout_t){
-		.split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
-		.bias = 0.67f,
-		.left = &amp;(tm_tab_layout_t){
-			.split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
-			.bias = -0.67f,
-			.right = &amp;(tm_tab_layout_t){ .tab = { TM_SCENE_TAB_VT_NAME_HASH } },
-			.left = &amp;(tm_tab_layout_t){ .tab = { TM_TREE_TAB_VT_NAME_HASH } },
-		},
-		.right = &amp;(tm_tab_layout_t){ .tab = { TM_PROPERTIES_TAB_VT_NAME_HASH } },
-	},
-	.bottom = &amp;(tm_tab_layout_t){
-		.split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
-		.bias = 0.5f,
-		.left = &amp;(tm_tab_layout_t){
-			.split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
-			.bias = -0.5f,
-			.right = &amp;(tm_tab_layout_t){ .tab = { TM_ASSET_BROWSER_TAB_VT_NAME_HASH } },
-			.left = &amp;(tm_tab_layout_t){ .tab = { TM_CONSOLE_TAB_VT_NAME_HASH } },
-		},
-		.right = &amp;(tm_tab_layout_t){ .tab = { TM_PREVIEW_TAB_VT_NAME_HASH } },
-	},
-};
+<pre><code class="language-c">    tm_tab_layout_t layout = {
+        .split = TM_TAB_LAYOUT_SPLIT_TYPE__HORIZONTAL,
+        .bias = 0.25f,
+        .top = &amp;(tm_tab_layout_t){
+            .split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
+            .bias = 0.67f,
+            .left = &amp;(tm_tab_layout_t){
+                .split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
+                .bias = -0.67f,
+                .right = &amp;(tm_tab_layout_t){.tab = {TM_SCENE_TAB_VT_NAME_HASH}},
+                .left = &amp;(tm_tab_layout_t){.tab = {TM_TREE_TAB_VT_NAME_HASH}},
+            },
+            .right = &amp;(tm_tab_layout_t){.tab = {TM_PROPERTIES_TAB_VT_NAME_HASH}},
+        },
+        .bottom = &amp;(tm_tab_layout_t){
+            .split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
+            .bias = 0.5f,
+            .left = &amp;(tm_tab_layout_t){
+                .split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
+                .bias = -0.5f,
+                .right = &amp;(tm_tab_layout_t){.tab = {TM_ASSET_BROWSER_TAB_VT_NAME_HASH}},
+                .left = &amp;(tm_tab_layout_t){.tab = {TM_CONSOLE_TAB_VT_NAME_HASH}},
+            },
+            .right = &amp;(tm_tab_layout_t){.tab = {TM_PREVIEW_TAB_VT_NAME_HASH}},
+        },
+    };
 </code></pre>
 <p>Defining the tabs is relatively straight forward, you define them using their name hash. Splitting a tabwell horizontally or vertically however requires a <code>bias</code> parameter. This defines the ratio of both tabs. Zero means both tabs are of equal size, whereas 1 means that the primary tab (left or top) fully encompass the tabwell whilst the secondary tab (right or bottom) is hidden. Negative values allow you to use the secondary tab as if it was the primary tab.</p>
-<pre><code class="language-c">const tm_tt_id_t layout_id = tm_the_truth_api-&gt;create_object_of_hash(tt, TM_TT_TYPE_HASH__WINDOW_LAYOUT, TM_TT_NO_UNDO_SCOPE);
-tm_the_truth_object_o *layout_w = tm_the_truth_api-&gt;write(tt, layout_id);
+<pre><code class="language-c">    const tm_tt_id_t layout_id = tm_the_truth_api-&gt;create_object_of_hash(tt, TM_TT_TYPE_HASH__WINDOW_LAYOUT, TM_TT_NO_UNDO_SCOPE);
+    tm_the_truth_object_o *layout_w = tm_the_truth_api-&gt;write(tt, layout_id);
 
-tm_the_truth_object_o *layouts_w = tm_the_truth_api-&gt;write(tt, window_layouts_id);
-tm_the_truth_api-&gt;add_to_subobject_set(tt, layouts_w, TM_TT_PROP__WINDOW_LAYOUTS__LAYOUTS, &amp;layout_w, 1);
-tm_the_truth_api-&gt;commit(tt, layouts_w, TM_TT_NO_UNDO_SCOPE);
+    tm_the_truth_object_o *layouts_w = tm_the_truth_api-&gt;write(tt, window_layouts_id);
+    tm_the_truth_api-&gt;add_to_subobject_set(tt, layouts_w, TM_TT_PROP__WINDOW_LAYOUTS__LAYOUTS, &amp;layout_w, 1);
+    tm_the_truth_api-&gt;commit(tt, layouts_w, TM_TT_NO_UNDO_SCOPE);
 
-tm_the_truth_api-&gt;set_string(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__NAME, TM_LAYOUT_NAME);
-tm_the_truth_api-&gt;set_uint32_t(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__ICON, TM_UI_ICON__COLOR_WAND);
-tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_X, 0.0f);
-tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_Y, 0.0f);
-tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_WIDTH, 1920.0f);
-tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_HEIGHT, 1080.0f);
+    tm_the_truth_api-&gt;set_string(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__NAME, TM_LAYOUT_NAME);
+    tm_the_truth_api-&gt;set_uint32_t(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__ICON, TM_UI_ICON__COLOR_WAND);
+    tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_X, 0.0f);
+    tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_Y, 0.0f);
+    tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_WIDTH, 1920.0f);
+    tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_HEIGHT, 1080.0f);
 
-const tm_tt_id_t tabwell_id = tm_tab_layout_api-&gt;save_layout(tt, &amp;layout, false, TM_TT_NO_UNDO_SCOPE);
-tm_the_truth_api-&gt;set_subobject_id(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__TABWELL, tabwell_id, TM_TT_NO_UNDO_SCOPE);
+    const tm_tt_id_t tabwell_id = tm_tab_layout_api-&gt;save_layout(tt, &amp;layout, false, TM_TT_NO_UNDO_SCOPE);
+    tm_the_truth_api-&gt;set_subobject_id(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__TABWELL, tabwell_id, TM_TT_NO_UNDO_SCOPE);
 
-tm_the_truth_api-&gt;commit(tt, layout_w, TM_TT_NO_UNDO_SCOPE);
-TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+    tm_the_truth_api-&gt;commit(tt, layout_w, TM_TT_NO_UNDO_SCOPE);
+    TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 </code></pre>
 <p>Finally we can store our layout in the application settings. The top level object for this is the window layout. This specified the default position and size of the window if the user decides the instantiate the layout in a new window rather than as a workspace. </p>
 

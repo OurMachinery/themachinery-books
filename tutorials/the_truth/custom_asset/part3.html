@@ -162,7 +162,11 @@
 <li><a href="#import-task-implementation">Import task implementation</a></li>
 <li><a href="#enabling-reimport">Enabling reimport</a></li>
 <li><a href="#refactor-the-custom-ui-import-functionality">Refactor the Custom UI import functionality</a></li>
-<li><a href="#the-end">The end</a></li>
+<li><a href="#the-end">The end</a>
+<ul>
+<li><a href="#full-example-of-basic-asset">Full example of basic asset</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="custom-importer-for-text-files"><a class="header" href="#custom-importer-for-text-files">Custom importer for text files</a></h2>
 <p>In this part, we are adding the ability to import a text file into the Engine. To implement an importer, we need the following APIs:</p>
@@ -205,7 +209,7 @@ static bool asset_io__can_import(struct tm_asset_io_o *inst, const char *extensi
 static bool asset_io__can_reimport(struct tm_asset_io_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t asset)
 {
     const tm_tt_id_t object = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, asset), TM_TT_PROP__ASSET__OBJECT);
-    return tm_tt_type(object).u64 == tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET).u64;
+    return object.type == tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET).u64;
 }
 static void asset_io__importer_extensions_string(struct tm_asset_io_o *inst, char **output, struct tm_temp_allocator_i *ta, const char *separator)
 {
@@ -251,8 +255,7 @@ static void asset_io__importer_description_string(struct tm_asset_io_o *inst, ch
 <li>the correct allocator. </li>
 </ul>
 <p>The function itself looks like this:</p>
-<pre><code class="language-c">// .. other code
-static uint64_t asset_io__import_asset(struct tm_asset_io_o *inst, const char *file, const struct tm_asset_io_import *args)
+<pre><code class="language-c">static uint64_t asset_io__import_asset(struct tm_asset_io_o *inst, const char *file, const struct tm_asset_io_import *args)
 {
     const uint64_t bytes = sizeof(struct task__import_txt) + strlen(file);
     struct task__import_txt *task = tm_alloc(args-&gt;allocator, bytes);
@@ -361,8 +364,7 @@ Before we do all of this, let us first read the file and create the buffer.</p>
         const int64_t read = tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
         if (read == (int64_t)stat.size)
-        {
-        // ..code
+//..
         }
         else
         {
@@ -374,21 +376,21 @@ Before we do all of this, let us first read the file and create the buffer.</p>
     }
 }
 </code></pre>
-<p>With this out of the way, we can use our knowledge from the [last part](#): </p>
+<p>With this out of the way, we can use our knowledge from the last part.</p>
 <ul>
 <li>How to add an asset via code.</li>
 </ul>
 <p>The first step was to create the new object and add the data to it.</p>
-<pre><code class="language-c">const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
-const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
-const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
-tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
-tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
-tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
- tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
+<pre><code class="language-c">            const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
+            const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+            const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
+            tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
+            tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
+            tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
+                tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
 </code></pre>
 <p>After that, we are using the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_add_asset_api">tm_asset_browser_add_asset_api</a> to add the asset to the asset browser. </p>
-<pre><code class="language-c">tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+<pre><code class="language-c">                struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
 </code></pre>
 <p>We are getting the API first, because we do not need it anywhere else than in this case. Then we need to extract the file name of the imported file. You can do this with the <em>path API</em>'s <code> tm_path_api-&gt;base()</code> function. Be aware this function requires a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">tm_str_t</a> which you an create from a normal c string (<code>const char*</code>) via <code>tm_str()</code>. To access the underlaying c string again just call <code>.data</code> on the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_str_t">tm_str_t</a>.</p>
 <blockquote>
@@ -401,12 +403,10 @@ tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_f
 <p><strong>Note:</strong> We do not have any asset labels for our current asset therefore we do not pass them to the add function, otherwise the last 2 arguments would be different than <code>0</code> and <code>0</code>.</p>
 </blockquote>
 <pre><code class="language-c">                const char *asset_name = tm_path_api-&gt;base(tm_str(txt_file)).data;
-                tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+                struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
                 const tm_tt_id_t current_dir = add_asset-&gt;current_directory(add_asset-&gt;inst, args-&gt;ui);
                 const bool should_select = args-&gt;asset_browser.u64 &amp;&amp; tm_the_truth_api-&gt;version(tt, args-&gt;asset_browser) == args-&gt;asset_browser_version_at_start;
-                // we do not have any asset label therefore we do not need to pass them thats why the last
-                // 2 arguments are 0 and 0!
-                add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui,0,0);
+                add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui, 0, 0);
 </code></pre>
 <p>That's it for the import.  Before we move on, we need to clean up! No Allocation without deallocation!</p>
 <pre><code class="language-c">    tm_free(args-&gt;allocator, task, task-&gt;bytes);
@@ -430,33 +430,22 @@ tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_f
         const int64_t read = tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
         if (read == (int64_t)stat.size)
-        {
-const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
-const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
-const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
-tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
-tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
-tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
- tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
+            const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
+            const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+            const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
+            tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
+            tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
+            tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
-                const char *asset_name = tm_path_api-&gt;base(tm_str(txt_file)).data;
-                tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
-                const tm_tt_id_t current_dir = add_asset-&gt;current_directory(add_asset-&gt;inst, args-&gt;ui);
-                const bool should_select = args-&gt;asset_browser.u64 &amp;&amp; tm_the_truth_api-&gt;version(tt, args-&gt;asset_browser) == args-&gt;asset_browser_version_at_start;
-                // we do not have any asset label therefore we do not need to pass them thats why the last
-                // 2 arguments are 0 and 0!
-                add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui,0,0);
         }
         else
         {
             tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not read %s\n&quot;, txt_file);
         }
-    }
     else
     {
         tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not find %s \n&quot;, txt_file);
     }
-    tm_free(args-&gt;allocator, task, task-&gt;bytes);
 }
 </code></pre>
 <h2 id="enabling-reimport"><a class="header" href="#enabling-reimport">Enabling reimport</a></h2>
@@ -477,35 +466,44 @@ The <a href="https://ourmachinery.com/apidoc/foundation/asset_io.h.html#structtm
     const char *txt_file = task-&gt;file;
     tm_the_truth_o *tt = args-&gt;tt;
     tm_file_stat_t stat = tm_os_api-&gt;file_system-&gt;stat(txt_file);
-    if (stat.exists) {
+    if (stat.exists)
+    {
         tm_buffers_i *buffers = tm_the_truth_api-&gt;buffers(tt);
         void *buffer = buffers-&gt;allocate(buffers-&gt;inst, stat.size, false);
         tm_file_o f = tm_os_api-&gt;file_io-&gt;open_input(txt_file);
         const int64_t read = tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
-        if (read == (int64_t)stat.size) {
+        if (read == (int64_t)stat.size)
+        {
             const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
             const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
             const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
             tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
             tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
             tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
-            if (args-&gt;reimport_into.u64) {
+            if (args-&gt;reimport_into.u64)
+            {
                 tm_the_truth_api-&gt;retarget_write(tt, asset_obj, args-&gt;reimport_into);
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
                 tm_the_truth_api-&gt;destroy_object(tt, asset_id, args-&gt;undo_scope);
-            } else {
+            }
+            else
+            {
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
                 const char *asset_name = tm_path_api-&gt;base(tm_str(txt_file)).data;
-                struct tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+                struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
                 const tm_tt_id_t current_dir = add_asset-&gt;current_directory(add_asset-&gt;inst, args-&gt;ui);
                 const bool should_select = args-&gt;asset_browser.u64 &amp;&amp; tm_the_truth_api-&gt;version(tt, args-&gt;asset_browser) == args-&gt;asset_browser_version_at_start;
                 add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui, 0, 0);
             }
-        } else {
+        }
+        else
+        {
             tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not read %s\n&quot;, txt_file);
         }
-    } else {
+    }
+    else
+    {
         tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not find %s \n&quot;, txt_file);
     }
     tm_free(args-&gt;allocator, task, task-&gt;bytes);
@@ -547,8 +545,7 @@ struct task__import_txt
 </code></pre>
 <p>After that, we initialize our struct and its members with the needed data. Moreover, we copy the chars of the file name into our struct + extra bytes, and then we ask the task system to run the task.</p>
 <p>This, combined with the custom UI functions, should look similar to this:</p>
-<pre><code class="language-c">//custom ui
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+<pre><code class="language-c">static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
 {
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
@@ -587,21 +584,22 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 <li>How to provide a custom UI. </li>
 </ul>
 <p>If you wanted to see a more complex example of an importer, you could check the assimp importer example <code>samples\plugins\assimp</code>.</p>
-<p>All the source code is available on GitHub in the <a href="https://github.com/simon-ourmachinery/example-text-file-asset"><strong>example-text-file-asset</strong></a> repo.</p>
-<p><strong>Full Source Code</strong></p>
-<p><code>txt.h</code></p>
+<h3 id="full-example-of-basic-asset"><a class="header" href="#full-example-of-basic-asset">Full example of basic asset</a></h3>
+<p><code>my_asset.h</code></p>
 <pre><code class="language-c">#pragma once
 #include &lt;foundation/api_types.h&gt;
 //... more code
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 
-enum {
+enum
+{
     TM_TT_PROP__MY_ASSET__FILE,
     TM_TT_PROP__MY_ASSET__DATA,
 };
 </code></pre>
-<p><code>txt.c</code></p>
+<p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a>)</p>
+<p><code>my_asset.c</code></p>
 <pre><code class="language-c">// -- api's
 static struct tm_api_registry_api *tm_global_api_registry;
 static struct tm_the_truth_api *tm_the_truth_api;
@@ -657,35 +655,44 @@ static void task__import_txt(void *data, uint64_t task_id)
     const char *txt_file = task-&gt;file;
     tm_the_truth_o *tt = args-&gt;tt;
     tm_file_stat_t stat = tm_os_api-&gt;file_system-&gt;stat(txt_file);
-    if (stat.exists) {
+    if (stat.exists)
+    {
         tm_buffers_i *buffers = tm_the_truth_api-&gt;buffers(tt);
         void *buffer = buffers-&gt;allocate(buffers-&gt;inst, stat.size, false);
         tm_file_o f = tm_os_api-&gt;file_io-&gt;open_input(txt_file);
         const int64_t read = tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
         tm_os_api-&gt;file_io-&gt;close(f);
-        if (read == (int64_t)stat.size) {
+        if (read == (int64_t)stat.size)
+        {
             const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
             const tm_tt_type_t plugin_asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
             const tm_tt_id_t asset_id = tm_the_truth_api-&gt;create_object_of_type(tt, plugin_asset_type, TM_TT_NO_UNDO_SCOPE);
             tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, asset_id);
             tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
             tm_the_truth_api-&gt;set_string(tt, asset_obj, TM_TT_PROP__MY_ASSET__FILE, txt_file);
-            if (args-&gt;reimport_into.u64) {
+            if (args-&gt;reimport_into.u64)
+            {
                 tm_the_truth_api-&gt;retarget_write(tt, asset_obj, args-&gt;reimport_into);
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
                 tm_the_truth_api-&gt;destroy_object(tt, asset_id, args-&gt;undo_scope);
-            } else {
+            }
+            else
+            {
                 tm_the_truth_api-&gt;commit(tt, asset_obj, args-&gt;undo_scope);
                 const char *asset_name = tm_path_api-&gt;base(tm_str(txt_file)).data;
-                struct tm_asset_browser_add_asset_api *add_asset = tm_global_api_registry-&gt;get(TM_ASSET_BROWSER_ADD_ASSET_API_NAME);
+                struct tm_asset_browser_add_asset_api *add_asset = tm_get_api(tm_global_api_registry, tm_asset_browser_add_asset_api);
                 const tm_tt_id_t current_dir = add_asset-&gt;current_directory(add_asset-&gt;inst, args-&gt;ui);
                 const bool should_select = args-&gt;asset_browser.u64 &amp;&amp; tm_the_truth_api-&gt;version(tt, args-&gt;asset_browser) == args-&gt;asset_browser_version_at_start;
                 add_asset-&gt;add(add_asset-&gt;inst, current_dir, asset_id, asset_name, args-&gt;undo_scope, should_select, args-&gt;ui, 0, 0);
             }
-        } else {
+        }
+        else
+        {
             tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not read %s\n&quot;, txt_file);
         }
-    } else {
+    }
+    else
+    {
         tm_logger_api-&gt;printf(TM_LOG_TYPE_INFO, &quot;import txt:cound not find %s \n&quot;, txt_file);
     }
     tm_free(args-&gt;allocator, task, task-&gt;bytes);
@@ -729,8 +736,7 @@ static struct tm_asset_io_i txt_asset_io = {
     .can_reimport = asset_io__can_reimport,
     .importer_extensions_string = asset_io__importer_extensions_string,
     .importer_description_string = asset_io__importer_description_string,
-    .import_asset = asset_io__import_asset
-};
+    .import_asset = asset_io__import_asset};
 
 // -- asset on its own
 
@@ -740,7 +746,8 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
     item_rect.y = tm_properties_view_api-&gt;ui_open_path(args, item_rect, TM_LOCALIZE_LATER(&quot;Import Path&quot;), TM_LOCALIZE_LATER(&quot;Path that the text file was imported from.&quot;), object, TM_TT_PROP__MY_ASSET__FILE, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
-    if (picked) {
+    if (picked)
+    {
         const char *file = tm_the_truth_api-&gt;get_string(tt, tm_tt_read(tt, object), TM_TT_PROP__MY_ASSET__FILE);
         {
             tm_allocator_i *allocator = tm_allocator_api-&gt;system;
@@ -751,8 +758,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
                 .args = {
                     .allocator = allocator,
                     .tt = tt,
-                    .reimport_into = object }
-            };
+                    .reimport_into = object}};
             strcpy(task-&gt;file, file);
             task_system-&gt;run_task(task__import_txt, task, &quot;Import Text File&quot;);
         }
@@ -764,8 +770,8 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
-        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
@@ -790,24 +796,24 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 // -- load plugin
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-    tm_the_truth_api = reg-&gt;get(TM_THE_TRUTH_API_NAME);
-    tm_properties_view_api = reg-&gt;get(TM_PROPERTIES_VIEW_API_NAME);
-    tm_os_api = reg-&gt;get(TM_OS_API_NAME);
-    tm_path_api = reg-&gt;get(TM_PATH_API_NAME);
-    tm_temp_allocator_api = reg-&gt;get(TM_TEMP_ALLOCATOR_API_NAME);
-    tm_allocator_api = reg-&gt;get(TM_ALLOCATOR_API_NAME);
-    tm_logger_api = reg-&gt;get(TM_LOGGER_API_NAME);
-    tm_localizer_api = reg-&gt;get(TM_LOCALIZER_API_NAME);
-    tm_asset_io_api = reg-&gt;get(TM_ASSET_IO_API_NAME);
-    task_system = reg-&gt;get(TM_TASK_SYSTEM_API_NAME);
-    tm_sprintf_api = reg-&gt;get(TM_SPRINTF_API_NAME);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_os_api = tm_get_api(reg, tm_os_api);
+    tm_path_api = tm_get_api(reg, tm_path_api);
+    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+    tm_logger_api = tm_get_api(reg, tm_logger_api);
+    tm_localizer_api = tm_get_api(reg, tm_localizer_api);
+    tm_asset_io_api = tm_get_api(reg, tm_asset_io_api);
+    task_system = tm_get_api(reg, tm_task_system_api);
+    tm_sprintf_api = tm_get_api(reg, tm_sprintf_api);
     tm_global_api_registry = reg;
     if (load)
         tm_asset_io_api-&gt;add_asset_io(&amp;txt_asset_io);
     else
         tm_asset_io_api-&gt;remove_asset_io(&amp;txt_asset_io);
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, TM_ASSET_BROWSER_CREATE_ASSET_INTERFACE_NAME, &amp;asset_browser_create_my_asset);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
 </code></pre>
 

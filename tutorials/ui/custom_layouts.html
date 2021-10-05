@@ -152,23 +152,25 @@
 <p>In order to create a layout for The Machinery editor we need access to the editor settings. This is done through <a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#structtm_the_machinery_api">tm_the_machinery_api</a>. This tutorial uses the <code>tm_the_machinery_create_layout_i</code> interface in order to gain access to the settings. In these settings we have access to the window layouts, which is the subobject we want to append our layout to. The first things we should do however is check whether our layout already exists so we don’t create a new one every time on startup.</p>
 <pre><code class="language-c">static void create_layout(tm_application_o *app)
 {
-	TM_INIT_TEMP_ALLOCATOR(ta);
+    TM_INIT_TEMP_ALLOCATOR(ta);
 
-	// Query the settings object and Truth from The Machinery API.
-	tm_tt_id_t app_settings_id;
-	tm_the_truth_o *tt = tm_the_machinery_api-&gt;settings(app, &amp;app_settings_id);
-	const tm_tt_id_t window_layouts_id = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, app_settings_id), TM_TT_PROP__APPLICATION_SETTINGS__WINDOW_LAYOUTS);
+    // Query the settings object and Truth from The Machinery API.
+    tm_tt_id_t app_settings_id;
+    tm_the_truth_o *tt = tm_the_machinery_api-&gt;settings(app, &amp;app_settings_id);
+    const tm_tt_id_t window_layouts_id = tm_the_truth_api-&gt;get_subobject(tt, tm_tt_read(tt, app_settings_id), TM_TT_PROP__APPLICATION_SETTINGS__WINDOW_LAYOUTS);
 
-	// Check whether our layout already exists.
-	const tm_tt_id_t *window_layouts = tm_the_truth_api-&gt;get_subobject_set(tt, tm_tt_read(tt, window_layouts_id), TM_TT_PROP__WINDOW_LAYOUTS__LAYOUTS, ta);
-	const uint32_t num_window_layouts = (uint32_t)tm_carray_size(window_layouts);
-	for (uint32_t i = 0; i &lt; num_window_layouts; ++i) {
-		const tm_strhash_t name_hash = tm_the_truth_api-&gt;get_string_hash(tt, tm_tt_read(tt, window_layouts[i]), TM_TT_PROP__WINDOW_LAYOUT__NAME);
-		if (TM_STRHASH_EQUAL(name_hash, TM_LAYOUT_NAME_HASH)) {
-			TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-			return;
-		}
-	}
+    // Check whether our layout already exists.
+    const tm_tt_id_t *window_layouts = tm_the_truth_api-&gt;get_subobject_set(tt, tm_tt_read(tt, window_layouts_id), TM_TT_PROP__WINDOW_LAYOUTS__LAYOUTS, ta);
+    const uint32_t num_window_layouts = (uint32_t)tm_carray_size(window_layouts);
+    for (uint32_t i = 0; i &lt; num_window_layouts; ++i)
+    {
+        const tm_strhash_t name_hash = tm_the_truth_api-&gt;get_string_hash(tt, tm_tt_read(tt, window_layouts[i]), TM_TT_PROP__WINDOW_LAYOUT__NAME);
+        if (TM_STRHASH_EQUAL(name_hash, TM_LAYOUT_NAME_HASH))
+        {
+            TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+            return;
+        }
+    }
 </code></pre>
 <p>After this we can start to define our actual tab layout. This is done through the <code>tm_tab_layout_t</code>. In this layout we can recursively define our tab layout with three distinct options per tabwell.</p>
 <ul>
@@ -177,53 +179,53 @@
 <li>We can define (up to 3) tabs that should be in this tabwell.
 <img src="https://www.dropbox.com/s/ggiq4uv6htgwnpj/tm_tut_default_layout.png?dl=1" alt="" /></li>
 </ul>
-<pre><code class="language-c">tm_tab_layout_t tabs = {
-	.split = TM_TAB_LAYOUT_SPLIT_TYPE__HORIZONTAL,
-	.bias = 0.25f,
-	.top = &amp;(tm_tab_layout_t){
-		.split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
-		.bias = 0.67f,
-		.left = &amp;(tm_tab_layout_t){
-			.split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
-			.bias = -0.67f,
-			.right = &amp;(tm_tab_layout_t){ .tab = { TM_SCENE_TAB_VT_NAME_HASH } },
-			.left = &amp;(tm_tab_layout_t){ .tab = { TM_TREE_TAB_VT_NAME_HASH } },
-		},
-		.right = &amp;(tm_tab_layout_t){ .tab = { TM_PROPERTIES_TAB_VT_NAME_HASH } },
-	},
-	.bottom = &amp;(tm_tab_layout_t){
-		.split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
-		.bias = 0.5f,
-		.left = &amp;(tm_tab_layout_t){
-			.split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
-			.bias = -0.5f,
-			.right = &amp;(tm_tab_layout_t){ .tab = { TM_ASSET_BROWSER_TAB_VT_NAME_HASH } },
-			.left = &amp;(tm_tab_layout_t){ .tab = { TM_CONSOLE_TAB_VT_NAME_HASH } },
-		},
-		.right = &amp;(tm_tab_layout_t){ .tab = { TM_PREVIEW_TAB_VT_NAME_HASH } },
-	},
-};
+<pre><code class="language-c">    tm_tab_layout_t layout = {
+        .split = TM_TAB_LAYOUT_SPLIT_TYPE__HORIZONTAL,
+        .bias = 0.25f,
+        .top = &amp;(tm_tab_layout_t){
+            .split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
+            .bias = 0.67f,
+            .left = &amp;(tm_tab_layout_t){
+                .split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
+                .bias = -0.67f,
+                .right = &amp;(tm_tab_layout_t){.tab = {TM_SCENE_TAB_VT_NAME_HASH}},
+                .left = &amp;(tm_tab_layout_t){.tab = {TM_TREE_TAB_VT_NAME_HASH}},
+            },
+            .right = &amp;(tm_tab_layout_t){.tab = {TM_PROPERTIES_TAB_VT_NAME_HASH}},
+        },
+        .bottom = &amp;(tm_tab_layout_t){
+            .split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
+            .bias = 0.5f,
+            .left = &amp;(tm_tab_layout_t){
+                .split = TM_TAB_LAYOUT_SPLIT_TYPE__VERTICAL,
+                .bias = -0.5f,
+                .right = &amp;(tm_tab_layout_t){.tab = {TM_ASSET_BROWSER_TAB_VT_NAME_HASH}},
+                .left = &amp;(tm_tab_layout_t){.tab = {TM_CONSOLE_TAB_VT_NAME_HASH}},
+            },
+            .right = &amp;(tm_tab_layout_t){.tab = {TM_PREVIEW_TAB_VT_NAME_HASH}},
+        },
+    };
 </code></pre>
 <p>Defining the tabs is relatively straight forward, you define them using their name hash. Splitting a tabwell horizontally or vertically however requires a <code>bias</code> parameter. This defines the ratio of both tabs. Zero means both tabs are of equal size, whereas 1 means that the primary tab (left or top) fully encompass the tabwell whilst the secondary tab (right or bottom) is hidden. Negative values allow you to use the secondary tab as if it was the primary tab.</p>
-<pre><code class="language-c">const tm_tt_id_t layout_id = tm_the_truth_api-&gt;create_object_of_hash(tt, TM_TT_TYPE_HASH__WINDOW_LAYOUT, TM_TT_NO_UNDO_SCOPE);
-tm_the_truth_object_o *layout_w = tm_the_truth_api-&gt;write(tt, layout_id);
+<pre><code class="language-c">    const tm_tt_id_t layout_id = tm_the_truth_api-&gt;create_object_of_hash(tt, TM_TT_TYPE_HASH__WINDOW_LAYOUT, TM_TT_NO_UNDO_SCOPE);
+    tm_the_truth_object_o *layout_w = tm_the_truth_api-&gt;write(tt, layout_id);
 
-tm_the_truth_object_o *layouts_w = tm_the_truth_api-&gt;write(tt, window_layouts_id);
-tm_the_truth_api-&gt;add_to_subobject_set(tt, layouts_w, TM_TT_PROP__WINDOW_LAYOUTS__LAYOUTS, &amp;layout_w, 1);
-tm_the_truth_api-&gt;commit(tt, layouts_w, TM_TT_NO_UNDO_SCOPE);
+    tm_the_truth_object_o *layouts_w = tm_the_truth_api-&gt;write(tt, window_layouts_id);
+    tm_the_truth_api-&gt;add_to_subobject_set(tt, layouts_w, TM_TT_PROP__WINDOW_LAYOUTS__LAYOUTS, &amp;layout_w, 1);
+    tm_the_truth_api-&gt;commit(tt, layouts_w, TM_TT_NO_UNDO_SCOPE);
 
-tm_the_truth_api-&gt;set_string(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__NAME, TM_LAYOUT_NAME);
-tm_the_truth_api-&gt;set_uint32_t(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__ICON, TM_UI_ICON__COLOR_WAND);
-tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_X, 0.0f);
-tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_Y, 0.0f);
-tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_WIDTH, 1920.0f);
-tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_HEIGHT, 1080.0f);
+    tm_the_truth_api-&gt;set_string(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__NAME, TM_LAYOUT_NAME);
+    tm_the_truth_api-&gt;set_uint32_t(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__ICON, TM_UI_ICON__COLOR_WAND);
+    tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_X, 0.0f);
+    tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_Y, 0.0f);
+    tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_WIDTH, 1920.0f);
+    tm_the_truth_api-&gt;set_float(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__WINDOW_HEIGHT, 1080.0f);
 
-const tm_tt_id_t tabwell_id = tm_tab_layout_api-&gt;save_layout(tt, &amp;layout, false, TM_TT_NO_UNDO_SCOPE);
-tm_the_truth_api-&gt;set_subobject_id(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__TABWELL, tabwell_id, TM_TT_NO_UNDO_SCOPE);
+    const tm_tt_id_t tabwell_id = tm_tab_layout_api-&gt;save_layout(tt, &amp;layout, false, TM_TT_NO_UNDO_SCOPE);
+    tm_the_truth_api-&gt;set_subobject_id(tt, layout_w, TM_TT_PROP__WINDOW_LAYOUT__TABWELL, tabwell_id, TM_TT_NO_UNDO_SCOPE);
 
-tm_the_truth_api-&gt;commit(tt, layout_w, TM_TT_NO_UNDO_SCOPE);
-TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+    tm_the_truth_api-&gt;commit(tt, layout_w, TM_TT_NO_UNDO_SCOPE);
+    TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 </code></pre>
 <p>Finally we can store our layout in the application settings. The top level object for this is the window layout. This specified the default position and size of the window if the user decides the instantiate the layout in a new window rather than as a workspace. </p>
 
