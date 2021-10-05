@@ -4099,8 +4099,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>See the documentation under <code>How to use toolbars outside of The Machinery tabs</code> in <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html">toolbar.h</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-tab-layouts-through-code"><a class="header" href="#creating-tab-layouts-through-code">Creating tab layouts through code</a></h1>
 <p>The Machinery allows you to fully customize the editor layout. For personal layouts this system can be fully utilized without using code (see <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_editor/customizations">Interface Customizations</a> for more information), but you might want to create custom default layouts that get defined procedurally, this allows for more control when loading and saving the layout.</p>
-<p>Creating layouts in code can be done though the <code>tm_tab_layout_api</code>. Here various functions are available for tab management. In this tutorial we’ll go over how the default workspace is created using the <code>save_layout</code> function.</p>
-<p>In order to create a layout for The Machinery editor we need access to the editor settings. This is done through <a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#structtm_the_machinery_api">tm_the_machinery_api</a>. This tutorial uses the <code>tm_the_machinery_create_layout_i</code> interface in order to gain access to the settings. In these settings we have access to the window layouts, which is the subobject we want to append our layout to. The first things we should do however is check whether our layout already exists so we don’t create a new one every time on startup.</p>
+<p>Creating layouts in code can be done though the <a href="https://ourmachinery.com/apidoc/plugins/ui/layouts.h.html#structtm_tab_layout_api">tm_tab_layout_api</a>. Here various functions are available for tab management. In this tutorial we’ll go over how the default workspace is created using the <code>save_layout</code> function.</p>
+<p>In order to create a layout for The Machinery editor we need access to the editor settings. This is done through <a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#structtm_the_machinery_api">tm_the_machinery_api</a>. This tutorial uses the <a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_create_layout_i">tm_the_machinery_create_layout_i</a> interface in order to gain access to the settings. In these settings we have access to the window layouts, which is the subobject we want to append our layout to. The first things we should do however is check whether our layout already exists so we don’t create a new one every time on startup.</p>
 <pre><code class="language-c">static void create_layout(tm_application_o *app)
 {
     TM_INIT_TEMP_ALLOCATOR(ta);
@@ -4123,7 +4123,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
         }
     }
 </code></pre>
-<p>After this we can start to define our actual tab layout. This is done through the <code>tm_tab_layout_t</code>. In this layout we can recursively define our tab layout with three distinct options per tabwell.</p>
+<p>After this we can start to define our actual tab layout. This is done through the <a href="https://ourmachinery.com/apidoc/plugins/ui/layouts.h.html#structtm_tab_layout_t">tm_tab_layout_t</a>. In this layout we can recursively define our tab layout with three distinct options per tabwell.</p>
 <ul>
 <li>We can split the tabwell horizontally, creating top and bottom child tabwells.</li>
 <li>We can split the tabwell vertically, creating left and right child tabwells.</li>

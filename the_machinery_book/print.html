@@ -3563,7 +3563,7 @@ static struct tm_allocator_api *tm_allocator_api;
 <tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.cant_be_pinned">tm_tab_vt.cant_be_pinned</a></td><td>If set to <em>true</em>, the tab can't be pinned even though it has a <em>root</em> function.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.run_as_job">tm_tab_vt.run_as_job</a></td><td>If set to <em>true</em>, the tab's UI will run as a background job, parallel to the rest of the UI  rendering. <strong>Warning:</strong> Setting this to <em>true</em> indicates to the docking system that the <code>ui()</code> function is thread-safe. If the function is not actually thread-safe you will see threading errors.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.dont_restore_at_startup">tm_tab_vt.dont_restore_at_startup</a></td><td>If set to <em>true</em>, the tab will be considered <em>volatile</em>, and it won't be restored when the last opened project is automatically opened at startup, even if the user had the tab opened when the project was closed.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.dont_restore_root_asset_at_startup">tm_tab_vt.dont_restore_root_asset_at_startup</a></td><td>If set to <em>true</em>, the tab will be restored at startup, but the root of the tab won't be set to the one that was set during application shutdown. Basically the project will be restored, but it will be always <em>empty</em>.</td></tr>
+<tr><td><code>tm_tab_vt.dont_restore_root_asset_at_startup</code></td><td>If set to <em>true</em>, the tab will be restored at startup, but the root of the tab won't be set to the one that was set during application shutdown. Basically the project will be restored, but it will be always <em>empty</em>.</td></tr>
 </tbody></table>
 <p>In this example, we make use of the following options:</p>
 <pre><code class="language-c">static tm_tab_vt *custom_tab_vt = &amp;(tm_tab_vt){
@@ -3782,16 +3782,16 @@ detects a file change, it will reimport the plugin.</p>
 <tr><td><code>TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)</code></td><td>Entry point for all plugins</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_init_i">tm_plugin_init_i</a></td><td>Is typically called as early as possible after all plugins have been loaded. <strong>Is not called when a plugin is reloaded.</strong></td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_set_the_truth_i">tm_plugin_set_the_truth_i</a></td><td>Is called whenever the &quot;main&quot; Truth of the application changes. The &quot;main&quot; Truth is the primary Truth used for editing data in the application. <strong>Under API Review</strong></td></tr>
-<tr><td><code>tm_render_pipeline_vt</code></td><td></td></tr>
-<tr><td><code>tm_the_machinery_project_loaded_i</code></td><td>Is called when ever a project is loaded.</td></tr>
-<tr><td><code>tm_plugin_reload_i</code></td><td>Is called whenever plugins are reloaded after the reload finishes.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/render_graph_toolbox/render_pipeline.h.html#structtm_render_pipeline_vt">tm_render_pipeline_vt</a></td><td></td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_loaded_i">tm_the_machinery_project_loaded_i</a></td><td>Is called when ever a project is loaded.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_reload_i">tm_plugin_reload_i</a></td><td>Is called whenever plugins are reloaded after the reload finishes.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_tick_i">tm_plugin_tick_i</a></td><td>Is typically called as early as possible in the application main loop &quot;tick&quot;.</td></tr>
 <tr><td>A tab that is registered to <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt">tm_tab_vt</a> and has a <code>tm_tab_vt.ui()</code> or <code>tm_tab_vt.hidden_update()</code> function.</td><td>Interface name for the tab <code>vtable</code>. Any part of the UI that can act as a tab should implement  this interface.</td></tr>
-<tr><td><code>tm_entity_register_engines_simulation_i_version</code> Is called at the beginning of a simulation (start up phase) and all Systems / Engines are registered to the entity context. <code>tm_entity_system_i.update()</code> or <code>tm_engine_i.update()</code></td><td>Used to register a <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_i">tm_entity_register_engines_i</a> that should run in simulation mode with. More information in the designated chapter. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/ecs/index.html">Entity Component System</a></td></tr>
-<tr><td><code>tm_entity_register_engines_editor_i_version</code></td><td>Used to register a <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_i">tm_entity_register_engines_i</a> that should run in editor mode with.</td></tr>
-<tr><td><code>tm_simulation_entry_i</code> <code>tm_simulation_entry_i.start()  </code> <code>tm_simulation_entry_i.tick()</code> <code>tm_simulation_entry_i.stop()</code></td><td>The Simulation Entry interface <code>tm_simulation_entry_i</code> makes it possible to choose a point of entry  for code that should run while the simulation (simulation tab or runner) is active.  More information in the designated chapter. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/simulate_entry.html">Simulation Entry</a></td></tr>
-<tr><td><code>tm_the_machinery_project_unloaded_i</code></td><td>Is called when ever a project is unloaded.</td></tr>
-<tr><td><code>tm_the_machinery_project_saved_i</code></td><td>Is called when ever a project is saved.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i_version">tm_entity_register_engines_simulation_i_version</a> Is called at the beginning of a simulation (start up phase) and all Systems / Engines are registered to the entity context. <code>tm_entity_system_i.update()</code> or <code>tm_engine_i.update()</code></td><td>Used to register a <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_i">tm_entity_register_engines_i</a> that should run in simulation mode with. More information in the designated chapter. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/ecs/index.html">Entity Component System</a></td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_editor_i_version">tm_entity_register_engines_editor_i_version</a></td><td>Used to register a <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_i">tm_entity_register_engines_i</a> that should run in editor mode with.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> <code>tm_simulation_entry_i.start()  </code> <code>tm_simulation_entry_i.tick()</code> <code>tm_simulation_entry_i.stop()</code></td><td>The Simulation Entry interface <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> makes it possible to choose a point of entry  for code that should run while the simulation (simulation tab or runner) is active.  More information in the designated chapter. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/simulate_entry.html">Simulation Entry</a></td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_unloaded_i">tm_the_machinery_project_unloaded_i</a></td><td>Is called when ever a project is unloaded.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_saved_i">tm_the_machinery_project_saved_i</a></td><td>Is called when ever a project is saved.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_shutdown_i">tm_plugin_shutdown_i</a></td><td>Is called when the application shutdowns on all plugins that have a interface registered. <strong>Is not called when a plugin is reloaded.</strong></td></tr>
 </tbody></table>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="gameplay-coding-in-the-machinery"><a class="header" href="#gameplay-coding-in-the-machinery">Gameplay Coding in The Machinery</a></h1>
@@ -3807,8 +3807,8 @@ detects a file change, it will reimport the plugin.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="simulation-entry-writing-gameplay-code-in-c"><a class="header" href="#simulation-entry-writing-gameplay-code-in-c">Simulation Entry (writing gameplay code in C)</a></h2>
 <p>This walkthrough show you how to create a <em>simulation entry</em> and what a simulation entry is.</p>
 <p>If you wish to program gameplay using C code, then you need some way for this code to execute. You can either make lots of entity components that do inter-component communication, but if you want a more classic monolithic approach, then you can use a simulation entry.</p>
-<p>In order for your code to execute using a simulation entry you need two things. Firstly you need an implementation of the Simulation Entry interface, <code>tm_simulation_entry_i</code> (see <code>simulation_entry.h</code>) and secondly you need a Simulation Entry Component attached to an entity.</p>
-<p>Define a <code>tm_simulation_entry_i</code> in a plugin like this:</p>
+<p>In order for your code to execute using a simulation entry you need two things. Firstly you need an implementation of the Simulation Entry interface, <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> (see <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#simulation_entry.h">simulation_entry.h</a>) and secondly you need a Simulation Entry Component attached to an entity.</p>
+<p>Define a <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> in a plugin like this:</p>
 <pre><code class="language-c">static tm_simulation_entry_i simulation_entry_i = {
     .id = TM_STATIC_HASH(&quot;tm_my_game_simulation_entry&quot;, 0x2d5f7dad50097045ULL),
     .display_name = TM_LOCALIZE_LATER(&quot;My Game Simulate Entry&quot;),
@@ -3825,7 +3825,7 @@ detects a file change, it will reimport the plugin.</p>
 <blockquote>
 <p><strong>Note:</strong> to generate the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> you need to run <code>hash.exe</code> or <code>tmbuild.exe --gen-hash</code> for more info open the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//helper_tools/hash.html">hash.exe guide</a></p>
 </blockquote>
-<p>When your plugin loads (each plugin has a <code>tm_load_plugin</code> function), make sure to register this implementation of <code>tm_simulation_entry_i</code> on the <code>tm_simulation_entry_i</code> interface name, like so:</p>
+<p>When your plugin loads (each plugin has a <code>tm_load_plugin</code> function), make sure to register this implementation of <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> on the <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> interface name, like so:</p>
 <pre><code class="language-c">tm_add_or_remove_implementation(reg, load, tm_simulation_entry_i, &amp;simulation_entry_i);
 </code></pre>
 <p>When this is done and your plugin is loaded, you can add a Simulation Entry Component to any entity and select your registered implementation. Now, whenever you run a simulation (using Simulate Tab or from a Published build) where this entity is present, your code will run.</p>
@@ -4398,10 +4398,10 @@ lists, strings, buffers, etc.</li>
 <h2 id="what-is-next-7"><a class="header" href="#what-is-next-7">What is next?</a></h2>
 <p>In the next chapter we translate this to actual code!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="registering-a-system-or-an-engine"><a class="header" href="#registering-a-system-or-an-engine">Registering a System or an Engine</a></h1>
-<p>To register Systems/Engines, you need to provide a register function to the <code>tm_entity_register_engines_simulation_i</code> interface. This function has the signature:</p>
+<p>To register Systems/Engines, you need to provide a register function to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> interface. This function has the signature:</p>
 <pre><code class="language-c">static void entity_register_engines_i(struct tm_entity_context_o *ctx)
 </code></pre>
-<p>For more information check the <code>tm_entity_register_engines_simulation_i</code> .</p>
+<p>For more information check the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> .</p>
 <p>Whenever the Machinery creates an Entity Context, it calls this function and registers all your Systems / Engines to this context.</p>
 <blockquote>
 <p>The Entity context is the world in which all your entities exist.</p>
@@ -4450,7 +4450,7 @@ static void entity_register_engines_i(struct tm_entity_context_o *ctx)
 }
 </code></pre>
 <h2 id="register-your-system-or-engine-to-the-editor"><a class="header" href="#register-your-system-or-engine-to-the-editor">Register your system or engine to the Editor</a></h2>
-<p>You can use the <code>tm_entity_register_engines_simulation_i</code> to register your engine or system to a entity context that runs only in the Editor. This might be good for components that shall only be used in the Editor.</p>
+<p>You can use the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> to register your engine or system to a entity context that runs only in the Editor. This might be good for components that shall only be used in the Editor.</p>
 <p>The function signature is the same as the for the other interface!</p>
 <h3 id="register-systems--engines-outside-of-the-load-function"><a class="header" href="#register-systems--engines-outside-of-the-load-function">Register systems &amp; engines outside of the load function</a></h3>
 <p>You also can register your System/Engine outside of the load function where ever you have access to the correct Entity Context.</p>
@@ -4805,7 +4805,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
 <li><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_bb__wall_time">TM_ENTITY_BB__WALL_TIME</a> - Blackboard item representing the total elapsed wall time in the Simulation.</li>
 <li><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_bb__camera">TM_ENTITY_BB__CAMERA</a> - Blackboard items for the current camera.</li>
 <li><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_bb__editor">TM_ENTITY_BB__EDITOR</a> - Blackboard item that indicates that we are running in <em>Editor</em> mode. This may disable some components and/or simulation engines.</li>
-<li><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_bb__simulating_in_editor">TM_ENTITY_BB__SIMULATING_IN_EDITOR</a> - Set to non-zero if the Simulation runs from within the Editor, such as running a game in the simulation tab. It will be zero when we run a game from the Runner. Note the distinction from <a href="https://ourmachinery.com//apidoc/plugins/entity/entity.h.html#tm_entity_bb__editor">TM_ENTITY_BB__EDITOR</a>.</li>
+<li><code>TM_ENTITY_BB__SIMULATING_IN_EDITOR</code> - Set to non-zero if the Simulation runs from within the Editor, such as running a game in the simulation tab. It will be zero when we run a game from the Runner. Note the distinction from <a href="https://ourmachinery.com//apidoc/plugins/entity/entity.h.html#tm_entity_bb__editor">TM_ENTITY_BB__EDITOR</a>.</li>
 </ul>
 <p>The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_update_set_t">tm_engine_update_set_t</a> gives us access to the needed data, and we can modify our component. The first important information we get are the number of entity types (also known Archetypes). This number is stored in <code>data-&gt;num_arrays</code>. Now that we know this information we can iterate over them and access the components per entity type. <code>tm_engine_update_array_t a =  data-&gt;arrays</code> (Gives us the current entity type's components). <code>a-&gt;n</code> is the number of matching components / entities of this entity type.</p>
 <pre><code class="language-c">    for (tm_engine_update_array_t *a = data-&gt;arrays; a &lt; data-&gt;arrays + data-&gt;num_arrays; ++a)
@@ -4835,7 +4835,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
 <pre><code class="language-c">    tm_entity_api-&gt;notify(ctx, data-&gt;engine-&gt;components[1], mod_transform, (uint32_t)tm_carray_size(mod_transform));
 </code></pre>
 <h3 id="register-your-engine-to-the-system"><a class="header" href="#register-your-engine-to-the-system">Register your Engine to the system</a></h3>
-<p>You an register a component to the <code>tm_entity_register_engines_simulation_i</code> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)</code>. </p>
+<p>You an register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)</code>. </p>
 <p>The function itself looks as follows:</p>
 <pre><code class="language-c">static void component__register_engine(struct tm_entity_context_o *ctx)
 {
@@ -5498,7 +5498,7 @@ It can be helpful on CI Server where build and test servers are different. The b
 <h2 id="how-to-write-your-tests"><a class="header" href="#how-to-write-your-tests"><strong>How to write your tests</strong></a></h2>
 <p>All that is needed is to write tests is to register them via the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a>. You can find the interface in the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html">unit_tests.h</a>. <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a> expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#structtm_unit_test_i">tm_unit_test_i</a>. This interface expects a name and a function pointer to the test entry function.</p>
 <pre><code class="language-c">// Interface for running unit tests. To find all unit test, query the API registry for
-// [TM_UNIT_TEST_INTERFACE_NAME](https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name) implementations.
+// `TM_UNIT_TEST_INTERFACE_NAME` implementations.
 typedef struct tm_unit_test_i
 {
     // Name of this unit test.
@@ -5528,7 +5528,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, TM_UNIT_TEST_INTERFACE_NAME, my_unit_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a>.</p>
+<p>Here we register our test interface to the <code>TM_UNIT_TEST_INTERFACE_NAME</code>.</p>
 <p><em>How could this interface look like?</em>
 After we have done this, all we need to do is declarer our <code>my_unit_tests</code>. It is as easy as it gets:</p>
 <pre><code class="language-c">#include &lt;foundation/unit_test.h&gt;
@@ -5628,7 +5628,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, TM_INTEGRATION_TEST_INTERFACE_NAME, my_integration_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>.</p>
+<p>Here we register our test interface to the <code>TM_INTEGRATION_TEST_INTERFACE_NAME</code>.</p>
 <p><em>How could this interface look like?</em></p>
 <p>After we have done this, we need to declare our <code>my_integration_tests.</code> </p>
 <pre><code class="language-c">tm_integration_test_i my_integration_tests = {

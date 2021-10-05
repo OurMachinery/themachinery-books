@@ -149,8 +149,8 @@
                         <h2 id="simulation-entry-writing-gameplay-code-in-c"><a class="header" href="#simulation-entry-writing-gameplay-code-in-c">Simulation Entry (writing gameplay code in C)</a></h2>
 <p>This walkthrough show you how to create a <em>simulation entry</em> and what a simulation entry is.</p>
 <p>If you wish to program gameplay using C code, then you need some way for this code to execute. You can either make lots of entity components that do inter-component communication, but if you want a more classic monolithic approach, then you can use a simulation entry.</p>
-<p>In order for your code to execute using a simulation entry you need two things. Firstly you need an implementation of the Simulation Entry interface, <code>tm_simulation_entry_i</code> (see <code>simulation_entry.h</code>) and secondly you need a Simulation Entry Component attached to an entity.</p>
-<p>Define a <code>tm_simulation_entry_i</code> in a plugin like this:</p>
+<p>In order for your code to execute using a simulation entry you need two things. Firstly you need an implementation of the Simulation Entry interface, <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> (see <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#simulation_entry.h">simulation_entry.h</a>) and secondly you need a Simulation Entry Component attached to an entity.</p>
+<p>Define a <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> in a plugin like this:</p>
 <pre><code class="language-c">static tm_simulation_entry_i simulation_entry_i = {
     .id = TM_STATIC_HASH(&quot;tm_my_game_simulation_entry&quot;, 0x2d5f7dad50097045ULL),
     .display_name = TM_LOCALIZE_LATER(&quot;My Game Simulate Entry&quot;),
@@ -167,7 +167,7 @@
 <blockquote>
 <p><strong>Note:</strong> to generate the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> you need to run <code>hash.exe</code> or <code>tmbuild.exe --gen-hash</code> for more info open the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//helper_tools/hash.html">hash.exe guide</a></p>
 </blockquote>
-<p>When your plugin loads (each plugin has a <code>tm_load_plugin</code> function), make sure to register this implementation of <code>tm_simulation_entry_i</code> on the <code>tm_simulation_entry_i</code> interface name, like so:</p>
+<p>When your plugin loads (each plugin has a <code>tm_load_plugin</code> function), make sure to register this implementation of <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> on the <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> interface name, like so:</p>
 <pre><code class="language-c">tm_add_or_remove_implementation(reg, load, tm_simulation_entry_i, &amp;simulation_entry_i);
 </code></pre>
 <p>When this is done and your plugin is loaded, you can add a Simulation Entry Component to any entity and select your registered implementation. Now, whenever you run a simulation (using Simulate Tab or from a Published build) where this entity is present, your code will run.</p>

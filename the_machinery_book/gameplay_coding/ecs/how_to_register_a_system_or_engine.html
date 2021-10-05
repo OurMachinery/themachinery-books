@@ -147,10 +147,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="registering-a-system-or-an-engine"><a class="header" href="#registering-a-system-or-an-engine">Registering a System or an Engine</a></h1>
-<p>To register Systems/Engines, you need to provide a register function to the <code>tm_entity_register_engines_simulation_i</code> interface. This function has the signature:</p>
+<p>To register Systems/Engines, you need to provide a register function to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> interface. This function has the signature:</p>
 <pre><code class="language-c">static void entity_register_engines_i(struct tm_entity_context_o *ctx)
 </code></pre>
-<p>For more information check the <code>tm_entity_register_engines_simulation_i</code> .</p>
+<p>For more information check the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> .</p>
 <p>Whenever the Machinery creates an Entity Context, it calls this function and registers all your Systems / Engines to this context.</p>
 <blockquote>
 <p>The Entity context is the world in which all your entities exist.</p>
@@ -199,7 +199,7 @@ static void entity_register_engines_i(struct tm_entity_context_o *ctx)
 }
 </code></pre>
 <h2 id="register-your-system-or-engine-to-the-editor"><a class="header" href="#register-your-system-or-engine-to-the-editor">Register your system or engine to the Editor</a></h2>
-<p>You can use the <code>tm_entity_register_engines_simulation_i</code> to register your engine or system to a entity context that runs only in the Editor. This might be good for components that shall only be used in the Editor.</p>
+<p>You can use the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> to register your engine or system to a entity context that runs only in the Editor. This might be good for components that shall only be used in the Editor.</p>
 <p>The function signature is the same as the for the other interface!</p>
 <h3 id="register-systems--engines-outside-of-the-load-function"><a class="header" href="#register-systems--engines-outside-of-the-load-function">Register systems &amp; engines outside of the load function</a></h3>
 <p>You also can register your System/Engine outside of the load function where ever you have access to the correct Entity Context.</p>

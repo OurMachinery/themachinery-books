@@ -193,7 +193,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, TM_INTEGRATION_TEST_INTERFACE_NAME, my_integration_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>.</p>
+<p>Here we register our test interface to the <code>TM_INTEGRATION_TEST_INTERFACE_NAME</code>.</p>
 <p><em>How could this interface look like?</em></p>
 <p>After we have done this, we need to declare our <code>my_integration_tests.</code> </p>
 <pre><code class="language-c">tm_integration_test_i my_integration_tests = {
