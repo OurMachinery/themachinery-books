@@ -174,19 +174,23 @@
 </ul>
 <h2 id="about-aspects"><a class="header" href="#about-aspects">About aspects</a></h2>
 <p>An “aspect” is an interface (struct of function pointers) identified by a unique identifier. The Truth allows you to associate aspects with object types. This lets you extend The Truth with new functionality. For example, you could add an interface for debug printing an object:</p>
-<pre><code class="language-c"> #define TM_TT_ASPECT__DEBUG_PRINT TM_STATIC_HASH(&quot;tm_debug_print_aspect_i&quot;, 0x39821c78639e0773ULL)
+<pre><code class="language-c">#define TM_TT_ASPECT__DEBUG_PRINT TM_STATIC_HASH(&quot;tm_debug_print_aspect_i&quot;, 0x39821c78639e0773ULL)
 
- typedef struct tm_debug_print_aspect_i {
-    void (*debug_print)(tm_the_truth_o *tt, uint64_t o);
+typedef struct tm_debug_print_aspect_i
+{
+    void (*debug_print)(tm_the_truth_o *tt, tm_tt_id_t object);
 } tm_debug_print_aspect_i;
 </code></pre>
 <blockquote>
 <p><strong>Note:</strong> to genereate the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> you need to run <code>hash.exe</code> or <code>tmbuild.exe --gen-hash</code> for more info open the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//helper_tools/hash.html">hash.exe guide</a></p>
 </blockquote>
 <p>You could then use this code to debug print an object <code>o</code> with:</p>
-<pre><code class="language-c">tm_debug_print_aspect_i *dp = tm_the_truth_api-&gt;get_aspect(tt, tm_tt_type(o), TM_DEBUG_PRINT_ASPECT);
-if (dp)
-    dp-&gt;debug_print(tt, o);
+<pre><code class="language-c">static void example_use_case(tm_the_truth_o *tt, tm_tt_id_t object)
+{
+    tm_debug_print_aspect_i *dp = tm_the_truth_api-&gt;get_aspect(tt, tm_tt_type(object), TM_TT_ASPECT__DEBUG_PRINT);
+    if (dp)
+        dp-&gt;debug_print(tt, object);
+}
 </code></pre>
 <blockquote>
 <p><strong>Note</strong>: that plugins can extend the system with completely new aspects.</p>
