@@ -17,7 +17,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: samples
-          repository: themachinery-book-code-snippets
+          repository: OurMachinery/themachinery-book-code-snippets
+          token: ${{ secrets.SAMPLE_REPO_TOKEN }}
       - name: Cache mdbook-tera
         id: cache-mdbook-tera
         uses: actions/cache@v2
