@@ -6,11 +6,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      TM_BOOK_CODE_SNIPPETS: ${{github.workspace}}/samples
     steps:
       - name: Checkout website
         uses: actions/checkout@v2
         with:
           path: ./
+      - name: Checkout tmbuild-action repo
+        uses: actions/checkout@v2
+        with:
+          path: samples
+          repository: OurMachinery/themachinery-book-code-snippets
       - name: Cache mdbook-tera
         id: cache-mdbook-tera
         uses: actions/cache@v2
