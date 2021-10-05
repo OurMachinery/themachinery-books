@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      TM_BOOK_CODE_SNIPPETS: ${{github.workspace}}/samples
+      TM_BOOK_CODE_SNIPPETS: ${{github.workspace}}/samples/examples
     steps:
       - name: Checkout website
         uses: actions/checkout@v2
