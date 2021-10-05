@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TM_BOOK_CODE_SNIPPETS: ${{github.workspace}}/samples/examples
-      TM_SDK_DIR:  ${{github.workspace}}/sdk_dir
+      TM_SDK_DIR:  ${{github.workspace}}/sdk_dir/headers
     steps:
       - name: Checkout website
         uses: actions/checkout@v2
