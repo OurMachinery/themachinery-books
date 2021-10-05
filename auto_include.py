@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# clang-format off 
+# clang-format off
 
 import re
 import sys
@@ -17,13 +17,15 @@ def find_terms(content, path):
     for matchNum, match in enumerate(matches, start=1):
         original_current_content = match.group(1)
         __current_content = match.group(2)
-        __current_content = re.sub(r"([:\d])", "", __current_content)
+        __current_content = re.sub(r"(:[\d]+)", "", __current_content)
         abs = __current_content.format(**os.environ).strip()
         destination = Path(abs).resolve()
-        origin = Path("{first}/{doc}".format(first=__book_root_path,doc=path)).resolve()
+        origin = Path(
+            "{first}/{doc}".format(first=__book_root_path, doc=path)).resolve()
         relative_path = os.path.relpath(destination, start=origin)
-        original_current_content = original_current_content.replace(__current_content, " {rl}".format(rl=relative_path)).replace("$","#")
-        content = content.replace(match.group(1),original_current_content)
+        original_current_content = original_current_content.replace(
+            __current_content, " {rl}".format(rl=relative_path)).replace("$", "#")
+        content = content.replace(match.group(1), original_current_content)
     return content
 
 

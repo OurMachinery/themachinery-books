@@ -16,6 +16,9 @@ command = "mdbook-toc"
 renderer = ["html"]
 marker = "* auto-gen TOC;\n{:toc}"
 
+
+[preprocessor.links]
+
 [preprocessor.tera]
 command = "mdbook-tera --toml ./context.toml"
 
@@ -24,7 +27,7 @@ follow-web-links = false
 exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com','https://marketplace\.visualstudio\.com'  ]
 
 
-[preprocessor.links]
+
 
 #[preprocessor.autolink]
 #renderer = ["html"]
