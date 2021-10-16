@@ -15,7 +15,7 @@ Building the book requires
 - [mdbook-toc](https://github.com/badboy/mdbook-toc)
 - [mdbook-tera](https://github.com/avitex/mdbook-tera)
 - [mdbook-linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck)
-- Python 3.9+ (for auto include generation)
+- Python 3.9+ (for auto include generation) (needs to be acciceslbe from CMD)
 
 To get them:
 
