@@ -6,6 +6,7 @@
 - [Creation Graph](./creation_graph/README.md)
 	- [Creating custom GPU nodes](./creation_graph/custom_gpu_nodes.md)
 	- [Creating custom CPU nodes](./creation_graph/custom_cpu_nodes.md)
+	- [Creating custom Geometry nodes](./creation_graph/custom_geometry_node.md)
 	- [Calling Creation Graphs from code](./creation_graph/from_code.md)
     - [Creating a custom raymarching output node](./creation_graph/raymarch_output_node.md)
 - [Post Processing](./post_processing/README.md)
