@@ -15,6 +15,7 @@ Building the book requires
 - [mdbook-toc](https://github.com/badboy/mdbook-toc)
 - [mdbook-tera](https://github.com/avitex/mdbook-tera)
 - [mdbook-linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck)
+- Python 3.9+ (for auto include generation)
 
 To get them:
 
@@ -65,6 +66,19 @@ If you want to link to functions or API's you can just write in your markdown:
 `tm_physx_scene_api`
 ```
 On deploy the book will automaically find those terms and replaces them with proper linking.
+
+### When adding source code snippets:
+
+Please when you intend to add source code snippets please push them first (or make a PR) to the https://github.com/OurMachinery/themachinery-book-code-snippets. After that you can make use of the auto include preprocessor:
+```
+{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:17:31}}
+```
+
+**NOTE**: `TM_BOOK_CODE_SNIPPETS` needs to be a enviroment variable pointing to the `examples` folder of the `themachinery-book-code-snippets` repo.
+
+#### Naming rules:
+
+Please name your source code file after the tutorial or guide you are working on. For more information: https://github.com/OurMachinery/themachinery-book-code-snippets
 
 ### Working in dropbox paper
 
