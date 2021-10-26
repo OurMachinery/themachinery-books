@@ -92,7 +92,7 @@ Instead of changing the value  of width to 100 we can also increment it by 100! 
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:10:12}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:19:25}}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:18:25}}
 ```
 
 > **Note:** If we had a lot of read actions we should only call `tm_tt_read` once and store the result in a  `const tm_the_truth_object_o*` variable and reuse.
