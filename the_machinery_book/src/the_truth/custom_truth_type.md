@@ -83,7 +83,7 @@ The function expects:
 | Argument                                               | Description                                                  |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
 | `tm_the_truth_o *tt`                                   | The Truth instance. This function will add the type to this instance |
-| `const char *name`                                     | The name of the type. It will be hashed internally. Therefore the hash value of `TM_TT_TYPE__`  and `TM_TT_TYPE_HASH___` should match!  *If a type with `name` already exists, that type is returned. Different types with the same are not supported!* |
+| `const char *name`                                     | The name of the type. It will be hashed internally. Therefore the hash value of `TM_TT_TYPE__`  and `TM_TT_TYPE_HASH___` should match!  *If a type with `name` already exists, that type is returned. Different types with the same `name` are not supported!* |
 | `const tm_the_truth_property_definition_t *properties` | The definitions of the properties of the type.               |
 | ` uint32_t num_properties`                             | The number of properties. Should match `properties`          |
 

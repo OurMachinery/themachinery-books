@@ -24,7 +24,7 @@ together with the built-in plugins.
 
 > **Note:** When you create a new plugin via the Engine, the `premake` file will **not** copy the plugin into your global plugin folder. The reason behind this is that we do not know if you want to create a plugin asset. *This workflow is currently under review.*
 >
-> **Important:** The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the `premake` file to make it point to the correc version. This workflow is currently under review.
+> **Important:** The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the `premake` file to make it point to the correct version. This workflow is currently under review.
 
 ## Inspect a existing example to get inspiration
 

@@ -77,7 +77,7 @@ The Machinery allows you to connect via Discord with your co-workers, team mates
 
 ![](https://media.discordapp.net/attachments/879451114355965973/879452121668407306/unknown.png)
 
-> **Note:** Host and cannot be invisible otherwise invites wont work!
+> **Note:** Host and client cannot be invisible otherwise invites wont work!
 
 After this settings is enabled you need to add The Machinery as a game so others can see you are playing it. This allows you now to invite your friends via the Engine into your session and vice versa.
 
