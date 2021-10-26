@@ -2383,9 +2383,10 @@ of the sound playing nodes in the visual scripting language.</p>
 </blockquote>
 <h2 id="1-make-the-object-writable"><a class="header" href="#1-make-the-object-writable">1. Make the object writable</a></h2>
 <p>To edit an object, we need to make it writeable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called <code>write</code>. When we call it on an object, we make it writable.</p>
-<pre><code class="language-c">{
+<pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
+{
     const tm_tt_type_t type = tm_tt_type(my_object);
-    tm_the_truth_api-&gt;set_float(tt, my_object_w, TM_TT_PROP__RECT__W, 100);
+    tm_the_truth_object_o *my_object_w = tm_the_truth_api-&gt;write(tt, my_object);
 //...
 }
 </code></pre>
@@ -2405,12 +2406,13 @@ of the sound playing nodes in the visual scripting language.</p>
 <pre><code class="language-c">void (*set_float)(tm_the_truth_o *tt, tm_the_truth_object_o *obj, uint32_t property,float value);
 </code></pre>
 <p>Let us bring all of this together:</p>
-<pre><code class="language-c">{
+<pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
+{
     const tm_tt_type_t type = tm_tt_type(my_object);
+    tm_the_truth_object_o *my_object_w = tm_the_truth_api-&gt;write(tt, my_object);
     tm_the_truth_api-&gt;set_float(tt, my_object_w, TM_TT_PROP__RECT__W, 100);
-    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, &quot;My Undo Scope&quot;);
 //..
-
+}
 </code></pre>
 <h2 id="3-save-the-change"><a class="header" href="#3-save-the-change">3. Save the change</a></h2>
 <p>In the end, we need to commit our change to the system. In this example we do not care about the undo scope. That is why we provide the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a> define. This means this action is not undoable.</p>
