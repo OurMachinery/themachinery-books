@@ -24,8 +24,8 @@ void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
 To edit an object, we need to make it writeable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called `write`. When we call it on an object, we make it writable.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:11:12}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:29}}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:10:12}}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:28}}
 //...
 }
 ```
@@ -58,10 +58,10 @@ void (*set_float)(tm_the_truth_o *tt, tm_the_truth_object_o *obj, uint32_t prope
 Let us bring all of this together:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:11:12}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:29:30}}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:10:12}}
+{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:28:29}}
 //..
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:33}}
+}
 ```
 
 
