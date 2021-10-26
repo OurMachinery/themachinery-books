@@ -222,6 +222,7 @@
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
 {
     const tm_tt_type_t type = tm_tt_type(my_object);
+    float wdith = tm_the_truth_api-&gt;get_float(tt, tm_tt_read(tt, my_object), TM_TT_PROP__RECT__W);
     wdith += 100;
     tm_the_truth_object_o *my_object_w = tm_the_truth_api-&gt;write(tt, my_object);
     tm_the_truth_api-&gt;set_float(tt, my_object_w, TM_TT_PROP__RECT__W, wdith);
