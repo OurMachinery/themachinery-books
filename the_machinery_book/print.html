@@ -2575,7 +2575,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>The function expects:</p>
 <table><thead><tr><th>Argument</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>tm_the_truth_o *tt</code></td><td>The Truth instance. This function will add the type to this instance</td></tr>
-<tr><td><code>const char *name</code></td><td>The name of the type. It will be hashed internally. Therefore the hash value of <code>TM_TT_TYPE__</code>  and <code>TM_TT_TYPE_HASH___</code> should match!  <em>If a type with <code>name</code> already exists, that type is returned. Different types with the same are not supported!</em></td></tr>
+<tr><td><code>const char *name</code></td><td>The name of the type. It will be hashed internally. Therefore the hash value of <code>TM_TT_TYPE__</code>  and <code>TM_TT_TYPE_HASH___</code> should match!  <em>If a type with <code>name</code> already exists, that type is returned. Different types with the same <code>name</code> are not supported!</em></td></tr>
 <tr><td><code>const tm_the_truth_property_definition_t *properties</code></td><td>The definitions of the properties of the type.</td></tr>
 <tr><td><code> uint32_t num_properties</code></td><td>The number of properties. Should match <code>properties</code></td></tr>
 </tbody></table>
@@ -3166,7 +3166,7 @@ plugins, name them so that they start with <code>tm_</code> and put them in this
 together with the built-in plugins.</p>
 <blockquote>
 <p><strong>Note:</strong> When you create a new plugin via the Engine, the <code>premake</code> file will <strong>not</strong> copy the plugin into your global plugin folder. The reason behind this is that we do not know if you want to create a plugin asset. <em>This workflow is currently under review.</em></p>
-<p><strong>Important:</strong> The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the <code>premake</code> file to make it point to the correc version. This workflow is currently under review.</p>
+<p><strong>Important:</strong> The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the <code>premake</code> file to make it point to the correct version. This workflow is currently under review.</p>
 </blockquote>
 <h2 id="inspect-a-existing-example-to-get-inspiration"><a class="header" href="#inspect-a-existing-example-to-get-inspiration">Inspect a existing example to get inspiration</a></h2>
 <p>The easiest way to build a plugin is to start with an existing example. There are three places where
@@ -5335,7 +5335,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <p>The Machinery allows you to connect via Discord with your co-workers, team mates or friends. Important for this to work is that both parties: Host and Clients have the following option enabled in their Discord Options: <strong>Discord Settings -&gt; Activity Status</strong></p>
 <p><img src="https://media.discordapp.net/attachments/879451114355965973/879452121668407306/unknown.png" alt="" /></p>
 <blockquote>
-<p><strong>Note:</strong> Host and cannot be invisible otherwise invites wont work!</p>
+<p><strong>Note:</strong> Host and client cannot be invisible otherwise invites wont work!</p>
 </blockquote>
 <p>After this settings is enabled you need to add The Machinery as a game so others can see you are playing it. This allows you now to invite your friends via the Engine into your session and vice versa.</p>
 <p><img src="https://www.dropbox.com/s/6e6lanbsz5etfkm/tm_guide_collab_discord_host.png?dl=1" alt="" /></p>

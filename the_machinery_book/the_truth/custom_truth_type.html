@@ -203,7 +203,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>The function expects:</p>
 <table><thead><tr><th>Argument</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>tm_the_truth_o *tt</code></td><td>The Truth instance. This function will add the type to this instance</td></tr>
-<tr><td><code>const char *name</code></td><td>The name of the type. It will be hashed internally. Therefore the hash value of <code>TM_TT_TYPE__</code>  and <code>TM_TT_TYPE_HASH___</code> should match!  <em>If a type with <code>name</code> already exists, that type is returned. Different types with the same are not supported!</em></td></tr>
+<tr><td><code>const char *name</code></td><td>The name of the type. It will be hashed internally. Therefore the hash value of <code>TM_TT_TYPE__</code>  and <code>TM_TT_TYPE_HASH___</code> should match!  <em>If a type with <code>name</code> already exists, that type is returned. Different types with the same <code>name</code> are not supported!</em></td></tr>
 <tr><td><code>const tm_the_truth_property_definition_t *properties</code></td><td>The definitions of the properties of the type.</td></tr>
 <tr><td><code> uint32_t num_properties</code></td><td>The number of properties. Should match <code>properties</code></td></tr>
 </tbody></table>

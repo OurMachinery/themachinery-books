@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Part 5: Variable Replication (Graph) - The Machinery Tutorial Book</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../../favicon.svg">
+                        <link rel="shortcut icon" href="../../favicon.png">
+                <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+                <link rel="stylesheet" href="../../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="../../workflows/how_to_create_prototypes.html"><strong aria-hidden="true">2.</strong> How to create prototypes</a></li><li class="chapter-item "><a href="../../workflows/how_to_instantiate_prototypes.html"><strong aria-hidden="true">3.</strong> How to instantiate prototypes</a></li><li class="chapter-item "><a href="../../creation_graph/index.html"><strong aria-hidden="true">4.</strong> Creation Graph</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">4.1.</strong> Creating custom GPU nodes</a></li><li class="chapter-item "><a href="../../creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">4.2.</strong> Creating custom CPU nodes</a></li><li class="chapter-item "><a href="../../creation_graph/custom_geometry_node.html"><strong aria-hidden="true">4.3.</strong> Creating custom Geometry nodes</a></li><li class="chapter-item "><a href="../../creation_graph/from_code.html"><strong aria-hidden="true">4.4.</strong> Calling Creation Graphs from code</a></li><li class="chapter-item "><a href="../../creation_graph/raymarch_output_node.html"><strong aria-hidden="true">4.5.</strong> Creating a custom raymarching output node</a></li></ol></li><li class="chapter-item "><a href="../../post_processing/index.html"><strong aria-hidden="true">5.</strong> Post Processing</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../post_processing/aa.html"><strong aria-hidden="true">5.1.</strong> Anti-Aliasing</a></li><li class="chapter-item "><a href="../../post_processing/exposure.html"><strong aria-hidden="true">5.2.</strong> Exposure</a></li><li class="chapter-item "><a href="../../post_processing/color_grading.html"><strong aria-hidden="true">5.3.</strong> Color Grading</a></li></ol></li><li class="chapter-item "><a href="../../physics/index.html"><strong aria-hidden="true">6.</strong> Physics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../physics/triggers.html"><strong aria-hidden="true">6.1.</strong> Triggers</a></li></ol></li><li class="chapter-item "><a href="../../the_truth/index.html"><strong aria-hidden="true">7.</strong> The Truth</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../the_truth/custom_asset/index.html"><strong aria-hidden="true">7.1.</strong> Creating a custom asset</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../the_truth/custom_asset/part1.html"><strong aria-hidden="true">7.1.1.</strong> Part 1 - Create an Asset Truth Type, Addable via Asset Browser</a></li><li class="chapter-item "><a href="../../the_truth/custom_asset/part2.html"><strong aria-hidden="true">7.1.2.</strong> Part 2 - Custom UI</a></li><li class="chapter-item "><a href="../../the_truth/custom_asset/part3.html"><strong aria-hidden="true">7.1.3.</strong> Part 3 - Custom Importer</a></li></ol></li><li class="chapter-item "><a href="../../the_truth/drag_and_drop.html"><strong aria-hidden="true">7.2.</strong> Adding Drag and Drop to Assets</a></li><li class="chapter-item "><a href="../../the_truth/open_asset.html"><strong aria-hidden="true">7.3.</strong> Open Asset in Tab</a></li></ol></li><li class="chapter-item "><a href="../../gameplay_coding/index.html"><strong aria-hidden="true">8.</strong> Gameplay Coding</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../gameplay_coding/extend_the_visual_scripting_language.html"><strong aria-hidden="true">8.1.</strong> Extending the Visual Scripting Language</a></li></ol></li><li class="chapter-item expanded "><a href="../../network/index.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../network/animation_sample/network_assets.html"><strong aria-hidden="true">9.1.</strong> Part 1: Network Asset</a></li><li class="chapter-item "><a href="../../network/animation_sample/multiple_network_instances.html"><strong aria-hidden="true">9.2.</strong> Part 2: Multiple Instances</a></li><li class="chapter-item "><a href="../../network/animation_sample/entity_control.html"><strong aria-hidden="true">9.3.</strong> Part 3: Entity Control</a></li><li class="chapter-item "><a href="../../network/animation_sample/support_multiple_players.html"><strong aria-hidden="true">9.4.</strong> Part 4: Multiple Players</a></li><li class="chapter-item expanded "><a href="../../network/animation_sample/basic_graph_variables.html" class="active"><strong aria-hidden="true">9.5.</strong> Part 5: Variable Replication (Graph)</a></li><li class="chapter-item "><a href="../../network/animation_sample/smooth_animation.html"><strong aria-hidden="true">9.6.</strong> Part 6: Smooth Animation</a></li><li class="chapter-item "><a href="../../network/animation_sample/spawning_entities.html"><strong aria-hidden="true">9.7.</strong> Part 7: Spawning Entities</a></li></ol></li><li class="chapter-item "><a href="../../ui/index.html"><strong aria-hidden="true">10.</strong> UI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">10.1.</strong> Build Custom UI Controls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">10.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item "><a href="../../ui/toolbars-overlays.html"><strong aria-hidden="true">10.2.</strong> Toolbars and Overlays</a></li><li class="chapter-item "><a href="../../ui/custom_layouts.html"><strong aria-hidden="true">10.3.</strong> Custom Tab Layouts</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Machinery Tutorial Book</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/OurMachinery/themachinery-books" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="part-5-basic-graph-variable-replication"><a class="header" href="#part-5-basic-graph-variable-replication">Part 5: Basic Graph Variable replication</a></h1>
+<p>In this tutorial you’ll learn how to replicate a graph variable across the network.  This tutorial build on the learnings of the pervious tutorial: <a href="https://ourmachinery.github.io/themachinery-books/tutorials///network/animation_sample/support_multiple_players.md">Part 4</a></p>
+<blockquote>
+<p><strong>Note:</strong>  we start with making sure that you have the Networking feature flag enabled, you can do that in the <strong>Tools→Feature Flags Menu</strong>. </p>
+</blockquote>
+<h2 id="video"><a class="header" href="#video">Video</a></h2>
+<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/b4N9oweGH5E?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=http://ourmachinery.com"></iframe>
+<h2 id="tutorial"><a class="header" href="#tutorial">Tutorial</a></h2>
+<p>Even if we’re supporting multiple players, when they move and look around the animation it’s not smooth everywhere: if there are clients A and B connected, nobody is telling client B about where client A is moving or looking, and so client B will only rely on the state updates that comes every second from the server to update the position and orientation of client A in its own simulation.</p>
+<p>Let’s first tackle the problem of broadcasting the facing direction of a client to all the other clients.</p>
+<p>If you take a look at the <em>Pan</em> subgraph of the <em>xbot</em> entity, you’ll see that we are computing a small angle offset every frame and adding that to the current entity rotation via a quaternion multiplication. But Client B is not receiving the input for Client A and so this computation will always result in a null rotation.</p>
+<p><img src="https://paper-attachments.dropbox.com/s_5F8ED61A9C68BDE8B9368D5E3DABD345E39CC324FB030EDE9E31314C3B7EE30F_1635346537911_image.png" alt="img" /></p>
+<p>So we need to do three things:</p>
+<ol>
+<li>make sure that each client accumulate the correct angle for its own player entity in a graph variable and use that directly to drive the orientation</li>
+<li>replicate this variable from each client to the server</li>
+<li>broadcast the variable from the server to all the other clients</li>
+</ol>
+<p>-we can use the <em>Set</em> and <em>Get float variable</em> nodes and reorganize our graph a bit to accomplish 1.</p>
+<p><img src="https://paper-attachments.dropbox.com/s_5F8ED61A9C68BDE8B9368D5E3DABD345E39CC324FB030EDE9E31314C3B7EE30F_1635343525826_image.png" alt="img" /></p>
+<p>-To solve 2, We then simply convert the <em>Set float variable</em> node in a <em>Float variable network replication</em> node, specifying the fact that only <em>clients</em> should set and replicate the variable using the <em>Network is of type</em> node.</p>
+<p><img src="https://paper-attachments.dropbox.com/s_5F8ED61A9C68BDE8B9368D5E3DABD345E39CC324FB030EDE9E31314C3B7EE30F_1635343619084_image.png" alt="img" /></p>
+<blockquote>
+<p><strong>Note</strong>: when you pass a null connection to the <em>network is of type</em> node you are implicitly asking the type of the “local” simulation.</p>
+</blockquote>
+<ol start="3">
+<li>is automatically done by the server: the moment it receives the variable update from the client it will automatically replicate the change to all the connected nodes. So we don’t have to do anything for this.</li>
+</ol>
+<p>And now each client has the correct information about where each other client is looking at, and can animate the orientation of other players smoothly.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../../network/animation_sample/support_multiple_players.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../../network/animation_sample/smooth_animation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../../network/animation_sample/support_multiple_players.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../../network/animation_sample/smooth_animation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
