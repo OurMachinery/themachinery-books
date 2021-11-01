@@ -25,7 +25,7 @@ component:
 
 ## What is next?
 
-For more information go and checkout the [Gameplay Coding / Visual Scripting Chapter]({{the_machinery_book}}/visual_scripting/index.html)
+For more information go and checkout the [Gameplay Coding / Visual Scripting Chapter]({{the_machinery_book}}/gameplay_coding/visual_scripting/index.html)
 
 For more examples, check out the `pong` and `animation` projects in the samples.
 

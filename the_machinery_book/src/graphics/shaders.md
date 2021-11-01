@@ -26,7 +26,7 @@ Inserting the `creation_graph` block in the `.tmsl` file will get exposed as a n
 
 Typically these are function nodes (see `data/shaders/nodes`) that won't compile into anything without getting connected to an "output" node. We ship with a few built-in output nodes (see `data/shaders/output_nodes`) responsible for declaring the actual shader stages and glue everything together. 
 
->  **Note:** For more details on the Shader Language itself, please check the [Shader Reference](https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html) or the Chapter [The Machinery Shading Language]({{the_machinery_book}}/the_machinery_shading_language.md).
+>  **Note:** For more details on the Shader Language itself, please check the [Shader Reference](https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html) or the Chapter [The Machinery Shading Language]({{the_machinery_book}}graphics/the_machinery_shading_language.html).
 
 The whole Shader System is explained in more detail within these posts:
 
