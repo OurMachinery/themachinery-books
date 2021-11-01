@@ -23,7 +23,7 @@ jobs:
       - name: download SDK
         run: |
           sudo apt install -y unzip wget
-          wget https://ourmachinery.com/releases/2021.10.a/the-machinery-2021.10.a-linux.zip
+          wget https://ourmachinery.com/releases/2021.10/the-machinery-2021.10.a-linux.zip
           mkdir sdk_dir
           unzip the-machinery-2021.9-linux.zip -d sdk_dir
       - name: Cache mdbook-tera
