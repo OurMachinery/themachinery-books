@@ -1,6 +1,6 @@
 # Part 3: Entity Control
 
-In this tutorial you’ll learn how to set the control of a specific entity and remap its input source. This tutorial build on the learnings of the pervious tutorial: [Part 2]({{tutorials}}//network/animation_sample/multiple_network_instances.md)
+In this tutorial you’ll learn how to set the control of a specific entity and remap its input source. This tutorial build on the learnings of the pervious tutorial: [Part 2]({{tutorials}}//network/animation_sample/multiple_network_instances.html)
 
 >  **Note:**  we start with making sure that you have the Networking feature flag enabled, you can do that in the **Tools→Feature Flags Menu**. 
 

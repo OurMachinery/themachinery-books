@@ -1,6 +1,6 @@
 # Part 2: Running Multiple Network Instances
 
-In this tutorial you’ll learn how to run multiple simulation instances at the same time. This tutorial build on the learnings of the pervious tutorial: [Part 1]({{tutorials}}//network/animation_sample/network_assets.md)
+In this tutorial you’ll learn how to run multiple simulation instances at the same time. This tutorial build on the learnings of the pervious tutorial: [Part 1]({{tutorials}}/network/animation_sample/network_assets.html)
 
 >  **Note:**  we start with making sure that you have the Networking feature flag enabled, you can do that in the **Tools→Feature Flags Menu**. 
 
