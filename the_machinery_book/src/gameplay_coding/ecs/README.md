@@ -106,10 +106,12 @@ The behavior is defined in Systems and Engines which process those components. S
 ### What are Systems?
 
 - General Update loop that has access to the Entity Context.
+
 - Can be used for none component specific interactions
+
 - Can be used for serial interactions that do not interact with the entity system. (Such as Input)
 
-
+  
 
 ## How are Entity Assets translated to ECS Entities?
 

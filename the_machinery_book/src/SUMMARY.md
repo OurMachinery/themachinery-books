@@ -81,7 +81,7 @@
         - [Tagging Entities](./gameplay_coding/ecs/tagging_entities.md)
         - [Filtering Entities](./gameplay_coding/ecs/filtering_entities.md)
         - [Simulation Lifecycle](./gameplay_coding/ecs/simulation_lifecycle.md)
-    - [How to build my plugin](./helper_tools/tmbuild.md)
+    - [Gameplay Entry Point Comparison](gameplay_coding/gameplay_entry_comparison.md)
 - [Collaboration](./collaboration.md)
 - [QA Pipeline](./qa_pipeline/README.md)
     - [Statistics Tab](./qa_pipeline/statistics.md)
