@@ -7,7 +7,15 @@ This section addresses common problems that can arise when using The Machinery.
 
 When it comes to crashes on Windows which you cannot debug yourself. You can enable a full crash dumb via the following file `utils/enable-full-dumps.reg`. The dumps can be found in the folder `AppData\Local\The Machinery` and then in the  `CrashDumps` folder. In case of a error report it can be very helpful to provide access to the crash dump. You can submit bugs on our public [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues). Please do not forget to mention your current Engine version.
 
-In order to obtain log files you have to go to the same folder where you can find the CrashDumps (`**AppData\Local**``\The Machinery`) just this time you can find them in the `Logs` folder.
+In order to obtain log files you have to go to the same folder where you can find the CrashDumps (`AppData\Local``\The Machinery`) just this time you can find them in the `Logs` folder.
+
+
+
+## Windows 11
+
+We have not tested windows 11 yet therefore possible problems are to be expected. Please report them to us on public [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues) so we can keep track of them.
+
+
 
 
 ## tmbuild cannot find build tools
@@ -26,7 +34,7 @@ If the following variable is not set, the tool will assume that you intend to us
 
 - `TM_LIB_DIR` - The folder which determines where to download and install all dependencies (besides the build environments)
 
-Make sure you have added the needed enviroment variables. Follow this guide on [tmbuild]({{the_machinery_book}}/helper_tools/tmbuild.html).
+Make sure you have added the needed environment variables. Follow this guide on [tmbuild]({{the_machinery_book}}/helper_tools/tmbuild.html).
 
 
 
@@ -46,6 +54,8 @@ In case of a crash you will get an error message, this will give some informatio
 - A crash dump file, see the previous section on how to obtain this.
 
 You can submit bugs on our public [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues). Please do not forget to mention your current Engine version.
+
+
 
 
 ## Where to report bugs or feedback
