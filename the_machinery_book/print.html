@@ -3806,7 +3806,7 @@ detects a file change, it will reimport the plugin.</p>
 <h2 id="coding-within-our-entity-component-system"><a class="header" href="#coding-within-our-entity-component-system">Coding within our Entity Component System</a></h2>
 <p>The Machinery uses an Entity Component System; therefore, most of your gameplay code will run via Engines or Systems. To learn more about these, please follow this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">link</a>.</p>
 <h2 id="general-code-entry-points-using-simulation-entry-component"><a class="header" href="#general-code-entry-points-using-simulation-entry-component">General code entry points using Simulation Entry Component</a></h2>
-<p>The Machinery also offers you a Simulation Entry Component which will, when the parent entity is spawned, set up a system with that is used to run code at startup and each frame. Read more <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/simulation_entry.html">here</a>.</p>
+<p>The Machinery also offers you a Simulation Entry Component which will, when the parent entity is spawned, set up a system with that is used to run code at start-up and each frame. Read more <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/simulation_entry.html">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="simulation-entry-writing-gameplay-code-in-c"><a class="header" href="#simulation-entry-writing-gameplay-code-in-c">Simulation Entry (writing gameplay code in C)</a></h2>
 <p>This walkthrough show you how to create a <em>simulation entry</em> and what a simulation entry is.</p>
 <p>If you wish to program gameplay using C code, then you need some way for this code to execute. You can either make lots of entity components that do inter-component communication, but if you want a more classic monolithic approach, then you can use a simulation entry.</p>
@@ -4003,7 +4003,7 @@ to open it in the Graph Editor:</p>
 <h3 id="subgraphs"><a class="header" href="#subgraphs">Subgraphs</a></h3>
 <p>You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a <code>.entity_graph</code> asset in your asset browser and allow it to be reused across your project! Which enables you to maximal flexibility! </p>
 <h2 id="what-is-next-5"><a class="header" href="#what-is-next-5">What is next?</a></h2>
-<p>In the next chapter you will learn more about Subgraphs and the Debugger! In case you want to provide your own Nodes check out this tutorial <a href="https://ourmachinery.github.io/themachinery-books/tutorials//gameplay_coding/extend_the_visual_scripting_language.html">Extend the Visual Scripting Language</a></p>
+<p>In the next chapter you will learn more about Subgraphs and the Debugger! In case you want to provide your own Nodes check out this tutorial <a href="https://ourmachinery.github.io/themachinery-books/tutorials//gameplay_coding/extend_the_entity_graph.html">Extend the Entity Graph</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="subgraphs-1"><a class="header" href="#subgraphs-1">Subgraphs</a></h1>
 <p>Subgraphs are a way to organize your graph better and create smaller units. They make them easier to maintain and easy to follow. In its essence a subgraph is a graph within a graph. They are interfaced via a subgraph node. They can produce Input and Output, such as a normal node could. They can also call and react to normal Events!</p>
 <h2 id="create-a-subgraph"><a class="header" href="#create-a-subgraph">Create a subgraph</a></h2>
@@ -5918,6 +5918,8 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <li><a href="helper_tools/tmbuild_package_reference.html#localize"><code>localize</code></a></li>
 <li><a href="helper_tools/tmbuild_package_reference.html#set-sdk-dir"><code>set-sdk-dir</code></a></li>
 <li><a href="helper_tools/tmbuild_package_reference.html#zip"><code>zip</code></a></li>
+<li><a href="helper_tools/tmbuild_package_reference.html#test"><code>test</code></a></li>
+<li><a href="helper_tools/tmbuild_package_reference.html#clean"><code>clean</code></a></li>
 </ul>
 </li>
 </ul>
@@ -6056,6 +6058,13 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>add-time-stamp</td><td>bool</td><td>If set to true the zipped file will contain the timestamp</td></tr>
 </tbody></table>
+<h3 id="test"><a class="header" href="#test"><code>test</code></a></h3>
+<p>Will execute tests defined in the <code>tests</code> filed.</p>
+<table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>tests</td><td>string array</td><td>Names of tests</td></tr>
+</tbody></table>
+<h3 id="clean"><a class="header" href="#clean"><code>clean</code></a></h3>
+<p>Will call the <code>--clean</code> command on <code>tmbuild</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="writing-an-executable"><a class="header" href="#writing-an-executable">Writing an executable</a></h2>
 <p>Writing a stand-alone executable is similar to writing a plugin except that you need to write
 initialization code for booting up all the systems that you want to use as well as the main loop

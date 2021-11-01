@@ -177,6 +177,8 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <li><a href="#localize"><code>localize</code></a></li>
 <li><a href="#set-sdk-dir"><code>set-sdk-dir</code></a></li>
 <li><a href="#zip"><code>zip</code></a></li>
+<li><a href="#test"><code>test</code></a></li>
+<li><a href="#clean"><code>clean</code></a></li>
 </ul>
 </li>
 </ul>
@@ -315,6 +317,13 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>add-time-stamp</td><td>bool</td><td>If set to true the zipped file will contain the timestamp</td></tr>
 </tbody></table>
+<h3 id="test"><a class="header" href="#test"><code>test</code></a></h3>
+<p>Will execute tests defined in the <code>tests</code> filed.</p>
+<table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>tests</td><td>string array</td><td>Names of tests</td></tr>
+</tbody></table>
+<h3 id="clean"><a class="header" href="#clean"><code>clean</code></a></h3>
+<p>Will call the <code>--clean</code> command on <code>tmbuild</code>.</p>
 
                     </main>
 

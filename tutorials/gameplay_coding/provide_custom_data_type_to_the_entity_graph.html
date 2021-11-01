@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Custom Data Type for the Entity Graph - The Machinery Tutorial Book</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="../workflows/how_to_create_prototypes.html"><strong aria-hidden="true">2.</strong> How to create prototypes</a></li><li class="chapter-item "><a href="../workflows/how_to_instantiate_prototypes.html"><strong aria-hidden="true">3.</strong> How to instantiate prototypes</a></li><li class="chapter-item "><a href="../creation_graph/index.html"><strong aria-hidden="true">4.</strong> Creation Graph</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">4.1.</strong> Creating custom GPU nodes</a></li><li class="chapter-item "><a href="../creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">4.2.</strong> Creating custom CPU nodes</a></li><li class="chapter-item "><a href="../creation_graph/custom_geometry_node.html"><strong aria-hidden="true">4.3.</strong> Creating custom Geometry nodes</a></li><li class="chapter-item "><a href="../creation_graph/from_code.html"><strong aria-hidden="true">4.4.</strong> Calling Creation Graphs from code</a></li><li class="chapter-item "><a href="../creation_graph/raymarch_output_node.html"><strong aria-hidden="true">4.5.</strong> Creating a custom raymarching output node</a></li></ol></li><li class="chapter-item "><a href="../post_processing/index.html"><strong aria-hidden="true">5.</strong> Post Processing</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../post_processing/aa.html"><strong aria-hidden="true">5.1.</strong> Anti-Aliasing</a></li><li class="chapter-item "><a href="../post_processing/exposure.html"><strong aria-hidden="true">5.2.</strong> Exposure</a></li><li class="chapter-item "><a href="../post_processing/color_grading.html"><strong aria-hidden="true">5.3.</strong> Color Grading</a></li></ol></li><li class="chapter-item "><a href="../physics/index.html"><strong aria-hidden="true">6.</strong> Physics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../physics/triggers.html"><strong aria-hidden="true">6.1.</strong> Triggers</a></li></ol></li><li class="chapter-item "><a href="../the_truth/index.html"><strong aria-hidden="true">7.</strong> The Truth</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../the_truth/custom_asset/index.html"><strong aria-hidden="true">7.1.</strong> Creating a custom asset</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../the_truth/custom_asset/part1.html"><strong aria-hidden="true">7.1.1.</strong> Part 1 - Create an Asset Truth Type, Addable via Asset Browser</a></li><li class="chapter-item "><a href="../the_truth/custom_asset/part2.html"><strong aria-hidden="true">7.1.2.</strong> Part 2 - Custom UI</a></li><li class="chapter-item "><a href="../the_truth/custom_asset/part3.html"><strong aria-hidden="true">7.1.3.</strong> Part 3 - Custom Importer</a></li></ol></li><li class="chapter-item "><a href="../the_truth/drag_and_drop.html"><strong aria-hidden="true">7.2.</strong> Adding Drag and Drop to Assets</a></li><li class="chapter-item "><a href="../the_truth/open_asset.html"><strong aria-hidden="true">7.3.</strong> Open Asset in Tab</a></li></ol></li><li class="chapter-item expanded "><a href="../gameplay_coding/index.html"><strong aria-hidden="true">8.</strong> Gameplay Coding</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../gameplay_coding/extend_the_entity_graph.html"><strong aria-hidden="true">8.1.</strong> Extending the Entity Graph</a></li><li class="chapter-item expanded "><a href="../gameplay_coding/provide_custom_data_type_to_the_entity_graph.html" class="active"><strong aria-hidden="true">8.2.</strong> Custom Data Type for the Entity Graph</a></li></ol></li><li class="chapter-item "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/animation_sample/network_assets.html"><strong aria-hidden="true">9.1.</strong> Part 1: Network Asset</a></li><li class="chapter-item "><a href="../network/animation_sample/multiple_network_instances.html"><strong aria-hidden="true">9.2.</strong> Part 2: Multiple Instances</a></li><li class="chapter-item "><a href="../network/animation_sample/entity_control.html"><strong aria-hidden="true">9.3.</strong> Part 3: Entity Control</a></li><li class="chapter-item "><a href="../network/animation_sample/support_multiple_players.html"><strong aria-hidden="true">9.4.</strong> Part 4: Multiple Players</a></li><li class="chapter-item "><a href="../network/animation_sample/basic_graph_variables.html"><strong aria-hidden="true">9.5.</strong> Part 5: Variable Replication (Graph)</a></li><li class="chapter-item "><a href="../network/animation_sample/smooth_animation.html"><strong aria-hidden="true">9.6.</strong> Part 6: Smooth Animation</a></li><li class="chapter-item "><a href="../network/animation_sample/spawning_entities.html"><strong aria-hidden="true">9.7.</strong> Part 7: Spawning Entities</a></li></ol></li><li class="chapter-item "><a href="../ui/index.html"><strong aria-hidden="true">10.</strong> UI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">10.1.</strong> Build Custom UI Controls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">10.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item "><a href="../ui/toolbars-overlays.html"><strong aria-hidden="true">10.2.</strong> Toolbars and Overlays</a></li><li class="chapter-item "><a href="../ui/custom_layouts.html"><strong aria-hidden="true">10.3.</strong> Custom Tab Layouts</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">The Machinery Tutorial Book</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        <a href="https://github.com/OurMachinery/themachinery-books" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                                                
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="provide-a-custom-datatype-to-the-entity-graph"><a class="header" href="#provide-a-custom-datatype-to-the-entity-graph">Provide a Custom Datatype to the Entity Graph</a></h1>
+<p>This walkthrough shows you how to extend the Entity Graph with a custom data type</p>
+<ul>
+<li>How to provide a custom compile step for your own data type.</li>
+</ul>
+<h2 id="data-type-overview-of-the-entity-graph"><a class="header" href="#data-type-overview-of-the-entity-graph">Data Type Overview of the Entity Graph</a></h2>
+<p>The following overview lists all types that are supported by the engine build in with the <code>Entity Graph Component</code>.  If you wanted to support your own data type you need to implement the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_component.h.html#tm_graph_component_compile_data_i">tm_graph_component_compile_data_i</a> interface manually.</p>
+<table><thead><tr><th>Truth Type</th></tr></thead><tbody>
+<tr><td><code>TM_TT_TYPE_HASH__BOOL</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__UINT32_T</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__UINT64_T</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__FLOAT</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__DOUBLE</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__VEC2</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__VEC3</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__VEC4</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__POSITION</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__ROTATION</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__SCALE</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__COLOR_RGB</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__RECT</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__STRING</code></td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/plugins/creation_graph/creation_graph_node_type.h.html#tm_tt_type_hash__string_hash">TM_TT_TYPE_HASH__STRING_HASH</a></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__KEYBOARD_ITEM</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__MOUSE_BUTTON</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__ENTITY_ASSET_REFERENCE</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__LOCAL_ENTITY_ASSET_REFERENCE</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__CREATION_GRAPH_ASSET_REFERENCE</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__EASING</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__LOOP_TYPE</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__COMPONENT_PROPERTY_FLOAT</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__COMPONENT_PROPERTY_VEC2</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__COMPONENT_PROPERTY_VEC3</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__COMPONENT_PROPERTY_VEC4</code></td></tr>
+<tr><td><code>TM_TT_TYPE_HASH__COMPONENT_PROPERTY_ANY</code></td></tr>
+</tbody></table>
+<h2 id="implement-the-a-hrefhttpsourmachinerycomapidocpluginsgraph_interpretergraph_componenthhtmltm_graph_component_compile_data_itm_graph_component_compile_data_ia"><a class="header" href="#implement-the-a-hrefhttpsourmachinerycomapidocpluginsgraph_interpretergraph_componenthhtmltm_graph_component_compile_data_itm_graph_component_compile_data_ia">Implement the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_component.h.html#tm_graph_component_compile_data_i">tm_graph_component_compile_data_i</a></a></h2>
+<p>When you need to implement your own type you need to implement the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_component.h.html#tm_graph_component_compile_data_i">tm_graph_component_compile_data_i</a> interface. This interface lives in the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_component.h.html#graph_component.h">graph_component.h</a> header file. This header file is part of the <code>graph_interpreter</code> plugin.</p>
+<p>The interface is just a function typedef of the following signature:</p>
+<pre><code class="language-c">typedef bool tm_graph_component_compile_data_i(struct tm_graph_interpreter_o *gr, uint32_t wire, const struct tm_the_truth_o *tt, tm_tt_id_t data_id, tm_strhash_t to_type_hash);
+</code></pre>
+<h3 id="how-will-the-graph-interpreter-use-this-function"><a class="header" href="#how-will-the-graph-interpreter-use-this-function">How will the graph interpreter use this function?</a></h3>
+<p>The Graph Interpreter will call this function when ever it compiles data to a graph before the graph is initialized the first time. The function should return true if it compiled data to a wire otherwise it should return false and the graph interpreter will keep looking for the correct compile function.</p>
+<p>The function provided multiple arguments but the following 2 arguments are the most important one:</p>
+<table><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody>
+<tr><td><code> tm_tt_id_t data_id</code></td><td>The data object the interpreter tries to compile to a wire but does not know how to.</td></tr>
+<tr><td><code> tm_strhash_t to_type_hash</code></td><td>The data the wire expects.</td></tr>
+</tbody></table>
+<p>For example in the Animation State Machine <code>TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE</code> are objects that contain a string hash (<a href="https://ourmachinery.com/apidoc/plugins/animation/animation_state_machine.h.html#enumtm_tt_prop__asm_event">TM_TT_PROP__ASM_EVENT__NAME</a>) that the animation state machine needs in order to execute a certain event. The list above shows that there is no translation from a <code>TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE</code> to a wire. Therefore we need to provide our own function for this. The animation state machine plugin provides a compilation function for this. </p>
+<p>The plugin knows that a <code>TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE</code> is nothing else then a <a href="https://ourmachinery.com/apidoc/plugins/creation_graph/creation_graph_node_type.h.html#tm_tt_type_hash__string_hash">TM_TT_TYPE_HASH__STRING_HASH</a> at the end. This means we need to do the following steps:</p>
+<ol>
+<li>We need to figure out what kind of type is in <code>data_id</code></li>
+<li>We need to compare the type of <code>data_id</code> with the <code>to_type_hash</code> being equal to <a href="https://ourmachinery.com/apidoc/plugins/creation_graph/creation_graph_node_type.h.html#tm_tt_type_hash__string_hash">TM_TT_TYPE_HASH__STRING_HASH</a></li>
+<li>perform our actual translation</li>
+</ol>
+<p>Let us begin with figuring out the data type of <code>data_id</code>:</p>
+<pre><code class="language-c">    const tm_tt_type_t type = tm_tt_type(data_id);
+    const tm_strhash_t type_hash = tm_the_truth_api-&gt;type_name_hash(tt, type);
+    const tm_the_truth_object_o *data_r = tm_tt_read(tt, data_id);
+</code></pre>
+<p>We also need to get a read object of the <code>data_id</code> to read the data from it.</p>
+<p>The next step is to compare the given data:</p>
+<pre><code class="language-c">    if (TM_STRHASH_EQUAL(type_hash, TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE) &amp;&amp; TM_STRHASH_EQUAL(to_type_hash, TM_TT_TYPE_HASH__STRING_HASH))
+</code></pre>
+<p>If this is true we move on with our data compilation. Now that we know our object is of type <code>TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE</code> we can use the Truth and extract that actual value we care about the <a href="https://ourmachinery.com/apidoc/plugins/animation/animation_state_machine.h.html#enumtm_tt_prop__asm_event">TM_TT_PROP__ASM_EVENT__NAME</a></p>
+<pre><code class="language-c">        const tm_tt_id_t event_id = tm_the_truth_api-&gt;get_reference(tt, data_r, 0);
+        const tm_strhash_t event_name_hash = tm_the_truth_api-&gt;get_string_hash(tt, tm_tt_read(tt, event_id), TM_TT_PROP__ASM_EVENT__NAME);
+</code></pre>
+<p>After this its time to compile or better write the data to the provided wire. For this we need to use the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_interpreter.h.html#structtm_graph_interpreter_api">tm_graph_interpreter_api</a> API and its <code>tm_graph_interpreter_api.write()</code> function. The function expects the current interpreter and the wire we write to (we have this one as function parameter of the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_component.h.html#tm_graph_component_compile_data_i">tm_graph_component_compile_data_i</a> interface <code>uint32_t wire</code>)  as well as the size and the amount. Passing all these information to the write function enables it to allocate memory internally in the interpreters memory stack.</p>
+<pre><code class="language-c">        tm_strhash_t *v = (tm_strhash_t *)tm_graph_interpreter_api-&gt;write_wire(gr, wire, 1, sizeof(*v));
+</code></pre>
+<p>Keep in mind the function is a bit miss leading since it says <code>write</code> but what it actually does it just allocates memory for you (if needed) and give you back a writable pointer. At the end we write to the pointer our data and return true.</p>
+<p>All together the translation looks like this:</p>
+<pre><code class="language-c">    if (TM_STRHASH_EQUAL(type_hash, TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE) &amp;&amp; TM_STRHASH_EQUAL(to_type_hash, TM_TT_TYPE_HASH__STRING_HASH))
+    {
+        const tm_tt_id_t event_id = tm_the_truth_api-&gt;get_reference(tt, data_r, 0);
+        const tm_strhash_t event_name_hash = tm_the_truth_api-&gt;get_string_hash(tt, tm_tt_read(tt, event_id), TM_TT_PROP__ASM_EVENT__NAME);
+        tm_strhash_t *v = (tm_strhash_t *)tm_graph_interpreter_api-&gt;write_wire(gr, wire, 1, sizeof(*v));
+        *v = event_name_hash;
+        return true;
+    }
+</code></pre>
+<h2 id="source-code"><a class="header" href="#source-code">Source Code</a></h2>
+<p>The entire sample source code:</p>
+<pre><code class="language-c">static struct tm_api_registry_api *tm_global_api_registry;
+static struct tm_the_truth_api *tm_the_truth_api;
+static struct tm_graph_interpreter_api *tm_graph_interpreter_api;
+
+#include &lt;foundation/api_registry.h&gt;
+#include &lt;foundation/api_types.h&gt;
+#include &lt;foundation/the_truth.h&gt;
+#include &lt;foundation/the_truth_types.h&gt;
+
+#include &lt;plugins/editor_views/graph.h&gt;
+#include &lt;plugins/graph_interpreter/graph_component_node_type.h&gt;
+#include &lt;plugins/graph_interpreter/graph_component.h&gt;
+#include &lt;plugins/graph_interpreter/graph_interpreter.h&gt;
+#include &lt;plugins/animation/animation_state_machine.h&gt;
+
+#define TM_TT_TYPE__ASM_EVENT_REFERENCE &quot;tm_asm_event_reference&quot;
+#define TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE TM_STATIC_HASH(&quot;tm_asm_event_reference&quot;, 0x60cbc051e2b37c38ULL)
+
+static bool compile_data_to_wire(tm_graph_interpreter_o *gr, uint32_t wire, const tm_the_truth_o *tt, tm_tt_id_t data_id, tm_strhash_t to_type_hash)
+{
+    const tm_tt_type_t type = tm_tt_type(data_id);
+    const tm_strhash_t type_hash = tm_the_truth_api-&gt;type_name_hash(tt, type);
+    const tm_the_truth_object_o *data_r = tm_tt_read(tt, data_id);
+
+    if (TM_STRHASH_EQUAL(type_hash, TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE) &amp;&amp; TM_STRHASH_EQUAL(to_type_hash, TM_TT_TYPE_HASH__STRING_HASH))
+    {
+        const tm_tt_id_t event_id = tm_the_truth_api-&gt;get_reference(tt, data_r, 0);
+        const tm_strhash_t event_name_hash = tm_the_truth_api-&gt;get_string_hash(tt, tm_tt_read(tt, event_id), TM_TT_PROP__ASM_EVENT__NAME);
+        tm_strhash_t *v = (tm_strhash_t *)tm_graph_interpreter_api-&gt;write_wire(gr, wire, 1, sizeof(*v));
+        *v = event_name_hash;
+        return true;
+    }
+    //...
+    return false;
+}
+
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    tm_global_api_registry = reg;
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_graph_interpreter_api = tm_get_api(reg, tm_graph_interpreter_api);
+    tm_add_or_remove_implementation(reg, load, tm_graph_component_compile_data_i, compile_data_to_wire);
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../gameplay_coding/extend_the_entity_graph.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../network/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../gameplay_coding/extend_the_entity_graph.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../network/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
