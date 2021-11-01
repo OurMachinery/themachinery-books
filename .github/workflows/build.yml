@@ -25,7 +25,7 @@ jobs:
           sudo apt install -y unzip wget
           wget https://ourmachinery.com/releases/2021.10/the-machinery-2021.10.a-linux.zip
           mkdir sdk_dir
-          unzip the-machinery-2021.9-linux.zip -d sdk_dir
+          unzip the-machinery-2021.10.a-linux.zip -d sdk_dir
       - name: Cache mdbook-tera
         id: cache-mdbook-tera
         uses: actions/cache@v2
