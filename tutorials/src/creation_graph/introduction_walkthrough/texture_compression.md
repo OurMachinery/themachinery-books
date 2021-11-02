@@ -9,11 +9,13 @@ This tutorial will teach you:
 
 <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/49eF0O5OAbY?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=http://ourmachinery.com"></iframe>
 
-> This walkthrough series makes use of the following free assets: [KhronosGroup](https://github.com/KhronosGroup)/**[glTF-Sample-Models](https://github.com/KhronosGroup/glTF-Sample-Models)**.
+> **Note:** walkthrough series makes use of the following free assets: [KhronosGroup](https://github.com/KhronosGroup)/**[glTF-Sample-Models](https://github.com/KhronosGroup/glTF-Sample-Models)**.
 
 
 
-After we have downloaded and extracted all parts of the dcc asset as described in [Import and rigging tutorial](https://www.youtube.com/watch?v=loaYaeSl-_g&t=20s) or you follow this Guide [Import assets](https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html#import-assets). We set the goal to compress textures.
+## Setup
+
+Download the flight helmet asset from the git repo [Download Now](https://downgit.github.io/#/home?url=https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/FlightHelmet/glTF). After we have downloaded and extracted all parts of the dcc asset as described in [Import and rigging tutorial](https://www.youtube.com/watch?v=loaYaeSl-_g&t=20s) or you follow this Guide [Import assets](https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html#import-assets). We can follow the rest of the tutorial.
 
 
 

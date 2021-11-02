@@ -7,6 +7,7 @@
   - [Creation Graph Introduction Series](creation_graph/introduction_walkthrough/README.md)
     - [Simple Texture Compression](creation_graph/introduction_walkthrough/texture_compression.md)
     - [Creation Graph Prototype](creation_graph/introduction_walkthrough/creation_graph_prototype.md)
+    - [Custom Import Settings](creation_graph/introduction_walkthrough/custom_import_settings.md)
   - [Creating custom GPU nodes](./creation_graph/custom_gpu_nodes.md)
   - [Creating custom CPU nodes](./creation_graph/custom_cpu_nodes.md)
   - [Creating custom Geometry nodes](./creation_graph/custom_geometry_node.md)
