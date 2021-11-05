@@ -180,5 +180,15 @@ Will zip the package folder and if the field `add-time-stamp` is set to true it 
 | ----------------- | ---- | --------------------------------------------------------- |
 | add-time-stamp    | bool | If set to true the zipped file will contain the timestamp |
 
+### `test`
 
+Will execute tests defined in the `tests` filed.
+
+| Setting Parameter | Type         | Description    |
+| ----------------- | ------------ | -------------- |
+| tests             | string array | Names of tests |
+
+### `clean`
+
+Will call the `--clean` command on `tmbuild`.
 

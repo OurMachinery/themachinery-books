@@ -37,9 +37,20 @@ Quick steps to get up and running:
 
 If you get errors that mention Vulkan or if you see weird rendering glitches, make sure to update
 your GPU drivers to the latest version. If that doesn't work, post an issue with our [issue
-tracker](https://github.com/OurMachinery/themachinery-public/issues) or ping us on
-[Discord](https://discord.gg/uJtkbVr) and we will help you.
+tracker](https://github.com/OurMachinery/themachinery-public/issues) or ping us on [Discord](https://discord.gg/uJtkbVr) and we will help you.
 
 Related videos to these topics are:
 
 <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/oQGghpCqBhI?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=http://ourmachinery.com"></iframe>
+
+## Source Code access
+
+You can make use of `tmbuild` (from the binary build) to download the engine (source code) and install all needed dependencies as well. This can be done via `tmbuild --install` in this case you may want to use `--github-token` as well and provide your token. As alternative you just clone the repo as you are used to from any other git repositry.
+
+
+
+### I signed up for source code but didn't get access.
+
+Make sure your GitHub account is correctly entered on the [Profile](https://ourmachinery.com/profile.html) page. It should be your account name, not your email.
+
+GitHub invites frequently end up in the Spam folder. Check there or go to the [repository](https://github.com/ourmachinery/themachinery) to see your invite.

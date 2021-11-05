@@ -1,11 +1,13 @@
-# Extending the Visual Scripting Language
+# Extending the Entity Graph
 
-This walkthrough shows you how to extend the visual scripting language for the entity graph and use the `generate-graph-nodes.exe`. You will learn about:
+This walkthrough shows you how to extend the Entity Graph and use the `generate-graph-nodes.exe`. You will learn about:
 
-- How to develop the visual scripting language with your nodes.
+- How to develop the Entity Graph with your nodes.
 - When to run `generate-graph-nodes.exe`
 
-## **How to extend the visual scripting language**
+
+
+## **How to extend the Entity Graph**
 
 You can extend the visual scripting language with your nodes. All you need to do is write the code that implements the node's action, together with some macros that specify how to create a visual scripting node from that code. Then you run the `generate-graph-nodes.exe` executable to generate an `*.inl` file with glue code.
 

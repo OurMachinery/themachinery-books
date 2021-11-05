@@ -143,7 +143,7 @@ Every plugin has `tm_load_plugin()` as its entry point, in there we register eve
 
 #### Where does my gameplay code live?
 
-Your gameplay lives within the [Systems / Engines]({{base_url}}/gameplay_coding/ecs/index.html) of the ECS or in the [Simulation Entry]({{base_url}}gameplay_coding/simulate_entry.html) and they have their own entry points.
+Your gameplay lives within the [Systems / Engines]({{base_url}}/gameplay_coding/ecs/index.html) of the ECS or in the [Simulation Entry]({{base_url}}gameplay_coding/simulation_entry.html) and they have their own entry points.
 
 #### How do I update my tool / tab content?
 

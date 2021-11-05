@@ -129,4 +129,4 @@ You can organize your code into smaller reusable units and combine nodes as a su
 
 ## What is next?
 
-In the next chapter you will learn more about Subgraphs and the Debugger! In case you want to provide your own Nodes check out this tutorial [Extend the Visual Scripting Language]({{tutorials}}/gameplay_coding/extend_the_visual_scripting_language.html)
+In the next chapter you will learn more about Subgraphs and the Debugger! In case you want to provide your own Nodes check out this tutorial [Extend the Entity Graph]({{tutorials}}gameplay_coding/extend_the_entity_graph.html)
