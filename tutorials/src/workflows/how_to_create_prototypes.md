@@ -1,45 +1,45 @@
-# How to create prototypes
+# Creating Prototype Assets
 
-This walkthrough shows you how to create a Prototype.
+This walkthrough shows you how to create *Prototype Assets*.
 
-## New Prototype based on a new Asset
+*Prototypes* act as "templates" or "prefabs" for other assets. When you instantiate a prototype, the instance will inherit all the properties of the prototype unless you specifically override them.
 
-The Machinery supports three types of assets as prototypes:
+In The Machinery there is no distinction between "prototype assets" and "ordinary assets". Any asset can be used as a prototype for other assets. The prototype system is also hierarchical. I.e., prototypes may themselves have prototypes. This lets you mix and match assets in lots of interesting ways.
 
-- Creation Graphs
-- Entity Graphs
+## Create a Prototype as a New Asset
+
+In The Machinery, the assets most commonly used as prototypes are:
+
 - Entities
+- Entity Graphs
+- Creation Graphs
 
-You can create such prototypes via the Asset Browser **Right-Click -> New -> Creation Graph, Entity Graph, Entity.**
+Since prototypes are just an ordinary assets, you can create an empty prototype, by creating an asset of the desired type in the Asset Browser: **Right Click → New → Entity/Entity Graph/Creation Graph**. 
 
-This will add a new asset to your project. They can function as Prototypes for the specified type. Any changes applied to them will be applied to all its instances.
+This will add a new asset to your project. Any changes made to the asset will be applied to all instances of the prototype.
 
-## Entity Asset Prototype: Drag and Drop
+## Entity Prototype: Drag and Drop
 
-You can create a Prototype from an Entity by simply drag and drop it from the Entity Tree View into the Asset Browser.
+You can create a Prototype from an Entity by simply dragging and dropping it from the Entity Tree into the Asset Browser.
 
 ![](https://www.dropbox.com/s/erc3f4wqjoy5djt/tm_tut_prototype_create_drag.png?dl=1)
 
-This will create a new asset of the file extension `.entity`, and the Editor will replace the Entity in the Entity Tree with an instantiated version of this Prototype.
+This creates a new asset with the file extension `.entity`. It also replaces the entity in the Entity Tree with an instance of the newly created prototype.
 
+## Entity Prototype: Create Prototype from Entity
 
-
-## Entity Asset Prototype: Create Prototype from Entity
-
-You can also create a Prototype by using the context menu in the Entity Tree View on the Entity you want to turn into a Prototype.
+You can also create a prototype by using the context menu in the Entity Tree View on the Entity you want to turn into a Prototype:
 
 ![](https://www.dropbox.com/s/ys17wsljt82s2me/tm_tut_prototype_create_context.png?dl=1)
 
 
 
-## Entity Graph and Creation Graph Prototypes via subgraphs
+## Graph Prototypes from Subgraphs
 
-You can turn a subgraph into a prototype by simply using the subgraph node's context menu and select Create Subgraph prototype. This will create a Subgraph Prototype Asset (.entity_graph) in your Asset Browser. When you open it you are opening the instanced version. Any change to this version will not be shared across all other versions! Only changes made to the Prototype will propagate to all changes! To open a prototype, you can use the "Open Prototype" Button.
+You can turn a Subgraph into a prototype by choosing **Create Subgraph Prototype** in the Subgraph node's context menu. This creates a Subgraph Prototype Asset (`.entity_graph`) in your Asset Browser. It will also change the Subgraph to become an instance of the newly created prototype. If you open the Subgraph node at this point all the nodes will be grayed out. This shows that they are inherited from the prototype. Any changes you make there will be local to that instance.
+
+To make a change that propagates to all instances of the prototype, open the prototype in the asset browser, or by using the **Open Prototype** button in the Properties view of the Subgraph node.
 
 ![](https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?dl=1)
 
 
-
-## Composing Prototype of other prototypes
-
-The prototype system allows you to construct a prototype that is composed of other prototypes. This ability gives you the option to create Prototype Variants as well.
