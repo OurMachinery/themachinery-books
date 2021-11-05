@@ -1,13 +1,11 @@
-# Create a custom asset part 2
-
-This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{the_machinery_book}}extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to write a text file asset.
+# Create a Custom Asset Type: Part 2
 
 This part will cover the following topics:
 
-- How to store data in a buffer that is associated with the asset file
-- How to add a custom UI to be associated with the asset.
+- How to store data in a buffer that is associated with the asset file.
+- How to give the asset a custom UI in the Property View.
 
-When you have finished this part in the [next one]({{base_url}}the_truth/custom_asset/part3.html), we will show you how to write your importer.
+The [next part]({{base_url}}the_truth/custom_asset/part3.html) shows how to write an importer for the asset.
 
 >  You can find the whole source code in its git repo: [example-text-file-asset](https://github.com/simon-ourmachinery/example-text-file-asset)
 
@@ -15,36 +13,24 @@ When you have finished this part in the [next one]({{base_url}}the_truth/custom_
 
 * auto-gen TOC;
 {:toc}
+## Adding More Properties to the The Truth Type
 
-
-## Extending the asset The Truth Type
-
-The asset type we created is nice but it cannot do much. The Machinery can save anything to file that it can store in the Truth. This thought brings us back to the part: **“What kind of asset do we want to create?”.** 
-
-Let us go back to the basic definition of the type `my_asset`. We defined the type without any properties.
-
-The current implementation looks as follows:
+The Truth type we created in Part 1 cannot do much, because it doesn't have any properties:
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:15:20}}
 ```
 
-To make this more useful, what we can do is add some properties to the type. We can do this via an array of the type [tm_the_truth_property_definition_t]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t). In this array we can define all the properties we want. 
+To actually store some data in the objects, we want to add some properties to the Truth type. Note that we pass in an array of properties when we create the type with `tm_the_truth_api->create_object_type()`.
 
+For our text file objects that are two pieces of data that we want to store:
 
-## Text file asset
+1. The text data itself.
+2. The path on disk (if any) that the text file was imported from.
 
-Now we are changing the `my_asset` to be able to store text in it. 
+Storing the *import path* is not strictly necessary, but we'll use it to implement a "reimport" feature. This lets our data type work nicely with text files that are edited in external programs.
 
-First, we need to answer the question: *How is a text file defined?* 
-
-Well, a text file has three properties: 
-
-1. It has a file name
-2. A file path
-3. data - A bunch of characters.
-
-Consequently, we are defining the *import path* property to “reimport” our text asset and the data property to store the imported text.
+Here's how we can define these properties:
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:45:48}}
@@ -52,16 +38,16 @@ Consequently, we are defining the *import path* property to “reimport” our t
 
 >  **Note:** The type [*tm_the_truth_property_definition_t*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t) has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation [*here*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t)*.*
 
-After we have thought about this, we need to provide the `create_object_type` function with the new information:
+In this case we decided to store the text as a *buffer* instead of a *string*. Buffers can be streamed in and out of memory easily, so if we expect the text files to be large, using a buffer makes more sense than using a string.
+
+We can now create the Truth type with these properties:
 
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:43:55}}
 ```
 
-Now we should change the asset name to something more meaningful than `my_asset`. Lets call it `txt`
-
-The renaming has as a consequence that we need to change three places:
+Let's also change the asset name to something more meaningful than `my_asset`. We'll call it `txt`. We need to update this new name in four places:
 
 - Asset Name
 - Menu Name
@@ -82,14 +68,13 @@ Let's have a look at how it looks in the editor:
 
 ![creating a new asset](https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926443262_image.png)
 
-## Load a text file
-
-After creating a new asset, the asset looks as following in the editor:
+If we create a new *Text* file and select it, this is what we will see in the Properties View:
 
 ![](https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926772154_image.png)
 
+The `Data` property is `nil` because we haven't loaded any data into the file yet. Let's add a UI that let's us import text files from disk.
 
-This asset file is still not quite how we want it because we have not loaded a text file yet. Therefore let us load a file next. At first, we will do it by *hand* via loading a file whenever we are changing the path, and then later on (in the next chapter) we are writing our importer. It will allow us to drag and drop files into the Engine as well or use the *Import Menu.*
+(Another option would be to add a *Text Editor* UI that would let us edit the text data directly in the editor. However, writing a good text editor is a big task, so for this tutorial, let's use an import workflow instead.)
 
 ### Custom UI
 
