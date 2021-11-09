@@ -32,7 +32,7 @@ The Entity Graph is an event-driven Visual Scripting language.  This means every
 | Tick Event      | Is called every frame. | <img src="https://www.dropbox.com/s/1t7hwmu37wr4aua/tm_guide_entity_graph_tick.png?dl=1" width="277" height="120">  |
 | Terminate Event | Is called before the component is removed from the entity. | <img src="https://www.dropbox.com/s/nx3tehccedx7qic/tm_guide_entity_graph_terminate.png?dl=1" width="277" height="120">  |
 | Custom Event | Is called when ever the named event<br> is triggered with either a "Trigger Event"<br> node or from the outside with "Trigger Remote Event" | <img src="https://www.dropbox.com/s/ngv3k25u02k8iq6/tm_guide_entity_graph_create_custom_event.png?dl=1" width="277" height="120">  |
-| Trigger Event | Ttriggers a event. | <img src="https://www.dropbox.com/s/tqyg6scxjcsk3vi/tm_guide_entity_graph_trigger.png?dl=1" width="277" height="120">  |
+| Trigger Event | Triggers an event. | <img src="https://www.dropbox.com/s/tqyg6scxjcsk3vi/tm_guide_entity_graph_trigger.png?dl=1" width="277" height="120">  |
 | Trigger Remote Event | Triggeres a event on a remote Entity | <img src="https://www.dropbox.com/s/jrnapuuq93d0kx8/tm_guide_entity_graph_trigger_remote.png?dl=1" width="277" height="120">  |
 | UI Tick | Is ticked every frame regardless if the game is paused or not! | <img src="https://www.dropbox.com/s/6ejvwvc5yndpo87/tm_guide_entity_graph_ui_tick.png?dl=1" width="277" height="120">  |
 
@@ -115,7 +115,7 @@ Besides, you have two nodes for loops:
 - The Grid node
 - The For node
 
-*The gird node for example:*
+*The Grid node for example:*
 
 ![](https://www.dropbox.com/s/9fawc756lyf0k3h/tm_guide_entity_graph_loop.png?dl=1)
 
