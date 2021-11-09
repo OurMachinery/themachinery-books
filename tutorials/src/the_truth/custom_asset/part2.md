@@ -1,13 +1,11 @@
-# Create a custom asset part 2
-
-This walkthrough shows you how to add a custom asset to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{the_machinery_book}}extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to write a text file asset.
+# Create a Custom Asset Type: Part 2
 
 This part will cover the following topics:
 
-- How to store data in a buffer that is associated with the asset file
-- How to add a custom UI to be associated with the asset.
+- How to store data in a buffer that is associated with the asset file.
+- How to give the asset a custom UI in the Property View.
 
-When you have finished this part in the [next one]({{base_url}}the_truth/custom_asset/part3.html), we will show you how to write your importer.
+The [next part]({{base_url}}the_truth/custom_asset/part3.html) shows how to write an importer for the asset.
 
 >  You can find the whole source code in its git repo: [example-text-file-asset](https://github.com/simon-ourmachinery/example-text-file-asset)
 
@@ -15,36 +13,24 @@ When you have finished this part in the [next one]({{base_url}}the_truth/custom_
 
 * auto-gen TOC;
 {:toc}
+## Adding More Properties to the The Truth Type
 
-
-## Extending the asset The Truth Type
-
-The asset type we created is nice but it cannot do much. The Machinery can save anything to file that it can store in the Truth. This thought brings us back to the part: **“What kind of asset do we want to create?”.** 
-
-Let us go back to the basic definition of the type `my_asset`. We defined the type without any properties.
-
-The current implementation looks as follows:
+The Truth type we created in Part 1 cannot do much, because it doesn't have any properties:
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:15:20}}
 ```
 
-To make this more useful, what we can do is add some properties to the type. We can do this via an array of the type [tm_the_truth_property_definition_t]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t). In this array we can define all the properties we want. 
+To actually store some data in the objects, we want to add some properties to the Truth type. Note that we pass in an array of properties when we create the type with `tm_the_truth_api->create_object_type()`.
 
+For our text file objects that are two pieces of data that we want to store:
 
-## Text file asset
+1. The text data itself.
+2. The path on disk (if any) that the text file was imported from.
 
-Now we are changing the `my_asset` to be able to store text in it. 
+Storing the *import path* is not strictly necessary, but we'll use it to implement a "reimport" feature. This lets our data type work nicely with text files that are edited in external programs.
 
-First, we need to answer the question: *How is a text file defined?* 
-
-Well, a text file has three properties: 
-
-1. It has a file name
-2. A file path
-3. data - A bunch of characters.
-
-Consequently, we are defining the *import path* property to “reimport” our text asset and the data property to store the imported text.
+Here's how we can define these properties:
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:45:48}}
@@ -52,16 +38,16 @@ Consequently, we are defining the *import path* property to “reimport” our t
 
 >  **Note:** The type [*tm_the_truth_property_definition_t*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t) has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation [*here*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t)*.*
 
-After we have thought about this, we need to provide the `create_object_type` function with the new information:
+In this case we decided to store the text as a *buffer* instead of a *string*. Buffers can be streamed in and out of memory easily, so if we expect the text files to be large, using a buffer makes more sense than using a string.
+
+We can now create the Truth type with these properties:
 
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:43:55}}
 ```
 
-Now we should change the asset name to something more meaningful than `my_asset`. Lets call it `txt`
-
-The renaming has as a consequence that we need to change three places:
+Let's also change the asset name to something more meaningful than `my_asset`. We'll call it `txt`. We need to update this new name in four places:
 
 - Asset Name
 - Menu Name
@@ -82,43 +68,36 @@ Let's have a look at how it looks in the editor:
 
 ![creating a new asset](https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926443262_image.png)
 
-## Load a text file
-
-After creating a new asset, the asset looks as following in the editor:
+If we create a new *Text* file and select it, this is what we will see in the Properties View:
 
 ![](https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926772154_image.png)
 
+The `Data` property is `nil` because we haven't loaded any data into the file yet. Let's add a UI that let's us import text files from disk.
 
-This asset file is still not quite how we want it because we have not loaded a text file yet. Therefore let us load a file next. At first, we will do it by *hand* via loading a file whenever we are changing the path, and then later on (in the next chapter) we are writing our importer. It will allow us to drag and drop files into the Engine as well or use the *Import Menu.*
+(Another option would be to add a *Text Editor* UI that would let us edit the text data directly in the editor. However, writing a good text editor is a big task, so for this tutorial, let's use an import workflow instead.)
 
 ### Custom UI
 
-To archive our first manual loading, we need to add a custom UI associated with our type. We can do this via the properties aspect `TM_TT_ASPECT__PROPERTIES`. It means we need to go back to the `create_truth_types` function and add a new Aspect and a new object associated with this Aspect.
+To show an **Import** button in the Properties View, we need to customize the Properties View UI of our type. We can do this by adding a `TM_TT_ASPECT__PROPERTIES` to the Truth type.
 
-The Aspect expects a [tm_properties_aspect_i]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i) object. When defining the object, we are focused only on is the custom_ui field. 
+The `TM_TT_ASPECT__PROPERTIES` is implemented with a `tm_properties_aspect_i` struct. This struct has a lot of field that can be used to customize various parts of the Properties View (for more information on them, check out the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i)). For our purposes, we are interested in the `custom_ui()` field that lets us use a custom callback for drawing the type in the Properties View.
 
-> Note: This struct has many different fields which are not interesting to us now. (If you want more information on them, check out the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i).
-
-The `custom_ui` expected s function pointer of the type `float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)`.
+`custom_ui()` wants a function pointer of the type `float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)`.
 
 Let us quickly go over this:
 
-*Function Arguments:*
+| **Argument** | **Data Type**             | **Description**                                              |
+| ------------ | ------------------------- | ------------------------------------------------------------ |
+| `args`       | `tm_properties_ui_args_t` | A struct with information from the Properties View that can be used in drawing the UI. For example, this has the `ui` instance as well as the `uistyle` which you will need in any `tm_ui_api` calls. For more information check the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t). |
+| `item_rect`  | `tm_rect_t`               | The rect in the Properties View UI where the item should be drawn. Note that the height in this struct (`item_rect.h`) is the height of a standard property field. You can use more or less height to draw your type as long as you return the right `y` value (see below). |
+| `object`     | `tm_tt_id_t`              | The ID of the Truth object that the Properties View wants to draw. |
+| `indent`     | `uint32_t`                | The current indentation level. Usually just passed along to functions in the `tm_properties_view_api` |
 
-| **Argument**    | **Data Type**                                                | **Description**                                              |
-| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1 (`args`)      | [tm_properties_ui_args_t]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t) | A bundled type of important information. For example this is the way you would retrieve your ui instance as well as your uistyle instance. For more information check the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t). |
-| 2 (`item_rect`) | [tm_rect_t]({{docs}}foundation/api_types.h.html#structtm_rect_t) | The ui rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned. |
-| 3 (`object`)    | [tm_tt_id_t]({{docs}}foundation/api_types.h.html#structtm_tt_id_t) | The truth object id of the current object. Can be used to read information of. |
-| 4 (`indent`)    | `uint32_t`                                                   | Used for intention.                                          |
+| **Return value** | **Description**                                              |
+| ---------------- | ------------------------------------------------------------ |
+| float            | Returns the `y` coordinate where the next item in the Propertiew View should be drawn. This should be `item_rect.y` + however much vertical space your controls are using. |
 
-*Return values*
-
-| **Type** | **Description**                                              |
-| -------- | ------------------------------------------------------------ |
-| float    | This is the being used as the next y value of the following element. |
-
-We need to define a static instance of the [tm_properties_aspect_i*]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i) and a custom UI function.
+To implement the `custom_ui()` function we can make use of the functions for drawing property UIs found in `tm_properties_view_api`, or we can draw UI directly using `tm_ui_api`. Once we've implemented `custom_ui()` we need a instance of `tm_properties_aspect_i` to register. This instance must have global lifetime so it doesn't get destroyed:
 
 
 ```c
@@ -132,7 +111,7 @@ We need to define a static instance of the [tm_properties_aspect_i*]({{docs}}plu
 // .. other code
 ```
 
-Now the properties aspect needs to know about the existence of our custom UI. It follows the same principle as the properties:
+Now we can register this aspect with `tm_truth_api`:
 
 ```c
 //.. other code
@@ -144,16 +123,19 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 //... the other code
 ```
 
-In the editor, the change is imminently visible. The UI is gone because we have chosen to provide our custom UI.
+In the editor, the change is imminently visible. The UI is gone, because it is now using our `custom_ui()` function, but our `custom_ui()` function isn't drawing anything.
 
 ![](https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609928409366_image.png)
 
+Let's add the `Imported Path` property back to the UI. We can look at the [properties view API]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api) for a suitable function to draw this property (if we can't find anything we may have to write a custom drawer ourselves).
 
-It is time to add the imported file property back to the UI panel. The first step is to think about what our property shall represent:
-When we defined it, we described it as type `TM_THE_TRUTH_PROPERTY_TYPE_STRING`. 
-It is essential to know because the [properties header file]({{docs}}plugins/editor_views/properties.h.html#properties.h) has the [properties view API]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api), which has many built-in functions for default behavior.
+We could use `tm_properties_view_api->ui_property_default()`. This would use the default editor based on the property type. For a `STRING` property, this is just a text edit field, the same thing that we saw before implementing our `custom_ui()` function. (If we don't have a custom UI, the default UI for each property will be used.)
 
-One of the things we can find in there is the [ui_open_path]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()) which sounds perfect for the import path. The buffer (data) does not need to be displayed yet. Before using any Properties-View API functions, we need to request the API in our load plugin function.
+We chould also use `tm_properties_view_api->ui_string()`. This is just another way of drawing the default `STRING` UI.
+
+But for our purposes, `tm_properties_view_api->ui_open_path()` is better. This is a property UI specifically for file system path. It will draw a button, and if you click the button a system file dialog is shown that let's you pick a path.
+
+Note that in order to use `tm_properties_view_api` we need to load it in our `tm_load_plugin()` function:
 
 
 ```c
@@ -169,67 +151,47 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 } 
 ```
 
-Now we can use and implement the path opening function. Let us look at its [signature]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()) first:
+Now we can call `ui_open_path()` . Let's start by looking at its [signature]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()):
 
 `float (*ui_open_path)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, const char *name, const char *tooltip, tm_tt_id_t object, uint32_t property, const char *extensions, const char *description, bool *picked)`
 
- *Function Arguments:*
+| **Argument**  | **Data Type**                                                | **Description**                                              |
+| ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `args`        | [tm_properties_ui_args_t]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t) | For this argument, we should pass along the `args` pointer we got in our `custom_ui()` function. |
+| `item_rect`   | [tm_rect_t]({{docs}}foundation/api_types.h.html#structtm_rect_t) | The rect where we want the UI of the control to be drawn (including the label). |
+| `name`        | `const char*`                                                | The label that the Properties View UI will display in front of the button. |
+| `tooltip`     | `const char*`                                                | Tooltip that will be shown if the mouse is hovered over the label. |
+| `object`      | [tm_tt_id_t]({{docs}}foundation/api_types.h.html#structtm_tt_id_t) | The Truth object that holds the path `STRING` that should be edited. |
+| `property`    | `uint32_t`                                                   | The index of the `STRING` property that should be edited.    |
+| `extension`   | `const char*`                                                | List of file extensions that the open file dialog should show (separated by space). |
+| `description` | `const char*`                                                | Description of the file to open shown in the open file dialog. |
+| `picked`      | `bool*`                                                      | Optional out pointer that is set to `true` if a new file was picked in the file dialog. |
 
-| **Argument**      | **Data Type**                                                | **Description**                                              |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1 (`args`)        | [tm_properties_ui_args_t]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t) | A bundled type of important information. For example this is the way you would retrieve your UI instance as well as your `uistyle` instance. For more information check the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t). |
-| 2 (`item_rect`)   | [tm_rect_t]({{docs}}foundation/api_types.h.html#structtm_rect_t) | The UI rectangular of the current item. This can be manipulated in x,y as well as w and h as long as the correct y value is being returned. |
-| 3 (`n`ame)        | `const char*`                                                | This is the name the Properties tab will display as the title in front of the text field. |
-| 4 (`t`ooltip)     | `const char*`                                                | Extra information if needed. (Optional)                      |
-| 5 (object)        | [tm_tt_id_t]({{docs}}foundation/api_types.h.html#structtm_tt_id_t) | The truth object id of the current object. Can be used to read information of. |
-| 6 (property)      | `uint32_t`                                                   | Property index                                               |
-| 7 (`extensions`)  | `const char*`                                                | List of potential file extension supported by the open dialog |
-| 8 (`description`) | `const char*`                                                | List of descriptions for the potential file extensions       |
-| 9 (picked)        | `bool*`                                                      | Out pointer indicating if a file has been picked or not. (optional) |
 
-*Return values*
 
-| **Type** | **Description**                                              |
-| -------- | ------------------------------------------------------------ |
-| float    | This is the being used as the next y value of the following element. |
+| **Return value** | **Description**                                             |
+| ---------------- | ----------------------------------------------------------- |
+| float            | The `y` coordinate where the next property should be drawn. |
 
-To implement the function all that's needed to remember is what index the property had.
+We can now implement the function:
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:45:48}}
 ```
 
-The index is 0 there for we are no ready to implement the function:
-
-
-```c
-//custom ui
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:21}}
-{
-    // -- code
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:24:27}}
-        // import...
-    }
-    return item_rect.y;
-}
-```
-
-Remembering all of those indices is quite cucumbersome! Therefore, it is better to define an enum in our header file. Define an `enum` for each property `TM_TT_PROP__[NAME_OF_TYPE]__[NAME_OF_PROPERTY]`
+Note that we are using the property index `TM_TT_PROP__MY_ASSET__FILE` that we defined in the header file hearlier:
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.h}}
 ```
 
-(`txt.h`)
-
-When we compiled this we can test it in the engine, just by adding a new text file click on the Import Path:
+We can now test this in the engine. We see an **Import Path** label with a button and when we click it, we get asked to import a file.
 
 ![](https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609931496164_image.png)
 
+Next, we want to make sure that when the user picks a file using this method, we load the file and store it in our `DATA` buffer.
 
-The next step is using the OS API to load a file from the disc and store it in the buffer. This process works after the same principle as adding the properties view API. 
-
-The OS API ([tm_os_api]({{docs}}foundation/os.h.html#structtm_os_api)) lives in the `os.h` and has a member called [file_io]({{docs}}foundation/os.h.html#structtm_os_file_io_api), allowing access to the `tm_os_file_io_api`. With this API, we can read a file. The following example code shows how reading the file and storing it in a buffer could look like in this case. 
+To load files we can use the `tm_os_api` which gives us access to OS functionality. `tm_os_api` has a lot of sub-APIs for different purposes (files, memory, threading, etc). In our case, what we need is `tm_os_api->file_io` which provides access to File I/O functionality:
 
 
 ```c
@@ -240,29 +202,37 @@ The OS API ([tm_os_api]({{docs}}foundation/os.h.html#structtm_os_api)) lives in 
 {{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:21:41}}
 ```
 
-First, we need to read out the file path from our The Truth object. After that, we can create the buffer we want to add to our *data* property (index 1 or `TM_TT_PROP___MY_ASSET__DATA`). 
-The buffers live in the `buffer.h`. We create the buffer via The Truth, and it also owns the memory. We are using the [file_system API]({{docs}}foundation/os.h.html#structtm_os_file_system_api) to get the size of the text file. We need to know how big the file is to understand how big the buffer should be. 
+When a new file is picked in the UI (checked with the `picked` variable) we get the file path from The Truth, read the file data and store it in The Truth.
 
-> Note: We should also check if the file exists. It has been left out because we just picked the file. 
+To manage buffers, we make use of the interface in `buffers.h`. Creating a buffer is a three step process:
 
-Then we are reading the file from the disc and store its content in the allocated buffer. The next step is to add the buffer to the Truth buffers via the [buffers->add(buffers->inst, buffer, stat.size, 0);]({{docs}}foundation/buffer.h.html#structtm_buffers_i.add()) call. It adds a buffer containing the specified data of size. It returns an ID identifying the new buffer. For more information, read [here]({{docs}}foundation/buffer.h.html#structtm_buffers_i.add()).
+* Allocating the memory for the buffer (based on the file size).
+* Filling the buffer with content (in this case, from the text file).
+* Adding the buffer to the `tm_buffers_i` object.
 
-Now we need to ask the Truth to give us a writeable object. Objects from the Truth are immutable in their default state and can only be made mutable by asking explicitly for a writable object.
-This happens via the [tm_the_truth_object_o *asset_obj = tm_the_truth_api->write(tt, object);]({{docs}}foundation/the_truth.h.html#structtm_the_truth_api.write()) call.
+Once we have created the buffer, we need to set the `BUFFER` `data` item in the Truth object to this buffer. Changing a value in The Truth is another three step process:
 
-With the writeable object, we can set the buffer, and then we can commit the changes to the Truth itself.
+* Ask the Truth for a *write pointer* to the object using `write()`.
+* Set the buffer for the *write pointer* using `set_buffer()`.
+* Commit the changes to the Truth using `commit()`.
 
-This iteration is the first, but the issue with it is that we cannot import or drag and drop a .txt file into the Engine. We will tackle this issue in the [next part](#).
+We need this somewhat complicated procedure because objects in The Truth are immutable by default. This ensures that The Truth can be used from multiple threads simulatenously. When you change a Truth object using the `write()`/`commit()` protocol, the changes are applied atomically. I.e., other threads will either see the old Truth object or the new one, never a half-old, half-new object.
 
+If you want the change to go into the undo stack so that you can revert it with **Edit → Undo**, you need some additional steps:
 
+* Create an *undo scope* for the action using `create_undo_scope()`.
+* Pass that undo scope into `commit()`.
+* Register the undo scope with the application's undo stack (found in `args->undo_stack`).
 
-## What is next?
+To simplify this example, we've skipped that step and instead we use `TM_TT_NO_UNDO_SCOPE` for the `commit()` action which means the action will not be undoable.
 
-The next part will refactor the current code and show you how to make your code and asset more useful by showing you how to program an importer.
+## What Is Next?
+
+In the next part we'll show how to add an *Importer* for our asset type. This will let us drag and drop text files from the explorer into the asset browser.
 
 [Part 3](#)
 
-## Full example of basic asset
+## Full Example of Basic Asset
 
 `my_asset.h`
 

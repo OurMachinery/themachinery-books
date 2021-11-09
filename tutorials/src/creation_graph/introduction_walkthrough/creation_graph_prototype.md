@@ -2,11 +2,11 @@
 
 This walkthrough shows you some basics of the [Creation Graph]({{the_machinery_book}}/creation_graphs/concept.html). In this part we discuss creation graph prototypes. To read more in general about the prototype system please checkout the following [Guide: Prototypes]({{the_machinery_book}}editing_workflows/prototypes.html)
 
-> **Note:** walkthrough series makes use of the following free assets: [KhronosGroup](https://github.com/KhronosGroup)/**[glTF-Sample-Models](https://github.com/KhronosGroup/glTF-Sample-Models)**.
+> **Note:** The walkthrough series makes use of the following free assets: [KhronosGroup](https://github.com/KhronosGroup)/**[glTF-Sample-Models](https://github.com/KhronosGroup/glTF-Sample-Models)**.
 
 This tutorial will teach you:
 
-- Create a Creation Graph prototype
+- How to create Creation Graph prototypes
 - How to apply them to multiple assets
 - How to add extra input
 
@@ -16,7 +16,7 @@ This tutorial will teach you:
 
 ## Setup
 
-We could do this by opening all textures and follow the steps described in the [Simple Texture Compression Walkthrough]({{tutorials}}/creation_graph/introduction_walkthrough/texture_compression.html) but this would be a time consuming and error prone job. It would be easier to just create one prototype for all.
+We could do this by opening all textures and following the steps described in the [Simple Texture Compression Walkthrough]({{tutorials}}/creation_graph/introduction_walkthrough/texture_compression.html) but this would be a time consuming and error prone job. It would be easier to just create one prototype for all.
 
 ## Adding texture compression to all textures in the project
 

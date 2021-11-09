@@ -2,9 +2,9 @@
 
 Hi,
 
-This book is here to give you guidance on how to work with the engine. We are constantly working on improving the onboarding as much as possible. If you have not read about the basic concepts of the engine you might want to start at there before you move on to this book [The Machinery Book]({{the_machinery_book}}index.html).
+The purpose of this book is to give you guidance on how to work with the engine. We are constantly working on improving the onboarding as much as possible. If you have not read about the basic concepts of the engine you might want to start with  [The Machinery Book]({{the_machinery_book}}index.html) before moving on to this book.
 
-Besides this book we have several other resources which might be good to checkout:
+Besides this book we have several other resources which might be good to check out:
 
 - [Our API Documentation]({{docs}}apidoc.html)
 - [Our Blog](https://ourmachinery.com/post/)
@@ -12,7 +12,7 @@ Besides this book we have several other resources which might be good to checkou
 - [Our Discord](https://discord.gg/SHHSZaH)
 - [Our Github Discussion Board](https://github.com/OurMachinery/themachinery-public/discussions)
 
-Also feel free to checkout our internal
+Also feel free to check out our internal
 
 - [Programming Guidebook](https://ourmachinery.com/apidoc/doc/guidebook.md.html)
 
