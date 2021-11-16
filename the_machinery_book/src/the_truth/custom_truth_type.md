@@ -11,7 +11,7 @@ We will cover the following topics:
 - How to define a Type.
 - Type Properties
 
-After this walkthrough you could checkout the ["Create a custom asset"]({{tutorials}}/the_truth/custom_asset/index.html) tutorial! 
+After this walkthrough you could check out the ["Create a custom asset"]({{tutorials}}/the_truth/custom_asset/index.html) tutorial! 
 
 
 
@@ -172,7 +172,7 @@ Let us add some properties to our Type! As you remember, when we created the Typ
 
 
 
-Within our `create_truth_types` we create a array of type `tm_the_truth_property_definition_t`. For this example, we define the properties of type bool and string.
+Within our `create_truth_types` we create an array of type `tm_the_truth_property_definition_t`. For this example, we define the properties of type bool and string.
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c}}

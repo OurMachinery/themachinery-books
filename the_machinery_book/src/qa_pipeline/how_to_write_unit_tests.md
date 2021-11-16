@@ -11,7 +11,7 @@ This walkthrough expects basic knowledge on how to create a plugin and how a plu
 
 ## **About unit-tests**
 
-You can find the executable alongside `tmbuild` or the machinery executable in the `bin/ folder.` If you wanted to make the unit-tests executable globally accessible, you need to add it to your path environment variable. As you may have noticed, ensuring the quality of your build, `tmbuild` will run all unit tests of all plugins at the end of its build process. When you add a unit test to your plugin, it is guaranteed that its unit tests run every time you build. This is, of course, only guaranteed if the plugin system can find the plugin and its test.
+You can find the executable alongside `tmbuild` or the machinery executable in the `bin/ folder.` If you want to make the unit-tests executable globally accessible, you need to add it to your path environment variable. As you may have noticed, ensuring the quality of your build, `tmbuild` will run all unit tests of all plugins at the end of its build process. When you add a unit test to your plugin, it is guaranteed that its unit tests run every time you build. This is, of course, only guaranteed if the plugin system can find the plugin and its test.
 
 > **Note:** unit-tests will assume that the plugins live in a folder relative to the executable in the standardized folder plugins. If you need to load a plugin that is not in this folder, you need to provide a valid path via `-p/--plugin` so that unit-tests can find and run your tests.
 
@@ -20,7 +20,7 @@ You can find the executable alongside `tmbuild` or the machinery executable in t
 
 To run all unit tests, execute unit-test, and it will run all tests besides the slow execution path tests. To run all unit tests, including the *"slow"* ones, you run `unit-tests.exe -s/--slow-paths`
 
-> **Note:** You may have noticed that if you run `tmbuild` regularly, you are lucky and win in the "lottery" from time to time. This means `tmbuild` will run all unit tests also the slow ones via `unit-tests`.
+> **Note:** You may have noticed that if you run `tmbuild` regularly, you are lucky and win in the "lottery" from time to time. This means `tmbuild` will run all unit tests including the slow ones via `unit-tests`.
 
 
 ## **How to constantly monitor your changes**
@@ -54,8 +54,8 @@ typedef struct tm_unit_test_i
 At this point, we have not tackled the following possible questions:
 
 - Where and how do we register the interface?
-- How could this interface look like?
-- How does a test itself look like?
+- What could this interface look like?
+- What does the test itself look like?
 
 **Let us walk through those questions:**
 
@@ -77,8 +77,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 
 Here we register our test interface to the `TM_UNIT_TEST_INTERFACE_NAME`.
 
-*How could this interface look like?*
-After we have done this, all we need to do is declarer our `my_unit_tests`. It is as easy as it gets:
+*What could this interface look like?*
+After we have done this, all we need to do is declare our `my_unit_tests`. It is as easy as it gets:
 
 ```c
 #include <foundation/unit_test.h>
@@ -89,7 +89,7 @@ tm_unit_test_i *entity_unit_test = &(tm_unit_test_i){
 };
 ```
 
-*How does a test itself look like?*
+*What does the test itself look like?*
 All that's left is to write the test. Let us write this test. In its core all we need to do is write a function of the signature: `(tm_unit_test_runner_i *tr, struct tm_allocator_i *a)`. In its body, we can define our tests.
 
 

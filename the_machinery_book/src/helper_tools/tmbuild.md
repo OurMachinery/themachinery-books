@@ -63,7 +63,7 @@ If the following variable is not set, the tool will assume that you intend to us
 **Windows**
 
 On Windows all you need to do is you need to add the folder where you installed The Machinery to your environment variables. You can do this like this:
-**Start > Edit the system environment variables > environment variables > system varaibles > click New... >** add `TM_SDK_DIR` or `TM_LIB_DIR` as the Variable Name and the needed path as the Variable Value.
+**Start > Edit the system environment variables > environment variables > system variables > click New... >** add `TM_SDK_DIR` or `TM_LIB_DIR` as the Variable Name and the needed path as the Variable Value.
 Close and restart the terminal or Visual Studio / Visual Studio Code.
 As an alternative, you can set an environment variable via PowerShell before you execute tmbuild, which will stay alive till the end of the session:
 `$Env:TM_SDK_DIR="..PATH"`
@@ -131,7 +131,7 @@ To package a project via tmbuild, all you need to do is use the `-p [package nam
 
 ## How to build or manipulate tmbuild from source
 
-You can find the source code of tmbuild in folder `code\utils\tmbuild`. In the folder `code\utils`, you can also find the source code of all the other uses the engine uses.
+You can find the source code of tmbuild in the folder `code\utils\tmbuild`. In the folder `code\utils`, you can also find the source code of all the other uses the engine uses.
 
 You can build tmbuild via tmbuild. All you need to do is navigate the `code\utils` folder and run `tmbuild --project tmbuild`. 
 
@@ -156,7 +156,7 @@ if you cannot find it just add it to your environment path variables: with e.g.
 Open a PowerShell instance in The Machinery folder and run the following commands:
 
 ```powershell
-# this part can be skiped if you have already downloaded
+# this part can be skipped if you have already downloaded
 # all the dependencies and created a highlevel folder to your lib dependencies:
 mkdir lib
 cd lib

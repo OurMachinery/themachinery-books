@@ -1,5 +1,5 @@
 # tmbuild package json Reference
-The `tmbuild` can package a project based rules set in a `.json` file. This file needs to adhere the here described scheme.
+The `tmbuild` can package a project based on rules set in a `.json` file. This file needs to adhere to the scheme described here.
 Every package `json` file is structured in its core like this:
 
 
@@ -8,7 +8,7 @@ Every package `json` file is structured in its core like this:
         "steps": []
     }
 
-The name will be used to determine the name of the package folder in `tm root/build` directory. The steps are the key in the system they will be executed linearly after each other and the next step only will be executed if the previous step was successful.
+The name will be used to determine the name of the package folder in `tm root/build` directory. The steps are the key in the system. They will be executed linearly after each other and the next step will only be executed if the previous step was successful.
 Steps are defined as a normal `json` object. The following list displays all the functions which can be used plus adequate examples.
 
 **Table of Content**
@@ -72,7 +72,7 @@ Example
     }
 ## Actions
 
-A action defines what the current step shall do.
+An action defines what the current step shall do.
 
 | Setting Parameter | Type   | Description                                                  |
 | ----------------- | ------ | ------------------------------------------------------------ |
@@ -81,7 +81,7 @@ A action defines what the current step shall do.
 ## Filesystem operations
 
 ### `build`
-Will build the current directory unless changed via `chdir` in release and debug setting.  Optional it has a project field if you only want to build one project. One can also modify the build tool and specify that in a extra field.
+Will build the current directory unless changed via `chdir` in release and debug settings.  Optionally it has a project field if you only want to build one project. One can also modify the build tool and specify that in an extra field.
 
 | Setting Parameter | Type   | Description                                                  |
 | ----------------- | ------ | ------------------------------------------------------------ |
@@ -139,7 +139,7 @@ Will copy files based on file patterns to a set location.
 | root              | string       | The root directory                                          |
 
 ### `delete-file-patterns`
-Will delete files based on a patter.
+Will delete files based on a pattern.
 
 | Setting Parameter | Type         | Description                                                  |
 | ----------------- | ------------ | ------------------------------------------------------------ |
@@ -168,7 +168,7 @@ Will generate documentation based on the provided arguments in the arguments fie
 | args              | string | Arguments for `docgen.exe` to generate documentation |
 
 ### `localize`
-Will check if all localization are present if not fail.
+Will check if all localizations are present if not fail.
 
 ### `set-sdk-dir`
 Will set the SDK if not set dir to the current build directory `[cwd]/build/[package-name]`. Has no other fields.
@@ -182,7 +182,7 @@ Will zip the package folder and if the field `add-time-stamp` is set to true it 
 
 ### `test`
 
-Will execute tests defined in the `tests` filed.
+Will execute tests defined in the `tests` field.
 
 | Setting Parameter | Type         | Description    |
 | ----------------- | ------------ | -------------- |
@@ -191,4 +191,6 @@ Will execute tests defined in the `tests` filed.
 ### `clean`
 
 Will call the `--clean` command on `tmbuild`.
+
+
 

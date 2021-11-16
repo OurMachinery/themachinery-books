@@ -2,7 +2,7 @@
 
 > **Note:** This tool is in a preview state.
 
-With the Sculpt Tool The Machinery supportes rapid prototyping when it comes to level white boxing. You make use of the tool by adding a Sclupt Component to an Entity. Using the sculpt component you can quickly sketch out levels or make beautiful blocky art:
+With the Sculpt Tool The Machinery supports rapid prototyping when it comes to level white boxing. You make use of the tool by adding a Sculpt Component to an Entity. Using the sculpt component you can quickly sketch out levels or make beautiful blocky art:
 
 ![A blocky character in a blocky forest setting.](https://ourmachinery.com/images/beta_20_11__blocky.png)
 

@@ -9,7 +9,7 @@ This walkthrough shows you how to write integration tests with our integration t
 ## **About integration tests**
 
 Integration testing is the phase in testing software in which individual software modules are combined and tested as a group. Integration testing is conducted to evaluate a system's compliance or its interaction as a whole within specified functional requirements. 
-Its generally used after unit testing to ensure that the composition of the software works. It is a potent tool to validate certain bugs that are hard to reproduce only after using software extensively. You can simulate this with integration tests. Besides, it is a very powerful tool validating that a bug fix was successful.
+It is generally used after unit testing to ensure that the composition of the software works. It is a potent tool to validate certain bugs that are hard to reproduce only after using software extensively. You can simulate this with integration tests. Besides, it is a very powerful tool validating that a bug fix was successful.
 
 By their very nature, integration tests are slower and more fragile than unit tests, but they can also find issues that are hard to detect with regular unit tests. Each integration test runs in a specific "context", identified by a string hash. The context specifies the "scaffolding" is set up before the unit test runs.
 
@@ -43,8 +43,8 @@ typedef struct tm_integration_test_i
 At this point, we have not tackled the following possible questions:
 
 - Where and how do we register the interface?
-- How could this interface look like?
-- How does a test itself look like?
+- What could this interface look like?
+- What does the test itself look like?
 
 **Let us walk those questions through:**
 
@@ -65,7 +65,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 
 Here we register our test interface to the `TM_INTEGRATION_TEST_INTERFACE_NAME`.
 
-*How could this interface look like?*
+*What could this interface look like?*
 
 After we have done this, we need to declare our `my_integration_tests.` 
 
@@ -81,7 +81,7 @@ tm_integration_test_i my_integration_tests = {
 
 The name field is important because, later on, we need to use this name when we want to run the test. The context makes sure that it runs and boots up the Editor. `TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR` is defined in `#include <foundation/integration_test.h>`. The function `my_test_tick` gets called and the magic can happen.
 
-*How does a test itself look like?*
+*What does the test itself look like?*
 
  Let us write this test. We need to write a function of the signature: `(tm_integration_test_runner_i *)`.  In its body, we can define our tests.
 

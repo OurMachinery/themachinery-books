@@ -84,7 +84,7 @@ You do not like C? Do not worry! You can use C++, Zig, Rust, or any other langua
 
 ### Where are my Materials, Shaders, Textures, Particle Effects?
 
-All of these can be represented via the the [Creation Graphs]({{base_url}}creation_graphs/concept.html).
+All of these can be represented via the [Creation Graphs]({{base_url}}creation_graphs/concept.html).
 
 ### Project data?
 
@@ -110,7 +110,7 @@ During the import step, The Machinery only runs a bare minimum of data processin
 
 > **Note** that import of large assets can take a significant amount of time. You can monitor the progress of the import operation in the status bar.
 
-For more information see  [How to import assets]({{base_url}}editing_workflows/import_assets.html) or checkout our [Example Workflow for Importing an Asset and create a Entity]({{the_machinery_book}}/editing_workflows/asset_pipeline.html)
+For more information see  [How to import assets]({{base_url}}editing_workflows/import_assets.html) or checkout our [Example Workflow for Importing an Asset and create an Entity]({{the_machinery_book}}/editing_workflows/asset_pipeline.html)
 
 ### What are common file formats supported?
 
@@ -137,4 +137,6 @@ Please check out the introduction to the [Plugin System]({{base_url}}extending_t
 ### Using Visual Scripting
 
 Visual Scripting is a perfect solution for in-game logic flow (simple) and sequencing of actions. It is a great system for artists, designers, and visually oriented programmers. It is important to keep in mind that the Visual Scripting language comes with an overhead that you would not pay in C (or any other Language you may use for your gameplay code).
+
+
 

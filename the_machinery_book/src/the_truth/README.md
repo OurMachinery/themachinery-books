@@ -8,7 +8,7 @@ The Machinery stores its data as **objects with properties**. Each object has a 
 
 The object/properties model gives us us *forward and backward compatibility* and allows us to implement operations such as *cloning* without knowing any details about the data. We can also represent modifications to the data in a uniform way `(object, property, old-value, new-value)` for undo/redo and collaboration.
 
-The model is **memory-based** rather than disk-based. I.e. the in-memory representation of the data is considered *authoritative.* Read/write access to the data is provided by a thread-safe API. If two systems want to co-operate, they do so by talking to the same in-memory model, not by sharing files on disk. Of course, we still need to save data out disk at some point for persistence, but this is just a “backup” of the memory model and we might use different disk formats for different purposes (i.e. a git-friendly representation for collaborative work vs single binary for solo projects).
+The model is **memory-based** rather than disk-based. I.e. the in-memory representation of the data is considered *authoritative.* Read/write access to the data is provided by a thread-safe API. If two systems want to cooperate, they do so by talking to the same in-memory model, not by sharing files on disk. Of course, we still need to save data out disk at some point for persistence, but this is just a “backup” of the memory model and we might use different disk formats for different purposes (i.e. a git-friendly representation for collaborative work vs single binary for solo projects).
 
 Since we have a memory-based model which supports cloning and change tracking, copy/paste and undo can be defined in terms of the data model. Real-time collaboration is also supported, by serializing modifications and transmitting them over the network. Since the runtime has equal access to the data model, modifying the data from within a VR session is also possible.
 
@@ -18,7 +18,7 @@ Making the distinction between buffer data and object data is important because 
 
 In The Truth, **references are represented by IDs**. Each object has a unique ID and we reference other objects by their IDs. Since references have their own property type in The Truth, it is easy for us to reason about references and find all the dependencies of an object.
 
-Sub-objects in The Truth are references to *owned* objects. They work just as references, but have special behaviours in some situations. For examples, when an object is cloned, all its sub-objects will be cloned too, while its references will not.
+Sub-objects in The Truth are references to *owned* objects. They work just as references, but have special behaviours in some situations. For example, when an object is cloned, all its sub-objects will be cloned too, while its references will not.
 
 For more information checkout the [documentation]({{docs}}foundation/the_truth.h.html) and these blog posts: [The Story behind The Truth: Designing a Data Model](https://ourmachinery.com/post/the-story-behind-the-truth-designing-a-data-model/)  or this [one](https://ourmachinery.com/post/multi-threading-the-truth/).
 

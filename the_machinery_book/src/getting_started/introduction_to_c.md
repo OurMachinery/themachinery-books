@@ -31,9 +31,9 @@ This page will link to useful resources about the C Programming language.
 
 These are things that differ from std C practices.
 
-## Memory Managment
+## Memory Management
 
-While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use `malloc, free or realloc`. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as `malloc`), we give a `tm_allocator_i` object down. This allows you to allocate memory like you would with `malloc`. Like in std C you need to free the memory allocated via a `tm_allocator_i` at the end of its use. Otherwise you may leak. Using our build in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. 
+While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use `malloc, free or realloc`. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as `malloc`), we give a `tm_allocator_i` object down. This allows you to allocate memory like you would with `malloc`. Like in std C you need to free the memory allocated via a `tm_allocator_i` at the end of its use. Otherwise you may leak. Using our built-in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. 
 
 > **Note:** more about leak detection and memory usage check the chapter about the [Memory Usage Tab]({{the_machinery_book}}/qa_pipeline/memory.html)
 
@@ -41,7 +41,7 @@ While programming plugins for the Machinery, you will encounter the need to allo
 
 ### Child Allocators
 
-In case you check our projects you will find that we are making extensivly use of child allocators. This allowes us to log the use of their memory in our [Memory Usage Tab]({{the_machinery_book}}/qa_pipeline/memory.html).
+In case you check our projects you will find that we are making extensive use of child allocators. This allows us to log the use of their memory in our [Memory Usage Tab]({{the_machinery_book}}/qa_pipeline/memory.html).
 
 In case you check our [`Write a custom Tab` example]({{the_machinery_book}}extending_the_machinery/write-a-tab.html) you will find in its create function this code:
 
@@ -76,7 +76,7 @@ static void tab__destroy(tm_tab_o* tab)
 }
 ```
 
-The tm_tab_create_context_t context gives you access to an allocator the system allocator. This one again allows you to create a child allocator. You can now use the new allocator in our tab. This is why we store it within our `tm_tab_o` object.
+The tm_tab_create_context_t context gives you access to the system allocator. This one again allows you to create a child allocator. We can now use the new allocator in our tab. This is why we store it within our `tm_tab_o` object.
 In the end, we need to destroy our tab and, therefore free the tab object and destroy the child allocator. `tm_allocator_api->destroy_child(&a);`
 If we now shut down the engine and we forgot to free any of the allocations done between create and destroy, we will get a nice log:
 
@@ -107,7 +107,7 @@ tm_tt_id_t* all_objects = tm_the_truth_api->all_objects_of_type(tt, type, ta);
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 ```
 
-The truth API will now use the temp allocator to create the list. We do not need to call tm_free anything this is all done at the end by `TM_SHUTDOWN_TEMP_ALLOCATOR`!
+The truth API will now use the temp allocator to create the list. We do not need to call tm_free anywhere, this is all done at the end by `TM_SHUTDOWN_TEMP_ALLOCATOR`!
 
 Sometimes APIs require a normal `tm_allocator_i`, but you are not interested in creating an actual allocator or have access to a memory allocator! No worries, we have your back! The Temp Allocator gives you the following macro: `TM_INIT_TEMP_ALLOCATOR_WITH_ADAPTER(ta, a); It generates a normal `tm_allocator_i` uses the temp allocator as its backing allocator. Hence all allocations done with the allocator will be actually done via the `ta` allocator! Again at the end, all your memory is freed by `TM_SHUTDOWN_TEMP_ALLOCATOR(ta);`
 
@@ -115,11 +115,11 @@ Sometimes APIs require a normal `tm_allocator_i`, but you are not interested in 
 
 **What is the Frame Allocator?**
 
-The [tm_temp_allocator_api](https://ourmachinery.com//apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api) has a frame allocator. A frame allocator allocates memory for one frame and than at the end of the frame the memory is whiped out. This means any allocation done with it will stay in memory until the end of the frame! The way of using it is: `tm_temp_allocator_api.frame_alloc()` or `tm_frame_alloc()`
+The [tm_temp_allocator_api](https://ourmachinery.com//apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api) has a frame allocator. A frame allocator allocates memory for one frame and then at the end of the frame the memory is wiped out. This means any allocation done with it will stay in memory until the end of the frame! The way of using it is: `tm_temp_allocator_api.frame_alloc()` or `tm_frame_alloc()`
 
-### Great use case: Formatted String's
+### Great use case: Formatted Strings
 
-Both the frame as well as the temp allocator are great for using when you need to have a string with formating! Infact the `tm_temp_allocator_api` provided a extra function for this: `tm_temp_allocator_api.printf()` /`tm_temp_allocator_api.frame_printf()`
+Both the frame as well as the temp allocator are great for using when you need to have a string with formatting! Infact the `tm_temp_allocator_api` provided an extra function for this: `tm_temp_allocator_api.printf()` /`tm_temp_allocator_api.frame_printf()`
 
 > **Note:** About formatting checkout the `tm_sprintf_api`  or [the logging chapter]({{the_machinery_book}}/qa_pipeline/logging.html)
 
@@ -127,9 +127,9 @@ Both the frame as well as the temp allocator are great for using when you need t
 
 ## Arrays, Vectors, Lists where is my `std::vector<>` or `List<>`
 
-In the foundation we have a great header file or better inline header file the `foundation/carray.inl` which contains our soultion for dynamic growing arrays, lists etc.  When used you are resonsible for its memory and have to free the used memory at the end! Do not worry the API makes it quite easy. 
+In the foundation we have a great header file or better inline header file the `foundation/carray.inl` which contains our solution for dynamic growing arrays, lists etc.  When used you are responsible for its memory and have to free the used memory at the end! Do not worry, the API makes it quite easy. 
 
-Let us create a Array of `tm_tt_id_t` all we need to do is declear our variable as a pointer of `tm_tt_id_t`.
+Let us create an Array of `tm_tt_id_t`. All we need to do is declare our variable as a pointer of `tm_tt_id_t`.
 
 ```c
 tm_tt_id_t* our_ids = 0;
@@ -156,9 +156,9 @@ tm_tt_id_t* all_objects = tm_the_truth_api->all_objects_of_type(tt, type, ta);
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 ```
 
-`tm_the_truth_api->all_objects_of_type` actually returns a `carray` and you can operate on it with the normal C array methods: e.g. `tm_carray_size()` or `tm_carray_end()`. Since it is allocated with the temp allocator you an forget about the allocation at the end as long as you call `TM_SHUTDOWN_TEMP_ALLOCATOR`.
+`tm_the_truth_api->all_objects_of_type` actually returns a `carray` and you can operate on it with the normal C array methods: e.g. `tm_carray_size()` or `tm_carray_end()`. Since it is allocated with the temp allocator you can forget about the allocation at the end as long as you call `TM_SHUTDOWN_TEMP_ALLOCATOR`.
 
-### How to access a element?
+### How to access an element?
 
 You can access a carray element normally like you would access it in a plain c array:
 
@@ -184,7 +184,7 @@ for(uint64_t i = 0;i < tm_carray_size(all_objects);++i){
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 ```
 
-An alternative approch is a more for each like approch:
+An alternative approach is a more for each like approach:
 
 ```c
 TM_INIT_TEMP_ALLOCATOR(ta);

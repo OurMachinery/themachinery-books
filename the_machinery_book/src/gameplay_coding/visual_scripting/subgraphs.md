@@ -18,19 +18,21 @@ A subgraph can have inputs and outputs. You can add them to them the same way as
 
 ## Subgraph Prototypes
 
-The Machinery's  **Prototype** system allows you to create, configure, and store a Entity/Creation Graph complete with all its subgraphs, input/output nodes as a reusable Entity / Creation Graph Asset. 
+The Machinery's  **Prototype** system allows you to create, configure, and store an Entity/Creation Graph complete with all its subgraphs, input/output nodes as a reusable Entity / Creation Graph Asset. 
 
-> **Note:** Since the Entity Graph and the Creation Graph are conceptionally similar the same aspects apply to them both! How ever this document will only focus on the Entity Graph.
+> **Note:** Since the Entity Graph and the Creation Graph are conceptually similar the same aspects apply to them both! However this document will only focus on the Entity Graph.
 
 This Asset acts as a template from which you can create new Prototype instances in other Entity Graphs/Creation Graphs. Any edits that you make to the Asset are automatically reflected in the instances of that Graph, allowing you to easily make broad changes across your whole Project without having to repeatedly make the same edit to every copy of the Asset.
 
-> **Note:** this does not mean all Prototype instances are identical. You can override individually and add/remove nodes from them, depending on your need!
+> **Note:** This does not mean all Prototype instances are identical. You can override individually and add/remove nodes from them, depending on your need!
 
 
 
 ### Create a subgraph Prototype
 
-You can turn a subgraph into a prototype by simple using the context menu of the subgraph node and select Create Subgraph prototype. This will create a Subgraph Prototype Asset (`.entity_graph`) in your Asset Browser. When you open it you are opening the instanced version. Any change to thisversion will not be shared across all other versions! Only changes made to the prototype will propagte to all changes! To open a prototype you can use the "Open Prototype" Button. 
+You can turn a subgraph into a prototype by simply using the context menu of the subgraph node and selecting Create Subgraph prototype. This will create a Subgraph Prototype Asset (`.entity_graph`) in your Asset Browser. When you open it you are opening the instanced version. Any change to this version will not be shared across all other versions! Only changes made to the prototype will propagate to all changes! To open a prototype you can use the "Open Prototype" Button. 
 
 ![](https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?dl=1)
+
+
 

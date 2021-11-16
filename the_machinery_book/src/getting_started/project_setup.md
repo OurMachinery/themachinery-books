@@ -1,6 +1,6 @@
 # Project Setup
 
-Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project.  It is possible to save a database project as a directory project and vise versa. 
+Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project.  It is possible to save a database project as a directory project and vice versa. 
 
 > **Note:** If resaving a Database project as a Directory project or vice versa, be aware that these are two different projects. Hence changes to one will not apply to the other.
 
@@ -8,15 +8,15 @@ Let us talk about the concept behind projects first. In The Machinery, we have t
 
 A directory project saves all your assets, etc., in a specified project folder. This file format is better suited for source control.
 
-![view of a direcory project in the Windows explorer](https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?dl=1)
+![view of a directory project in the Windows explorer](https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?dl=1)
 
 ## The Asset database Project
 
 The difference between both is that a database project results in one file rather than multiple files. It has the file ending `.the_machinery_db`. This database will contain all your assets.
 
-![data base project in the file explorer](https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?dl=1)
+![database project in the file explorer](https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?dl=1)
 
-## Project Managment
+## Project Management
 
 **Can I directly add Assets to my project from the File Explorer of my OS?**
 
@@ -24,7 +24,7 @@ The difference between both is that a database project results in one file rathe
 
 > Changes to the project on disk where detected: [Import] [Ignore]
 
-More information of this topic [here](https://github.com/OurMachinery/themachinery-public/issues/435).
+More information on this topic [here](https://github.com/OurMachinery/themachinery-public/issues/435).
 
 You handle the main project management steps through the **File Menu.** Such as Create and Save. By default, (1) The Machinery will save your project as a directory project. However you can save your current project as an Asset Database (2).
 
@@ -45,7 +45,7 @@ The following project shows a possible folder structure of a game project. **Thi
 
 ![](https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?dl=1)
 
-In here we have one single `premake` file and a single `libs.json` as well as the `libs` folder. This allowes you to run `tmbuild` just in this folder and all plugins or the once you want to build can be build at once. Besides it will generate one solution for Visual Studio. In this example all plugins will copy their `.dll/so` files into the `../plugins` folder. 
+In here we have one single `premake` file and a single `libs.json` as well as the `libs` folder. This allows you to run `tmbuild` just in this folder and all plugins or the ones you want to build can be built at once. Besides it will generate one solution for Visual Studio. In this example all plugins will copy their `.dll/so` files into the `../plugins` folder. 
 
 
 

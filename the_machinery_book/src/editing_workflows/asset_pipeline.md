@@ -5,8 +5,8 @@ This section we focus on how to set up a simple entity from an imported `dcc_ass
 You will learn the basics about:
 
 - What the creation graph is
-- How the asset pipline works
-- How to create (rigg) an Entity from a imported asset
+- How the asset pipeline works
+- How to create (rigg) an Entity from an imported asset
 
 ## Introduction
 
@@ -14,7 +14,7 @@ There are lots of things you might want to do to an imported asset coming from a
 example, extracting images and materials into a representation that can be further tweaked by your
 artists or rigging (create) an entity from the meshes present in the asset. In The Machinery, we provide full
 control over how data enters the engine and what data-processing steps that get executed, allowing
-technical artists to better optimize content and setup custom, game-specific asset pipelines.
+technical artists to better optimize content and set up custom, game-specific asset pipelines.
 
 This is handled through [*Creation Graphs*]({{base_url}}creation_graphs/concept.html). A *Creation Graph* is essentially a generic framework for
 processing arbitrary data on the CPUs and GPUs, exposed through a graph front-end view. While we can
@@ -29,7 +29,7 @@ For more information visit the [*Creation Graphs*]({{base_url}}creation_graphs/c
 
 You can import an asset by selecting **File > Import...** in the main menu, pressing **Ctrl-I**, or dropping a DCC file on the Asset Browser tab. When you do this, it ends up in our data-model as a `dcc_asset`. 
 
-For more in detail explanation about how to import assets checkout the [Asset Import Part]({{base_url}}editing_workflows/import_assets.html).
+For a more in detail explanation about how to import assets checkout the [Asset Import Part]({{base_url}}editing_workflows/import_assets.html).
 
 ### Basic entity rigging, with image and material extraction
 
@@ -97,7 +97,7 @@ more common operations:
 
 * `dcc-material` -- Shader graph setup to represent materials extracted from an imported `dcc_asset`.
 
-* `dcc-mesh` -- Operations for generating a draw call that reprensents a mesh from an imported `dcc_asset`.
+* `dcc-mesh` -- Operations for generating a draw call that represents a mesh from an imported `dcc_asset`.
 
 * `drop-image` -- Operations for generating a draw call to display the image output of another
   creation graph in the context of an entity, making it possible to drag-and-drop images into the

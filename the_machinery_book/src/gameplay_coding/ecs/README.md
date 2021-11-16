@@ -1,13 +1,13 @@
 # Entity Component System
 
-This section of the book shall help you understand how to make use of our Entity Component System. Designing games with a ECS can be overwhelming. Especially if you come from a more traditional background: Object Oriented Approaches. This chapter will provide you with the basic understanding of what a ECS is and how you can use it!. 
+This section of the book shall help you understand how to make use of our Entity Component System. Designing games with an ECS can be overwhelming. Especially if you come from a more traditional background: Object Oriented Approaches. This chapter will provide you with the basic understanding of what an ECS is and how you can use it!. 
 
 Let us begin with the purpose of the entity system! Its purpose is it to provide a flexible model for *objects in a simulation*, that
-allows us to compose complex objects from simpler components in a flexible and performant way. An *entity* is a game object composed of *components*. Entities live in a *entity context* — an isolated world of entities. In the Machinery each of the following tabs has its own Entity Context: Simulate Tab, Scene Tab, Preview Tab. Entities within those tabs only exist within these contexts! Each new instance of the tab has a different context! Entities are composed of components. They are there to hold the needed data while *Engines*/*Systems* are there to provide behaviour. Each context (*entity context*) can have a number of *engines* or *systems* registered. *(ECS)* Engines updates are running on subset of entities that posses some set of components. 
+allows us to compose complex objects from simpler components in a flexible and performant way. An *entity* is a game object composed of *components*. Entities live in a *entity context* — an isolated world of entities. In the Machinery each of the following tabs has its own Entity Context: Simulate Tab, Scene Tab, Preview Tab. Entities within those tabs only exist within these contexts! Each new instance of the tab has a different context! Entities are composed of components. They are there to hold the needed data while *Engines*/*Systems* are there to provide behaviour. Each context (*entity context*) can have a number of *engines* or *systems* registered. *(ECS)* Engine updates are running on a subset of entities that posses some set of components. 
 
 > **Note**: in some entity systems, these are referred to as *systems* instead, but we choose *engine*, because it is less ambiguous.
 
-While Systems are just a update with a provided access to the entity context. When we refer to a context in this chapter we mean the entity context.
+While Systems are just an update with a provided access to the entity context. When we refer to a context in this chapter we mean the entity context.
 
 **Table of Content**
 
@@ -15,7 +15,7 @@ While Systems are just a update with a provided access to the entity context. Wh
 {:toc}
 ## What is an Entity?
 
-An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. Itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore a entity acts as an identifier or key to the data stored in components.
+An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. The entity itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore an entity acts as an identifier or key to the data stored in components.
 
 ![](https://www.dropbox.com/s/5956267ltb4l14x/tm_guide_entity.png?dl=1)
 
@@ -25,7 +25,7 @@ Entities are managed by the Entity API and exist within an Entity Context. An En
 
 ## What is an Entity Context?
 
-The Entity Context is the simulation world. It contains all the Entites and Systems/Engines as well owns all the Component Data. There can be multiple Entity Contexts in the Editor. For example the Simulate tag, Preview Tab have both a Entity Context. When you Register A System/Engine you an decide in which context they shall run. The Default is in all contexts. 
+The Entity Context is the simulation world. It contains all the Entities and Systems/Engines as well as owns all the Component Data. There can be multiple Entity Contexts in the Editor. For example the Simulate tag, Preview Tab have both an Entity Context. When you Register A System/Engine you can decide in which context they shall run. The Default is in all contexts. 
 
 
 
@@ -50,7 +50,7 @@ The Entity Context is the simulation world. It contains all the Entites and Syst
 
 
 
-## What is an Entity types / Archetype?
+## What is an Entity type / Archetype?
 
 An Entity Types is a unique combination of component types. The Entity API uses the entity type to group all entities that have the same sets of components.
 
@@ -71,7 +71,7 @@ An Entity Types is a unique combination of component types. The Entity API uses 
 
 ## What is a Component Manager?
 
-- Can store persitsent data from the beginning of the Entity Context till the end
+- Can store persistent data from the beginning of the Entity Context till the end
 
 - Can provide a way to allocate data on adding/removing a component
 
@@ -81,7 +81,7 @@ An Entity Types is a unique combination of component types. The Entity API uses 
 
 ## Game Logic
 
-The behavior is defined in Systems and Engines which process those components. Systems and Engines can be seen as data transfromation actions. They take some input (components) and process them to some output (changed component data, different rendering) and a chain of small system together makes up your game!
+The behavior is defined in Systems and Engines which process those components. Systems and Engines can be seen as data transformation actions. They take some input (components) and process them to some output (changed component data, different rendering) and a chain of small systems together makes up your game!
 
  ![](https://www.dropbox.com/s/5wqvcf27vvx5b7v/engines.png?dl=1)
 
@@ -91,9 +91,9 @@ The behavior is defined in Systems and Engines which process those components. S
 
 - An engine is an update that runs for all components matching a certain *component mask*.
 
-- Engines registered with the context runs automatically on update, in parallel.
+- Engines registered with the context run automatically on update, in parallel.
 
-- Parallelization is done automatic, by looking at the components that each engine reads or writes.
+- Parallelization is done automatically, by looking at the components that each engine reads or writes.
   Before running, an engine waits for the previous engines that wrote to the components that the
   engine is interested in.
   
@@ -115,15 +115,15 @@ The behavior is defined in Systems and Engines which process those components. S
 
 ## How are Entity Assets translated to ECS Entities?
 
-Since the Truth is a editor concept and our main data model, your scene is stored in the Truth. When you start the simulation your Assets get translated to the ECS via the `asset_load()` function! In your `tm_component_i` you can provide this function if you want your component to translate to the ECS world. In there you have access to the Truth, afterwards not anymore! Besides you can provide some other callbacks for differnt stages of the translation process. 
+Since the Truth is an editor concept and our main data model, your scene is stored in the Truth. When you start the simulation your Assets get translated to the ECS via the `asset_load()` function. In your `tm_component_i` you can provide this function if you want your component to translate to the ECS world. In there you have access to the Truth, afterwards not anymore. Besides, you can provide some other callbacks for different stages of the translation process. 
 
 ![](https://www.dropbox.com/s/ao6cs4fpyx9i078/truth_ecs%20%282%29.png?dl=1)
 
->  **Important:** A Component representation in The Truth may **not** reflect the runtime ECS representation. This can be used to separate a Truth representation into smaller bits for gameplay programming sake but keep the simplicty for the Front End user.
+>  **Important:** A Component representation in The Truth may **not** reflect the runtime ECS representation. This can be used to separate a Truth representation into smaller bits for gameplay programming sake but keep the simplicity for the Front End user.
 
 *Example:*
 
-You have a `Movement Controller Component` that can be used via the UI to determine the Entities movement speed. The actual movement system interacts with a `Movement Component` which keeps track of the actual current speed and can be influenced by other systems while the Movement Controller is only there to keep the fixed `const` state and can only be influenced by a Skill Update system or something like this.
+You have a `Movement Controller Component` that can be used via the UI to determine the Entities movement speed. The actual movement system interacts with a `Movement Component` which keeps track of the actual current speed and can be influenced by other systems while the Movement Controller is only there to keep the fixed `const` state, but it can be influenced by a Skill Update system or something like this.
 
 
 

@@ -65,11 +65,11 @@ Double clicks on an asset may open the asset in their corresponding tab or windo
 | Asset                          | Action on double click                                       |
 | ------------------------------ | ------------------------------------------------------------ |
 | Animation State Machine (.asm) | Opens a new window with the Animation state machine layout.  |
-| Creation (.creation)           | Opens a graph tab if no graph tab is open. If a graph tab is open it will load this graph. When ever we have a **.creation** file than the graph is called Creation Graph and is used for working on graphics related workflows such as materials. |
+| Creation (.creation)           | Opens a graph tab if no graph tab is open. If a graph tab is open it will load this graph. Whenever we have a **.creation** file the graph is called Creation Graph and is used for working on graphics related workflows such as materials. |
 | Entity (.entity)               | Opens a s**cene tab** if no scene tab is open. If a scene tab is open it will change the view to this entity. |
-| Entity Graph (.entity_graph)   | Opens a graph tab if no graph tab is open. If a graph tab is open it will load this graph. When ever we have a **.entity_graph** file than the graph is called Entity Graph and is used to make Entity Graph functionality reusable and shareable between multiple graphs. |
+| Entity Graph (.entity_graph)   | Opens a graph tab if no graph tab is open. If a graph tab is open it will load this graph. Whenever we have a **.entity_graph** file the graph is called Entity Graph and is used to make Entity Graph functionality reusable and shareable between multiple graphs. |
 
-A single click will always focus a associated Properties Tab on the selected asset.
+A single click will always focus an associated Properties Tab on the selected asset.
 
 *Dragging assets into the Scene*
 
@@ -82,7 +82,7 @@ To organize your project, you can use Asset Labels. An asset can be associated w
 
 There are two types of Asset labels: 
 
-- System Asset Labels: They are added by plugins and cannot be assigned by the user to a asset.
+- System Asset Labels: They are added by plugins and cannot be assigned by the user to an asset.
   - User Asset Labels: You add them, and they are part of the project with the file extension: .asset_label and can be found in the asset_label directory.
 
 The user can manage them like any other asset and delete user-defined Asset Labels via the asset browser. There you can also rename them, and this will automatically propagate to all users of those asset labels.
@@ -104,7 +104,7 @@ You can add asset Labels via the property view to any asset:
 | Key              | Descriptions                                                 |
 | ---------------- | ------------------------------------------------------------ |
 | Arrow Keys       | Allow you to navigate through the Asset browser              |
-| Enter            | If selected a folder or a asset will open the folder or asset |
+| Enter            | If selected a folder or an asset will open the folder or asset |
 | F2               | Will rename asset or folder in Asset View Panel and Directory Tree View |
 | Ctrl + F         | Search in the current project                                |
 | CTRL + D         | Duplicates selected Asset                                    |
