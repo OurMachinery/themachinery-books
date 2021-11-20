@@ -1,6 +1,6 @@
 ## Simulation Entry (writing gameplay code in C)
 
-This walkthrough show you how to create a _simulation entry_ and what a simulation entry is.
+This walkthrough will show you how to create a _simulation entry_ and what a simulation entry is.
 
 If you wish to program gameplay using C code, then you need some way for this code to execute. You can either make lots of entity components that do inter-component communication, but if you want a more classic monolithic approach, then you can use a simulation entry.
 

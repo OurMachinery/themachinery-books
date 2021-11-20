@@ -1,6 +1,6 @@
 # Gameplay Entry Point Comparison
 
-In the Machinery you have multiple entry points for your game play code to live in. You can make use of *Simulation Entries*, *Entity Component System: Systems or Engines* and also make use of a *Entity Graph* or custom scripting language component. The question is more when to use which of the tools? The answer to this depends on your games needs. To summarize it in the Engine you have about four build in entry points for your game play code which you can use all at the same time and which one to use depends on your use case.
+In the Machinery you have multiple entry points for your game play code to live in. You can make use of *Simulation Entries*, *Entity Component System: Systems or Engines* and also make use of a *Entity Graph* or custom scripting language component. The question is more when to use which of the tools? The answer to this depends on your game's needs. To summarize it in the Engine you have about four built-in entry points for your game play code which you can use all at the same time and which one to use depends on your use case.
 
 The following table will give a brief overview of the different types and their properties:
 
@@ -51,5 +51,5 @@ It is **not** recommended to use a Simulation Entry to handle a large mass of en
 
 ### Entity Graph
 
-It is recommended to use a **Entity Graph** when you want to tie the lifetime to a Entity and if you want to execute none performant code since the Entity Graph is a Visual Scripting language that is interpreted. It will be naturally slow. The Entity Graph is also good to handle UI/UX elements or for quick prototyping when performance is not important. Keep in mind that a Entity Graph is not executed in parallel and also only access memory via random access.
+It is recommended to use a **Entity Graph** when you want to tie the lifetime to an Entity and if you want to execute unperformant code since the Entity Graph is a Visual Scripting language that is interpreted. It will be naturally slow. The Entity Graph is also good to handle UI/UX elements or for quick prototyping when performance is not important. Keep in mind that an Entity Graph is not executed in parallel and also only access memory via random access.
 

@@ -1,8 +1,8 @@
 # Access values
 
-The truth objects (`tm_tt_id_t`) are immutable objects unless you explicitly make them writable. Therefore we do not be afraid of accidently changing a value when reading from a object property.
+The truth objects (`tm_tt_id_t`) are immutable objects unless you explicitly make them writable. Therefore you do not have to be afraid of accidentally changing a value when reading from an object property.
 
-To read from a object property we need access to the correct Truth Instance as well as to a object id.  We also need to know what kind of property we want to access. That is why we always want to define our properties in a Header-File. Which allows us and others to find quickly our type definitions. A good practice is to comment on what kind of data type property contains.
+To read from an object property we need access to the correct Truth Instance as well as to an object id. We also need to know what kind of property we want to access. That is why we always want to define our properties in a Header-File. Which allows us and others to find quickly our type definitions. A good practice is to comment on what kind of data type property contains.
 
 Let us assume our object is of type ``TM_TT_TYPE__RECT``:
 
@@ -15,7 +15,7 @@ enum {
 };
 ```
 
-When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of a object. The width is stored in `TM_TT_PROP__RECT__W`.
+When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of an object. The width is stored in `TM_TT_PROP__RECT__W`.
 
 The function we need to call:
 
@@ -23,11 +23,11 @@ The function we need to call:
 void (*get_float)(tm_the_truth_o *tt,const tm_the_truth_object_o *obj, uint32_t property);
 ```
 
-With this knowledge we can assemble the following function that logs the width of a object:
+With this knowledge we can assemble the following function that logs the width of an object:
 
 ```c
 void log_with(tm_the_truth_o *tt, tm_tt_id_t my_object){   
-	const float wdith = tm_the_truth_api->get_float(tt,tm_tt_read(tt,my_object),TM_TT_PROP__RECT__W);
+	const float width = tm_the_truth_api->get_float(tt,tm_tt_read(tt,my_object),TM_TT_PROP__RECT__W);
     TM_LOG("the width is %f",width);
 }
 ```

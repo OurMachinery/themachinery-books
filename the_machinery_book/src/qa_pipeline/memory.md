@@ -1,6 +1,6 @@
 # Memory Usage Tab
 
-The Machinery has a build in Leak detection when one is using the provided allocators. Besides they all will log the used memory in the Memory Usage tab!
+The Machinery has a built-in Leak detection when one is using the provided allocators. Besides they all will log the used memory in the Memory Usage tab!
 
 - [Memory leak Detection]({{docs}}foundation/memory_tracker.h.html#memory_tracker.h)
 

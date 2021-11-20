@@ -49,7 +49,7 @@ The code will fill the API definitions with life in the `tm_load_plugin` functio
 
 The next part contains the Truth Definition of the component and the plain old data struct (POD). *In production, we should separate those aspects into a header file!*
 
-> Note: All components should be plain old datatypes.
+> Note: All components should be plain old data types.
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:17:31}}
@@ -90,11 +90,11 @@ Let us take this code apart one more time:
 
 ### Define your component
 
-You an register a component to the `tm_entity_create_component_i` in your plugin load function. This interface expects a function pointer to a create component function of the signature: `void tm_entity_create_component_i(struct tm_entity_context_o *ctx)`.
+You can register a component to the `tm_entity_create_component_i` in your plugin load function. This interface expects a function pointer to a create component function of the signature: `void tm_entity_create_component_i(struct tm_entity_context_o *ctx)`.
 
 The Engine will call this function whenever it creates a new Entity Context to populate the context with all the known components. It usually happens at the beginning of the Simulation.
 
-Within this function, you can define your component and register it to the context. The `tm_entity_api` provides a function `tm_entity_api.register_component()` which expects the current context and a instance of the `tm_component_i`. We define one in our function and give it the needed information:
+Within this function, you can define your component and register it to the context. The `tm_entity_api` provides a function `tm_entity_api.register_component()` which expects the current context and an instance of the `tm_component_i`. We define one in our function and give it the needed information:
 
 - A name should be the same as the Truth Type
 - The size of the component struct
@@ -155,7 +155,7 @@ The Engine provides a bunch of useful Blackboard values. They are defined in the
 
 
 
-The `tm_engine_update_set_t` gives us access to the needed data, and we can modify our component. The first important information we get are the number of entity types (also known Archetypes). This number is stored in `data->num_arrays`. Now that we know this information we can iterate over them and access the components per entity type. `tm_engine_update_array_t a =  data->arrays` (Gives us the current entity type's components). `a->n` is the number of matching components / entities of this entity type.
+The `tm_engine_update_set_t` gives us access to the needed data, and we can modify our components. The first important information we get are the number of entity types (also known Archetypes). This number is stored in `data->num_arrays`. Now that we know this information we can iterate over them and access the components per entity type. `tm_engine_update_array_t a =  data->arrays` (Gives us the current entity type's components). `a->n` is the number of matching components / entities of this entity type.
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:92:107}}
@@ -179,7 +179,7 @@ As the last step, we add a notifier function call to notify all entities that th
 
 ### Register your Engine to the system
 
-You an register a component to the `tm_entity_register_engines_simulation_i` in your plugin load function. This interface expects a function pointer to a create component function of the signature: `void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)`. 
+You can register a component to the `tm_entity_register_engines_simulation_i` in your plugin load function. This interface expects a function pointer to a create component function of the signature: `void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)`. 
 
 
 
@@ -189,7 +189,7 @@ The function itself looks as follows:
 {{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:119:135}}
 ```
 
-The first thing we do is looking up the component type. Did we register the type? If not, we will not get the correct type. Here we are using the name we defined beforehand in our component create function.
+The first thing we do is to look up the component type. Did we register the type? If not, we will not get the correct type. Here we are using the name we defined beforehand in our component create function.
 
 Then we ask for the transform component next because our Engine shall run on those two components.
 

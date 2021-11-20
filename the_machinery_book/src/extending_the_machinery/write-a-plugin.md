@@ -1,6 +1,6 @@
 ## Write a plugin
 
-This walkthrough show you how to extend the engine with a custom plugin.
+This walkthrough shows you how to extend the engine with a custom plugin.
 
 You will learn about:
 
@@ -26,7 +26,7 @@ together with the built-in plugins.
 >
 > **Important:** The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the `premake` file to make it point to the correct version. This workflow is currently under review.
 
-## Inspect a existing example to get inspiration
+## Inspect an existing example to get inspiration
 
 The easiest way to build a plugin is to start with an existing example. There are three places where
 you can find plugin samples:
@@ -122,7 +122,7 @@ The following guides might help you:
 
 
 
-The Engine provides a easy way to create plugins for you via the **File -> New Plugins** menu. There you can choose default plugin templates. They come with default files:
+The Engine provides an easy way to create plugins for you via the **File -> New Plugins** menu. There you can choose default plugin templates. They come with default files:
 
 ![custom tab folder view](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1)
 
@@ -139,7 +139,7 @@ The Engine provides a easy way to create plugins for you via the **File -> New P
 
 ### Structure of a plugin
 
-Every plugin has `tm_load_plugin()` as its entry point, in there we register everything we need to register to the Engines Plugin System. It is important that you do not execute heavy code in this function or relay on other plugins, since they might not be loaded yet! This function is just there to perform load and register operations.
+Every plugin has `tm_load_plugin()` as its entry point, in there we register everything we need to register to the Engines Plugin System. It is important that you do not execute heavy code in this function or rely on other plugins, since they might not be loaded yet! This function is just there to perform load and register operations.
 
 #### Where does my gameplay code live?
 
@@ -149,12 +149,12 @@ Your gameplay lives within the [Systems / Engines]({{base_url}}/gameplay_coding/
 
 - The `tm_tab_vt` defines three functions for your tab to be updated:
   - `tm_tab_vt.ui()` - Callback for drawing the content of the tab into the specified rect.
-  - `tm_tab_vt.ui_serial()` - *Optional.* If implemented, called from the main UI job once all parallel UI rendering (fork/join) has finished. This can be used for parts of the UI that needs to run serially, for example because they call out to non-thread-safe function.
+  - `tm_tab_vt.ui_serial()` - *Optional.* If implemented, called from the main UI job once all parallel UI rendering (fork/join) has finished. This can be used for parts of the UI that needs to run serially, for example because they call out to a non-thread-safe function.
   - `tm_tab_vt.hidden_update()` - *Optional*. If the tab wants to do some processing when it is *not* the selected tab in its tabwell, it can implement this callback. This will be called for all created tabs whose content is currently *not* visible.
 
 For more information follow the ["Write a tab"]({{tutorials}}) walkthrough.
 
-#### Plugin callbacks (Init, Sutdown, Tick)
+#### Plugin callbacks (Init, Shutdown, Tick)
 
 The plugin system provides also for plugin callbacks. **It is recommended to rely on these calls as little as possible.** You should not rely on those for your gameplay code!
 

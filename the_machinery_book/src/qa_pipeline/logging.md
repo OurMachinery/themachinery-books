@@ -1,6 +1,6 @@
 # Logging
 
-The Machinery comes with a build in Logger system. The Logger System lives in the `foundation/log.h` and contains the `tm_logger_api`. This API provides a few connivance macros. We can use them to log our code from anywhere. Besides this it is super easy to create your own logger and add it to the logger API.
+The Machinery comes with a built-in Logger system. The Logger System lives in the `foundation/log.h` and contains the `tm_logger_api`. This API provides a few connivance macros. We can use them to log our code from anywhere. Besides this it is super easy to create your own logger and add it to the logger API.
 
 
 
@@ -79,12 +79,12 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 
 ## Write a custom logger
 
-If you desire to add your own logger sink to the eco system there are a few steps you need to take:
+If you desire to add your own logger sink to the ecosystem there are a few steps you need to take:
 
 1. You need to include the `foundation/log.h` header
 2. You need to define a `tm_logger_i` in your file
 3. You need add a `log` function to this interface
-   1. If you need some local data (such as a allocator)  it might be good to define a `.inst` as well.
+   1. If you need some local data (such as an allocator)  it might be good to define a `.inst` as well.
 4. After all of this you can call the `tm_logger_api.add_logger()`  function to register your logger
 
 *Example:*

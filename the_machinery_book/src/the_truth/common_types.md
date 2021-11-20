@@ -16,12 +16,12 @@ The Truth comes with several useful common types. You can find them in the `the_
 | `TM_TT_TYPE__VEC3`/`TM_TT_TYPE_HASH__VEC3`| The first property contains the x value and the second the y value and the third the z value. |
 | `TM_TT_TYPE__VEC4`/`TM_TT_TYPE_HASH__VEC4`| The first property contains the x value and the second the y value and the third the z value while the last one contains the w value. |
 | `TM_TT_TYPE__POSITION`/`TM_TT_TYPE_HASH__POSITION` | Same as `vec4`.                                              |
-| `TM_TT_TYPE__ROTATION`/`TM_TT_TYPE_HASH__ROTATION` | Based on a `vec4`. Used to represent the rotation of a object via quaternions. |
+| `TM_TT_TYPE__ROTATION`/`TM_TT_TYPE_HASH__ROTATION` | Based on a `vec4`. Used to represent the rotation of an object via quaternions. |
 | `TM_TT_TYPE__SCALE`/`TM_TT_TYPE_HASH__SCALE` | Same as `vec3.`                                              |
 | `TM_TT_TYPE__COLOR_RGB`/`TM_TT_TYPE_HASH__COLOR_RGB`| Represents a RGB colour.                                     |
 | `TM_TT_TYPE__COLOR_RGBA`/`TM_TT_TYPE_HASH__COLOR_RGBA`| Represents a RGBA colour.                                    |
 | `TM_TT_TYPE__RECT`/`TM_TT_TYPE_HASH__RECT` | The first property contains the x value and the second the y value and the third the width value while the last one contains the height value. |
 
-There is a helper API to handle all of these types in a easy way, to reduce the boilerplate code: `tm_the_truth_common_types_api`. 
+There is a helper API to handle all of these types in an easy way, to reduce the boilerplate code: `tm_the_truth_common_types_api`. 
 
 > **Note:** There is a list of all Truth Types the Engine comes with available on our [API Documentation]({{docs}}truth_types.html)

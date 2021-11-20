@@ -9,14 +9,14 @@ To choose the right tool for creating those transformations, we need to reason a
 - On what data do we operate? 
 - What is our domain?
 - What is the possible input for our transformation? 
-- What is the frequency of the data use? 
+- What is the usage frequency of the data? 
 - What are we actually transforming?
-- How could our algorithm look like? 
+- What could our algorithm look like? 
 - How often do we perform our transformation?
 
-For infrequent read access we can easily use the `tm_entity_api.get_component()` . It allows access to the underlying data directly from a provided entity. It is not recommended to use that for read-access because it is quite slow. You perform a random data access. But again, if it is infrequent of the operation and the number of targets (Entities), which are interesting to choose the right tool.
+For infrequent read access we can easily use the `tm_entity_api.get_component()` . It allows access to the underlying data directly from a provided entity. It is not recommended to use that for read-access because it is quite slow. You perform random data access. But again, if it is infrequent of the operation and the number of targets (Entities), which are interesting to choose the right tool.
 
-> Here, you can use a System better than an `Engine`, since a System doe not run in parallel and provides access to the Entity Context.
+> Here, you can use a System better than an `Engine`, since a System does not run in parallel and provides access to the Entity Context.
 
 
 
@@ -35,7 +35,7 @@ When creating interactions between entities, we mainly face two types of problem
 
 To start this transformation, we should have a quick look at the first principle of *Data-Oriented Design*:
 
-> Data is not the problem domain. For some, it would seem that data-oriented design is the antithesis of most other programming paradigms because the data-oriented design is a technique that does not readily allow the problem domain to enter into the software so readily. It does not recognize the concept of an object in any way, as data is consistent without meaning […] The data-oriented design approach doesn’t build the real-world problem into the code. This could be seen as a failing of the data-oriented approach by veteran object-oriented developers, as many examples of the success of object-oriented design come from being able to bring human concepts to the machine. In this middle ground, a solution can be written in this language that is understandable by both humans and computers. The data-oriented approach gives up some of the human readability by leaving the problem domain in the design document but stops the machine from having to handle human concepts at any level by just that same action — [Data Oriented Design Book Chapter 1.2](http://www.dataorienteddesign.com/)
+> Data is not the problem domain. For some, it would seem that data-oriented design is the antithesis of most other programming paradigms because data-oriented design is a technique that does not readily allow the problem domain to enter into the software so readily. It does not recognize the concept of an object in any way, as data is consistent without meaning […] The data-oriented design approach doesn’t build the real-world problem into the code. This could be seen as a failure of the data-oriented approach by veteran object-oriented developers, as many examples of the success of object-oriented design come from being able to bring human concepts to the machine. In this middle ground, a solution can be written in this language that is understandable by both humans and computers. The data-oriented approach gives up some of the human readability by leaving the problem domain in the design document but stops the machine from having to handle human concepts at any level by just that same action — [Data Oriented Design Book Chapter 1.2](http://www.dataorienteddesign.com/)
 
 
 
@@ -67,7 +67,7 @@ With such a design, we can modify behavior later on without breaking any depende
 
 To implement the before-mentioned relationships, we have to undertake a couple of steps. 
 
-> These steps are also interesting for none programmers who design gameplay systems. Having those flashed out when they design game mechanics can be good and speed up your work. 
+> These steps are also interesting for programmers who design gameplay systems. Having those fleshed out when they design game mechanics can be good and speed up your work. 
 
 We have to ask the following questions:
 
@@ -77,7 +77,7 @@ This question should lead to “what components do we need to create this relati
 
 **2.** What is our possible domain? (What kind of inputs do we have?)
 
-When we figure this out, we can make the right decision later. Also, we can reason about our code how to implement these relationships?
+When we figure this out, we can make the right decision later. Also, we can reason about our code and how to implement these relationships.
 
 **3.** How often does the data change? 
 
@@ -95,6 +95,6 @@ To pick the right tool, we need to reason about the costs an algorithm costs us.
 
 Based on the information we have already about the data we need for the transformation, it’s pretty easy to determine the execution frequency. The total number of entities/objects is known at this time. (It may be an estimation). Therefore, we can guess how often this might run. Keep in mind that we previously discussed how often we suspect the data to be changed. This leads to transparency, which gives a good idea of the costs of this code.
 
-Keep in mind that the main goal is to keep things simple. A System/Engine should do one job. As the variety of components defines the data type of the Entity. And the combination of System's/Engines defines the actual game behavior. Therefore you do not need to write diagrams, blueprints, pseudo-code, or anything. You maybe even be able just to write the engine in one goal. It is recommended to do those steps even in your mind before you write your system.
+Keep in mind that the main goal is to keep things simple. A System/Engine should do one job. As the variety of components defines the data type of the Entity. And the combination of Systems/Engines defines the actual game behavior. Therefore you do not need to write diagrams, blueprints, pseudo-code or anything. You may even be able to just write the engine as one goal. It is recommended to do those steps even in your mind before you write your system.
 
 > **IMPORTANT:** When the data changes, the problem changes. Therefore, we have to properly evaluate with the descriptive method the possible outcome and maybe change the implementation.

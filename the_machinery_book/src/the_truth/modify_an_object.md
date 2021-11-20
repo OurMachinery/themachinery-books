@@ -21,7 +21,7 @@ void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
 
 ## 1. Make the object writable
 
-To edit an object, we need to make it writeable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called `write`. When we call it on an object, we make it writable.
+To edit an object, we need to make it writable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called `write`. When we call it on an object, we make it writable.
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:10:12}}
@@ -75,7 +75,7 @@ In the end, we need to commit our change to the system. In this example we do no
 {{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:36:39}}
 ```
 
-If we wanted to provide a undo scope we need to create one:
+If we wanted to provide an undo scope we need to create one:
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:10:12}}
@@ -88,7 +88,7 @@ Now this action can be reverted in the Editor.
 
 ## 4. Get a value
 
-Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro `tm_tt_read`. This will give us a immutable (read only) pointer to the underlaying object. This allows us to read the data from it.
+Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro `tm_tt_read`. This will give us an immutable (read only) pointer to the underlying object. This allows us to read the data from it.
 
 ```c
 {{$include {TM_BOOK_CODE_SNIPPETS}/truth/modify_object.c:10:12}}

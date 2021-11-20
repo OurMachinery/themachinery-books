@@ -38,7 +38,7 @@ The Entity Tree view, prototype instances are shown in yellow to distinguish the
 
 If you expand an instance, you will notice that most of its components and child entities are grayed out. They cannot be selected because they are inherited from the prototype, and the prototype controls their values.
 
-![The light entity is a instance of a prototype and the Render Component is inherited](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428053926_image.png)
+![The light entity is an instance of a prototype and the Render Component is inherited](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428053926_image.png)
 
 If the prototype is modified — for example, if we scatter some more props on the floor — those changes reflect everywhere the prototype is placed.
 

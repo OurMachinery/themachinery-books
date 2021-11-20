@@ -23,17 +23,17 @@ Now the Graph Editor Opens and you can start adding nodes via:
 
 ### Execution
 
-The Entity Graph is an event-driven Visual Scripting language.  This means everything happens after an event was triggered! By default, the Engine comes with the following built-in Events:
+The Entity Graph is an event-driven Visual Scripting language. This means everything happens after an event is triggered! By default, the Engine comes with the following built-in Events:
 
 | Name            | Description |                                                              |
 | --------------- | ----------- | ------------------------------------------------------------ |
 | Init Event      | Is called when the component is added to the Entity. | <img src="https://www.dropbox.com/s/6cov2jbv72iy455/tm_guide_entity_graph_init.png?dl=1" width="277" height="120"> |
-| Reload Event    | Is called when ever the component is reloaded from the truth. | <img src="https://www.dropbox.com/s/zixoinmbta73tir/tm_guide_entity_graph_reload.png?dl=1" width="277" height="120"> |
+| Reload Event    | Is called when the component is reloaded from the truth. | <img src="https://www.dropbox.com/s/zixoinmbta73tir/tm_guide_entity_graph_reload.png?dl=1" width="277" height="120"> |
 | Tick Event      | Is called every frame. | <img src="https://www.dropbox.com/s/1t7hwmu37wr4aua/tm_guide_entity_graph_tick.png?dl=1" width="277" height="120">  |
 | Terminate Event | Is called before the component is removed from the entity. | <img src="https://www.dropbox.com/s/nx3tehccedx7qic/tm_guide_entity_graph_terminate.png?dl=1" width="277" height="120">  |
-| Custom Event | Is called when ever the named event<br> is triggered with either a "Trigger Event"<br> node or from the outside with "Trigger Remote Event" | <img src="https://www.dropbox.com/s/ngv3k25u02k8iq6/tm_guide_entity_graph_create_custom_event.png?dl=1" width="277" height="120">  |
+| Custom Event | Is called when the named event<br> is triggered with either a "Trigger Event"<br> node or from the outside with "Trigger Remote Event" | <img src="https://www.dropbox.com/s/ngv3k25u02k8iq6/tm_guide_entity_graph_create_custom_event.png?dl=1" width="277" height="120">  |
 | Trigger Event | Triggers an event. | <img src="https://www.dropbox.com/s/tqyg6scxjcsk3vi/tm_guide_entity_graph_trigger.png?dl=1" width="277" height="120">  |
-| Trigger Remote Event | Triggeres a event on a remote Entity | <img src="https://www.dropbox.com/s/jrnapuuq93d0kx8/tm_guide_entity_graph_trigger_remote.png?dl=1" width="277" height="120">  |
+| Trigger Remote Event | Triggeres an event on a remote Entity | <img src="https://www.dropbox.com/s/jrnapuuq93d0kx8/tm_guide_entity_graph_trigger_remote.png?dl=1" width="277" height="120">  |
 | UI Tick | Is ticked every frame regardless if the game is paused or not! | <img src="https://www.dropbox.com/s/6ejvwvc5yndpo87/tm_guide_entity_graph_ui_tick.png?dl=1" width="277" height="120">  |
 
 ### Anatomy
@@ -44,7 +44,7 @@ There are six types of nodes:
 | ----------- | ------------------------------------------------------------ |
 | Event Node  | Starting point of the Execution                              |
 | Query Node  | Query nodes are triggered  automatically when their output is requested. Nodes that aren't query nodes need to be triggered. Therefore they are "Pure" and do not modify data! |
-| Nodes       | Normal nodes that have a Event input, hence they might modify the data and produce a output or mutate the graphs state! |
+| Nodes       | Normal nodes that have an Event input, hence they might modify the data and produce an output or mutate the graphs state! |
 | Subgraphs   | Graphs within a Graph! Allow you to organize your graph into smaller units. They can also be reused if saved as Subgraph Prototype. |
 | Input Node  | Accepts Input from the Outside world and makes it available to the graph. Mainly used for communication between graphs and subgraphs. |
 | Output Node | Accepts Output and passes it to the Outside world and makes it available to a parent graph. Mainly used for communication between graphs and subgraphs. |
@@ -62,7 +62,7 @@ Moreover, the Visual Scripting language knows two different types of wires:
 
 ## Inputs
 
-Graph can have input. They can be used to allow the user of your graph to pass data from the outside (e.g. the Editor) to the graph. This happens via the Input Nodes. In the General Graph settings you can add Inputs from the outside world.
+Graphs can have inputs. They can be used to allow the user of your graph to pass data from the outside (e.g. the Editor) to the graph. This happens via the Input Nodes. In the General Graph settings you can add Inputs from the outside world.
 
 ### Adding a Public Input
 
@@ -90,7 +90,7 @@ If you now select the Graph Component of your Entity you will be able to change 
 
 This can be a nice way to customize behaviour of your graph and entity!
 
-4. Add a Input node to you graph. There you have access to the data.
+4. Add an Input node to your graph. There you have access to the data.
 
    ![](https://www.dropbox.com/s/l20w7d0utoet9ti/tm_guide_entity_graph_input_node.png?dl=1)
 
@@ -123,7 +123,7 @@ Besides, you have two nodes for loops:
 
 ### Subgraphs
 
-You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a `.entity_graph` asset in your asset browser and allow it to be reused across your project! Which enables you to maximal flexibility! 
+You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a `.entity_graph` asset in your asset browser and allow it to be reused across your project! Which enables you to have maximal flexibility! 
 
 
 

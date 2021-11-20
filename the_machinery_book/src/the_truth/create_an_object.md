@@ -3,7 +3,7 @@
 You can create an object of a Truth Type via two steps:
 
 1. You need to obtain the Type from the type hash. We call the `object_type_from_name_hash` to obtain the `tm_tt_type_t`
-2. You need to create an Object from that Type. We call `create_object_of_type` to create a object `tm_tt_id_t` . We pass `TM_TT_NO_UNDO_SCOPE` because we do not need a undo scope for our example.
+2. You need to create an Object from that Type. We call `create_object_of_type` to create an object `tm_tt_id_t` . We pass `TM_TT_NO_UNDO_SCOPE` because we do not need an undo scope for our example.
 
 First, we need to have access to a Truth instance. Otherwise, we could not create an object. In this example, we create a function.
 
@@ -11,7 +11,7 @@ First, we need to have access to a Truth instance. Otherwise, we could not creat
 {{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_an_object.c:16:21}}
 ```
 
-Where ever we call this function we can than edit and modify the type and add content to it!
+Wherever we call this function we can then edit and modify the type and add content to it!
 
 The alternative approach is to use the "Quick Object Creation function".
 
