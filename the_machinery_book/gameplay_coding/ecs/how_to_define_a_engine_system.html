@@ -150,22 +150,22 @@
 <p>You have to pass the  <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_system_i">tm_entity_system_i</a> or <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a> instance in your register function.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li><a href="#ask-yourself-those-questions-before-you-design-a-engine--system">Ask yourself those questions before you design a Engine / System</a>
+<li><a href="#ask-yourself-those-questions-before-you-design-an-engine--system">Ask yourself those questions before you design an Engine / System</a>
 <ul>
 <li><a href="#how-do-those-questions-translate">How do those questions translate?</a></li>
 </ul>
 </li>
 <li><a href="#what-is-next">What is next?</a></li>
 </ul>
-<h2 id="ask-yourself-those-questions-before-you-design-a-engine--system"><a class="header" href="#ask-yourself-those-questions-before-you-design-a-engine--system">Ask yourself those questions before you design a Engine / System</a></h2>
-<p>The following questions are better explain in the chapter: <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/how_entites_can_interact.html">How entites can interact.</a></p>
+<h2 id="ask-yourself-those-questions-before-you-design-an-engine--system"><a class="header" href="#ask-yourself-those-questions-before-you-design-an-engine--system">Ask yourself those questions before you design an Engine / System</a></h2>
+<p>The following questions are better explained in the chapter: <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/how_entites_can_interact.html">How entities can interact.</a></p>
 <ul>
 <li>On what data do we operate?</li>
 <li>What is our domain?</li>
 <li>What is the possible input for our transformation?</li>
-<li>What is the frequency of the data use?</li>
+<li>What is the usage frequency of the data?</li>
 <li>What are we actually transforming?</li>
-<li>How could our algorithm look like?</li>
+<li>What could our algorithm look like?</li>
 <li>How often do we perform our transformation?</li>
 </ul>
 <p>and my answers</p>
@@ -182,14 +182,14 @@
 <p><strong>What kind of data am I going to read?  &amp;&amp; What kind of data am I going to write?</strong></p>
 <p>They translate <code>.write</code> and <code>.components.</code> With those fields, we tell the scheduler what components this system operates. From which components it intends to read from and to which one it writes.</p>
 <p><strong>What kind of data do I want to ignore?</strong> (only important for engines)</p>
-<p>In the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a> you can provide a way to filter your component. Thus you can decide on which components the engine shall run.  The field <code>.excluded</code> is used for this in there you can define which components a entity type shall <strong>not</strong> have. This means that when the engine is scheduled all entities will be ignored with those components. </p>
+<p>In the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a> you can provide a way to filter your component. Thus you can decide on which components the engine shall run.  The field <code>.excluded</code> is used for this in there you can define which components an entity type shall <strong>not</strong> have. This means that when the engine is scheduled all entities will be ignored with those components. </p>
 <p>For more information see <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/tagging_entities.html">Tagging Entities</a> and <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/filtering_entities.html">Filtering Entities</a></p>
 <p><strong>Should my operation be exclusive? Hence not to be executed in parallel?</strong></p>
-<p>If we are sure that our system/engine should not run parallel, we need to tell the scheduler by setting the <code>.exclusive</code> flag to true. It will not run in parallel with any other systems or engines in the entity context. If it is <strong>false</strong>, components and writes will be used to determine parallelism.</p>
+<p>If we are sure that our system/engine should not run parallel, we need to tell the scheduler by setting the <code>.exclusive</code> flag to true. It will not run in parallel with any other systems or engines in the entity context. If it is <strong>false</strong> then the components and writes will be used to determine parallelism.</p>
 <p><strong>In which phase does it run?</strong> </p>
 <p>We can define the <code>.phase</code> to tell the system in which phase we want our operation to run.</p>
 <p><strong>What dependencies do I have?</strong></p>
-<p>We can define dependencies by saying: <code>.before_me</code> and <code>.after_me</code>. We just pass the string has of the other engine/system to this, and the scheduler does the rest.</p>
+<p>We can define dependencies by saying: <code>.before_me</code> and <code>.after_me</code>. We just pass the string hash of the other engine/system to this, and the scheduler does the rest.</p>
 <h2 id="what-is-next"><a class="header" href="#what-is-next">What is next?</a></h2>
 <p>In the next chapter we translate this to actual code!</p>
 

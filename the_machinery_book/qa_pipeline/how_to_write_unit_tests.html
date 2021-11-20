@@ -157,14 +157,14 @@
 <p><strong>Note:</strong> At this point, the testing framework is in the beginning stage. We are extending its capabilities overtime to meet the needs of modern game development QA pipelines.</p>
 </blockquote>
 <h2 id="about-unit-tests"><a class="header" href="#about-unit-tests"><strong>About unit-tests</strong></a></h2>
-<p>You can find the executable alongside <code>tmbuild</code> or the machinery executable in the <code>bin/ folder.</code> If you wanted to make the unit-tests executable globally accessible, you need to add it to your path environment variable. As you may have noticed, ensuring the quality of your build, <code>tmbuild</code> will run all unit tests of all plugins at the end of its build process. When you add a unit test to your plugin, it is guaranteed that its unit tests run every time you build. This is, of course, only guaranteed if the plugin system can find the plugin and its test.</p>
+<p>You can find the executable alongside <code>tmbuild</code> or the machinery executable in the <code>bin/ folder.</code> If you want to make the unit-tests executable globally accessible, you need to add it to your path environment variable. As you may have noticed, ensuring the quality of your build, <code>tmbuild</code> will run all unit tests of all plugins at the end of its build process. When you add a unit test to your plugin, it is guaranteed that its unit tests run every time you build. This is, of course, only guaranteed if the plugin system can find the plugin and its test.</p>
 <blockquote>
 <p><strong>Note:</strong> unit-tests will assume that the plugins live in a folder relative to the executable in the standardized folder plugins. If you need to load a plugin that is not in this folder, you need to provide a valid path via <code>-p/--plugin</code> so that unit-tests can find and run your tests.</p>
 </blockquote>
 <h2 id="how-to-run-tests"><a class="header" href="#how-to-run-tests"><strong>How to run tests</strong></a></h2>
 <p>To run all unit tests, execute unit-test, and it will run all tests besides the slow execution path tests. To run all unit tests, including the <em>&quot;slow&quot;</em> ones, you run <code>unit-tests.exe -s/--slow-paths</code></p>
 <blockquote>
-<p><strong>Note:</strong> You may have noticed that if you run <code>tmbuild</code> regularly, you are lucky and win in the &quot;lottery&quot; from time to time. This means <code>tmbuild</code> will run all unit tests also the slow ones via <code>unit-tests</code>.</p>
+<p><strong>Note:</strong> You may have noticed that if you run <code>tmbuild</code> regularly, you are lucky and win in the &quot;lottery&quot; from time to time. This means <code>tmbuild</code> will run all unit tests including the slow ones via <code>unit-tests</code>.</p>
 </blockquote>
 <h2 id="how-to-constantly-monitor-your-changes"><a class="header" href="#how-to-constantly-monitor-your-changes"><strong>How to constantly monitor your changes</strong></a></h2>
 <p>Like the editor, <code>unit-tests</code> supports <a href="https://ourmachinery.com/post/dll-hot-reloading-in-theory-and-practice/">hot reloading</a>. In a nutshell, whenever plugins are rebuilt <code>unit-tests</code> can detect this and rerun the tests. To run in hot-reload mode start<code>unit-tests</code> with the <code>-r/--hot-reload</code> argument.</p>
@@ -187,8 +187,8 @@ typedef struct tm_unit_test_i
 <p>At this point, we have not tackled the following possible questions:</p>
 <ul>
 <li>Where and how do we register the interface?</li>
-<li>How could this interface look like?</li>
-<li>How does a test itself look like?</li>
+<li>What could this interface look like?</li>
+<li>What does the test itself look like?</li>
 </ul>
 <p><strong>Let us walk through those questions:</strong></p>
 <p><em>Where and how do we register the interface?</em>
@@ -204,8 +204,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <p>Here we register our test interface to the <code>TM_UNIT_TEST_INTERFACE_NAME</code>.</p>
-<p><em>How could this interface look like?</em>
-After we have done this, all we need to do is declarer our <code>my_unit_tests</code>. It is as easy as it gets:</p>
+<p><em>What could this interface look like?</em>
+After we have done this, all we need to do is declare our <code>my_unit_tests</code>. It is as easy as it gets:</p>
 <pre><code class="language-c">#include &lt;foundation/unit_test.h&gt;
 //...
 tm_unit_test_i *entity_unit_test = &amp;(tm_unit_test_i){
@@ -213,7 +213,7 @@ tm_unit_test_i *entity_unit_test = &amp;(tm_unit_test_i){
     .test = test_function,
 };
 </code></pre>
-<p><em>How does a test itself look like?</em>
+<p><em>What does the test itself look like?</em>
 All that's left is to write the test. Let us write this test. In its core all we need to do is write a function of the signature: <code>(tm_unit_test_runner_i *tr, struct tm_allocator_i *a)</code>. In its body, we can define our tests.</p>
 <pre><code class="language-c">static void test_function(tm_unit_test_runner_i *test_runner, tm_allocator_i *allocator)
 {

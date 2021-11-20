@@ -147,14 +147,14 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="tmbuild-package-json-reference"><a class="header" href="#tmbuild-package-json-reference">tmbuild package json Reference</a></h1>
-<p>The <code>tmbuild</code> can package a project based rules set in a <code>.json</code> file. This file needs to adhere the here described scheme.
+<p>The <code>tmbuild</code> can package a project based on rules set in a <code>.json</code> file. This file needs to adhere to the scheme described here.
 Every package <code>json</code> file is structured in its core like this:</p>
 <pre><code>{
     &quot;name&quot;:&quot;package name&quot;,
     &quot;steps&quot;: []
 }
 </code></pre>
-<p>The name will be used to determine the name of the package folder in <code>tm root/build</code> directory. The steps are the key in the system they will be executed linearly after each other and the next step only will be executed if the previous step was successful.
+<p>The name will be used to determine the name of the package folder in <code>tm root/build</code> directory. The steps are the key in the system. They will be executed linearly after each other and the next step will only be executed if the previous step was successful.
 Steps are defined as a normal <code>json</code> object. The following list displays all the functions which can be used plus adequate examples.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
@@ -228,13 +228,13 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 }
 </code></pre>
 <h2 id="actions"><a class="header" href="#actions">Actions</a></h2>
-<p>A action defines what the current step shall do.</p>
+<p>An action defines what the current step shall do.</p>
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>action</td><td>string</td><td>Takes a string as value which will determine what kind of action this step shall do</td></tr>
 </tbody></table>
 <h2 id="filesystem-operations"><a class="header" href="#filesystem-operations">Filesystem operations</a></h2>
 <h3 id="build"><a class="header" href="#build"><code>build</code></a></h3>
-<p>Will build the current directory unless changed via <code>chdir</code> in release and debug setting.  Optional it has a project field if you only want to build one project. One can also modify the build tool and specify that in a extra field.</p>
+<p>Will build the current directory unless changed via <code>chdir</code> in release and debug settings.  Optionally it has a project field if you only want to build one project. One can also modify the build tool and specify that in an extra field.</p>
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>project</td><td>string</td><td>Takes the name of the project it shall build</td></tr>
 <tr><td>build-tool</td><td>string</td><td>Takes the name of the premake build tool which shall be used.</td></tr>
@@ -284,7 +284,7 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <tr><td>root</td><td>string</td><td>The root directory</td></tr>
 </tbody></table>
 <h3 id="delete-file-patterns"><a class="header" href="#delete-file-patterns"><code>delete-file-patterns</code></a></h3>
-<p>Will delete files based on a patter.</p>
+<p>Will delete files based on a pattern.</p>
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>dir</td><td>string</td><td>A folder in the package folder</td></tr>
 <tr><td>dir-patterns</td><td>string array</td><td>What folders shall be deleted. Patterns used in gitignore files can be used e.g. <code>*.zip</code></td></tr>
@@ -309,7 +309,7 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <tr><td>args</td><td>string</td><td>Arguments for <code>docgen.exe</code> to generate documentation</td></tr>
 </tbody></table>
 <h3 id="localize"><a class="header" href="#localize"><code>localize</code></a></h3>
-<p>Will check if all localization are present if not fail.</p>
+<p>Will check if all localizations are present if not fail.</p>
 <h3 id="set-sdk-dir"><a class="header" href="#set-sdk-dir"><code>set-sdk-dir</code></a></h3>
 <p>Will set the SDK if not set dir to the current build directory <code>[cwd]/build/[package-name]</code>. Has no other fields.</p>
 <h3 id="zip"><a class="header" href="#zip"><code>zip</code></a></h3>
@@ -318,7 +318,7 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <tr><td>add-time-stamp</td><td>bool</td><td>If set to true the zipped file will contain the timestamp</td></tr>
 </tbody></table>
 <h3 id="test"><a class="header" href="#test"><code>test</code></a></h3>
-<p>Will execute tests defined in the <code>tests</code> filed.</p>
+<p>Will execute tests defined in the <code>tests</code> field.</p>
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>tests</td><td>string array</td><td>Names of tests</td></tr>
 </tbody></table>

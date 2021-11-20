@@ -190,7 +190,7 @@ static void entity_register_engines_i(struct tm_entity_context_o *ctx)
     tm_entity_api-&gt;register_system(ctx, &amp;winning_system);
 }
 </code></pre>
-<p>In the above example the scheduler will schedule this system after the <code>maze_generation_system</code> system! Since we did not provide any further information in <code>.writes</code> or in <code>.components</code> the scheduler has no other information to work with. In this case its best to not write to anything!</p>
+<p>In the above example the scheduler will schedule this system after the <code>maze_generation_system</code> system! Since we did not provide any further information in <code>.writes</code> or in <code>.components</code> the scheduler has no other information to work with. In this case it is best to not write anything!</p>
 <p><em>Example load function:</em></p>
 <pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
@@ -199,10 +199,10 @@ static void entity_register_engines_i(struct tm_entity_context_o *ctx)
 }
 </code></pre>
 <h2 id="register-your-system-or-engine-to-the-editor"><a class="header" href="#register-your-system-or-engine-to-the-editor">Register your system or engine to the Editor</a></h2>
-<p>You can use the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> to register your engine or system to a entity context that runs only in the Editor. This might be good for components that shall only be used in the Editor.</p>
+<p>You can use the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> to register your engine or system to an entity context that runs only in the Editor. This might be good for components that shall only be used in the Editor.</p>
 <p>The function signature is the same as the for the other interface!</p>
 <h3 id="register-systems--engines-outside-of-the-load-function"><a class="header" href="#register-systems--engines-outside-of-the-load-function">Register systems &amp; engines outside of the load function</a></h3>
-<p>You also can register your System/Engine outside of the load function where ever you have access to the correct Entity Context.</p>
+<p>You also can register your System/Engine outside of the load function wherever you have access to the correct Entity Context.</p>
 
                     </main>
 

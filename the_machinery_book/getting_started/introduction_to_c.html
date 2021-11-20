@@ -154,17 +154,17 @@
 <li><a href="#tutorials">Tutorials</a></li>
 <li><a href="#videos">Videos</a></li>
 <li><a href="#the-machinery-specials">The Machinery specials</a></li>
-<li><a href="#memory-managment">Memory Managment</a>
+<li><a href="#memory-management">Memory Management</a>
 <ul>
 <li><a href="#child-allocators">Child Allocators</a></li>
 <li><a href="#rule-of-the-thumb">Rule of the thumb</a></li>
 <li><a href="#temporary-allocator">Temporary Allocator</a></li>
-<li><a href="#great-use-case-formatted-strings">Great use case: Formatted String's</a></li>
+<li><a href="#great-use-case-formatted-strings">Great use case: Formatted Strings</a></li>
 </ul>
 </li>
 <li><a href="#arrays-vectors-lists-where-is-my-stdvector-or-list">Arrays, Vectors, Lists where is my <code>std::vector&lt;&gt;</code> or <code>List&lt;&gt;</code></a>
 <ul>
-<li><a href="#how-to-access-a-element">How to access a element?</a></li>
+<li><a href="#how-to-access-an-element">How to access an element?</a></li>
 <li><a href="#iterate-over-them">Iterate over them</a></li>
 </ul>
 </li>
@@ -188,13 +188,13 @@
 </ul>
 <h2 id="the-machinery-specials"><a class="header" href="#the-machinery-specials">The Machinery specials</a></h2>
 <p>These are things that differ from std C practices.</p>
-<h2 id="memory-managment"><a class="header" href="#memory-managment">Memory Managment</a></h2>
-<p>While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use <code>malloc, free or realloc</code>. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as <code>malloc</code>), we give a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> object down. This allows you to allocate memory like you would with <code>malloc</code>. Like in std C you need to free the memory allocated via a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> at the end of its use. Otherwise you may leak. Using our build in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. </p>
+<h2 id="memory-management"><a class="header" href="#memory-management">Memory Management</a></h2>
+<p>While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use <code>malloc, free or realloc</code>. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as <code>malloc</code>), we give a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> object down. This allows you to allocate memory like you would with <code>malloc</code>. Like in std C you need to free the memory allocated via a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> at the end of its use. Otherwise you may leak. Using our built-in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. </p>
 <blockquote>
 <p><strong>Note:</strong> more about leak detection and memory usage check the chapter about the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/memory.html">Memory Usage Tab</a></p>
 </blockquote>
 <h3 id="child-allocators"><a class="header" href="#child-allocators">Child Allocators</a></h3>
-<p>In case you check our projects you will find that we are making extensivly use of child allocators. This allowes us to log the use of their memory in our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/memory.html">Memory Usage Tab</a>.</p>
+<p>In case you check our projects you will find that we are making extensive use of child allocators. This allows us to log the use of their memory in our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/memory.html">Memory Usage Tab</a>.</p>
 <p>In case you check our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/write-a-tab.html"><code>Write a custom Tab</code> example</a> you will find in its create function this code:</p>
 <pre><code class="language-c">static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
 {
@@ -225,7 +225,7 @@ static void tab__destroy(tm_tab_o* tab)
     tm_allocator_api-&gt;destroy_child(&amp;a);
 }
 </code></pre>
-<p>The tm_tab_create_context_t context gives you access to an allocator the system allocator. This one again allows you to create a child allocator. You can now use the new allocator in our tab. This is why we store it within our <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_o">tm_tab_o</a> object.
+<p>The tm_tab_create_context_t context gives you access to the system allocator. This one again allows you to create a child allocator. We can now use the new allocator in our tab. This is why we store it within our <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_o">tm_tab_o</a> object.
 In the end, we need to destroy our tab and, therefore free the tab object and destroy the child allocator. <code>tm_allocator_api-&gt;destroy_child(&amp;a);</code>
 If we now shut down the engine and we forgot to free any of the allocations done between create and destroy, we will get a nice log:</p>
 <pre><code class="language-bash">D:\git\themachinery\plugins\my_tab\my_tab.c(100): error leaked 1 allocations 4112 bytes
@@ -244,21 +244,21 @@ tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta)
 // do some magic
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 </code></pre>
-<p>The truth API will now use the temp allocator to create the list. We do not need to call tm_free anything this is all done at the end by <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>!</p>
+<p>The truth API will now use the temp allocator to create the list. We do not need to call tm_free anywhere, this is all done at the end by <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>!</p>
 <p>Sometimes APIs require a normal <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a>, but you are not interested in creating an actual allocator or have access to a memory allocator! No worries, we have your back! The Temp Allocator gives you the following macro: <code>TM_INIT_TEMP_ALLOCATOR_WITH_ADAPTER(ta, a); It generates a normal [tm_allocator_i](https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i) uses the temp allocator as its backing allocator. Hence all allocations done with the allocator will be actually done via the </code>ta<code>allocator! Again at the end, all your memory is freed by</code>TM_SHUTDOWN_TEMP_ALLOCATOR(ta);`</p>
 <blockquote>
 <p><strong>Note</strong>: You also have <code>tm_temp_alloc()</code> they expect a <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_i">tm_temp_allocator_i</a> instead of the <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a>.</p>
 </blockquote>
 <p><strong>What is the Frame Allocator?</strong></p>
-<p>The <a href="https://ourmachinery.com//apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> has a frame allocator. A frame allocator allocates memory for one frame and than at the end of the frame the memory is whiped out. This means any allocation done with it will stay in memory until the end of the frame! The way of using it is: <code>tm_temp_allocator_api.frame_alloc()</code> or <code>tm_frame_alloc()</code></p>
-<h3 id="great-use-case-formatted-strings"><a class="header" href="#great-use-case-formatted-strings">Great use case: Formatted String's</a></h3>
-<p>Both the frame as well as the temp allocator are great for using when you need to have a string with formating! Infact the <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> provided a extra function for this: <code>tm_temp_allocator_api.printf()</code> /<code>tm_temp_allocator_api.frame_printf()</code></p>
+<p>The <a href="https://ourmachinery.com//apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> has a frame allocator. A frame allocator allocates memory for one frame and then at the end of the frame the memory is wiped out. This means any allocation done with it will stay in memory until the end of the frame! The way of using it is: <code>tm_temp_allocator_api.frame_alloc()</code> or <code>tm_frame_alloc()</code></p>
+<h3 id="great-use-case-formatted-strings"><a class="header" href="#great-use-case-formatted-strings">Great use case: Formatted Strings</a></h3>
+<p>Both the frame as well as the temp allocator are great for using when you need to have a string with formatting! Infact the <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> provided an extra function for this: <code>tm_temp_allocator_api.printf()</code> /<code>tm_temp_allocator_api.frame_printf()</code></p>
 <blockquote>
 <p><strong>Note:</strong> About formatting checkout the <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a>  or <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/logging.html">the logging chapter</a></p>
 </blockquote>
 <h2 id="arrays-vectors-lists-where-is-my-stdvector-or-list"><a class="header" href="#arrays-vectors-lists-where-is-my-stdvector-or-list">Arrays, Vectors, Lists where is my <code>std::vector&lt;&gt;</code> or <code>List&lt;&gt;</code></a></h2>
-<p>In the foundation we have a great header file or better inline header file the <code>foundation/carray.inl</code> which contains our soultion for dynamic growing arrays, lists etc.  When used you are resonsible for its memory and have to free the used memory at the end! Do not worry the API makes it quite easy. </p>
-<p>Let us create a Array of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> all we need to do is declear our variable as a pointer of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>.</p>
+<p>In the foundation we have a great header file or better inline header file the <code>foundation/carray.inl</code> which contains our solution for dynamic growing arrays, lists etc.  When used you are responsible for its memory and have to free the used memory at the end! Do not worry, the API makes it quite easy. </p>
+<p>Let us create an Array of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>. All we need to do is declare our variable as a pointer of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>.</p>
 <pre><code class="language-c">tm_tt_id_t* our_ids = 0;
 </code></pre>
 <p>After this we can for example push / add some data to our array:</p>
@@ -275,8 +275,8 @@ tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta)
 // do some magic
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 </code></pre>
-<p><code>tm_the_truth_api-&gt;all_objects_of_type</code> actually returns a <code>carray</code> and you can operate on it with the normal C array methods: e.g. <code>tm_carray_size()</code> or <code>tm_carray_end()</code>. Since it is allocated with the temp allocator you an forget about the allocation at the end as long as you call <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>.</p>
-<h3 id="how-to-access-a-element"><a class="header" href="#how-to-access-a-element">How to access a element?</a></h3>
+<p><code>tm_the_truth_api-&gt;all_objects_of_type</code> actually returns a <code>carray</code> and you can operate on it with the normal C array methods: e.g. <code>tm_carray_size()</code> or <code>tm_carray_end()</code>. Since it is allocated with the temp allocator you can forget about the allocation at the end as long as you call <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>.</p>
+<h3 id="how-to-access-an-element"><a class="header" href="#how-to-access-an-element">How to access an element?</a></h3>
 <p>You can access a carray element normally like you would access it in a plain c array:</p>
 <pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
 tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
@@ -294,7 +294,7 @@ for(uint64_t i = 0;i &lt; tm_carray_size(all_objects);++i){
 }
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 </code></pre>
-<p>An alternative approch is a more for each like approch:</p>
+<p>An alternative approach is a more for each like approach:</p>
 <pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
 tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
 for(tm_tt_id* id = all_objects;id != tm_carray_end(all_objects);++id){

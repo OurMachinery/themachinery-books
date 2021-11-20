@@ -147,8 +147,8 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="access-values"><a class="header" href="#access-values">Access values</a></h1>
-<p>The truth objects (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>) are immutable objects unless you explicitly make them writable. Therefore we do not be afraid of accidently changing a value when reading from a object property.</p>
-<p>To read from a object property we need access to the correct Truth Instance as well as to a object id.  We also need to know what kind of property we want to access. That is why we always want to define our properties in a Header-File. Which allows us and others to find quickly our type definitions. A good practice is to comment on what kind of data type property contains.</p>
+<p>The truth objects (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>) are immutable objects unless you explicitly make them writable. Therefore you do not have to be afraid of accidentally changing a value when reading from an object property.</p>
+<p>To read from an object property we need access to the correct Truth Instance as well as to an object id. We also need to know what kind of property we want to access. That is why we always want to define our properties in a Header-File. Which allows us and others to find quickly our type definitions. A good practice is to comment on what kind of data type property contains.</p>
 <p>Let us assume our object is of type <code>TM_TT_TYPE__RECT</code>:</p>
 <pre><code>enum {
     TM_TT_PROP__RECT__X, // float
@@ -157,13 +157,13 @@
     TM_TT_PROP__RECT__H, // float
 };
 </code></pre>
-<p>When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of a object. The width is stored in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#enumtm_tt_prop__rect">TM_TT_PROP__RECT__W</a>.</p>
+<p>When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of an object. The width is stored in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#enumtm_tt_prop__rect">TM_TT_PROP__RECT__W</a>.</p>
 <p>The function we need to call:</p>
 <pre><code class="language-c">void (*get_float)(tm_the_truth_o *tt,const tm_the_truth_object_o *obj, uint32_t property);
 </code></pre>
-<p>With this knowledge we can assemble the following function that logs the width of a object:</p>
+<p>With this knowledge we can assemble the following function that logs the width of an object:</p>
 <pre><code class="language-c">void log_with(tm_the_truth_o *tt, tm_tt_id_t my_object){   
-	const float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),TM_TT_PROP__RECT__W);
+	const float width = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),TM_TT_PROP__RECT__W);
     TM_LOG(&quot;the width is %f&quot;,width);
 }
 </code></pre>

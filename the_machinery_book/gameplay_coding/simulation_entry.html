@@ -147,7 +147,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="simulation-entry-writing-gameplay-code-in-c"><a class="header" href="#simulation-entry-writing-gameplay-code-in-c">Simulation Entry (writing gameplay code in C)</a></h2>
-<p>This walkthrough show you how to create a <em>simulation entry</em> and what a simulation entry is.</p>
+<p>This walkthrough will show you how to create a <em>simulation entry</em> and what a simulation entry is.</p>
 <p>If you wish to program gameplay using C code, then you need some way for this code to execute. You can either make lots of entity components that do inter-component communication, but if you want a more classic monolithic approach, then you can use a simulation entry.</p>
 <p>In order for your code to execute using a simulation entry you need two things. Firstly you need an implementation of the Simulation Entry interface, <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> (see <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#simulation_entry.h">simulation_entry.h</a>) and secondly you need a Simulation Entry Component attached to an entity.</p>
 <p>Define a <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> in a plugin like this:</p>

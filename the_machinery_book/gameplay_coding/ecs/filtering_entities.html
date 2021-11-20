@@ -150,7 +150,7 @@
 <p>The Machinery knows 2 kind of ways to Tag Entities:</p>
 <ol>
 <li>using the <code>Tag Component</code></li>
-<li>using a <code>Tag Component</code> to filter the Entity Type's</li>
+<li>using a <code>Tag Component</code> to filter the Entity Types</li>
 </ol>
 <p><strong>Table of Content</strong></p>
 <ul>
@@ -158,7 +158,7 @@
 <li><a href="#filtering-entities-by-using-tag-components">Filtering Entities by using Tag Components</a></li>
 </ul>
 <h2 id="filtering-entities-1"><a class="header" href="#filtering-entities-1">Filtering Entities</a></h2>
-<p>In a Engine (<a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>) you can define the <code>.excluded</code> filed. This tells the scheduler that this engine shall <strong>not</strong> run on any entity type that contains these components.</p>
+<p>In an Engine (<a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>) you can define the <code>.excluded</code> field. This tells the scheduler that this engine shall <strong>not</strong> run on any entity type that contains these components.</p>
 <p>Let us assume we have the following entities:</p>
 <pre><code>#1 Entity:
 - Component A
@@ -169,7 +169,7 @@
 - Component B
 - Component D
 </code></pre>
-<p>Now we have a Engine that shall operate on <code>(Component A,Component B)</code> but we do not want it to operate on entities with <code>Component D</code> we could just check in our update loop:</p>
+<p>Now we have an Engine that shall operate on <code>(Component A,Component B)</code> but we do not want it to operate on entities with <code>Component D</code> we could just check in our update loop:</p>
 <pre><code class="language-c">static void entity_register_engines(struct tm_entity_context_o *ctx)
 {
 
@@ -192,7 +192,7 @@
 }
 </code></pre>
 <p>or we could define a component mask and use this to filter but both methods are slow. This is because <code>get_component_by_hash</code> or <code>get_component</code> require us to look up internally the entity + the components and search for them. Its aka a random memory access! </p>
-<p>To avoid all of this we can just tell the engine to ignore all entity types which contain the <code>component_d</code> via the <code>.excluded</code> fied in the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>.</p>
+<p>To avoid all of this we can just tell the engine to ignore all entity types which contain the <code>component_d</code> via the <code>.excluded</code> field in the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>.</p>
 <pre><code class="language-c">    const tm_engine_i movement_engine = {
         .ui_name = &quot;movement_engine&quot;,
         .hash = TM_STATIC_HASH(&quot;movement_engine&quot;, 0x336880a23d06646dULL),
@@ -210,9 +210,9 @@
 <blockquote>
 <p><strong>Note</strong>: You can define a <code>Tag</code> Component which should not be confused with the <code>Tag Component</code>. A tag component is a simple typedef of a <code>unit64_t</code> (or something else) or an empty struct in C++ to a component without properties. The function of this component is it to modify the Entity Type / Archetype to group entities together with them.For more information see the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/tagging_entities.html">Tagging Entities</a> Chapter.</p>
 </blockquote>
-<p>You have a Movement / Input System which should always work. At some point you do not want a entity to receive any input. </p>
+<p>You have a Movement / Input System which should always work. At some point you do not want an entity to receive any input. </p>
 <p><em>Solution 1</em></p>
-<p>To solve this issue you could remove the Movement Component but that would be annyoing because you would lose it state, which might be important.</p>
+<p>To solve this issue you could remove the Movement Component but that would be annoying because you would loose its state, which might be important.</p>
 <p><em>Better Solution</em></p>
 <p>First you define the component:</p>
 <pre><code class="language-c">#define TM_TT_TYPE__PLAYER_NO_MOVE_TAG_COMPONENT &quot;tm_player_no_move_t&quot;
@@ -245,7 +245,7 @@ static void component__create(struct tm_entity_context_o *ctx)
     };
     tm_entity_api-&gt;register_engine(ctx, &amp;movement_engine);
 </code></pre>
-<p>When ever another <code>engine/system</code> decides that a entity should not move anymore it just adds a <code>no_movement_tag_component</code> to the entity.</p>
+<p>Whenever another <code>engine/system</code> decides that an entity should not move anymore it just adds a <code>no_movement_tag_component</code> to the entity.</p>
 <pre><code class="language-c">static void my_other_system(tm_engine_o *inst, tm_engine_update_set_t *data, struct tm_entity_commands_o *commands)
 {
     struct tm_entity_context_o *ctx = (struct tm_entity_context_o *)inst;
@@ -265,7 +265,7 @@ static void component__create(struct tm_entity_context_o *ctx)
     }
 }
 </code></pre>
-<p>As you an see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.</p>
+<p>As you can see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.</p>
 
                     </main>
 

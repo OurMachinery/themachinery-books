@@ -147,7 +147,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="write-a-plugin"><a class="header" href="#write-a-plugin">Write a plugin</a></h2>
-<p>This walkthrough show you how to extend the engine with a custom plugin.</p>
+<p>This walkthrough shows you how to extend the engine with a custom plugin.</p>
 <p>You will learn about:</p>
 <ul>
 <li>What is needed to write a plugin</li>
@@ -157,7 +157,7 @@
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="#where-does-the-engine-search-for-plugins">Where does the engine search for plugins</a></li>
-<li><a href="#inspect-a-existing-example-to-get-inspiration">Inspect a existing example to get inspiration</a>
+<li><a href="#inspect-an-existing-example-to-get-inspiration">Inspect an existing example to get inspiration</a>
 <ul>
 <li><a href="#what-are-the-build-requirements">What are the build Requirements</a></li>
 <li><a href="#build-the-sample-plugin">Build the sample plugin</a></li>
@@ -170,7 +170,7 @@
 <ul>
 <li><a href="#where-does-my-gameplay-code-live">Where does my gameplay code live?</a></li>
 <li><a href="#how-do-i-update-my-tool--tab-content">How do I update my tool / tab content?</a></li>
-<li><a href="#plugin-callbacks-init-sutdown-tick">Plugin callbacks (Init, Sutdown, Tick)</a></li>
+<li><a href="#plugin-callbacks-init-shutdown-tick">Plugin callbacks (Init, Shutdown, Tick)</a></li>
 <li><a href="#how-do-i-deal-with-static-variables">How do I deal with static variables?</a></li>
 </ul>
 </li>
@@ -188,7 +188,7 @@ together with the built-in plugins.</p>
 <p><strong>Note:</strong> When you create a new plugin via the Engine, the <code>premake</code> file will <strong>not</strong> copy the plugin into your global plugin folder. The reason behind this is that we do not know if you want to create a plugin asset. <em>This workflow is currently under review.</em></p>
 <p><strong>Important:</strong> The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the <code>premake</code> file to make it point to the correct version. This workflow is currently under review.</p>
 </blockquote>
-<h2 id="inspect-a-existing-example-to-get-inspiration"><a class="header" href="#inspect-a-existing-example-to-get-inspiration">Inspect a existing example to get inspiration</a></h2>
+<h2 id="inspect-an-existing-example-to-get-inspiration"><a class="header" href="#inspect-an-existing-example-to-get-inspiration">Inspect an existing example to get inspiration</a></h2>
 <p>The easiest way to build a plugin is to start with an existing example. There are three places where
 you can find plugin samples:</p>
 <ol>
@@ -273,7 +273,7 @@ types.</p>
 <li><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/qa_pipeline/how_to_write_unit_tests.html">How to write unit tests</a></li>
 <li><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/qa_pipeline/how_to_write_integration_tests.html">How to write integration tests</a></li>
 </ul>
-<p>The Engine provides a easy way to create plugins for you via the <strong>File -&gt; New Plugins</strong> menu. There you can choose default plugin templates. They come with default files:</p>
+<p>The Engine provides an easy way to create plugins for you via the <strong>File -&gt; New Plugins</strong> menu. There you can choose default plugin templates. They come with default files:</p>
 <p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1" alt="custom tab folder view" /></p>
 <p><em>The folder structure for a custom tab called <code>custom_tab</code>.</em></p>
 <ul>
@@ -286,7 +286,7 @@ types.</p>
 <p><strong>Note:</strong> By default the plugin will not be copied into your Engine's <code>plugins</code> folder. You can modify the <code>premake</code> file or copy it manually in the folder. You can also make use of a Plugin Asset.</p>
 </blockquote>
 <h3 id="structure-of-a-plugin"><a class="header" href="#structure-of-a-plugin">Structure of a plugin</a></h3>
-<p>Every plugin has <code>tm_load_plugin()</code> as its entry point, in there we register everything we need to register to the Engines Plugin System. It is important that you do not execute heavy code in this function or relay on other plugins, since they might not be loaded yet! This function is just there to perform load and register operations.</p>
+<p>Every plugin has <code>tm_load_plugin()</code> as its entry point, in there we register everything we need to register to the Engines Plugin System. It is important that you do not execute heavy code in this function or rely on other plugins, since they might not be loaded yet! This function is just there to perform load and register operations.</p>
 <h4 id="where-does-my-gameplay-code-live"><a class="header" href="#where-does-my-gameplay-code-live">Where does my gameplay code live?</a></h4>
 <p>Your gameplay lives within the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">Systems / Engines</a> of the ECS or in the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/simulation_entry.html">Simulation Entry</a> and they have their own entry points.</p>
 <h4 id="how-do-i-update-my-tool--tab-content"><a class="header" href="#how-do-i-update-my-tool--tab-content">How do I update my tool / tab content?</a></h4>
@@ -294,13 +294,13 @@ types.</p>
 <li>The <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt">tm_tab_vt</a> defines three functions for your tab to be updated:
 <ul>
 <li><code>tm_tab_vt.ui()</code> - Callback for drawing the content of the tab into the specified rect.</li>
-<li><code>tm_tab_vt.ui_serial()</code> - <em>Optional.</em> If implemented, called from the main UI job once all parallel UI rendering (fork/join) has finished. This can be used for parts of the UI that needs to run serially, for example because they call out to non-thread-safe function.</li>
+<li><code>tm_tab_vt.ui_serial()</code> - <em>Optional.</em> If implemented, called from the main UI job once all parallel UI rendering (fork/join) has finished. This can be used for parts of the UI that needs to run serially, for example because they call out to a non-thread-safe function.</li>
 <li><code>tm_tab_vt.hidden_update()</code> - <em>Optional</em>. If the tab wants to do some processing when it is <em>not</em> the selected tab in its tabwell, it can implement this callback. This will be called for all created tabs whose content is currently <em>not</em> visible.</li>
 </ul>
 </li>
 </ul>
 <p>For more information follow the <a href="https://ourmachinery.github.io/themachinery-books/tutorials/">&quot;Write a tab&quot;</a> walkthrough.</p>
-<h4 id="plugin-callbacks-init-sutdown-tick"><a class="header" href="#plugin-callbacks-init-sutdown-tick">Plugin callbacks (Init, Sutdown, Tick)</a></h4>
+<h4 id="plugin-callbacks-init-shutdown-tick"><a class="header" href="#plugin-callbacks-init-shutdown-tick">Plugin callbacks (Init, Shutdown, Tick)</a></h4>
 <p>The plugin system provides also for plugin callbacks. <strong>It is recommended to rely on these calls as little as possible.</strong> You should not rely on those for your gameplay code!</p>
 <ul>
 <li><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_init_i">tm_plugin_init_i</a> - Is typically called as early as possible after all plugins have been loaded.</li>

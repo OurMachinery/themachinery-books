@@ -147,23 +147,23 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h1>
-<p>Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project.  It is possible to save a database project as a directory project and vise versa. </p>
+<p>Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project.  It is possible to save a database project as a directory project and vice versa. </p>
 <blockquote>
 <p><strong>Note:</strong> If resaving a Database project as a Directory project or vice versa, be aware that these are two different projects. Hence changes to one will not apply to the other.</p>
 </blockquote>
 <h2 id="the-directory-project"><a class="header" href="#the-directory-project">The Directory Project</a></h2>
 <p>A directory project saves all your assets, etc., in a specified project folder. This file format is better suited for source control.</p>
-<p><img src="https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?dl=1" alt="view of a direcory project in the Windows explorer" /></p>
+<p><img src="https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?dl=1" alt="view of a directory project in the Windows explorer" /></p>
 <h2 id="the-asset-database-project"><a class="header" href="#the-asset-database-project">The Asset database Project</a></h2>
 <p>The difference between both is that a database project results in one file rather than multiple files. It has the file ending <code>.the_machinery_db</code>. This database will contain all your assets.</p>
-<p><img src="https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?dl=1" alt="data base project in the file explorer" /></p>
-<h2 id="project-managment"><a class="header" href="#project-managment">Project Managment</a></h2>
+<p><img src="https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?dl=1" alt="database project in the file explorer" /></p>
+<h2 id="project-management"><a class="header" href="#project-management">Project Management</a></h2>
 <p><strong>Can I directly add Assets to my project from the File Explorer of my OS?</strong></p>
 <p><strong>No</strong>, the editor will not import assets directly added to the project folder via your OS File Explorer. However you can modify The Machinery files (in a directory project) during runtime or before. If you do this the Engine will warn you.</p>
 <blockquote>
 <p>Changes to the project on disk where detected: [Import] [Ignore]</p>
 </blockquote>
-<p>More information of this topic <a href="https://github.com/OurMachinery/themachinery-public/issues/435">here</a>.</p>
+<p>More information on this topic <a href="https://github.com/OurMachinery/themachinery-public/issues/435">here</a>.</p>
 <p>You handle the main project management steps through the <strong>File Menu.</strong> Such as Create and Save. By default, (1) The Machinery will save your project as a directory project. However you can save your current project as an Asset Database (2).</p>
 <p><img src="https://www.dropbox.com/s/qosmerpjea1agss/tm_guide_saving_project.png?dl=1" alt="" /></p>
 <h2 id="possible-folder-structure-for-a-project"><a class="header" href="#possible-folder-structure-for-a-project">Possible folder structure for a project</a></h2>
@@ -177,7 +177,7 @@
 </ol>
 <p><strong>Example <code>src</code> folder</strong></p>
 <p><img src="https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?dl=1" alt="" /></p>
-<p>In here we have one single <code>premake</code> file and a single <code>libs.json</code> as well as the <code>libs</code> folder. This allowes you to run <code>tmbuild</code> just in this folder and all plugins or the once you want to build can be build at once. Besides it will generate one solution for Visual Studio. In this example all plugins will copy their <code>.dll/so</code> files into the <code>../plugins</code> folder. </p>
+<p>In here we have one single <code>premake</code> file and a single <code>libs.json</code> as well as the <code>libs</code> folder. This allows you to run <code>tmbuild</code> just in this folder and all plugins or the ones you want to build can be built at once. Besides it will generate one solution for Visual Studio. In this example all plugins will copy their <code>.dll/so</code> files into the <code>../plugins</code> folder. </p>
 <p>A possible <code>.gitignore</code></p>
 <pre><code>plugins/*
 src/libs/*

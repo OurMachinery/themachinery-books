@@ -150,7 +150,7 @@
 <p>You can create an object of a Truth Type via two steps:</p>
 <ol>
 <li>You need to obtain the Type from the type hash. We call the <code>object_type_from_name_hash</code> to obtain the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a></li>
-<li>You need to create an Object from that Type. We call <code>create_object_of_type</code> to create a object <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> . We pass <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a> because we do not need a undo scope for our example.</li>
+<li>You need to create an Object from that Type. We call <code>create_object_of_type</code> to create an object <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> . We pass <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a> because we do not need an undo scope for our example.</li>
 </ol>
 <p>First, we need to have access to a Truth instance. Otherwise, we could not create an object. In this example, we create a function.</p>
 <pre><code class="language-c">tm_tt_id_t create_my_type_object(tm_the_truth_o *tt)
@@ -160,7 +160,7 @@
     return my_type_object;
 }
 </code></pre>
-<p>Where ever we call this function we can than edit and modify the type and add content to it!</p>
+<p>Wherever we call this function we can then edit and modify the type and add content to it!</p>
 <p>The alternative approach is to use the &quot;Quick Object Creation function&quot;.</p>
 <pre><code class="language-c">tm_tt_id_t quick_create_my_type_object(tm_the_truth_o *tt)
 {

@@ -149,24 +149,24 @@
                         <h1 id="how-to-design-a-systems--engines"><a class="header" href="#how-to-design-a-systems--engines">How to design a Systems &amp; Engines</a></h1>
 <p>In the Machinery, you provide the behavior for your gameplay code via Engines and Systems. The difference between Engines and Systems is that Engines provide an explicitly defined subset of components while Systems give you only access to the Entity Context.</p>
 <blockquote>
-<p><strong>Note:</strong> Unsure what a System or a Engine is? Please read  <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">here</a></p>
+<p><strong>Note:</strong> Unsure what a System or an Engine is? Please read  <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">here</a></p>
 </blockquote>
 <p>This separation means that Engines are better used for high-frequency operations on many entities. At the same time, Systems are better used for broader operations such as input on a few Entities / Single entities.</p>
 <blockquote>
-<p><strong>Documentation:</strong> The difference between <em>engines</em> and <em>systems</em> is that engines are fed component data, where as systems are not. Thus, systems are useful when the data is stored externally from the components (for example to update a physics simulation), whereas <em>engines</em> are more efficient when the data  is stored in the components. (You could use a <em>system</em> to update data in components, but it would be inefficient, because you would have to perform a lot of lookups to access the component data.)</p>
+<p><strong>Documentation:</strong> The difference between <em>engines</em> and <em>systems</em> is that engines are fed component data, whereas systems are not. Thus, systems are useful when the data is stored externally from the components (for example to update a physics simulation), whereas <em>engines</em> are more efficient when the data  is stored in the components. (You could use a <em>system</em> to update data in components, but it would be inefficient, because you would have to perform a lot of lookups to access the component data.)</p>
 </blockquote>
 <p>These are a couple of questions you should ask yourself in advance.</p>
 <ul>
 <li>On what data do we operate?</li>
 <li>What is our domain?</li>
 <li>What is the possible input for our transformation?</li>
-<li>What is the frequency of the data use?</li>
+<li>What is the usage frequency of the data?</li>
 <li>What are we actually transforming?</li>
-<li>How could our algorithm look like?</li>
+<li>What could our algorithm look like?</li>
 <li>How often do we perform our transformation?</li>
 </ul>
 <blockquote>
-<p>More details about those questions click here : <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/how_entites_can_interact.html">How entites can interact.</a></p>
+<p>More details about those questions click here : <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/how_entites_can_interact.html">How entities can interact.</a></p>
 </blockquote>
 <p>At the end of this, you should be able to answer the following questions:</p>
 <ul>
@@ -179,8 +179,8 @@
 <p>Those answers are important for the automatic scheduling of the Systems/Engines. Based on all those inputs, the Entity System can determine when and how to schedule what.</p>
 <h2 id="best-practice"><a class="header" href="#best-practice">Best Practice</a></h2>
 <ul>
-<li><strong>System/Engine Scope:</strong> Systems should be designed to have one job only. This can be difficult at times, especially when designing new features. Therefore its fine to create first a bigger system and than with the time make them smaller. If you find that your engine/system does a lot of things, don't worry. In an ECS things are decoupled from everything else, therefore it is generally pretty easy to split them up into smaller unites. This allows you to increase reusability of systems</li>
-<li><strong>System/Engine Scheduling:</strong> Always provide a write list and an list of components your Engine/System is operating on. This is important so the scheduler can do its best! Also do not forget to make use of <code>.before_me</code>, <code>.after_me</code> and <code>.phase</code> more about this in the next chapter!</li>
+<li><strong>System/Engine Scope:</strong> Systems should be designed to have one job only. This can be difficult at times, especially when designing new features. Therefore it is fine to first create a bigger system and then with time make them smaller. If you find that your engine/system does a lot of things, don't worry. In an ECS things are decoupled from everything else, therefore it is generally pretty easy to split them up into smaller units. This allows you to increase reusability of systems</li>
+<li><strong>System/Engine Scheduling:</strong> Always provide a write list and a list of components your Engine/System is operating on. This is important so the scheduler can do its best! Also do not forget to make use of <code>.before_me</code>, <code>.after_me</code> and <code>.phase</code> more about this in the next chapter!</li>
 </ul>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <pre><code class="language-c">    const tm_engine_i movement_engine = {
@@ -200,7 +200,7 @@
 <li><code>transform_component</code></li>
 <li><code>mover_component</code></li>
 </ul>
-<p>components. The scheduler can now look for those components in other engines and determine based on the .<code>write</code> field how to schedule it efficient.</p>
+<p>components. The scheduler can now look for those components in other engines and determine based on the .<code>write</code> field how to schedule it efficiently.</p>
 <p>In this example the scheduler can schedule any engine that writes to the keyboard and the movement component that the same time as this engine if they do not write to the transform and mover component!</p>
 <h2 id="what-is-next"><a class="header" href="#what-is-next">What is next?</a></h2>
 <p>More details on writing your own system or engine is explained in the next chapter</p>

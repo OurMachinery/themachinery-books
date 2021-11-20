@@ -165,7 +165,7 @@
 <p><strong>Important:</strong> you can only edit an object that is part of the same instance! Hence your <code>my_object</code> must be created within this instance of the Truth (<code>tt</code>).</p>
 </blockquote>
 <h2 id="1-make-the-object-writable"><a class="header" href="#1-make-the-object-writable">1. Make the object writable</a></h2>
-<p>To edit an object, we need to make it writeable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called <code>write</code>. When we call it on an object, we make it writable.</p>
+<p>To edit an object, we need to make it writable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called <code>write</code>. When we call it on an object, we make it writable.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
 {
     const tm_tt_type_t type = tm_tt_type(my_object);
@@ -206,7 +206,7 @@
     tm_the_truth_api-&gt;commit(tt, my_object_w, TM_TT_NO_UNDO_SCOPE);
 }
 </code></pre>
-<p>If we wanted to provide a undo scope we need to create one:</p>
+<p>If we wanted to provide an undo scope we need to create one:</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
 {
     const tm_tt_type_t type = tm_tt_type(my_object);
@@ -218,7 +218,7 @@
 </code></pre>
 <p>Now this action can be reverted in the Editor.</p>
 <h2 id="4-get-a-value"><a class="header" href="#4-get-a-value">4. Get a value</a></h2>
-<p>Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_read()">tm_tt_read</a>. This will give us a immutable (read only) pointer to the underlaying object. This allows us to read the data from it.</p>
+<p>Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_read()">tm_tt_read</a>. This will give us an immutable (read only) pointer to the underlying object. This allows us to read the data from it.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
 {
     const tm_tt_type_t type = tm_tt_type(my_object);

@@ -150,7 +150,7 @@
 <p>The Machinery knows 2 kind of ways to Tag Entities:</p>
 <ol>
 <li>using the <code>Tag Component</code></li>
-<li>using a <code>Tag Component</code> to filter the Entity Type's</li>
+<li>using a <code>Tag Component</code> to filter the Entity Type</li>
 </ol>
 <p><strong>Table of Content</strong></p>
 <ul>
@@ -164,31 +164,31 @@
 <li><a href="#filtering">Filtering</a></li>
 </ul>
 <h2 id="using-the-tag-component"><a class="header" href="#using-the-tag-component">Using the Tag Component</a></h2>
-<p>The difference is that the first solution can be used via the <code>tag_component_api</code> and you can add Tags via the Editor to any Entity that has a Tag Component. Later on in your System or Engine you can access the Taged Entity.</p>
+<p>The difference is that the first solution can be used via the <code>tag_component_api</code> and you can add Tags via the Editor to any Entity that has a Tag Component. Later on in your System or Engine you can access the Tagged Entity.</p>
 <blockquote>
-<p><strong>Note:</strong> This is not the most performant solution but a easy way for entities which do not exist many times in the world. Its a nice way to identify one or two specifc entities for some specific logic.</p>
+<p><strong>Note:</strong> This is not the most performant solution but an easy way for entities which do not exist many times in the world. It is a nice way to identify one or two specific entities for some specific logic.</p>
 </blockquote>
 <h3 id="adding-them-via-the-editor"><a class="header" href="#adding-them-via-the-editor">Adding them via The Editor</a></h3>
-<p>You need to select a Entity and <strong>Right Click -&gt; Add Component</strong></p>
+<p>You need to select an Entity and <strong>Right Click -&gt; Add Component</strong></p>
 <p><img src="https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?dl=1" alt="" /></p>
-<p>This will add the <em>Entity Tag</em> Component. When selected you have the chance to add Tags to the Entity by using a simple auto complete text box. </p>
-<p><strong>Beaware:</strong> The Engine will create a entity tag folder in your root folder. This is also the place where the Entity Tag API will search for the assets.</p>
+<p>This will add the <em>Entity Tag</em> Component. When selected you have the chance to add Tags to the Entity by using a simple autocomplete textbox. </p>
+<p><strong>Beware:</strong> The Engine will create an entity tag folder in your root folder. This is also the place where the Entity Tag API will search for the assets.</p>
 <p><img src="https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?dl=1" alt="" /></p>
 <h3 id="adding-and-accessing-tags-via-c"><a class="header" href="#adding-and-accessing-tags-via-c">Adding and Accessing Tags via C</a></h3>
 <p>You can also add tags via the <code>tag_component_api</code> but you need access to the <code>Tag Component Manager</code>. In your System or on Simulate Entry <code>start()</code>:</p>
 <pre><code class="language-c">tm_tag_component_manager_o *tag_mgr = (tm_tag_component_manager_o *)tm_entity_api-&gt;component_manager(ctx, tag_component);
 tm_tag_component_api-&gt;add_tag(tag_mgr, my_to_tagged_entity, TM_STATIC_HASH(&quot;player&quot;, 0xafff68de8a0598dfULL));
 </code></pre>
-<p>You can also recive entities like this:</p>
+<p>You can also receive entities like this:</p>
 <pre><code class="language-c">tm_tag_component_manager_o *tag_mgr = (tm_tag_component_manager_o *)tm_entity_api-&gt;component_manager(ctx, tag_component);
 tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM_STATIC_HASH(&quot;upper_bounding_box&quot;, 0x1afc9d34ecb740ecULL));
 </code></pre>
-<p>And than you can read the data from the entity via <code>get_component</code>. This is where you will perform a random look up and this might be slow. Therefore it is mostly recommend to use this for simple interactions where performance is not needed.</p>
+<p>And than you can read the data from the entity via <code>get_component</code>. This is where you will perform a random look up and this might be slow. Therefore it is mostly recommended to use this for simple interactions where performance is not needed.</p>
 <blockquote>
 <p><strong>Note:</strong> Tags do not need to exist in the Asset Browser, therefore you can add any label to the entity. Keep in mind that they will <strong>not</strong> be created in the Asset Browser!</p>
 </blockquote>
 <h2 id="tag-components---entity-type-filter"><a class="header" href="#tag-components---entity-type-filter">Tag Components - Entity Type Filter</a></h2>
-<p>On the other hand you can define a <code>Tag</code> Component which should not be confused with the priviously explained <code>Tag Component</code>. A tag component is a simple typedef of a <code>unit64_t</code> (or something else) or an empty struct in C++ to a component without properties. A tag is a component that does not have any data.  The function of this component is it to modify the Entity Type / Archetype to group entities together with them.</p>
+<p>On the other hand you can define a <code>Tag</code> Component which should not be confused with the previously explained <code>Tag Component</code>. A tag component is a simple typedef of a <code>unit64_t</code> (or something else) or an empty struct in C++ to a component without properties. A tag is a component that does not have any data. The function of this component is to modify the Entity Type / Archetype to group entities together with them.</p>
 <p><em>Example:</em></p>
 <p>You have the following components:</p>
 <ul>
@@ -200,7 +200,7 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 <li>System A </li>
 <li>System B</li>
 </ul>
-<p>They both shall operate on Component A &amp; B but have different logic based on what the Components represent. To archive this you just add to a Entity a tag component:</p>
+<p>They both shall operate on Component A &amp; B but have different logic based on what the Components represent. To archive this you just add a tag component to each Entity:</p>
 <pre><code>#1 Entity:
 - Component A
 - Component B
@@ -212,7 +212,7 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 </code></pre>
 <p>In this example System B would not operate on both Entities if we use the <code>.excluded</code> filter to exclude <code>My Tag For System A</code> from the System.</p>
 <h2 id="filtering"><a class="header" href="#filtering">Filtering</a></h2>
-<p>To see a realworld application of Tag components to filter entity types checkout the next chapter: <a href="">Filtering</a></p>
+<p>To see a real world application of Tag components to filter entity types checkout the next chapter: <a href="">Filtering</a></p>
 
                     </main>
 

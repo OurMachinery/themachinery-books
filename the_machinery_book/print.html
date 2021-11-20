@@ -201,16 +201,16 @@ user / year.</p>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/creation_graphs/concept.html">Creation Graph</a></td><td>The creation graph is (as the name implies) a graph based tool for creating assets. It allows developers to define and alter various types of assets using visual scripting. More broadly speaking, the creation graph can be used for arbitrary data processing tasks. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/creation_graphs/concept.html">More</a></td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/creation_graphs/node_types.html">Creation Graph GPU Nodes</a></td><td>Creation Graphs contain nodes that can execute on both the CPU and GPU. The GPU nodes usually become part of a shader program when the creation graph is compiled. There are nodes to transition from the CPU to GPU.</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/visual-scripting.html">Entity Graph</a></td><td>The Machinery’s Visual Scripting Language for game play. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/visual-scripting.html">More</a></td></tr>
-<tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/prototypes.html">Prototype</a></td><td>Our prototype system allows entity assets to be used inside other entities. Therefore, you can create an entity asset that represents a room and then creates a house entity that has a bunch of these room entities placed into it. For more information on Prototypes, check out its <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/prototypes.html">Prototypes</a>. (Also called Prefabs in other Engines)</td></tr>
+<tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/prototypes.html">Prototype</a></td><td>Our prototype system allows entity assets to be used inside other entities. Therefore, you can create an entity asset that represents a room and then create a house entity that has a bunch of these room entities placed into it. For more information on Prototypes, check out its <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/prototypes.html">Prototypes</a>. (Also called Prefabs in other Engines)</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_editor/properties_tab.html">Properties Tab</a></td><td>Whenever an object gets focused in the asset browser or entity tree, properties of it can be edited from the properties tab.</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_editor/asset_browser.html">Asset Browser</a></td><td>Shows all assets in your project in an explorer-style fashion. An asset can be thought of as the equivalent of a file in the OS. Some assets such as entities can be dragged and dropped from the asset browser into the scene tab.</td></tr>
-<tr><td>Graph Tab/View</td><td>A tab that can either represent a Entity Graph or a Creation Graph.</td></tr>
+<tr><td>Graph Tab/View</td><td>A tab that can either represent an Entity Graph or a Creation Graph.</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/the_editor/entity_tree_tab.html">Entity Tree</a></td><td>Hierarchical view of the Entity currently being edited.<br>In The Machinery, every entity has a parent except for the root entity of the world. (which is generally called “world”).<br>This Tab Allows the user to quickly reason and re-organize the hierarchy by adding, removing, expanding and reordering entities.</td></tr>
-<tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/simulation_entry.html">Simulation Entry</a></td><td>Is a generic concept to provide functionality for the game play to start, stop and update (tick). This concept consists out of two components: The Simulation Entry Interface (tm_simulation_entry_i) as simulation entry component. The interface is there to provide functionality, while the component is the connection with the simulation.</td></tr>
+<tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/simulation_entry.html">Simulation Entry</a></td><td>Is a generic concept to provide functionality for the game play to start, stop and update (tick). This concept consists of two components: The Simulation Entry Interface (tm_simulation_entry_i) as simulation entry component. The interface is there to provide functionality, while the component is the connection with the simulation.</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">Engine (ECS)</a></td><td>An <em>engine</em> is an update function that runs on all entities that have certain components. (Jobified)</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">System (ECS)</a></td><td>A <em>system</em> is an update function that runs on the entire entity context.</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">Entity Context</a></td><td>It’s the core runtime Entity-Component-System of The Machinery.<br>It’s main two components are:<br><br>- Entities (see Entity)<br>- Systems and Engines</td></tr>
-<tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">Entity</a></td><td>In The Machinery a game world is build out of different entities which are defined through different components. Those components create the building blocks of each entity and give them their meaning.</td></tr>
+<tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">Entity</a></td><td>In The Machinery a game world is built out of different entities which are defined through different components. Those components create the building blocks of each entity and give them their meaning.</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/what_are_components.html">Components</a></td><td>A building block for entities.  Moreover a <em>component</em> is a type of data that can be associated with an entity.</td></tr>
 <tr><td>DCC Asset</td><td>Digital Content Creation Assets. Any type of assets created by any digital content creation tool such as Blender or Maya.</td></tr>
 <tr><td><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//extending_the_machinery/the_plugin_system.html">Plugin</a></td><td>The Machinery is built around a plugin model. All features, even the built-in ones, are provided through plugins. You can extend The Machinery by writing your own plugins. When The Machinery launches, it loads all the plugins named <code>tm_*.dll</code> in its <code>plugins/</code> folder. If you write your own plugins, name them so that they start with <code>tm_</code> and put them in this folder, they will be loaded together with the built-in plugins.</td></tr>
@@ -221,12 +221,12 @@ user / year.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
 <p>This section addresses common problems that can arise when using The Machinery. </p>
 <h2 id="windows-10-editor"><a class="header" href="#windows-10-editor">Windows 10 Editor</a></h2>
-<p>When it comes to crashes on Windows which you cannot debug yourself. You can enable a full crash dumb via the following file <code>utils/enable-full-dumps.reg</code>. The dumps can be found in the folder <code>AppData\Local\The Machinery</code> and then in the  <code>CrashDumps</code> folder. In case of a error report it can be very helpful to provide access to the crash dump. You can submit bugs on our public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a>. Please do not forget to mention your current Engine version.</p>
-<p>In order to obtain log files you have to go to the same folder where you can find the CrashDumps (<code>AppData\Local``\The Machinery</code>) just this time you can find them in the <code>Logs</code> folder.</p>
+<p>When it comes to crashes on Windows which you cannot debug yourself. You can enable a full crash dumb via the following file <code>utils/enable-full-dumps.reg</code>. The dumps can be found in the folder <code>AppData\Local\The Machinery</code> and then in the  <code>CrashDumps</code> folder. In case of an error report it can be very helpful to provide access to the crash dump. You can submit bugs on our public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a>. Please do not forget to mention your current Engine version.</p>
+<p>In order to obtain log files you have to go to the same folder where you can find the CrashDumps (<code>AppData\Local\The Machinery</code>) but they till instead be in the <code>Logs</code> subfolder.</p>
 <h2 id="windows-11"><a class="header" href="#windows-11">Windows 11</a></h2>
-<p>We have not tested windows 11 yet therefore possible problems are to be expected. Please report them to us on public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a> so we can keep track of them.</p>
+<p>We have not tested windows 11 yet therefore possible problems are to be expected. Please report them to us on the public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a> so we can keep track of them.</p>
 <h2 id="tmbuild-cannot-find-build-tools"><a class="header" href="#tmbuild-cannot-find-build-tools">tmbuild cannot find build tools</a></h2>
-<p>In case of a none typical installation of Visual Studios you have to provide to tmbuild the correct environment variables: <code>TM_VS2017_DIR</code> or <code>TM_VS2019_DIR</code>. They need to point to the root directory of your Visual Studio installation.</p>
+<p>In case of a non typical installation of Visual Studios you have to provide to tmbuild the correct environment variables: <code>TM_VS2017_DIR</code> or <code>TM_VS2019_DIR</code>. They need to point to the root directory of your Visual Studio installation.</p>
 <h2 id="tmbuild-cannot-find-environment-variables"><a class="header" href="#tmbuild-cannot-find-environment-variables">tmbuild cannot find environment variables</a></h2>
 <p>Before we can build any project, we need to set up our environment. You need to set the following environment variable: (If this one has not been set the tool will not be able to build)</p>
 <ul>
@@ -363,23 +363,23 @@ license information.</p>
 <p>To use the editor, you must log in with an Our Machinery account. If you haven't done so already, press the <em>Sign Up</em> button to create an account, or go directly to https://ourmachinery.com/sign-up.html.</p>
 <p>In addition, you also need to agree to our <a href="https://www.ourmachinery.com/eula.html">EULA</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h1>
-<p>Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project.  It is possible to save a database project as a directory project and vise versa. </p>
+<p>Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project.  It is possible to save a database project as a directory project and vice versa. </p>
 <blockquote>
 <p><strong>Note:</strong> If resaving a Database project as a Directory project or vice versa, be aware that these are two different projects. Hence changes to one will not apply to the other.</p>
 </blockquote>
 <h2 id="the-directory-project"><a class="header" href="#the-directory-project">The Directory Project</a></h2>
 <p>A directory project saves all your assets, etc., in a specified project folder. This file format is better suited for source control.</p>
-<p><img src="https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?dl=1" alt="view of a direcory project in the Windows explorer" /></p>
+<p><img src="https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?dl=1" alt="view of a directory project in the Windows explorer" /></p>
 <h2 id="the-asset-database-project"><a class="header" href="#the-asset-database-project">The Asset database Project</a></h2>
 <p>The difference between both is that a database project results in one file rather than multiple files. It has the file ending <code>.the_machinery_db</code>. This database will contain all your assets.</p>
-<p><img src="https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?dl=1" alt="data base project in the file explorer" /></p>
-<h2 id="project-managment"><a class="header" href="#project-managment">Project Managment</a></h2>
+<p><img src="https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?dl=1" alt="database project in the file explorer" /></p>
+<h2 id="project-management"><a class="header" href="#project-management">Project Management</a></h2>
 <p><strong>Can I directly add Assets to my project from the File Explorer of my OS?</strong></p>
 <p><strong>No</strong>, the editor will not import assets directly added to the project folder via your OS File Explorer. However you can modify The Machinery files (in a directory project) during runtime or before. If you do this the Engine will warn you.</p>
 <blockquote>
 <p>Changes to the project on disk where detected: [Import] [Ignore]</p>
 </blockquote>
-<p>More information of this topic <a href="https://github.com/OurMachinery/themachinery-public/issues/435">here</a>.</p>
+<p>More information on this topic <a href="https://github.com/OurMachinery/themachinery-public/issues/435">here</a>.</p>
 <p>You handle the main project management steps through the <strong>File Menu.</strong> Such as Create and Save. By default, (1) The Machinery will save your project as a directory project. However you can save your current project as an Asset Database (2).</p>
 <p><img src="https://www.dropbox.com/s/qosmerpjea1agss/tm_guide_saving_project.png?dl=1" alt="" /></p>
 <h2 id="possible-folder-structure-for-a-project"><a class="header" href="#possible-folder-structure-for-a-project">Possible folder structure for a project</a></h2>
@@ -393,7 +393,7 @@ license information.</p>
 </ol>
 <p><strong>Example <code>src</code> folder</strong></p>
 <p><img src="https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?dl=1" alt="" /></p>
-<p>In here we have one single <code>premake</code> file and a single <code>libs.json</code> as well as the <code>libs</code> folder. This allowes you to run <code>tmbuild</code> just in this folder and all plugins or the once you want to build can be build at once. Besides it will generate one solution for Visual Studio. In this example all plugins will copy their <code>.dll/so</code> files into the <code>../plugins</code> folder. </p>
+<p>In here we have one single <code>premake</code> file and a single <code>libs.json</code> as well as the <code>libs</code> folder. This allows you to run <code>tmbuild</code> just in this folder and all plugins or the ones you want to build can be built at once. Besides it will generate one solution for Visual Studio. In this example all plugins will copy their <code>.dll/so</code> files into the <code>../plugins</code> folder. </p>
 <p>A possible <code>.gitignore</code></p>
 <pre><code>plugins/*
 src/libs/*
@@ -657,7 +657,7 @@ happens via the &quot;Scene Entity&quot; node. </p>
 </ol>
 <p>You do not like C? Do not worry! You can use C++, Zig, Rust, or any other language that binds to C.</p>
 <h3 id="where-are-my-materials-shaders-textures-particle-effects"><a class="header" href="#where-are-my-materials-shaders-textures-particle-effects">Where are my Materials, Shaders, Textures, Particle Effects?</a></h3>
-<p>All of these can be represented via the the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/creation_graphs/concept.html">Creation Graphs</a>.</p>
+<p>All of these can be represented via the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/creation_graphs/concept.html">Creation Graphs</a>.</p>
 <h3 id="project-data"><a class="header" href="#project-data">Project data?</a></h3>
 <p>The Machinery supports two types of Project formats:</p>
 <ol>
@@ -676,7 +676,7 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <blockquote>
 <p><strong>Note</strong> that import of large assets can take a significant amount of time. You can monitor the progress of the import operation in the status bar.</p>
 </blockquote>
-<p>For more information see  <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html">How to import assets</a> or checkout our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//editing_workflows/asset_pipeline.html">Example Workflow for Importing an Asset and create a Entity</a></p>
+<p>For more information see  <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html">How to import assets</a> or checkout our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//editing_workflows/asset_pipeline.html">Example Workflow for Importing an Asset and create an Entity</a></p>
 <h3 id="what-are-common-file-formats-supported"><a class="header" href="#what-are-common-file-formats-supported">What are common file formats supported?</a></h3>
 <table><thead><tr><th align="left">Asset Type</th><th align="left">Supported Formats</th></tr></thead><tbody>
 <tr><td align="left">3D</td><td align="left">.fbx, .obj, .gltf</td></tr>
@@ -803,10 +803,10 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <h3 id="where-are-my-nodes"><a class="header" href="#where-are-my-nodes">Where are my Nodes?</a></h3>
 <p>The Machinery has no concept of Nodes in the sense as Godot does. The Engine is based around Entities and Components.</p>
 <p>Everything within the Game World lives within the Entity Component System (ECS). To be exact, it lives within the Entity Context, an isolated world of entities. Your Nodes are split into data and behaviour.</p>
-<p>You would usually couple your logic together with data when working in Godot. This coupling happens because Godot uses the Object-oriented approach while The Machinery uses the Data-Oriented approach. Hence you would inherited classes to compose different kind of behaviour. </p>
-<p>In The Machinery, you separated them into Components and Systems / Engines. They represent your data and Systems or Engines that represent your Behaviour. They operate on multiple entities at the same time. Each Entity Context (the isolated world of Entities) has several systems/engines registered to them. In the following image we broke down a example player in Godot into separate parts (components) and its methods into separate Engines.</p>
+<p>You would usually couple your logic together with data when working in Godot. This coupling happens because Godot uses the Object-oriented approach while The Machinery uses the Data-Oriented approach. Hence you would inherit classes to compose different kinds of behaviour. </p>
+<p>In The Machinery, you separated them into Components and Systems / Engines. They represent your data and Systems or Engines that represent your Behaviour. They operate on multiple entities at the same time. Each Entity Context (the isolated world of Entities) has several systems/engines registered to them. In the following image we broke down an example player in Godot into separate parts (components) and its methods into separate Engines.</p>
 <p><img src="https://www.dropbox.com/s/mw0hb5itj5zck7g/tm_guide_object_to_ecs.png?dl=1" alt="" /></p>
-<p>Important to understand is that the Player Class on the left does not equal to the Entity on the left! Since the Entity on the left is just a weak reference to the components, it does not own the data, unlike the Player Class. The Components together form the player and the Systems/Engines on the far right just consume on a few of those components, they do not need to understand them all!</p>
+<p>Important to understand is that the Player Class on the left does not equal the Entity on the left! Since the Entity on the left is just a weak reference to the components, it does not own the data, unlike the Player Class. The Components together form the player and the Systems/Engines on the far right just consume a few of those components, they do not need to understand them all!</p>
 <p>This setup allows you to compose entities that are reusing the same engines/systems! For example all your other entities that can move can use the Movement Engine and Jump Engine to get the jump function.  All you need to do is compose entities with the:</p>
 <ul>
 <li>Transform Component</li>
@@ -859,17 +859,17 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <li><a href="getting_started/introduction_to_c.html#tutorials">Tutorials</a></li>
 <li><a href="getting_started/introduction_to_c.html#videos">Videos</a></li>
 <li><a href="getting_started/introduction_to_c.html#the-machinery-specials">The Machinery specials</a></li>
-<li><a href="getting_started/introduction_to_c.html#memory-managment">Memory Managment</a>
+<li><a href="getting_started/introduction_to_c.html#memory-management">Memory Management</a>
 <ul>
 <li><a href="getting_started/introduction_to_c.html#child-allocators">Child Allocators</a></li>
 <li><a href="getting_started/introduction_to_c.html#rule-of-the-thumb">Rule of the thumb</a></li>
 <li><a href="getting_started/introduction_to_c.html#temporary-allocator">Temporary Allocator</a></li>
-<li><a href="getting_started/introduction_to_c.html#great-use-case-formatted-strings">Great use case: Formatted String's</a></li>
+<li><a href="getting_started/introduction_to_c.html#great-use-case-formatted-strings">Great use case: Formatted Strings</a></li>
 </ul>
 </li>
 <li><a href="getting_started/introduction_to_c.html#arrays-vectors-lists-where-is-my-stdvector-or-list">Arrays, Vectors, Lists where is my <code>std::vector&lt;&gt;</code> or <code>List&lt;&gt;</code></a>
 <ul>
-<li><a href="getting_started/introduction_to_c.html#how-to-access-a-element">How to access a element?</a></li>
+<li><a href="getting_started/introduction_to_c.html#how-to-access-an-element">How to access an element?</a></li>
 <li><a href="getting_started/introduction_to_c.html#iterate-over-them">Iterate over them</a></li>
 </ul>
 </li>
@@ -893,13 +893,13 @@ happens via the &quot;Scene Entity&quot; node. </p>
 </ul>
 <h2 id="the-machinery-specials"><a class="header" href="#the-machinery-specials">The Machinery specials</a></h2>
 <p>These are things that differ from std C practices.</p>
-<h2 id="memory-managment"><a class="header" href="#memory-managment">Memory Managment</a></h2>
-<p>While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use <code>malloc, free or realloc</code>. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as <code>malloc</code>), we give a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> object down. This allows you to allocate memory like you would with <code>malloc</code>. Like in std C you need to free the memory allocated via a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> at the end of its use. Otherwise you may leak. Using our build in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. </p>
+<h2 id="memory-management"><a class="header" href="#memory-management">Memory Management</a></h2>
+<p>While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use <code>malloc, free or realloc</code>. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as <code>malloc</code>), we give a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> object down. This allows you to allocate memory like you would with <code>malloc</code>. Like in std C you need to free the memory allocated via a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a> at the end of its use. Otherwise you may leak. Using our built-in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. </p>
 <blockquote>
 <p><strong>Note:</strong> more about leak detection and memory usage check the chapter about the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/memory.html">Memory Usage Tab</a></p>
 </blockquote>
 <h3 id="child-allocators"><a class="header" href="#child-allocators">Child Allocators</a></h3>
-<p>In case you check our projects you will find that we are making extensivly use of child allocators. This allowes us to log the use of their memory in our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/memory.html">Memory Usage Tab</a>.</p>
+<p>In case you check our projects you will find that we are making extensive use of child allocators. This allows us to log the use of their memory in our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/memory.html">Memory Usage Tab</a>.</p>
 <p>In case you check our <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/write-a-tab.html"><code>Write a custom Tab</code> example</a> you will find in its create function this code:</p>
 <pre><code class="language-c">static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
 {
@@ -930,7 +930,7 @@ static void tab__destroy(tm_tab_o* tab)
     tm_allocator_api-&gt;destroy_child(&amp;a);
 }
 </code></pre>
-<p>The tm_tab_create_context_t context gives you access to an allocator the system allocator. This one again allows you to create a child allocator. You can now use the new allocator in our tab. This is why we store it within our <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_o">tm_tab_o</a> object.
+<p>The tm_tab_create_context_t context gives you access to the system allocator. This one again allows you to create a child allocator. We can now use the new allocator in our tab. This is why we store it within our <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#tm_tab_o">tm_tab_o</a> object.
 In the end, we need to destroy our tab and, therefore free the tab object and destroy the child allocator. <code>tm_allocator_api-&gt;destroy_child(&amp;a);</code>
 If we now shut down the engine and we forgot to free any of the allocations done between create and destroy, we will get a nice log:</p>
 <pre><code class="language-bash">D:\git\themachinery\plugins\my_tab\my_tab.c(100): error leaked 1 allocations 4112 bytes
@@ -949,21 +949,21 @@ tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta)
 // do some magic
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 </code></pre>
-<p>The truth API will now use the temp allocator to create the list. We do not need to call tm_free anything this is all done at the end by <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>!</p>
+<p>The truth API will now use the temp allocator to create the list. We do not need to call tm_free anywhere, this is all done at the end by <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>!</p>
 <p>Sometimes APIs require a normal <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a>, but you are not interested in creating an actual allocator or have access to a memory allocator! No worries, we have your back! The Temp Allocator gives you the following macro: <code>TM_INIT_TEMP_ALLOCATOR_WITH_ADAPTER(ta, a); It generates a normal [tm_allocator_i](https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i) uses the temp allocator as its backing allocator. Hence all allocations done with the allocator will be actually done via the </code>ta<code>allocator! Again at the end, all your memory is freed by</code>TM_SHUTDOWN_TEMP_ALLOCATOR(ta);`</p>
 <blockquote>
 <p><strong>Note</strong>: You also have <code>tm_temp_alloc()</code> they expect a <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_i">tm_temp_allocator_i</a> instead of the <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i">tm_allocator_i</a>.</p>
 </blockquote>
 <p><strong>What is the Frame Allocator?</strong></p>
-<p>The <a href="https://ourmachinery.com//apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> has a frame allocator. A frame allocator allocates memory for one frame and than at the end of the frame the memory is whiped out. This means any allocation done with it will stay in memory until the end of the frame! The way of using it is: <code>tm_temp_allocator_api.frame_alloc()</code> or <code>tm_frame_alloc()</code></p>
-<h3 id="great-use-case-formatted-strings"><a class="header" href="#great-use-case-formatted-strings">Great use case: Formatted String's</a></h3>
-<p>Both the frame as well as the temp allocator are great for using when you need to have a string with formating! Infact the <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> provided a extra function for this: <code>tm_temp_allocator_api.printf()</code> /<code>tm_temp_allocator_api.frame_printf()</code></p>
+<p>The <a href="https://ourmachinery.com//apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> has a frame allocator. A frame allocator allocates memory for one frame and then at the end of the frame the memory is wiped out. This means any allocation done with it will stay in memory until the end of the frame! The way of using it is: <code>tm_temp_allocator_api.frame_alloc()</code> or <code>tm_frame_alloc()</code></p>
+<h3 id="great-use-case-formatted-strings"><a class="header" href="#great-use-case-formatted-strings">Great use case: Formatted Strings</a></h3>
+<p>Both the frame as well as the temp allocator are great for using when you need to have a string with formatting! Infact the <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#structtm_temp_allocator_api">tm_temp_allocator_api</a> provided an extra function for this: <code>tm_temp_allocator_api.printf()</code> /<code>tm_temp_allocator_api.frame_printf()</code></p>
 <blockquote>
 <p><strong>Note:</strong> About formatting checkout the <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a>  or <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//qa_pipeline/logging.html">the logging chapter</a></p>
 </blockquote>
 <h2 id="arrays-vectors-lists-where-is-my-stdvector-or-list"><a class="header" href="#arrays-vectors-lists-where-is-my-stdvector-or-list">Arrays, Vectors, Lists where is my <code>std::vector&lt;&gt;</code> or <code>List&lt;&gt;</code></a></h2>
-<p>In the foundation we have a great header file or better inline header file the <code>foundation/carray.inl</code> which contains our soultion for dynamic growing arrays, lists etc.  When used you are resonsible for its memory and have to free the used memory at the end! Do not worry the API makes it quite easy. </p>
-<p>Let us create a Array of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> all we need to do is declear our variable as a pointer of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>.</p>
+<p>In the foundation we have a great header file or better inline header file the <code>foundation/carray.inl</code> which contains our solution for dynamic growing arrays, lists etc.  When used you are responsible for its memory and have to free the used memory at the end! Do not worry, the API makes it quite easy. </p>
+<p>Let us create an Array of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>. All we need to do is declare our variable as a pointer of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>.</p>
 <pre><code class="language-c">tm_tt_id_t* our_ids = 0;
 </code></pre>
 <p>After this we can for example push / add some data to our array:</p>
@@ -980,8 +980,8 @@ tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta)
 // do some magic
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 </code></pre>
-<p><code>tm_the_truth_api-&gt;all_objects_of_type</code> actually returns a <code>carray</code> and you can operate on it with the normal C array methods: e.g. <code>tm_carray_size()</code> or <code>tm_carray_end()</code>. Since it is allocated with the temp allocator you an forget about the allocation at the end as long as you call <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>.</p>
-<h3 id="how-to-access-a-element"><a class="header" href="#how-to-access-a-element">How to access a element?</a></h3>
+<p><code>tm_the_truth_api-&gt;all_objects_of_type</code> actually returns a <code>carray</code> and you can operate on it with the normal C array methods: e.g. <code>tm_carray_size()</code> or <code>tm_carray_end()</code>. Since it is allocated with the temp allocator you can forget about the allocation at the end as long as you call <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_shutdown_temp_allocator()">TM_SHUTDOWN_TEMP_ALLOCATOR</a>.</p>
+<h3 id="how-to-access-an-element"><a class="header" href="#how-to-access-an-element">How to access an element?</a></h3>
 <p>You can access a carray element normally like you would access it in a plain c array:</p>
 <pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
 tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
@@ -999,7 +999,7 @@ for(uint64_t i = 0;i &lt; tm_carray_size(all_objects);++i){
 }
 TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 </code></pre>
-<p>An alternative approch is a more for each like approch:</p>
+<p>An alternative approach is a more for each like approach:</p>
 <pre><code class="language-c">TM_INIT_TEMP_ALLOCATOR(ta);
 tm_tt_id_t* all_objects = tm_the_truth_api-&gt;all_objects_of_type(tt, type, ta);
 for(tm_tt_id* id = all_objects;id != tm_carray_end(all_objects);++id){
@@ -1090,7 +1090,7 @@ Here's a brief description of what you can see:</p>
 <p>The Entity Tree view, prototype instances are shown in yellow to distinguish them from locally owned child entities (which are shown in white).</p>
 <p><strong>Prototypes:</strong> Prototypes are just entities that live in the Asset Browser as assets (.entity and the current entity in the Entity Tree View is based upon those entity assets. You can overwrite them in the Entity Tree View and make them unique, but any change to the asset will propagate to the entities based on the original prototype. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/prototypes.html">More here</a></p>
 <p>If you expand an instance, you will notice that most of its components and child entities are grayed out. They cannot be selected because they are inherited from the prototype, and the prototype controls their values.</p>
-<p><img src="https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428053926_image.png" alt="The light entity is a instance of a prototype and the Render Component is inherited" /></p>
+<p><img src="https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428053926_image.png" alt="The light entity is an instance of a prototype and the Render Component is inherited" /></p>
 <p>If the prototype is modified — for example, if we scatter some more props on the floor — those changes reflect everywhere the prototype is placed.</p>
 <h3 id="adding-new-child-entities"><a class="header" href="#adding-new-child-entities">Adding new child entities</a></h3>
 <p>When you want to reorder one entity as a child to another, you can drag and drop them on them onto each other.</p>
@@ -1282,11 +1282,11 @@ There you have the option to filter via file extension or Asset-Labels. You can 
 Double clicks on an asset may open the asset in their corresponding tab or window. Not all assets have a specific action associated with them. </p>
 <table><thead><tr><th>Asset</th><th>Action on double click</th></tr></thead><tbody>
 <tr><td>Animation State Machine (.asm)</td><td>Opens a new window with the Animation state machine layout.</td></tr>
-<tr><td>Creation (.creation)</td><td>Opens a graph tab if no graph tab is open. If a graph tab is open it will load this graph. When ever we have a <strong>.creation</strong> file than the graph is called Creation Graph and is used for working on graphics related workflows such as materials.</td></tr>
+<tr><td>Creation (.creation)</td><td>Opens a graph tab if no graph tab is open. If a graph tab is open it will load this graph. Whenever we have a <strong>.creation</strong> file the graph is called Creation Graph and is used for working on graphics related workflows such as materials.</td></tr>
 <tr><td>Entity (.entity)</td><td>Opens a s<strong>cene tab</strong> if no scene tab is open. If a scene tab is open it will change the view to this entity.</td></tr>
-<tr><td>Entity Graph (.entity_graph)</td><td>Opens a graph tab if no graph tab is open. If a graph tab is open it will load this graph. When ever we have a <strong>.entity_graph</strong> file than the graph is called Entity Graph and is used to make Entity Graph functionality reusable and shareable between multiple graphs.</td></tr>
+<tr><td>Entity Graph (.entity_graph)</td><td>Opens a graph tab if no graph tab is open. If a graph tab is open it will load this graph. Whenever we have a <strong>.entity_graph</strong> file the graph is called Entity Graph and is used to make Entity Graph functionality reusable and shareable between multiple graphs.</td></tr>
 </tbody></table>
-<p>A single click will always focus a associated Properties Tab on the selected asset.</p>
+<p>A single click will always focus an associated Properties Tab on the selected asset.</p>
 <p><em>Dragging assets into the Scene</em></p>
 <p>You can drag assets around in the asset browser. It allows for quick reorganization of assets. It is also possible to drag assets from the asset browser directly into the Scene. Assets can be dragged from the Asset Browser Tab to other tabs if they support the asset type.
 You can also drag assets from the Windows-Explorer into your project. This action supports the same formats as the regular importer via <strong>File → Import Assets.</strong> </p>
@@ -1294,7 +1294,7 @@ You can also drag assets from the Windows-Explorer into your project. This actio
 <p>To organize your project, you can use Asset Labels. An asset can be associated with one or more different asset labels. You can use them to filter your asset in the asset browser or plugins via the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_label.h.html#structtm_asset_label_api">asset label api</a>.</p>
 <p>There are two types of Asset labels: </p>
 <ul>
-<li>System Asset Labels: They are added by plugins and cannot be assigned by the user to a asset.
+<li>System Asset Labels: They are added by plugins and cannot be assigned by the user to an asset.
 <ul>
 <li>User Asset Labels: You add them, and they are part of the project with the file extension: .asset_label and can be found in the asset_label directory.</li>
 </ul>
@@ -1312,7 +1312,7 @@ You can also drag assets from the Windows-Explorer into your project. This actio
 <h2 id="keyboard-bindings-3"><a class="header" href="#keyboard-bindings-3">Keyboard bindings</a></h2>
 <table><thead><tr><th>Key</th><th>Descriptions</th></tr></thead><tbody>
 <tr><td>Arrow Keys</td><td>Allow you to navigate through the Asset browser</td></tr>
-<tr><td>Enter</td><td>If selected a folder or a asset will open the folder or asset</td></tr>
+<tr><td>Enter</td><td>If selected a folder or an asset will open the folder or asset</td></tr>
 <tr><td>F2</td><td>Will rename asset or folder in Asset View Panel and Directory Tree View</td></tr>
 <tr><td>Ctrl + F</td><td>Search in the current project</td></tr>
 <tr><td>CTRL + D</td><td>Duplicates selected Asset</td></tr>
@@ -1740,15 +1740,15 @@ understanding of to get started working with The Machinery.</p>
 <p>You will learn the basics about:</p>
 <ul>
 <li>What the creation graph is</li>
-<li>How the asset pipline works</li>
-<li>How to create (rigg) an Entity from a imported asset</li>
+<li>How the asset pipeline works</li>
+<li>How to create (rigg) an Entity from an imported asset</li>
 </ul>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
 <p>There are lots of things you might want to do to an imported asset coming from a DCC-tool. For
 example, extracting images and materials into a representation that can be further tweaked by your
 artists or rigging (create) an entity from the meshes present in the asset. In The Machinery, we provide full
 control over how data enters the engine and what data-processing steps that get executed, allowing
-technical artists to better optimize content and setup custom, game-specific asset pipelines.</p>
+technical artists to better optimize content and set up custom, game-specific asset pipelines.</p>
 <p>This is handled through <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/creation_graphs/concept.html"><em>Creation Graphs</em></a>. A <em>Creation Graph</em> is essentially a generic framework for
 processing arbitrary data on the CPUs and GPUs, exposed through a graph front-end view. While we can
 use <em>Creation Graphs</em> for any type of data processing. </p>
@@ -1759,7 +1759,7 @@ use <em>Creation Graphs</em> for any type of data processing. </p>
 </blockquote>
 <h2 id="importing-a-dcc-asset"><a class="header" href="#importing-a-dcc-asset">Importing a DCC asset</a></h2>
 <p>You can import an asset by selecting <strong>File &gt; Import...</strong> in the main menu, pressing <strong>Ctrl-I</strong>, or dropping a DCC file on the Asset Browser tab. When you do this, it ends up in our data-model as a <code>dcc_asset</code>. </p>
-<p>For more in detail explanation about how to import assets checkout the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html">Asset Import Part</a>.</p>
+<p>For a more in detail explanation about how to import assets checkout the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html">Asset Import Part</a>.</p>
 <h3 id="basic-entity-rigging-with-image-and-material-extraction"><a class="header" href="#basic-entity-rigging-with-image-and-material-extraction">Basic entity rigging, with image and material extraction</a></h3>
 <p>If you click on a <code>dcc_asset</code> that contains a mesh in the Asset Browser, you will be presented
 with importer settings in the Properties tab:</p>
@@ -1823,7 +1823,7 @@ more common operations:</p>
 <p><code>dcc-material</code> -- Shader graph setup to represent materials extracted from an imported <code>dcc_asset</code>.</p>
 </li>
 <li>
-<p><code>dcc-mesh</code> -- Operations for generating a draw call that reprensents a mesh from an imported <code>dcc_asset</code>.</p>
+<p><code>dcc-mesh</code> -- Operations for generating a draw call that represents a mesh from an imported <code>dcc_asset</code>.</p>
 </li>
 <li>
 <p><code>drop-image</code> -- Operations for generating a draw call to display the image output of another
@@ -2268,7 +2268,7 @@ of the sound playing nodes in the visual scripting language.</p>
 <blockquote>
 <p><strong>Note:</strong> This tool is in a preview state.</p>
 </blockquote>
-<p>With the Sculpt Tool The Machinery supportes rapid prototyping when it comes to level white boxing. You make use of the tool by adding a Sclupt Component to an Entity. Using the sculpt component you can quickly sketch out levels or make beautiful blocky art:</p>
+<p>With the Sculpt Tool The Machinery supports rapid prototyping when it comes to level white boxing. You make use of the tool by adding a Sculpt Component to an Entity. Using the sculpt component you can quickly sketch out levels or make beautiful blocky art:</p>
 <p><img src="https://ourmachinery.com/images/beta_20_11__blocky.png" alt="A blocky character in a blocky forest setting." /></p>
 <p><em>A blocky character in a blocky forest setting.</em></p>
 <h2 id="how-to-use-the-tool"><a class="header" href="#how-to-use-the-tool">How to use the Tool</a></h2>
@@ -2294,16 +2294,16 @@ of the sound playing nodes in the visual scripting language.</p>
 <h2 id="the-data-model"><a class="header" href="#the-data-model">The Data Model</a></h2>
 <p>The Machinery stores its data as <strong>objects with properties</strong>. Each object has a type and the type defines what properties the object has. Available property types are <em>bools, integers, floats, strings, buffers, references</em>, <em>sub-objects</em> and <em>sets of references or sub-objects</em>.</p>
 <p>The object/properties model gives us us <em>forward and backward compatibility</em> and allows us to implement operations such as <em>cloning</em> without knowing any details about the data. We can also represent modifications to the data in a uniform way <code>(object, property, old-value, new-value)</code> for undo/redo and collaboration.</p>
-<p>The model is <strong>memory-based</strong> rather than disk-based. I.e. the in-memory representation of the data is considered <em>authoritative.</em> Read/write access to the data is provided by a thread-safe API. If two systems want to co-operate, they do so by talking to the same in-memory model, not by sharing files on disk. Of course, we still need to save data out disk at some point for persistence, but this is just a “backup” of the memory model and we might use different disk formats for different purposes (i.e. a git-friendly representation for collaborative work vs single binary for solo projects).</p>
+<p>The model is <strong>memory-based</strong> rather than disk-based. I.e. the in-memory representation of the data is considered <em>authoritative.</em> Read/write access to the data is provided by a thread-safe API. If two systems want to cooperate, they do so by talking to the same in-memory model, not by sharing files on disk. Of course, we still need to save data out disk at some point for persistence, but this is just a “backup” of the memory model and we might use different disk formats for different purposes (i.e. a git-friendly representation for collaborative work vs single binary for solo projects).</p>
 <p>Since we have a memory-based model which supports cloning and change tracking, copy/paste and undo can be defined in terms of the data model. Real-time collaboration is also supported, by serializing modifications and transmitting them over the network. Since the runtime has equal access to the data model, modifying the data from within a VR session is also possible.</p>
 <p>We make a clear <strong>distinction between “buffer data” and “object data”</strong>. <em>Object data</em> is stuff that can be reasoned about on a per-property level. I.e. if user A changes one property of an object, and user B changes another, we can merge those changes. <em>Buffer data</em> are binary blobs of data that are opaque to the data model. We use it for large pieces of binary data, such as textures, meshes and sound files. Since the data model cannot reason about the content of these blobs it can’t for example merge changes made to the same texture by different users.</p>
 <p>Making the distinction between buffer data and object data is important because we pay an overhead for representing data as objects. We only want to pay that overhead when the benefits outweigh the costs. Most of a game’s data (in terms of bytes) is found in things like textures, meshes, audio data, etc and does not really gain anything from being stored in a JSON-like object tree.</p>
 <p>In The Truth, <strong>references are represented by IDs</strong>. Each object has a unique ID and we reference other objects by their IDs. Since references have their own property type in The Truth, it is easy for us to reason about references and find all the dependencies of an object.</p>
-<p>Sub-objects in The Truth are references to <em>owned</em> objects. They work just as references, but have special behaviours in some situations. For examples, when an object is cloned, all its sub-objects will be cloned too, while its references will not.</p>
+<p>Sub-objects in The Truth are references to <em>owned</em> objects. They work just as references, but have special behaviours in some situations. For example, when an object is cloned, all its sub-objects will be cloned too, while its references will not.</p>
 <p>For more information checkout the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html">documentation</a> and these blog posts: <a href="https://ourmachinery.com/post/the-story-behind-the-truth-designing-a-data-model/">The Story behind The Truth: Designing a Data Model</a>  or this <a href="https://ourmachinery.com/post/multi-threading-the-truth/">one</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="access-values"><a class="header" href="#access-values">Access values</a></h1>
-<p>The truth objects (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>) are immutable objects unless you explicitly make them writable. Therefore we do not be afraid of accidently changing a value when reading from a object property.</p>
-<p>To read from a object property we need access to the correct Truth Instance as well as to a object id.  We also need to know what kind of property we want to access. That is why we always want to define our properties in a Header-File. Which allows us and others to find quickly our type definitions. A good practice is to comment on what kind of data type property contains.</p>
+<p>The truth objects (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a>) are immutable objects unless you explicitly make them writable. Therefore you do not have to be afraid of accidentally changing a value when reading from an object property.</p>
+<p>To read from an object property we need access to the correct Truth Instance as well as to an object id. We also need to know what kind of property we want to access. That is why we always want to define our properties in a Header-File. Which allows us and others to find quickly our type definitions. A good practice is to comment on what kind of data type property contains.</p>
 <p>Let us assume our object is of type <code>TM_TT_TYPE__RECT</code>:</p>
 <pre><code>enum {
     TM_TT_PROP__RECT__X, // float
@@ -2312,13 +2312,13 @@ of the sound playing nodes in the visual scripting language.</p>
     TM_TT_PROP__RECT__H, // float
 };
 </code></pre>
-<p>When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of a object. The width is stored in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#enumtm_tt_prop__rect">TM_TT_PROP__RECT__W</a>.</p>
+<p>When we know what we want to access, we call the correct function and access the value. In our example we want to get the width of an object. The width is stored in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#enumtm_tt_prop__rect">TM_TT_PROP__RECT__W</a>.</p>
 <p>The function we need to call:</p>
 <pre><code class="language-c">void (*get_float)(tm_the_truth_o *tt,const tm_the_truth_object_o *obj, uint32_t property);
 </code></pre>
-<p>With this knowledge we can assemble the following function that logs the width of a object:</p>
+<p>With this knowledge we can assemble the following function that logs the width of an object:</p>
 <pre><code class="language-c">void log_with(tm_the_truth_o *tt, tm_tt_id_t my_object){   
-	const float wdith = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),TM_TT_PROP__RECT__W);
+	const float width = tm_the_truth_api-&gt;get_float(tt,tm_tt_read(tt,my_object),TM_TT_PROP__RECT__W);
     TM_LOG(&quot;the width is %f&quot;,width);
 }
 </code></pre>
@@ -2347,7 +2347,7 @@ of the sound playing nodes in the visual scripting language.</p>
 <p>You can create an object of a Truth Type via two steps:</p>
 <ol>
 <li>You need to obtain the Type from the type hash. We call the <code>object_type_from_name_hash</code> to obtain the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a></li>
-<li>You need to create an Object from that Type. We call <code>create_object_of_type</code> to create a object <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> . We pass <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a> because we do not need a undo scope for our example.</li>
+<li>You need to create an Object from that Type. We call <code>create_object_of_type</code> to create an object <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a> . We pass <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope">TM_TT_NO_UNDO_SCOPE</a> because we do not need an undo scope for our example.</li>
 </ol>
 <p>First, we need to have access to a Truth instance. Otherwise, we could not create an object. In this example, we create a function.</p>
 <pre><code class="language-c">tm_tt_id_t create_my_type_object(tm_the_truth_o *tt)
@@ -2357,7 +2357,7 @@ of the sound playing nodes in the visual scripting language.</p>
     return my_type_object;
 }
 </code></pre>
-<p>Where ever we call this function we can than edit and modify the type and add content to it!</p>
+<p>Wherever we call this function we can then edit and modify the type and add content to it!</p>
 <p>The alternative approach is to use the &quot;Quick Object Creation function&quot;.</p>
 <pre><code class="language-c">tm_tt_id_t quick_create_my_type_object(tm_the_truth_o *tt)
 {
@@ -2388,7 +2388,7 @@ of the sound playing nodes in the visual scripting language.</p>
 <p><strong>Important:</strong> you can only edit an object that is part of the same instance! Hence your <code>my_object</code> must be created within this instance of the Truth (<code>tt</code>).</p>
 </blockquote>
 <h2 id="1-make-the-object-writable"><a class="header" href="#1-make-the-object-writable">1. Make the object writable</a></h2>
-<p>To edit an object, we need to make it writeable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called <code>write</code>. When we call it on an object, we make it writable.</p>
+<p>To edit an object, we need to make it writable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called <code>write</code>. When we call it on an object, we make it writable.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
 {
     const tm_tt_type_t type = tm_tt_type(my_object);
@@ -2429,7 +2429,7 @@ of the sound playing nodes in the visual scripting language.</p>
     tm_the_truth_api-&gt;commit(tt, my_object_w, TM_TT_NO_UNDO_SCOPE);
 }
 </code></pre>
-<p>If we wanted to provide a undo scope we need to create one:</p>
+<p>If we wanted to provide an undo scope we need to create one:</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
 {
     const tm_tt_type_t type = tm_tt_type(my_object);
@@ -2441,7 +2441,7 @@ of the sound playing nodes in the visual scripting language.</p>
 </code></pre>
 <p>Now this action can be reverted in the Editor.</p>
 <h2 id="4-get-a-value"><a class="header" href="#4-get-a-value">4. Get a value</a></h2>
-<p>Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_read()">tm_tt_read</a>. This will give us a immutable (read only) pointer to the underlaying object. This allows us to read the data from it.</p>
+<p>Instead of changing the value  of width to 100 we can also increment it by 100! All we need to do is get the value first of the Truth Object and add 100 to it. To access a property we need to use the macro <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_read()">tm_tt_read</a>. This will give us an immutable (read only) pointer to the underlying object. This allows us to read the data from it.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object)
 {
     const tm_tt_type_t type = tm_tt_type(my_object);
@@ -2490,13 +2490,13 @@ of the sound playing nodes in the visual scripting language.</p>
 <tr><td><code>TM_TT_TYPE__VEC3</code>/<code>TM_TT_TYPE_HASH__VEC3</code></td><td>The first property contains the x value and the second the y value and the third the z value.</td></tr>
 <tr><td><code>TM_TT_TYPE__VEC4</code>/<code>TM_TT_TYPE_HASH__VEC4</code></td><td>The first property contains the x value and the second the y value and the third the z value while the last one contains the w value.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__position">TM_TT_TYPE__POSITION</a>/<code>TM_TT_TYPE_HASH__POSITION</code></td><td>Same as <code>vec4</code>.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rotation">TM_TT_TYPE__ROTATION</a>/<code>TM_TT_TYPE_HASH__ROTATION</code></td><td>Based on a <code>vec4</code>. Used to represent the rotation of a object via quaternions.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rotation">TM_TT_TYPE__ROTATION</a>/<code>TM_TT_TYPE_HASH__ROTATION</code></td><td>Based on a <code>vec4</code>. Used to represent the rotation of an object via quaternions.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__scale">TM_TT_TYPE__SCALE</a>/<code>TM_TT_TYPE_HASH__SCALE</code></td><td>Same as <code>vec3.</code></td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgb">TM_TT_TYPE__COLOR_RGB</a>/<code>TM_TT_TYPE_HASH__COLOR_RGB</code></td><td>Represents a RGB colour.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__color_rgba">TM_TT_TYPE__COLOR_RGBA</a>/<code>TM_TT_TYPE_HASH__COLOR_RGBA</code></td><td>Represents a RGBA colour.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#tm_tt_type__rect">TM_TT_TYPE__RECT</a>/<code>TM_TT_TYPE_HASH__RECT</code></td><td>The first property contains the x value and the second the y value and the third the width value while the last one contains the height value.</td></tr>
 </tbody></table>
-<p>There is a helper API to handle all of these types in a easy way, to reduce the boilerplate code: <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#structtm_the_truth_common_types_api">tm_the_truth_common_types_api</a>. </p>
+<p>There is a helper API to handle all of these types in an easy way, to reduce the boilerplate code: <a href="https://ourmachinery.com/apidoc/foundation/the_truth_types.h.html#structtm_the_truth_common_types_api">tm_the_truth_common_types_api</a>. </p>
 <blockquote>
 <p><strong>Note:</strong> There is a list of all Truth Types the Engine comes with available on our <a href="https://ourmachinery.com/apidoc/truth_types.html">API Documentation</a></p>
 </blockquote>
@@ -2532,7 +2532,7 @@ typedef struct tm_debug_print_aspect_i
 <li>How to define a Type.</li>
 <li>Type Properties</li>
 </ul>
-<p>After this walkthrough you could checkout the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/custom_asset/index.html">&quot;Create a custom asset&quot;</a> tutorial! </p>
+<p>After this walkthrough you could check out the <a href="https://ourmachinery.github.io/themachinery-books/tutorials//the_truth/custom_asset/index.html">&quot;Create a custom asset&quot;</a> tutorial! </p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="the_truth/custom_truth_type.html#define-a-type">Define a Type</a></li>
@@ -2718,7 +2718,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 } tm_the_truth_property_definition_t;
 </code></pre>
 <p>(<a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">API Documentation</a>)</p>
-<p>Within our <code>create_truth_types</code> we create a array of type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">tm_the_truth_property_definition_t</a>. For this example, we define the properties of type bool and string.</p>
+<p>Within our <code>create_truth_types</code> we create an array of type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t">tm_the_truth_property_definition_t</a>. For this example, we define the properties of type bool and string.</p>
 <pre><code class="language-c">// beginning of the source file
 static struct tm_the_truth_api *tm_the_truth_api;
 #include &lt;foundation/api_registry.h&gt;
@@ -3133,7 +3133,7 @@ something like this:</p>
 <li>If you need to continue debugging, re-attach the debugger.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="write-a-plugin"><a class="header" href="#write-a-plugin">Write a plugin</a></h2>
-<p>This walkthrough show you how to extend the engine with a custom plugin.</p>
+<p>This walkthrough shows you how to extend the engine with a custom plugin.</p>
 <p>You will learn about:</p>
 <ul>
 <li>What is needed to write a plugin</li>
@@ -3143,7 +3143,7 @@ something like this:</p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="extending_the_machinery/write-a-plugin.html#where-does-the-engine-search-for-plugins">Where does the engine search for plugins</a></li>
-<li><a href="extending_the_machinery/write-a-plugin.html#inspect-a-existing-example-to-get-inspiration">Inspect a existing example to get inspiration</a>
+<li><a href="extending_the_machinery/write-a-plugin.html#inspect-an-existing-example-to-get-inspiration">Inspect an existing example to get inspiration</a>
 <ul>
 <li><a href="extending_the_machinery/write-a-plugin.html#what-are-the-build-requirements">What are the build Requirements</a></li>
 <li><a href="extending_the_machinery/write-a-plugin.html#build-the-sample-plugin">Build the sample plugin</a></li>
@@ -3156,7 +3156,7 @@ something like this:</p>
 <ul>
 <li><a href="extending_the_machinery/write-a-plugin.html#where-does-my-gameplay-code-live">Where does my gameplay code live?</a></li>
 <li><a href="extending_the_machinery/write-a-plugin.html#how-do-i-update-my-tool--tab-content">How do I update my tool / tab content?</a></li>
-<li><a href="extending_the_machinery/write-a-plugin.html#plugin-callbacks-init-sutdown-tick">Plugin callbacks (Init, Sutdown, Tick)</a></li>
+<li><a href="extending_the_machinery/write-a-plugin.html#plugin-callbacks-init-shutdown-tick">Plugin callbacks (Init, Shutdown, Tick)</a></li>
 <li><a href="extending_the_machinery/write-a-plugin.html#how-do-i-deal-with-static-variables">How do I deal with static variables?</a></li>
 </ul>
 </li>
@@ -3174,7 +3174,7 @@ together with the built-in plugins.</p>
 <p><strong>Note:</strong> When you create a new plugin via the Engine, the <code>premake</code> file will <strong>not</strong> copy the plugin into your global plugin folder. The reason behind this is that we do not know if you want to create a plugin asset. <em>This workflow is currently under review.</em></p>
 <p><strong>Important:</strong> The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the <code>premake</code> file to make it point to the correct version. This workflow is currently under review.</p>
 </blockquote>
-<h2 id="inspect-a-existing-example-to-get-inspiration"><a class="header" href="#inspect-a-existing-example-to-get-inspiration">Inspect a existing example to get inspiration</a></h2>
+<h2 id="inspect-an-existing-example-to-get-inspiration"><a class="header" href="#inspect-an-existing-example-to-get-inspiration">Inspect an existing example to get inspiration</a></h2>
 <p>The easiest way to build a plugin is to start with an existing example. There are three places where
 you can find plugin samples:</p>
 <ol>
@@ -3259,7 +3259,7 @@ types.</p>
 <li><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/qa_pipeline/how_to_write_unit_tests.html">How to write unit tests</a></li>
 <li><a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/qa_pipeline/how_to_write_integration_tests.html">How to write integration tests</a></li>
 </ul>
-<p>The Engine provides a easy way to create plugins for you via the <strong>File -&gt; New Plugins</strong> menu. There you can choose default plugin templates. They come with default files:</p>
+<p>The Engine provides an easy way to create plugins for you via the <strong>File -&gt; New Plugins</strong> menu. There you can choose default plugin templates. They come with default files:</p>
 <p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1" alt="custom tab folder view" /></p>
 <p><em>The folder structure for a custom tab called <code>custom_tab</code>.</em></p>
 <ul>
@@ -3272,7 +3272,7 @@ types.</p>
 <p><strong>Note:</strong> By default the plugin will not be copied into your Engine's <code>plugins</code> folder. You can modify the <code>premake</code> file or copy it manually in the folder. You can also make use of a Plugin Asset.</p>
 </blockquote>
 <h3 id="structure-of-a-plugin"><a class="header" href="#structure-of-a-plugin">Structure of a plugin</a></h3>
-<p>Every plugin has <code>tm_load_plugin()</code> as its entry point, in there we register everything we need to register to the Engines Plugin System. It is important that you do not execute heavy code in this function or relay on other plugins, since they might not be loaded yet! This function is just there to perform load and register operations.</p>
+<p>Every plugin has <code>tm_load_plugin()</code> as its entry point, in there we register everything we need to register to the Engines Plugin System. It is important that you do not execute heavy code in this function or rely on other plugins, since they might not be loaded yet! This function is just there to perform load and register operations.</p>
 <h4 id="where-does-my-gameplay-code-live"><a class="header" href="#where-does-my-gameplay-code-live">Where does my gameplay code live?</a></h4>
 <p>Your gameplay lives within the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">Systems / Engines</a> of the ECS or in the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/simulation_entry.html">Simulation Entry</a> and they have their own entry points.</p>
 <h4 id="how-do-i-update-my-tool--tab-content"><a class="header" href="#how-do-i-update-my-tool--tab-content">How do I update my tool / tab content?</a></h4>
@@ -3280,13 +3280,13 @@ types.</p>
 <li>The <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt">tm_tab_vt</a> defines three functions for your tab to be updated:
 <ul>
 <li><code>tm_tab_vt.ui()</code> - Callback for drawing the content of the tab into the specified rect.</li>
-<li><code>tm_tab_vt.ui_serial()</code> - <em>Optional.</em> If implemented, called from the main UI job once all parallel UI rendering (fork/join) has finished. This can be used for parts of the UI that needs to run serially, for example because they call out to non-thread-safe function.</li>
+<li><code>tm_tab_vt.ui_serial()</code> - <em>Optional.</em> If implemented, called from the main UI job once all parallel UI rendering (fork/join) has finished. This can be used for parts of the UI that needs to run serially, for example because they call out to a non-thread-safe function.</li>
 <li><code>tm_tab_vt.hidden_update()</code> - <em>Optional</em>. If the tab wants to do some processing when it is <em>not</em> the selected tab in its tabwell, it can implement this callback. This will be called for all created tabs whose content is currently <em>not</em> visible.</li>
 </ul>
 </li>
 </ul>
 <p>For more information follow the <a href="https://ourmachinery.github.io/themachinery-books/tutorials/">&quot;Write a tab&quot;</a> walkthrough.</p>
-<h4 id="plugin-callbacks-init-sutdown-tick"><a class="header" href="#plugin-callbacks-init-sutdown-tick">Plugin callbacks (Init, Sutdown, Tick)</a></h4>
+<h4 id="plugin-callbacks-init-shutdown-tick"><a class="header" href="#plugin-callbacks-init-shutdown-tick">Plugin callbacks (Init, Shutdown, Tick)</a></h4>
 <p>The plugin system provides also for plugin callbacks. <strong>It is recommended to rely on these calls as little as possible.</strong> You should not rely on those for your gameplay code!</p>
 <ul>
 <li><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_init_i">tm_plugin_init_i</a> - Is typically called as early as possible after all plugins have been loaded.</li>
@@ -3768,7 +3768,7 @@ detects a file change, it will reimport the plugin.</p>
 <h2 id="application-create"><a class="header" href="#application-create">Application Create</a></h2>
 <p><img src="https://www.dropbox.com/s/vsl0d53ty9rsvbi/tm_guide_app_hook_create.png?dl=1" alt="" /></p>
 <h2 id="update"><a class="header" href="#update">Update</a></h2>
-<p><strong>Important side note</strong> here <a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_tick_i">tm_plugin_tick_i</a> should <strong>not</strong> be used for <strong>gameplay</strong>. To manage your gameplay you should relay on the given gameplay hooks:</p>
+<p><strong>Important side note</strong> here <a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_tick_i">tm_plugin_tick_i</a> should <strong>not</strong> be used for <strong>gameplay</strong>. To manage your gameplay you should rely on the given gameplay hooks:</p>
 <ul>
 <li>Entity Component Systems</li>
 <li>Entity Component Engines</li>
@@ -3792,16 +3792,16 @@ detects a file change, it will reimport the plugin.</p>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_init_i">tm_plugin_init_i</a></td><td>Is typically called as early as possible after all plugins have been loaded. <strong>Is not called when a plugin is reloaded.</strong></td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_set_the_truth_i">tm_plugin_set_the_truth_i</a></td><td>Is called whenever the &quot;main&quot; Truth of the application changes. The &quot;main&quot; Truth is the primary Truth used for editing data in the application. <strong>Under API Review</strong></td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/plugins/render_graph_toolbox/render_pipeline.h.html#structtm_render_pipeline_vt">tm_render_pipeline_vt</a></td><td></td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_loaded_i">tm_the_machinery_project_loaded_i</a></td><td>Is called when ever a project is loaded.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_loaded_i">tm_the_machinery_project_loaded_i</a></td><td>Is called when a project is loaded.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_reload_i">tm_plugin_reload_i</a></td><td>Is called whenever plugins are reloaded after the reload finishes.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_tick_i">tm_plugin_tick_i</a></td><td>Is typically called as early as possible in the application main loop &quot;tick&quot;.</td></tr>
 <tr><td>A tab that is registered to <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt">tm_tab_vt</a> and has a <code>tm_tab_vt.ui()</code> or <code>tm_tab_vt.hidden_update()</code> function.</td><td>Interface name for the tab <code>vtable</code>. Any part of the UI that can act as a tab should implement  this interface.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i_version">tm_entity_register_engines_simulation_i_version</a> Is called at the beginning of a simulation (start up phase) and all Systems / Engines are registered to the entity context. <code>tm_entity_system_i.update()</code> or <code>tm_engine_i.update()</code></td><td>Used to register a <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_i">tm_entity_register_engines_i</a> that should run in simulation mode with. More information in the designated chapter. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/ecs/index.html">Entity Component System</a></td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_editor_i_version">tm_entity_register_engines_editor_i_version</a></td><td>Used to register a <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_i">tm_entity_register_engines_i</a> that should run in editor mode with.</td></tr>
 <tr><td><a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> <code>tm_simulation_entry_i.start()  </code> <code>tm_simulation_entry_i.tick()</code> <code>tm_simulation_entry_i.stop()</code></td><td>The Simulation Entry interface <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> makes it possible to choose a point of entry  for code that should run while the simulation (simulation tab or runner) is active.  More information in the designated chapter. <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/simulation_entry.html">Simulation Entry</a></td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_unloaded_i">tm_the_machinery_project_unloaded_i</a></td><td>Is called when ever a project is unloaded.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_saved_i">tm_the_machinery_project_saved_i</a></td><td>Is called when ever a project is saved.</td></tr>
-<tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_shutdown_i">tm_plugin_shutdown_i</a></td><td>Is called when the application shutdowns on all plugins that have a interface registered. <strong>Is not called when a plugin is reloaded.</strong></td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_unloaded_i">tm_the_machinery_project_unloaded_i</a></td><td>Is called when a project is unloaded.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/the_machinery/the_machinery.h.html#tm_the_machinery_project_saved_i">tm_the_machinery_project_saved_i</a></td><td>Is called when a project is saved.</td></tr>
+<tr><td><a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_shutdown_i">tm_plugin_shutdown_i</a></td><td>Is called when the application shutdowns on all plugins that have an interface registered. <strong>Is not called when a plugin is reloaded.</strong></td></tr>
 </tbody></table>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="gameplay-coding-in-the-machinery"><a class="header" href="#gameplay-coding-in-the-machinery">Gameplay Coding in The Machinery</a></h1>
 <p>In this section, you will learn the basics about Gameplay Coding in <em>The Machinery.</em> There are two primary ways of creating a vivid and active world:</p>
@@ -3814,7 +3814,7 @@ detects a file change, it will reimport the plugin.</p>
 <h2 id="general-code-entry-points-using-simulation-entry-component"><a class="header" href="#general-code-entry-points-using-simulation-entry-component">General code entry points using Simulation Entry Component</a></h2>
 <p>The Machinery also offers you a Simulation Entry Component which will, when the parent entity is spawned, set up a system with that is used to run code at start-up and each frame. Read more <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/gameplay_coding/simulation_entry.html">here</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="simulation-entry-writing-gameplay-code-in-c"><a class="header" href="#simulation-entry-writing-gameplay-code-in-c">Simulation Entry (writing gameplay code in C)</a></h2>
-<p>This walkthrough show you how to create a <em>simulation entry</em> and what a simulation entry is.</p>
+<p>This walkthrough will show you how to create a <em>simulation entry</em> and what a simulation entry is.</p>
 <p>If you wish to program gameplay using C code, then you need some way for this code to execute. You can either make lots of entity components that do inter-component communication, but if you want a more classic monolithic approach, then you can use a simulation entry.</p>
 <p>In order for your code to execute using a simulation entry you need two things. Firstly you need an implementation of the Simulation Entry interface, <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> (see <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#simulation_entry.h">simulation_entry.h</a>) and secondly you need a Simulation Entry Component attached to an entity.</p>
 <p>Define a <a href="https://ourmachinery.com/apidoc/plugins/simulation/simulation_entry.h.html#structtm_simulation_entry_i">tm_simulation_entry_i</a> in a plugin like this:</p>
@@ -3937,15 +3937,15 @@ to open it in the Graph Editor:</p>
 <li><strong>Press Space</strong></li>
 </ul>
 <h3 id="execution"><a class="header" href="#execution">Execution</a></h3>
-<p>The Entity Graph is an event-driven Visual Scripting language.  This means everything happens after an event was triggered! By default, the Engine comes with the following built-in Events:</p>
+<p>The Entity Graph is an event-driven Visual Scripting language. This means everything happens after an event is triggered! By default, the Engine comes with the following built-in Events:</p>
 <table><thead><tr><th>Name</th><th>Description</th><th></th></tr></thead><tbody>
 <tr><td>Init Event</td><td>Is called when the component is added to the Entity.</td><td><img src="https://www.dropbox.com/s/6cov2jbv72iy455/tm_guide_entity_graph_init.png?dl=1" width="277" height="120"></td></tr>
-<tr><td>Reload Event</td><td>Is called when ever the component is reloaded from the truth.</td><td><img src="https://www.dropbox.com/s/zixoinmbta73tir/tm_guide_entity_graph_reload.png?dl=1" width="277" height="120"></td></tr>
+<tr><td>Reload Event</td><td>Is called when the component is reloaded from the truth.</td><td><img src="https://www.dropbox.com/s/zixoinmbta73tir/tm_guide_entity_graph_reload.png?dl=1" width="277" height="120"></td></tr>
 <tr><td>Tick Event</td><td>Is called every frame.</td><td><img src="https://www.dropbox.com/s/1t7hwmu37wr4aua/tm_guide_entity_graph_tick.png?dl=1" width="277" height="120"></td></tr>
 <tr><td>Terminate Event</td><td>Is called before the component is removed from the entity.</td><td><img src="https://www.dropbox.com/s/nx3tehccedx7qic/tm_guide_entity_graph_terminate.png?dl=1" width="277" height="120"></td></tr>
-<tr><td>Custom Event</td><td>Is called when ever the named event<br> is triggered with either a &quot;Trigger Event&quot;<br> node or from the outside with &quot;Trigger Remote Event&quot;</td><td><img src="https://www.dropbox.com/s/ngv3k25u02k8iq6/tm_guide_entity_graph_create_custom_event.png?dl=1" width="277" height="120"></td></tr>
+<tr><td>Custom Event</td><td>Is called when the named event<br> is triggered with either a &quot;Trigger Event&quot;<br> node or from the outside with &quot;Trigger Remote Event&quot;</td><td><img src="https://www.dropbox.com/s/ngv3k25u02k8iq6/tm_guide_entity_graph_create_custom_event.png?dl=1" width="277" height="120"></td></tr>
 <tr><td>Trigger Event</td><td>Triggers an event.</td><td><img src="https://www.dropbox.com/s/tqyg6scxjcsk3vi/tm_guide_entity_graph_trigger.png?dl=1" width="277" height="120"></td></tr>
-<tr><td>Trigger Remote Event</td><td>Triggeres a event on a remote Entity</td><td><img src="https://www.dropbox.com/s/jrnapuuq93d0kx8/tm_guide_entity_graph_trigger_remote.png?dl=1" width="277" height="120"></td></tr>
+<tr><td>Trigger Remote Event</td><td>Triggeres an event on a remote Entity</td><td><img src="https://www.dropbox.com/s/jrnapuuq93d0kx8/tm_guide_entity_graph_trigger_remote.png?dl=1" width="277" height="120"></td></tr>
 <tr><td>UI Tick</td><td>Is ticked every frame regardless if the game is paused or not!</td><td><img src="https://www.dropbox.com/s/6ejvwvc5yndpo87/tm_guide_entity_graph_ui_tick.png?dl=1" width="277" height="120"></td></tr>
 </tbody></table>
 <h3 id="anatomy"><a class="header" href="#anatomy">Anatomy</a></h3>
@@ -3953,7 +3953,7 @@ to open it in the Graph Editor:</p>
 <table><thead><tr><th>Type</th><th>Function</th></tr></thead><tbody>
 <tr><td>Event Node</td><td>Starting point of the Execution</td></tr>
 <tr><td>Query Node</td><td>Query nodes are triggered  automatically when their output is requested. Nodes that aren't query nodes need to be triggered. Therefore they are &quot;Pure&quot; and do not modify data!</td></tr>
-<tr><td>Nodes</td><td>Normal nodes that have a Event input, hence they might modify the data and produce a output or mutate the graphs state!</td></tr>
+<tr><td>Nodes</td><td>Normal nodes that have an Event input, hence they might modify the data and produce an output or mutate the graphs state!</td></tr>
 <tr><td>Subgraphs</td><td>Graphs within a Graph! Allow you to organize your graph into smaller units. They can also be reused if saved as Subgraph Prototype.</td></tr>
 <tr><td>Input Node</td><td>Accepts Input from the Outside world and makes it available to the graph. Mainly used for communication between graphs and subgraphs.</td></tr>
 <tr><td>Output Node</td><td>Accepts Output and passes it to the Outside world and makes it available to a parent graph. Mainly used for communication between graphs and subgraphs.</td></tr>
@@ -3965,7 +3965,7 @@ to open it in the Graph Editor:</p>
 </ul>
 <p><img src="https://www.dropbox.com/s/i95s1frdzhcsev1/tm_guide_entity_graph_wire_types.png?dl=1" alt="" /></p>
 <h2 id="inputs"><a class="header" href="#inputs">Inputs</a></h2>
-<p>Graph can have input. They can be used to allow the user of your graph to pass data from the outside (e.g. the Editor) to the graph. This happens via the Input Nodes. In the General Graph settings you can add Inputs from the outside world.</p>
+<p>Graphs can have inputs. They can be used to allow the user of your graph to pass data from the outside (e.g. the Editor) to the graph. This happens via the Input Nodes. In the General Graph settings you can add Inputs from the outside world.</p>
 <h3 id="adding-a-public-input"><a class="header" href="#adding-a-public-input">Adding a Public Input</a></h3>
 <ol>
 <li>You click on the Settings button which opens the Graphs Settings</li>
@@ -3988,7 +3988,7 @@ to open it in the Graph Editor:</p>
 <p>This can be a nice way to customize behaviour of your graph and entity!</p>
 <ol start="4">
 <li>
-<p>Add a Input node to you graph. There you have access to the data.</p>
+<p>Add an Input node to your graph. There you have access to the data.</p>
 <p><img src="https://www.dropbox.com/s/l20w7d0utoet9ti/tm_guide_entity_graph_input_node.png?dl=1" alt="" /></p>
 <p>The Input Node also allows you to access the settings. Hover over the name of the Input and a Settings option becomes available. </p>
 <p><img src="https://www.dropbox.com/s/wrg5hk7lbx0l1rs/tm_guide_entity_graph_input_node_on_settings.png?dl=1" alt="" /></p>
@@ -4007,7 +4007,7 @@ to open it in the Graph Editor:</p>
 <p><em>The Grid node for example:</em></p>
 <p><img src="https://www.dropbox.com/s/9fawc756lyf0k3h/tm_guide_entity_graph_loop.png?dl=1" alt="" /></p>
 <h3 id="subgraphs"><a class="header" href="#subgraphs">Subgraphs</a></h3>
-<p>You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a <code>.entity_graph</code> asset in your asset browser and allow it to be reused across your project! Which enables you to maximal flexibility! </p>
+<p>You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a <code>.entity_graph</code> asset in your asset browser and allow it to be reused across your project! Which enables you to have maximal flexibility! </p>
 <h2 id="what-is-next-5"><a class="header" href="#what-is-next-5">What is next?</a></h2>
 <p>In the next chapter you will learn more about Subgraphs and the Debugger! In case you want to provide your own Nodes check out this tutorial <a href="https://ourmachinery.github.io/themachinery-books/tutorials/gameplay_coding/extend_the_entity_graph.html">Extend the Entity Graph</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="subgraphs-1"><a class="header" href="#subgraphs-1">Subgraphs</a></h1>
@@ -4019,16 +4019,16 @@ to open it in the Graph Editor:</p>
 <p>A subgraph can have inputs and outputs. You can add them to them the same way as for a normal Graph. But you can also just connect the needed wires with the subgraph node, as the following image shows:</p>
 <p><img src="https://www.dropbox.com/s/18b2z2f1ed80ex6/tm_guide_entity_graph_create_subgraph_input_output.gif?dl=1" alt="" /></p>
 <h2 id="subgraph-prototypes"><a class="header" href="#subgraph-prototypes">Subgraph Prototypes</a></h2>
-<p>The Machinery's  <strong>Prototype</strong> system allows you to create, configure, and store a Entity/Creation Graph complete with all its subgraphs, input/output nodes as a reusable Entity / Creation Graph Asset. </p>
+<p>The Machinery's  <strong>Prototype</strong> system allows you to create, configure, and store an Entity/Creation Graph complete with all its subgraphs, input/output nodes as a reusable Entity / Creation Graph Asset. </p>
 <blockquote>
-<p><strong>Note:</strong> Since the Entity Graph and the Creation Graph are conceptionally similar the same aspects apply to them both! How ever this document will only focus on the Entity Graph.</p>
+<p><strong>Note:</strong> Since the Entity Graph and the Creation Graph are conceptually similar the same aspects apply to them both! However this document will only focus on the Entity Graph.</p>
 </blockquote>
 <p>This Asset acts as a template from which you can create new Prototype instances in other Entity Graphs/Creation Graphs. Any edits that you make to the Asset are automatically reflected in the instances of that Graph, allowing you to easily make broad changes across your whole Project without having to repeatedly make the same edit to every copy of the Asset.</p>
 <blockquote>
-<p><strong>Note:</strong> this does not mean all Prototype instances are identical. You can override individually and add/remove nodes from them, depending on your need!</p>
+<p><strong>Note:</strong> This does not mean all Prototype instances are identical. You can override individually and add/remove nodes from them, depending on your need!</p>
 </blockquote>
 <h3 id="create-a-subgraph-prototype"><a class="header" href="#create-a-subgraph-prototype">Create a subgraph Prototype</a></h3>
-<p>You can turn a subgraph into a prototype by simple using the context menu of the subgraph node and select Create Subgraph prototype. This will create a Subgraph Prototype Asset (<code>.entity_graph</code>) in your Asset Browser. When you open it you are opening the instanced version. Any change to thisversion will not be shared across all other versions! Only changes made to the prototype will propagte to all changes! To open a prototype you can use the &quot;Open Prototype&quot; Button. </p>
+<p>You can turn a subgraph into a prototype by simply using the context menu of the subgraph node and selecting Create Subgraph prototype. This will create a Subgraph Prototype Asset (<code>.entity_graph</code>) in your Asset Browser. When you open it you are opening the instanced version. Any change to this version will not be shared across all other versions! Only changes made to the prototype will propagate to all changes! To open a prototype you can use the &quot;Open Prototype&quot; Button. </p>
 <p><img src="https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?dl=1" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="debugger"><a class="header" href="#debugger">Debugger</a></h1>
 <p>The Entity Graph has a Debugger. You can use this Debugger to inspect the current values or set a breakpoint to see if the Graph behaves the way it should. Besides the graph indicated if a node is executed by a highlighted border!</p>
@@ -4070,20 +4070,20 @@ to open it in the Graph Editor:</p>
 <li>You can Stepover to the next node.</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="entity-component-system"><a class="header" href="#entity-component-system">Entity Component System</a></h1>
-<p>This section of the book shall help you understand how to make use of our Entity Component System. Designing games with a ECS can be overwhelming. Especially if you come from a more traditional background: Object Oriented Approaches. This chapter will provide you with the basic understanding of what a ECS is and how you can use it!. </p>
+<p>This section of the book shall help you understand how to make use of our Entity Component System. Designing games with an ECS can be overwhelming. Especially if you come from a more traditional background: Object Oriented Approaches. This chapter will provide you with the basic understanding of what an ECS is and how you can use it!. </p>
 <p>Let us begin with the purpose of the entity system! Its purpose is it to provide a flexible model for <em>objects in a simulation</em>, that
-allows us to compose complex objects from simpler components in a flexible and performant way. An <em>entity</em> is a game object composed of <em>components</em>. Entities live in a <em>entity context</em> — an isolated world of entities. In the Machinery each of the following tabs has its own Entity Context: Simulate Tab, Scene Tab, Preview Tab. Entities within those tabs only exist within these contexts! Each new instance of the tab has a different context! Entities are composed of components. They are there to hold the needed data while <em>Engines</em>/<em>Systems</em> are there to provide behaviour. Each context (<em>entity context</em>) can have a number of <em>engines</em> or <em>systems</em> registered. <em>(ECS)</em> Engines updates are running on subset of entities that posses some set of components. </p>
+allows us to compose complex objects from simpler components in a flexible and performant way. An <em>entity</em> is a game object composed of <em>components</em>. Entities live in a <em>entity context</em> — an isolated world of entities. In the Machinery each of the following tabs has its own Entity Context: Simulate Tab, Scene Tab, Preview Tab. Entities within those tabs only exist within these contexts! Each new instance of the tab has a different context! Entities are composed of components. They are there to hold the needed data while <em>Engines</em>/<em>Systems</em> are there to provide behaviour. Each context (<em>entity context</em>) can have a number of <em>engines</em> or <em>systems</em> registered. <em>(ECS)</em> Engine updates are running on a subset of entities that posses some set of components. </p>
 <blockquote>
 <p><strong>Note</strong>: in some entity systems, these are referred to as <em>systems</em> instead, but we choose <em>engine</em>, because it is less ambiguous.</p>
 </blockquote>
-<p>While Systems are just a update with a provided access to the entity context. When we refer to a context in this chapter we mean the entity context.</p>
+<p>While Systems are just an update with a provided access to the entity context. When we refer to a context in this chapter we mean the entity context.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="gameplay_coding/ecs/index.html#what-is-an-entity">What is an Entity?</a></li>
 <li><a href="gameplay_coding/ecs/index.html#what-is-an-entity-context">What is an Entity Context?</a></li>
 <li><a href="gameplay_coding/ecs/index.html#where-do-entities-live-lifecycle">Where do Entities live? (Lifecycle)</a></li>
 <li><a href="gameplay_coding/ecs/index.html#how-is-the-data-stored">How is the data stored?</a></li>
-<li><a href="gameplay_coding/ecs/index.html#what-is-an-entity-types--archetype">What is an Entity types / Archetype?</a></li>
+<li><a href="gameplay_coding/ecs/index.html#what-is-an-entity-type--archetype">What is an Entity type / Archetype?</a></li>
 <li><a href="gameplay_coding/ecs/index.html#what-are-components">What are Components?</a>
 <ul>
 <li><a href="gameplay_coding/ecs/index.html#best-practice">Best Practice</a></li>
@@ -4100,14 +4100,14 @@ allows us to compose complex objects from simpler components in a flexible and p
 <li><a href="gameplay_coding/ecs/index.html#child-entities">Child entities</a></li>
 </ul>
 <h2 id="what-is-an-entity"><a class="header" href="#what-is-an-entity">What is an Entity?</a></h2>
-<p>An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. Itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore a entity acts as an identifier or key to the data stored in components.</p>
+<p>An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. The entity itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore an entity acts as an identifier or key to the data stored in components.</p>
 <p><img src="https://www.dropbox.com/s/5956267ltb4l14x/tm_guide_entity.png?dl=1" alt="" /></p>
 <blockquote>
 <p><strong>Note:</strong> In this example both entities have the same set of components, but they do not own the data they just refer to it!</p>
 </blockquote>
 <p>Entities are managed by the Entity API and exist within an Entity Context. An Entity struct refers to an entity, but is not a real reference. Rather the Entity struct contains an index used to access entity data.</p>
 <h2 id="what-is-an-entity-context"><a class="header" href="#what-is-an-entity-context">What is an Entity Context?</a></h2>
-<p>The Entity Context is the simulation world. It contains all the Entites and Systems/Engines as well owns all the Component Data. There can be multiple Entity Contexts in the Editor. For example the Simulate tag, Preview Tab have both a Entity Context. When you Register A System/Engine you an decide in which context they shall run. The Default is in all contexts. </p>
+<p>The Entity Context is the simulation world. It contains all the Entities and Systems/Engines as well as owns all the Component Data. There can be multiple Entity Contexts in the Editor. For example the Simulate tag, Preview Tab have both an Entity Context. When you Register A System/Engine you can decide in which context they shall run. The Default is in all contexts. </p>
 <h2 id="where-do-entities-live-lifecycle"><a class="header" href="#where-do-entities-live-lifecycle">Where do Entities live? (Lifecycle)</a></h2>
 <ul>
 <li>Entities <strong>do not live in The Truth</strong>. The truth is for <em>assets</em>, not for <em>simulation.</em></li>
@@ -4125,7 +4125,7 @@ the main way in which we will provide a “preview” of assets in a simulation 
 <li>The generation is increased every time we recycle a slot. This allows us to detect stale entity
 IDs (i.e., weak referencing through <code>is_alive()</code>.</li>
 </ul>
-<h2 id="what-is-an-entity-types--archetype"><a class="header" href="#what-is-an-entity-types--archetype">What is an Entity types / Archetype?</a></h2>
+<h2 id="what-is-an-entity-type--archetype"><a class="header" href="#what-is-an-entity-type--archetype">What is an Entity type / Archetype?</a></h2>
 <p>An Entity Types is a unique combination of component types. The Entity API uses the entity type to group all entities that have the same sets of components.</p>
 <p><img src="https://www.dropbox.com/s/453d1nqrwnsntbw/tm_guide_entity_entity_type.png?dl=1" alt="" /></p>
 <blockquote>
@@ -4138,7 +4138,7 @@ must be copied over to the new type.</li>
 <li>Pointers to component data are thus not permanent.</li>
 </ul>
 <h2 id="what-are-components"><a class="header" href="#what-are-components">What are Components?</a></h2>
-<p>They are data, that is all they are. Designing them is the most important task you will find yoursefl doing in a ESC driven game. The reason is that if you change a component you have to update all systems that use it. This data together composed makes up an Entity. It an be changed at runtime, how ever it is required. This data is transformed in Systems/Engines and therefore Systems / Engines provide the Behaviour of our game based on the input/output of other Systems/Engines.</p>
+<p>They are data, that is all they are. Designing them is the most important task you will find yourself doing in an ESC driven game. The reason is that if you change a component you have to update all systems that use it. This data composed together makes up an Entity. It can be changed at runtime, in what ever way required. This data is transformed in Systems/Engines and therefore Systems/Engines provide the Behaviour of our game based on the input/output of other Systems/Engines.</p>
 <blockquote>
 <p><strong>Note</strong>:  Keep in mind they do not need a Truth Representation. If they do not have one, the Engine cannot display them in the Entity Tree View. This is useful for runtime only components.</p>
 </blockquote>
@@ -4153,17 +4153,17 @@ lists, strings, buffers, etc.</li>
 <p><img src="https://www.dropbox.com/s/1d39bh17zqgeloy/tm_guide_ecs_component.png?dl=1" alt="" /></p>
 <blockquote>
 <p><strong>It's all about the data</strong></p>
-<p>Data is all we have. Data is what we need to transform in order to create a user experience. Data is what we load when we open a document. Data is the graphics on the screen and the pulses from the buttons on your game pad and the cause of your speakers and headphones producing waves in the air and the method by which you level up and how the bad guy knew where you were to shoot at you and how long the dynamite took to explode and how many rings you dropped when you fell on the spikes and the current velocity of every particle in the beautiful scene that ended the game, that was loaded off the disc and into your life. Any application is nothing without its data. Photoshop without the images is nothing. Word is nothing without the characters. Cubase is worthless without the events. All the applications that have ever been written have been written to output data based on some input data. The form of that data can be extremely complex, or so simple it requires no documentation at all, but all applications produce and need data. (<a href="https://www.dataorienteddesign.com/dodmain/node3.html">Source</a>)</p>
+<p>Data is all we have. Data is what we need to transform in order to create a user experience. Data is what we load when we open a document. Data is the graphics on the screen and the pulses from the buttons on your gamepad and the cause of your speakers and headphones producing waves in the air and the method by which you level up and how the bad guy knew where you were to shoot at you and how long the dynamite took to explode and how many rings you dropped when you fell on the spikes and the current velocity of every particle in the beautiful scene that ended the game, that was loaded off the disc and into your life. Any application is nothing without its data. Photoshop without the images is nothing. Word is nothing without the characters. Cubase is worthless without the events. All the applications that have ever been written have been written to output data based on some input data. The form of that data can be extremely complex, or so simple it requires no documentation at all, but all applications produce and need data. (<a href="https://www.dataorienteddesign.com/dodmain/node3.html">Source</a>)</p>
 </blockquote>
 <h3 id="best-practice"><a class="header" href="#best-practice">Best Practice</a></h3>
 <ul>
-<li><strong>Component Size:</strong> Keep them small and atomic. The main reason for this is  that it improves caching performance. Besides having a lot of small components allowes for more reusablity and compostability!  Besides if they are atomic units of data, they increase their value to be reused across projects better and can provide more combinations. <em>The biggest disadvanatge</em> is that smal components make it harder to find them, the larger your project is.</li>
-<li><strong>Complex component data:</strong> Generally speaking you want to avoid storing complex data such as arrays or heap allocated data in a component. It is possible and sometimes not possible to avoid, but it is always good to ask yourelf if its needed.</li>
+<li><strong>Component Size:</strong> Keep them small and atomic. The main reason for this is  that it improves caching performance. Besides having a lot of small components allows for more reusability and compostability! Besides if they are atomic units of data, they increase their value to be reused across projects better and can provide more combinations. <em>The biggest disadvantage</em> is that small components make it harder to find them, the larger your project is.</li>
+<li><strong>Complex component data:</strong> Generally speaking you want to avoid storing complex data such as arrays or heap allocated data in a component. It is possible and sometimes not possible to avoid, but it is always good to ask yourself if it is needed.</li>
 </ul>
 <h2 id="what-is-a-component-manager"><a class="header" href="#what-is-a-component-manager">What is a Component Manager?</a></h2>
 <ul>
 <li>
-<p>Can store persitsent data from the beginning of the Entity Context till the end</p>
+<p>Can store persistent data from the beginning of the Entity Context till the end</p>
 </li>
 <li>
 <p>Can provide a way to allocate data on adding/removing a component</p>
@@ -4171,7 +4171,7 @@ lists, strings, buffers, etc.</li>
 </ul>
 <p><img src="https://www.dropbox.com/s/kre84a4vqouq37z/tm_guide_component_manager.png?dl=1" alt="" /></p>
 <h2 id="game-logic"><a class="header" href="#game-logic">Game Logic</a></h2>
-<p>The behavior is defined in Systems and Engines which process those components. Systems and Engines can be seen as data transfromation actions. They take some input (components) and process them to some output (changed component data, different rendering) and a chain of small system together makes up your game!</p>
+<p>The behavior is defined in Systems and Engines which process those components. Systems and Engines can be seen as data transformation actions. They take some input (components) and process them to some output (changed component data, different rendering) and a chain of small systems together makes up your game!</p>
 <p><img src="https://www.dropbox.com/s/5wqvcf27vvx5b7v/engines.png?dl=1" alt="" /></p>
 <h3 id="what-are-engines"><a class="header" href="#what-are-engines">What are Engines?</a></h3>
 <blockquote>
@@ -4182,10 +4182,10 @@ lists, strings, buffers, etc.</li>
 <p>An engine is an update that runs for all components matching a certain <em>component mask</em>.</p>
 </li>
 <li>
-<p>Engines registered with the context runs automatically on update, in parallel.</p>
+<p>Engines registered with the context run automatically on update, in parallel.</p>
 </li>
 <li>
-<p>Parallelization is done automatic, by looking at the components that each engine reads or writes.
+<p>Parallelization is done automatically, by looking at the components that each engine reads or writes.
 Before running, an engine waits for the previous engines that wrote to the components that the
 engine is interested in.</p>
 <p>The following image shows how a time based movement System could look like:</p>
@@ -4205,13 +4205,13 @@ engine is interested in.</p>
 </li>
 </ul>
 <h2 id="how-are-entity-assets-translated-to-ecs-entities"><a class="header" href="#how-are-entity-assets-translated-to-ecs-entities">How are Entity Assets translated to ECS Entities?</a></h2>
-<p>Since the Truth is a editor concept and our main data model, your scene is stored in the Truth. When you start the simulation your Assets get translated to the ECS via the <code>asset_load()</code> function! In your <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_component_i">tm_component_i</a> you can provide this function if you want your component to translate to the ECS world. In there you have access to the Truth, afterwards not anymore! Besides you can provide some other callbacks for differnt stages of the translation process. </p>
+<p>Since the Truth is an editor concept and our main data model, your scene is stored in the Truth. When you start the simulation your Assets get translated to the ECS via the <code>asset_load()</code> function. In your <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_component_i">tm_component_i</a> you can provide this function if you want your component to translate to the ECS world. In there you have access to the Truth, afterwards not anymore. Besides, you can provide some other callbacks for different stages of the translation process. </p>
 <p><img src="https://www.dropbox.com/s/ao6cs4fpyx9i078/truth_ecs%20%282%29.png?dl=1" alt="" /></p>
 <blockquote>
-<p><strong>Important:</strong> A Component representation in The Truth may <strong>not</strong> reflect the runtime ECS representation. This can be used to separate a Truth representation into smaller bits for gameplay programming sake but keep the simplicty for the Front End user.</p>
+<p><strong>Important:</strong> A Component representation in The Truth may <strong>not</strong> reflect the runtime ECS representation. This can be used to separate a Truth representation into smaller bits for gameplay programming sake but keep the simplicity for the Front End user.</p>
 </blockquote>
 <p><em>Example:</em></p>
-<p>You have a <code>Movement Controller Component</code> that can be used via the UI to determine the Entities movement speed. The actual movement system interacts with a <code>Movement Component</code> which keeps track of the actual current speed and can be influenced by other systems while the Movement Controller is only there to keep the fixed <code>const</code> state and can only be influenced by a Skill Update system or something like this.</p>
+<p>You have a <code>Movement Controller Component</code> that can be used via the UI to determine the Entities movement speed. The actual movement system interacts with a <code>Movement Component</code> which keeps track of the actual current speed and can be influenced by other systems while the Movement Controller is only there to keep the fixed <code>const</code> state, but it can be influenced by a Skill Update system or something like this.</p>
 <h2 id="child-entities"><a class="header" href="#child-entities">Child entities</a></h2>
 <ul>
 <li>
@@ -4223,7 +4223,7 @@ automatically delete it from its parent — it will remain in the parent as a de
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="what-are-components-1"><a class="header" href="#what-are-components-1">What are Components?</a></h2>
-<p>They are data, that is all they are. Designing them is the most important task you will find yoursefl doing in a ESC driven game. The reason is that if you change a component you have to update all systems that use it. This data together composed makes up an Entity. It an be changed at runtime, how ever it is required. This data is transformed in Systems/Engines and therefore Systems / Engines provide the Behaviour of our game based on the input/output of other Systems/Engines.</p>
+<p>They are data, that is all they are. Designing them is the most important task you will find yourself doing in an ESC driven game. The reason is that if you change a component you have to update all systems that use it. This data composed together makes up an Entity. It can be changed at runtime, in what ever way required. This data is transformed in Systems/Engines and therefore Systems/Engines provide the Behaviour of our game based on the input/output of other Systems/Engines.</p>
 <blockquote>
 <p><strong>Note</strong>:  Keep in mind they do not need a Truth Representation. If they do not have one, the Engine cannot display them in the Entity Tree View. This is useful for runtime only components.</p>
 </blockquote>
@@ -4238,12 +4238,12 @@ lists, strings, buffers, etc.</li>
 <p><img src="https://www.dropbox.com/s/1d39bh17zqgeloy/tm_guide_ecs_component.png?dl=1" alt="" /></p>
 <blockquote>
 <p><strong>It's all about the data</strong></p>
-<p>Data is all we have. Data is what we need to transform in order to create a user experience. Data is what we load when we open a document. Data is the graphics on the screen and the pulses from the buttons on your game pad and the cause of your speakers and headphones producing waves in the air and the method by which you level up and how the bad guy knew where you were to shoot at you and how long the dynamite took to explode and how many rings you dropped when you fell on the spikes and the current velocity of every particle in the beautiful scene that ended the game, that was loaded off the disc and into your life. Any application is nothing without its data. Photoshop without the images is nothing. Word is nothing without the characters. Cubase is worthless without the events. All the applications that have ever been written have been written to output data based on some input data. The form of that data can be extremely complex, or so simple it requires no documentation at all, but all applications produce and need data. (<a href="https://www.dataorienteddesign.com/dodmain/node3.html">Source</a>)</p>
+<p>Data is all we have. Data is what we need to transform in order to create a user experience. Data is what we load when we open a document. Data is the graphics on the screen and the pulses from the buttons on your gamepad and the cause of your speakers and headphones producing waves in the air and the method by which you level up and how the bad guy knew where you were to shoot at you and how long the dynamite took to explode and how many rings you dropped when you fell on the spikes and the current velocity of every particle in the beautiful scene that ended the game, that was loaded off the disc and into your life. Any application is nothing without its data. Photoshop without the images is nothing. Word is nothing without the characters. Cubase is worthless without the events. All the applications that have ever been written have been written to output data based on some input data. The form of that data can be extremely complex, or so simple it requires no documentation at all, but all applications produce and need data. (<a href="https://www.dataorienteddesign.com/dodmain/node3.html">Source</a>)</p>
 </blockquote>
 <h3 id="best-practice-1"><a class="header" href="#best-practice-1">Best Practice</a></h3>
 <ul>
-<li><strong>Component Size:</strong> Keep them small and atomic. The main reason for this is  that it improves caching performance. Besides having a lot of small components allowes for more reusablity and compostability!  Besides if they are atomic units of data, they increase their value to be reused across projects better and can provide more combinations. <em>The biggest disadvanatge</em> is that smal components make it harder to find them, the larger your project is.</li>
-<li><strong>Complex component data:</strong> Generally speaking you want to avoid storing complex data such as arrays or heap allocated data in a component. It is possible and sometimes not possible to avoid, but it is always good to ask yourelf if its needed.</li>
+<li><strong>Component Size:</strong> Keep them small and atomic. The main reason for this is  that it improves caching performance. Besides having a lot of small components allows for more reusability and compostability! Besides if they are atomic units of data, they increase their value to be reused across projects better and can provide more combinations. <em>The biggest disadvantage</em> is that small components make it harder to find them, the larger your project is.</li>
+<li><strong>Complex component data:</strong> Generally speaking you want to avoid storing complex data such as arrays or heap allocated data in a component. It is possible and sometimes not possible to avoid, but it is always good to ask yourself if it is needed.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="how-can-we-implement-interaction-between-entities"><a class="header" href="#how-can-we-implement-interaction-between-entities">How can we implement interaction between entities?</a></h2>
 <p>There are two problems in an ECS (Entity Component System) regarding the interaction between Entities: The <strong>read</strong> and the <strong>write</strong> access. </p>
@@ -4253,14 +4253,14 @@ lists, strings, buffers, etc.</li>
 <li>On what data do we operate? </li>
 <li>What is our domain?</li>
 <li>What is the possible input for our transformation? </li>
-<li>What is the frequency of the data use? </li>
+<li>What is the usage frequency of the data? </li>
 <li>What are we actually transforming?</li>
-<li>How could our algorithm look like? </li>
+<li>What could our algorithm look like? </li>
 <li>How often do we perform our transformation?</li>
 </ul>
-<p>For infrequent read access we can easily use the <code>tm_entity_api.get_component()</code> . It allows access to the underlying data directly from a provided entity. It is not recommended to use that for read-access because it is quite slow. You perform a random data access. But again, if it is infrequent of the operation and the number of targets (Entities), which are interesting to choose the right tool.</p>
+<p>For infrequent read access we can easily use the <code>tm_entity_api.get_component()</code> . It allows access to the underlying data directly from a provided entity. It is not recommended to use that for read-access because it is quite slow. You perform random data access. But again, if it is infrequent of the operation and the number of targets (Entities), which are interesting to choose the right tool.</p>
 <blockquote>
-<p>Here, you can use a System better than an <code>Engine</code>, since a System doe not run in parallel and provides access to the Entity Context.</p>
+<p>Here, you can use a System better than an <code>Engine</code>, since a System does not run in parallel and provides access to the Entity Context.</p>
 </blockquote>
 <h2 id="the-problem"><a class="header" href="#the-problem">The problem</a></h2>
 <p>When creating interactions between entities, we mainly face two types of problems:</p>
@@ -4271,7 +4271,7 @@ lists, strings, buffers, etc.</li>
 <p><strong>The transformation from *Interaction* towards *Relationships*</strong></p>
 <p>To start this transformation, we should have a quick look at the first principle of <em>Data-Oriented Design</em>:</p>
 <blockquote>
-<p>Data is not the problem domain. For some, it would seem that data-oriented design is the antithesis of most other programming paradigms because the data-oriented design is a technique that does not readily allow the problem domain to enter into the software so readily. It does not recognize the concept of an object in any way, as data is consistent without meaning […] The data-oriented design approach doesn’t build the real-world problem into the code. This could be seen as a failing of the data-oriented approach by veteran object-oriented developers, as many examples of the success of object-oriented design come from being able to bring human concepts to the machine. In this middle ground, a solution can be written in this language that is understandable by both humans and computers. The data-oriented approach gives up some of the human readability by leaving the problem domain in the design document but stops the machine from having to handle human concepts at any level by just that same action — <a href="http://www.dataorienteddesign.com/">Data Oriented Design Book Chapter 1.2</a></p>
+<p>Data is not the problem domain. For some, it would seem that data-oriented design is the antithesis of most other programming paradigms because data-oriented design is a technique that does not readily allow the problem domain to enter into the software so readily. It does not recognize the concept of an object in any way, as data is consistent without meaning […] The data-oriented design approach doesn’t build the real-world problem into the code. This could be seen as a failure of the data-oriented approach by veteran object-oriented developers, as many examples of the success of object-oriented design come from being able to bring human concepts to the machine. In this middle ground, a solution can be written in this language that is understandable by both humans and computers. The data-oriented approach gives up some of the human readability by leaving the problem domain in the design document but stops the machine from having to handle human concepts at any level by just that same action — <a href="http://www.dataorienteddesign.com/">Data Oriented Design Book Chapter 1.2</a></p>
 </blockquote>
 <p>This principle helps us recognize that interactions <em>do not truly exist. They hide the implementation of the underlying relationship</em>. A relationship is nothing else than a transformation of data. In the case of an ECS, the Entity Manager (In our case, Entity Context) can be seen as a database and the Entity as a Lookup table key that indexes relationships between components. </p>
 <p>The systems (or engines) are just here to interpret those relationships and give them meaning. Therefore, a system and engines should only do one job and do this well. </p>
@@ -4289,13 +4289,13 @@ lists, strings, buffers, etc.</li>
 <p><strong>How do we design Systems?</strong></p>
 <p>To implement the before-mentioned relationships, we have to undertake a couple of steps. </p>
 <blockquote>
-<p>These steps are also interesting for none programmers who design gameplay systems. Having those flashed out when they design game mechanics can be good and speed up your work. </p>
+<p>These steps are also interesting for programmers who design gameplay systems. Having those fleshed out when they design game mechanics can be good and speed up your work. </p>
 </blockquote>
 <p>We have to ask the following questions:</p>
 <p><strong>1.</strong> What data transformations are we going to do and on which data? </p>
 <p>This question should lead to “what components do we need to create this relationship?” We should always be able to give a reason why we need this data.</p>
 <p><strong>2.</strong> What is our possible domain? (What kind of inputs do we have?)</p>
-<p>When we figure this out, we can make the right decision later. Also, we can reason about our code how to implement these relationships?</p>
+<p>When we figure this out, we can make the right decision later. Also, we can reason about our code and how to implement these relationships.</p>
 <p><strong>3.</strong> How often does the data change? </p>
 <p>To determine how often we change the data, we go through component by component and discuss how often we change it. This process is vital to pick the right tool. Knowing those numbers or tendencies is great for reasoning about possible performance bottlenecks and where we could apply optimizations.</p>
 <p><strong>4.</strong> What are we actually transforming?</p>
@@ -4304,31 +4304,31 @@ lists, strings, buffers, etc.</li>
 <p>To pick the right tool, we need to reason about the costs an algorithm costs us. If we take run time performance as a measurement, it is okay to have a slow algorithm if we do not execute this frequently. If this is not the case, you should consider another solution.</p>
 <p><strong>5.</strong> How often do we execute the algorithm/transformation?</p>
 <p>Based on the information we have already about the data we need for the transformation, it’s pretty easy to determine the execution frequency. The total number of entities/objects is known at this time. (It may be an estimation). Therefore, we can guess how often this might run. Keep in mind that we previously discussed how often we suspect the data to be changed. This leads to transparency, which gives a good idea of the costs of this code.</p>
-<p>Keep in mind that the main goal is to keep things simple. A System/Engine should do one job. As the variety of components defines the data type of the Entity. And the combination of System's/Engines defines the actual game behavior. Therefore you do not need to write diagrams, blueprints, pseudo-code, or anything. You maybe even be able just to write the engine in one goal. It is recommended to do those steps even in your mind before you write your system.</p>
+<p>Keep in mind that the main goal is to keep things simple. A System/Engine should do one job. As the variety of components defines the data type of the Entity. And the combination of Systems/Engines defines the actual game behavior. Therefore you do not need to write diagrams, blueprints, pseudo-code or anything. You may even be able to just write the engine as one goal. It is recommended to do those steps even in your mind before you write your system.</p>
 <blockquote>
 <p><strong>IMPORTANT:</strong> When the data changes, the problem changes. Therefore, we have to properly evaluate with the descriptive method the possible outcome and maybe change the implementation.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-design-a-systems--engines"><a class="header" href="#how-to-design-a-systems--engines">How to design a Systems &amp; Engines</a></h1>
 <p>In the Machinery, you provide the behavior for your gameplay code via Engines and Systems. The difference between Engines and Systems is that Engines provide an explicitly defined subset of components while Systems give you only access to the Entity Context.</p>
 <blockquote>
-<p><strong>Note:</strong> Unsure what a System or a Engine is? Please read  <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">here</a></p>
+<p><strong>Note:</strong> Unsure what a System or an Engine is? Please read  <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/index.html">here</a></p>
 </blockquote>
 <p>This separation means that Engines are better used for high-frequency operations on many entities. At the same time, Systems are better used for broader operations such as input on a few Entities / Single entities.</p>
 <blockquote>
-<p><strong>Documentation:</strong> The difference between <em>engines</em> and <em>systems</em> is that engines are fed component data, where as systems are not. Thus, systems are useful when the data is stored externally from the components (for example to update a physics simulation), whereas <em>engines</em> are more efficient when the data  is stored in the components. (You could use a <em>system</em> to update data in components, but it would be inefficient, because you would have to perform a lot of lookups to access the component data.)</p>
+<p><strong>Documentation:</strong> The difference between <em>engines</em> and <em>systems</em> is that engines are fed component data, whereas systems are not. Thus, systems are useful when the data is stored externally from the components (for example to update a physics simulation), whereas <em>engines</em> are more efficient when the data  is stored in the components. (You could use a <em>system</em> to update data in components, but it would be inefficient, because you would have to perform a lot of lookups to access the component data.)</p>
 </blockquote>
 <p>These are a couple of questions you should ask yourself in advance.</p>
 <ul>
 <li>On what data do we operate?</li>
 <li>What is our domain?</li>
 <li>What is the possible input for our transformation?</li>
-<li>What is the frequency of the data use?</li>
+<li>What is the usage frequency of the data?</li>
 <li>What are we actually transforming?</li>
-<li>How could our algorithm look like?</li>
+<li>What could our algorithm look like?</li>
 <li>How often do we perform our transformation?</li>
 </ul>
 <blockquote>
-<p>More details about those questions click here : <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/how_entites_can_interact.html">How entites can interact.</a></p>
+<p>More details about those questions click here : <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/how_entites_can_interact.html">How entities can interact.</a></p>
 </blockquote>
 <p>At the end of this, you should be able to answer the following questions:</p>
 <ul>
@@ -4341,8 +4341,8 @@ lists, strings, buffers, etc.</li>
 <p>Those answers are important for the automatic scheduling of the Systems/Engines. Based on all those inputs, the Entity System can determine when and how to schedule what.</p>
 <h2 id="best-practice-2"><a class="header" href="#best-practice-2">Best Practice</a></h2>
 <ul>
-<li><strong>System/Engine Scope:</strong> Systems should be designed to have one job only. This can be difficult at times, especially when designing new features. Therefore its fine to create first a bigger system and than with the time make them smaller. If you find that your engine/system does a lot of things, don't worry. In an ECS things are decoupled from everything else, therefore it is generally pretty easy to split them up into smaller unites. This allows you to increase reusability of systems</li>
-<li><strong>System/Engine Scheduling:</strong> Always provide a write list and an list of components your Engine/System is operating on. This is important so the scheduler can do its best! Also do not forget to make use of <code>.before_me</code>, <code>.after_me</code> and <code>.phase</code> more about this in the next chapter!</li>
+<li><strong>System/Engine Scope:</strong> Systems should be designed to have one job only. This can be difficult at times, especially when designing new features. Therefore it is fine to first create a bigger system and then with time make them smaller. If you find that your engine/system does a lot of things, don't worry. In an ECS things are decoupled from everything else, therefore it is generally pretty easy to split them up into smaller units. This allows you to increase reusability of systems</li>
+<li><strong>System/Engine Scheduling:</strong> Always provide a write list and a list of components your Engine/System is operating on. This is important so the scheduler can do its best! Also do not forget to make use of <code>.before_me</code>, <code>.after_me</code> and <code>.phase</code> more about this in the next chapter!</li>
 </ul>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <pre><code class="language-c">    const tm_engine_i movement_engine = {
@@ -4362,7 +4362,7 @@ lists, strings, buffers, etc.</li>
 <li><code>transform_component</code></li>
 <li><code>mover_component</code></li>
 </ul>
-<p>components. The scheduler can now look for those components in other engines and determine based on the .<code>write</code> field how to schedule it efficient.</p>
+<p>components. The scheduler can now look for those components in other engines and determine based on the .<code>write</code> field how to schedule it efficiently.</p>
 <p>In this example the scheduler can schedule any engine that writes to the keyboard and the movement component that the same time as this engine if they do not write to the transform and mover component!</p>
 <h2 id="what-is-next-6"><a class="header" href="#what-is-next-6">What is next?</a></h2>
 <p>More details on writing your own system or engine is explained in the next chapter</p>
@@ -4370,22 +4370,22 @@ lists, strings, buffers, etc.</li>
 <p>You have to pass the  <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_system_i">tm_entity_system_i</a> or <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a> instance in your register function.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li><a href="gameplay_coding/ecs/how_to_define_a_engine_system.html#ask-yourself-those-questions-before-you-design-a-engine--system">Ask yourself those questions before you design a Engine / System</a>
+<li><a href="gameplay_coding/ecs/how_to_define_a_engine_system.html#ask-yourself-those-questions-before-you-design-an-engine--system">Ask yourself those questions before you design an Engine / System</a>
 <ul>
 <li><a href="gameplay_coding/ecs/how_to_define_a_engine_system.html#how-do-those-questions-translate">How do those questions translate?</a></li>
 </ul>
 </li>
 <li><a href="gameplay_coding/ecs/how_to_define_a_engine_system.html#what-is-next">What is next?</a></li>
 </ul>
-<h2 id="ask-yourself-those-questions-before-you-design-a-engine--system"><a class="header" href="#ask-yourself-those-questions-before-you-design-a-engine--system">Ask yourself those questions before you design a Engine / System</a></h2>
-<p>The following questions are better explain in the chapter: <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/how_entites_can_interact.html">How entites can interact.</a></p>
+<h2 id="ask-yourself-those-questions-before-you-design-an-engine--system"><a class="header" href="#ask-yourself-those-questions-before-you-design-an-engine--system">Ask yourself those questions before you design an Engine / System</a></h2>
+<p>The following questions are better explained in the chapter: <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/how_entites_can_interact.html">How entities can interact.</a></p>
 <ul>
 <li>On what data do we operate?</li>
 <li>What is our domain?</li>
 <li>What is the possible input for our transformation?</li>
-<li>What is the frequency of the data use?</li>
+<li>What is the usage frequency of the data?</li>
 <li>What are we actually transforming?</li>
-<li>How could our algorithm look like?</li>
+<li>What could our algorithm look like?</li>
 <li>How often do we perform our transformation?</li>
 </ul>
 <p>and my answers</p>
@@ -4402,14 +4402,14 @@ lists, strings, buffers, etc.</li>
 <p><strong>What kind of data am I going to read?  &amp;&amp; What kind of data am I going to write?</strong></p>
 <p>They translate <code>.write</code> and <code>.components.</code> With those fields, we tell the scheduler what components this system operates. From which components it intends to read from and to which one it writes.</p>
 <p><strong>What kind of data do I want to ignore?</strong> (only important for engines)</p>
-<p>In the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a> you can provide a way to filter your component. Thus you can decide on which components the engine shall run.  The field <code>.excluded</code> is used for this in there you can define which components a entity type shall <strong>not</strong> have. This means that when the engine is scheduled all entities will be ignored with those components. </p>
+<p>In the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a> you can provide a way to filter your component. Thus you can decide on which components the engine shall run.  The field <code>.excluded</code> is used for this in there you can define which components an entity type shall <strong>not</strong> have. This means that when the engine is scheduled all entities will be ignored with those components. </p>
 <p>For more information see <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/tagging_entities.html">Tagging Entities</a> and <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/filtering_entities.html">Filtering Entities</a></p>
 <p><strong>Should my operation be exclusive? Hence not to be executed in parallel?</strong></p>
-<p>If we are sure that our system/engine should not run parallel, we need to tell the scheduler by setting the <code>.exclusive</code> flag to true. It will not run in parallel with any other systems or engines in the entity context. If it is <strong>false</strong>, components and writes will be used to determine parallelism.</p>
+<p>If we are sure that our system/engine should not run parallel, we need to tell the scheduler by setting the <code>.exclusive</code> flag to true. It will not run in parallel with any other systems or engines in the entity context. If it is <strong>false</strong> then the components and writes will be used to determine parallelism.</p>
 <p><strong>In which phase does it run?</strong> </p>
 <p>We can define the <code>.phase</code> to tell the system in which phase we want our operation to run.</p>
 <p><strong>What dependencies do I have?</strong></p>
-<p>We can define dependencies by saying: <code>.before_me</code> and <code>.after_me</code>. We just pass the string has of the other engine/system to this, and the scheduler does the rest.</p>
+<p>We can define dependencies by saying: <code>.before_me</code> and <code>.after_me</code>. We just pass the string hash of the other engine/system to this, and the scheduler does the rest.</p>
 <h2 id="what-is-next-7"><a class="header" href="#what-is-next-7">What is next?</a></h2>
 <p>In the next chapter we translate this to actual code!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="registering-a-system-or-an-engine"><a class="header" href="#registering-a-system-or-an-engine">Registering a System or an Engine</a></h1>
@@ -4456,7 +4456,7 @@ static void entity_register_engines_i(struct tm_entity_context_o *ctx)
     tm_entity_api-&gt;register_system(ctx, &amp;winning_system);
 }
 </code></pre>
-<p>In the above example the scheduler will schedule this system after the <code>maze_generation_system</code> system! Since we did not provide any further information in <code>.writes</code> or in <code>.components</code> the scheduler has no other information to work with. In this case its best to not write to anything!</p>
+<p>In the above example the scheduler will schedule this system after the <code>maze_generation_system</code> system! Since we did not provide any further information in <code>.writes</code> or in <code>.components</code> the scheduler has no other information to work with. In this case it is best to not write anything!</p>
 <p><em>Example load function:</em></p>
 <pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
@@ -4465,10 +4465,10 @@ static void entity_register_engines_i(struct tm_entity_context_o *ctx)
 }
 </code></pre>
 <h2 id="register-your-system-or-engine-to-the-editor"><a class="header" href="#register-your-system-or-engine-to-the-editor">Register your system or engine to the Editor</a></h2>
-<p>You can use the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> to register your engine or system to a entity context that runs only in the Editor. This might be good for components that shall only be used in the Editor.</p>
+<p>You can use the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> to register your engine or system to an entity context that runs only in the Editor. This might be good for components that shall only be used in the Editor.</p>
 <p>The function signature is the same as the for the other interface!</p>
 <h3 id="register-systems--engines-outside-of-the-load-function"><a class="header" href="#register-systems--engines-outside-of-the-load-function">Register systems &amp; engines outside of the load function</a></h3>
-<p>You also can register your System/Engine outside of the load function where ever you have access to the correct Entity Context.</p>
+<p>You also can register your System/Engine outside of the load function wherever you have access to the correct Entity Context.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="write-a-custom-component"><a class="header" href="#write-a-custom-component">Write a custom component</a></h1>
 <p>This walkthrough shows you how to add a custom component to the Engine. During this walkthrough, we will cover the following topics:</p>
 <ul>
@@ -4671,7 +4671,7 @@ static struct tm_localizer_api *tm_localizer_api;
 <h3 id="define-your-data-1"><a class="header" href="#define-your-data-1">Define your Data</a></h3>
 <p>The next part contains the Truth Definition of the component and the plain old data struct (POD). <em>In production, we should separate those aspects into a header file!</em></p>
 <blockquote>
-<p>Note: All components should be plain old datatypes.</p>
+<p>Note: All components should be plain old data types.</p>
 </blockquote>
 <pre><code class="language-c">#define TM_TT_TYPE__CUSTOM_COMPONENT &quot;tm_custom_component&quot;
 #define TM_TT_TYPE_HASH__CUSTOM_COMPONENT TM_STATIC_HASH(&quot;tm_custom_component&quot;, 0x355309758b21930cULL)
@@ -4727,9 +4727,9 @@ static tm_ci_editor_ui_i *editor_aspect = &amp;(tm_ci_editor_ui_i){
 <li>Add our <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h.html#tm_ci_editor_ui">TM_CI_EDITOR_UI</a> aspect to the type. It tells the Editor that you can add the component via the Editor. If you do not provide it, the Editor will not suggest this component to you and cannot store it in the Truth. It does not mean you cannot add this component via C.</li>
 </ol>
 <h3 id="define-your-component"><a class="header" href="#define-your-component">Define your component</a></h3>
-<p>You an register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_i">tm_entity_create_component_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_create_component_i(struct tm_entity_context_o *ctx)</code>.</p>
+<p>You can register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_i">tm_entity_create_component_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_create_component_i(struct tm_entity_context_o *ctx)</code>.</p>
 <p>The Engine will call this function whenever it creates a new Entity Context to populate the context with all the known components. It usually happens at the beginning of the Simulation.</p>
-<p>Within this function, you can define your component and register it to the context. The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_api">tm_entity_api</a> provides a function <code>tm_entity_api.register_component()</code> which expects the current context and a instance of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_component_i">tm_component_i</a>. We define one in our function and give it the needed information:</p>
+<p>Within this function, you can define your component and register it to the context. The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_api">tm_entity_api</a> provides a function <code>tm_entity_api.register_component()</code> which expects the current context and an instance of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_component_i">tm_component_i</a>. We define one in our function and give it the needed information:</p>
 <ul>
 <li>A name should be the same as the Truth Type</li>
 <li>The size of the component struct</li>
@@ -4822,7 +4822,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
 <li><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_bb__editor">TM_ENTITY_BB__EDITOR</a> - Blackboard item that indicates that we are running in <em>Editor</em> mode. This may disable some components and/or simulation engines.</li>
 <li><code>TM_ENTITY_BB__SIMULATING_IN_EDITOR</code> - Set to non-zero if the Simulation runs from within the Editor, such as running a game in the simulation tab. It will be zero when we run a game from the Runner. Note the distinction from <a href="https://ourmachinery.com//apidoc/plugins/entity/entity.h.html#tm_entity_bb__editor">TM_ENTITY_BB__EDITOR</a>.</li>
 </ul>
-<p>The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_update_set_t">tm_engine_update_set_t</a> gives us access to the needed data, and we can modify our component. The first important information we get are the number of entity types (also known Archetypes). This number is stored in <code>data-&gt;num_arrays</code>. Now that we know this information we can iterate over them and access the components per entity type. <code>tm_engine_update_array_t a =  data-&gt;arrays</code> (Gives us the current entity type's components). <code>a-&gt;n</code> is the number of matching components / entities of this entity type.</p>
+<p>The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_update_set_t">tm_engine_update_set_t</a> gives us access to the needed data, and we can modify our components. The first important information we get are the number of entity types (also known Archetypes). This number is stored in <code>data-&gt;num_arrays</code>. Now that we know this information we can iterate over them and access the components per entity type. <code>tm_engine_update_array_t a =  data-&gt;arrays</code> (Gives us the current entity type's components). <code>a-&gt;n</code> is the number of matching components / entities of this entity type.</p>
 <pre><code class="language-c">    for (tm_engine_update_array_t *a = data-&gt;arrays; a &lt; data-&gt;arrays + data-&gt;num_arrays; ++a)
     {
         struct tm_custom_component_t *custom_component = a-&gt;components[0];
@@ -4850,7 +4850,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
 <pre><code class="language-c">    tm_entity_api-&gt;notify(ctx, data-&gt;engine-&gt;components[1], mod_transform, (uint32_t)tm_carray_size(mod_transform));
 </code></pre>
 <h3 id="register-your-engine-to-the-system"><a class="header" href="#register-your-engine-to-the-system">Register your Engine to the system</a></h3>
-<p>You an register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)</code>. </p>
+<p>You can register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)</code>. </p>
 <p>The function itself looks as follows:</p>
 <pre><code class="language-c">static void component__register_engine(struct tm_entity_context_o *ctx)
 {
@@ -4870,7 +4870,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
     tm_entity_api-&gt;register_engine(ctx, &amp;custom_component_engine);
 }
 </code></pre>
-<p>The first thing we do is looking up the component type. Did we register the type? If not, we will not get the correct type. Here we are using the name we defined beforehand in our component create function.</p>
+<p>The first thing we do is to look up the component type. Did we register the type? If not, we will not get the correct type. Here we are using the name we defined beforehand in our component create function.</p>
 <p>Then we ask for the transform component next because our Engine shall run on those two components.</p>
 <p>After this, we define the actual instance of our engine struct</p>
 <p><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>. </p>
@@ -4909,7 +4909,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
 <p>The Machinery knows 2 kind of ways to Tag Entities:</p>
 <ol>
 <li>using the <code>Tag Component</code></li>
-<li>using a <code>Tag Component</code> to filter the Entity Type's</li>
+<li>using a <code>Tag Component</code> to filter the Entity Type</li>
 </ol>
 <p><strong>Table of Content</strong></p>
 <ul>
@@ -4923,31 +4923,31 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
 <li><a href="gameplay_coding/ecs/tagging_entities.html#filtering">Filtering</a></li>
 </ul>
 <h2 id="using-the-tag-component"><a class="header" href="#using-the-tag-component">Using the Tag Component</a></h2>
-<p>The difference is that the first solution can be used via the <code>tag_component_api</code> and you can add Tags via the Editor to any Entity that has a Tag Component. Later on in your System or Engine you can access the Taged Entity.</p>
+<p>The difference is that the first solution can be used via the <code>tag_component_api</code> and you can add Tags via the Editor to any Entity that has a Tag Component. Later on in your System or Engine you can access the Tagged Entity.</p>
 <blockquote>
-<p><strong>Note:</strong> This is not the most performant solution but a easy way for entities which do not exist many times in the world. Its a nice way to identify one or two specifc entities for some specific logic.</p>
+<p><strong>Note:</strong> This is not the most performant solution but an easy way for entities which do not exist many times in the world. It is a nice way to identify one or two specific entities for some specific logic.</p>
 </blockquote>
 <h3 id="adding-them-via-the-editor"><a class="header" href="#adding-them-via-the-editor">Adding them via The Editor</a></h3>
-<p>You need to select a Entity and <strong>Right Click -&gt; Add Component</strong></p>
+<p>You need to select an Entity and <strong>Right Click -&gt; Add Component</strong></p>
 <p><img src="https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?dl=1" alt="" /></p>
-<p>This will add the <em>Entity Tag</em> Component. When selected you have the chance to add Tags to the Entity by using a simple auto complete text box. </p>
-<p><strong>Beaware:</strong> The Engine will create a entity tag folder in your root folder. This is also the place where the Entity Tag API will search for the assets.</p>
+<p>This will add the <em>Entity Tag</em> Component. When selected you have the chance to add Tags to the Entity by using a simple autocomplete textbox. </p>
+<p><strong>Beware:</strong> The Engine will create an entity tag folder in your root folder. This is also the place where the Entity Tag API will search for the assets.</p>
 <p><img src="https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?dl=1" alt="" /></p>
 <h3 id="adding-and-accessing-tags-via-c"><a class="header" href="#adding-and-accessing-tags-via-c">Adding and Accessing Tags via C</a></h3>
 <p>You can also add tags via the <code>tag_component_api</code> but you need access to the <code>Tag Component Manager</code>. In your System or on Simulate Entry <code>start()</code>:</p>
 <pre><code class="language-c">tm_tag_component_manager_o *tag_mgr = (tm_tag_component_manager_o *)tm_entity_api-&gt;component_manager(ctx, tag_component);
 tm_tag_component_api-&gt;add_tag(tag_mgr, my_to_tagged_entity, TM_STATIC_HASH(&quot;player&quot;, 0xafff68de8a0598dfULL));
 </code></pre>
-<p>You can also recive entities like this:</p>
+<p>You can also receive entities like this:</p>
 <pre><code class="language-c">tm_tag_component_manager_o *tag_mgr = (tm_tag_component_manager_o *)tm_entity_api-&gt;component_manager(ctx, tag_component);
 tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM_STATIC_HASH(&quot;upper_bounding_box&quot;, 0x1afc9d34ecb740ecULL));
 </code></pre>
-<p>And than you can read the data from the entity via <code>get_component</code>. This is where you will perform a random look up and this might be slow. Therefore it is mostly recommend to use this for simple interactions where performance is not needed.</p>
+<p>And than you can read the data from the entity via <code>get_component</code>. This is where you will perform a random look up and this might be slow. Therefore it is mostly recommended to use this for simple interactions where performance is not needed.</p>
 <blockquote>
 <p><strong>Note:</strong> Tags do not need to exist in the Asset Browser, therefore you can add any label to the entity. Keep in mind that they will <strong>not</strong> be created in the Asset Browser!</p>
 </blockquote>
 <h2 id="tag-components---entity-type-filter"><a class="header" href="#tag-components---entity-type-filter">Tag Components - Entity Type Filter</a></h2>
-<p>On the other hand you can define a <code>Tag</code> Component which should not be confused with the priviously explained <code>Tag Component</code>. A tag component is a simple typedef of a <code>unit64_t</code> (or something else) or an empty struct in C++ to a component without properties. A tag is a component that does not have any data.  The function of this component is it to modify the Entity Type / Archetype to group entities together with them.</p>
+<p>On the other hand you can define a <code>Tag</code> Component which should not be confused with the previously explained <code>Tag Component</code>. A tag component is a simple typedef of a <code>unit64_t</code> (or something else) or an empty struct in C++ to a component without properties. A tag is a component that does not have any data. The function of this component is to modify the Entity Type / Archetype to group entities together with them.</p>
 <p><em>Example:</em></p>
 <p>You have the following components:</p>
 <ul>
@@ -4959,7 +4959,7 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 <li>System A </li>
 <li>System B</li>
 </ul>
-<p>They both shall operate on Component A &amp; B but have different logic based on what the Components represent. To archive this you just add to a Entity a tag component:</p>
+<p>They both shall operate on Component A &amp; B but have different logic based on what the Components represent. To archive this you just add a tag component to each Entity:</p>
 <pre><code>#1 Entity:
 - Component A
 - Component B
@@ -4971,12 +4971,12 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 </code></pre>
 <p>In this example System B would not operate on both Entities if we use the <code>.excluded</code> filter to exclude <code>My Tag For System A</code> from the System.</p>
 <h2 id="filtering"><a class="header" href="#filtering">Filtering</a></h2>
-<p>To see a realworld application of Tag components to filter entity types checkout the next chapter: <a href="gameplay_coding/ecs/">Filtering</a></p>
+<p>To see a real world application of Tag components to filter entity types checkout the next chapter: <a href="gameplay_coding/ecs/">Filtering</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="filtering-entities"><a class="header" href="#filtering-entities">Filtering Entities</a></h1>
 <p>The Machinery knows 2 kind of ways to Tag Entities:</p>
 <ol>
 <li>using the <code>Tag Component</code></li>
-<li>using a <code>Tag Component</code> to filter the Entity Type's</li>
+<li>using a <code>Tag Component</code> to filter the Entity Types</li>
 </ol>
 <p><strong>Table of Content</strong></p>
 <ul>
@@ -4984,7 +4984,7 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 <li><a href="gameplay_coding/ecs/filtering_entities.html#filtering-entities-by-using-tag-components">Filtering Entities by using Tag Components</a></li>
 </ul>
 <h2 id="filtering-entities-1"><a class="header" href="#filtering-entities-1">Filtering Entities</a></h2>
-<p>In a Engine (<a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>) you can define the <code>.excluded</code> filed. This tells the scheduler that this engine shall <strong>not</strong> run on any entity type that contains these components.</p>
+<p>In an Engine (<a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>) you can define the <code>.excluded</code> field. This tells the scheduler that this engine shall <strong>not</strong> run on any entity type that contains these components.</p>
 <p>Let us assume we have the following entities:</p>
 <pre><code>#1 Entity:
 - Component A
@@ -4995,7 +4995,7 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 - Component B
 - Component D
 </code></pre>
-<p>Now we have a Engine that shall operate on <code>(Component A,Component B)</code> but we do not want it to operate on entities with <code>Component D</code> we could just check in our update loop:</p>
+<p>Now we have an Engine that shall operate on <code>(Component A,Component B)</code> but we do not want it to operate on entities with <code>Component D</code> we could just check in our update loop:</p>
 <pre><code class="language-c">static void entity_register_engines(struct tm_entity_context_o *ctx)
 {
 
@@ -5018,7 +5018,7 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 }
 </code></pre>
 <p>or we could define a component mask and use this to filter but both methods are slow. This is because <code>get_component_by_hash</code> or <code>get_component</code> require us to look up internally the entity + the components and search for them. Its aka a random memory access! </p>
-<p>To avoid all of this we can just tell the engine to ignore all entity types which contain the <code>component_d</code> via the <code>.excluded</code> fied in the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>.</p>
+<p>To avoid all of this we can just tell the engine to ignore all entity types which contain the <code>component_d</code> via the <code>.excluded</code> field in the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>.</p>
 <pre><code class="language-c">    const tm_engine_i movement_engine = {
         .ui_name = &quot;movement_engine&quot;,
         .hash = TM_STATIC_HASH(&quot;movement_engine&quot;, 0x336880a23d06646dULL),
@@ -5036,9 +5036,9 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 <blockquote>
 <p><strong>Note</strong>: You can define a <code>Tag</code> Component which should not be confused with the <code>Tag Component</code>. A tag component is a simple typedef of a <code>unit64_t</code> (or something else) or an empty struct in C++ to a component without properties. The function of this component is it to modify the Entity Type / Archetype to group entities together with them.For more information see the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//gameplay_coding/ecs/tagging_entities.html">Tagging Entities</a> Chapter.</p>
 </blockquote>
-<p>You have a Movement / Input System which should always work. At some point you do not want a entity to receive any input. </p>
+<p>You have a Movement / Input System which should always work. At some point you do not want an entity to receive any input. </p>
 <p><em>Solution 1</em></p>
-<p>To solve this issue you could remove the Movement Component but that would be annyoing because you would lose it state, which might be important.</p>
+<p>To solve this issue you could remove the Movement Component but that would be annoying because you would loose its state, which might be important.</p>
 <p><em>Better Solution</em></p>
 <p>First you define the component:</p>
 <pre><code class="language-c">#define TM_TT_TYPE__PLAYER_NO_MOVE_TAG_COMPONENT &quot;tm_player_no_move_t&quot;
@@ -5071,7 +5071,7 @@ static void component__create(struct tm_entity_context_o *ctx)
     };
     tm_entity_api-&gt;register_engine(ctx, &amp;movement_engine);
 </code></pre>
-<p>When ever another <code>engine/system</code> decides that a entity should not move anymore it just adds a <code>no_movement_tag_component</code> to the entity.</p>
+<p>Whenever another <code>engine/system</code> decides that an entity should not move anymore it just adds a <code>no_movement_tag_component</code> to the entity.</p>
 <pre><code class="language-c">static void my_other_system(tm_engine_o *inst, tm_engine_update_set_t *data, struct tm_entity_commands_o *commands)
 {
     struct tm_entity_context_o *ctx = (struct tm_entity_context_o *)inst;
@@ -5091,7 +5091,7 @@ static void component__create(struct tm_entity_context_o *ctx)
     }
 }
 </code></pre>
-<p>As you an see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.</p>
+<p>As you can see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="overview-of-the-entity-context-lifecycle"><a class="header" href="#overview-of-the-entity-context-lifecycle">Overview of the Entity Context Lifecycle</a></h1>
 <p>This page describes the lifecycle of the entity context / the simulation and all its stages.</p>
 <p><img src="https://www.dropbox.com/s/vxq89spqcwzdvy8/tm_guide_ecs_life_cycle.png?dl=1" alt="" /></p>
@@ -5110,7 +5110,7 @@ static void component__create(struct tm_entity_context_o *ctx)
 <p><strong>Note:</strong> that phases are just string hashes and you can extend the systems with more phases if desired.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="gameplay-entry-point-comparison"><a class="header" href="#gameplay-entry-point-comparison">Gameplay Entry Point Comparison</a></h1>
-<p>In the Machinery you have multiple entry points for your game play code to live in. You can make use of <em>Simulation Entries</em>, <em>Entity Component System: Systems or Engines</em> and also make use of a <em>Entity Graph</em> or custom scripting language component. The question is more when to use which of the tools? The answer to this depends on your games needs. To summarize it in the Engine you have about four build in entry points for your game play code which you can use all at the same time and which one to use depends on your use case.</p>
+<p>In the Machinery you have multiple entry points for your game play code to live in. You can make use of <em>Simulation Entries</em>, <em>Entity Component System: Systems or Engines</em> and also make use of a <em>Entity Graph</em> or custom scripting language component. The question is more when to use which of the tools? The answer to this depends on your game's needs. To summarize it in the Engine you have about four built-in entry points for your game play code which you can use all at the same time and which one to use depends on your use case.</p>
 <p>The following table will give a brief overview of the different types and their properties:</p>
 <table><thead><tr><th>Type</th><th>Parallel Execution</th><th>Lifetime based on entity</th><th>Random Memory Access by default</th><th>Runs only on a Subset of Entities</th><th>Runs per entity</th><th>Execution order can be  set</th></tr></thead><tbody>
 <tr><td>Simulation Entry</td><td>No</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td><td>Yes*</td></tr>
@@ -5134,7 +5134,7 @@ static void component__create(struct tm_entity_context_o *ctx)
 <p>It is recommended to use a <strong>Simulation Entry</strong> when you want to tie the lifetime of the underlying System to an Entity lifetime. This is a very similar concept to the &quot;GameObject&quot; Script concept in Unity. Suppose the entity that hosts the Simulation Entry Component is destroyed. In that case, the Update function will not be ticked anymore, and the System is destroyed. This can be a useful concept for level-specific Gameplay moments. A Simulation Entry also has a <code>start()</code> and <code>stop()</code> function. They are executed when the Simulation Entry is added or removed.</p>
 <p>It is <strong>not</strong> recommended to use a Simulation Entry to handle a large mass of entities. For the same reason as the System is not used for this kind of purpose. The Simulation Entry will <strong>not run parallel</strong> and have random memory access.</p>
 <h3 id="entity-graph"><a class="header" href="#entity-graph">Entity Graph</a></h3>
-<p>It is recommended to use a <strong>Entity Graph</strong> when you want to tie the lifetime to a Entity and if you want to execute none performant code since the Entity Graph is a Visual Scripting language that is interpreted. It will be naturally slow. The Entity Graph is also good to handle UI/UX elements or for quick prototyping when performance is not important. Keep in mind that a Entity Graph is not executed in parallel and also only access memory via random access.</p>
+<p>It is recommended to use a <strong>Entity Graph</strong> when you want to tie the lifetime to an Entity and if you want to execute unperformant code since the Entity Graph is a Visual Scripting language that is interpreted. It will be naturally slow. The Entity Graph is also good to handle UI/UX elements or for quick prototyping when performance is not important. Keep in mind that an Entity Graph is not executed in parallel and also only access memory via random access.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="collaboration"><a class="header" href="#collaboration">Collaboration</a></h2>
 <p>The editor has built-in support for real-time collaboration, allowing multiple people to work
 together in the same project. All user actions — importing assets, creating and editing entities,
@@ -5164,7 +5164,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <h2 id="whos-project-is-edited"><a class="header" href="#whos-project-is-edited">Who's project is edited?</a></h2>
 <p>In our collaboration model, one of the users always acts as a host. The host invites others to join her in editing <em>her</em> project. All the changes made by the participants in the session end up in the host’s project and it’s the host’s responsibility to save the project, check in the changes into version control, or do whatever else is needed to make the changes permanent.</p>
 <blockquote>
-<p><strong>WARNING:</strong> Please only connect to people you trust. Be aware that Plugin Assets will be send via a collaboration as well. The Engine will warn you every time a plugin asset is send.</p>
+<p><strong>WARNING:</strong> Please only connect to people you trust. Be aware that Plugin Assets will be sent via a collaboration as well. The Engine will warn you every time a plugin asset is sent.</p>
 </blockquote>
 <h2 id="host-or-join-sessions"><a class="header" href="#host-or-join-sessions">Host or Join Sessions</a></h2>
 <p>You have three options to host or join a collaboration Session:</p>
@@ -5172,21 +5172,21 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <p>Host a server on your LAN. The system will choose a free port on your machine for hosting. Other users on the same LAN can join your session by choosing <em>Join LAN Server</em> and selecting your machine.</p>
 <p><img src="https://www.dropbox.com/s/0amm9km2jiejxx1/tm_guide_collab_host_local.png?dl=1" alt="Host locally" /></p>
 <ol>
-<li>You can select a type of hosting or joining a Server.</li>
+<li>Select &quot;Host LAN Server&quot; from the dropdown</li>
 <li>Your Handle, in case of hosting this will be the name the session will have as well as your username.</li>
 <li>When you press Host the session starts.</li>
 </ol>
 <h4 id="join-a-local-server"><a class="header" href="#join-a-local-server">Join a local Server</a></h4>
-<p>When you open  the collaboration tab the default view is the &quot;Join LAN Server&quot; view. In this view you can join a local server.</p>
+<p>When you open the collaboration tab the default view is the &quot;Join LAN Server&quot; view. In this view you can join a local server.</p>
 <p><img src="https://www.dropbox.com/s/1cx17p05swuu6mg/tm_guide_collab_join_local.png?dl=1" alt="The default view of the collab tab is the join local option" /></p>
 <ol>
-<li>You can select a type of hosting or joining a Server.</li>
+<li>Select &quot;Join LAN Server&quot; from the dropdown</li>
 <li>You can select a collaboration session. If there is no session available this field is disabled.</li>
 <li>Your Handle, the name the other user can see on their side.</li>
 <li>If you selected a session you can press this button to join. When you join the Engine will download the host's Project.</li>
 </ol>
 <h3 id="host-internet-server"><a class="header" href="#host-internet-server">Host Internet Server</a></h3>
-<p>Host a server that can be accessed over the internet on a specified port. </p>
+<p>Host a server that can be accessed over the internet on a specified port.</p>
 <p><img src="https://www.dropbox.com/s/q3q7ltunpqmepeq/tm_guide_collab_host_internet.png?dl=1" alt="Host Internet Server" /></p>
 <ol>
 <li>You can select the port of your session. If your router does not support <strong>UPnP</strong> you might have to port forward your selected port.</li>
@@ -5206,7 +5206,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <li>It will try to connect to the other user.</li>
 </ol>
 <blockquote>
-<p><strong>WARNING:</strong> Please only connect to people you trust. Be aware that Plugin Assets will be send via a collaboration as well. The Engine will warn you every time a plugin asset is send.</p>
+<p><strong>WARNING:</strong> Please only connect to people you trust. Be aware that Plugin Assets will be sent via a collaboration as well. The Engine will warn you every time a plugin asset is sent.</p>
 </blockquote>
 <h3 id="host-a-discord-based-session"><a class="header" href="#host-a-discord-based-session">Host a Discord based Session</a></h3>
 <p>The Machinery allows you to connect via Discord with your co-workers, team mates or friends. Important for this to work is that both parties: Host and Clients have the following option enabled in their Discord Options: <strong>Discord Settings -&gt; Activity Status</strong></p>
@@ -5214,7 +5214,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <blockquote>
 <p><strong>Note:</strong> Host and client cannot be invisible otherwise invites wont work!</p>
 </blockquote>
-<p>After this settings is enabled you need to add The Machinery as a game so others can see you are playing it. This allows you now to invite your friends via the Engine into your session and vice versa.</p>
+<p>After this setting is enabled you need to add The Machinery as a game so others can see you are playing it. This allows you now to invite your friends via the Engine into your session and vice versa.</p>
 <p><img src="https://www.dropbox.com/s/6e6lanbsz5etfkm/tm_guide_collab_discord_host.png?dl=1" alt="" /></p>
 <h2 id="connected"><a class="header" href="#connected">Connected</a></h2>
 <p>When you are connected to a collaboration session you have this view. In the connected view you can chat with the other participants of the chat. The session will <strong>not</strong> terminate / disconnect if you close the tab.</p>
@@ -5254,14 +5254,14 @@ After you have loaded the [<a href="https://ourmachinery.com/apidoc/foundation/p
 }
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="memory-usage-tab"><a class="header" href="#memory-usage-tab">Memory Usage Tab</a></h1>
-<p>The Machinery has a build in Leak detection when one is using the provided allocators. Besides they all will log the used memory in the Memory Usage tab!</p>
+<p>The Machinery has a built-in Leak detection when one is using the provided allocators. Besides they all will log the used memory in the Memory Usage tab!</p>
 <ul>
 <li><a href="https://ourmachinery.com/apidoc/foundation/memory_tracker.h.html#memory_tracker.h">Memory leak Detection</a></li>
 </ul>
 <p>The memory tab will display all memory consumed via any allocator. Temporary allocators will be listed as well. Besides the memory from the CPU allocators, you can also inspect device memory used and the memory consumed by your assets.</p>
 <p><img src="https://paper-attachments.dropbox.com/s_5086E710AFB88B222C81207791AF7092731DB9D2900AFABEA044A0AC0B80DFFB_1625603084539_image.png" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
-<p>The Machinery comes with a build in Logger system. The Logger System lives in the <code>foundation/log.h</code> and contains the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#structtm_logger_api">tm_logger_api</a>. This API provides a few connivance macros. We can use them to log our code from anywhere. Besides this it is super easy to create your own logger and add it to the logger API.</p>
+<p>The Machinery comes with a built-in Logger system. The Logger System lives in the <code>foundation/log.h</code> and contains the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#structtm_logger_api">tm_logger_api</a>. This API provides a few connivance macros. We can use them to log our code from anywhere. Besides this it is super easy to create your own logger and add it to the logger API.</p>
 <h2 id="logging-cheat-sheet"><a class="header" href="#logging-cheat-sheet">Logging cheat sheet</a></h2>
 <p>You can log custom types. This is enabled via the <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a>. You can log all primitive types like you are used to from C but as well as the engines API types. Just keep in mind the following syntax: <code>%p{&lt;MY_TYPE&gt;}</code> and the <strong>fact</strong> that you <strong>need</strong> to provide a pointer to the correct type:</p>
 <table><thead><tr><th>type</th><th>call</th></tr></thead><tbody>
@@ -5319,13 +5319,13 @@ After you have loaded the [<a href="https://ourmachinery.com/apidoc/foundation/p
 <tr><td><code>%p{tm_color_srgb_t}</code></td><td><code>&amp;TM_RGB(0xff7f00)</code></td><td><code>{ .r = 255, .g = 127, .b = 0, .a = 255 }</code></td></tr>
 </tbody></table>
 <h2 id="write-a-custom-logger"><a class="header" href="#write-a-custom-logger">Write a custom logger</a></h2>
-<p>If you desire to add your own logger sink to the eco system there are a few steps you need to take:</p>
+<p>If you desire to add your own logger sink to the ecosystem there are a few steps you need to take:</p>
 <ol>
 <li>You need to include the <code>foundation/log.h</code> header</li>
 <li>You need to define a <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#structtm_logger_i">tm_logger_i</a> in your file</li>
 <li>You need add a <code>log</code> function to this interface
 <ol>
-<li>If you need some local data (such as a allocator)  it might be good to define a <code>.inst</code> as well.</li>
+<li>If you need some local data (such as an allocator)  it might be good to define a <code>.inst</code> as well.</li>
 </ol>
 </li>
 <li>After all of this you can call the <code>tm_logger_api.add_logger()</code>  function to register your logger</li>
@@ -5362,14 +5362,14 @@ static void my_custom_api_function(void){
 <p><strong>Note:</strong> At this point, the testing framework is in the beginning stage. We are extending its capabilities overtime to meet the needs of modern game development QA pipelines.</p>
 </blockquote>
 <h2 id="about-unit-tests"><a class="header" href="#about-unit-tests"><strong>About unit-tests</strong></a></h2>
-<p>You can find the executable alongside <code>tmbuild</code> or the machinery executable in the <code>bin/ folder.</code> If you wanted to make the unit-tests executable globally accessible, you need to add it to your path environment variable. As you may have noticed, ensuring the quality of your build, <code>tmbuild</code> will run all unit tests of all plugins at the end of its build process. When you add a unit test to your plugin, it is guaranteed that its unit tests run every time you build. This is, of course, only guaranteed if the plugin system can find the plugin and its test.</p>
+<p>You can find the executable alongside <code>tmbuild</code> or the machinery executable in the <code>bin/ folder.</code> If you want to make the unit-tests executable globally accessible, you need to add it to your path environment variable. As you may have noticed, ensuring the quality of your build, <code>tmbuild</code> will run all unit tests of all plugins at the end of its build process. When you add a unit test to your plugin, it is guaranteed that its unit tests run every time you build. This is, of course, only guaranteed if the plugin system can find the plugin and its test.</p>
 <blockquote>
 <p><strong>Note:</strong> unit-tests will assume that the plugins live in a folder relative to the executable in the standardized folder plugins. If you need to load a plugin that is not in this folder, you need to provide a valid path via <code>-p/--plugin</code> so that unit-tests can find and run your tests.</p>
 </blockquote>
 <h2 id="how-to-run-tests"><a class="header" href="#how-to-run-tests"><strong>How to run tests</strong></a></h2>
 <p>To run all unit tests, execute unit-test, and it will run all tests besides the slow execution path tests. To run all unit tests, including the <em>&quot;slow&quot;</em> ones, you run <code>unit-tests.exe -s/--slow-paths</code></p>
 <blockquote>
-<p><strong>Note:</strong> You may have noticed that if you run <code>tmbuild</code> regularly, you are lucky and win in the &quot;lottery&quot; from time to time. This means <code>tmbuild</code> will run all unit tests also the slow ones via <code>unit-tests</code>.</p>
+<p><strong>Note:</strong> You may have noticed that if you run <code>tmbuild</code> regularly, you are lucky and win in the &quot;lottery&quot; from time to time. This means <code>tmbuild</code> will run all unit tests including the slow ones via <code>unit-tests</code>.</p>
 </blockquote>
 <h2 id="how-to-constantly-monitor-your-changes"><a class="header" href="#how-to-constantly-monitor-your-changes"><strong>How to constantly monitor your changes</strong></a></h2>
 <p>Like the editor, <code>unit-tests</code> supports <a href="https://ourmachinery.com/post/dll-hot-reloading-in-theory-and-practice/">hot reloading</a>. In a nutshell, whenever plugins are rebuilt <code>unit-tests</code> can detect this and rerun the tests. To run in hot-reload mode start<code>unit-tests</code> with the <code>-r/--hot-reload</code> argument.</p>
@@ -5392,8 +5392,8 @@ typedef struct tm_unit_test_i
 <p>At this point, we have not tackled the following possible questions:</p>
 <ul>
 <li>Where and how do we register the interface?</li>
-<li>How could this interface look like?</li>
-<li>How does a test itself look like?</li>
+<li>What could this interface look like?</li>
+<li>What does the test itself look like?</li>
 </ul>
 <p><strong>Let us walk through those questions:</strong></p>
 <p><em>Where and how do we register the interface?</em>
@@ -5409,8 +5409,8 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <p>Here we register our test interface to the <code>TM_UNIT_TEST_INTERFACE_NAME</code>.</p>
-<p><em>How could this interface look like?</em>
-After we have done this, all we need to do is declarer our <code>my_unit_tests</code>. It is as easy as it gets:</p>
+<p><em>What could this interface look like?</em>
+After we have done this, all we need to do is declare our <code>my_unit_tests</code>. It is as easy as it gets:</p>
 <pre><code class="language-c">#include &lt;foundation/unit_test.h&gt;
 //...
 tm_unit_test_i *entity_unit_test = &amp;(tm_unit_test_i){
@@ -5418,7 +5418,7 @@ tm_unit_test_i *entity_unit_test = &amp;(tm_unit_test_i){
     .test = test_function,
 };
 </code></pre>
-<p><em>How does a test itself look like?</em>
+<p><em>What does the test itself look like?</em>
 All that's left is to write the test. Let us write this test. In its core all we need to do is write a function of the signature: <code>(tm_unit_test_runner_i *tr, struct tm_allocator_i *a)</code>. In its body, we can define our tests.</p>
 <pre><code class="language-c">static void test_function(tm_unit_test_runner_i *test_runner, tm_allocator_i *allocator)
 {
@@ -5470,7 +5470,7 @@ static void test_function(tm_unit_test_runner_i *test_runner, tm_allocator_i *al
 </ul>
 <h2 id="about-integration-tests"><a class="header" href="#about-integration-tests"><strong>About integration tests</strong></a></h2>
 <p>Integration testing is the phase in testing software in which individual software modules are combined and tested as a group. Integration testing is conducted to evaluate a system's compliance or its interaction as a whole within specified functional requirements. 
-Its generally used after unit testing to ensure that the composition of the software works. It is a potent tool to validate certain bugs that are hard to reproduce only after using software extensively. You can simulate this with integration tests. Besides, it is a very powerful tool validating that a bug fix was successful.</p>
+It is generally used after unit testing to ensure that the composition of the software works. It is a potent tool to validate certain bugs that are hard to reproduce only after using software extensively. You can simulate this with integration tests. Besides, it is a very powerful tool validating that a bug fix was successful.</p>
 <p>By their very nature, integration tests are slower and more fragile than unit tests, but they can also find issues that are hard to detect with regular unit tests. Each integration test runs in a specific &quot;context&quot;, identified by a string hash. The context specifies the &quot;scaffolding&quot; is set up before the unit test runs.</p>
 <h2 id="how-to-write-integration-tests-1"><a class="header" href="#how-to-write-integration-tests-1"><strong>How to write integration tests</strong></a></h2>
 <p><strong>Where to find the integration test framework?</strong></p>
@@ -5494,8 +5494,8 @@ typedef struct tm_integration_test_i
 <p>At this point, we have not tackled the following possible questions:</p>
 <ul>
 <li>Where and how do we register the interface?</li>
-<li>How could this interface look like?</li>
-<li>How does a test itself look like?</li>
+<li>What could this interface look like?</li>
+<li>What does the test itself look like?</li>
 </ul>
 <p><strong>Let us walk those questions through:</strong></p>
 <p><em>Where and how do we register the interface?</em></p>
@@ -5509,7 +5509,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <p>Here we register our test interface to the <code>TM_INTEGRATION_TEST_INTERFACE_NAME</code>.</p>
-<p><em>How could this interface look like?</em></p>
+<p><em>What could this interface look like?</em></p>
 <p>After we have done this, we need to declare our <code>my_integration_tests.</code> </p>
 <pre><code class="language-c">tm_integration_test_i my_integration_tests = {
     .name = &quot;stress-test&quot;,
@@ -5519,7 +5519,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 };
 </code></pre>
 <p>The name field is important because, later on, we need to use this name when we want to run the test. The context makes sure that it runs and boots up the Editor. <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_context__the_machinery_editor">TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</a> is defined in <code>#include &lt;foundation/integration_test.h&gt;</code>. The function <code>my_test_tick</code> gets called and the magic can happen.</p>
-<p><em>How does a test itself look like?</em></p>
+<p><em>What does the test itself look like?</em></p>
 <p>Let us write this test. We need to write a function of the signature: <code>(tm_integration_test_runner_i *)</code>.  In its body, we can define our tests.</p>
 <pre><code class="language-c">static void my_test_tick(tm_integration_test_runner_i *test_runner)
 {
@@ -5618,7 +5618,7 @@ If you run into the issue that tmbuild cannot find Visual Studios 2019 on Window
 <p><strong>How to add environment variables?</strong></p>
 <p><strong>Windows</strong></p>
 <p>On Windows all you need to do is you need to add the folder where you installed The Machinery to your environment variables. You can do this like this:
-<strong>Start &gt; Edit the system environment variables &gt; environment variables &gt; system varaibles &gt; click New... &gt;</strong> add <code>TM_SDK_DIR</code> or <code>TM_LIB_DIR</code> as the Variable Name and the needed path as the Variable Value.
+<strong>Start &gt; Edit the system environment variables &gt; environment variables &gt; system variables &gt; click New... &gt;</strong> add <code>TM_SDK_DIR</code> or <code>TM_LIB_DIR</code> as the Variable Name and the needed path as the Variable Value.
 Close and restart the terminal or Visual Studio / Visual Studio Code.
 As an alternative, you can set an environment variable via PowerShell before you execute tmbuild, which will stay alive till the end of the session:
 <code>$Env:TM_SDK_DIR=&quot;..PATH&quot;</code></p>
@@ -5656,7 +5656,7 @@ If a project cannot be found it will build all projects.</p>
 <h2 id="how-how-to-package-a-project-via-tmbuild"><a class="header" href="#how-how-to-package-a-project-via-tmbuild">How how to package a project via tmbuild?</a></h2>
 <p>To package a project via tmbuild, all you need to do is use the <code>-p [package name]</code> or <code>--package [package name]</code> command. A package file needs to be of type <code>.json</code> and follow our package scheme, which you can find <a href="helper_tools/tmbuild.html#">here</a>.</p>
 <h2 id="how-to-build-or-manipulate-tmbuild-from-source"><a class="header" href="#how-to-build-or-manipulate-tmbuild-from-source">How to build or manipulate tmbuild from source</a></h2>
-<p>You can find the source code of tmbuild in folder <code>code\utils\tmbuild</code>. In the folder <code>code\utils</code>, you can also find the source code of all the other uses the engine uses.</p>
+<p>You can find the source code of tmbuild in the folder <code>code\utils\tmbuild</code>. In the folder <code>code\utils</code>, you can also find the source code of all the other uses the engine uses.</p>
 <p>You can build tmbuild via tmbuild. All you need to do is navigate the <code>code\utils</code> folder and run <code>tmbuild --project tmbuild</code>. </p>
 <p>If you do not have access to a build version of tmbuild but to the whole source, you have to follow the following steps:</p>
 <p><strong>Windows 10</strong></p>
@@ -5668,7 +5668,7 @@ If a project cannot be found it will build all projects.</p>
 <code>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\</code></p>
 <p><strong>To build from source:</strong></p>
 <p>Open a PowerShell instance in The Machinery folder and run the following commands:</p>
-<pre><code class="language-powershell"># this part can be skiped if you have already downloaded
+<pre><code class="language-powershell"># this part can be skipped if you have already downloaded
 # all the dependencies and created a highlevel folder to your lib dependencies:
 mkdir lib
 cd lib
@@ -5761,18 +5761,18 @@ enum {
 //...
 </code></pre>
 <p>In the above example we have the definition of the Truth Type tm_asset. The <code>#define TM_TT_TYPE_HASH__ASSET TM_STATIC_HASH(&quot;tm_asset&quot;, 0xca71127abbb72960ULL)</code> was generated by the hash utility. Before the tool ran the code looked similar to this: <code>#define TM_TT_TYPE_HASH__ASSET TM_STATIC_HASH(&quot;tm_asset&quot;)</code></p>
-<p>For example later on we can use it  to create a object of this type. If we do not have the corresponding type id <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a> we need to ask The Truth: </p>
+<p>For example later on we can use it  to create an object of this type. If we do not have the corresponding type id <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_type_t">tm_tt_type_t</a> we need to ask The Truth: </p>
 <pre><code class="language-c">tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ASSET);
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="tmbuild-package-json-reference"><a class="header" href="#tmbuild-package-json-reference">tmbuild package json Reference</a></h1>
-<p>The <code>tmbuild</code> can package a project based rules set in a <code>.json</code> file. This file needs to adhere the here described scheme.
+<p>The <code>tmbuild</code> can package a project based on rules set in a <code>.json</code> file. This file needs to adhere to the scheme described here.
 Every package <code>json</code> file is structured in its core like this:</p>
 <pre><code>{
     &quot;name&quot;:&quot;package name&quot;,
     &quot;steps&quot;: []
 }
 </code></pre>
-<p>The name will be used to determine the name of the package folder in <code>tm root/build</code> directory. The steps are the key in the system they will be executed linearly after each other and the next step only will be executed if the previous step was successful.
+<p>The name will be used to determine the name of the package folder in <code>tm root/build</code> directory. The steps are the key in the system. They will be executed linearly after each other and the next step will only be executed if the previous step was successful.
 Steps are defined as a normal <code>json</code> object. The following list displays all the functions which can be used plus adequate examples.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
@@ -5846,13 +5846,13 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 }
 </code></pre>
 <h2 id="actions"><a class="header" href="#actions">Actions</a></h2>
-<p>A action defines what the current step shall do.</p>
+<p>An action defines what the current step shall do.</p>
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>action</td><td>string</td><td>Takes a string as value which will determine what kind of action this step shall do</td></tr>
 </tbody></table>
 <h2 id="filesystem-operations"><a class="header" href="#filesystem-operations">Filesystem operations</a></h2>
 <h3 id="build"><a class="header" href="#build"><code>build</code></a></h3>
-<p>Will build the current directory unless changed via <code>chdir</code> in release and debug setting.  Optional it has a project field if you only want to build one project. One can also modify the build tool and specify that in a extra field.</p>
+<p>Will build the current directory unless changed via <code>chdir</code> in release and debug settings.  Optionally it has a project field if you only want to build one project. One can also modify the build tool and specify that in an extra field.</p>
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>project</td><td>string</td><td>Takes the name of the project it shall build</td></tr>
 <tr><td>build-tool</td><td>string</td><td>Takes the name of the premake build tool which shall be used.</td></tr>
@@ -5902,7 +5902,7 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <tr><td>root</td><td>string</td><td>The root directory</td></tr>
 </tbody></table>
 <h3 id="delete-file-patterns"><a class="header" href="#delete-file-patterns"><code>delete-file-patterns</code></a></h3>
-<p>Will delete files based on a patter.</p>
+<p>Will delete files based on a pattern.</p>
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>dir</td><td>string</td><td>A folder in the package folder</td></tr>
 <tr><td>dir-patterns</td><td>string array</td><td>What folders shall be deleted. Patterns used in gitignore files can be used e.g. <code>*.zip</code></td></tr>
@@ -5927,7 +5927,7 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <tr><td>args</td><td>string</td><td>Arguments for <code>docgen.exe</code> to generate documentation</td></tr>
 </tbody></table>
 <h3 id="localize"><a class="header" href="#localize"><code>localize</code></a></h3>
-<p>Will check if all localization are present if not fail.</p>
+<p>Will check if all localizations are present if not fail.</p>
 <h3 id="set-sdk-dir"><a class="header" href="#set-sdk-dir"><code>set-sdk-dir</code></a></h3>
 <p>Will set the SDK if not set dir to the current build directory <code>[cwd]/build/[package-name]</code>. Has no other fields.</p>
 <h3 id="zip"><a class="header" href="#zip"><code>zip</code></a></h3>
@@ -5936,7 +5936,7 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <tr><td>add-time-stamp</td><td>bool</td><td>If set to true the zipped file will contain the timestamp</td></tr>
 </tbody></table>
 <h3 id="test"><a class="header" href="#test"><code>test</code></a></h3>
-<p>Will execute tests defined in the <code>tests</code> filed.</p>
+<p>Will execute tests defined in the <code>tests</code> field.</p>
 <table><thead><tr><th>Setting Parameter</th><th>Type</th><th>Description</th></tr></thead><tbody>
 <tr><td>tests</td><td>string array</td><td>Names of tests</td></tr>
 </tbody></table>

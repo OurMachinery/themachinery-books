@@ -348,7 +348,7 @@ static struct tm_localizer_api *tm_localizer_api;
 <h3 id="define-your-data"><a class="header" href="#define-your-data">Define your Data</a></h3>
 <p>The next part contains the Truth Definition of the component and the plain old data struct (POD). <em>In production, we should separate those aspects into a header file!</em></p>
 <blockquote>
-<p>Note: All components should be plain old datatypes.</p>
+<p>Note: All components should be plain old data types.</p>
 </blockquote>
 <pre><code class="language-c">#define TM_TT_TYPE__CUSTOM_COMPONENT &quot;tm_custom_component&quot;
 #define TM_TT_TYPE_HASH__CUSTOM_COMPONENT TM_STATIC_HASH(&quot;tm_custom_component&quot;, 0x355309758b21930cULL)
@@ -404,9 +404,9 @@ static tm_ci_editor_ui_i *editor_aspect = &amp;(tm_ci_editor_ui_i){
 <li>Add our <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h.html#tm_ci_editor_ui">TM_CI_EDITOR_UI</a> aspect to the type. It tells the Editor that you can add the component via the Editor. If you do not provide it, the Editor will not suggest this component to you and cannot store it in the Truth. It does not mean you cannot add this component via C.</li>
 </ol>
 <h3 id="define-your-component"><a class="header" href="#define-your-component">Define your component</a></h3>
-<p>You an register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_i">tm_entity_create_component_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_create_component_i(struct tm_entity_context_o *ctx)</code>.</p>
+<p>You can register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_i">tm_entity_create_component_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_create_component_i(struct tm_entity_context_o *ctx)</code>.</p>
 <p>The Engine will call this function whenever it creates a new Entity Context to populate the context with all the known components. It usually happens at the beginning of the Simulation.</p>
-<p>Within this function, you can define your component and register it to the context. The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_api">tm_entity_api</a> provides a function <code>tm_entity_api.register_component()</code> which expects the current context and a instance of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_component_i">tm_component_i</a>. We define one in our function and give it the needed information:</p>
+<p>Within this function, you can define your component and register it to the context. The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_api">tm_entity_api</a> provides a function <code>tm_entity_api.register_component()</code> which expects the current context and an instance of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_component_i">tm_component_i</a>. We define one in our function and give it the needed information:</p>
 <ul>
 <li>A name should be the same as the Truth Type</li>
 <li>The size of the component struct</li>
@@ -499,7 +499,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
 <li><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_bb__editor">TM_ENTITY_BB__EDITOR</a> - Blackboard item that indicates that we are running in <em>Editor</em> mode. This may disable some components and/or simulation engines.</li>
 <li><code>TM_ENTITY_BB__SIMULATING_IN_EDITOR</code> - Set to non-zero if the Simulation runs from within the Editor, such as running a game in the simulation tab. It will be zero when we run a game from the Runner. Note the distinction from <a href="https://ourmachinery.com//apidoc/plugins/entity/entity.h.html#tm_entity_bb__editor">TM_ENTITY_BB__EDITOR</a>.</li>
 </ul>
-<p>The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_update_set_t">tm_engine_update_set_t</a> gives us access to the needed data, and we can modify our component. The first important information we get are the number of entity types (also known Archetypes). This number is stored in <code>data-&gt;num_arrays</code>. Now that we know this information we can iterate over them and access the components per entity type. <code>tm_engine_update_array_t a =  data-&gt;arrays</code> (Gives us the current entity type's components). <code>a-&gt;n</code> is the number of matching components / entities of this entity type.</p>
+<p>The <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_update_set_t">tm_engine_update_set_t</a> gives us access to the needed data, and we can modify our components. The first important information we get are the number of entity types (also known Archetypes). This number is stored in <code>data-&gt;num_arrays</code>. Now that we know this information we can iterate over them and access the components per entity type. <code>tm_engine_update_array_t a =  data-&gt;arrays</code> (Gives us the current entity type's components). <code>a-&gt;n</code> is the number of matching components / entities of this entity type.</p>
 <pre><code class="language-c">    for (tm_engine_update_array_t *a = data-&gt;arrays; a &lt; data-&gt;arrays + data-&gt;num_arrays; ++a)
     {
         struct tm_custom_component_t *custom_component = a-&gt;components[0];
@@ -527,7 +527,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
 <pre><code class="language-c">    tm_entity_api-&gt;notify(ctx, data-&gt;engine-&gt;components[1], mod_transform, (uint32_t)tm_carray_size(mod_transform));
 </code></pre>
 <h3 id="register-your-engine-to-the-system"><a class="header" href="#register-your-engine-to-the-system">Register your Engine to the system</a></h3>
-<p>You an register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)</code>. </p>
+<p>You can register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_register_engines_simulation_i">tm_entity_register_engines_simulation_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_register_engines_i(struct tm_entity_context_o *ctx)</code>. </p>
 <p>The function itself looks as follows:</p>
 <pre><code class="language-c">static void component__register_engine(struct tm_entity_context_o *ctx)
 {
@@ -547,7 +547,7 @@ static void engine_update__custom_component(tm_engine_o *inst, tm_engine_update_
     tm_entity_api-&gt;register_engine(ctx, &amp;custom_component_engine);
 }
 </code></pre>
-<p>The first thing we do is looking up the component type. Did we register the type? If not, we will not get the correct type. Here we are using the name we defined beforehand in our component create function.</p>
+<p>The first thing we do is to look up the component type. Did we register the type? If not, we will not get the correct type. Here we are using the name we defined beforehand in our component create function.</p>
 <p>Then we ask for the transform component next because our Engine shall run on those two components.</p>
 <p>After this, we define the actual instance of our engine struct</p>
 <p><a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>. </p>

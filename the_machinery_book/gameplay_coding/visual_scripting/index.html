@@ -171,15 +171,15 @@ to open it in the Graph Editor:</p>
 <li><strong>Press Space</strong></li>
 </ul>
 <h3 id="execution"><a class="header" href="#execution">Execution</a></h3>
-<p>The Entity Graph is an event-driven Visual Scripting language.  This means everything happens after an event was triggered! By default, the Engine comes with the following built-in Events:</p>
+<p>The Entity Graph is an event-driven Visual Scripting language. This means everything happens after an event is triggered! By default, the Engine comes with the following built-in Events:</p>
 <table><thead><tr><th>Name</th><th>Description</th><th></th></tr></thead><tbody>
 <tr><td>Init Event</td><td>Is called when the component is added to the Entity.</td><td><img src="https://www.dropbox.com/s/6cov2jbv72iy455/tm_guide_entity_graph_init.png?dl=1" width="277" height="120"></td></tr>
-<tr><td>Reload Event</td><td>Is called when ever the component is reloaded from the truth.</td><td><img src="https://www.dropbox.com/s/zixoinmbta73tir/tm_guide_entity_graph_reload.png?dl=1" width="277" height="120"></td></tr>
+<tr><td>Reload Event</td><td>Is called when the component is reloaded from the truth.</td><td><img src="https://www.dropbox.com/s/zixoinmbta73tir/tm_guide_entity_graph_reload.png?dl=1" width="277" height="120"></td></tr>
 <tr><td>Tick Event</td><td>Is called every frame.</td><td><img src="https://www.dropbox.com/s/1t7hwmu37wr4aua/tm_guide_entity_graph_tick.png?dl=1" width="277" height="120"></td></tr>
 <tr><td>Terminate Event</td><td>Is called before the component is removed from the entity.</td><td><img src="https://www.dropbox.com/s/nx3tehccedx7qic/tm_guide_entity_graph_terminate.png?dl=1" width="277" height="120"></td></tr>
-<tr><td>Custom Event</td><td>Is called when ever the named event<br> is triggered with either a &quot;Trigger Event&quot;<br> node or from the outside with &quot;Trigger Remote Event&quot;</td><td><img src="https://www.dropbox.com/s/ngv3k25u02k8iq6/tm_guide_entity_graph_create_custom_event.png?dl=1" width="277" height="120"></td></tr>
+<tr><td>Custom Event</td><td>Is called when the named event<br> is triggered with either a &quot;Trigger Event&quot;<br> node or from the outside with &quot;Trigger Remote Event&quot;</td><td><img src="https://www.dropbox.com/s/ngv3k25u02k8iq6/tm_guide_entity_graph_create_custom_event.png?dl=1" width="277" height="120"></td></tr>
 <tr><td>Trigger Event</td><td>Triggers an event.</td><td><img src="https://www.dropbox.com/s/tqyg6scxjcsk3vi/tm_guide_entity_graph_trigger.png?dl=1" width="277" height="120"></td></tr>
-<tr><td>Trigger Remote Event</td><td>Triggeres a event on a remote Entity</td><td><img src="https://www.dropbox.com/s/jrnapuuq93d0kx8/tm_guide_entity_graph_trigger_remote.png?dl=1" width="277" height="120"></td></tr>
+<tr><td>Trigger Remote Event</td><td>Triggeres an event on a remote Entity</td><td><img src="https://www.dropbox.com/s/jrnapuuq93d0kx8/tm_guide_entity_graph_trigger_remote.png?dl=1" width="277" height="120"></td></tr>
 <tr><td>UI Tick</td><td>Is ticked every frame regardless if the game is paused or not!</td><td><img src="https://www.dropbox.com/s/6ejvwvc5yndpo87/tm_guide_entity_graph_ui_tick.png?dl=1" width="277" height="120"></td></tr>
 </tbody></table>
 <h3 id="anatomy"><a class="header" href="#anatomy">Anatomy</a></h3>
@@ -187,7 +187,7 @@ to open it in the Graph Editor:</p>
 <table><thead><tr><th>Type</th><th>Function</th></tr></thead><tbody>
 <tr><td>Event Node</td><td>Starting point of the Execution</td></tr>
 <tr><td>Query Node</td><td>Query nodes are triggered  automatically when their output is requested. Nodes that aren't query nodes need to be triggered. Therefore they are &quot;Pure&quot; and do not modify data!</td></tr>
-<tr><td>Nodes</td><td>Normal nodes that have a Event input, hence they might modify the data and produce a output or mutate the graphs state!</td></tr>
+<tr><td>Nodes</td><td>Normal nodes that have an Event input, hence they might modify the data and produce an output or mutate the graphs state!</td></tr>
 <tr><td>Subgraphs</td><td>Graphs within a Graph! Allow you to organize your graph into smaller units. They can also be reused if saved as Subgraph Prototype.</td></tr>
 <tr><td>Input Node</td><td>Accepts Input from the Outside world and makes it available to the graph. Mainly used for communication between graphs and subgraphs.</td></tr>
 <tr><td>Output Node</td><td>Accepts Output and passes it to the Outside world and makes it available to a parent graph. Mainly used for communication between graphs and subgraphs.</td></tr>
@@ -199,7 +199,7 @@ to open it in the Graph Editor:</p>
 </ul>
 <p><img src="https://www.dropbox.com/s/i95s1frdzhcsev1/tm_guide_entity_graph_wire_types.png?dl=1" alt="" /></p>
 <h2 id="inputs"><a class="header" href="#inputs">Inputs</a></h2>
-<p>Graph can have input. They can be used to allow the user of your graph to pass data from the outside (e.g. the Editor) to the graph. This happens via the Input Nodes. In the General Graph settings you can add Inputs from the outside world.</p>
+<p>Graphs can have inputs. They can be used to allow the user of your graph to pass data from the outside (e.g. the Editor) to the graph. This happens via the Input Nodes. In the General Graph settings you can add Inputs from the outside world.</p>
 <h3 id="adding-a-public-input"><a class="header" href="#adding-a-public-input">Adding a Public Input</a></h3>
 <ol>
 <li>You click on the Settings button which opens the Graphs Settings</li>
@@ -222,7 +222,7 @@ to open it in the Graph Editor:</p>
 <p>This can be a nice way to customize behaviour of your graph and entity!</p>
 <ol start="4">
 <li>
-<p>Add a Input node to you graph. There you have access to the data.</p>
+<p>Add an Input node to your graph. There you have access to the data.</p>
 <p><img src="https://www.dropbox.com/s/l20w7d0utoet9ti/tm_guide_entity_graph_input_node.png?dl=1" alt="" /></p>
 <p>The Input Node also allows you to access the settings. Hover over the name of the Input and a Settings option becomes available. </p>
 <p><img src="https://www.dropbox.com/s/wrg5hk7lbx0l1rs/tm_guide_entity_graph_input_node_on_settings.png?dl=1" alt="" /></p>
@@ -241,7 +241,7 @@ to open it in the Graph Editor:</p>
 <p><em>The Grid node for example:</em></p>
 <p><img src="https://www.dropbox.com/s/9fawc756lyf0k3h/tm_guide_entity_graph_loop.png?dl=1" alt="" /></p>
 <h3 id="subgraphs"><a class="header" href="#subgraphs">Subgraphs</a></h3>
-<p>You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a <code>.entity_graph</code> asset in your asset browser and allow it to be reused across your project! Which enables you to maximal flexibility! </p>
+<p>You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a <code>.entity_graph</code> asset in your asset browser and allow it to be reused across your project! Which enables you to have maximal flexibility! </p>
 <h2 id="what-is-next"><a class="header" href="#what-is-next">What is next?</a></h2>
 <p>In the next chapter you will learn more about Subgraphs and the Debugger! In case you want to provide your own Nodes check out this tutorial <a href="https://ourmachinery.github.io/themachinery-books/tutorials/gameplay_coding/extend_the_entity_graph.html">Extend the Entity Graph</a></p>
 

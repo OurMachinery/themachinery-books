@@ -155,7 +155,7 @@
 </ul>
 <h2 id="about-integration-tests"><a class="header" href="#about-integration-tests"><strong>About integration tests</strong></a></h2>
 <p>Integration testing is the phase in testing software in which individual software modules are combined and tested as a group. Integration testing is conducted to evaluate a system's compliance or its interaction as a whole within specified functional requirements. 
-Its generally used after unit testing to ensure that the composition of the software works. It is a potent tool to validate certain bugs that are hard to reproduce only after using software extensively. You can simulate this with integration tests. Besides, it is a very powerful tool validating that a bug fix was successful.</p>
+It is generally used after unit testing to ensure that the composition of the software works. It is a potent tool to validate certain bugs that are hard to reproduce only after using software extensively. You can simulate this with integration tests. Besides, it is a very powerful tool validating that a bug fix was successful.</p>
 <p>By their very nature, integration tests are slower and more fragile than unit tests, but they can also find issues that are hard to detect with regular unit tests. Each integration test runs in a specific &quot;context&quot;, identified by a string hash. The context specifies the &quot;scaffolding&quot; is set up before the unit test runs.</p>
 <h2 id="how-to-write-integration-tests-1"><a class="header" href="#how-to-write-integration-tests-1"><strong>How to write integration tests</strong></a></h2>
 <p><strong>Where to find the integration test framework?</strong></p>
@@ -179,8 +179,8 @@ typedef struct tm_integration_test_i
 <p>At this point, we have not tackled the following possible questions:</p>
 <ul>
 <li>Where and how do we register the interface?</li>
-<li>How could this interface look like?</li>
-<li>How does a test itself look like?</li>
+<li>What could this interface look like?</li>
+<li>What does the test itself look like?</li>
 </ul>
 <p><strong>Let us walk those questions through:</strong></p>
 <p><em>Where and how do we register the interface?</em></p>
@@ -194,7 +194,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 </code></pre>
 <p>Here we register our test interface to the <code>TM_INTEGRATION_TEST_INTERFACE_NAME</code>.</p>
-<p><em>How could this interface look like?</em></p>
+<p><em>What could this interface look like?</em></p>
 <p>After we have done this, we need to declare our <code>my_integration_tests.</code> </p>
 <pre><code class="language-c">tm_integration_test_i my_integration_tests = {
     .name = &quot;stress-test&quot;,
@@ -204,7 +204,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 };
 </code></pre>
 <p>The name field is important because, later on, we need to use this name when we want to run the test. The context makes sure that it runs and boots up the Editor. <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_context__the_machinery_editor">TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</a> is defined in <code>#include &lt;foundation/integration_test.h&gt;</code>. The function <code>my_test_tick</code> gets called and the magic can happen.</p>
-<p><em>How does a test itself look like?</em></p>
+<p><em>What does the test itself look like?</em></p>
 <p>Let us write this test. We need to write a function of the signature: <code>(tm_integration_test_runner_i *)</code>.  In its body, we can define our tests.</p>
 <pre><code class="language-c">static void my_test_tick(tm_integration_test_runner_i *test_runner)
 {

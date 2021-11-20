@@ -151,15 +151,15 @@
 <p>You will learn the basics about:</p>
 <ul>
 <li>What the creation graph is</li>
-<li>How the asset pipline works</li>
-<li>How to create (rigg) an Entity from a imported asset</li>
+<li>How the asset pipeline works</li>
+<li>How to create (rigg) an Entity from an imported asset</li>
 </ul>
 <h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
 <p>There are lots of things you might want to do to an imported asset coming from a DCC-tool. For
 example, extracting images and materials into a representation that can be further tweaked by your
 artists or rigging (create) an entity from the meshes present in the asset. In The Machinery, we provide full
 control over how data enters the engine and what data-processing steps that get executed, allowing
-technical artists to better optimize content and setup custom, game-specific asset pipelines.</p>
+technical artists to better optimize content and set up custom, game-specific asset pipelines.</p>
 <p>This is handled through <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/creation_graphs/concept.html"><em>Creation Graphs</em></a>. A <em>Creation Graph</em> is essentially a generic framework for
 processing arbitrary data on the CPUs and GPUs, exposed through a graph front-end view. While we can
 use <em>Creation Graphs</em> for any type of data processing. </p>
@@ -170,7 +170,7 @@ use <em>Creation Graphs</em> for any type of data processing. </p>
 </blockquote>
 <h2 id="importing-a-dcc-asset"><a class="header" href="#importing-a-dcc-asset">Importing a DCC asset</a></h2>
 <p>You can import an asset by selecting <strong>File &gt; Import...</strong> in the main menu, pressing <strong>Ctrl-I</strong>, or dropping a DCC file on the Asset Browser tab. When you do this, it ends up in our data-model as a <code>dcc_asset</code>. </p>
-<p>For more in detail explanation about how to import assets checkout the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html">Asset Import Part</a>.</p>
+<p>For a more in detail explanation about how to import assets checkout the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/editing_workflows/import_assets.html">Asset Import Part</a>.</p>
 <h3 id="basic-entity-rigging-with-image-and-material-extraction"><a class="header" href="#basic-entity-rigging-with-image-and-material-extraction">Basic entity rigging, with image and material extraction</a></h3>
 <p>If you click on a <code>dcc_asset</code> that contains a mesh in the Asset Browser, you will be presented
 with importer settings in the Properties tab:</p>
@@ -234,7 +234,7 @@ more common operations:</p>
 <p><code>dcc-material</code> -- Shader graph setup to represent materials extracted from an imported <code>dcc_asset</code>.</p>
 </li>
 <li>
-<p><code>dcc-mesh</code> -- Operations for generating a draw call that reprensents a mesh from an imported <code>dcc_asset</code>.</p>
+<p><code>dcc-mesh</code> -- Operations for generating a draw call that represents a mesh from an imported <code>dcc_asset</code>.</p>
 </li>
 <li>
 <p><code>drop-image</code> -- Operations for generating a draw call to display the image output of another

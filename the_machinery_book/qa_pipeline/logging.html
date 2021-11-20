@@ -147,7 +147,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="logging"><a class="header" href="#logging">Logging</a></h1>
-<p>The Machinery comes with a build in Logger system. The Logger System lives in the <code>foundation/log.h</code> and contains the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#structtm_logger_api">tm_logger_api</a>. This API provides a few connivance macros. We can use them to log our code from anywhere. Besides this it is super easy to create your own logger and add it to the logger API.</p>
+<p>The Machinery comes with a built-in Logger system. The Logger System lives in the <code>foundation/log.h</code> and contains the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#structtm_logger_api">tm_logger_api</a>. This API provides a few connivance macros. We can use them to log our code from anywhere. Besides this it is super easy to create your own logger and add it to the logger API.</p>
 <h2 id="logging-cheat-sheet"><a class="header" href="#logging-cheat-sheet">Logging cheat sheet</a></h2>
 <p>You can log custom types. This is enabled via the <a href="https://ourmachinery.com/apidoc/foundation/sprintf.h.html#structtm_sprintf_api">tm_sprintf_api</a>. You can log all primitive types like you are used to from C but as well as the engines API types. Just keep in mind the following syntax: <code>%p{&lt;MY_TYPE&gt;}</code> and the <strong>fact</strong> that you <strong>need</strong> to provide a pointer to the correct type:</p>
 <table><thead><tr><th>type</th><th>call</th></tr></thead><tbody>
@@ -205,13 +205,13 @@
 <tr><td><code>%p{tm_color_srgb_t}</code></td><td><code>&amp;TM_RGB(0xff7f00)</code></td><td><code>{ .r = 255, .g = 127, .b = 0, .a = 255 }</code></td></tr>
 </tbody></table>
 <h2 id="write-a-custom-logger"><a class="header" href="#write-a-custom-logger">Write a custom logger</a></h2>
-<p>If you desire to add your own logger sink to the eco system there are a few steps you need to take:</p>
+<p>If you desire to add your own logger sink to the ecosystem there are a few steps you need to take:</p>
 <ol>
 <li>You need to include the <code>foundation/log.h</code> header</li>
 <li>You need to define a <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#structtm_logger_i">tm_logger_i</a> in your file</li>
 <li>You need add a <code>log</code> function to this interface
 <ol>
-<li>If you need some local data (such as a allocator)  it might be good to define a <code>.inst</code> as well.</li>
+<li>If you need some local data (such as an allocator)  it might be good to define a <code>.inst</code> as well.</li>
 </ol>
 </li>
 <li>After all of this you can call the <code>tm_logger_api.add_logger()</code>  function to register your logger</li>

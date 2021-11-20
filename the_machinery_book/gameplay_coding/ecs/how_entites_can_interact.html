@@ -154,14 +154,14 @@
 <li>On what data do we operate? </li>
 <li>What is our domain?</li>
 <li>What is the possible input for our transformation? </li>
-<li>What is the frequency of the data use? </li>
+<li>What is the usage frequency of the data? </li>
 <li>What are we actually transforming?</li>
-<li>How could our algorithm look like? </li>
+<li>What could our algorithm look like? </li>
 <li>How often do we perform our transformation?</li>
 </ul>
-<p>For infrequent read access we can easily use the <code>tm_entity_api.get_component()</code> . It allows access to the underlying data directly from a provided entity. It is not recommended to use that for read-access because it is quite slow. You perform a random data access. But again, if it is infrequent of the operation and the number of targets (Entities), which are interesting to choose the right tool.</p>
+<p>For infrequent read access we can easily use the <code>tm_entity_api.get_component()</code> . It allows access to the underlying data directly from a provided entity. It is not recommended to use that for read-access because it is quite slow. You perform random data access. But again, if it is infrequent of the operation and the number of targets (Entities), which are interesting to choose the right tool.</p>
 <blockquote>
-<p>Here, you can use a System better than an <code>Engine</code>, since a System doe not run in parallel and provides access to the Entity Context.</p>
+<p>Here, you can use a System better than an <code>Engine</code>, since a System does not run in parallel and provides access to the Entity Context.</p>
 </blockquote>
 <h2 id="the-problem"><a class="header" href="#the-problem">The problem</a></h2>
 <p>When creating interactions between entities, we mainly face two types of problems:</p>
@@ -172,7 +172,7 @@
 <p><strong>The transformation from *Interaction* towards *Relationships*</strong></p>
 <p>To start this transformation, we should have a quick look at the first principle of <em>Data-Oriented Design</em>:</p>
 <blockquote>
-<p>Data is not the problem domain. For some, it would seem that data-oriented design is the antithesis of most other programming paradigms because the data-oriented design is a technique that does not readily allow the problem domain to enter into the software so readily. It does not recognize the concept of an object in any way, as data is consistent without meaning […] The data-oriented design approach doesn’t build the real-world problem into the code. This could be seen as a failing of the data-oriented approach by veteran object-oriented developers, as many examples of the success of object-oriented design come from being able to bring human concepts to the machine. In this middle ground, a solution can be written in this language that is understandable by both humans and computers. The data-oriented approach gives up some of the human readability by leaving the problem domain in the design document but stops the machine from having to handle human concepts at any level by just that same action — <a href="http://www.dataorienteddesign.com/">Data Oriented Design Book Chapter 1.2</a></p>
+<p>Data is not the problem domain. For some, it would seem that data-oriented design is the antithesis of most other programming paradigms because data-oriented design is a technique that does not readily allow the problem domain to enter into the software so readily. It does not recognize the concept of an object in any way, as data is consistent without meaning […] The data-oriented design approach doesn’t build the real-world problem into the code. This could be seen as a failure of the data-oriented approach by veteran object-oriented developers, as many examples of the success of object-oriented design come from being able to bring human concepts to the machine. In this middle ground, a solution can be written in this language that is understandable by both humans and computers. The data-oriented approach gives up some of the human readability by leaving the problem domain in the design document but stops the machine from having to handle human concepts at any level by just that same action — <a href="http://www.dataorienteddesign.com/">Data Oriented Design Book Chapter 1.2</a></p>
 </blockquote>
 <p>This principle helps us recognize that interactions <em>do not truly exist. They hide the implementation of the underlying relationship</em>. A relationship is nothing else than a transformation of data. In the case of an ECS, the Entity Manager (In our case, Entity Context) can be seen as a database and the Entity as a Lookup table key that indexes relationships between components. </p>
 <p>The systems (or engines) are just here to interpret those relationships and give them meaning. Therefore, a system and engines should only do one job and do this well. </p>
@@ -190,13 +190,13 @@
 <p><strong>How do we design Systems?</strong></p>
 <p>To implement the before-mentioned relationships, we have to undertake a couple of steps. </p>
 <blockquote>
-<p>These steps are also interesting for none programmers who design gameplay systems. Having those flashed out when they design game mechanics can be good and speed up your work. </p>
+<p>These steps are also interesting for programmers who design gameplay systems. Having those fleshed out when they design game mechanics can be good and speed up your work. </p>
 </blockquote>
 <p>We have to ask the following questions:</p>
 <p><strong>1.</strong> What data transformations are we going to do and on which data? </p>
 <p>This question should lead to “what components do we need to create this relationship?” We should always be able to give a reason why we need this data.</p>
 <p><strong>2.</strong> What is our possible domain? (What kind of inputs do we have?)</p>
-<p>When we figure this out, we can make the right decision later. Also, we can reason about our code how to implement these relationships?</p>
+<p>When we figure this out, we can make the right decision later. Also, we can reason about our code and how to implement these relationships.</p>
 <p><strong>3.</strong> How often does the data change? </p>
 <p>To determine how often we change the data, we go through component by component and discuss how often we change it. This process is vital to pick the right tool. Knowing those numbers or tendencies is great for reasoning about possible performance bottlenecks and where we could apply optimizations.</p>
 <p><strong>4.</strong> What are we actually transforming?</p>
@@ -205,7 +205,7 @@
 <p>To pick the right tool, we need to reason about the costs an algorithm costs us. If we take run time performance as a measurement, it is okay to have a slow algorithm if we do not execute this frequently. If this is not the case, you should consider another solution.</p>
 <p><strong>5.</strong> How often do we execute the algorithm/transformation?</p>
 <p>Based on the information we have already about the data we need for the transformation, it’s pretty easy to determine the execution frequency. The total number of entities/objects is known at this time. (It may be an estimation). Therefore, we can guess how often this might run. Keep in mind that we previously discussed how often we suspect the data to be changed. This leads to transparency, which gives a good idea of the costs of this code.</p>
-<p>Keep in mind that the main goal is to keep things simple. A System/Engine should do one job. As the variety of components defines the data type of the Entity. And the combination of System's/Engines defines the actual game behavior. Therefore you do not need to write diagrams, blueprints, pseudo-code, or anything. You maybe even be able just to write the engine in one goal. It is recommended to do those steps even in your mind before you write your system.</p>
+<p>Keep in mind that the main goal is to keep things simple. A System/Engine should do one job. As the variety of components defines the data type of the Entity. And the combination of Systems/Engines defines the actual game behavior. Therefore you do not need to write diagrams, blueprints, pseudo-code or anything. You may even be able to just write the engine as one goal. It is recommended to do those steps even in your mind before you write your system.</p>
 <blockquote>
 <p><strong>IMPORTANT:</strong> When the data changes, the problem changes. Therefore, we have to properly evaluate with the descriptive method the possible outcome and maybe change the implementation.</p>
 </blockquote>

@@ -199,7 +199,7 @@ If you run into the issue that tmbuild cannot find Visual Studios 2019 on Window
 <p><strong>How to add environment variables?</strong></p>
 <p><strong>Windows</strong></p>
 <p>On Windows all you need to do is you need to add the folder where you installed The Machinery to your environment variables. You can do this like this:
-<strong>Start &gt; Edit the system environment variables &gt; environment variables &gt; system varaibles &gt; click New... &gt;</strong> add <code>TM_SDK_DIR</code> or <code>TM_LIB_DIR</code> as the Variable Name and the needed path as the Variable Value.
+<strong>Start &gt; Edit the system environment variables &gt; environment variables &gt; system variables &gt; click New... &gt;</strong> add <code>TM_SDK_DIR</code> or <code>TM_LIB_DIR</code> as the Variable Name and the needed path as the Variable Value.
 Close and restart the terminal or Visual Studio / Visual Studio Code.
 As an alternative, you can set an environment variable via PowerShell before you execute tmbuild, which will stay alive till the end of the session:
 <code>$Env:TM_SDK_DIR=&quot;..PATH&quot;</code></p>
@@ -237,7 +237,7 @@ If a project cannot be found it will build all projects.</p>
 <h2 id="how-how-to-package-a-project-via-tmbuild"><a class="header" href="#how-how-to-package-a-project-via-tmbuild">How how to package a project via tmbuild?</a></h2>
 <p>To package a project via tmbuild, all you need to do is use the <code>-p [package name]</code> or <code>--package [package name]</code> command. A package file needs to be of type <code>.json</code> and follow our package scheme, which you can find <a href="#">here</a>.</p>
 <h2 id="how-to-build-or-manipulate-tmbuild-from-source"><a class="header" href="#how-to-build-or-manipulate-tmbuild-from-source">How to build or manipulate tmbuild from source</a></h2>
-<p>You can find the source code of tmbuild in folder <code>code\utils\tmbuild</code>. In the folder <code>code\utils</code>, you can also find the source code of all the other uses the engine uses.</p>
+<p>You can find the source code of tmbuild in the folder <code>code\utils\tmbuild</code>. In the folder <code>code\utils</code>, you can also find the source code of all the other uses the engine uses.</p>
 <p>You can build tmbuild via tmbuild. All you need to do is navigate the <code>code\utils</code> folder and run <code>tmbuild --project tmbuild</code>. </p>
 <p>If you do not have access to a build version of tmbuild but to the whole source, you have to follow the following steps:</p>
 <p><strong>Windows 10</strong></p>
@@ -249,7 +249,7 @@ If a project cannot be found it will build all projects.</p>
 <code>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\</code></p>
 <p><strong>To build from source:</strong></p>
 <p>Open a PowerShell instance in The Machinery folder and run the following commands:</p>
-<pre><code class="language-powershell"># this part can be skiped if you have already downloaded
+<pre><code class="language-powershell"># this part can be skipped if you have already downloaded
 # all the dependencies and created a highlevel folder to your lib dependencies:
 mkdir lib
 cd lib
