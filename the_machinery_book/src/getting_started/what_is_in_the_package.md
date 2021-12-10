@@ -15,7 +15,7 @@ In the distribution package you will find this:
 | **bin/docgen.exe**                   | Our tool for generating documentation.                       |
 | **bin/hash.exe**                     | Our tool for generating static hash strings.                 |
 | **bin/localize.exe**                 | Our tool for generating localization data.                   |
-| **bin/runner.exe**                   | An executable than can load a The Machinery project and do what Simulate Tab does, but stand-alone. It is copied whenever you Publish a project from within The Machinery. |
+| **bin/runner.exe**                   | An executable that can load a The Machinery project and do what Simulate Tab does, but stand-alone. It is copied whenever you Publish a project from within The Machinery. |
 | **utils/.clang-format**              | The clang-format settings we use to format our code.         |
 | **utils/pre-commit**                 | The pre-commit hook we use in our git repository to auto-format the code. |
 | **utils/enable-full-dumps.reg**      | A registry file that enables full crash dumps (see below).   |

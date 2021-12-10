@@ -109,7 +109,7 @@ TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 
 The truth API will now use the temp allocator to create the list. We do not need to call tm_free anywhere, this is all done at the end by `TM_SHUTDOWN_TEMP_ALLOCATOR`!
 
-Sometimes APIs require a normal `tm_allocator_i`, but you are not interested in creating an actual allocator or have access to a memory allocator! No worries, we have your back! The Temp Allocator gives you the following macro: `TM_INIT_TEMP_ALLOCATOR_WITH_ADAPTER(ta, a); It generates a normal `tm_allocator_i` uses the temp allocator as its backing allocator. Hence all allocations done with the allocator will be actually done via the `ta` allocator! Again at the end, all your memory is freed by `TM_SHUTDOWN_TEMP_ALLOCATOR(ta);`
+Sometimes APIs require a normal `tm_allocator_i`, but you are not interested in creating an actual allocator or have access to a memory allocator! No worries, we have your back! The Temp Allocator gives you the following macro: `TM_INIT_TEMP_ALLOCATOR_WITH_ADAPTER(ta, a)`; It generates a normal `tm_allocator_i` uses the temp allocator as its backing allocator. Hence all allocations done with the allocator will be actually done via the `ta` allocator! Again at the end, all your memory is freed by `TM_SHUTDOWN_TEMP_ALLOCATOR(ta);`
 
 >  **Note**: You also have `tm_temp_alloc()` they expect a `tm_temp_allocator_i` instead of the `tm_allocator_i`.
 
@@ -145,7 +145,7 @@ Now the my_id will be stored in the our_ids and allocated with my_allocator! In 
 
 This doesn't look very pleasant when I am working with a lot of data that only needs to be a temporary list or something. For this case, you can use our temp allocator! Every `tm_carray_` macro has a `tm_carray_temp_` equivalent.
 
-> **Note:** It is also recommend to make use of `tm_carray_resize` or `tm_carray_temp_resize` if you know how many elements your array might have. This will reduce the actual allocations.
+> **Note:** It is also recommended to make use of `tm_carray_resize` or `tm_carray_temp_resize` if you know how many elements your array might have. This will reduce the actual allocations.
 
 Going back to our previous example:
 
