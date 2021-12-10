@@ -54,6 +54,7 @@
 	- [Node Types](./creation_graphs/node_types.md)
 	- [Shader System Interaction](./creation_graphs/shader_system.md)
 - [Graphics](./graphics/README.md)
+	- [Camera](./graphics/camera.md)
     - [Default Render Pipeline](./graphics/default_render_pipeline.md)
     - [Meshes / Materials](./graphics/mesh_materials.md)
     - [Shaders](./graphics/shaders.md)
