@@ -51,7 +51,10 @@ Additionally all projection modes define near and far plane properties. These di
 
 The properties of the camera can be manipulated to create interested and film like effects. For example, by decreasing the focal length whilst dollying the camera backwards we can create a [Dolly Zoom](https://en.wikipedia.org/wiki/Dolly_zoom) effect. 
 
-![](https://www.dropbox.com/s/ty552e9hchgmhue/tm_guide_camera_dolly_zoom.mp4?dl=1)
+<video  controls>
+  <source src="https://www.dropbox.com/s/ty552e9hchgmhue/tm_guide_camera_dolly_zoom.mp4?raw=1" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 ## Camera Effects
 
@@ -62,5 +65,4 @@ The Machinery can simulate various camera effects as desired. These are implemen
 | Bloom          | The bloom effects adds fringes of light extending from the borders of bright areas of the scene. This simulates the real world glow that comes from viewing bright lights through a lens.                                            |
 | [Exposure]({{tutorials}}post_processing/exposure.html)       | Exposure controls the amount of light that hits the sensor. This has the effect of brightening or darkening the scene as desired. This can either be set using real world camera parameters or automatically as the human eye would. |
 | Depth of Field | Real world lenses cannot focus on the entire scene at the same time. The depth of field effect simulated this be blurring out of focus areas of the scene.                                                                           |
-
 
