@@ -254,10 +254,11 @@
     *bounds_max = (tm_vec3_t) { 1.0f, 1.0f, 0.0f };
 </code></pre>
 <p>This is the full source code to define this creation graph CPU node:</p>
-<pre><code class="language-c">struct tm_creation_graph_interpreter_api *tm_creation_graph_interpreter_api;
-struct tm_shader_api *tm_shader_api;
-struct tm_shader_repository_api *tm_shader_repository_api;
-struct tm_renderer_api *tm_renderer_api;
+<pre><code class="language-c">static struct tm_creation_graph_api *tm_creation_graph_api;
+static struct tm_creation_graph_interpreter_api *tm_creation_graph_interpreter_api;
+static struct tm_shader_api *tm_shader_api;
+static struct tm_shader_repository_api *tm_shader_repository_api;
+static struct tm_renderer_api *tm_renderer_api;
 
 #include &lt;foundation/api_registry.h&gt;
 #include &lt;foundation/the_truth_types.h&gt;
@@ -277,7 +278,7 @@ struct tm_renderer_api *tm_renderer_api;
 
 #include &lt;string.h&gt;
 
-#include &lt;plugins/creation_graph/resource_cache_internal.inl&gt;
+#include &lt;plugins/creation_graph/resource_cache.inl&gt;
 
 typedef struct tm_triangle_vertex_t
 {
@@ -400,8 +401,9 @@ static tm_creation_graph_node_type_i triangle_node = {
     .compile = triangle_node__compile
 };
 
-TM_DLL_EXPORT void load_triangle_geometry(struct tm_api_registry_api *reg, bool load)
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
+    tm_creation_graph_api = tm_get_api(reg, tm_creation_graph_api);
     tm_creation_graph_interpreter_api = tm_get_api(reg, tm_creation_graph_interpreter_api);
     tm_shader_api = tm_get_api(reg, tm_shader_api);
     tm_shader_repository_api = tm_get_api(reg, tm_shader_repository_api);
