@@ -5,5 +5,5 @@ The Machinery’s default render pipeline provides a basic post processing stack
 Currently we support the following post-processing effects:
 - [Anti-Aliasing]({{tutorials}}post_processing/aa.html)
 - [Exposure]({{tutorials}}post_processing/exposure.html)
-- Bloom
+- [Bloom]({{tutorials}}post_processing/bloom.html)
 - [Color grading]({{tutorials}}post_processing/color_grading.html)

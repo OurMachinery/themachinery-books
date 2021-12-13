@@ -16,6 +16,7 @@
 - [Post Processing](./post_processing/README.md)
 	- [Anti-Aliasing](./post_processing/aa.md)
 	- [Exposure](./post_processing/exposure.md)
+	- [Bloom](./post_processing/bloom.md)
 	- [Color Grading](./post_processing/color_grading.md)
 - [Physics](./physics/README.md)
     - [Triggers](./physics/triggers.md)
