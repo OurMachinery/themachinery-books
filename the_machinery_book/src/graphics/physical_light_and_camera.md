@@ -14,7 +14,7 @@ Note that when we talk about luminous flux we are referring to the total amount 
 
 The Machinery supports a wide range of light units. It is up to the user to determine which light unit they wish to use. The available units are:
 
-| **Unit**            | **Type**           | S**hort Description**                                                                                         |
+| **Unit**            | **Type**           | **Short Description**                                                                                         |
 | ------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------- |
 | Candela (cd)        | Luminous Intensity | Scientific measurement of light being emitted in a certain direction.                                         |
 | Lumen (lm)          | Luminous Flux      | Total amount of light emitted from a source. This is easiest to reference with real-world artificial lights.  |
