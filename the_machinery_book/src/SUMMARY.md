@@ -55,6 +55,7 @@
 	- [Shader System Interaction](./creation_graphs/shader_system.md)
 - [Graphics](./graphics/README.md)
 	- [Camera](./graphics/camera.md)
+	- [Physically Based Light and Cameras](./graphics/physical_light_and_camera.md)
     - [Default Render Pipeline](./graphics/default_render_pipeline.md)
     - [Meshes / Materials](./graphics/mesh_materials.md)
     - [Shaders](./graphics/shaders.md)
