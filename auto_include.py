@@ -166,6 +166,7 @@ def process_dollar_includes(content, path):
         __current_content = match.group(2)
         __current_content = re.sub(r"(:[\d]+)", "", __current_content)
         abs = correct_env(__current_content)
+        abs = abs.format(**os.environ).strip()
         destination = Path(abs).resolve()
         origin = Path(
             "{first}/{doc}".format(first=__book_root_path, doc=path)).resolve()
