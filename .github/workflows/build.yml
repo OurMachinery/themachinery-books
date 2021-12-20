@@ -23,7 +23,7 @@ jobs:
       - name: download SDK
         run: |
           sudo apt install -y unzip wget
-          wget https://ourmachinery.com/releases/2021.10/the-machinery-2021.11.a-linux.zip
+          wget https://ourmachinery.com/releases/2021.11/the-machinery-2021.11.a-linux.zip
           mkdir sdk_dir
           unzip the-machinery-2021.11.a-linux.zip -d sdk_dir
       - run: sudo apt update && sudo apt install zip
