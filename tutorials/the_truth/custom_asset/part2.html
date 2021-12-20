@@ -174,6 +174,7 @@
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
 }
+
 </code></pre>
 <p>To actually store some data in the objects, we want to add some properties to the Truth type. Note that we pass in an array of properties when we create the type with <code>tm_the_truth_api-&gt;create_object_type()</code>.</p>
 <p>For our text file objects that are two pieces of data that we want to store:</p>
@@ -183,10 +184,11 @@
 </ol>
 <p>Storing the <em>import path</em> is not strictly necessary, but we'll use it to implement a &quot;reimport&quot; feature. This lets our data type work nicely with text files that are edited in external programs.</p>
 <p>Here's how we can define these properties:</p>
-<pre><code class="language-c">    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
+<pre><code class="language-c">static tm_the_truth_property_definition_t my_asset_properties[] = {
+    { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
+    { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
+};
+
 </code></pre>
 <blockquote>
 <p><strong>Note:</strong> The type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t"><em>tm_the_truth_property_definition_t</em></a> has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t"><em>here</em></a><em>.</em></p>
@@ -196,8 +198,8 @@
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
+        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
@@ -206,6 +208,7 @@
     };
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
 }
+
 </code></pre>
 <p>Let's also change the asset name to something more meaningful than <code>my_asset</code>. We'll call it <code>txt</code>. We need to update this new name in four places:</p>
 <ul>
@@ -219,12 +222,16 @@
 {
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
 }
+
 // .. other code
 static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
     .menu_name = TM_LOCALIZE_LATER(&quot;New Text File&quot;),
     .asset_name = TM_LOCALIZE_LATER(&quot;New Text File&quot;),
     .create = asset_browser_create,
 };
+
+}
+
 </code></pre>
 <p>Let's have a look at how it looks in the editor:</p>
 <p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926443262_image.png" alt="creating a new asset" /></p>
@@ -233,8 +240,8 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 <p>The <code>Data</code> property is <code>nil</code> because we haven't loaded any data into the file yet. Let's add a UI that let's us import text files from disk.</p>
 <p>(Another option would be to add a <em>Text Editor</em> UI that would let us edit the text data directly in the editor. However, writing a good text editor is a big task, so for this tutorial, let's use an import workflow instead.)</p>
 <h3 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h3>
-<p>To show an <strong>Import</strong> button in the Properties View, we need to customize the Properties View UI of our type. We can do this by adding a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_aspect__properties">TM_TT_ASPECT__PROPERTIES</a> to the Truth type.</p>
-<p>The <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_aspect__properties">TM_TT_ASPECT__PROPERTIES</a> is implemented with a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> struct. This struct has a lot of field that can be used to customize various parts of the Properties View (for more information on them, check out the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>). For our purposes, we are interested in the <code>custom_ui()</code> field that lets us use a custom callback for drawing the type in the Properties View.</p>
+<p>To show an <strong>Import</strong> button in the Properties View, we need to customize the Properties View UI of our type. We can do this by adding a <code>TM_TT_ASPECT__PROPERTIES</code> to the Truth type.</p>
+<p>The <code>TM_TT_ASPECT__PROPERTIES</code> is implemented with a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> struct. This struct has a lot of field that can be used to customize various parts of the Properties View (for more information on them, check out the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>). For our purposes, we are interested in the <code>custom_ui()</code> field that lets us use a custom callback for drawing the type in the Properties View.</p>
 <p><code>custom_ui()</code> wants a function pointer of the type <code>float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)</code>.</p>
 <p>Let us quickly go over this:</p>
 <table><thead><tr><th><strong>Argument</strong></th><th><strong>Data Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
@@ -250,21 +257,26 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 <pre><code class="language-c">//.. other code
 static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
 {
-// -- code
+    return item_rect.y;
 }
-//.. other code    
-    static tm_properties_aspect_i properties_aspect = {
-        .custom_ui = properties__custom_ui,
-    };
+//...
+static tm_properties_aspect_i properties_aspect = {
+    .custom_ui = properties__custom_ui,
+};
+
 // .. other code
 </code></pre>
 <p>Now we can register this aspect with <code>tm_truth_api</code>:</p>
 <pre><code class="language-c">//.. other code
+
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
-//... the other code
+    static tm_properties_aspect_i properties_aspect = {
+        .custom_ui = properties__custom_ui,
+    };
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
 }
+
 //... the other code
 </code></pre>
 <p>In the editor, the change is imminently visible. The UI is gone, because it is now using our <code>custom_ui()</code> function, but our <code>custom_ui()</code> function isn't drawing anything.</p>
@@ -274,16 +286,15 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 <p>We chould also use <code>tm_properties_view_api-&gt;ui_string()</code>. This is just another way of drawing the default <code>STRING</code> UI.</p>
 <p>But for our purposes, <code>tm_properties_view_api-&gt;ui_open_path()</code> is better. This is a property UI specifically for file system path. It will draw a button, and if you click the button a system file dialog is shown that let's you pick a path.</p>
 <p>Note that in order to use <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">tm_properties_view_api</a> we need to load it in our <code>tm_load_plugin()</code> function:</p>
-<pre><code class="language-c">// -- api's
-static struct tm_properties_view_api *tm_properties_view_api;
-//.. other code 
-// -- load plugin
+<pre><code class="language-c">static struct tm_properties_view_api *tm_properties_view_api;
+//...
+#include &lt;plugins/editor_views/properties.h&gt;
+//...
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-//.. other code 
     tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
-//.. other code 
-} 
+}
+
 </code></pre>
 <p>Now we can call <code>ui_open_path()</code> . Let's start by looking at its <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()">signature</a>:</p>
 <p><code>float (*ui_open_path)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, const char *name, const char *tooltip, tm_tt_id_t object, uint32_t property, const char *extensions, const char *description, bool *picked)</code></p>
@@ -302,10 +313,11 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <tr><td>float</td><td>The <code>y</code> coordinate where the next property should be drawn.</td></tr>
 </tbody></table>
 <p>We can now implement the function:</p>
-<pre><code class="language-c">    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
+<pre><code class="language-c">bool picked = false;
+item_rect.y = tm_properties_view_api-&gt;ui_open_path(args, item_rect, TM_LOCALIZE_LATER(&quot;Import Path&quot;), TM_LOCALIZE_LATER(&quot;Path that the text file was imported from.&quot;), object, TM_TT_PROP__MY_ASSET__FILE, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
+if (picked) {
+}
+
 </code></pre>
 <p>Note that we are using the property index <code>TM_TT_PROP__MY_ASSET__FILE</code> that we defined in the header file hearlier:</p>
 <pre><code class="language-c">#pragma once
@@ -314,8 +326,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 
-enum
-{
+enum {
     TM_TT_PROP__MY_ASSET__FILE,
     TM_TT_PROP__MY_ASSET__DATA,
 };
@@ -333,8 +344,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
     item_rect.y = tm_properties_view_api-&gt;ui_open_path(args, item_rect, TM_LOCALIZE_LATER(&quot;Import Path&quot;), TM_LOCALIZE_LATER(&quot;Path that the text file was imported from.&quot;), object, TM_TT_PROP__MY_ASSET__FILE, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
-    if (picked)
-    {
+    if (picked) {
         const char *file = tm_the_truth_api-&gt;get_string(tt, tm_tt_read(tt, object), TM_TT_PROP__MY_ASSET__FILE);
         tm_file_stat_t stat = tm_os_api-&gt;file_system-&gt;stat(file);
         tm_buffers_i *buffers = tm_the_truth_api-&gt;buffers(tt);
@@ -349,6 +359,11 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
     }
     return item_rect.y;
 }
+//...
+static tm_properties_aspect_i properties_aspect = {
+    .custom_ui = properties__custom_ui,
+};
+
 </code></pre>
 <p>When a new file is picked in the UI (checked with the <code>picked</code> variable) we get the file path from The Truth, read the file data and store it in The Truth.</p>
 <p>To manage buffers, we make use of the interface in <code>buffers.h</code>. Creating a buffer is a three step process:</p>
@@ -382,8 +397,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 #define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
 #define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
 
-enum
-{
+enum {
     TM_TT_PROP__MY_ASSET__FILE,
     TM_TT_PROP__MY_ASSET__DATA,
 };
@@ -415,8 +429,7 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
     item_rect.y = tm_properties_view_api-&gt;ui_open_path(args, item_rect, TM_LOCALIZE_LATER(&quot;Import Path&quot;), TM_LOCALIZE_LATER(&quot;Path that the text file was imported from.&quot;), object, TM_TT_PROP__MY_ASSET__FILE, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
-    if (picked)
-    {
+    if (picked) {
         const char *file = tm_the_truth_api-&gt;get_string(tt, tm_tt_read(tt, object), TM_TT_PROP__MY_ASSET__FILE);
         tm_file_stat_t stat = tm_os_api-&gt;file_system-&gt;stat(file);
         tm_buffers_i *buffers = tm_the_truth_api-&gt;buffers(tt);
@@ -435,8 +448,8 @@ static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
+        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
@@ -445,6 +458,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     };
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
 }
+
 // -- asset browser regsiter interface
 static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
 {
@@ -465,6 +479,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
     tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
+
 </code></pre>
 
                     </main>

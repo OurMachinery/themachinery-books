@@ -162,23 +162,26 @@
     uint32_t *res = (uint32_t *)tm_creation_graph_interpreter_api-&gt;write_wire(ctx-&gt;instance, ctx-&gt;wires[1], TM_TT_TYPE_HASH__UINT32_T, 1, sizeof(uint32_t));
     *res = tm_random_to_uint32_t(tm_random_api-&gt;next()) % *(uint32_t *)max_wire.data;
 }
+
 </code></pre>
 <p>We need to register this node to the creation graph API. This is done through the creation graph node interface. We define the general information to the node like its <code>name</code>, <code>display_name</code> and I/O connectors (wires), and the actual function to run:</p>
 <pre><code class="language-c">static tm_creation_graph_node_type_i random_node = {
     .name = &quot;tm_random&quot;,
     .display_name = &quot;Random Uint&quot;,
     .static_connectors.in = {
-        {.name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T},
+        { .name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T },
     },
     .static_connectors.num_in = 1,
     .static_connectors.out = {
-        {.name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T},
+        { .name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T },
     },
     .static_connectors.num_out = 1,
     .run = random_node__run,
 };
+
 // register in the load function
-    tm_add_or_remove_implementation(reg, load, tm_creation_graph_node_type_i, &amp;random_node);
+tm_add_or_remove_implementation(reg, load, tm_creation_graph_node_type_i, &amp;random_node);
+
 </code></pre>
 <p>This is the full code to define this creation graph CPU node:</p>
 <pre><code class="language-c">static struct tm_error_api *tm_error_api;
@@ -208,11 +211,11 @@ static tm_creation_graph_node_type_i random_node = {
     .name = &quot;tm_random&quot;,
     .display_name = &quot;Random Uint&quot;,
     .static_connectors.in = {
-        {.name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T},
+        { .name = &quot;max&quot;, .display_name = &quot;Max&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T },
     },
     .static_connectors.num_in = 1,
     .static_connectors.out = {
-        {.name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T},
+        { .name = &quot;res&quot;, .display_name = &quot;Result&quot;, .type_hash = TM_TT_TYPE_HASH__UINT32_T },
     },
     .static_connectors.num_out = 1,
     .run = random_node__run,
@@ -223,7 +226,6 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_error_api = tm_get_api(reg, tm_error_api);
     tm_random_api = tm_get_api(reg, tm_random_api);
     tm_creation_graph_interpreter_api = tm_get_api(reg, tm_creation_graph_interpreter_api);
-
     tm_add_or_remove_implementation(reg, load, tm_creation_graph_node_type_i, &amp;random_node);
 }
 </code></pre>

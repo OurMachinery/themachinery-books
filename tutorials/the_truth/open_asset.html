@@ -200,27 +200,22 @@ static struct tm_allocator_api *tm_allocator_api;
 #include &lt;the_machinery/the_machinery_tab.h&gt;
 
 #include &lt;stdio.h&gt;
-
 #define TM_CUSTOM_TAB_VT_NAME &quot;tm_custom_tab&quot;
 #define TM_CUSTOM_TAB_VT_NAME_HASH TM_STATIC_HASH(&quot;tm_custom_tab&quot;, 0xbc4e3e47fbf1cdc1ULL)
-
 struct tm_tab_o
 {
     tm_tab_i tm_tab_i;
     tm_allocator_i allocator;
 };
-
 static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
 {
     tm_ui_buffers_t uib = tm_ui_api-&gt;buffers(ui);
-    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
-    tm_draw2d_style_t *style = &amp;(tm_draw2d_style_t){0};
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]) { *uistyle_in };
+    tm_draw2d_style_t *style = &amp;(tm_draw2d_style_t) { 0 };
     tm_ui_api-&gt;to_draw_style(ui, style, uistyle);
-
-    style-&gt;color = (tm_color_srgb_t){.a = 255, .r = 255};
+    style-&gt;color = (tm_color_srgb_t) { .a = 255, .r = 255 };
     tm_draw2d_api-&gt;fill_rect(uib.vbuffer, *uib.ibuffers, style, rect);
 }
-
 static const char *tab__create_menu_name(void)
 {
     return &quot;Custom Tab&quot;;
@@ -230,16 +225,14 @@ static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
 {
     return &quot;Custom Tab&quot;;
 }
-
 static tm_tab_vt *custom_tab_vt;
 
 static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
 {
     tm_allocator_i allocator = tm_allocator_api-&gt;create_child(context-&gt;allocator, &quot;Custom Tab&quot;);
     uint64_t *id = context-&gt;id;
-
     tm_tab_o *tab = tm_alloc(&amp;allocator, sizeof(tm_tab_o));
-    *tab = (tm_tab_o){
+    *tab = (tm_tab_o) {
         .tm_tab_i = {
             .vt = custom_tab_vt,
             .inst = (tm_tab_o *)tab,
@@ -247,27 +240,24 @@ static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
         },
         .allocator = allocator,
     };
-
     *id += 1000000;
     return &amp;tab-&gt;tm_tab_i;
 }
-
 static void tab__destroy(tm_tab_o *tab)
 {
     tm_allocator_i a = tab-&gt;allocator;
     tm_free(&amp;a, tab, sizeof(*tab));
     tm_allocator_api-&gt;destroy_child(&amp;a);
 }
-
-static tm_tab_vt *custom_tab_vt = &amp;(tm_tab_vt){
+static tm_tab_vt *custom_tab_vt = &amp;(tm_tab_vt) {
     .name = TM_CUSTOM_TAB_VT_NAME,
     .name_hash = TM_CUSTOM_TAB_VT_NAME_HASH,
     .create_menu_name = tab__create_menu_name,
     .create = tab__create,
     .destroy = tab__destroy,
     .title = tab__title,
-    .ui = tab__ui};
-
+    .ui = tab__ui
+};
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_global_api_registry = reg;
@@ -278,6 +268,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 
     tm_add_or_remove_implementation(reg, load, tm_tab_vt, custom_tab_vt);
 }
+
 </code></pre>
 <p>We modify the following parts of the sample:</p>
 <ul>
@@ -293,6 +284,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_tt_id_t asset;
     tm_the_truth_o *tt;
 };
+
 </code></pre>
 <p>The most important fields here are the <strong>asset</strong> and <strong>tt</strong> filed. They will store the currently used asset and truth. Those fields allow us to access both in various functions.</p>
 <ul>
@@ -304,23 +296,23 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </li>
 </ul>
 <p>After those adjustments we continue with creating a new load function on the bottom of the file:</p>
-<pre><code class="language-c">    tm_global_api_registry = reg;
+<pre><code class="language-c">tm_global_api_registry = reg;
 
-    tm_ui_api = tm_get_api(reg, tm_ui_api);
-    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
+tm_ui_api = tm_get_api(reg, tm_ui_api);
+tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
 
-    tm_add_or_remove_implementation(reg, load, tm_tab_vt, tab_vt);
-}
+tm_add_or_remove_implementation(reg, load, tm_tab_vt, tab_vt);
+
 </code></pre>
 <p>In our main file the <code>txt.c</code> we need to add this function and call it:</p>
-<pre><code class="language-c">extern void load_txt_tab(struct tm_api_registry_api* reg, bool load);
+<pre><code class="language-c">extern void load_txt_tab(struct tm_api_registry_api *reg, bool load);
 
 // -- load plugin
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
-    // more code
-    load_txt_tab(reg,load);
+    load_txt_tab(reg, load);
 }
+
 </code></pre>
 <h3 id="implementing-the-functions"><a class="header" href="#implementing-the-functions">Implementing the functions</a></h3>
 <p>Now that we have done all the boilerplate code, let us focus on the three functions that count:</p>
@@ -330,15 +322,24 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <li>The Set Root function</li>
 </ul>
 <h4 id="the-create-function"><a class="header" href="#the-create-function">The Create Function</a></h4>
-<pre><code class="language-c">static tm_tab_vt *tab_vt;
+<pre><code class="language-c">static const char *tab__create_menu_name(void)
+{
+    return &quot;Text Tab&quot;;
+}
+
+static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui)
+{
+    return &quot;Text Tab&quot;;
+}
+
+static tm_tab_vt *tab_vt;
 
 static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
 {
     tm_allocator_i *allocator = context-&gt;allocator;
     uint64_t *id = context-&gt;id;
-
     tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
-    *tab = (tm_tab_o){
+    *tab = (tm_tab_o) {
         .tm_tab_i = {
             .vt = (tm_tab_vt *)tab_vt,
             .inst = (tm_tab_o *)tab,
@@ -348,108 +349,102 @@ static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
     };
 
     *id += 1000000;
+    return &amp;tab-&gt;tm_tab_i;
+}
+
 </code></pre>
 <p>In this function, we store the allocator first. </p>
 <blockquote>
 <p><strong>Tipp:</strong> if you wanted to create a child allocator, you could do this for your Tab. A child allocator may be very useful when doing many allocations: <code>tm_allocator_api.create_child()</code>.</p>
 </blockquote>
 <p>We need to initialize the tab interface so other engine parts can communicate with a generic interface to the Tab. We store a pointer to our Tab within this interface so other callers of the standard generic interface can access this instance and pass it along to the functions. After this, we allocate the Tab itself.</p>
-<pre><code class="language-c">    tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
-    *tab = (tm_tab_o){
-        .tm_tab_i = {
-            .vt = (tm_tab_vt *)tab_vt,
-            .inst = (tm_tab_o *)tab,
-            .root_id = *id,
-        },
-        .allocator = allocator,
-    };
+<pre><code class="language-c">tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
+*tab = (tm_tab_o) {
+    .tm_tab_i = {
+        .vt = (tm_tab_vt *)tab_vt,
+        .inst = (tm_tab_o *)tab,
+        .root_id = *id,
+    },
+    .allocator = allocator,
+};
+
 </code></pre>
 <p>In the end, we return the pointer to the interface, so the docking system has it</p>
 <h4 id="the-update-function"><a class="header" href="#the-update-function">The Update Function</a></h4>
 <pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
 {
-    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
-    if (tab-&gt;asset.u64)
-    {
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]) { *uistyle_in };
+    if (tab-&gt;asset.u64) {
         TM_INIT_TEMP_ALLOCATOR(ta);
         tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
         char *content = tm_temp_alloc(ta, buffer.size + 1);
         tm_strncpy_safe(content, buffer.data, buffer.size);
-
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){.text = content, .rect = rect};
+        tm_ui_text_t *text = &amp;(tm_ui_text_t) { .text = content, .rect = rect };
         tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
         TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-    }
-    else
-    {
+    } else {
         rect.h = 20;
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){.align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect};
+        tm_ui_text_t *text = &amp;(tm_ui_text_t) { .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
         tm_ui_api-&gt;text(ui, uistyle, text);
     }
 }
+
 </code></pre>
 <p>At first, we create a copy of the UI Style. With this copy, we can do what we want since the input style is a const pointer. After this, we check if the asset is present. If not, we print a message on the Tab that the user must select a <code>txt</code> asset.</p>
 <pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
 {
-    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
-    if (tab-&gt;asset.u64)
-//...
-    }
-    else
-    {
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]) { *uistyle_in };
+    if (tab-&gt;asset.u64) {
+    } else {
         rect.h = 20;
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){.align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect};
+        tm_ui_text_t *text = &amp;(tm_ui_text_t) { .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
         tm_ui_api-&gt;text(ui, uistyle, text);
     }
 }
+
 </code></pre>
 <p>We need an allocator to copy the data of the buffer into a proper string. The allocator is needed since we never added a null terminator to the end of the string when we save it into the buffer.</p>
 <p>In this case, we need a temporary allocator. Since we do not want to keep the memory forever, we need to initialize a temp allocator with <a href="https://ourmachinery.com/apidoc/foundation/temp_allocator.h.html#tm_init_temp_allocator()">TM_INIT_TEMP_ALLOCATOR</a> and provide a name. Do not forget to free the memory at the end. </p>
 <pre><code class="language-c">static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
 {
-    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
-    if (tab-&gt;asset.u64)
-    {
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]) { *uistyle_in };
+    if (tab-&gt;asset.u64) {
         TM_INIT_TEMP_ALLOCATOR(ta);
-//..
         TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-    }
-    else
-    {
+    } else {
         rect.h = 20;
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){.align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect};
+        tm_ui_text_t *text = &amp;(tm_ui_text_t) { .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
         tm_ui_api-&gt;text(ui, uistyle, text);
     }
 }
+
+
 </code></pre>
 <blockquote>
 <p><strong>Note:</strong> If the memory is smaller than 1024 bytes, the memory is allocated to the stack. Moreover, an alternative is the frame allocator in which the memory is freed every frame.</p>
 </blockquote>
 <p>The next step is it to ask the truth for the buffer and allocate the right amount of memory. Since we want to copy the data into a null-terminated string, we should add 1 to the data size.</p>
-<pre><code class="language-c">        tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
-        char *content = tm_temp_alloc(ta, buffer.size + 1);
-        tm_strncpy_safe(content, buffer.data, buffer.size);
+<pre><code class="language-c">tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
+char *content = tm_temp_alloc(ta, buffer.size + 1);
+tm_strncpy_safe(content, buffer.data, buffer.size);
+
 </code></pre>
 <p>To ensure our string is clean and filled with nulls, we use the inline string file (hence we add the <code>foundation/string.inl</code> to our includes). We have the <a href="https://ourmachinery.com/apidoc/foundation/string.inl.html#tm_strncpy_safe()">tm_strncpy_safe</a> within this header file, which fills up a string with null terminator.</p>
-<pre><code class="language-c">        tm_strncpy_safe(content, buffer.data, buffer.size);
+<pre><code class="language-c">tm_strncpy_safe(content, buffer.data, buffer.size);
+
 </code></pre>
 <p>The last step before we are done is actually to make the text appear on the screen. We make use of the <code>tm_ui_api.wrapped_text()</code> since this function will print the string in multiple lines if need be.</p>
-<pre><code class="language-c">        tm_ui_text_t *text = &amp;(tm_ui_text_t){.text = content, .rect = rect};
-        tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
+<pre><code class="language-c">tm_ui_text_t *text = &amp;(tm_ui_text_t) { .text = content, .rect = rect };
+tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
+
 </code></pre>
 <h4 id="the-set-root--root-function"><a class="header" href="#the-set-root--root-function">The set root / root function</a></h4>
 <p>The last function which we need is the set root function. This function allows us to set a root object of the Tab from the outside. Its code is quite straightforward:</p>
-<pre><code class="language-c">void tab__set_root(tm_tab_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t root)
-{
-    inst-&gt;asset = root;
-    inst-&gt;tt = tt;
-}
-
-static tm_tab_vt_root_t tab__root(tm_tab_o *tab)
-{
-    return (tm_tab_vt_root_t){tab-&gt;tt, tab-&gt;asset};
-}
+<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/open_asset/tab.c,root}}
 </code></pre>
+<blockquote>
+<p><strong>Note</strong>: The root function is also called when ever the current &quot;main&quot; Truth changes. This can be used to swap the truth.</p>
+</blockquote>
 <h3 id="let-us-test-the-tab"><a class="header" href="#let-us-test-the-tab">Let us test the Tab</a></h3>
 <p>Let us open the Tab from the <strong>Tabs</strong> menu!</p>
 <p>[image]</p>
@@ -483,29 +478,23 @@ struct tm_tab_o
     tm_tt_id_t asset;
     tm_the_truth_o *tt;
 };
-
 static void tab__ui(tm_tab_o *tab, tm_ui_o *ui, const tm_ui_style_t *uistyle_in, tm_rect_t rect)
 {
-    tm_ui_style_t *uistyle = (tm_ui_style_t[]){*uistyle_in};
-    if (tab-&gt;asset.u64)
-    {
+    tm_ui_style_t *uistyle = (tm_ui_style_t[]) { *uistyle_in };
+    if (tab-&gt;asset.u64) {
         TM_INIT_TEMP_ALLOCATOR(ta);
         tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tab-&gt;tt, tm_tt_read(tab-&gt;tt, tab-&gt;asset), TM_TT_PROP__MY_ASSET__DATA);
         char *content = tm_temp_alloc(ta, buffer.size + 1);
         tm_strncpy_safe(content, buffer.data, buffer.size);
-
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){.text = content, .rect = rect};
+        tm_ui_text_t *text = &amp;(tm_ui_text_t) { .text = content, .rect = rect };
         tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
         TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
-    }
-    else
-    {
+    } else {
         rect.h = 20;
-        tm_ui_text_t *text = &amp;(tm_ui_text_t){.align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect};
+        tm_ui_text_t *text = &amp;(tm_ui_text_t) { .align = TM_UI_ALIGN_CENTER, .text = &quot;Please open a .txt asset.&quot;, .rect = rect };
         tm_ui_api-&gt;text(ui, uistyle, text);
     }
 }
-
 static const char *tab__create_menu_name(void)
 {
     return &quot;Text Tab&quot;;
@@ -522,9 +511,8 @@ static tm_tab_i *tab__create(tm_tab_create_context_t *context, tm_ui_o *ui)
 {
     tm_allocator_i *allocator = context-&gt;allocator;
     uint64_t *id = context-&gt;id;
-
     tm_tab_o *tab = tm_alloc(allocator, sizeof(tm_tab_o));
-    *tab = (tm_tab_o){
+    *tab = (tm_tab_o) {
         .tm_tab_i = {
             .vt = (tm_tab_vt *)tab_vt,
             .inst = (tm_tab_o *)tab,
@@ -541,7 +529,6 @@ static void tab__destroy(tm_tab_o *tab)
 {
     tm_free(tab-&gt;allocator, tab, sizeof(*tab));
 }
-
 void tab__set_root(tm_tab_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t root)
 {
     inst-&gt;asset = root;
@@ -550,10 +537,10 @@ void tab__set_root(tm_tab_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t root)
 
 static tm_tab_vt_root_t tab__root(tm_tab_o *tab)
 {
-    return (tm_tab_vt_root_t){tab-&gt;tt, tab-&gt;asset};
+    return (tm_tab_vt_root_t) { tab-&gt;tt, tab-&gt;asset };
 }
 
-static tm_tab_vt *tab_vt = &amp;(tm_tab_vt){
+static tm_tab_vt *tab_vt = &amp;(tm_tab_vt) {
     .name = TM_TXT_TAB_VT_NAME,
     .name_hash = TM_TXT_TAB_VT_NAME_HASH,
     .create_menu_name = tab__create_menu_name,
@@ -586,6 +573,9 @@ static struct tm_the_machinery_api* tm_the_machinery_api;
 static struct tm_docking_api* tm_docking_api;
 //...
 
+extern void load_txt_tab(struct tm_api_registry_api *reg, bool load);
+
+// -- load plugin
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
@@ -615,38 +605,37 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
     tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
+
 </code></pre>
-<p>To open an asset, we need to add another aspect to our type. It is the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#tm_tt_aspect__asset_open">TM_TT_ASPECT__ASSET_OPEN</a> aspect! This aspect requires a implementation of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_open_aspect_i">tm_asset_open_aspect_i</a>. </p>
-<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
+<p>To open an asset, we need to add another aspect to our type. It is the <code>TM_TT_ASPECT__ASSET_OPEN</code> aspect! This aspect requires a implementation of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_open_aspect_i">tm_asset_open_aspect_i</a>. </p>
+<pre><code class="language-c">// -- create truth type
+static void create_truth_types(struct tm_the_truth_o *tt)
 {
-    //...
-    tm_the_truth_api-&gt;set_aspect(tt,type,TM_TT_ASPECT__ASSET_OPEN,open_i);
-    //...
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_OPEN, open_i);
 }
+
 </code></pre>
 <p>We add this implementation of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_open_aspect_i">tm_asset_open_aspect_i</a> above the <code>create_truth_types</code> function.</p>
 <pre><code class="language-c">void open_asset(struct tm_application_o *app, struct tm_ui_o *ui, struct tm_tab_i *from_tab,
-                tm_the_truth_o *tt, tm_tt_id_t asset, enum tm_asset_open_mode open_mode)
+    tm_the_truth_o *tt, tm_tt_id_t asset, enum tm_asset_open_mode open_mode)
 {
-
     const tm_docking_find_tab_opt_t opt = {
         .from_tab = from_tab,
         .in_ui = ui,
         .exclude_pinned = true,
     };
-
     const bool pin = open_mode == TM_ASSET_OPEN_MODE_CREATE_TAB_AND_PIN;
     tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app, ui, TM_TXT_TAB_VT_NAME, &amp;opt);
-
     if (pin)
         tm_docking_api-&gt;pin_object(tab, tt, asset);
     else
         tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);
 }
 
-static tm_asset_open_aspect_i *open_i = &amp;(tm_asset_open_aspect_i){
+static tm_asset_open_aspect_i *open_i = &amp;(tm_asset_open_aspect_i) {
     .open = open_asset,
 };
+
 </code></pre>
 <p>The open function gives us all the important information:</p>
 <ol>
@@ -658,20 +647,25 @@ static tm_asset_open_aspect_i *open_i = &amp;(tm_asset_open_aspect_i){
 <li>How we will open the Tab.</li>
 </ol>
 <p>At first, we define the search criteria for the <code>create_or_select_tab</code> of the Machinery API. In this case we want to exclude pinned tabs since the user might have a reason for why they are pinned!</p>
-<pre><code class="language-c">    tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app, ui, TM_TXT_TAB_VT_NAME, &amp;opt);
+<pre><code class="language-c">tm_tab_i *tab = tm_the_machinery_api-&gt;create_or_select_tab(app, ui, TM_TXT_TAB_VT_NAME, &amp;opt);
+
 </code></pre>
 <p>Now we can create or select a tab by calling the <code>create_or_select_tab</code> function.</p>
-<pre><code class="language-c">    const tm_docking_find_tab_opt_t opt = {
-        .from_tab = from_tab,
-        .in_ui = ui,
-        .exclude_pinned = true,
-    };
+<pre><code class="language-c">const tm_docking_find_tab_opt_t opt = {
+    .from_tab = from_tab,
+    .in_ui = ui,
+    .exclude_pinned = true,
+};
+
 </code></pre>
 <p>The last step is actually to pass some data along! In this case, we need to check if something is pinned or not! Hence we check if the <code>open_mode</code> is equal to pinning. If yes, we ask the docking API to pin our Tab.</p>
-<pre><code class="language-c">    if (pin)
-        tm_docking_api-&gt;pin_object(tab, tt, asset);
-    else
-        tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);
+<pre><code class="language-c">const bool pin = open_mode == TM_ASSET_OPEN_MODE_CREATE_TAB_AND_PIN;
+//...
+if (pin)
+    tm_docking_api-&gt;pin_object(tab, tt, asset);
+else
+    tab-&gt;vt-&gt;set_root(tab-&gt;inst, tt, asset);
+
 </code></pre>
 
                     </main>

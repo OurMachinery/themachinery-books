@@ -180,6 +180,7 @@ typedef struct tm_debug_print_aspect_i
 {
     void (*debug_print)(tm_the_truth_o *tt, tm_tt_id_t object);
 } tm_debug_print_aspect_i;
+
 </code></pre>
 <blockquote>
 <p><strong>Note:</strong> to genereate the <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> you need to run <code>hash.exe</code> or <code>tmbuild.exe --gen-hash</code> for more info open the <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//helper_tools/hash.html">hash.exe guide</a></p>
@@ -191,18 +192,19 @@ typedef struct tm_debug_print_aspect_i
     if (dp)
         dp-&gt;debug_print(tt, object);
 }
+
 </code></pre>
 <blockquote>
 <p><strong>Note</strong>: that plugins can extend the system with completely new aspects.</p>
 </blockquote>
-<p>The best example of how the Engine is using the aspect system is the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_aspect__properties">TM_TT_ASPECT__PROPERTIES</a> which helps us to defines custom UIs for Truth objects.</p>
+<p>The best example of how the Engine is using the aspect system is the <code>TM_TT_ASPECT__PROPERTIES</code> which helps us to defines custom UIs for Truth objects.</p>
 <h2 id="adding-drag-and-drop-to-our-asset"><a class="header" href="#adding-drag-and-drop-to-our-asset">Adding Drag and Drop to our asset</a></h2>
 <p>In this example, we are going back to our text asset sample. In that sample, we have the following function to register the asset to the Truth:</p>
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
+        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
@@ -210,16 +212,13 @@ typedef struct tm_debug_print_aspect_i
         .custom_ui = properties__custom_ui,
     };
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
-
     tm_the_truth_property_definition_t story_component_properties[] = {
-        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
-    static tm_properties_aspect_i properties_component_aspect = {
-        .custom_ui = properties__component_custom_ui,
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET }
     };
 }
+
 </code></pre>
-<p>We need to make use of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#tm_tt_aspect__asset_scene">TM_TT_ASPECT__ASSET_SCENE</a> aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the <code>plugins/the_machinery_shared/asset_aspects.h</code> header.</p>
+<p>We need to make use of the <code>TM_TT_ASPECT__ASSET_SCENE</code> aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the <code>plugins/the_machinery_shared/asset_aspects.h</code> header.</p>
 <h3 id="asset-scene-aspect"><a class="header" href="#asset-scene-aspect">Asset Scene Aspect</a></h3>
 <p>This aspect expects an instance of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_scene_api">tm_asset_scene_api</a>. When we provide a call-back called</p>
 <p><code>bool (*droppable)(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t asset);</code> we tell the scene that we can drag the asset out of the asset browser. We need to return true for this. In this case you need to provide the <code>create_entity</code> function. When you drag your asset into the Scene, this function is called by the Engine. In this function, you can create a new entity and attach it to the parent entity ( which might be the world.  If you drag it on top of another entity, you can attach the newly created entity as a child entity to this one. </p>
@@ -242,15 +241,16 @@ static const char *component__category(void)
     return TM_LOCALIZE(&quot;Story&quot;);
 }
 
-static tm_ci_editor_ui_i *editor_aspect = &amp;(tm_ci_editor_ui_i){
-    .category = component__category};
+static tm_ci_editor_ui_i *editor_aspect = &amp;(tm_ci_editor_ui_i) {
+    .category = component__category
+};
 
-// -- create truth type
+
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
     static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
+        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
@@ -258,10 +258,11 @@ static void create_truth_types(struct tm_the_truth_o *tt)
         .custom_ui = properties__custom_ui,
     };
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
-
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api); // &lt;&lt;---
     tm_the_truth_property_definition_t story_component_properties[] = {
-        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET }
+    };
+
     static tm_properties_aspect_i properties_component_aspect = {
         .custom_ui = properties__component_custom_ui,
     };
@@ -271,19 +272,18 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
 }
 
+
 struct tm_component_manager_o
 {
     tm_entity_context_o *ctx;
     tm_allocator_i allocator;
 };
-
 static bool component__load_asset(tm_component_manager_o *man, struct tm_entity_commands_o *commands, tm_entity_t e, void *c_vp, const tm_the_truth_o *tt, tm_tt_id_t asset)
 {
     struct tm_story_component_t *c = c_vp;
     const tm_the_truth_object_o *asset_r = tm_tt_read(tt, asset);
     tm_tt_id_t id = tm_the_truth_api-&gt;get_reference(tt, asset_r, TM_TT_PROP__STORY_COMPONENT__ASSET);
-    if (id.u64)
-    {
+    if (id.u64) {
         tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tt, tm_tt_read(tt, id), TM_TT_PROP__MY_ASSET__DATA);
         c-&gt;text = tm_alloc(&amp;man-&gt;allocator, buffer.size);
         c-&gt;size = buffer.size;
@@ -291,7 +291,6 @@ static bool component__load_asset(tm_component_manager_o *man, struct tm_entity_
     }
     return true;
 }
-
 static void component__remove(tm_component_manager_o *manager, struct tm_entity_commands_o *commands, tm_entity_t e, void *data)
 {
     tm_story_component_t *sc = (tm_story_component_t *)data;
@@ -307,7 +306,6 @@ static void component__destroy(tm_component_manager_o *manager)
     tm_free(&amp;allocator, manager, sizeof(tm_component_manager_o));
     tm_entity_api-&gt;destroy_child_allocator(ctx, &amp;allocator);
 }
-
 static void component__create(struct tm_entity_context_o *ctx)
 {
     // Allocate a new manager for this component type (freed in component__destroy).
@@ -315,9 +313,10 @@ static void component__create(struct tm_entity_context_o *ctx)
     tm_entity_api-&gt;create_child_allocator(ctx, TM_TT_TYPE__STORY_COMPONENT, &amp;allocator);
     tm_component_manager_o *story_manager = tm_alloc(&amp;allocator, sizeof(tm_component_manager_o));
 
-    *story_manager = (tm_component_manager_o){
+    *story_manager = (tm_component_manager_o) {
         .ctx = ctx,
-        .allocator = allocator};
+        .allocator = allocator
+    };
 
     tm_component_i component = {
         .name = TM_TT_TYPE__STORY_COMPONENT,
@@ -325,11 +324,367 @@ static void component__create(struct tm_entity_context_o *ctx)
         .load_asset = component__load_asset,
         .destroy = component__destroy,
         .remove = component__remove,
-        .manager = (tm_component_manager_o *)story_manager};
+        .manager = (tm_component_manager_o *)story_manager
+    };
     tm_entity_api-&gt;register_component(ctx, &amp;component);
 };
-// -- load plugin
 
+
+// -- load plugin
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_os_api = tm_get_api(reg, tm_os_api);
+    tm_path_api = tm_get_api(reg, tm_path_api);
+    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+    tm_logger_api = tm_get_api(reg, tm_logger_api);
+    tm_localizer_api = tm_get_api(reg, tm_localizer_api);
+    tm_asset_io_api = tm_get_api(reg, tm_asset_io_api);
+    task_system = tm_get_api(reg, tm_task_system_api);
+    tm_sprintf_api = tm_get_api(reg, tm_sprintf_api);
+    tm_entity_api = tm_get_api(reg, tm_entity_api);
+    tm_scene_common_api = tm_get_api(reg, tm_scene_common_api);
+    tm_global_api_registry = reg;
+    if (load)
+        tm_asset_io_api-&gt;add_asset_io(&amp;txt_asset_io);
+    else
+        tm_asset_io_api-&gt;remove_asset_io(&amp;txt_asset_io);
+
+    tm_add_or_remove_implementation(reg, load, tm_entity_create_component_i, component__create);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
+}
+
+
+</code></pre>
+<p>First, we create our component, and we need a way to guarantee that our truth data exists during runtime as well. Therefore, we use the Entity Manager to allocate our Story data and store just a pointer and its size to the allocated data in the Manager.</p>
+<pre><code class="language-c">struct tm_component_manager_o
+{
+    tm_entity_context_o *ctx;
+    tm_allocator_i allocator;
+};
+//...
+static void component__create(struct tm_entity_context_o *ctx)
+{
+    // Allocate a new manager for this component type (freed in component__destroy).
+    tm_allocator_i allocator;
+    tm_entity_api-&gt;create_child_allocator(ctx, TM_TT_TYPE__STORY_COMPONENT, &amp;allocator);
+    tm_component_manager_o *story_manager = tm_alloc(&amp;allocator, sizeof(tm_component_manager_o));
+
+    *story_manager = (tm_component_manager_o) {
+        .ctx = ctx,
+        .allocator = allocator
+    };
+
+    tm_component_i component = {
+        .name = TM_TT_TYPE__STORY_COMPONENT,
+        .bytes = sizeof(struct tm_story_component_t),
+        .load_asset = component__load_asset,
+        .destroy = component__destroy,
+        .remove = component__remove,
+        .manager = (tm_component_manager_o *)story_manager
+    };
+    tm_entity_api-&gt;register_component(ctx, &amp;component);
+};
+
+</code></pre>
+<p>The most important function here is the <code>component__load_asset</code> function, in which we translate the Truth Representation into an ECS representation. We load the text buffer, allocate it with the Manager, and store a pointer in our component. With this, we could create a reference-counted system in which multiple components point to the same story data, and only when the last component goes we deallocate this. Another alternative would be to avoid loading when we create the component, and the story is already allocated.</p>
+<pre><code class="language-c">static bool component__load_asset(tm_component_manager_o *man, struct tm_entity_commands_o *commands, tm_entity_t e, void *c_vp, const tm_the_truth_o *tt, tm_tt_id_t asset)
+{
+    struct tm_story_component_t *c = c_vp;
+    const tm_the_truth_object_o *asset_r = tm_tt_read(tt, asset);
+    tm_tt_id_t id = tm_the_truth_api-&gt;get_reference(tt, asset_r, TM_TT_PROP__STORY_COMPONENT__ASSET);
+    if (id.u64) {
+        tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tt, tm_tt_read(tt, id), TM_TT_PROP__MY_ASSET__DATA);
+        c-&gt;text = tm_alloc(&amp;man-&gt;allocator, buffer.size);
+        c-&gt;size = buffer.size;
+        memcpy(c-&gt;text, buffer.data, buffer.size);
+    }
+    return true;
+}
+
+</code></pre>
+<p>When the Entity context gets destroyed, we need to clean up and destroy our Manager. Important that we call <code>call_remove_on_all_entities</code> to make sure all instances of the component are gone.</p>
+<pre><code class="language-c">static void component__remove(tm_component_manager_o *manager, struct tm_entity_commands_o *commands, tm_entity_t e, void *data)
+{
+    tm_story_component_t *sc = (tm_story_component_t *)data;
+    tm_free(&amp;manager-&gt;allocator, sc-&gt;text, sc-&gt;size);
+}
+
+static void component__destroy(tm_component_manager_o *manager)
+{
+    tm_entity_api-&gt;call_remove_on_all_entities(manager-&gt;ctx, tm_entity_api-&gt;lookup_component_type(manager-&gt;ctx, TM_TT_TYPE_HASH__STORY_COMPONENT));
+    // Free the actual manager struct and the allocator used to allocate it.
+    tm_entity_context_o *ctx = manager-&gt;ctx;
+    tm_allocator_i allocator = manager-&gt;allocator;
+    tm_free(&amp;allocator, manager, sizeof(tm_component_manager_o));
+    tm_entity_api-&gt;destroy_child_allocator(ctx, &amp;allocator);
+}
+
+</code></pre>
+<h4 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h4>
+<p><strong>This part is optional!</strong>, see next part where we use the <code>TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER</code>.</p>
+<p>We also can to provide a custom UI for our reference to the asset! When we define our Truth type we tell the system that it should be a reference <strong>only</strong> of type <code>TM_TT_TYPE_HASH__TXT_ASSET</code>.</p>
+<pre><code class="language-c">tm_the_truth_property_definition_t story_component_properties[] = {
+    [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET }
+};
+
+</code></pre>
+<p>This makes sure that in the Editor the user cannot store any other Truth type in this property. The Truth will check for it</p>
+<p>We need to add the <code>TM_TT_ASPECT__PROPERTIES</code> aspect to our type to make sure it has a custom UI.</p>
+<pre><code class="language-c">static tm_properties_aspect_i properties_component_aspect = {
+    .custom_ui = properties__component_custom_ui,
+};
+
+const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
+tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
+tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
+
+</code></pre>
+<p>And than we need to define our custom UI:</p>
+<pre><code class="language-c">static float properties__component_custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+{
+    TM_INIT_TEMP_ALLOCATOR(ta);
+    tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(args-&gt;tt, TM_TT_TYPE_HASH__ASSET);
+    tm_tt_id_t *ids = tm_the_truth_api-&gt;all_objects_of_type(args-&gt;tt, tm_the_truth_api-&gt;object_type_from_name_hash(args-&gt;tt, TM_TT_TYPE_HASH__MY_ASSET), ta);
+    tm_tt_id_t *items = 0;
+    const char **names = 0;
+    tm_carray_temp_push(names, &quot;Select&quot;, ta);
+    tm_carray_temp_push(items, (tm_tt_id_t) { 0 }, ta);
+    for (uint32_t i = 0; i &lt; tm_carray_size(ids); ++i) {
+        tm_tt_id_t owner = tm_the_truth_api-&gt;owner(args-&gt;tt, ids[i]);
+        if (tm_tt_type(owner).u64 == asset_type.u64) {
+            tm_carray_temp_push(names, tm_the_truth_api-&gt;get_string(args-&gt;tt, tm_tt_read(args-&gt;tt, owner), TM_TT_PROP__ASSET__NAME), ta);
+            tm_carray_temp_push(items, ids[i], ta);
+        }
+    }
+    item_rect.y = tm_properties_view_api-&gt;ui_reference_popup_picker(args, item_rect, &quot;Asset&quot;, NULL, object, TM_TT_PROP__STORY_COMPONENT__ASSET, names, items, (uint32_t)tm_carray_size(items));
+    TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
+    return item_rect.y;
+}
+
+</code></pre>
+<p>In there we get all objects of type <code>TM_TT_TYPE_HASH__TXT_ASSET</code> we know that this type can only exist as a sub object of the Asset Truth Type.</p>
+<blockquote>
+<p>The type can only be created a part of the asset at this point!</p>
+</blockquote>
+<p>This information is important because we need a name for our asset and therefore we just iterate over all our TXT Assets and check if they are owned by a Truth Asset type. If yes we get the name from it and store it in a names array. At the end we add all the IDs of the objects in a array so the user can select them in the drop down menu of the <code>tm_properties_view_api.ui_reference_popup_picker()</code>.</p>
+<h2 id="using-the-asset-picker-property-aspect"><a class="header" href="#using-the-asset-picker-property-aspect">Using the Asset Picker Property Aspect</a></h2>
+<p>Instead of implementing our own UI, which can be full of boilerplate code we can also use the following aspect on our truth type: <code>TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER</code> or if we want to store a entity an provide a entity from the scene: <code>TM_TT_PROP_ASPECT__PROPERTIES__USE_LOCAL_ENTITY_PICKER</code>. The following code can be adjusted. In your <code>create_truth_types()</code> we need to add this aspect to our type property like this:</p>
+<pre><code class="language-c">static tm_properties_aspect_i properties_component_aspect = {
+    .custom_ui = properties__component_custom_ui,
+};
+
+const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
+tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
+tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
+
+tm_the_truth_api-&gt;set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER, TM_TT_TYPE_HASH__TXT_ASSET);
+}
+</code></pre>
+<h2 id="drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity"><a class="header" href="#drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity">Drag and drop a Text Asset into the Scene and create an entity</a></h2>
+<p>Finally, we can do what we came here to do: Make our Asset drag and droppable! We make use of the <code>TM_TT_ASPECT__ASSET_SCENE</code>!</p>
+<p>We define the aspect as described above:</p>
+<pre><code class="language-c">#include &lt;plugins/the_machinery_shared/asset_aspects.h&gt;
+//...
+tm_asset_scene_api scene_api = {
+    .droppable = droppable,
+    .create_entity = create_entity,
+};
+
+</code></pre>
+<p>In the Create Truth Type function you need to add the aspect <code>TM_TT_ASPECT__ASSET_SCENE</code>:</p>
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
+{
+    static tm_the_truth_property_definition_t my_asset_properties[] = {
+        { &quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING },
+        { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
+    };
+    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    static tm_properties_aspect_i properties_aspect = {
+        .custom_ui = properties__custom_ui,
+    };
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api); // &lt;&lt;---
+    tm_the_truth_property_definition_t story_component_properties[] = {
+        [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET }
+    };
+
+    static tm_properties_aspect_i properties_component_aspect = {
+        .custom_ui = properties__component_custom_ui,
+    };
+
+    const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
+    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
+    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
+}
+
+//..
+}
+</code></pre>
+<p>Than, we provide a <code>droppable()</code> function:</p>
+<pre><code class="language-c">bool droppable(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t asset)
+{
+    return true;
+}
+
+</code></pre>
+<p>After this, the more important function comes:</p>
+<pre><code class="language-c">#include &lt;plugins/entity/transform_component.h&gt;
+#include &lt;plugins/the_machinery_shared/scene_common.h&gt;
+// ... more code
+tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
+    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+{
+    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
+    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
+    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
+    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
+    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
+    // add transform:
+    {
+        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
+        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
+        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
+        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
+        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
+    }
+    // add story:
+    {
+        tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
+        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
+        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
+        tm_the_truth_api-&gt;set_reference(tt, component_w, TM_TT_PROP__STORY_COMPONENT__ASSET, asset);
+        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
+        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
+    }
+
+    tm_the_truth_api-&gt;commit(tt, entity_w, undo_scope);
+
+    tm_scene_common_api-&gt;place_entity(tt, entity, local_transform, parent_entity, undo_scope);
+
+    undo_stack-&gt;add(undo_stack-&gt;inst, tt, undo_scope);
+
+    return entity;
+}
+
+</code></pre>
+<p>First, we create an entity:</p>
+<pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
+    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+{
+    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
+    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
+    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
+    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
+    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
+
+//...
+}
+</code></pre>
+<p>Suppose it needs a transform. If not, we don't! In this case, we add the transform to the entity, just to make a point:</p>
+<pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
+    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+{
+    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
+    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
+    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
+    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
+    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
+    // add transform:
+    {
+        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
+        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
+        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
+        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
+        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
+    }
+
+    // ...
+}
+</code></pre>
+<p>Then, we add the story component to the entity we follow the same steps as before.</p>
+<pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
+    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+{
+    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
+    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
+    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
+    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
+    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
+    // add transform:
+    {
+        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
+        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
+        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
+        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
+        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
+    }
+    // add story:
+    {
+        tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
+        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
+        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
+        tm_the_truth_api-&gt;set_reference(tt, component_w, TM_TT_PROP__STORY_COMPONENT__ASSET, asset);
+        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
+        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
+    }
+
+}
+</code></pre>
+<p>After all this, we can commit our changes to the Truth. After this we could place it in the scene with the <code>tm_scene_common_api.place_entity()</code>. This step is not needed but is nice to do!</p>
+<p>Do not forget to add the undo scope to make sure we can undo our action and return the created entity!</p>
+<pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
+    tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+{
+    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
+    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
+    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
+    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
+    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
+    // add transform:
+    {
+        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
+        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
+        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
+        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
+        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
+    }
+    // add story:
+    {
+        tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
+        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
+        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
+        tm_the_truth_api-&gt;set_reference(tt, component_w, TM_TT_PROP__STORY_COMPONENT__ASSET, asset);
+        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
+        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
+    }
+
+    tm_the_truth_api-&gt;commit(tt, entity_w, undo_scope);
+
+    tm_scene_common_api-&gt;place_entity(tt, entity, local_transform, parent_entity, undo_scope);
+
+    undo_stack-&gt;add(undo_stack-&gt;inst, tt, undo_scope);
+
+    return entity;
+}
+
+</code></pre>
+<p>Now we have added the ability to add this to our asset!</p>
+<blockquote>
+<p><strong>Note:</strong> This is all not done at run time, since we are dealing with the Truth here and not with the ECS our changes will apply first to the ECS when we simulate the game!</p>
+</blockquote>
+<h2 id="modify-a-already-existing-asset"><a class="header" href="#modify-a-already-existing-asset">Modify a already existing asset</a></h2>
+<p>It is important to understand that you can add this to any truth type even if you do not define them in your plugin. Lets assume you have created a new plugin which uses the txt file asset. You are not the owner of this plugin and its source code so you cannot modify it like we did above. What you can do on the other hand you can add the aspect to the truth type:</p>
+<pre><code class="language-c">// -- load plugin
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
@@ -357,358 +712,17 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 }
 
 </code></pre>
-<p>First, we create our component, and we need a way to guarantee that our truth data exists during runtime as well. Therefore, we use the Entity Manager to allocate our Story data and store just a pointer and its size to the allocated data in the Manager.</p>
-<pre><code class="language-c">struct tm_component_manager_o
-{
-    tm_entity_context_o *ctx;
-    tm_allocator_i allocator;
-};
-
-static void component__create(struct tm_entity_context_o *ctx)
-{
-    // Allocate a new manager for this component type (freed in component__destroy).
-    tm_allocator_i allocator;
-    tm_entity_api-&gt;create_child_allocator(ctx, TM_TT_TYPE__STORY_COMPONENT, &amp;allocator);
-    tm_component_manager_o *story_manager = tm_alloc(&amp;allocator, sizeof(tm_component_manager_o));
-
-    *story_manager = (tm_component_manager_o){
-        .ctx = ctx,
-        .allocator = allocator};
-
-    tm_component_i component = {
-        .name = TM_TT_TYPE__STORY_COMPONENT,
-        .bytes = sizeof(struct tm_story_component_t),
-        .load_asset = component__load_asset,
-        .destroy = component__destroy,
-        .remove = component__remove,
-        .manager = (tm_component_manager_o *)story_manager};
-    tm_entity_api-&gt;register_component(ctx, &amp;component);
-};
-</code></pre>
-<p>The most important function here is the <code>component__load_asset</code> function, in which we translate the Truth Representation into an ECS representation. We load the text buffer, allocate it with the Manager, and store a pointer in our component. With this, we could create a reference-counted system in which multiple components point to the same story data, and only when the last component goes we deallocate this. Another alternative would be to avoid loading when we create the component, and the story is already allocated.</p>
-<pre><code class="language-c">static bool component__load_asset(tm_component_manager_o *man, struct tm_entity_commands_o *commands, tm_entity_t e, void *c_vp, const tm_the_truth_o *tt, tm_tt_id_t asset)
-{
-    struct tm_story_component_t *c = c_vp;
-    const tm_the_truth_object_o *asset_r = tm_tt_read(tt, asset);
-    tm_tt_id_t id = tm_the_truth_api-&gt;get_reference(tt, asset_r, TM_TT_PROP__STORY_COMPONENT__ASSET);
-    if (id.u64)
-    {
-        tm_tt_buffer_t buffer = tm_the_truth_api-&gt;get_buffer(tt, tm_tt_read(tt, id), TM_TT_PROP__MY_ASSET__DATA);
-        c-&gt;text = tm_alloc(&amp;man-&gt;allocator, buffer.size);
-        c-&gt;size = buffer.size;
-        memcpy(c-&gt;text, buffer.data, buffer.size);
-    }
-    return true;
-}
-</code></pre>
-<p>When the Entity context gets destroyed, we need to clean up and destroy our Manager. Important that we call <code>call_remove_on_all_entities</code> to make sure all instances of the component are gone.</p>
-<pre><code class="language-c">static void component__remove(tm_component_manager_o *manager, struct tm_entity_commands_o *commands, tm_entity_t e, void *data)
-{
-    tm_story_component_t *sc = (tm_story_component_t *)data;
-    tm_free(&amp;manager-&gt;allocator, sc-&gt;text, sc-&gt;size);
-}
-
-static void component__destroy(tm_component_manager_o *manager)
-{
-    tm_entity_api-&gt;call_remove_on_all_entities(manager-&gt;ctx, tm_entity_api-&gt;lookup_component_type(manager-&gt;ctx, TM_TT_TYPE_HASH__STORY_COMPONENT));
-    // Free the actual manager struct and the allocator used to allocate it.
-    tm_entity_context_o *ctx = manager-&gt;ctx;
-    tm_allocator_i allocator = manager-&gt;allocator;
-    tm_free(&amp;allocator, manager, sizeof(tm_component_manager_o));
-    tm_entity_api-&gt;destroy_child_allocator(ctx, &amp;allocator);
-}
-</code></pre>
-<h4 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h4>
-<p><strong>This part is optional!</strong>, see next part where we use the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__asset_picker">TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER</a>.</p>
-<p>We also can to provide a custom UI for our reference to the asset! When we define our Truth type we tell the system that it should be a reference <strong>only</strong> of type <code>TM_TT_TYPE_HASH__TXT_ASSET</code>.</p>
-<pre><code class="language-c">    tm_the_truth_property_definition_t story_component_properties[] = {
-        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
-</code></pre>
-<p>This makes sure that in the Editor the user cannot store any other Truth type in this property. The Truth will check for it</p>
-<p>We need to add the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_aspect__properties">TM_TT_ASPECT__PROPERTIES</a> aspect to our type to make sure it has a custom UI.</p>
-<pre><code class="language-c">    static tm_properties_aspect_i properties_component_aspect = {
-        .custom_ui = properties__component_custom_ui,
-    };
-
-    const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
-</code></pre>
-<p>And than we need to define our custom UI:</p>
-<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
-    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
-    static tm_properties_aspect_i properties_aspect = {
-        .custom_ui = properties__custom_ui,
-    };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
-
-    tm_the_truth_property_definition_t story_component_properties[] = {
-        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
-    static tm_properties_aspect_i properties_component_aspect = {
-        .custom_ui = properties__component_custom_ui,
-    };
-
-    const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
-}
-</code></pre>
-<p>In there we get all objects of type <code>TM_TT_TYPE_HASH__TXT_ASSET</code> we know that this type can only exist as a sub object of the Asset Truth Type.</p>
-<blockquote>
-<p>The type can only be created a part of the asset at this point!</p>
-</blockquote>
-<p>This information is important because we need a name for our asset and therefore we just iterate over all our TXT Assets and check if they are owned by a Truth Asset type. If yes we get the name from it and store it in a names array. At the end we add all the IDs of the objects in a array so the user can select them in the drop down menu of the <code>tm_properties_view_api.ui_reference_popup_picker()</code>.</p>
-<h2 id="using-the-asset-picker-property-aspect"><a class="header" href="#using-the-asset-picker-property-aspect">Using the Asset Picker Property Aspect</a></h2>
-<p>Instead of implementing our own UI, which can be full of boilerplate code we can also use the following aspect on our truth type: <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__asset_picker">TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER</a> or if we want to store a entity an provide a entity from the scene: <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#tm_tt_prop_aspect__properties__use_local_entity_picker">TM_TT_PROP_ASPECT__PROPERTIES__USE_LOCAL_ENTITY_PICKER</a>. The following code can be adjusted. In your <code>create_truth_types()</code> we need to add this aspect to our type property like this:</p>
-<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
-    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
-    static tm_properties_aspect_i properties_aspect = {
-        .custom_ui = properties__custom_ui,
-    };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
-
-    tm_the_truth_property_definition_t story_component_properties[] = {
-        [TM_TT_PROP__STORY_COMPONENT__ASSET] = {&quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET}};
-    static tm_properties_aspect_i properties_component_aspect = {
-        .custom_ui = properties__component_custom_ui,
-    };
-
-    const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
-    tm_the_truth_api-&gt;set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER, TM_TT_TYPE_HASH__TXT_ASSET);
-}
-</code></pre>
-<h2 id="drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity"><a class="header" href="#drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity">Drag and drop a Text Asset into the Scene and create an entity</a></h2>
-<p>Finally, we can do what we came here to do: Make our Asset drag and droppable! We make use of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#tm_tt_aspect__asset_scene">TM_TT_ASPECT__ASSET_SCENE</a>!</p>
-<p>We define the aspect as described above:</p>
-<pre><code class="language-c">#include &lt;plugins/the_machinery_shared/asset_aspects.h&gt;
-//.. other code
-tm_asset_scene_api scene_api = {
-    .droppable = droppable,
-    .create_entity = create_entity,
-};
-</code></pre>
-<p>In the Create Truth Type function you need to add the aspect <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#tm_tt_aspect__asset_scene">TM_TT_ASPECT__ASSET_SCENE</a>:</p>
-<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
-{
-    static tm_the_truth_property_definition_t my_asset_properties[] = {
-        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
-        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
-    };
-    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
-    static tm_properties_aspect_i properties_aspect = {
-        .custom_ui = properties__custom_ui,
-    };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
-//..
-}
-</code></pre>
-<p>Than, we provide a <code>droppable()</code> function:</p>
-<pre><code class="language-c">bool droppable(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t asset)
-{
-    return true;
-}
-</code></pre>
-<p>After this, the more important function comes:</p>
-<pre><code class="language-c">#include &lt;plugins/entity/transform_component.h&gt;
-#include &lt;plugins/the_machinery_shared/scene_common.h&gt;
-// ... more code
-tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
-{
-    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
-    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
-    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
-    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
-    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
-    // add transform:
-    {
-        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
-        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
-        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
-        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
-        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
-    }
-    // add story:
-    {
-        tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
-        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
-        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
-        tm_the_truth_api-&gt;set_reference(tt, component_w, TM_TT_PROP__STORY_COMPONENT__ASSET, asset);
-        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
-        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
-    }
-
-    tm_the_truth_api-&gt;commit(tt, entity_w, undo_scope);
-
-    tm_scene_common_api-&gt;place_entity(tt, entity, local_transform, parent_entity, undo_scope);
-
-    undo_stack-&gt;add(undo_stack-&gt;inst, tt, undo_scope);
-
-    return entity;
-}
-</code></pre>
-<p>First, we create an entity:</p>
-<pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
-{
-    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
-    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
-    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
-    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
-    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
-//...
-}
-</code></pre>
-<p>Suppose it needs a transform. If not, we don't! In this case, we add the transform to the entity, just to make a point:</p>
-<pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
-{
-    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
-    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
-    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
-    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
-    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
-    // add transform:
-    {
-        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
-        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
-        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
-        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
-        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
-    }
-    // ...
-}
-</code></pre>
-<p>Then, we add the story component to the entity we follow the same steps as before.</p>
-<pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
-{
-    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
-    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
-    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
-    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
-    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
-    // add transform:
-    {
-        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
-        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
-        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
-        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
-        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
-    }
-    // add story:
-    {
-        tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
-        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
-        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
-        tm_the_truth_api-&gt;set_reference(tt, component_w, TM_TT_PROP__STORY_COMPONENT__ASSET, asset);
-        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
-        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
-    }
-}
-</code></pre>
-<p>After all this, we can commit our changes to the Truth. After this we could place it in the scene with the <code>tm_scene_common_api.place_entity()</code>. This step is not needed but is nice to do!</p>
-<p>Do not forget to add the undo scope to make sure we can undo our action and return the created entity!</p>
-<pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
-                         tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-                         tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
-{
-    const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
-    const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
-    const tm_tt_id_t entity = tm_the_truth_api-&gt;create_object_of_type(tt, entity_type, undo_scope);
-    tm_the_truth_object_o *entity_w = tm_the_truth_api-&gt;write(tt, entity);
-    tm_the_truth_api-&gt;set_string(tt, entity_w, TM_TT_PROP__ENTITY__NAME, name);
-    // add transform:
-    {
-        const tm_tt_type_t transform_component_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__TRANSFORM_COMPONENT);
-        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, transform_component_type, undo_scope);
-        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
-        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
-        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
-    }
-    // add story:
-    {
-        tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__STORY_COMPONENT);
-        const tm_tt_id_t component = tm_the_truth_api-&gt;create_object_of_type(tt, asset_type, undo_scope);
-        tm_the_truth_object_o *component_w = tm_the_truth_api-&gt;write(tt, component);
-        tm_the_truth_api-&gt;set_reference(tt, component_w, TM_TT_PROP__STORY_COMPONENT__ASSET, asset);
-        tm_the_truth_api-&gt;add_to_subobject_set(tt, entity_w, TM_TT_PROP__ENTITY__COMPONENTS, &amp;component_w, 1);
-        tm_the_truth_api-&gt;commit(tt, component_w, undo_scope);
-    }
-
-    tm_the_truth_api-&gt;commit(tt, entity_w, undo_scope);
-
-    tm_scene_common_api-&gt;place_entity(tt, entity, local_transform, parent_entity, undo_scope);
-
-    undo_stack-&gt;add(undo_stack-&gt;inst, tt, undo_scope);
-
-    return entity;
-}
-</code></pre>
-<p>Now we have added the ability to add this to our asset!</p>
-<blockquote>
-<p><strong>Note:</strong> This is all not done at run time, since we are dealing with the Truth here and not with the ECS our changes will apply first to the ECS when we simulate the game!</p>
-</blockquote>
-<h2 id="modify-a-already-existing-asset"><a class="header" href="#modify-a-already-existing-asset">Modify a already existing asset</a></h2>
-<p>It is important to understand that you can add this to any truth type even if you do not define them in your plugin. Lets assume you have created a new plugin which uses the txt file asset. You are not the owner of this plugin and its source code so you cannot modify it like we did above. What you can do on the other hand you can add the aspect to the truth type:</p>
-<pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
-    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
-    tm_os_api = tm_get_api(reg, tm_os_api);
-    tm_path_api = tm_get_api(reg, tm_path_api);
-    tm_temp_allocator_api = tm_get_api(reg, tm_temp_allocator_api);
-    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
-    tm_logger_api = tm_get_api(reg, tm_logger_api);
-    tm_localizer_api = tm_get_api(reg, tm_localizer_api);
-    tm_asset_io_api = tm_get_api(reg, tm_asset_io_api);
-    task_system = tm_get_api(reg, tm_task_system_api);
-    tm_sprintf_api = tm_get_api(reg, tm_sprintf_api);
-    tm_entity_api = tm_get_api(reg, tm_entity_api);
-    tm_scene_common_api = tm_get_api(reg, tm_scene_common_api);
-    tm_global_api_registry = reg;
-    if (load)
-        tm_asset_io_api-&gt;add_asset_io(&amp;txt_asset_io);
-    else
-        tm_asset_io_api-&gt;remove_asset_io(&amp;txt_asset_io);
-
-    tm_add_or_remove_implementation(reg, load, tm_entity_create_component_i, component__create);
-    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
-}
-</code></pre>
 <p>and then in the <code>create_truth_types</code> function you can add the aspect to the truth type:</p>
-<pre><code class="language-c">static void create_truth_types_modify(struct tm_the_truth_o *tt)
+<pre><code class="language-c">// -- create truth type
+static void create_truth_types_modify(struct tm_the_truth_o *tt)
 {
     tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
-    if (asset_type.u64)
-    {
+    if (asset_type.u64) {
         if (tm_the_truth_api-&gt;get_aspect(tt, asset_type, TM_TT_ASPECT__ASSET_SCENE))
             tm_the_truth_api-&gt;set_aspect(tt, asset_type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
     }
 }
+
 </code></pre>
 <p>In here we get the <code>asset_type</code> from the Truth. Important here is we need to make sure the type exists already! if not it makes no sense to add the aspect to it. More over we need to make sure that the asset has not already this aspect. Since a Object can have only one aspect at the same time!</p>
 

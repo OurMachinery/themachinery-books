@@ -173,7 +173,7 @@ static inline void sample_float_square(float a, float *res)
     *res = a * a;
 }
 GGN_END();
-#include &quot;example_graph_nodes.inl&quot;
+
 </code></pre>
 <p>Let us digest the code example above. There are some things to note here:</p>
 <ul>
@@ -192,22 +192,27 @@ The code we write is relatively slight. We need to ensure that we have some head
 <pre><code class="language-c">#include &lt;plugins/editor_views/graph.h&gt;
 #include &lt;plugins/graph_interpreter/graph_node_helpers.inl&gt;
 #include &lt;plugins/graph_interpreter/graph_node_macros.h&gt;
+
 </code></pre>
 <p>If we now think <em>'yeah, we can compile',</em> we are wrong; We need some other header files to ensure that the generated magic in the <code>my_graph_nodes.inl</code> file works. </p>
 <p>We need to include the following files as well:</p>
 <pre><code class="language-c">static struct tm_graph_interpreter_api *tm_graph_interpreter_api;
 #include &lt;foundation/api_registry.h&gt; //Is needed for `GGN_GEN_REGISTER_FUNCTION()`
-#include &lt;foundation/localizer.h&gt;    // it automatically localizes your category name
+#include &lt;foundation/localizer.h&gt; // it automatically localizes your category name
 #include &lt;foundation/macros.h&gt;
 #include &lt;foundation/the_truth_types.h&gt; // is needed for the description of the wire input types
+
 </code></pre>
 <p>The next question is, <em><strong>Are we done now?</strong></em>  The answer is <strong>yes nearly</strong>.  What's left is registering our nodes in the plugin load function. It may look than like this:</p>
-<pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+<pre><code class="language-c">#include &quot;example_graph_nodes.inl&quot;
+
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_graph_interpreter_api = tm_get_api(reg, tm_graph_interpreter_api);
     // This is auto generated from the graph node generator, you just need to call it.
     generated__register_example_graph_nodes(reg, load);
 }
+
 </code></pre>
 <p>Here we just call the <code>generated__register_example_graph_nodes</code> function, defined in <code>my_graph_nodes.inl</code> and auto-generated. You can find the complete example here <code>samples/plugins/graph_nodes</code>.</p>
 <ol start="3">
@@ -224,14 +229,12 @@ Then you are ready to run <code>tmbuild</code>. It will compile your plugin, and
 <h2 id="full-sample-code"><a class="header" href="#full-sample-code">Full sample code:</a></h2>
 <pre><code class="language-c">static struct tm_graph_interpreter_api *tm_graph_interpreter_api;
 #include &lt;foundation/api_registry.h&gt; //Is needed for `GGN_GEN_REGISTER_FUNCTION()`
-#include &lt;foundation/localizer.h&gt;    // it automatically localizes your category name
+#include &lt;foundation/localizer.h&gt; // it automatically localizes your category name
 #include &lt;foundation/macros.h&gt;
 #include &lt;foundation/the_truth_types.h&gt; // is needed for the description of the wire input types
-
 #include &lt;plugins/editor_views/graph.h&gt;
 #include &lt;plugins/graph_interpreter/graph_node_helpers.inl&gt;
 #include &lt;plugins/graph_interpreter/graph_node_macros.h&gt;
-
 GGN_BEGIN(&quot;Sample/Math/Float&quot;);
 GGN_GEN_REGISTER_FUNCTION();
 GGN_NODE_QUERY();
@@ -248,6 +251,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     // This is auto generated from the graph node generator, you just need to call it.
     generated__register_example_graph_nodes(reg, load);
 }
+
 </code></pre>
 
                     </main>

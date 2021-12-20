@@ -199,10 +199,7 @@
 <p><strong>Note:</strong> Interfaces and APIs are the main mechanisms for extending The Machinery. The difference is that an API only has a single implementation (there is only one <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_api">tm_the_truth_api</a> for instance), whereas there can be many implementations of an interface. Each plugin that creates new truth type will implement the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_the_truth_create_types_i">tm_the_truth_create_types_i</a> interface.</p>
 </blockquote>
 <p>Example <code>tm_load_plugin</code> function for <code>my_asset.c</code>:</p>
-<pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
-    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,tm_load_plugin}}
 }
 </code></pre>
 <p>Now we can implement the actual <code>create_truth_types()</code> function. We use <code>tm_the_truth_api-&gt;create_object_type()</code> to create a Truth type with a specified name and properties.</p>
@@ -231,7 +228,7 @@
 <p>The most important part here is <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#enumtm_tt_prop__asset">TM_TT_PROP__ASSET__OBJECT</a>. This is the actual object that the asset contains. For an Entity asset, this will be an object of type <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_tt_type__entity">TM_TT_TYPE__ENTITY</a>, etc.</p>
 <p>So the <em>Asset</em> object is just a wrapper that adds some metadata to the actual data object (found in <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#enumtm_tt_prop__asset">TM_TT_PROP__ASSET__OBJECT</a>). This is where our new <code> TM_TT_TYPE__MY_ASSET</code> will be found.</p>
 <p>Truth types that are used as assets need to define an <em>extension</em>. This be shown in the Asset Browser. For example, entities have the extension <code>&quot;entity&quot;</code>, so an entity named <code>world</code> is shown in the Asset Browser as <code>world.entity</code>. The extension is also used when the project is saved to disk, but in this case it will automatically be prefixed with <code>tm_</code>. So if you look at the project on disk, <code>world.entity</code> will be saved as <code>world.tm_entity</code>. The reason for this is to be able to easily tell The Machinery files from other disk files.</p>
-<p>We set the extension by adding a Truth aspect of type <a href="https://ourmachinery.com/apidoc/foundation/the_truth_assets.h.html#tm_tt_aspect__file_extension">TM_TT_ASPECT__FILE_EXTENSION</a> to our type</p>
+<p>We set the extension by adding a Truth aspect of type <code>TM_TT_ASPECT__FILE_EXTENSION</code> to our type</p>
 <p>Here's the full code for creating the type and registering the extension:</p>
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
@@ -239,6 +236,7 @@
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
 }
+
 </code></pre>
 <h2 id="exposing-the-type-to-the-asset-browser"><a class="header" href="#exposing-the-type-to-the-asset-browser">Exposing the Type to the Asset Browser</a></h2>
 <p>Even though we now have a Truth Type as well as an Extension, we still don't have any way of creating objects of this type in the Asset Browser. To enable that, there's another interface we have to implement: <a href="https://ourmachinery.com/apidoc/plugins/editor_views/asset_browser.h.html#structtm_asset_browser_create_asset_i">tm_asset_browser_create_asset_i</a>:</p>
@@ -274,6 +272,7 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
     .asset_name = TM_LOCALIZE_LATER(&quot;New My Asset&quot;),
     .create = asset_browser_create,
 };
+
 </code></pre>
 <ul>
 <li>The <code>menu_name</code> specified in the interface is the name that will appear in the <strong>New  →</strong> menu.</li>
@@ -282,12 +281,7 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 </ul>
 <p>This interface is registered by the <code>tm_load_plugin()</code> function, just as all the other interfaces:</p>
 <p>Example <code>tm_load_plugin()</code> function for <code>my_asset.c</code></p>
-<pre><code class="language-c">TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
-    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
-    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
-}
+<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c:35:40}}
 </code></pre>
 <p>The asset can now be created from the Asset Browser:</p>
 <p><img src="https://paper-attachments.dropbox.com/s_080D43F0A98EB2BE6BBB6D719C7B3B910F38D78674006103833AED0070469AD4_1609883533160_image.png" alt="" /></p>
@@ -355,7 +349,6 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
     tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
 }
-
 // -- asset browser regsiter interface
 static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
 {
@@ -367,7 +360,6 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
     .asset_name = TM_LOCALIZE_LATER(&quot;New My Asset&quot;),
     .create = asset_browser_create,
 };
-
 // -- load plugin
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
@@ -375,6 +367,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
     tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
 }
+
 </code></pre>
 
                     </main>
