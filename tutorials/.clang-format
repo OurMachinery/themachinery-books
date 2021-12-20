@@ -1,0 +1,19 @@
+BasedOnStyle: WebKit
+
+PointerAlignment: Right
+ColumnLimit: 0
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass:      true
+  AfterControlStatement: false
+  AfterEnum:       false
+  AfterFunction:   true
+  AfterNamespace:  true
+  AfterObjCDeclaration: false
+  AfterStruct:     true
+  AfterUnion:      true
+  BeforeCatch:     false
+  BeforeElse:      false
+  IndentBraces:    false
+NamespaceIndentation: All
+AllowShortCaseLabelsOnASingleLine: true

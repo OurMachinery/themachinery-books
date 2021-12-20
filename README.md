@@ -71,7 +71,9 @@ On deploy the book will automaically find those terms and replaces them with pro
 
 Please when you intend to add source code snippets please push them first (or make a PR) to the https://github.com/OurMachinery/themachinery-book-code-snippets. After that you can make use of the auto include preprocessor:
 ```
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:17:31}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,tag_name)}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c)}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,tag,off)}} // ignores all exclude statements
 ```
 
 **NOTE**: `TM_BOOK_CODE_SNIPPETS` needs to be a enviroment variable pointing to the `examples` folder of the `themachinery-book-code-snippets` repo.

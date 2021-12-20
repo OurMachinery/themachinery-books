@@ -74,7 +74,7 @@ The plugin knows that a `TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE` is nothing else t
 Let us begin with figuring out the data type of `data_id`:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/tm_graph_component_compile_data_i.c:21:23}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/tm_graph_component_compile_data_i.c,data_id)}}
 ```
 
 We also need to get a read object of the `data_id` to read the data from it.
@@ -82,19 +82,19 @@ We also need to get a read object of the `data_id` to read the data from it.
 The next step is to compare the given data:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/tm_graph_component_compile_data_i.c:25}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/tm_graph_component_compile_data_i.c,compare)}}
 ```
 
 If this is true we move on with our data compilation. Now that we know our object is of type `TM_TT_TYPE_HASH__ASM_EVENT_REFERENCE` we can use the Truth and extract that actual value we care about the `TM_TT_PROP__ASM_EVENT__NAME`
 
 ```` c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/tm_graph_component_compile_data_i.c:27:28}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/tm_graph_component_compile_data_i.c,tt_extract)}}
 ````
 
 After this its time to compile or better write the data to the provided wire. For this we need to use the `tm_graph_interpreter_api` API and its `tm_graph_interpreter_api.write()` function. The function expects the current interpreter and the wire we write to (we have this one as function parameter of the `tm_graph_component_compile_data_i` interface `uint32_t wire`)  as well as the size and the amount. Passing all these information to the write function enables it to allocate memory internally in the interpreters memory stack.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/tm_graph_component_compile_data_i.c:29}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/tm_graph_component_compile_data_i.c,data_extract)}}
 ```
 
 Keep in mind the function is a bit miss leading since it says `write` but what it actually does it just allocates memory for you (if needed) and give you back a writable pointer. At the end we write to the pointer our data and return true.
@@ -102,7 +102,7 @@ Keep in mind the function is a bit miss leading since it says `write` but what i
 All together the translation looks like this:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/tm_graph_component_compile_data_i.c:25:32}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/tm_graph_component_compile_data_i.c,translation)}}
 ```
 
 
@@ -112,6 +112,6 @@ All together the translation looks like this:
 The entire sample source code:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/tm_graph_component_compile_data_i.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/tm_graph_component_compile_data_i.c)}}
 ```
 

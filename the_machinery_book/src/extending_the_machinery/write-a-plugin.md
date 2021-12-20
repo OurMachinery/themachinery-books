@@ -177,7 +177,7 @@ The use of static variables in DLLs can be problematic, because when the DLL is 
 By using this function instead of defining it globally, the variable data is saved in permanent memory.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/static_variable.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/static_variable.c)}}
 ```
 
 
@@ -193,13 +193,13 @@ call your APIs.
 **my_plugin.h:**
 
 ~~~c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_api.h}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_api.h)}}
 ~~~
 
 **my_plugin.c:**
 
 ~~~c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/my_plugin.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_plugin.c)}}
 ~~~
 
 When The Machinery loads a plugin DLL, it looks for the `tm_load_plugin()` function and calls it. If it can't find the function, it prints an error message. We store the API registry pointer in a static variable so that we can use it everywhere in our DLL.

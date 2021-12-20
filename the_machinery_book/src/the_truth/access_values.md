@@ -41,7 +41,7 @@ To ensure we are actually handling the right type we should check this at the be
 All we need to do is compare the `tm_tt_type_t`'s of our types. Therefore we need to obtain the type id from the object id and from our expected type. From a `tm_tt_id_t` we can obtain the type by calling `tm_tt_type()` on them. `tm_the_truth_api->object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_TYPE);` will give us back the object type from a given hash. After that we can do our comparison.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/access_values.c:16:29}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/access_values.c,access_values)}}
 ```
 
 > **Note:** Check out the logger documentation for more information on it. [log.h]({{docs}}foundation/log.h.html#log.h)

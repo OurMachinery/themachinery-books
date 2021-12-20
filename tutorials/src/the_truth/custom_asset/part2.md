@@ -18,7 +18,7 @@ The [next part]({{base_url}}the_truth/custom_asset/part3.html) shows how to writ
 The Truth type we created in Part 1 cannot do much, because it doesn't have any properties:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:15:20}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,create_truth_types)}}
 ```
 
 To actually store some data in the objects, we want to add some properties to the Truth type. Note that we pass in an array of properties when we create the type with `tm_the_truth_api->create_object_type()`.
@@ -33,7 +33,7 @@ Storing the *import path* is not strictly necessary, but we'll use it to impleme
 Here's how we can define these properties:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:45:48}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,register_aspect)}}
 ```
 
 >  **Note:** The type [*tm_the_truth_property_definition_t*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t) has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation [*here*]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t)*.*
@@ -44,7 +44,7 @@ We can now create the Truth type with these properties:
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:43:55}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,create_truth_types,off)}}
 ```
 
 Let's also change the asset name to something more meaningful than `my_asset`. We'll call it `txt`. We need to update this new name in four places:
@@ -57,11 +57,11 @@ Let's also change the asset name to something more meaningful than `my_asset`. W
 This will change the code as follows:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:43:44}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:50}}
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,create_truth_types)}}
 // .. other code
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:62:66}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,asset_browser_create_my_asset)}}
+}
+
 ```
 
 Let's have a look at how it looks in the editor:
@@ -102,12 +102,7 @@ To implement the `custom_ui()` function we can make use of the functions for dra
 
 ```c
 //.. other code
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:21}}
-{
-// -- code
-}
-//.. other code    
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:51:53}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,custom_ui)}}
 // .. other code
 ```
 
@@ -115,11 +110,8 @@ Now we can register this aspect with `tm_truth_api`:
 
 ```c
 //.. other code
-static void create_truth_types(struct tm_the_truth_o *tt)
-{
-//... the other code
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:54}}
-}
+
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,create_truth_types_custom_ui)}}
 //... the other code
 ```
 
@@ -139,16 +131,7 @@ Note that in order to use `tm_properties_view_api` we need to load it in our `tm
 
 
 ```c
-// -- api's
-static struct tm_properties_view_api *tm_properties_view_api;
-//.. other code 
-// -- load plugin
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-//.. other code 
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:71}}
-//.. other code 
-} 
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,tm_properties_view_api)}}
 ```
 
 Now we can call `ui_open_path()` . Let's start by looking at its [signature]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()):
@@ -176,13 +159,13 @@ Now we can call `ui_open_path()` . Let's start by looking at its [signature]({{d
 We can now implement the function:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:45:48}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,ui_open_path)}}
 ```
 
 Note that we are using the property index `TM_TT_PROP__MY_ASSET__FILE` that we defined in the header file hearlier:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.h}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.h)}}
 ```
 
 We can now test this in the engine. We see an **Import Path** label with a button and when we click it, we get asked to import a file.
@@ -199,7 +182,7 @@ To load files we can use the `tm_os_api` which gives us access to OS functionali
 #include <foundation/os.h>
 #include <foundation/buffer.h>
 //.. other code
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c:21:41}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c,custom_ui,off)}}
 ```
 
 When a new file is picked in the UI (checked with the `picked` variable) we get the file path from The Truth, read the file data and store it in The Truth.
@@ -237,7 +220,7 @@ In the next part we'll show how to add an *Importer* for our asset type. This wi
 `my_asset.h`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.h}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.h)}}
 ```
 
 (Do not forget to run hash.exe when you create a `TM_STATIC_HASH`)
@@ -245,7 +228,7 @@ In the next part we'll show how to add an *Importer* for our asset type. This wi
 `my_asset.c`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_2/txt.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_2/txt.c)}}
 ```
 
 

@@ -14,13 +14,13 @@ The goal of this Creation Graph is to create an image output that we can copy to
 The component itself is very simple, it only has a single property which is our creation graph asset:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/calling_creation_graph_from_code.c:146:147}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/calling_creation_graph_from_code.c,gc_asset)}}
 ```
 
 However multiple fields are defined in the runtime component struct, all of these are dependent on our creation graph:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/calling_creation_graph_from_code.c:37:52}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/calling_creation_graph_from_code.c,component)}}
 ```
 
 In the example, we only call the creation graph once (during the initialization phase). The workflow is as follows. 
@@ -29,20 +29,19 @@ In the initialize function, we instantiate this creation graph asset with a defa
 This updates our image output node and all the nodes it is dependent upon:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/calling_creation_graph_from_code.c:69:87}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/calling_creation_graph_from_code.c:100}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/calling_creation_graph_from_code.c,init_phase)}}
 ```
 
 Next we query all the image output nodes from the graph and pick the first one. The information we get from the output node is enough to copy our image to the viewport:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/calling_creation_graph_from_code.c:89:99}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/calling_creation_graph_from_code.c,query_image)}}
 ```
 
 To do this we register it to the viewport's render graph using `register_gpu_image()` and then pass it to the `debug_visualization_resources` for easy rendering to the screen:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/calling_creation_graph_from_code.c:109:135}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/calling_creation_graph_from_code.c,itr)}}
 ```
 
 ## Remarks
@@ -52,6 +51,6 @@ Also, all destruction code has been omitted from the code sample to shorten it. 
 
 ## Full Code
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/calling_creation_graph_from_code.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/calling_creation_graph_from_code.c)}}
 ```
 

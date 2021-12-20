@@ -42,7 +42,7 @@ Those answers are important for the automatic scheduling of the Systems/Engines.
 ## Example 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_system_engine.c:22:30}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_system_engine.c,tm_engine_i)}}
 ```
 
 This movement engine will operate on:

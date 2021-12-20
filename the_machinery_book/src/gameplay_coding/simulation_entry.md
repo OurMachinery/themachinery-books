@@ -9,7 +9,7 @@ In order for your code to execute using a simulation entry you need two things. 
 Define a `tm_simulation_entry_i` in a plugin like this:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/simulation_entry.c:52:59}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/simulation_entry.c,simulation_entry_i)}}
 ```
 
 Where `start`, `stop` and `tick` are functions that are run when the simulation starts, stop and each frame respectively. Make sure that `id` is a unique identifier.
@@ -39,6 +39,6 @@ When the Simulation Entry Component is loaded within the Simulate Tab or Runner,
 ## Example: Source Code
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/simulation_entry.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/simulation_entry.c)}}
 ```
 

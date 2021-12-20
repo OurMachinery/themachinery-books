@@ -3,7 +3,7 @@
 To register Systems/Engines, you need to provide a register function to the `tm_entity_register_engines_simulation_i` interface. This function has the signature:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_system_engine.c:14}}
+static void entity_register_engines_i(struct tm_entity_context_o *ctx)
 ```
 
 For more information check the `tm_entity_register_engines_simulation_i` .
@@ -16,7 +16,7 @@ For Engines, you pass an instance of the `tm_entity_system_i` to the register fu
 
 ```c
 // example:
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_system_engine.c:14:32}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_system_engine.c,entity_register_engines_i)}}
 ```
 
 
@@ -24,7 +24,7 @@ For Engines, you pass an instance of the `tm_entity_system_i` to the register fu
 For Systems, you pass an instance of the `tm_engine_i` to the register function.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_system_engine.c:39:49}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_system_engine.c,tm_entity_system_i)}}
 ```
 
 In the above example the scheduler will schedule this system after the `maze_generation_system` system! Since we did not provide any further information in `.writes` or in `.components` the scheduler has no other information to work with. In this case it is best to not write anything!
@@ -33,11 +33,7 @@ In the above example the scheduler will schedule this system after the `maze_gen
 
 
 ```c
-TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
-{
-    // other code ...
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_system_engine.c:55}}
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_system_engine.c,tm_load_plugin)}}
 ```
 
 

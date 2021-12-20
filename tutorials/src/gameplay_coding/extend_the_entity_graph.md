@@ -27,7 +27,7 @@ Our goal is to create a node that computes the square of a floating-point number
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/example_graph_nodes.c:11:19}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/example_graph_nodes.c,node_def)}}
 ```
 
 Let us digest the code example above. There are some things to note here:
@@ -48,7 +48,7 @@ The following list makes sure that the nodes work on their own.
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/example_graph_nodes.c:7:9}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/example_graph_nodes.c,includes)}}
 ```
 
 If we now think *'yeah, we can compile',* we are wrong; We need some other header files to ensure that the generated magic in the `my_graph_nodes.inl` file works. 
@@ -57,14 +57,14 @@ We need to include the following files as well:
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/example_graph_nodes.c:1:5}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/example_graph_nodes.c,includes_top)}}
 ```
 
 The next question is, ***Are we done now?***  The answer is **yes nearly**.  What's left is registering our nodes in the plugin load function. It may look than like this:
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/example_graph_nodes.c:21:26}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/example_graph_nodes.c,tm_load_plugin)}}
 ```
 
 Here we just call the `generated__register_example_graph_nodes` function, defined in `my_graph_nodes.inl` and auto-generated. You can find the complete example here `samples/plugins/graph_nodes`.
@@ -88,7 +88,7 @@ Then you are ready to run `tmbuild`. It will compile your plugin, and then when 
 ## Full sample code:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/example_graph_nodes.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/example_graph_nodes.c)}}
 ```
 
 

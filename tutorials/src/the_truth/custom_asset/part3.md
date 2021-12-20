@@ -51,7 +51,7 @@ To implement the first functions, we need to do the following steps:
 #include <foundation/string.inl>
 #include <foundation/localizer.h>
 //... other code
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:99:119}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,asset_io_meta)}}
 ```
 
 Let us go through them:
@@ -81,7 +81,7 @@ The task needs to know the location of the file that is to be imported. It also 
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:39:44}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,task_decl)}}
 ```
 
 The `tm_asset_io_import` field will used be copied from the parameter passed to `asset_io__import_asset()` to the struct.
@@ -90,7 +90,7 @@ The function itself looks like this:
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:120:130}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,import_asset)}}
 ```
 
 
@@ -109,10 +109,7 @@ The import task should import the data and clean up afterwards.
 The function signature is:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:49}}
-{
-    // all our work
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,task_fn)}}
 ```
 
 We need to cast `ptr` to our previously defined data type `task__import_txt`. The task `id` can be used by the task callback function to provide task progress updates. In this example, we do not use it.
@@ -124,9 +121,7 @@ To implement the import we retrieve the data passed in the struct and then imple
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:49:54}}
-//.. more
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,task_fn_begin)}}
 ```
 
 Another thing we should consider is error checking: 
@@ -138,13 +133,7 @@ Since we are running as a background task, we will report any errors through the
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:49:57}}
-    // .. code
-    else
-    {
-        tm_logger_api->printf(TM_LOG_TYPE_INFO, "import txt:cound not find %s \n", txt_file);
-    }
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,task_fn_check)}}
 ```
 
 Now we combine all the knowledge from this chapter and the previous chapter. We need to create a new asset via code for the import, and for the reimport, we need to update an existing file. 
@@ -152,31 +141,14 @@ Before we do all of this, let us first read the file and create the buffer.
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:49:62}}
-// ..code
-    else
-    {
-        tm_logger_api->printf(TM_LOG_TYPE_INFO, "import txt:cound not find %s \n", txt_file);
-    }
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,task_fn_new_asset)}}
 ```
 
 After this, we should ensure that the file size matches the size of the read data.
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:49:63}}
-//..
-        }
-        else
-        {
-            tm_logger_api->printf(TM_LOG_TYPE_INFO, "import txt:cound not read %s\n", txt_file);
-        }
-    else
-    {
-        tm_logger_api->printf(TM_LOG_TYPE_INFO, "import txt:cound not find %s \n", txt_file);
-    }
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,task_fn_read)}}
 ```
 
 With this out of the way, we can use our knowledge from the last part.
@@ -187,14 +159,13 @@ The first step was to create the new object and add the data to it.
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:65:70}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:79}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,task_new_buffer)}}
 ```
 
 After that, we can use the `tm_asset_browser_add_asset_api` to add the asset to the asset browser. 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:81}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,tm_asset_browser_add_asset_api)}}
 ```
 
 We are getting the API first, because we do not need it anywhere else than in this case. Then we need to extract the file name of the imported file. You can do this with the *path API*'s ` tm_path_api->base()` function. Be aware this function requires a `tm_str_t` which you an create from a normal C string (`const char*`) via `tm_str()`. To access the underlaying C string again just call `.data` on the `tm_str_t`.
@@ -211,7 +182,7 @@ We want to add the asset to the folder that currently open in the asset browser.
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:80:84}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,tm_asset_browser_add_asset_api,off)}}
 ```
 
 That's it for the import.  Before we move on, we need to clean up! No allocation without deallocation!
@@ -228,19 +199,7 @@ Now let's bring it all together:
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:49:63}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:65:70}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:79}}
-        }
-        else
-        {
-            tm_logger_api->printf(TM_LOG_TYPE_INFO, "import txt:cound not read %s\n", txt_file);
-        }
-    else
-    {
-        tm_logger_api->printf(TM_LOG_TYPE_INFO, "import txt:cound not find %s \n", txt_file);
-    }
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,import_asset_task)}}
 ```
 
 
@@ -255,14 +214,14 @@ To change an existing object instead of creating a new one, we can use the funct
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:71:76}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,reimport_asset_task)}}
 ```
 
 With these changes, the source code now looks as like this:
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:49:97}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,task_fn,off)}}
 ```
 
 
@@ -283,7 +242,7 @@ Now we can write our reimport task code:
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:151:161}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,custom_ui_inner)}}
 ```
 
 We'll use the `system` allocator (a global allocator with the same lifetime as the program) to allocate our task, including the bytes needed for the file name string. Remember the layout of our struct:
@@ -303,7 +262,7 @@ We fill out the struct with the needed data, copy the file name, and then ask th
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c:142:165}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c,custom_ui)}}
 ```
 
 *(For more information on the structure of these functions, please check the previous part)*
@@ -328,7 +287,7 @@ If you want to see a more complex example of an importer, look at the assimp imp
 `my_asset.h`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.h}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.h)}}
 ```
 
 (Do not forget to run hash.exe when you create a `TM_STATIC_HASH`)
@@ -336,6 +295,6 @@ If you want to see a more complex example of an importer, look at the assimp imp
 `my_asset.c`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_3/txt.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_3/txt.c)}}
 ```
 

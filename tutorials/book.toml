@@ -16,11 +16,13 @@ command = "mdbook-toc"
 renderer = ["html"]
 marker = "* auto-gen TOC;\n{:toc}"
 
+[preprocessor.path_replacement]
+renderer = ["html"]
+folder = "../"
+books = ["the_machinery_book","tutorials"]
+command = "python ../path_replacement.py"
 
 [preprocessor.links]
-
-[preprocessor.tera]
-command = "mdbook-tera --toml ./context.toml"
 
 [output.linkcheck]
 follow-web-links = false

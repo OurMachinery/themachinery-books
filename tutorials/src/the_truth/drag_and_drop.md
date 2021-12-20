@@ -29,8 +29,7 @@ This walkthrough will refer to the text asset example as the asset we want to ex
 In this example, we are going back to our text asset sample. In that sample, we have the following function to register the asset to the Truth:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:254:272}}
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_truth_types)}}
 ```
 
 We need to make use of the `TM_TT_ASPECT__ASSET_SCENE` aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the `plugins/the_machinery_shared/asset_aspects.h` header.
@@ -59,12 +58,13 @@ static struct tm_entity_api *tm_entity_api;
 #include <plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h>
 // more code
 
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:245:277}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,comp_meta)}}
 
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:291:347}}
-// -- load plugin
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_truth_types,off)}}
 
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:350:374}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,component_def)}}
+
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,plugin_load)}}
 
 ```
 
@@ -73,9 +73,7 @@ static struct tm_entity_api *tm_entity_api;
 First, we create our component, and we need a way to guarantee that our truth data exists during runtime as well. Therefore, we use the Entity Manager to allocate our Story data and store just a pointer and its size to the allocated data in the Manager.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:291:295}}
-
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:328:347}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,component_manager)}}
 ```
 
 
@@ -83,7 +81,7 @@ First, we create our component, and we need a way to guarantee that our truth da
 The most important function here is the `component__load_asset` function, in which we translate the Truth Representation into an ECS representation. We load the text buffer, allocate it with the Manager, and store a pointer in our component. With this, we could create a reference-counted system in which multiple components point to the same story data, and only when the last component goes we deallocate this. Another alternative would be to avoid loading when we create the component, and the story is already allocated.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:297:310}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,component__load_asset)}}
 ```
 
 
@@ -91,7 +89,7 @@ The most important function here is the `component__load_asset` function, in whi
 When the Entity context gets destroyed, we need to clean up and destroy our Manager. Important that we call `call_remove_on_all_entities` to make sure all instances of the component are gone.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:312:326}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,component__remove_destroy)}}
 ```
 
 #### Custom UI
@@ -101,7 +99,7 @@ When the Entity context gets destroyed, we need to clean up and destroy our Mana
 We also can to provide a custom UI for our reference to the asset! When we define our Truth type we tell the system that it should be a reference **only** of type `TM_TT_TYPE_HASH__TXT_ASSET`.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:268:269}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,none_asset_picker)}}
 ```
 
 This makes sure that in the Editor the user cannot store any other Truth type in this property. The Truth will check for it
@@ -109,13 +107,13 @@ This makes sure that in the Editor the user cannot store any other Truth type in
 We need to add the `TM_TT_ASPECT__PROPERTIES` aspect to our type to make sure it has a custom UI.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:270:276}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,story_component)}}
 ```
 
 And than we need to define our custom UI:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:254:277}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,component_custom_ui)}}
 ```
 
 In there we get all objects of type `TM_TT_TYPE_HASH__TXT_ASSET` we know that this type can only exist as a sub object of the Asset Truth Type.
@@ -129,8 +127,8 @@ This information is important because we need a name for our asset and therefore
 Instead of implementing our own UI, which can be full of boilerplate code we can also use the following aspect on our truth type: `TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER` or if we want to store a entity an provide a entity from the scene: `TM_TT_PROP_ASPECT__PROPERTIES__USE_LOCAL_ENTITY_PICKER`. The following code can be adjusted. In your `create_truth_types()` we need to add this aspect to our type property like this:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:254:276}}
-    tm_the_truth_api->set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER, TM_TT_TYPE_HASH__TXT_ASSET);
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,story_component)}}
+tm_the_truth_api->set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER, TM_TT_TYPE_HASH__TXT_ASSET);
 }
 ```
 
@@ -143,18 +141,13 @@ Finally, we can do what we came here to do: Make our Asset drag and droppable! W
 We define the aspect as described above:
 
 ```c
-#include <plugins/the_machinery_shared/asset_aspects.h>
-//.. other code
-tm_asset_scene_api scene_api = {
-    .droppable = droppable,
-    .create_entity = create_entity,
-};
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,scene_api_def)}}
 ```
 
 In the Create Truth Type function you need to add the aspect `TM_TT_ASPECT__ASSET_SCENE`:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:254:266}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_truth_types,off)}}
 //..
 }
 ```
@@ -162,7 +155,7 @@ In the Create Truth Type function you need to add the aspect `TM_TT_ASPECT__ASSE
 Than, we provide a `droppable()` function:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:199:202}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,droppable)}}
 ```
 
 
@@ -173,7 +166,7 @@ After this, the more important function comes:
 #include <plugins/entity/transform_component.h>
 #include <plugins/the_machinery_shared/scene_common.h>
 // ... more code
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:204:238}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_entity_fn)}}
 ```
 
 
@@ -181,7 +174,7 @@ After this, the more important function comes:
 First, we create an entity:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:204:212}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_entity)}}
 //...
 }
 ```
@@ -189,7 +182,7 @@ First, we create an entity:
 Suppose it needs a transform. If not, we don't! In this case, we add the transform to the entity, just to make a point:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:204:220}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_entity_transform)}}
     // ...
 }
 ```
@@ -197,7 +190,7 @@ Suppose it needs a transform. If not, we don't! In this case, we add the transfo
 Then, we add the story component to the entity we follow the same steps as before.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:204:229}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_entity_story)}}
 }
 ```
 
@@ -206,7 +199,7 @@ After all this, we can commit our changes to the Truth. After this we could plac
 Do not forget to add the undo scope to make sure we can undo our action and return the created entity!
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:204:238}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_entity_fn)}}
 ```
 
 Now we have added the ability to add this to our asset!
@@ -220,13 +213,13 @@ Now we have added the ability to add this to our asset!
 It is important to understand that you can add this to any truth type even if you do not define them in your plugin. Lets assume you have created a new plugin which uses the txt file asset. You are not the owner of this plugin and its source code so you cannot modify it like we did above. What you can do on the other hand you can add the aspect to the truth type:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:350:374}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,plugin_load)}}
 ```
 
 and then in the `create_truth_types` function you can add the aspect to the truth type:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/drag_drop/txt.c:377:385}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_truth_types_modify)}}
 ```
 
 In here we get the `asset_type` from the Truth. Important here is we need to make sure the type exists already! if not it makes no sense to add the aspect to it. More over we need to make sure that the asset has not already this aspect. Since a Object can have only one aspect at the same time!

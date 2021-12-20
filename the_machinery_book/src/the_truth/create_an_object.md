@@ -8,7 +8,7 @@ You can create an object of a Truth Type via two steps:
 First, we need to have access to a Truth instance. Otherwise, we could not create an object. In this example, we create a function.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_an_object.c:16:21}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/create_an_object.c,create_my_type_object)}}
 ```
 
 Wherever we call this function we can then edit and modify the type and add content to it!
@@ -16,7 +16,7 @@ Wherever we call this function we can then edit and modify the type and add cont
 The alternative approach is to use the "Quick Object Creation function".
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_an_object.c:23:26}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/create_an_object.c,quick_create_my_type_object)}}
 ```
 
 

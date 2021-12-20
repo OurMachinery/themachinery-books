@@ -37,7 +37,7 @@ Typically, we put the type name, the hashed name and the list of properties in t
 Example header file `my_asset.h`:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.h}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.h)}}
 ```
 
 Do not forget to run `hash.exe` whenever you use `TM_STATIC_HASH()` in your code. This will ensure that the correct value for the hash is cached in the macro.
@@ -52,7 +52,7 @@ To make The Truth aware of this custom type we must register it with The Truth. 
 Example `tm_load_plugin` function for `my_asset.c`:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:35:38}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,tm_load_plugin}}
 }
 ```
 
@@ -99,7 +99,7 @@ Here's the full code for creating the type and registering the extension:
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:15:20}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,create_truth_types)}}
 ```
 
 
@@ -135,7 +135,7 @@ If you implement this interface, your Truth type will appear in the **New →**�
 For our basic type, this interface can be defined as follows:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:22:32}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,asset_browser_create)}}
 ```
 
 * The `menu_name` specified in the interface is the name that will appear in the **New  →** menu.
@@ -147,7 +147,7 @@ This interface is registered by the `tm_load_plugin()` function, just as all the
 Example `tm_load_plugin()` function for `my_asset.c`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c:35:40}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c:35:40}}
 ```
 
 The asset can now be created from the Asset Browser:
@@ -206,7 +206,7 @@ static void add_my_asset_to_project(tm_the_truth_o *tt, struct tm_ui_o *ui, cons
 `my_asset.h`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.h}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.h)}}
 ```
 
 (Do not forget to run hash.exe when you create a new `TM_STATIC_HASH()`)
@@ -214,6 +214,6 @@ static void add_my_asset_to_project(tm_the_truth_o *tt, struct tm_ui_o *ui, cons
 `my_asset.c`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/custom_assets/part_1/txt.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c)}}
 ```
 

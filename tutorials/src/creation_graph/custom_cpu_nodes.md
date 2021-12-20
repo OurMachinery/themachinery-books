@@ -9,19 +9,19 @@ Let’s first create the code for this node. This function will be called by the
 > **Note** that the indices of these wires is relative to the way they are defined. Our input wire is defined first so its index is 0. The output wire is defined second so it gets the index 1.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/custom_cpu_nodes.c:14:22}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/custom_cpu_nodes.c,custom_cpu_node_fn)}}
 ```
 
 We need to register this node to the creation graph API. This is done through the creation graph node interface. We define the general information to the node like its `name`, `display_name` and I/O connectors (wires), and the actual function to run:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/custom_cpu_nodes.c:24:36}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/custom_cpu_nodes.c,custom_cpu_node_node)}}
 // register in the load function
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/custom_cpu_nodes.c:44}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/custom_cpu_nodes.c,custom_cpu_node_register)}}
 ```
 
 This is the full code to define this creation graph CPU node:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/creation_graph/custom_cpu_nodes.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/custom_cpu_nodes.c)}}
 ```

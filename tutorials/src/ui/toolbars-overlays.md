@@ -25,7 +25,7 @@ We open the `custom_tab.c` (or however we called it) file with our favorite edit
 We search for the line in which we define the tab itself:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:81:89}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,vtable)}}
 ```
 
 
@@ -41,15 +41,13 @@ To our definition, we add a [`toolbars()`]({{docs}}plugins/ui/docking.h.html#str
 > **Important:** You need to include  the api first `#include <foundation/temp_allocator.h>` and get the api from the registry!
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:112:121}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,new_vtable)}}
 ```
 
 After we have added this, we need actually to define the function itself:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:99:100}}
-// code
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,tab__toolbars}}
 ```
 
 
@@ -80,7 +78,7 @@ Let us provide the essential things:
 3. The draw_mode_mask to indicate where we want the toolbar to be drawn.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:99:110}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,tab__toolbars,off}}
 ```
 
 
@@ -90,7 +88,7 @@ In our UI function, we can add the button via the [`tm_ui_api`]({{docs}}plugins/
 > **Note:** You need include the `plugins/ui/ui.h` and the `foundation/log.h` as well as get the API's first!
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/ui/toolbars_overlays.c:93:97}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,toolbar__ui}}
 ```
 
 

@@ -46,7 +46,7 @@ To use this API, you would first use the API registry to query for the API point
 pointer, call the functions of the API:
 
 ~~~c
-{{$include {TM_BOOK_CODE_SNIPPETS}/plugins/get_api_demo.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/get_api_demo.c)}}
 ~~~
 
 The different APIs that you can query for and use are documented in their respective header files,

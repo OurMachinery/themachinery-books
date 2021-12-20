@@ -18,6 +18,14 @@ marker = "* auto-gen TOC;\n{:toc}"
 
 [preprocessor.links]
 
+
+[preprocessor.path_replacement]
+renderer = ["html"]
+folder = "../"
+books = ["the_machinery_book","tutorials"]
+command = "python ../path_replacement.py"
+
+
 #[preprocessor.autolink]
 #renderer = ["html"]
 #folder = "../"
@@ -29,10 +37,6 @@ renderer = ["html"]
 folder = "../"
 books = ["the_machinery_book","tutorials"]
 command = "python ../auto_include.py"
-
-
-[preprocessor.tera]
-command = "mdbook-tera  --toml  ./context.toml"
 
 [output.linkcheck]
 follow-web-links = false
