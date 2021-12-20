@@ -195,7 +195,7 @@ After this, we define our local copy of the UI Style. Then we create an empty `t
 Now we are set, and we can finally color our tab background to red. You can do this with the `tm_draw2d_api.fill_rect()` call. Beforehand we need to change our style's color to red and then call the `tm_draw2d_api.fill_rect()`. We need to pass in the vertex buffer and the index buffer pointer so the function can draw into them.
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_tab.c,draw}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_tab.c,draw)}}
 ```
 
 
