@@ -31,7 +31,7 @@ Let us assume we have the following entities:
 Now we have an Engine that shall operate on `(Component A,Component B)` but we do not want it to operate on entities with `Component D` we could just check in our update loop:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:35:54}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_filtering_entities.c,entity_register_engines)}}
 ```
 
 or we could define a component mask and use this to filter but both methods are slow. This is because `get_component_by_hash` or `get_component` require us to look up internally the entity + the components and search for them. Its aka a random memory access! 
@@ -39,7 +39,7 @@ or we could define a component mask and use this to filter but both methods are 
 To avoid all of this we can just tell the engine to ignore all entity types which contain the `component_d` via the `.excluded` field in the `tm_engine_i`.
 
 ```` c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:42:53}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_filtering_entities.c,tm_engine_i)}}
 ````
 
 ## Filtering Entities by using Tag Components
@@ -57,19 +57,19 @@ To solve this issue you could remove the Movement Component but that would be an
 First you define the component:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:56:65}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_filtering_entities.c,component__create)}}
 ```
 
 Then you filter in your update for the Input Engine/ Movement Engine any Entity that has a No Movement Tag:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:69:85}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_filtering_entities.c,register_engine)}}
 ```
 
 Whenever another `engine/system` decides that an entity should not move anymore it just adds a `no_movement_tag_component` to the entity.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_filtering_entities.c:90:107}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_filtering_entities.c,engine_update)}}
 ```
 
 As you can see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.

@@ -26,7 +26,7 @@ After this, we see that the Engine created some files for us. Now we need to ens
 Now we can open the `.c` file with our favourite IDE. The file will contain the following content:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c)}}
 ```
 
 
@@ -40,7 +40,7 @@ Let us dissect the code structure and discuss all the points of interest.
 The file begins with all includes and API definitions: 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:0:15}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,includes)}}
 ```
 
 The code will fill the API definitions with life in the `tm_load_plugin` function.
@@ -52,7 +52,7 @@ The next part contains the Truth Definition of the component and the plain old d
 > Note: All components should be plain old data types.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:17:31}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,comp_def)}}
 ```
 
 
@@ -66,7 +66,7 @@ We need to define a `tm_ci_editor_ui_i` object which uses this function.  Later 
 > **Note:** More about aspects you can read in the [aspects guide](#).
 
 ```c 
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:33:40}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,comp_meta)}}
 ```
 
 
@@ -78,7 +78,7 @@ In this region, we create our component truth type. It is important to remember 
 Let us take this code apart one more time:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:41:53}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,truth__create_types)}}
 ```
 
 1. We define the component's properties.
@@ -101,13 +101,13 @@ Within this function, you can define your component and register it to the conte
 - A load asset function
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:65:74}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,component__create)}}
 ```
 
 As mentioned before, the Truth does not reflect the runtime data and only holds the data you can edit in the Editor. This is why there needs to be some translation between The Truth and the ECS. This magic is happening in the `tm_component_i.load_asset()`. This function allows you to translate a `tm_tt_id_t` asset to the plain old data of the component.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:55:63}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,component__load_asset)}}
 ```
 
 The first step is that we cast the given `void*` of the component data `c_vp` to the correct data type. After that, we load the data from the Truth and store it in the component. In the end, we return true because no error occurred.
@@ -125,7 +125,7 @@ The first step is that we cast the given `void*` of the component data `c_vp` to
 This next section of the code is about defining an Engine.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:76:112}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,update)}}
 ```
 
 
@@ -135,7 +135,7 @@ The first thing we do is use a temp allocator for any future allocation that wil
 The next step is to get the time from the Blackboard Values. 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:85:90}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,blackboard)}}
 ```
 
 
@@ -158,7 +158,7 @@ The Engine provides a bunch of useful Blackboard values. They are defined in the
 The `tm_engine_update_set_t` gives us access to the needed data, and we can modify our components. The first important information we get are the number of entity types (also known Archetypes). This number is stored in `data->num_arrays`. Now that we know this information we can iterate over them and access the components per entity type. `tm_engine_update_array_t a =  data->arrays` (Gives us the current entity type's components). `a->n` is the number of matching components / entities of this entity type.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:92:107}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,for)}}
 ```
 
 > **Note**: In case you are not that familiar with C this loop:
@@ -172,7 +172,7 @@ The `tm_engine_update_set_t` gives us access to the needed data, and we can modi
 As the last step, we add a notifier function call to notify all entities that their components have changed.
 
 ```c
-    tm_entity_api->notify(ctx, data->engine->components[1], mod_transform, (uint32_t)tm_carray_size(mod_transform));
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,notify)}}
 ```
 
 
@@ -186,7 +186,7 @@ You can register a component to the `tm_entity_register_engines_simulation_i` in
 The function itself looks as follows:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:119:135}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,register_engine)}}
 ```
 
 The first thing we do is to look up the component type. Did we register the type? If not, we will not get the correct type. Here we are using the name we defined beforehand in our component create function.
@@ -204,7 +204,7 @@ Then we tell the system how many components the Engine shall operate on and whic
 At last, we provide the needed update function, which we have discussed earlier, and a filter function.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:114:117}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,engine_filter)}}
 ```
 
 
@@ -226,6 +226,6 @@ The last thing the register function needs to do is register the Engine to the E
 The most important lines here are the once in which we register our truth types, the component and the engine.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/gameplay_code/ecs_component_example.c:137:148}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,load_plugin)}}
 ```
 

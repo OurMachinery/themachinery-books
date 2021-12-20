@@ -51,11 +51,9 @@ This interface expects a function of the signature: `void create_truth_types(tm_
 Let us define a type. To do that, we need to get the `tm_truth_api` first:
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c:1:3}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c:6}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/create_truth_types.c,includes)}}
 // ... other code
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c:19:21}}
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c:23}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/create_truth_types.c,tm_load_plugin)}}
 ```
 
 After this, we define our type name once as a constant char define and one hashed version. There are some conventions to keep in mind:
@@ -67,7 +65,7 @@ After this, we define our type name once as a constant char define and one hashe
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/my_type.h:4:5}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/my_type.h)}}
 ```
 
 
@@ -94,7 +92,7 @@ The home of this function should be our `void create_truth_types(tm_the_truth_o 
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_empty_type.c:7:10}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/create_empty_type.c,create_object_type)}}
 ```
 
 
@@ -104,7 +102,7 @@ The last step is to tell the plugin system that we intend to register our `regis
 
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_empty_type.c:12:16}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/create_empty_type.c,load_plugin)}}
 ```
 
 
@@ -114,7 +112,7 @@ The full source code should look like this:
 `my_type.h`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/my_type.h}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/my_type.h)}}
 ```
 
 (Tip: Do not forget to run hash.exe)
@@ -122,7 +120,7 @@ The full source code should look like this:
 `my_type.c`
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_empty_type.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/create_empty_type.c)}}
 ```
 
 
@@ -175,7 +173,7 @@ Let us add some properties to our Type! As you remember, when we created the Typ
 Within our `create_truth_types` we create an array of type `tm_the_truth_property_definition_t`. For this example, we define the properties of type bool and string.
 
 ```c
-{{$include {TM_BOOK_CODE_SNIPPETS}/truth/create_truth_types.c}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/create_truth_types.c)}}
 ```
 
 
