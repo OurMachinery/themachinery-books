@@ -23,24 +23,9 @@ jobs:
       - name: download SDK
         run: |
           sudo apt install -y unzip wget
-          wget https://ourmachinery.com/releases/2021.10/the-machinery-2021.10.a-linux.zip
+          wget https://ourmachinery.com/releases/2021.10/the-machinery-2021.11.a-linux.zip
           mkdir sdk_dir
-          unzip the-machinery-2021.10.a-linux.zip -d sdk_dir
-      - name: Cache mdbook-tera
-        id: cache-mdbook-tera
-        uses: actions/cache@v2
-        with:
-          path: ./mdbook_tera
-          key: ${{ runner.os }}-mdbook-tera
-      - uses: actions-rs/cargo@v1
-        if: steps.cache-mdbook-tera.outputs.cache-hit != 'true'
-        with:
-          command: install
-          args: mdbook-tera --root ./mdbook_tera
-      - name: add mdbook-tera to PATH
-        run: |
-          export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
-          chmod +x ./mdbook_tera/bin/mdbook-tera
+          unzip the-machinery-2021.11.a-linux.zip -d sdk_dir
       - run: sudo apt update && sudo apt install zip
       - name: Setup mdbook
         run: |
