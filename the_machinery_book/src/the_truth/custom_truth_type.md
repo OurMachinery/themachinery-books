@@ -163,7 +163,7 @@ When you destroy an object that has subobjects, all the subobjects are destroyed
 Let us add some properties to our Type! As you remember, when we created the Type, the function `create_object_type()` required a pointer to the definition of properties. You can define properties via the `tm_the_truth_property_definition_t` struct.
 
 ```c
-{{$include {TM_SDK_DIR}/foundation/the_truth.h:407:473}}
+{{$include env.TM_SDK_DIR/foundation/the_truth.h:407:473}}
 ```
 
 ([API Documentation]({{docs}}foundation/the_truth.h.html#structtm_the_truth_property_definition_t))

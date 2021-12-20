@@ -10,9 +10,7 @@ To manipulate an object, you need to have its ID (`tm_tt_id_t`). When you create
 In this example, we have a function that gets an object and the Truth instance of that object.
 
 ```c
-void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
-    //...
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/modify_object.c,modify_my_object)}}
 ```
 
 >  **Important:** you can only edit an object that is part of the same instance! Hence your `my_object` must be created within this instance of the Truth (`tt`).  
@@ -24,9 +22,7 @@ void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object){
 To edit an object, we need to make it writable first. In the default state, objects from the Truth are immutable. The Truth API has a function that is called `write`. When we call it on an object, we make it writable.
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/modify_object.c,modify_my_object)}}
-//...
-}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/truth/modify_object.c,modify_my_object_alt_write)}}
 ```
 
 ## 2. Write to the object.
