@@ -45,7 +45,7 @@ Finally, we need to tell the `vertex_buffer_system` which primitives are availab
 And now we have our triangle, we just have to unlock the resource cache again and set the bounding volume outputs:
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/custom_geometry_node.c.,unlock)}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/creation_graph/custom_geometry_node.c,unlock)}}
 ```
 
 This is the full source code to define this creation graph CPU node:
