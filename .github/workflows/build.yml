@@ -26,7 +26,8 @@ jobs:
           wget https://ourmachinery.com/releases/2021.11/the-machinery-2021.11.a-linux.zip
           mkdir sdk_dir
           unzip the-machinery-2021.11.a-linux.zip -d sdk_dir
-      - run: sudo apt update && sudo apt install zip
+          sudo apt update && sudo apt install zip
+          sudo pip install GitPython
       - name: Setup mdbook
         run: |
           mkdir tools
@@ -55,7 +56,7 @@ jobs:
           cd js
           wget https://ourmachinery.com/js/bootstrap.bundle.min.js
           wget https://ourmachinery.com/js/page.min.js
-      - name: Build introduction
+      - name: Build the_machinery_book
         run: |
           export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
           export PATH="${{github.workspace}}/tools/:$PATH"
@@ -63,7 +64,7 @@ jobs:
           sed -i "s/#//" book.toml
           mdbook build
           mv book/html ../public/the_machinery_book
-      - name: Build introduction
+      - name: Build tutorials
         run: |
           export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
           export PATH="${{github.workspace}}/tools/:$PATH"
@@ -76,7 +77,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-      - uses: 8398a7/action-slack@v3
+      - name: Report
+        uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
           fields: repo,message,commit,author,action,eventName,ref,workflow,job
