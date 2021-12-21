@@ -164,6 +164,7 @@
 <p>Another example for the creation graph is mesh processing. A graph like this will define how the mesh should be draw or traced against. The graph below takes two inputs, a material creation graph and the mesh data from a DCC asset. This data is than imported and passed to the various outputs of our mesh pipeline. In this case those are: a ray tracing instance, a normal draw call, a bounding volume, and a physics shape. Note that not all of these outputs have to be used, rather the code that uses this creation graph might only look for the rendering outputs and ignore the physics shape, whilst some other code might only care about the physics shape output.</p>
 <p><img src="https://www.dropbox.com/s/103bvtqaz6lnsog/tm_guide_creation_graph_mesh_processing.png?dl=1" alt="Mesh processing" /></p>
 <p>Like the entity graph, the creation graph can executes nodes in sequence from an event. Some examples of this are the <code>Tick</code>, <code>Init</code>, and <code>Compile</code> events which are executed at known intervals. Most of the creation graphs however work with a reverse flow, compiling the graph into a sequence of nodes for a specific output. The two examples presented earlier show this workflow. Some outputs are: <code>Draw Call</code>, <code>Shader Instance</code>, <code>Image</code>, and <code>Physics Shape</code>. Note that these outputs are just blobs of data, an implementation can define more output type in code.</p>
+<h3 id="contributors"><a class="header" href="#contributors">Contributors</a></h3>
 
                     </main>
 

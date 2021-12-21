@@ -155,7 +155,11 @@
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="#filtering-entities">Filtering Entities</a></li>
-<li><a href="#filtering-entities-by-using-tag-components">Filtering Entities by using Tag Components</a></li>
+<li><a href="#filtering-entities-by-using-tag-components">Filtering Entities by using Tag Components</a>
+<ul>
+<li><a href="#contributors">Contributors</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="filtering-entities-1"><a class="header" href="#filtering-entities-1">Filtering Entities</a></h2>
 <p>In an Engine (<a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i">tm_engine_i</a>) you can define the <code>.excluded</code> field. This tells the scheduler that this engine shall <strong>not</strong> run on any entity type that contains these components.</p>
@@ -278,6 +282,7 @@ tm_entity_api-&gt;register_engine(ctx, &amp;movement_engine);
 
 </code></pre>
 <p>As you can see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.</p>
+<h3 id="contributors"><a class="header" href="#contributors">Contributors</a></h3>
 
                     </main>
 

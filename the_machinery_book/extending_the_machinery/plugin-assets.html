@@ -153,7 +153,11 @@ specific, e.g., the gameplay code for a particular game.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="#the-two-ways-of-achieving-plugin-only-assets">The two ways of achieving plugin only assets</a></li>
-<li><a href="#how-to-create-a-plugin-asset">How to create a plugin asset</a></li>
+<li><a href="#how-to-create-a-plugin-asset">How to create a plugin asset</a>
+<ul>
+<li><a href="#contributors">Contributors</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="the-two-ways-of-achieving-plugin-only-assets"><a class="header" href="#the-two-ways-of-achieving-plugin-only-assets">The two ways of achieving plugin only assets</a></h2>
 <p>There are two ways of doing this.</p>
@@ -197,6 +201,7 @@ version of The Machinery. Otherwise, the plugin will most likely crash.</p>
 properties. If checked, the editor will monitor the plugin's import path for changes and if it
 detects a file change, it will reimport the plugin.</p>
 <p>The <strong>Windows &amp; Linux DLL Path (2)</strong> can be used to provide the path to the DLLs for the importing the plugin. Plugin Assets need to obey the same rules as normal plugins. Therefore they need to provide the <code>TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)</code> function. In case this is not possible because the DLL is a helper the helper check box can be called.</p>
+<h3 id="contributors"><a class="header" href="#contributors">Contributors</a></h3>
 
                     </main>
 

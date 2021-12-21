@@ -162,6 +162,8 @@
 <p>And if we run the simulation again we’ll now see that the Client is correctly receiving updates from the Server about the World Entity: we can move the Xbot Entity in both windows exactly like in the single player game, but now when we move on the Server Window you’ll notice that the updates are sent to the Client as well: that is because we automatically check for changes in the components of all the entitites that have been flagged as replicated (once per second by default).</p>
 <p>If we instead move the Player from the Client window, you’ll see that the Player on the Server entity doesn’t get updated: we told the Client to have a passive Gamestate, and so even if the Client is simulating the Player on its own simulation instance it doesn’t send the updates to the Server.</p>
 <p><img src="https://paper-attachments.dropbox.com/s_5F8ED61A9C68BDE8B9368D5E3DABD345E39CC324FB030EDE9E31314C3B7EE30F_1635343311632_image.png" alt="img" /></p>
+<h3 id="contributors"><a class="header" href="#contributors">Contributors</a></h3>
+<p><a href="mailto:simon@ourmachinery.com"><img src="https://www.gravatar.com/avatar/b83de4c1812480cc09310470ca2949a9?s=32" alt="Simon Renger" /> Simon Renger</a></p>
 
                     </main>
 

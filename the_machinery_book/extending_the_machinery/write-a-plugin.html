@@ -175,6 +175,7 @@
 </ul>
 </li>
 <li><a href="#write-your-own-api">Write your own API</a></li>
+<li><a href="#contributors">Contributors</a></li>
 </ul>
 </li>
 </ul>
@@ -392,6 +393,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load) {
 </code></pre>
 <p>When The Machinery loads a plugin DLL, it looks for the <code>tm_load_plugin()</code> function and calls it. If it can't find the function, it prints an error message. We store the API registry pointer in a static variable so that we can use it everywhere in our DLL.
 We also <code>tm_get_api()</code> some of the API pointers that we will use frequently and store them in static variables so that we don’t have to use the registry to query for them every time we want to use them. Finally, we add our own API to the registry, so others can query for and use it.</p>
+<h3 id="contributors"><a class="header" href="#contributors">Contributors</a></h3>
 
                     </main>
 

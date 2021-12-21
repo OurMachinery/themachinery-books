@@ -161,7 +161,11 @@
 </ul>
 </li>
 <li><a href="#tag-components---entity-type-filter">Tag Components - Entity Type Filter</a></li>
-<li><a href="#filtering">Filtering</a></li>
+<li><a href="#filtering">Filtering</a>
+<ul>
+<li><a href="#contributors">Contributors</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="using-the-tag-component"><a class="header" href="#using-the-tag-component">Using the Tag Component</a></h2>
 <p>The difference is that the first solution can be used via the <code>tag_component_api</code> and you can add Tags via the Editor to any Entity that has a Tag Component. Later on in your System or Engine you can access the Tagged Entity.</p>
@@ -213,6 +217,7 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 <p>In this example System B would not operate on both Entities if we use the <code>.excluded</code> filter to exclude <code>My Tag For System A</code> from the System.</p>
 <h2 id="filtering"><a class="header" href="#filtering">Filtering</a></h2>
 <p>To see a real world application of Tag components to filter entity types checkout the next chapter: <a href="">Filtering</a></p>
+<h3 id="contributors"><a class="header" href="#contributors">Contributors</a></h3>
 
                     </main>
 
