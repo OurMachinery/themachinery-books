@@ -38,6 +38,12 @@ folder = "../"
 books = ["the_machinery_book","tutorials"]
 command = "python ../auto_include.py"
 
+[preprocessor.authors]
+renderer = ["html"]
+folder = "../"
+books = ["the_machinery_book","tutorials"]
+command = "python ../authors.py"
+
 [output.linkcheck]
 follow-web-links = false
 exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com','https://marketplace\.visualstudio\.com'  ]

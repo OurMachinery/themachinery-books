@@ -42,3 +42,9 @@ renderer = ["html"]
 folder = "../"
 books = ["the_machinery_book","tutorials"]
 command = "python ../auto_include.py"
+
+[preprocessor.authors]
+renderer = ["html"]
+folder = "../"
+books = ["the_machinery_book","tutorials"]
+command = "python ../authors.py"
