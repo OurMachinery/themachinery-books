@@ -20,7 +20,7 @@ def process_file(content, path):
     if "SUMMARY.md" in path:
         return content
     path = path.replace("index.md", "README.md")
-    path = os.path.join("tutorials", "src", path)
+    path = os.path.join(os.path.split(os.getcwd())[-1], "src", path)
     repo = Repo(search_parent_directories=True)
     names = {}
     for commit in repo.iter_commits("main", Path(path).as_posix()):
