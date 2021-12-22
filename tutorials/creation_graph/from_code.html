@@ -405,8 +405,8 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 
     // The editor aspect has to be defined if we want our component to be usable in the editor.
     // The shader aspect is used to update the creation graph and our final output.
-    tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_EDITOR_UI, &amp;editor_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_SHADER, &amp;shader_aspect);
+    tm_tt_set_aspect(tt, component_type, tm_ci_editor_ui_i, &amp;editor_aspect);
+    tm_tt_set_aspect(tt, component_type, tm_ci_shader_i, &amp;shader_aspect);
 }
 
 static bool component__load_asset(tm_component_manager_o *manager, struct tm_entity_commands_o *commands, tm_entity_t e, void *data, const tm_the_truth_o *tt, tm_tt_id_t asset)

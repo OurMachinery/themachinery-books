@@ -148,7 +148,7 @@
                     <main>
                         <h1 id="aspects"><a class="header" href="#aspects">Aspects</a></h1>
 <p>An “aspect” is an interface (struct of function pointers) identified by a unique identifier. The Truth allows you to associate aspects with object types. This lets you extend The Truth with new functionality. For example, you could add an interface for debug printing an object:</p>
-<pre><code class="language-c">#define TM_TT_ASPECT__DEBUG_PRINT                                              \
+<pre><code class="language-c">#define tm_debug_print_aspect_i_hash                                           \
   TM_STATIC_HASH(&quot;tm_debug_print_aspect_i&quot;, 0x39821c78639e0773ULL)
 
 typedef struct tm_debug_print_aspect_i {
@@ -161,8 +161,8 @@ typedef struct tm_debug_print_aspect_i {
 </blockquote>
 <p>You could then use this code to debug print an object <code>o</code> with:</p>
 <pre><code class="language-c">static void example_use_case(tm_the_truth_o *tt, tm_tt_id_t object) {
-  tm_debug_print_aspect_i *dp = tm_the_truth_api-&gt;get_aspect(
-      tt, tm_tt_type(object), TM_TT_ASPECT__DEBUG_PRINT);
+  tm_debug_print_aspect_i *dp =
+      tm_tt_get_aspect(tt, tm_tt_type(object), tm_debug_print_aspect_i);
   if (dp)
     dp-&gt;debug_print(tt, object);
 }
@@ -171,7 +171,7 @@ typedef struct tm_debug_print_aspect_i {
 <blockquote>
 <p><strong>Note</strong>: that plugins can extend the system with completely new aspects.</p>
 </blockquote>
-<p>The best example of how the Engine is using the aspect system is the <code>TM_TT_ASPECT__PROPERTIES</code> which helps us to defines custom UIs for Truth objects.</p>
+<p>The best example of how the Engine is using the aspect system is the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> which helps us to defines custom UIs for Truth objects.</p>
 <h3 id="contributors"><a class="header" href="#contributors">Contributors</a></h3>
 <p><a href="mailto:simon@ourmachinery.com"><img src="https://www.gravatar.com/avatar/b83de4c1812480cc09310470ca2949a9?s=32" alt="Simon Renger" /> Simon Renger</a></p>
 

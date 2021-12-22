@@ -1136,8 +1136,8 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 
     // The editor aspect has to be defined if we want our component to be usable in the editor.
     // The shader aspect is used to update the creation graph and our final output.
-    tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_EDITOR_UI, &amp;editor_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, component_type, TM_CI_SHADER, &amp;shader_aspect);
+    tm_tt_set_aspect(tt, component_type, tm_ci_editor_ui_i, &amp;editor_aspect);
+    tm_tt_set_aspect(tt, component_type, tm_ci_shader_i, &amp;shader_aspect);
 }
 
 static bool component__load_asset(tm_component_manager_o *manager, struct tm_entity_commands_o *commands, tm_entity_t e, void *data, const tm_the_truth_o *tt, tm_tt_id_t asset)
@@ -1893,7 +1893,7 @@ glaring omissions are:</p>
 {
     // we have properties this is why the last arguments are &quot;0, 0&quot;
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;my_asset&quot;);
 }
 
 </code></pre>
@@ -2006,7 +2006,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 {
     // we have properties this is why the last arguments are &quot;0, 0&quot;
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;my_asset&quot;);
 }
 // -- asset browser regsiter interface
 static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
@@ -2060,7 +2060,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     // we have properties this is why the last arguments are &quot;0, 0&quot;
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;my_asset&quot;);
 }
 
 </code></pre>
@@ -2090,11 +2090,11 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
         { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
 }
 
 </code></pre>
@@ -2108,7 +2108,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>This will change the code as follows:</p>
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
 }
 
 // .. other code
@@ -2130,20 +2130,19 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 <h3 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h3>
 <p>To show an <strong>Import</strong> button in the Properties View, we need to customize the Properties View UI of our type. We can do this by adding a <code>TM_TT_ASPECT__PROPERTIES</code> to the Truth type.</p>
 <p>The <code>TM_TT_ASPECT__PROPERTIES</code> is implemented with a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> struct. This struct has a lot of field that can be used to customize various parts of the Properties View (for more information on them, check out the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>). For our purposes, we are interested in the <code>custom_ui()</code> field that lets us use a custom callback for drawing the type in the Properties View.</p>
-<p><code>custom_ui()</code> wants a function pointer of the type <code>float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)</code>.</p>
+<p><code>custom_ui()</code> wants a function pointer of the type <code>float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)</code>.</p>
 <p>Let us quickly go over this:</p>
 <table><thead><tr><th><strong>Argument</strong></th><th><strong>Data Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td><code>args</code></td><td><a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">tm_properties_ui_args_t</a></td><td>A struct with information from the Properties View that can be used in drawing the UI. For example, this has the <code>ui</code> instance as well as the <code>uistyle</code> which you will need in any <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api">tm_ui_api</a> calls. For more information check the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">documentation</a>.</td></tr>
 <tr><td><code>item_rect</code></td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_rect_t">tm_rect_t</a></td><td>The rect in the Properties View UI where the item should be drawn. Note that the height in this struct (<code>item_rect.h</code>) is the height of a standard property field. You can use more or less height to draw your type as long as you return the right <code>y</code> value (see below).</td></tr>
 <tr><td><code>object</code></td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a></td><td>The ID of the Truth object that the Properties View wants to draw.</td></tr>
-<tr><td><code>indent</code></td><td><code>uint32_t</code></td><td>The current indentation level. Usually just passed along to functions in the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">tm_properties_view_api</a></td></tr>
 </tbody></table>
 <table><thead><tr><th><strong>Return value</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>float</td><td>Returns the <code>y</code> coordinate where the next item in the Propertiew View should be drawn. This should be <code>item_rect.y</code> + however much vertical space your controls are using.</td></tr>
 </tbody></table>
 <p>To implement the <code>custom_ui()</code> function we can make use of the functions for drawing property UIs found in <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">tm_properties_view_api</a>, or we can draw UI directly using <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api">tm_ui_api</a>. Once we've implemented <code>custom_ui()</code> we need a instance of <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> to register. This instance must have global lifetime so it doesn't get destroyed:</p>
 <pre><code class="language-c">//.. other code
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     return item_rect.y;
 }
@@ -2162,7 +2161,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
 }
 
 //... the other code
@@ -2227,7 +2226,7 @@ enum {
 #include &lt;foundation/os.h&gt;
 #include &lt;foundation/buffer.h&gt;
 //.. other code
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
@@ -2312,7 +2311,7 @@ static struct tm_os_api *tm_os_api;
 #include &quot;txt.h&quot;
 
 //custom ui
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
@@ -2340,11 +2339,11 @@ static void create_truth_types(struct tm_the_truth_o *tt)
         { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
 }
 
 // -- asset browser regsiter interface
@@ -2769,7 +2768,7 @@ struct task__import_txt
 // .. other code
 </code></pre>
 <p>We fill out the struct with the needed data, copy the file name, and then ask the task system to run the task:</p>
-<pre><code class="language-c">static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+<pre><code class="language-c">static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
@@ -2957,7 +2956,7 @@ static struct tm_asset_io_i txt_asset_io = {
 // -- asset on its own
 
 //custom ui
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
@@ -2989,11 +2988,11 @@ static void create_truth_types(struct tm_the_truth_o *tt)
         { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
 }
 
 // -- asset browser regsiter interface
@@ -3065,7 +3064,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </ul>
 <h2 id="about-aspects"><a class="header" href="#about-aspects">About aspects</a></h2>
 <p>An “aspect” is an interface (struct of function pointers) identified by a unique identifier. The Truth allows you to associate aspects with object types. This lets you extend The Truth with new functionality. For example, you could add an interface for debug printing an object:</p>
-<pre><code class="language-c">#define TM_TT_ASPECT__DEBUG_PRINT TM_STATIC_HASH(&quot;tm_debug_print_aspect_i&quot;, 0x39821c78639e0773ULL)
+<pre><code class="language-c">#define tm_debug_print_aspect_i_hash TM_STATIC_HASH(&quot;tm_debug_print_aspect_i&quot;, 0x39821c78639e0773ULL)
 
 typedef struct tm_debug_print_aspect_i
 {
@@ -3079,7 +3078,7 @@ typedef struct tm_debug_print_aspect_i
 <p>You could then use this code to debug print an object <code>o</code> with:</p>
 <pre><code class="language-c">static void example_use_case(tm_the_truth_o *tt, tm_tt_id_t object)
 {
-    tm_debug_print_aspect_i *dp = tm_the_truth_api-&gt;get_aspect(tt, tm_tt_type(object), TM_TT_ASPECT__DEBUG_PRINT);
+    tm_debug_print_aspect_i *dp = tm_tt_get_aspect(tt, tm_tt_type(object), tm_debug_print_aspect_i);
     if (dp)
         dp-&gt;debug_print(tt, object);
 }
@@ -3088,7 +3087,7 @@ typedef struct tm_debug_print_aspect_i
 <blockquote>
 <p><strong>Note</strong>: that plugins can extend the system with completely new aspects.</p>
 </blockquote>
-<p>The best example of how the Engine is using the aspect system is the <code>TM_TT_ASPECT__PROPERTIES</code> which helps us to defines custom UIs for Truth objects.</p>
+<p>The best example of how the Engine is using the aspect system is the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> which helps us to defines custom UIs for Truth objects.</p>
 <h2 id="adding-drag-and-drop-to-our-asset"><a class="header" href="#adding-drag-and-drop-to-our-asset">Adding Drag and Drop to our asset</a></h2>
 <p>In this example, we are going back to our text asset sample. In that sample, we have the following function to register the asset to the Truth:</p>
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
@@ -3098,18 +3097,19 @@ typedef struct tm_debug_print_aspect_i
         { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
     tm_the_truth_property_definition_t story_component_properties[] = {
         [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET }
     };
 }
 
 </code></pre>
-<p>We need to make use of the <code>TM_TT_ASPECT__ASSET_SCENE</code> aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the <code>plugins/the_machinery_shared/asset_aspects.h</code> header.</p>
+<p>We need to make use of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_scene_api">tm_asset_scene_api</a> aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the <code>plugins/the_machinery_shared/asset_aspects.h</code> header.</p>
 <h3 id="asset-scene-aspect"><a class="header" href="#asset-scene-aspect">Asset Scene Aspect</a></h3>
 <p>This aspect expects an instance of the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/asset_aspects.h.html#structtm_asset_scene_api">tm_asset_scene_api</a>. When we provide a call-back called</p>
 <p><code>bool (*droppable)(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t asset);</code> we tell the scene that we can drag the asset out of the asset browser. We need to return true for this. In this case you need to provide the <code>create_entity</code> function. When you drag your asset into the Scene, this function is called by the Engine. In this function, you can create a new entity and attach it to the parent entity ( which might be the world.  If you drag it on top of another entity, you can attach the newly created entity as a child entity to this one. </p>
@@ -3144,12 +3144,13 @@ static void create_truth_types(struct tm_the_truth_o *tt)
         { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api); // &lt;&lt;---
+
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_asset_scene_api, &amp;scene_api); // &lt;&lt;---
     tm_the_truth_property_definition_t story_component_properties[] = {
         [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET }
     };
@@ -3159,8 +3160,8 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     };
 
     const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
+    tm_tt_set_aspect(tt, story_component_type, tm_ci_editor_ui_i, editor_aspect);
+    tm_tt_set_aspect(tt, story_component_type, tm_properties_aspect_i, &amp;properties_component_aspect);
 }
 
 
@@ -3330,12 +3331,12 @@ static void component__destroy(tm_component_manager_o *manager)
 };
 
 const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
-tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
-tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
+tm_tt_set_aspect(tt, story_component_type, tm_ci_editor_ui_i, editor_aspect);
+tm_tt_set_aspect(tt, story_component_type, tm_properties_aspect_i, &amp;properties_component_aspect);
 
 </code></pre>
 <p>And than we need to define our custom UI:</p>
-<pre><code class="language-c">static float properties__component_custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+<pre><code class="language-c">static float properties__component_custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     TM_INIT_TEMP_ALLOCATOR(ta);
     tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(args-&gt;tt, TM_TT_TYPE_HASH__ASSET);
@@ -3369,10 +3370,10 @@ tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTI
 };
 
 const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
-tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
-tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
+tm_tt_set_aspect(tt, story_component_type, tm_ci_editor_ui_i, editor_aspect);
+tm_tt_set_aspect(tt, story_component_type, tm_properties_aspect_i, &amp;properties_component_aspect);
 
-tm_the_truth_api-&gt;set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER, TM_TT_TYPE_HASH__TXT_ASSET);
+tm_tt_set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, tm_tt_prop_aspect__properties__asset_picker, TM_TT_TYPE__MY_ASSET);
 }
 </code></pre>
 <h2 id="drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity"><a class="header" href="#drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity">Drag and drop a Text Asset into the Scene and create an entity</a></h2>
@@ -3394,12 +3395,13 @@ tm_asset_scene_api scene_api = {
         { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api); // &lt;&lt;---
+
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_asset_scene_api, &amp;scene_api); // &lt;&lt;---
     tm_the_truth_property_definition_t story_component_properties[] = {
         [TM_TT_PROP__STORY_COMPONENT__ASSET] = { &quot;story_asset&quot;, .type = TM_THE_TRUTH_PROPERTY_TYPE_REFERENCE, .type_hash = TM_TT_TYPE_HASH__MY_ASSET }
     };
@@ -3409,8 +3411,8 @@ tm_asset_scene_api scene_api = {
     };
 
     const tm_tt_type_t story_component_type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__STORY_COMPONENT, story_component_properties, TM_ARRAY_COUNT(story_component_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_CI_EDITOR_UI, editor_aspect);
-    tm_the_truth_api-&gt;set_aspect(tt, story_component_type, TM_TT_ASPECT__PROPERTIES, &amp;properties_component_aspect);
+    tm_tt_set_aspect(tt, story_component_type, tm_ci_editor_ui_i, editor_aspect);
+    tm_tt_set_aspect(tt, story_component_type, tm_properties_aspect_i, &amp;properties_component_aspect);
 }
 
 //..
@@ -3429,7 +3431,7 @@ tm_asset_scene_api scene_api = {
 // ... more code
 tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
     tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack, tm_tt_undo_scope_t parent_undo_scope)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -3467,7 +3469,7 @@ tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *t
 <p>First, we create an entity:</p>
 <pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
     tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack, tm_tt_undo_scope_t parent_undo_scope)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -3481,7 +3483,7 @@ tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *t
 <p>Suppose it needs a transform. If not, we don't! In this case, we add the transform to the entity, just to make a point:</p>
 <pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
     tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack, tm_tt_undo_scope_t parent_undo_scope)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -3503,7 +3505,7 @@ tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *t
 <p>Then, we add the story component to the entity we follow the same steps as before.</p>
 <pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
     tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack, tm_tt_undo_scope_t parent_undo_scope)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -3534,7 +3536,7 @@ tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *t
 <p>Do not forget to add the undo scope to make sure we can undo our action and return the created entity!</p>
 <pre><code class="language-c">tm_tt_id_t create_entity(struct tm_asset_scene_o *inst, struct tm_the_truth_o *tt,
     tm_tt_id_t asset, const char *name, const tm_transform_t *local_transform,
-    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack)
+    tm_tt_id_t parent_entity, tm_tt_id_t asset_root, struct tm_undo_stack_i *undo_stack, tm_tt_undo_scope_t parent_undo_scope)
 {
     const tm_tt_undo_scope_t undo_scope = tm_the_truth_api-&gt;create_undo_scope(tt, TM_LOCALIZE(&quot;Create Entity From Creation Graph&quot;));
     const tm_tt_type_t entity_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__ENTITY);
@@ -3609,8 +3611,8 @@ static void create_truth_types_modify(struct tm_the_truth_o *tt)
 {
     tm_tt_type_t asset_type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
     if (asset_type.u64) {
-        if (tm_the_truth_api-&gt;get_aspect(tt, asset_type, TM_TT_ASPECT__ASSET_SCENE))
-            tm_the_truth_api-&gt;set_aspect(tt, asset_type, TM_TT_ASPECT__ASSET_SCENE, &amp;scene_api);
+        if (tm_tt_get_aspect(tt, asset_type, tm_asset_scene_api))
+            tm_tt_set_aspect(tt, asset_type, tm_asset_scene_api, &amp;scene_api);
     }
 }
 
@@ -4087,7 +4089,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <pre><code class="language-c">// -- create truth type
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_OPEN, open_i);
+    tm_tt_set_aspect(tt, type, tm_asset_open_aspect_i, open_i);
 }
 
 </code></pre>
@@ -5011,9 +5013,9 @@ static struct tm_the_truth_api *tm_the_truth_api;
 #include &lt;foundation/temp_allocator.h&gt;
 #include &lt;foundation/the_truth.h&gt;
 
+#include &lt;plugins/ui/docking.h&gt;
 #include &lt;plugins/ui/layouts.h&gt;
 #include &lt;plugins/ui/ui_icon.h&gt;
-#include &lt;the_machinery/the_machinery.h&gt;
 
 // tabs:
 #include &lt;the_machinery/asset_browser_tab.h&gt;
@@ -5022,6 +5024,7 @@ static struct tm_the_truth_api *tm_the_truth_api;
 #include &lt;the_machinery/preview_tab.h&gt;
 #include &lt;the_machinery/properties_tab.h&gt;
 #include &lt;the_machinery/scene_tab.h&gt;
+#include &lt;the_machinery/the_machinery.h&gt;
 
 #define TM_LAYOUT_NAME_HASH TM_STATIC_HASH(&quot;my_layout&quot;, 0xc1b38d6389074e53ULL)
 #define TM_LAYOUT_NAME &quot;my_layout&quot;

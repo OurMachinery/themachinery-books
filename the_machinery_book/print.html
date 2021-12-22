@@ -2634,7 +2634,7 @@ tm_the_truth_api-&gt;commit(tt, my_object_w, undo_scope);
 <p><a href="mailto:simon@ourmachinery.com"><img src="https://www.gravatar.com/avatar/b83de4c1812480cc09310470ca2949a9?s=32" alt="Simon Renger" /> Simon Renger</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="aspects"><a class="header" href="#aspects">Aspects</a></h1>
 <p>An “aspect” is an interface (struct of function pointers) identified by a unique identifier. The Truth allows you to associate aspects with object types. This lets you extend The Truth with new functionality. For example, you could add an interface for debug printing an object:</p>
-<pre><code class="language-c">#define TM_TT_ASPECT__DEBUG_PRINT                                              \
+<pre><code class="language-c">#define tm_debug_print_aspect_i_hash                                           \
   TM_STATIC_HASH(&quot;tm_debug_print_aspect_i&quot;, 0x39821c78639e0773ULL)
 
 typedef struct tm_debug_print_aspect_i {
@@ -2647,8 +2647,8 @@ typedef struct tm_debug_print_aspect_i {
 </blockquote>
 <p>You could then use this code to debug print an object <code>o</code> with:</p>
 <pre><code class="language-c">static void example_use_case(tm_the_truth_o *tt, tm_tt_id_t object) {
-  tm_debug_print_aspect_i *dp = tm_the_truth_api-&gt;get_aspect(
-      tt, tm_tt_type(object), TM_TT_ASPECT__DEBUG_PRINT);
+  tm_debug_print_aspect_i *dp =
+      tm_tt_get_aspect(tt, tm_tt_type(object), tm_debug_print_aspect_i);
   if (dp)
     dp-&gt;debug_print(tt, object);
 }
@@ -2657,7 +2657,7 @@ typedef struct tm_debug_print_aspect_i {
 <blockquote>
 <p><strong>Note</strong>: that plugins can extend the system with completely new aspects.</p>
 </blockquote>
-<p>The best example of how the Engine is using the aspect system is the <code>TM_TT_ASPECT__PROPERTIES</code> which helps us to defines custom UIs for Truth objects.</p>
+<p>The best example of how the Engine is using the aspect system is the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> which helps us to defines custom UIs for Truth objects.</p>
 <h3 id="contributors-46"><a class="header" href="#contributors-46">Contributors</a></h3>
 <p><a href="mailto:simon@ourmachinery.com"><img src="https://www.gravatar.com/avatar/b83de4c1812480cc09310470ca2949a9?s=32" alt="Simon Renger" /> Simon Renger</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="create-a-custom-truth-type"><a class="header" href="#create-a-custom-truth-type">Create a custom Truth Type</a></h1>
@@ -4919,9 +4919,7 @@ static void truth__create_types(struct tm_the_truth_o *tt) {
       TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE, 1.0f, -1);
   tm_the_truth_api-&gt;set_default_object(tt, custom_component_type,
                                        default_object);
-
-  tm_the_truth_api-&gt;set_aspect(tt, custom_component_type, TM_CI_EDITOR_UI,
-                               editor_aspect);
+  tm_tt_set_aspect(tt, custom_component_type, tm_ci_editor_ui_i, editor_aspect);
 }
 static bool component__load_asset(tm_component_manager_o *man,
                                   struct tm_entity_commands_o *commands,
@@ -5070,7 +5068,7 @@ struct tm_custom_component_t {
 </code></pre>
 <h3 id="add-your-component-to-the-truth"><a class="header" href="#add-your-component-to-the-truth">Add your component to the Truth</a></h3>
 <p>After this, we have the region in which we define the category of our component. The Editor will call it to categorize the component into the correct section. </p>
-<p>We need to define a <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h.html#structtm_ci_editor_ui_i">tm_ci_editor_ui_i</a> object which uses this function.  Later we register this function to the <code>TM_CI_EDITOR_UI</code> aspect of our truth type. If you do not add this aspect later to your Truth Type, the Editor will not know that this Component Type exists, and you can not add it via the Editor, but in C.</p>
+<p>We need to define a <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h.html#structtm_ci_editor_ui_i">tm_ci_editor_ui_i</a> object which uses this function.  Later we register this function to the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h.html#structtm_ci_editor_ui_i">tm_ci_editor_ui_i</a> aspect of our truth type. If you do not add this aspect later to your Truth Type, the Editor will not know that this Component Type exists, and you can not add it via the Editor, but in C.</p>
 <blockquote>
 <p><strong>Note:</strong> More about aspects you can read in the <a href="gameplay_coding/ecs/write_a_custom_component.html#">aspects guide</a>.</p>
 </blockquote>
@@ -5100,9 +5098,7 @@ static tm_ci_editor_ui_i *editor_aspect =
       TM_TT_PROP__CUSTOM_COMPONENT__AMPLITUDE, 1.0f, -1);
   tm_the_truth_api-&gt;set_default_object(tt, custom_component_type,
                                        default_object);
-
-  tm_the_truth_api-&gt;set_aspect(tt, custom_component_type, TM_CI_EDITOR_UI,
-                               editor_aspect);
+  tm_tt_set_aspect(tt, custom_component_type, tm_ci_editor_ui_i, editor_aspect);
 }
 
 </code></pre>
@@ -5110,7 +5106,7 @@ static tm_ci_editor_ui_i *editor_aspect =
 <li>We define the component's properties.</li>
 <li>We create the actual type in the Truth.</li>
 <li>We create an object of our type with <code>quick_create_object</code> and provide a default object to our component. It makes sure that when you add the component to an Entity, you have the expected default values. It is not needed, just a nice thing to have.</li>
-<li>Add our <code>TM_CI_EDITOR_UI</code> aspect to the type. It tells the Editor that you can add the component via the Editor. If you do not provide it, the Editor will not suggest this component to you and cannot store it in the Truth. It does not mean you cannot add this component via C.</li>
+<li>Add our <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h.html#structtm_ci_editor_ui_i">tm_ci_editor_ui_i</a> aspect to the type. It tells the Editor that you can add the component via the Editor. If you do not provide it, the Editor will not suggest this component to you and cannot store it in the Truth. It does not mean you cannot add this component via C.</li>
 </ol>
 <h3 id="define-your-component"><a class="header" href="#define-your-component">Define your component</a></h3>
 <p>You can register a component to the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#tm_entity_create_component_i">tm_entity_create_component_i</a> in your plugin load function. This interface expects a function pointer to a create component function of the signature: <code>void tm_entity_create_component_i(struct tm_entity_context_o *ctx)</code>.</p>

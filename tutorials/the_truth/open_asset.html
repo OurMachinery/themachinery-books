@@ -615,7 +615,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <pre><code class="language-c">// -- create truth type
 static void create_truth_types(struct tm_the_truth_o *tt)
 {
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__ASSET_OPEN, open_i);
+    tm_tt_set_aspect(tt, type, tm_asset_open_aspect_i, open_i);
 }
 
 </code></pre>

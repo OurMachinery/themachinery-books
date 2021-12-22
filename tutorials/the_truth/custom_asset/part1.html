@@ -238,7 +238,7 @@
 {
     // we have properties this is why the last arguments are &quot;0, 0&quot;
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;my_asset&quot;);
 }
 
 </code></pre>
@@ -351,7 +351,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
 {
     // we have properties this is why the last arguments are &quot;0, 0&quot;
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;my_asset&quot;);
 }
 // -- asset browser regsiter interface
 static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)

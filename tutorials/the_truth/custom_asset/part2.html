@@ -176,7 +176,7 @@
 {
     // we have properties this is why the last arguments are &quot;0, 0&quot;
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;my_asset&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;my_asset&quot;);
 }
 
 </code></pre>
@@ -206,11 +206,11 @@
         { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
 }
 
 </code></pre>
@@ -224,7 +224,7 @@
 <p>This will change the code as follows:</p>
 <pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt)
 {
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
 }
 
 // .. other code
@@ -246,20 +246,19 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 <h3 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h3>
 <p>To show an <strong>Import</strong> button in the Properties View, we need to customize the Properties View UI of our type. We can do this by adding a <code>TM_TT_ASPECT__PROPERTIES</code> to the Truth type.</p>
 <p>The <code>TM_TT_ASPECT__PROPERTIES</code> is implemented with a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> struct. This struct has a lot of field that can be used to customize various parts of the Properties View (for more information on them, check out the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>). For our purposes, we are interested in the <code>custom_ui()</code> field that lets us use a custom callback for drawing the type in the Properties View.</p>
-<p><code>custom_ui()</code> wants a function pointer of the type <code>float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)</code>.</p>
+<p><code>custom_ui()</code> wants a function pointer of the type <code>float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)</code>.</p>
 <p>Let us quickly go over this:</p>
 <table><thead><tr><th><strong>Argument</strong></th><th><strong>Data Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td><code>args</code></td><td><a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">tm_properties_ui_args_t</a></td><td>A struct with information from the Properties View that can be used in drawing the UI. For example, this has the <code>ui</code> instance as well as the <code>uistyle</code> which you will need in any <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api">tm_ui_api</a> calls. For more information check the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">documentation</a>.</td></tr>
 <tr><td><code>item_rect</code></td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_rect_t">tm_rect_t</a></td><td>The rect in the Properties View UI where the item should be drawn. Note that the height in this struct (<code>item_rect.h</code>) is the height of a standard property field. You can use more or less height to draw your type as long as you return the right <code>y</code> value (see below).</td></tr>
 <tr><td><code>object</code></td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a></td><td>The ID of the Truth object that the Properties View wants to draw.</td></tr>
-<tr><td><code>indent</code></td><td><code>uint32_t</code></td><td>The current indentation level. Usually just passed along to functions in the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">tm_properties_view_api</a></td></tr>
 </tbody></table>
 <table><thead><tr><th><strong>Return value</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>float</td><td>Returns the <code>y</code> coordinate where the next item in the Propertiew View should be drawn. This should be <code>item_rect.y</code> + however much vertical space your controls are using.</td></tr>
 </tbody></table>
 <p>To implement the <code>custom_ui()</code> function we can make use of the functions for drawing property UIs found in <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">tm_properties_view_api</a>, or we can draw UI directly using <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api">tm_ui_api</a>. Once we've implemented <code>custom_ui()</code> we need a instance of <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">tm_properties_aspect_i</a> to register. This instance must have global lifetime so it doesn't get destroyed:</p>
 <pre><code class="language-c">//.. other code
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     return item_rect.y;
 }
@@ -278,7 +277,7 @@ static void create_truth_types(struct tm_the_truth_o *tt)
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
 }
 
 //... the other code
@@ -343,7 +342,7 @@ enum {
 #include &lt;foundation/os.h&gt;
 #include &lt;foundation/buffer.h&gt;
 //.. other code
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
@@ -428,7 +427,7 @@ static struct tm_os_api *tm_os_api;
 #include &quot;txt.h&quot;
 
 //custom ui
-static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)
+static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
 {
     tm_the_truth_o *tt = args-&gt;tt;
     bool picked = false;
@@ -456,11 +455,11 @@ static void create_truth_types(struct tm_the_truth_o *tt)
         { &quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER },
     };
     const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__FILE_EXTENSION, &quot;txt&quot;);
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
     static tm_properties_aspect_i properties_aspect = {
         .custom_ui = properties__custom_ui,
     };
-    tm_the_truth_api-&gt;set_aspect(tt, type, TM_TT_ASPECT__PROPERTIES, &amp;properties_aspect);
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
 }
 
 // -- asset browser regsiter interface
