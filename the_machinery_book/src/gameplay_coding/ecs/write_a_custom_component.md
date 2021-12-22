@@ -61,7 +61,7 @@ The next part contains the Truth Definition of the component and the plain old d
 
 After this, we have the region in which we define the category of our component. The Editor will call it to categorize the component into the correct section. 
 
-We need to define a `tm_ci_editor_ui_i` object which uses this function.  Later we register this function to the `TM_CI_EDITOR_UI` aspect of our truth type. If you do not add this aspect later to your Truth Type, the Editor will not know that this Component Type exists, and you can not add it via the Editor, but in C.
+We need to define a `tm_ci_editor_ui_i` object which uses this function.  Later we register this function to the `tm_ci_editor_ui_i` aspect of our truth type. If you do not add this aspect later to your Truth Type, the Editor will not know that this Component Type exists, and you can not add it via the Editor, but in C.
 
 > **Note:** More about aspects you can read in the [aspects guide](#).
 
@@ -84,7 +84,7 @@ Let us take this code apart one more time:
 1. We define the component's properties.
 2. We create the actual type in the Truth.
 3. We create an object of our type with `quick_create_object` and provide a default object to our component. It makes sure that when you add the component to an Entity, you have the expected default values. It is not needed, just a nice thing to have.
-4. Add our `TM_CI_EDITOR_UI` aspect to the type. It tells the Editor that you can add the component via the Editor. If you do not provide it, the Editor will not suggest this component to you and cannot store it in the Truth. It does not mean you cannot add this component via C.
+4. Add our `tm_ci_editor_ui_i` aspect to the type. It tells the Editor that you can add the component via the Editor. If you do not provide it, the Editor will not suggest this component to you and cannot store it in the Truth. It does not mean you cannot add this component via C.
 
 
 

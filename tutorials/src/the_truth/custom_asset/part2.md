@@ -82,7 +82,7 @@ To show an **Import** button in the Properties View, we need to customize the Pr
 
 The `TM_TT_ASPECT__PROPERTIES` is implemented with a `tm_properties_aspect_i` struct. This struct has a lot of field that can be used to customize various parts of the Properties View (for more information on them, check out the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_aspect_i)). For our purposes, we are interested in the `custom_ui()` field that lets us use a custom callback for drawing the type in the Properties View.
 
-`custom_ui()` wants a function pointer of the type `float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object, uint32_t indent)`.
+`custom_ui()` wants a function pointer of the type `float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)`.
 
 Let us quickly go over this:
 
@@ -91,7 +91,6 @@ Let us quickly go over this:
 | `args`       | `tm_properties_ui_args_t` | A struct with information from the Properties View that can be used in drawing the UI. For example, this has the `ui` instance as well as the `uistyle` which you will need in any `tm_ui_api` calls. For more information check the [documentation]({{docs}}plugins/editor_views/properties.h.html#structtm_properties_ui_args_t). |
 | `item_rect`  | `tm_rect_t`               | The rect in the Properties View UI where the item should be drawn. Note that the height in this struct (`item_rect.h`) is the height of a standard property field. You can use more or less height to draw your type as long as you return the right `y` value (see below). |
 | `object`     | `tm_tt_id_t`              | The ID of the Truth object that the Properties View wants to draw. |
-| `indent`     | `uint32_t`                | The current indentation level. Usually just passed along to functions in the `tm_properties_view_api` |
 
 | **Return value** | **Description**                                              |
 | ---------------- | ------------------------------------------------------------ |

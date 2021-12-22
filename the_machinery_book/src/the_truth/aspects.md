@@ -18,4 +18,4 @@ You could then use this code to debug print an object `o` with:
 
 
 
-The best example of how the Engine is using the aspect system is the `TM_TT_ASPECT__PROPERTIES` which helps us to defines custom UIs for Truth objects.
+The best example of how the Engine is using the aspect system is the `tm_properties_aspect_i` which helps us to defines custom UIs for Truth objects.

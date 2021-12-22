@@ -32,7 +32,7 @@ In this example, we are going back to our text asset sample. In that sample, we 
 {{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,create_truth_types)}}
 ```
 
-We need to make use of the `TM_TT_ASPECT__ASSET_SCENE` aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the `plugins/the_machinery_shared/asset_aspects.h` header.
+We need to make use of the `tm_asset_scene_api` aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the `plugins/the_machinery_shared/asset_aspects.h` header.
 
 ### Asset Scene Aspect
 
@@ -128,7 +128,7 @@ Instead of implementing our own UI, which can be full of boilerplate code we can
 
 ```c
 {{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/drag_drop/txt.c,story_component)}}
-tm_the_truth_api->set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, TM_TT_PROP_ASPECT__PROPERTIES__ASSET_PICKER, TM_TT_TYPE_HASH__TXT_ASSET);
+tm_tt_set_property_aspect(tt, story_component_type, TM_TT_PROP__STORY_COMPONENT__ASSET, tm_tt_prop_aspect__properties__asset_picker, TM_TT_TYPE__MY_ASSET);
 }
 ```
 
