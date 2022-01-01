@@ -148,11 +148,45 @@
                     <main>
                         <h1 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h1>
 <p>This section addresses common problems that can arise when using The Machinery. </p>
-<h2 id="windows-10-editor"><a class="header" href="#windows-10-editor">Windows 10 Editor</a></h2>
+<h2 id="system-requirements"><a class="header" href="#system-requirements">System Requirements</a></h2>
+<h3 id="windows"><a class="header" href="#windows">Windows</a></h3>
+<table><thead><tr><th>Name</th><th>Requirement</th></tr></thead><tbody>
+<tr><td>Operating System Version</td><td>10, 11</td></tr>
+<tr><td>GPU</td><td>A Vulkan 1.2 capable GPU with the latest drivers.</td></tr>
+</tbody></table>
+<h3 id="linux"><a class="header" href="#linux">Linux</a></h3>
+<table><thead><tr><th>Name</th><th>Requirement</th></tr></thead><tbody>
+<tr><td>Operating System</td><td>64-bit Linux machine running Ubuntu 20.04 or a recent ArchLinux.</td></tr>
+<tr><td>GPU</td><td>A Vulkan 1.2 capable GPU with the latest drivers.</td></tr>
+<tr><td>Packages</td><td><code>sudo apt-get install libxcb-ewmh2 libxcb-cursor0 libxcb-xrm0 unzip</code></td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> Other Linux distributions have not been extensively tested.</p>
+</blockquote>
+<h2 id="a-crash-happened"><a class="header" href="#a-crash-happened">A Crash happened</a></h2>
+<p>Sometimes it can come to crashes. There are a few steps to follow:</p>
+<ol>
+<li>Is your System (Window or Linux) on the latest update?</li>
+<li>Do you have the latest Graphics Driver installed?</li>
+<li>Does your system support <code>vulkan 1.2</code>?</li>
+<li>Does your system full fills our system requirements?</li>
+<li>Did someone else have this issue before? Check on Discord or  <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a></li>
+</ol>
+<p>In case you cannot debug the crash yourself you should create a issue on our Issue Tracker:  <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a>. To obtain the logs or crash dumps follow the next steps:</p>
+<h3 id="windows-10--windows-11-editor"><a class="header" href="#windows-10--windows-11-editor">Windows 10 &amp; Windows 11 Editor</a></h3>
 <p>When it comes to crashes on Windows which you cannot debug yourself. You can enable a full crash dumb via the following file <code>utils/enable-full-dumps.reg</code>. The dumps can be found in the folder <code>AppData\Local\The Machinery</code> and then in the  <code>CrashDumps</code> folder. In case of an error report it can be very helpful to provide access to the crash dump. You can submit bugs on our public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a>. Please do not forget to mention your current Engine version.</p>
 <p>In order to obtain log files you have to go to the same folder where you can find the CrashDumps (<code>AppData\Local\The Machinery</code>) but they till instead be in the <code>Logs</code> subfolder.</p>
-<h2 id="windows-11"><a class="header" href="#windows-11">Windows 11</a></h2>
-<p>We have not tested windows 11 yet therefore possible problems are to be expected. Please report them to us on the public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a> so we can keep track of them.</p>
+<h3 id="linux-1"><a class="header" href="#linux-1">Linux</a></h3>
+<p>When it comes to crashes on Linux which you cannot debug yourself. The dumps can be found in the folder <code>/home/YOU_USER/.the_machinery</code> and then in the  <code>CrashDumps</code> folder. In case of an error report it can be very helpful to provide access to the crash dump. You can submit bugs on our public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a>. Please do not forget to mention your current Engine version.</p>
+<p>In order to obtain log files you have to go to the same folder where you can find the Crash Dumps (<code>/home/YOU_USER/.the_machinery</code>) but they till instead be in the <code>Logs</code> subfolder.</p>
+<h3 id="graphics"><a class="header" href="#graphics">Graphics</a></h3>
+<p>In case of a crash you will get an error message, this will give some information about the details of the crash. The first step in a Vulkan related crash is to update your graphics drivers. If this didn’t help then please report the issue to us with the following information.</p>
+<ul>
+<li>The error message you got when the crash happened, this should include file information and a Vulkan error code, it’s vital to share these.</li>
+<li>The log file, see the previous section on how to obtain this.</li>
+<li>A crash dump file, see the previous section on how to obtain this.</li>
+</ul>
+<p>You can submit bugs on our public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a>. Please do not forget to mention your current Engine version and provide a copy of your logs.</p>
 <h2 id="tmbuild-cannot-find-build-tools"><a class="header" href="#tmbuild-cannot-find-build-tools">tmbuild cannot find build tools</a></h2>
 <p>In case of a non typical installation of Visual Studios you have to provide to tmbuild the correct environment variables: <code>TM_VS2017_DIR</code> or <code>TM_VS2019_DIR</code>. They need to point to the root directory of your Visual Studio installation.</p>
 <h2 id="tmbuild-cannot-find-environment-variables"><a class="header" href="#tmbuild-cannot-find-environment-variables">tmbuild cannot find environment variables</a></h2>
@@ -167,14 +201,6 @@
 <p>Make sure you have added the needed environment variables. Follow this guide on <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book//helper_tools/tmbuild.html">tmbuild</a>.</p>
 <h2 id="clang-format-pollutes-my-git-commits"><a class="header" href="#clang-format-pollutes-my-git-commits">clang-format pollutes my git commits</a></h2>
 <p>Make sure that you are using the <code>clang-format</code> version the engine downloads for you and add to the <code>TM_LIB_DIR</code>. The engine uses the version 6.0. In case you are using visual studio or visual studio code make sure it points to the right executable!</p>
-<h2 id="graphics"><a class="header" href="#graphics">Graphics</a></h2>
-<p>In case of a crash you will get an error message, this will give some information about the details of the crash. The first step in a Vulkan related crash is to update your graphics drivers. If this didn’t help then please report the issue to us with the following information.</p>
-<ul>
-<li>The error message you got when the crash happened, this should include file information and a Vulkan error code, it’s vital to share these.</li>
-<li>The log file, see the previous section on how to obtain this.</li>
-<li>A crash dump file, see the previous section on how to obtain this.</li>
-</ul>
-<p>You can submit bugs on our public <a href="https://github.com/OurMachinery/themachinery-public/issues">GitHub issues page</a>. Please do not forget to mention your current Engine version.</p>
 <h2 id="where-to-report-bugs-or-feedback"><a class="header" href="#where-to-report-bugs-or-feedback">Where to report bugs or feedback</a></h2>
 <ol>
 <li>If you have any problems running the software, encounter crashes, etc, report them on our <a href="https://github.com/OurMachinery/themachinery-public/issues">public bug tracker</a> as soon as possible. We will fix bugs as soon as we can and provide updated executables for download on the website.</li>
