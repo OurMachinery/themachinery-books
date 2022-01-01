@@ -2,8 +2,38 @@
 
 This section addresses common problems that can arise when using The Machinery. 
 
+## System Requirements
+### Windows
+| Name                     | Requirement                                       |
+| ------------------------ | ------------------------------------------------- |
+| Operating System Version | 10, 11                                            |
+| GPU                      | A Vulkan 1.2 capable GPU with the latest drivers. |
 
-## Windows 10 Editor
+
+### Linux
+| Name             | Requirement                                                  |
+| ---------------- | ------------------------------------------------------------ |
+| Operating System | 64-bit Linux machine running Ubuntu 20.04 or a recent ArchLinux. |
+| GPU              | A Vulkan 1.2 capable GPU with the latest drivers.            |
+| Packages         | `sudo apt-get install libxcb-ewmh2 libxcb-cursor0 libxcb-xrm0 unzip` |
+
+> **Note:** Other Linux distributions have not been extensively tested.
+
+
+
+## A Crash happened
+
+Sometimes it can come to crashes. There are a few steps to follow:
+
+1. Is your System (Window or Linux) on the latest update?
+2. Do you have the latest Graphics Driver installed?
+3. Does your system support `vulkan 1.2`?
+4. Does your system full fills our system requirements?
+4. Did someone else have this issue before? Check on Discord or  [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues)
+
+In case you cannot debug the crash yourself you should create a issue on our Issue Tracker:  [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues). To obtain the logs or crash dumps follow the next steps:
+
+### Windows 10 & Windows 11 Editor
 
 When it comes to crashes on Windows which you cannot debug yourself. You can enable a full crash dumb via the following file `utils/enable-full-dumps.reg`. The dumps can be found in the folder `AppData\Local\The Machinery` and then in the  `CrashDumps` folder. In case of an error report it can be very helpful to provide access to the crash dump. You can submit bugs on our public [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues). Please do not forget to mention your current Engine version.
 
@@ -11,10 +41,24 @@ In order to obtain log files you have to go to the same folder where you can fin
 
 
 
-## Windows 11
+### Linux
 
-We have not tested windows 11 yet therefore possible problems are to be expected. Please report them to us on the public [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues) so we can keep track of them.
+When it comes to crashes on Linux which you cannot debug yourself. The dumps can be found in the folder `/home/YOU_USER/.the_machinery` and then in the  `CrashDumps` folder. In case of an error report it can be very helpful to provide access to the crash dump. You can submit bugs on our public [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues). Please do not forget to mention your current Engine version.
 
+In order to obtain log files you have to go to the same folder where you can find the Crash Dumps (`/home/YOU_USER/.the_machinery`) but they till instead be in the `Logs` subfolder.
+
+
+
+
+### Graphics
+
+In case of a crash you will get an error message, this will give some information about the details of the crash. The first step in a Vulkan related crash is to update your graphics drivers. If this didn’t help then please report the issue to us with the following information.
+
+- The error message you got when the crash happened, this should include file information and a Vulkan error code, it’s vital to share these.
+- The log file, see the previous section on how to obtain this.
+- A crash dump file, see the previous section on how to obtain this.
+
+You can submit bugs on our public [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues). Please do not forget to mention your current Engine version and provide a copy of your logs.
 
 
 
@@ -41,19 +85,6 @@ Make sure you have added the needed environment variables. Follow this guide on 
 ## clang-format pollutes my git commits
 
 Make sure that you are using the `clang-format` version the engine downloads for you and add to the `TM_LIB_DIR`. The engine uses the version 6.0. In case you are using visual studio or visual studio code make sure it points to the right executable!
-
-
-
-
-## Graphics
-
-In case of a crash you will get an error message, this will give some information about the details of the crash. The first step in a Vulkan related crash is to update your graphics drivers. If this didn’t help then please report the issue to us with the following information.
-
-- The error message you got when the crash happened, this should include file information and a Vulkan error code, it’s vital to share these.
-- The log file, see the previous section on how to obtain this.
-- A crash dump file, see the previous section on how to obtain this.
-
-You can submit bugs on our public [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues). Please do not forget to mention your current Engine version.
 
 
 
