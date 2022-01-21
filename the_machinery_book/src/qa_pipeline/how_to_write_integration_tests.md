@@ -22,7 +22,7 @@ The integration test framework can be found in the [integration_test.h]({{docs}}
 
     #include <foundation/integration_test.h>
 
-To write a test you need to register it via the [TM_INTEGRATION_TEST_INTERFACE_NAME]({{docs}}foundation/integration_test.h.html#tm_integration_test_interface_name). It expects a pointer of the type [tm_integration_test_i]({{docs}}foundation/integration_test.h.html#structtm_integration_test_i). This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: `TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR`.
+To write a test you need to register it via the [tm_integration_test_i]({{docs}}foundation/integration_test.h.html#tm_integration_test_i). It expects a pointer of the type [tm_integration_test_i]({{docs}}foundation/integration_test.h.html#structtm_integration_test_i). This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: `TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR`.
 
 
 ```c
@@ -59,11 +59,11 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_global_api_registry = reg;
     //...
-    tm_add_or_remove_implementation(reg, load, TM_INTEGRATION_TEST_INTERFACE_NAME, my_integration_tests);
+    tm_add_or_remove_implementation(reg, load, tm_integration_test_i, my_integration_tests);
 }
 ```
 
-Here we register our test interface to the `TM_INTEGRATION_TEST_INTERFACE_NAME`.
+Here we register our test interface to the `tm_integration_test_i`.
 
 *What could this interface look like?*
 

@@ -34,7 +34,7 @@ It can be helpful on CI Server where build and test servers are different. The b
 
 ## **How to write your tests**
 
-All that is needed is to write tests is to register them via the [TM_UNIT_TEST_INTERFACE_NAME]({{docs}}foundation/unit_test.h.html#tm_unit_test_interface_name). You can find the interface in the [unit_tests.h]({{docs}}foundation/unit_test.h.html). [TM_UNIT_TEST_INTERFACE_NAME]({{docs}}foundation/unit_test.h.html#tm_unit_test_interface_name) expects a pointer of the type [tm_unit_test_i]({{docs}}foundation/unit_test.h.html#structtm_unit_test_i). This interface expects a name and a function pointer to the test entry function.
+All that is needed is to write tests is to register them via the [tm_unit_test_i]({{docs}}foundation/unit_test.h.html#tm_unit_test_interface_name). You can find the interface in the [unit_tests.h]({{docs}}foundation/unit_test.h.html). [tm_unit_test_i]({{docs}}foundation/unit_test.h.html#tm_unit_test_i) expects a pointer of the type [tm_unit_test_i]({{docs}}foundation/unit_test.h.html#structtm_unit_test_i). This interface expects a name and a function pointer to the test entry function.
 
 
 ```c
@@ -71,11 +71,11 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_global_api_registry = reg;
     //...
-    tm_add_or_remove_implementation(reg, load, TM_UNIT_TEST_INTERFACE_NAME, my_unit_tests);
+    tm_add_or_remove_implementation(reg, load, tm_unit_test_i, my_unit_tests);
 }
 ```
 
-Here we register our test interface to the `TM_UNIT_TEST_INTERFACE_NAME`.
+Here we register our test interface to the `tm_unit_test_i`.
 
 *What could this interface look like?*
 After we have done this, all we need to do is declare our `my_unit_tests`. It is as easy as it gets:
