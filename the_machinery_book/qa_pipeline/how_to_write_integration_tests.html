@@ -162,7 +162,7 @@ It is generally used after unit testing to ensure that the composition of the so
 <p>The integration test framework can be found in the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html">integration_test.h</a> ,and is part of the foundation library. We need to include this header file, and then we can start writing our tests.</p>
 <pre><code>#include &lt;foundation/integration_test.h&gt;
 </code></pre>
-<p>To write a test you need to register it via the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_interface_name">TM_INTEGRATION_TEST_INTERFACE_NAME</a>. It expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#structtm_integration_test_i">tm_integration_test_i</a>. This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_context__the_machinery_editor">TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</a>.</p>
+<p>To write a test you need to register it via the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_i">tm_integration_test_i</a>. It expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#structtm_integration_test_i">tm_integration_test_i</a>. This interface expects a name and a function pointer to the test function (tick). Also, it expects a context. The context is a string hash. For example: <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#tm_integration_test_context__the_machinery_editor">TM_INTEGRATION_TEST_CONTEXT__THE_MACHINERY_EDITOR</a>.</p>
 <pre><code class="language-c">// Interface for integration tests.
 typedef struct tm_integration_test_i
 {
@@ -190,10 +190,10 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_global_api_registry = reg;
     //...
-    tm_add_or_remove_implementation(reg, load, TM_INTEGRATION_TEST_INTERFACE_NAME, my_integration_tests);
+    tm_add_or_remove_implementation(reg, load, tm_integration_test_i, my_integration_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <code>TM_INTEGRATION_TEST_INTERFACE_NAME</code>.</p>
+<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/integration_test.h.html#structtm_integration_test_i">tm_integration_test_i</a>.</p>
 <p><em>What could this interface look like?</em></p>
 <p>After we have done this, we need to declare our <code>my_integration_tests.</code> </p>
 <pre><code class="language-c">tm_integration_test_i my_integration_tests = {

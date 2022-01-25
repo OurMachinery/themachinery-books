@@ -171,7 +171,7 @@
 <p><em>When could this be useful?</em>
 It can be helpful on CI Server where build and test servers are different. The build server's final build step uploads the generated <code>dlls</code> to the test server if everything works fine. The test server is monitoring the filesystem, and whenever the dlls change, <code>unit-tests</code> would rerun all tests, also the slow ones, to ensure that all works. It could save time on the build server so the build times are faster and the developer knows quicker if the build fails. Also, the build server does not need a graphics card to run eventual graphic pipeline-related tests. The test server, on the other hand, could run such tests.</p>
 <h2 id="how-to-write-your-tests"><a class="header" href="#how-to-write-your-tests"><strong>How to write your tests</strong></a></h2>
-<p>All that is needed is to write tests is to register them via the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a>. You can find the interface in the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html">unit_tests.h</a>. <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">TM_UNIT_TEST_INTERFACE_NAME</a> expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#structtm_unit_test_i">tm_unit_test_i</a>. This interface expects a name and a function pointer to the test entry function.</p>
+<p>All that is needed is to write tests is to register them via the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_interface_name">tm_unit_test_i</a>. You can find the interface in the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html">unit_tests.h</a>. <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#tm_unit_test_i">tm_unit_test_i</a> expects a pointer of the type <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#structtm_unit_test_i">tm_unit_test_i</a>. This interface expects a name and a function pointer to the test entry function.</p>
 <pre><code class="language-c">// Interface for running unit tests. To find all unit test, query the API registry for
 // `TM_UNIT_TEST_INTERFACE_NAME` implementations.
 typedef struct tm_unit_test_i
@@ -200,10 +200,10 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 {
     tm_global_api_registry = reg;
     //...
-    tm_add_or_remove_implementation(reg, load, TM_UNIT_TEST_INTERFACE_NAME, my_unit_tests);
+    tm_add_or_remove_implementation(reg, load, tm_unit_test_i, my_unit_tests);
 }
 </code></pre>
-<p>Here we register our test interface to the <code>TM_UNIT_TEST_INTERFACE_NAME</code>.</p>
+<p>Here we register our test interface to the <a href="https://ourmachinery.com/apidoc/foundation/unit_test.h.html#structtm_unit_test_i">tm_unit_test_i</a>.</p>
 <p><em>What could this interface look like?</em>
 After we have done this, all we need to do is declare our <code>my_unit_tests</code>. It is as easy as it gets:</p>
 <pre><code class="language-c">#include &lt;foundation/unit_test.h&gt;
