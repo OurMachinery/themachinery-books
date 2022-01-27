@@ -72,7 +72,7 @@ The goal was to apply Velocity to any entity that touches the Trigger the first 
 
 We connect the Entity from the "Physx Set Velocity" entity connector to the *Touched Entity Connector* at the "Physx On Trigger Event" node. 
 
-We need to get the current Velocity of this Entity. We can do this by using the "Physx Get Velocity" node. The result we modify with, let us say -1 and apply it at the end. (*The smaller the value, the stronger the ball will bounce off.*)
+We need to get the current Velocity of this Entity. We can do this by using the "Physx Get Velocity" node. The result we modify with, let us say -1 and apply it at the end. (*The lower the value, the stronger the ball will bounce off.*)
 
 ![](https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?dl=1)
 
@@ -100,7 +100,7 @@ We open the "Special Objects" folder and add a new Entity called "Ball". With a 
 
 
 
-After this, we need to ensure that our ball has CCD is enabled. Also, the Inertia Tensor should be set to 0.4, and Angular Damping should be set to 0.05.
+After this, we need to ensure that our ball has Continuous Collision Detection (CCD) enabled. Also, the Inertia Tensor should be set to 0.4, and Angular Damping should be set to 0.05.
 
 
 
