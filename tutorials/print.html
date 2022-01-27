@@ -1731,7 +1731,7 @@ glaring omissions are:</p>
 <p>To get the current Entity, we add the node &quot;Scene Entity&quot; and connect the outgoing connector with the &quot;Physx On Trigger Event&quot; Entity connector. </p>
 <p>The goal was to apply Velocity to any entity that touches the Trigger the first time. That is why we add a connector from the &quot;First Touch&quot; to the newly added Physx Set Velocity node.</p>
 <p>We connect the Entity from the &quot;Physx Set Velocity&quot; entity connector to the <em>Touched Entity Connector</em> at the &quot;Physx On Trigger Event&quot; node. </p>
-<p>We need to get the current Velocity of this Entity. We can do this by using the &quot;Physx Get Velocity&quot; node. The result we modify with, let us say -1 and apply it at the end. (<em>The smaller the value, the stronger the ball will bounce off.</em>)</p>
+<p>We need to get the current Velocity of this Entity. We can do this by using the &quot;Physx Get Velocity&quot; node. The result we modify with, let us say -1 and apply it at the end. (<em>The lower the value, the stronger the ball will bounce off.</em>)</p>
 <p><img src="https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?dl=1" alt="" /></p>
 <p>This is how our trigger Entity looks like:</p>
 <p><img src="https://www.dropbox.com/s/njipx8mfsjsqcgj/tm_tut_physics_trigger_entity.png?dl=1" alt="" /></p>
@@ -1745,7 +1745,7 @@ glaring omissions are:</p>
 <blockquote>
 <p><strong>Note:</strong> We can also visualize the Sphere Physics Shape in the Scene the same way we visualized them for the Box.</p>
 </blockquote>
-<p>After this, we need to ensure that our ball has CCD is enabled. Also, the Inertia Tensor should be set to 0.4, and Angular Damping should be set to 0.05.</p>
+<p>After this, we need to ensure that our ball has Continuous Collision Detection (CCD) enabled. Also, the Inertia Tensor should be set to 0.4, and Angular Damping should be set to 0.05.</p>
 <p>Now that we have adjusted all the components let us add the actual ball. Again we can drag and drop the <code>sphere.entity</code> from the <code>core/geometry/</code> folder onto our Entity.</p>
 <p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1" alt="" /></p>
 <h3 id="creating-the-scene"><a class="header" href="#creating-the-scene">Creating the Scene</a></h3>
