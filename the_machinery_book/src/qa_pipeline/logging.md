@@ -12,7 +12,7 @@ You can log custom types. This is enabled via the `tm_sprintf_api`. You can log 
 | -------------------- | --------------------------------------------- |
 | `bool`               | `TM_LOG("%p{bool}",&my_value);`               |
 | `tm_vec2_t`          | `TM_LOG("%p{tm_vec2_t}",&my_value);`          |
-| `tm_vec3_t`          | `TM_LOG("%p{tm_vec2_t}",&my_value);`          |
+| `tm_vec3_t`          | `TM_LOG("%p{tm_vec3_t}",&my_value);`          |
 | `tm_vec4_t`          | `TM_LOG("%p{tm_vec4_t}",&my_value);`          |
 | `tm_mat44_t`         | `TM_LOG("%p{tm_mat44_t}",&my_value);`         |
 | `tm_transform_t`     | `TM_LOG("%p{tm_transform_t}",&my_value);`     |
