@@ -8,38 +8,44 @@ This repository contains the source of "The Machinery" book and some other books
 
 If you want to contribute to this project please read the [CONTRIBUTING.md](CONTRIBUTING.md) first!
 
-## Requirements
+## Requirements and installation
 
-Building the book requires 
-- [mdBook](https://github.com/rust-lang-nursery/mdBook)
-- [mdbook-toc](https://github.com/badboy/mdbook-toc)
-- [mdbook-linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck)
-- Python 3.9+ (for auto include generation) (needs to be acciceslbe from CMD)
+To edit the book you need:
 
-To get them:
+- [tmbook](#)
 
-```bash
-$ cargo install mdbook
-$ cargo install mdbook-toc
-$ cargo install mdbook-linkcheck
+### Installation via `tmbook`
+
+Download `tmbook` and create a folder open the folder with the terminal and type:
+
+```
+tmbook init
+```
+This will automatically download everything for you.
+
+
+### Installation via git
+
+Open your terminal and run:
+```
+git clone https://github.com/OurMachinery/themachinery-books.git
+cd themachinery-books
 ```
 
-Alternatively you can download the latest executables for:
+Add `tmbook` in the `themachinery-books` folder and now you can use it. 
 
-- [mdbook](https://github.com/rust-lang/mdBook/releases/)
-- [mdbook-toc](https://github.com/badboy/mdbook-toc/releases)
-- [mdbook-linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases)
 
 ## Writing
 
-Edit the markdown files with your editor of choice (we like [Typora](https://typora.io/)). If you want to see the changes live, run:
+Edit the markdown files with your editor of choice (we like [Typora](https://typora.io/)). 
 
+If you want to see the changes live, run:
 ```bash
 # For the_machinery_book
-$ cd the_machinery_book && mdbook serve
+$ cd the_machinery_book && ../tmbook serve
 
 # For the tutorials
-$ cd tutorials && mdbook serve
+$ cd tutorials && ../tmbook serve
 ```
 
 If you want to add new pages to the system just add them to `SUMMARY.md`. As soon as they are in there they will be used for the book.
@@ -119,7 +125,7 @@ static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab, tm_temp_allocator_i *ta
 
 **Enviroment Variables:**
 
-> **NOTE**: `TM_BOOK_CODE_SNIPPETS` needs to be a enviroment variable pointing to the `examples` folder of the `themachinery-book-code-snippets` repo.
+> **NOTE**: `TM_BOOK_CODE_SNIPPETS` needs to be a environment variable pointing to the `examples` folder of the `themachinery-book-code-snippets` repo.
 
 #### Naming rules:
 
@@ -149,28 +155,6 @@ _Open the in the browser using http://localhost:3000_.
 
 If everything works and looks like it supposed to you can commit to master and push.
 
-### Working in paper
-
-In case you have written your article in [dropbox paper](https://paper.dropbox.com/) you can export your work as following:
-
-1. Open your document
-2. Open the **᠁** Symbol (Menu)
-3. Search for the "Export" point
-4. Export as `.md` file
-
-Open your markdown editor of choice (e.g. [Typora](https://typora.io/)) and check if the formatting is correct. If yes copy and paste the file into the correct location in the book. After this open the `SUMMARY.md` of the corresponding book and add a entry.
-
-To verify everything run: (choose the correct book)
-
-```bash
-# For the_machinery_book
-$ cd the_machinery_book && mdbook serve
-
-# For the tutorials
-$ cd tutorials && mdbook serve
-```
-
-If everything works commit to master and push.
 
 ## Building
 
@@ -178,10 +162,10 @@ To build the book, type:
 
 ```bash
 # For the_machinery_book
-$ cd the_machinery_book && mdbook build
+$ cd the_machinery_book && ../tmbook build
 
 # For the tutorials
-$ cd tutorials && mdbook build
+$ cd tutorials && ../tmbook build
 ```
 
 The output will appear in the `book` subdirectory. To check it out, open it in your web browser:
