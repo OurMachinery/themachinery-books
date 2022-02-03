@@ -12,39 +12,40 @@ git-repository-url = "https://github.com/OurMachinery/themachinery-books"
 enable = true
 
 [preprocessor.toc]
-command = "mdbook-toc"
+command = "mdbook-bin/mdbook-toc"
 renderer = ["html"]
 marker = "* auto-gen TOC;\n{:toc}"
+
+[preprocessor.links]
+
 
 [preprocessor.path_replacement]
 renderer = ["html"]
 folder = "../"
 books = ["the_machinery_book","tutorials"]
-command = "python ../path_replacement.py"
-
-[preprocessor.links]
-
-[output.linkcheck]
-follow-web-links = false
-exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com','https://marketplace\.visualstudio\.com'  ]
+command = "../tmbook path_replacement"
 
 
-
-
-#[preprocessor.autolink]
-#renderer = ["html"]
-#folder = "../"
-#books = ["the_machinery_book","tutorials"]
-#command = "python ../autogenerete_doc_links.py"
+[preprocessor.auto_doc]
+renderer = ["html"]
+folder = "../"
+books = ["the_machinery_book","tutorials"]
+command = "../tmbook auto_doc"
 
 [preprocessor.auto_include]
 renderer = ["html"]
 folder = "../"
 books = ["the_machinery_book","tutorials"]
-command = "python ../auto_include.py"
+command = "../tmbook auto_include"
 
 [preprocessor.authors]
 renderer = ["html"]
 folder = "../"
 books = ["the_machinery_book","tutorials"]
-command = "python ../authors.py"
+command = "../tmbook authors"
+
+#[output.linkcheck]
+#command = "mdbook-bin/mdbook-linkcheck"
+#folder = "../"
+#follow-web-links = false
+#exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com','https://marketplace\.visualstudio\.com'  ]
