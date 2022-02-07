@@ -49,14 +49,13 @@ jobs:
           cd the_machinery_book
           sed -i "s/#//" book.toml
           ../tmbook build
-          ls book
-          mv book/html ../public/the_machinery_book
+          mv book/ ../public/the_machinery_book
       - name: Build tutorials
         run: |
           cd tutorials
           sed -i "s/#//" book.toml
           ../tmbook build
-          mv book/html ../public/tutorials
+          mv book/ ../public/tutorials
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
