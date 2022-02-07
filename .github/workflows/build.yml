@@ -32,6 +32,8 @@ jobs:
           chmod +x tmbook
       - name: download css and js dependencies
         run: |
+          mkdir public
+          cp index.html public/index.html
           cd public
           mkdir css
           cd css
@@ -44,16 +46,12 @@ jobs:
           wget https://ourmachinery.com/js/page.min.js
       - name: Build the_machinery_book
         run: |
-          export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
-          export PATH="${{github.workspace}}/tools/:$PATH"
           cd the_machinery_book
           sed -i "s/#//" book.toml
           ../tmbook build
           mv book/html ../public/the_machinery_book
       - name: Build tutorials
         run: |
-          export PATH="${{github.workspace}}/mdbook_tera/bin:$PATH"
-          export PATH="${{github.workspace}}/tools/:$PATH"
           cd tutorials
           sed -i "s/#//" book.toml
           ../tmbook build
