@@ -12,7 +12,7 @@ git-repository-url = "https://github.com/OurMachinery/themachinery-books"
 enable = true
 
 [preprocessor.toc]
-command = "mdbook-bin/mdbook-toc"
+command = "../tmbook toc"
 renderer = ["html"]
 marker = "* auto-gen TOC;\n{:toc}"
 
