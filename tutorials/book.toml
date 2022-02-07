@@ -37,9 +37,3 @@ renderer = ["html"]
 folder = "../"
 books = ["the_machinery_book","tutorials"]
 command = "../tmbook auto_include"
-
-#[output.linkcheck]
-#command = "mdbook-bin/mdbook-linkcheck"
-#folder = "../"
-#follow-web-links = false
-#exclude = [ 'https://ourmachinery\.com/apidoc/','mailto:ping@ourmachinery\.com','https://marketplace\.visualstudio\.com'  ]
