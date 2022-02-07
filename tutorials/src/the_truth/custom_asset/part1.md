@@ -52,7 +52,7 @@ To make The Truth aware of this custom type we must register it with The Truth. 
 Example `tm_load_plugin` function for `my_asset.c`:
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,tm_load_plugin}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,tm_load_plugin)}}
 ```
 
 Now we can implement the actual `create_truth_types()` function. We use `tm_the_truth_api->create_object_type()` to create a Truth type with a specified name and properties.
@@ -146,7 +146,7 @@ This interface is registered by the `tm_load_plugin()` function, just as all the
 Example `tm_load_plugin()` function for `my_asset.c`
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,tm_load_plugin}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,tm_load_plugin)}}
 ```
 
 The asset can now be created from the Asset Browser:
