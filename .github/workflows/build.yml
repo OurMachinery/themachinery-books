@@ -34,6 +34,7 @@ jobs:
         run: |
           mkdir public
           cp index.html public/index.html
+          cp CNAME public/CNAME
           cd public
           mkdir css
           cd css
@@ -51,14 +52,12 @@ jobs:
           ../tmbook build
           echo "move data from book to ../public/the_machinery_book"
           mv -v book/ ../public/the_machinery_book
-          ls ../public
-          ls ../public/the_machinery_book
       - name: Build tutorials
         run: |
           cd tutorials
           sed -i "s/#//" book.toml
           ../tmbook build
-          mv book/ ../public/tutorials
+          mv -v book/ ../public/tutorials
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
