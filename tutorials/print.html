@@ -1774,7 +1774,6 @@ glaring omissions are:</p>
 </blockquote>
 <p>Example <code>tm_load_plugin</code> function for <code>my_asset.c</code>:</p>
 <pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,tm_load_plugin}}
-}
 </code></pre>
 <p>Now we can implement the actual <code>create_truth_types()</code> function. We use <code>tm_the_truth_api-&gt;create_object_type()</code> to create a Truth type with a specified name and properties.</p>
 <p>At this point, we have a newThe Truth type. But it's not yet an asset! </p>
@@ -1853,7 +1852,7 @@ static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
 </ul>
 <p>This interface is registered by the <code>tm_load_plugin()</code> function, just as all the other interfaces:</p>
 <p>Example <code>tm_load_plugin()</code> function for <code>my_asset.c</code></p>
-<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c:35:40}}
+<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/part_1/txt.c,tm_load_plugin}}
 </code></pre>
 <p>The asset can now be created from the Asset Browser:</p>
 <p><img src="https://paper-attachments.dropbox.com/s_080D43F0A98EB2BE6BBB6D719C7B3B910F38D78674006103833AED0070469AD4_1609883533160_image.png" alt="" /></p>
