@@ -4,35 +4,28 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Extending the Entity Graph - The Machinery Tutorial Book</title>
-                
-
         <!-- Custom HTML head -->
-        
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="../favicon.svg">
-                        <link rel="shortcut icon" href="../favicon.png">
-                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
-                <link rel="stylesheet" href="../css/print.css" media="print">
-        
+        <link rel="stylesheet" href="../css/print.css" media="print">
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-                <link rel="stylesheet" href="../fonts/fonts.css">
-        
+        <link rel="stylesheet" href="../fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
         <link rel="stylesheet" href="../tomorrow-night.css">
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-            </head>
+    </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
@@ -82,14 +75,14 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="../workflows/how_to_create_prototypes.html"><strong aria-hidden="true">2.</strong> How to Create Prototypes</a></li><li class="chapter-item "><a href="../workflows/how_to_instantiate_prototypes.html"><strong aria-hidden="true">3.</strong> How to Instantiate Prototypes</a></li><li class="chapter-item "><a href="../creation_graph/index.html"><strong aria-hidden="true">4.</strong> Creation Graph</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../creation_graph/introduction_walkthrough/index.html"><strong aria-hidden="true">4.1.</strong> Creation Graph Introduction Series</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../creation_graph/introduction_walkthrough/texture_compression.html"><strong aria-hidden="true">4.1.1.</strong> Simple Texture Compression</a></li><li class="chapter-item "><a href="../creation_graph/introduction_walkthrough/creation_graph_prototype.html"><strong aria-hidden="true">4.1.2.</strong> Creation Graph Prototype</a></li><li class="chapter-item "><a href="../creation_graph/introduction_walkthrough/custom_import_settings.html"><strong aria-hidden="true">4.1.3.</strong> Custom Import Settings</a></li></ol></li><li class="chapter-item "><a href="../creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">4.2.</strong> Creating Custom GPU Nodes</a></li><li class="chapter-item "><a href="../creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">4.3.</strong> Creating Custom CPU Nodes</a></li><li class="chapter-item "><a href="../creation_graph/custom_geometry_node.html"><strong aria-hidden="true">4.4.</strong> Creating Custom Geometry Nodes</a></li><li class="chapter-item "><a href="../creation_graph/from_code.html"><strong aria-hidden="true">4.5.</strong> Calling Creation Graphs from Code</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../creation_graph/raymarch_output_node.html"><strong aria-hidden="true">4.5.1.</strong> Creating a Custom Raymarching Output Node</a></li></ol></li></ol></li><li class="chapter-item "><a href="../post_processing/index.html"><strong aria-hidden="true">5.</strong> Post Processing</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../post_processing/aa.html"><strong aria-hidden="true">5.1.</strong> Anti-Aliasing</a></li><li class="chapter-item "><a href="../post_processing/exposure.html"><strong aria-hidden="true">5.2.</strong> Exposure</a></li><li class="chapter-item "><a href="../post_processing/bloom.html"><strong aria-hidden="true">5.3.</strong> Bloom</a></li><li class="chapter-item "><a href="../post_processing/color_grading.html"><strong aria-hidden="true">5.4.</strong> Color Grading</a></li></ol></li><li class="chapter-item "><a href="../physics/index.html"><strong aria-hidden="true">6.</strong> Physics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../physics/triggers.html"><strong aria-hidden="true">6.1.</strong> Triggers</a></li></ol></li><li class="chapter-item "><a href="../the_truth/index.html"><strong aria-hidden="true">7.</strong> The Truth</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../the_truth/custom_asset/index.html"><strong aria-hidden="true">7.1.</strong> Creating a Custom Asset Type</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../the_truth/custom_asset/part1.html"><strong aria-hidden="true">7.1.1.</strong> Part 1 - Create an Asset Truth Type, Addable via Asset Browser</a></li><li class="chapter-item "><a href="../the_truth/custom_asset/part2.html"><strong aria-hidden="true">7.1.2.</strong> Part 2 - Custom UI</a></li><li class="chapter-item "><a href="../the_truth/custom_asset/part3.html"><strong aria-hidden="true">7.1.3.</strong> Part 3 - Custom Importer</a></li></ol></li><li class="chapter-item "><a href="../the_truth/drag_and_drop.html"><strong aria-hidden="true">7.2.</strong> Adding Drag and Drop to Assets</a></li><li class="chapter-item "><a href="../the_truth/open_asset.html"><strong aria-hidden="true">7.3.</strong> Open Asset in Tab</a></li></ol></li><li class="chapter-item expanded "><a href="../gameplay_coding/index.html"><strong aria-hidden="true">8.</strong> Gameplay Coding</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../gameplay_coding/extend_the_entity_graph.html" class="active"><strong aria-hidden="true">8.1.</strong> Extending the Entity Graph</a></li><li class="chapter-item "><a href="../gameplay_coding/provide_custom_data_type_to_the_entity_graph.html"><strong aria-hidden="true">8.2.</strong> Custom Data Type for the Entity Graph</a></li></ol></li><li class="chapter-item "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/animation_sample/network_assets.html"><strong aria-hidden="true">9.1.</strong> Part 1: Network Asset</a></li><li class="chapter-item "><a href="../network/animation_sample/multiple_network_instances.html"><strong aria-hidden="true">9.2.</strong> Part 2: Multiple Instances</a></li><li class="chapter-item "><a href="../network/animation_sample/entity_control.html"><strong aria-hidden="true">9.3.</strong> Part 3: Entity Control</a></li><li class="chapter-item "><a href="../network/animation_sample/support_multiple_players.html"><strong aria-hidden="true">9.4.</strong> Part 4: Multiple Players</a></li><li class="chapter-item "><a href="../network/animation_sample/basic_graph_variables.html"><strong aria-hidden="true">9.5.</strong> Part 5: Variable Replication (Graph)</a></li><li class="chapter-item "><a href="../network/animation_sample/smooth_animation.html"><strong aria-hidden="true">9.6.</strong> Part 6: Smooth Animation</a></li><li class="chapter-item "><a href="../network/animation_sample/spawning_entities.html"><strong aria-hidden="true">9.7.</strong> Part 7: Spawning Entities</a></li></ol></li><li class="chapter-item "><a href="../ui/index.html"><strong aria-hidden="true">10.</strong> UI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">10.1.</strong> Build Custom UI Controls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">10.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item "><a href="../ui/toolbars-overlays.html"><strong aria-hidden="true">10.2.</strong> Toolbars and Overlays</a></li><li class="chapter-item "><a href="../ui/custom_layouts.html"><strong aria-hidden="true">10.3.</strong> Custom Tab Layouts</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item "><a href="../index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="../workflows/how_to_create_prototypes.html"><strong aria-hidden="true">2.</strong> How to Create Prototypes</a></li><li class="chapter-item "><a href="../workflows/how_to_instantiate_prototypes.html"><strong aria-hidden="true">3.</strong> How to Instantiate Prototypes</a></li><li class="chapter-item "><a href="../creation_graph/index.html"><strong aria-hidden="true">4.</strong> Creation Graph</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../creation_graph/introduction_walkthrough/index.html"><strong aria-hidden="true">4.1.</strong> Creation Graph Introduction Series</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../creation_graph/introduction_walkthrough/texture_compression.html"><strong aria-hidden="true">4.1.1.</strong> Simple Texture Compression</a></li><li class="chapter-item "><a href="../creation_graph/introduction_walkthrough/creation_graph_prototype.html"><strong aria-hidden="true">4.1.2.</strong> Creation Graph Prototype</a></li><li class="chapter-item "><a href="../creation_graph/introduction_walkthrough/custom_import_settings.html"><strong aria-hidden="true">4.1.3.</strong> Custom Import Settings</a></li></ol></li><li class="chapter-item "><a href="../creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">4.2.</strong> Creating Custom GPU Nodes</a></li><li class="chapter-item "><a href="../creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">4.3.</strong> Creating Custom CPU Nodes</a></li><li class="chapter-item "><a href="../creation_graph/custom_geometry_node.html"><strong aria-hidden="true">4.4.</strong> Creating Custom Geometry Nodes</a></li><li class="chapter-item "><a href="../creation_graph/from_code.html"><strong aria-hidden="true">4.5.</strong> Calling Creation Graphs from Code</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../creation_graph/raymarch_output_node.html"><strong aria-hidden="true">4.5.1.</strong> Creating a Custom Raymarching Output Node</a></li></ol></li></ol></li><li class="chapter-item "><a href="../post_processing/index.html"><strong aria-hidden="true">5.</strong> Post Processing</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../post_processing/aa.html"><strong aria-hidden="true">5.1.</strong> Anti-Aliasing</a></li><li class="chapter-item "><a href="../post_processing/exposure.html"><strong aria-hidden="true">5.2.</strong> Exposure</a></li><li class="chapter-item "><a href="../post_processing/bloom.html"><strong aria-hidden="true">5.3.</strong> Bloom</a></li><li class="chapter-item "><a href="../post_processing/color_grading.html"><strong aria-hidden="true">5.4.</strong> Color Grading</a></li></ol></li><li class="chapter-item "><a href="../physics/index.html"><strong aria-hidden="true">6.</strong> Physics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../physics/triggers.html"><strong aria-hidden="true">6.1.</strong> Triggers</a></li></ol></li><li class="chapter-item "><a href="../the_truth/index.html"><strong aria-hidden="true">7.</strong> The Truth</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../the_truth/custom_asset/index.html"><strong aria-hidden="true">7.1.</strong> Creating a Custom Asset Type</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../the_truth/custom_asset/part1.html"><strong aria-hidden="true">7.1.1.</strong> Part 1 - Create an Asset Truth Type, Addable via Asset Browser</a></li><li class="chapter-item "><a href="../the_truth/custom_asset/part2.html"><strong aria-hidden="true">7.1.2.</strong> Part 2 - Custom UI</a></li><li class="chapter-item "><a href="../the_truth/custom_asset/part3.html"><strong aria-hidden="true">7.1.3.</strong> Part 3 - Custom Importer</a></li></ol></li><li class="chapter-item "><a href="../the_truth/drag_and_drop.html"><strong aria-hidden="true">7.2.</strong> Adding Drag and Drop to Assets</a></li><li class="chapter-item "><a href="../the_truth/open_asset.html"><strong aria-hidden="true">7.3.</strong> Open Asset in Tab</a></li></ol></li><li class="chapter-item expanded "><a href="../gameplay_coding/index.html"><strong aria-hidden="true">8.</strong> Gameplay Coding</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../gameplay_coding/extend_the_entity_graph.html" class="active"><strong aria-hidden="true">8.1.</strong> Extending the Entity Graph</a></li><li class="chapter-item "><a href="../gameplay_coding/provide_custom_data_type_to_the_entity_graph.html"><strong aria-hidden="true">8.2.</strong> Custom Data Type for the Entity Graph</a></li></ol></li><li class="chapter-item "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../network/animation_sample/network_assets.html"><strong aria-hidden="true">9.1.</strong> Part 1: Network Asset</a></li><li class="chapter-item "><a href="../network/animation_sample/multiple_network_instances.html"><strong aria-hidden="true">9.2.</strong> Part 2: Multiple Instances</a></li><li class="chapter-item "><a href="../network/animation_sample/entity_control.html"><strong aria-hidden="true">9.3.</strong> Part 3: Entity Control</a></li><li class="chapter-item "><a href="../network/animation_sample/support_multiple_players.html"><strong aria-hidden="true">9.4.</strong> Part 4: Multiple Players</a></li><li class="chapter-item "><a href="../network/animation_sample/basic_graph_variables.html"><strong aria-hidden="true">9.5.</strong> Part 5: Variable Replication (Graph)</a></li><li class="chapter-item "><a href="../network/animation_sample/smooth_animation.html"><strong aria-hidden="true">9.6.</strong> Part 6: Smooth Animation</a></li><li class="chapter-item "><a href="../network/animation_sample/spawning_entities.html"><strong aria-hidden="true">9.7.</strong> Part 7: Spawning Entities</a></li></ol></li><li class="chapter-item "><a href="../ui/index.html"><strong aria-hidden="true">10.</strong> UI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">10.1.</strong> Build Custom UI Controls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">10.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item "><a href="../ui/toolbars-overlays.html"><strong aria-hidden="true">10.2.</strong> Toolbars and Overlays</a></li><li class="chapter-item "><a href="../ui/custom_layouts.html"><strong aria-hidden="true">10.3.</strong> Custom Tab Layouts</a></li></ol></li></ol>
+            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -106,25 +99,24 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                                            </div>
+                    </div>
 
                     <h1 class="menu-title">The Machinery Tutorial Book</h1>
 
                     <div class="right-buttons">
-                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/OurMachinery/themachinery-books" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/OurMachinery/themachinery-books" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                
                     </div>
                 </div>
 
-                                <div id="search-wrapper" class="hidden">
+                <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
                         <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
@@ -134,7 +126,6 @@
                         </ul>
                     </div>
                 </div>
-                
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -173,26 +164,24 @@ static inline void sample_float_square(float a, float *res)
     *res = a * a;
 }
 GGN_END();
-
 </code></pre>
 <p>Let us digest the code example above. There are some things to note here:</p>
 <ul>
 <li>Node functions always return their results in pointer parameters(the reason is that they can have more than one result). Pointer parameters are seen as out parameters if they are mutable by the node-generator.</li>
 <li>The function parameter names are also used for the naming of the input/output wires.</li>
-<li>Two special macros surround all the code for the node(s): <code>GGN_BEGIN()</code> and <code>GGN_END()</code>.</li>
+<li>Two special macros surround all the code for the node(s): <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#ggn_begin()"><code>GGN_BEGIN()</code></a> and <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#ggn_end()"><code>GGN_END()</code></a>.</li>
 <li>The Engine will use the function name <code>sample_float_square</code> later: <code>Sample Float Square</code>, and you will find it in the defined category: <code>Sample/Math/Float</code></li>
-<li>The <code>GGN_NODE_QUERY()</code> macro marks this node as a Query node. Query nodes are triggered automatically when their output is requested. Nodes that don't just purely modify data need to be triggered by an explicit event. Such as Tick or Init.</li>
-<li>The <code>GGN_GEN_REGISTER_FUNCTION()</code> macro automatically creates a register function for registering the node with the visual scripting system. Otherwise, you need to write this function yourself.</li>
+<li>The <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#ggn_node_query()"><code>GGN_NODE_QUERY()</code></a> macro marks this node as a Query node. Query nodes are triggered automatically when their output is requested. Nodes that don't just purely modify data need to be triggered by an explicit event. Such as Tick or Init.</li>
+<li>The <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#ggn_gen_register_function()"><code>GGN_GEN_REGISTER_FUNCTION()</code></a> macro automatically creates a register function for registering the node with the visual scripting system. Otherwise, you need to write this function yourself.</li>
 <li>The <code>#include &quot;example_graph_nodes.inl&quot;</code> will include the autogenerated graph node implementations. It needs to be somewhere in the file. (before the <code>tm_load_plugin</code> function)</li>
 <li>The <code>generate-graph-nodes.exe</code> auto-generates the <code>my_graph_nodes.inl</code> for you. It would be best if you do not edit this file. Otherwise, the generator will overwrite your changes next time.</li>
 </ul>
 <p>For a full documentation of all <code>GGN_*</code> macros see <code>plugins/graph_interpreter/graph_node_macros.h</code>.
-The code we write is relatively slight. We need to ensure that we have some header files, including the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#graph_node_macros.h">graph_node_macros.h</a>, which we are using to tell the generator to generate code for us. </p>
+The code we write is relatively slight. We need to ensure that we have some header files, including the <a href="https://ourmachinery.com/apidoc/plugins/graph_interpreter/graph_node_macros.h.html#graph_node_macros.h"><code>graph_node_macros.h</code></a>, which we are using to tell the generator to generate code for us. </p>
 <p>The following list makes sure that the nodes work on their own.</p>
 <pre><code class="language-c">#include &lt;plugins/editor_views/graph.h&gt;
 #include &lt;plugins/graph_interpreter/graph_node_helpers.inl&gt;
 #include &lt;plugins/graph_interpreter/graph_node_macros.h&gt;
-
 </code></pre>
 <p>If we now think <em>'yeah, we can compile',</em> we are wrong; We need some other header files to ensure that the generated magic in the <code>my_graph_nodes.inl</code> file works. </p>
 <p>We need to include the following files as well:</p>
@@ -201,7 +190,6 @@ The code we write is relatively slight. We need to ensure that we have some head
 #include &lt;foundation/localizer.h&gt; // it automatically localizes your category name
 #include &lt;foundation/macros.h&gt;
 #include &lt;foundation/the_truth_types.h&gt; // is needed for the description of the wire input types
-
 </code></pre>
 <p>The next question is, <em><strong>Are we done now?</strong></em>  The answer is <strong>yes nearly</strong>.  What's left is registering our nodes in the plugin load function. It may look than like this:</p>
 <pre><code class="language-c">#include &quot;example_graph_nodes.inl&quot;
@@ -212,7 +200,6 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     // This is auto generated from the graph node generator, you just need to call it.
     generated__register_example_graph_nodes(reg, load);
 }
-
 </code></pre>
 <p>Here we just call the <code>generated__register_example_graph_nodes</code> function, defined in <code>my_graph_nodes.inl</code> and auto-generated. You can find the complete example here <code>samples/plugins/graph_nodes</code>.</p>
 <ol start="3">
@@ -220,7 +207,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </ol>
 <p>The last step before we can compile is to make sure that we run the <code>generate-graph-nodes.exe</code> application. This helper utility processes all <code>GGN_* macros.</code> This program generates glue code that ties your function into the graph system -- creating connectors that correspond to your function parameters, etc. 
 The glue code is stored in an <code>.inl</code> file with the same name as the <code>.c</code> file that contains the graph nodes. 
-Do not forget that if you have used some new <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()">TM_STATIC_HASH</a> values, run hash.exe to make sure that those get hashed. 
+Do not forget that if you have used some new <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()"><code>TM_STATIC_HASH</code></a> values, run hash.exe to make sure that those get hashed. 
 Then you are ready to run <code>tmbuild</code>. It will compile your plugin, and then when you start the Engine or have it run in hot-reload mode it will show you your new nodes in the editor.</p>
 <blockquote>
 <p><strong>Note:</strong> You can also run <code>tmbuild</code> with a argument: <code>tmbuild --gen-nodes</code> . This will make sure that <code>tmbuild</code> runs <code>generate-graph-nodes.exe</code> before it builds.</p>
@@ -229,7 +216,7 @@ Then you are ready to run <code>tmbuild</code>. It will compile your plugin, and
 <h2 id="full-sample-code"><a class="header" href="#full-sample-code">Full sample code:</a></h2>
 <pre><code class="language-c">static struct tm_graph_interpreter_api *tm_graph_interpreter_api;
 #include &lt;foundation/api_registry.h&gt; //Is needed for `GGN_GEN_REGISTER_FUNCTION()`
-#include &lt;foundation/localizer.h&gt; // it automatically localizes your category name
+#include &lt;foundation/localizer.h&gt;    // it automatically localizes your category name
 #include &lt;foundation/macros.h&gt;
 #include &lt;foundation/the_truth_types.h&gt; // is needed for the description of the wire input types
 #include &lt;plugins/editor_views/graph.h&gt;
@@ -251,58 +238,44 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
     // This is auto generated from the graph node generator, you just need to call it.
     generated__register_example_graph_nodes(reg, load);
 }
-
 </code></pre>
-<h3 id="contributors"><a class="header" href="#contributors">Contributors</a></h3>
-<p><a href="mailto:noreply@github.com"><img src="https://www.gravatar.com/avatar/9181eb84f9c35729a3bad740fb7f9d93?s=32" alt="GitHub" /> GitHub</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../gameplay_coding/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../gameplay_coding/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
-                                                    <a rel="next" href="../gameplay_coding/provide_custom_data_type_to_the_entity_graph.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../gameplay_coding/provide_custom_data_type_to_the_entity_graph.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../gameplay_coding/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../gameplay_coding/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
-                                    <a rel="next" href="../gameplay_coding/provide_custom_data_type_to_the_entity_graph.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../gameplay_coding/provide_custom_data_type_to_the_entity_graph.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                            </nav>
+            </nav>
 
         </div>
 
-        
-        
-        
-                <script type="text/javascript">
+        <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
-        
-                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
-        
     </body>
 </html>
