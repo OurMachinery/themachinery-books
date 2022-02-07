@@ -49,7 +49,10 @@ jobs:
           cd the_machinery_book
           sed -i "s/#//" book.toml
           ../tmbook build
-          mv book/ ../public/the_machinery_book
+          echo "move data from book to ../public/the_machinery_book"
+          mv -v book/ ../public/the_machinery_book
+          ls ../public
+          ls ../public/the_machinery_book
       - name: Build tutorials
         run: |
           cd tutorials
