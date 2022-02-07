@@ -23,27 +23,13 @@ jobs:
       - name: download SDK
         run: |
           sudo apt install -y unzip wget
-          wget https://ourmachinery.com/releases/2021.11/the-machinery-2021.11.a-linux.zip
+          wget https://ourmachinery.com/releases/2022.1/the-machinery-2022.1.a-linux.zip
           mkdir sdk_dir
-          unzip the-machinery-2021.11.a-linux.zip -d sdk_dir
-          sudo apt update && sudo apt install zip
-          sudo pip install GitPython
-      - name: Setup mdbook
+          unzip the-machinery-2022.1.a-linux.zip -d sdk_dir
+      - name: Setup tmbook
         run: |
-          mkdir tools
-          cd tools
-          wget https://github.com/rust-lang/mdBook/releases/download/v0.4.10/mdbook-v0.4.10-x86_64-unknown-linux-gnu.tar.gz -O archive.tar.gz
-          tar -xf archive.tar.gz
-          chmod +x mdbook
-          wget https://github.com/badboy/mdbook-toc/releases/download/0.7.0/mdbook-toc-0.7.0-x86_64-unknown-linux-gnu.tar.gz -O mdbook-toc.tar.gz
-          tar -xf  mdbook-toc.tar.gz
-          chmod +x mdbook-toc
-          wget https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v0.7.4/mdbook-linkcheck.v0.7.4.x86_64-unknown-linux-gnu.zip -O mdbook-linkcheck.zip
-          unzip  mdbook-linkcheck.zip
-          chmod +x mdbook-linkcheck
-          cd ../
-          mkdir public
-          cp index.html public/index.html
+          wget https://github.com/simon-ourmachinery/tmbook/releases/download/latest/tmbook
+          chmod +x tmbook
       - name: download css and js dependencies
         run: |
           cd public
@@ -62,7 +48,7 @@ jobs:
           export PATH="${{github.workspace}}/tools/:$PATH"
           cd the_machinery_book
           sed -i "s/#//" book.toml
-          mdbook build
+          ../tmbook build
           mv book/html ../public/the_machinery_book
       - name: Build tutorials
         run: |
@@ -70,7 +56,7 @@ jobs:
           export PATH="${{github.workspace}}/tools/:$PATH"
           cd tutorials
           sed -i "s/#//" book.toml
-          mdbook build
+          ../tmbook build
           mv book/html ../public/tutorials
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
