@@ -38,12 +38,6 @@ folder = "../"
 books = ["the_machinery_book","tutorials"]
 command = "../tmbook auto_include"
 
-[preprocessor.authors]
-renderer = ["html"]
-folder = "../"
-books = ["the_machinery_book","tutorials"]
-command = "../tmbook authors"
-
 #[output.linkcheck]
 #command = "mdbook-bin/mdbook-linkcheck"
 #folder = "../"
