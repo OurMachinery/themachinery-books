@@ -49,7 +49,7 @@ jobs:
           cd the_machinery_book
           sed -i "s/#//" book.toml
           ../tmbook build
-          ls
+          ls book
           mv book/html ../public/the_machinery_book
       - name: Build tutorials
         run: |
