@@ -12,11 +12,11 @@ If you want to contribute to this project please read the [CONTRIBUTING.md](CONT
 
 To edit the book you need:
 
-- [tmbook](#)
+- [tmbook](https://github.com/simon-ourmachinery/tmbook/releases/tag/latest)
 
 ### Installation via `tmbook`
 
-Download `tmbook` and create a folder open the folder with the terminal and type:
+Download [`tmbook`](https://github.com/simon-ourmachinery/tmbook/releases/tag/latest) and create a folder open the folder with the terminal and type:
 
 ```
 tmbook init
@@ -32,7 +32,7 @@ git clone https://github.com/OurMachinery/themachinery-books.git
 cd themachinery-books
 ```
 
-Add `tmbook` in the `themachinery-books` folder and now you can use it. 
+Add [`tmbook`](https://github.com/simon-ourmachinery/tmbook/releases/tag/latest) in the `themachinery-books` folder and now you can use it. 
 
 
 ## Writing
