@@ -9,6 +9,12 @@ During this walkthrough, we will cover the following topics:
 
 You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html) and the [Write a plugin guide]({{the_machinery_book}}extending_the_machinery/write-a-plugin.html#build-requirements). The goal of this walkthrough is to dissect the Tab plugin provided by the Engine.
 
+**Table of Content**
+
+* auto-gen TOC;
+{:toc}
+
+
 ## Where do we start?
 
 In this example, we want to create a new plugin, which contains our Tab. We open the Engine go to **file -> New Plugin -> Editor Tab.** The file dialog will pop up and ask us where we want to save our file. Pick a location that suits you.

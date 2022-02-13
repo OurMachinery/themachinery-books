@@ -4,10 +4,28 @@
 
 When *The Machinery* launches, it loads all the plugins named `tm_*.dll` in its `plugins/` folder. If you write your own plugins, name them so that they start with `tm_` and put them in this folder, they will be loaded together with the built-in plugins.
 
+> **Note:** When you create a new plugin via the Engine, the `premake` file will **not** copy the plugin into your global plugin folder. The reason behind this is that we do not know if you want to create a plugin asset.
+
 **Table of Content**
 
 * auto-gen TOC;
 {:toc}
+## What are the types of plugins?
+
+In *The Machinery* you can have 2 type of plugins: *Engine Plugins* and *Plugin Assets*.
+
+|                       | Engine Plugins                                               | Plugin Assets                                                |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Storage               | Stored in `SDK_DIR/plugins`                                  | In your project via drag&drop or imported                    |
+| Availability          | All projects                                                 | Only the project they were imported in                       |
+| Hot-Reload Support?   | Yes                                                          | Yes                                                          |
+| Collaboration Support | No, unless the client also loads them. They are not syncronized. | Yes they are automatically synchronized since they are part of the project. |
+
+## What are plugins?
+
+In The Machinery is a Shared Library (`.dll` or `.so`) that contains the plugin entry function `TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)` . This is the only function that needs to be there. Otherwise the Engine could not load your plugin. Every plugin is a collection of **API's** or **Interfaces**. They together form a plugin and give the Engine the Extensibility and flexibility.
+
+
 
 ## About API's
 

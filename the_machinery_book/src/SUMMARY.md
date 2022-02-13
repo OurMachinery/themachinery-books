@@ -66,10 +66,11 @@
     - [.tmsl Visual Studio Extension](./graphics/tmsl_vs.md)
 - [Extending The Machinery](./extending_the_machinery/README.md)
     - [The Plugin System](./extending_the_machinery/the_plugin_system.md)
+      - [Write a plugin](./extending_the_machinery/write-a-plugin.md)
+      - [Sample Plugins](./extending_the_machinery/sample_plugin.md)
+      - [Write a tab](./extending_the_machinery/write-a-tab.md)
+      - [Plugin assets](./extending_the_machinery/plugin-assets.md)
     - [Hot-reloading](./extending_the_machinery/hot-reloading.md)
-    - [Write a plugin](./extending_the_machinery/write-a-plugin.md)
-    - [Write a tab](./extending_the_machinery/write-a-tab.md)
-    - [Plugin assets](./extending_the_machinery/plugin-assets.md)
     - [Application Hooks](./extending_the_machinery/application_hooks.md)
     - [Premake](./extending_the_machinery/premake.md)
 - [Gameplay coding](./gameplay_coding/README.md)
@@ -100,6 +101,7 @@
     - [How to use tmbuild](./helper_tools/tmbuild.md)
     - [How to use hash](./helper_tools/hash.md)
     - [tmbuild package reference](./helper_tools/tmbuild_package_reference.md)
+    - [Libs json reference](./helper_tools/libs_json_reference.md)
 - [Writing an executable](./writing_an_executable.md)
 
 

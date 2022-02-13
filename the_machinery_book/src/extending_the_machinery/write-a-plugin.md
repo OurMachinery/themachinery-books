@@ -1,194 +1,123 @@
-## Write a plugin
+# My first plugin
 
-This walkthrough shows you how to extend the engine with a custom plugin.
+This walkthrough shows you how to create your first plugin.
 
-You will learn about:
-
-- What is needed to write a plugin
-- How to write a plugin
-
-This walk through expects you to have the basic understanding about the plugin system. Otherwise you can read more [here]({{base_url}}extending_the_machinery/the_plugin_system.html).
+- How to create a plugin from scratch?
+- What are the parts a plugin contains?
+- Writing a basic API.
+- Writing a basic Interface.
+- Making use of Plugin Callbacks.
+- How to build a plugin?
+- What is the difference between an Engine Plugin and a Plugin Asset?
 
 **Table of Content**
 
 * auto-gen TOC;
 {:toc}
 
-## Where does the engine search for plugins
-
-The Machinery is built around a plugin model. All features, even the built-in ones, are provided
-through plugins. You can extend The Machinery by writing your own plugins. When The Machinery
-launches, it loads all the plugins named `tm_*.dll` in its `plugins/` folder. If you write your own
-plugins, name them so that they start with `tm_` and put them in this folder, they will be loaded
-together with the built-in plugins.
-
-> **Note:** When you create a new plugin via the Engine, the `premake` file will **not** copy the plugin into your global plugin folder. The reason behind this is that we do not know if you want to create a plugin asset. *This workflow is currently under review.*
->
-> **Important:** The plugins created via the Engine expect a binary build version if you are using the source access version you might have to modify the `premake` file to make it point to the correct version. This workflow is currently under review.
-
-## Inspect an existing example to get inspiration
-
-The easiest way to build a plugin is to start with an existing example. There are three places where
-you can find plugin samples:
-
-1. The `samples` folder in the SDK has a number of plugin samples.
-
-2. The *All Sample Projects* package in the *Download* tab has a `plugins` folder with some small
-   samples.
-
-3. You can create a new plugin with the menu command **File > New Plugin**. This will create a
-   new `.c` file for the plugin together with some helper files for compiling it. ([Follow this guide](#write-your-own-plugin))
-
-The distribution already comes with pre-built .dlls for the sample plugins, such as
-`bin/plugins/tm_pong_tab.dll`. You can see this plugin in action by selecting **Tab > Pong** in the
-editor to open up its tab:
-
-![Pong tab.](https://www.dropbox.com/s/hats2jgr3wroahz/pong-tab.png?dl=1)
-
-### What are the build Requirements
-
-To build plugins you need three things:
-
-1. You need to have Visual Studio 2019 installed including the MS C++ Build Tools on your computer.
-   Note that the Community Edition works fine. (Or clang and the build essentials on Linux)
-2. You need to set the `TM_SDK_DIR` environment variable to the path of the SDK package that you
-   installed on your computer. When you compile a plugin, it looks for The Machinery headers in the
-   `%TM_SDK_DIR%/headers` folder. 
-3. You need the `tmbuild.exe` from the SDK package. `tmbuild.exe` does all the steps needed to
-   compile the plugin. Put it in your `PATH` or copy it to your plugin folder so that you can run it
-   easily from the command line.
-
-### Build the sample plugin
-
-To compile a plugin, simply open a command prompt in the plugin folder and run the `tmbuild.exe`
-executable:
-
-~~~ cmd input
-sample-projects/plugins/custom_tab> %TM_SDK_DIR%/bin/tmbuild.exe
-​~~~ cmd output
-Installing 7za.exe...
-Installing premake-5.0.0-alpha14-windows...
-Building configurations...
-Running action 'vs2019'...
-Generated custom_tab.sln...
-Generated build/custom_tab/custom_tab.vcxproj...
-Done (133ms).
-Microsoft (R) Build Engine version 16.4.0+e901037fe for .NET Framework
-Copyright (C) Microsoft Corporation. All rights reserved.
-
-  custom_tab.c
-  custom_tab.vcxproj -> C:\work\themachinery\build\bin\plugins\tm_custom_tab.dll
-
------------------------------
-tmbuild completed in: 23.471 s
-~~~
-
-`tmbuild.exe` will perform the following steps to build your executable:
-
-1. Create a `libs` folder and download `premake5` into it. (You can set the `TM_LIB_DIR` environment
-   variable to use a shared `libs` directory for all your projects.)
-2. Run `premake5` to create a Visual Studio project from the `premake5.lua` script.
-3. Build the Visual Studio project to build the plugin.
-
-> **Note:** You can learn more about [tmbuild]({{base_url}}helper_tools/tmbuild.html) in its own section.
 
 ## Programming in C
 
-*The Machinery* uses C99 as its interface language. I.e., all the header files that you use to
-communicate with *The Machinery* are C99 header files, and when you write a plugin you should expose
-C99 headers for your APIs. The *implementation* of a plugin can be written in whichever language you
-like, as long as it exposes and communicates through a C99 header. In particular, you can write the
-implementation in C++ if you want to. (At Our Machinery, we write the implementations in C99.)
+*The Machinery* uses C99 as its interface language. I.e., all the header files that you use to communicate with *The Machinery* are C99 header files, and when you write a plugin, you should expose C99 headers for your APIs. The *implementation* of a plugin can be written in whichever language you like, as long as it exposes and communicates through a C99 header. In particular, you can write the implementation in C++ if you want to. (At Our Machinery, we write the implementations in C99.)
 
-### Write your own plugin
-
-To write a plugin you need to implement a `tm_load_plugin()` function that is called whenever the
-plugin DLL is loaded/unloaded. In this function, you can interact with various engine interfaces. For
-example, you can implement `tm_unit_test_i` to implement unit tests that get run
-together with the engine unit tests, you can implement `tm_the_truth_create_types_i` to
-extend our data model, The Truth, with your own data types or implement
-`tm_entity_create_component_i` to extend our entity model with your own component
-types.
+>  **Note:** Not used to C? No problem we have a collection of extra resources to work with C. [Introduction to C]({{base_url}}/getting_started/introduction_to_c.html)
 
 
 
-The following guides might help you:
+## Basic Plugin Template
 
-- [How to add a new component type]({{base_url}}/gameplay_coding/ecs/write_a_custom_component.html)
-- [How to create a new Truth Type]({{base_url}}/the_truth/custom_truth_type.html)
-- [How to write a tab]({{tutorials}})
-- [How to write unit tests]({{base_url}}qa_pipeline/how_to_write_unit_tests.html)
-- [How to write integration tests]({{base_url}}qa_pipeline/how_to_write_integration_tests.html)
+The Engine provides an easy way to create plugins for you via the **file -> New Plugins** menu. There you can choose default plugin templates. Let us choose the minimal plugin. They come with default files:
+
+![](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1)
+
+*In this case, we choose the Tab template. The only difference is that the `custom_tab` would be `minimal`.*
+
+*The folder structure for a minimal is called minimal.*
+
+- premake5.lua - Your build configuration, on Windows it will generate a .sln file for you.
+- libs.json - Defines the binary dependencies of your projects. tmbuild will automatically download them for you.
+- *.c - Your source file. It contains the sample template code to guide you on what is needed.
+- build.bat / build.sh - quick build files to make building simpler for you.
+
+### What do we have?
 
 
 
-The Engine provides an easy way to create plugins for you via the **File -> New Plugins** menu. There you can choose default plugin templates. They come with default files:
+#### Premake5
 
-![custom tab folder view](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1)
+We are using [Premake](https://premake.github.io/) for our meta-build system generator at Our Machinery. This file defines our plugin binary dependencies and builds options for all the Machinery platforms. Premake generates the actual build scripts that we then build with tmbuild, our one-click build tool. More on tmbuild [here](https://books.ourmachinery.com/the_machinery_book/extending_the_machinery/helper_tools/tmbuild.html).
 
-*The folder structure for a custom tab called `custom_tab`.*
+We recommend you to use one single premake file that manages all your plugins. Having a main premake file avoids going into each project folder to build your project. As recommended in the chapter [Project Setup: Possible folder structure for a project](https://books.ourmachinery.com/the_machinery_book/extending_the_machinery/getting_started/project_setup.html#possible-folder-structure-for-a-project), we also recommend separating your plugins into subfolders. 
+
+> **Note:** The current plugin templates always create all metafiles directly for you, but you can just adjust the main premake file and delete the other ones. This workflow is in review.
+
+In the Book Chapter [Premake]({{base_url}}extending_the_machinery/premake.html) you can find more in-depth information about the premake file. 
 
 
 
-- `premake5.lua` - Your build configuration, on Windows it will generate a `.sln` file for you.
-- `libs.json` - Defines the binary dependencies of your projects. `tmbuild` will automatically download them for you.
-- `*.c` - Your source file. It contains the sample template code to give you some guidance on what is needed.
-- `build.bat` / `build.sh` - quick build files to make building simpler for you.
+#### Libs.json 
 
-> **Note:** By default the plugin will not be copied into your Engine's `plugins` folder. You can modify the `premake` file or copy it manually in the folder. You can also make use of a Plugin Asset.
+This file tells tmbuild what kind of binary dependencies you have and what versions you need. tmbuild will automatically download them for you. For more information on the libs.json file, read its [chapter]({{base_url}}/helper_tools/libs_json_reference.md).
 
-### Structure of a plugin
 
-Every plugin has `tm_load_plugin()` as its entry point, in there we register everything we need to register to the Engines Plugin System. It is important that you do not execute heavy code in this function or rely on other plugins, since they might not be loaded yet! This function is just there to perform load and register operations.
 
-#### Where does my gameplay code live?
+#### The Build Scripts
 
-Your gameplay lives within the [Systems / Engines]({{base_url}}/gameplay_coding/ecs/index.html) of the ECS or in the [Simulation Entry]({{base_url}}gameplay_coding/simulation_entry.html) and they have their own entry points.
+Every plugin that is generated with the engines comes with a `build.bat` or `build.sh` at the moment. They are here to help you with your workflow. Whenever you execute them for the first time (double click on them) the script will ask you if you want your plugin to be copied into the plugins folder or if you want a plugin asset. If you decide to create a plugin asset, you need to import the Shared Lib once into your project and then use the Import Change option. More infos on Plugin Asset [here]({{the_machinery_book}}extending_the_machinery/plugin-assets.html).
 
-#### How do I update my tool / tab content?
+*What is the difference between a Plugin Asset and an Engine Plugin?*
 
-- The `tm_tab_vt` defines three functions for your tab to be updated:
-  - `tm_tab_vt.ui()` - Callback for drawing the content of the tab into the specified rect.
-  - `tm_tab_vt.ui_serial()` - *Optional.* If implemented, called from the main UI job once all parallel UI rendering (fork/join) has finished. This can be used for parts of the UI that needs to run serially, for example because they call out to a non-thread-safe function.
-  - `tm_tab_vt.hidden_update()` - *Optional*. If the tab wants to do some processing when it is *not* the selected tab in its tabwell, it can implement this callback. This will be called for all created tabs whose content is currently *not* visible.
+The significant difference is that a plugin asset is an imported Shared Library that lives within your project as a binary data blob. A plugin asset means it is only available within this project and not within other projects. On the other hand, an Engine plugin lives in the engines plugin folder and is available within all projects. More on the difference [here]({{the_machinery_book}}/extending_the_machinery/the_plugin_system.html).
 
-For more information follow the ["Write a tab"]({{tutorials}}) walkthrough.
+#### Source Code
 
-#### Plugin callbacks (Init, Shutdown, Tick)
+Your actual plugin code lives within the source files within Source Files and header files that help the outside world to make use of the plugin. Every plugin has one entry point. This is the source file that contains the `tm_load_plugin` function.
 
-The plugin system provides also for plugin callbacks. **It is recommended to rely on these calls as little as possible.** You should not rely on those for your gameplay code!
+#### Entry Point
 
-- `tm_plugin_init_i` - Is typically called as early as possible after all plugins have been loaded.
+The `tm_load_plugin()` function is our entry point.  In this function, we get access to the API Registry. All our APIs or Interfaces are living within this API.
+
+>  The difference is that APIs only have a single implementation, whereas interfaces can have many implementations. For more information: Check the [Plugin System Chapter](https://books.ourmachinery.com/the_machinery_book/extending_the_machinery/the_plugin_system.html).
+
+We can register everything we need to register to the Engines Plugin System. You mustn't execute heavy code in this function or rely on other plugins since they might not be loaded yet! This function is just there to perform load and register operations.
+
+ It is not recommended to use this function to initialize and deinitialize data. For such things, we recommend using the `init` or `shutdown` call-back, especially since they are guaranteed to be only called when an initialization or a shutdown happens. This is in contrast to the `tm_load_plugin()` since this function is also called on reload.
+
+> More about hot reload here: [Hot-Reloading]({{the_machinery_book}}/extending_the_machinery/hot-reloading.html)
+
+
+
+### Plugin callbacks (Init, Shutdown, Tick)
+
+The plugin system also provides for plugin call-backs. **It is recommended to rely on these calls as little as possible.** You should not rely on those for your gameplay code!
+
+`tm_plugin_init_i` - This is typically called as early as possible after all plugins have been loaded.
 
 > **Note:** It is not called when a plugin is reloaded.
 
-- `tm_plugin_shutdown_i` - Is typically be called as early as possible during the application shutdown sequence
+`tm_plugin_shutdown_i` - Is typically be called as early as possible during the application shutdown sequence
 
-> **Note:** Is not called when a plugin is reloaded.
+> **Note:** It is not called when a plugin is reloaded.
 
-- `tm_plugin_tick_i` - Is typically called as early as possible in the application main loop “tick”.
+`tm_plugin_tick_i` - This is typically called as early as possible in the application main loop “tick”.
 
-They are stored in the `foundation/plugin_callbacks.h`.   
+>  They are stored in the `foundation/plugin_callbacks.h`. 
 
-#### How do I deal with static variables?
 
-The use of static variables in DLLs can be problematic, because when the DLL is reloaded, the new instance of the DLL will get a new freshly initialized static variable, losing whatever content the variable had before reload. The `tm_api_registry_api` provides a way to solve this issue:  `tm_api_registry_api.static_variable()`
 
-By using this function instead of defining it globally, the variable data is saved in permanent memory.
+## Our very first API - The Command API
 
-```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/static_variable.c)}}
-```
+This API shall allow us to register commands in any plugin and execute them later if needed.
+
+In our first API, we want to have a function that creates an API context that we need to initialize and deinitialize at the end. Moreover, we want to create an interface that we can use to register commands that you can execute via the Command API. Since requesting all commands every time might be slow, we want to cache them at the beginning of the plugin and at the end. Also, on reload.
+
+> Note: This might not be the best design choice, e.g., thread safety, but this works for demonstration purposes. *PS: Treat this like you would treat slide code.*
 
 
 
 ### Write your own API
 
-You can also create your own APIs that other plugins can query for. If you create your own APIs, you
-want to define them in your header file, so that other plugins can `#include` it and know how to
-call your APIs. 
-
-> Note that if you are not defining your own APIs, but just implementing some of the engine's ones, your plugin typically doesn't need a header file.
+Let us extend the current minimal plugin and add API. API's are only useful if they can be used from the outside. Therefore a header file is needed.
 
 **my_plugin.h:**
 
@@ -196,11 +125,19 @@ call your APIs.
 {{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_api.h)}}
 ~~~
 
+
+
 **my_plugin.c:**
 
 ~~~c
 {{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_plugin.c)}}
 ~~~
 
+
+
 When The Machinery loads a plugin DLL, it looks for the `tm_load_plugin()` function and calls it. If it can't find the function, it prints an error message. We store the API registry pointer in a static variable so that we can use it everywhere in our DLL.
 We also `tm_get_api()` some of the API pointers that we will use frequently and store them in static variables so that we don’t have to use the registry to query for them every time we want to use them. Finally, we add our own API to the registry, so others can query for and use it.
+
+### Basic Steps towards the Command API
+
+To be added...

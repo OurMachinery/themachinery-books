@@ -15,13 +15,13 @@ Maintaining different *Makefiles* and *Visual Studio Solution* files for a cross
 
 Several build tools exist that allow us to avoid these issues. [CMake](https://cmake.org/) is widely used, but tends to have a high learning curve and its scripting language is not the easiest to learn. Moreover it can very hard to debug.
 
-> **Source: ** This information is based on [Getting Started With Premake by Johannes Peter](http://blog.johannesmp.com/2016/10/29/getting-started-with-premake/)
+> **Source:** This information is based on [Getting Started With Premake by Johannes Peter](http://blog.johannesmp.com/2016/10/29/getting-started-with-premake/)
 
 ## What is premake
 
  [Premake5](https://premake.github.io/) is a Lightweight, Open-source, Lua-based alternative to CMake. As with CMake, Premake allows you to define the structure and contents of your project and then dynamically generate whatever build files (Makefiles, VS Solutions, Xcode Projects, etc) you need at the time.
 
-At the core of Premake is a **premake5.lua** file that describes your project (what programming language it uses, where to find source files, what dependencies it has, etc.). ‘**premake5.lua**’ is to ***Premake*** what is ‘**Makefile**’ is to *[GNU Make](https://www.gnu.org/software/make/)* or a project/sln file to Visual Studios.
+At the core of Premake5 is a **premake5.lua** file that describes your project (what programming language it uses, where to find source files, what dependencies it has, etc.). ‘**premake5.lua**’ is to ***Premake*** what is ‘**Makefile**’ is to *[GNU Make](https://www.gnu.org/software/make/)* or a project/sln file to Visual Studios.
 
 Because *premake5.lua* allows you to uniquely generate whatever build files you need in seconds, you no longer need to version them in your repository. You configure your version control to [ignore](https://git-scm.com/docs/gitignore) the build files, and version the premake5.lua file instead. Resolving merge conflicts on a premake5.lua file is far more sane than on a Visual Studio project file.
 
@@ -30,7 +30,7 @@ Once you have a premake5.lua file, you can run the premake executable to generat
 - To generate a Makefile on Linux you run `./premake5 vs20122`
 - To generate a VS 2022 Solution on Windows you run `premake5 vs2022`
 
-> **Source: ** This information is based on [Getting Started With Premake by Johannes Peter](http://blog.johannesmp.com/2016/10/29/getting-started-with-premake/)
+> **Source:** This information is based on [Getting Started With Premake by Johannes Peter](http://blog.johannesmp.com/2016/10/29/getting-started-with-premake/)
 
 ## The Basic The Machinery Premake Setup
 
@@ -251,7 +251,7 @@ filter "configurations:Release"
     optimize "On"
 ```
 
-This example tells Premake that on Debug we have the define `TM_CONFIGURATION_DEBUG` and we generate debug symbols : `symbols "On"` and only on windows we make sure that we point to the right debugger:
+This example tells Premake5 that on Debug we have the define `TM_CONFIGURATION_DEBUG` and we generate debug symbols : `symbols "On"` and only on windows we make sure that we point to the right debugger:
 
 ```lua
     filter "system:windows"
@@ -319,9 +319,11 @@ project "new-project"
 
 This adds a new project called `new-project` to your premake file when you compile now the dll with the name ``new-project` will be build on Windows on Linux it will be a `.so` file.
 
-## Advanced Premake: Adding functions to make our live easier
 
-The code example above is great but its quite a lot of work. This is something you can change. Since Premake is using Lua you can just write functions to bundle your code together. For example lets say we want a base for all our projects:
+
+## Advanced Premake5: Adding functions to make our live easier
+
+The code example above is great but its quite a lot of work. This is something you can change. Since Premake5 is using Lua you can just write functions to bundle your code together. For example lets say we want a base for all our projects:
 
 ```lua
 function base(name)
@@ -383,6 +385,8 @@ plugin("test-plugin")
 plugin("new-project")
 util("my-untility")
 ```
+
+
 
 ## The Machinery Project Recommendation
 
@@ -635,6 +639,8 @@ plugin("plugin-b")
 | [`removeflags`](https://premake.github.io/docs/Removing-Values/) | The remove...() set of functions remove one or more values from a list of configuration values. Every configuration list in the Premake API has a corresponding remove function: [flags()](https://premake.github.io/docs/flags) has removeflags(), [defines()](https://premake.github.io/docs/defines) has removedefines(), and so on. |
 | [`staticruntime`](https://premake.github.io/docs/staticruntime/) | Select the staticruntime                                     |
 | [`linkoptions`](https://premake.github.io/docs/linkoptions/) | Passes arguments directly to the linker command line without translation. |
+| [`includedirs`](https://premake.github.io/docs/includedirs/) | Specifies the include file search paths for the compiler. **Note:** We are using a modified version in our codebase (see Premake code above) that overrides the default behaviour by saving the original function code in `oldincludedirs`. In our implementation we make sure that the `TM_SDK_DIR` is correctly set. |
+| [`libdirs`](https://premake.github.io/docs/libdirs/)         | Specifies the library search paths for the linker. **Note:** We are using a modified version in our codebase (see Premake code above) that overrides the default behaviour by saving the original function code in `oldlibdirs`. In our implementation we make sure that the `TM_SDK_DIR` is correctly set. |
 | [`platforms`](https://premake.github.io/docs/platforms/)     | Specifies a set of build platforms, which act as another configuration axis when building. |
 | [`postbuildcommands `](https://premake.github.io/docs/postbuildcommands/) | Specifies shell commands to run after build is finished.     |
 | [`prebuildcommands`](https://premake.github.io/docs/prebuildcommands) | Specifies shell commands to run before each build.           |
