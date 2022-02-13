@@ -6,8 +6,6 @@ We are welcoming all contributions to the [Engine](https://github.com/OurMachine
 
 * auto-gen TOC;
 {:toc}
-
-
 ## Contributing to Books
 
 If you want to make a contribution to [this repository](https://github.com/OurMachinery/themachinery-books) (other than a small spelling or formatting fix), please first create an *Issue* or a *Discussion* thread, discussing the addition you want to make. Otherwise, there is a chance your submission will be rejected if we decide it does not fit into the structure of this document.
