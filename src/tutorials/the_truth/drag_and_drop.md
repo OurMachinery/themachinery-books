@@ -1,6 +1,6 @@
 # Adding Drag and Drop to Assets
 
-This walkthrough shows you how to enable a asset to be drag and dropped. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html). The goal of this walkthrough is to enable you to drag and drop your asset into the Scene!
+This walkthrough shows you how to enable a asset to be drag and dropped. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html). The goal of this walkthrough is to enable you to drag and drop your asset into the Scene! 
 
 You will learn:
 
@@ -18,12 +18,6 @@ This walkthrough will refer to the text asset example as the asset we want to ex
 {:toc}
 
 
-## About aspects
-
-{{#include ../../../the_machinery_book/src/the_truth/aspects.md:2:*}}
-
-
-
 ## Adding Drag and Drop to our asset
 
 In this example, we are going back to our text asset sample. In that sample, we have the following function to register the asset to the Truth:
@@ -35,6 +29,8 @@ In this example, we are going back to our text asset sample. In that sample, we 
 We need to make use of the `tm_asset_scene_api` aspect. This aspect allows the associated Truth Type to be dragged and dropped to the Scene if wanted! We can find it in the `plugins/the_machinery_shared/asset_aspects.h` header.
 
 ### Asset Scene Aspect
+
+> *What is an aspect?* [Custom Asset]({{base_url}}/the_truth/aspects.html)
 
 This aspect expects an instance of the `tm_asset_scene_api`. When we provide a call-back called
 

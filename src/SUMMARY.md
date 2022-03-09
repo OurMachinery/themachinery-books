@@ -117,7 +117,7 @@
             - [Part 3 - Custom Importer](./tutorials/the_truth/custom_asset/part3.md)
         - [Adding Drag and Drop to Assets](./tutorials/the_truth/drag_and_drop.md)
         - [Open Asset in Tab](./tutorials/the_truth/open_asset.md)
-    - [Gameplay Coding](./tutorials/gameplay_coding/README.md)
+    - [Gameplay coding](./gameplay_coding/README.md)
         - [Extending the Entity Graph](./tutorials/gameplay_coding/extend_the_entity_graph.md)
         - [Custom Data Type for the Entity Graph](./tutorials/gameplay_coding/provide_custom_data_type_to_the_entity_graph.md)
     - [Network](./tutorials/network/README.md)

@@ -12,7 +12,7 @@ git-repository-url = "https://github.com/OurMachinery/themachinery-books"
 enable = true
 
 [preprocessor.toc]
-command = "../tmbook toc"
+command = "tmbook toc"
 renderer = ["html"]
 marker = "* auto-gen TOC;\n{:toc}"
 
@@ -21,19 +21,16 @@ marker = "* auto-gen TOC;\n{:toc}"
 
 [preprocessor.path_replacement]
 renderer = ["html"]
-folder = "../"
-books = ["the_machinery_book","tutorials"]
-command = "../tmbook path_replacement"
+books = ["the_machinery_book"]
+command = "./tmbook path_replacement"
 
 
 [preprocessor.auto_doc]
 renderer = ["html"]
-folder = "../"
-books = ["the_machinery_book","tutorials"]
-command = "../tmbook auto_doc"
+books = ["the_machinery_book"]
+command = "./tmbook auto_doc"
 
 [preprocessor.auto_include]
 renderer = ["html"]
-folder = "../"
-books = ["the_machinery_book","tutorials"]
-command = "../tmbook auto_include"
+books = ["the_machinery_book"]
+command = "./tmbook auto_include"

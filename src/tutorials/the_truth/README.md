@@ -1,7 +1,3 @@
-{{#include ../../../the_machinery_book/src/the_truth/README.md}}
-
-
-
 ## Tutorials
 
 This section introduces you to some more complex topics such as [*How to Create your Own Asset Type*]({{base_url}}/the_truth/custom_asset/index.html).

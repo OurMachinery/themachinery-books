@@ -1,1 +1,0 @@
-{{#include ../../../the_machinery_book/src/gameplay_coding/README.md}}
