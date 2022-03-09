@@ -1,4 +1,6 @@
-{{#include ../../../the_machinery_book/src/editing_workflows/physics.md}}
+# Physics
+
+> You should read the [Physics Introduction]({{base_url}}/editing_workflows/physics.html) before you continue here.
 
 In this section we will discuss some of the Samples in more detail. 
 
