@@ -110,7 +110,7 @@ During the import step, The Machinery only runs a bare minimum of data processin
 
 > **Note** that import of large assets can take a significant amount of time. You can monitor the progress of the import operation in the status bar.
 
-For more information see  [How to import assets]({{base_url}}editing_workflows/import_assets.html) or checkout our [Example Workflow for Importing an Asset and create an Entity]({{the_machinery_book}}/editing_workflows/asset_pipeline.html)
+For more information see  [How to import assets]({{base_url}}editing_workflows/import_assets.html) or checkout our [Example Workflow for Importing an Asset and create an Entity]({{base_url}}/editing_workflows/asset_pipeline.html)
 
 ### What are common file formats supported?
 
@@ -122,7 +122,7 @@ For more information see  [How to import assets]({{base_url}}editing_workflows/i
 
 Our importer is based on Assimp. Therefore we support most things assimp supports. (**We do not support .blend files**)
 
-*See the [Import Chapter for more details]({{the_machinery_book}}/editing_workflows/import_assets.html)*
+*See the [Import Chapter for more details]({{base_url}}/editing_workflows/import_assets.html)*
 
 
 

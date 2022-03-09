@@ -1,6 +1,6 @@
 # Custom Import Settings
 
-This walkthrough shows you some basics of the [Creation Graph]({{the_machinery_book}}/creation_graphs/concept.html). In this part we discuss how to use custom import settings. This part is build on top of walkthroughs: [Creation Graph Prototype]({{tutorials}}/creation_graph/introduction_walkthrough/creation_graph_prototype.html) and [Texture Compression]({{tutorials}}/creation_graph/introduction_walkthrough/texture_compression.html) 
+This walkthrough shows you some basics of the [Creation Graph]({{base_url}}/creation_graphs/concept.html). In this part we discuss how to use custom import settings. This part is build on top of walkthroughs: [Creation Graph Prototype]({{base_url}}/creation_graph/introduction_walkthrough/creation_graph_prototype.html) and [Texture Compression]({{base_url}}/creation_graph/introduction_walkthrough/texture_compression.html) 
 
 > **Note:** walkthrough series makes use of the following free assets: [KhronosGroup](https://github.com/KhronosGroup)/**[glTF-Sample-Models](https://github.com/KhronosGroup/glTF-Sample-Models)**.
 
@@ -17,7 +17,7 @@ Before you can follow this tutorial you need to follow the following steps:
 
 - Download the flight helmet asset from the git repo [Download Now](https://downgit.github.io/#/home?url=https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/FlightHelmet/glTF).
 
-- Create a new `dcc-image-compress` creation graph such as described in [Creation Graph Prototype]({{tutorials}}/creation_graph/introduction_walkthrough/creation_graph_prototype.html) and [Texture Compression]({{tutorials}}/creation_graph/introduction_walkthrough/texture_compression.html) Videos / Tutorials. We will use this in this tutorial as basis.
+- Create a new `dcc-image-compress` creation graph such as described in [Creation Graph Prototype]({{base_url}}/creation_graph/introduction_walkthrough/creation_graph_prototype.html) and [Texture Compression]({{base_url}}/creation_graph/introduction_walkthrough/texture_compression.html) Videos / Tutorials. We will use this in this tutorial as basis.
 
   
 

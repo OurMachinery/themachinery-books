@@ -7,7 +7,7 @@ During this walkthrough, we will cover the following topics:
 - How to create a tab from scratch.
 - Where and how do we register the Tab to the Engine.
 
-You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html) and the [Write a plugin guide]({{the_machinery_book}}extending_the_machinery/write-a-plugin.html#build-requirements). The goal of this walkthrough is to dissect the Tab plugin provided by the Engine.
+You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide](https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html) and the [Write a plugin guide]({{base_url}}extending_the_machinery/write-a-plugin.html#build-requirements). The goal of this walkthrough is to dissect the Tab plugin provided by the Engine.
 
 **Table of Content**
 
@@ -27,7 +27,7 @@ After this, we see that the Engine created some files for us.
 
 Now we need to ensure that we can build our project. In the root folder (The folder with the premake file), we can run `tmbuild` and see if there is no issue. We will build our projects once and generate the `.sln` file (on windows). 
 
-If there is an issue, we should ensure we have set up the Environment variables correctly and installed all the needed dependencies. For more information, please read this [guide]({{the_machinery_book}}helper_tools/tmbuild.html).
+If there is an issue, we should ensure we have set up the Environment variables correctly and installed all the needed dependencies. For more information, please read this [guide]({{base_url}}helper_tools/tmbuild.html).
 
 Now we can open the `.c` file with our favorite IDE. The file will contain the following content:
 

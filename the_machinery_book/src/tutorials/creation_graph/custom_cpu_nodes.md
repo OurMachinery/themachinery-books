@@ -1,6 +1,6 @@
 # Creating custom CPU nodes
 
-In this tutorial we will create a simple CPU node for the [*Creation Graph*]({{the_machinery_book}}/creation_graphs/concept.html). The definition for these nodes is based on the Entity Graph Nodes, so there is some overlap. For this example we will create a node that generates a random `uint32_t` node with a settable maximum. To learn the difference between CPU and GPU nodes, check out [*Node Types*]({{the_machinery_book}}/creation_graphs/node_types.html).
+In this tutorial we will create a simple CPU node for the [*Creation Graph*]({{base_url}}/creation_graphs/concept.html). The definition for these nodes is based on the Entity Graph Nodes, so there is some overlap. For this example we will create a node that generates a random `uint32_t` node with a settable maximum. To learn the difference between CPU and GPU nodes, check out [*Node Types*]({{base_url}}/creation_graphs/node_types.html).
 
 ![](https://www.dropbox.com/s/04s5rzhmg9iwz68/tut_creation_graph_cpu_random.png?dl=1)
 

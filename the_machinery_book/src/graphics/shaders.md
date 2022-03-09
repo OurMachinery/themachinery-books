@@ -16,17 +16,17 @@ Inserting the `creation_graph` block in the `.tmsl` file will get exposed as a n
 
 >  **Note:** More information about creating creation graph nodes you can find in the Creation Graph Section:
 >
-> - [Node Types]({{the_machinery_book}}/creation_graphs/node_types.html)
+> - [Node Types]({{base_url}}/creation_graphs/node_types.html)
 >
-> - [Shader system interaction]({{the_machinery_book}}/creation_graphs/shader_system.html)
+> - [Shader system interaction]({{base_url}}/creation_graphs/shader_system.html)
 >
-> - [Create custom GPU node Tutorial]({{tutorials}}/creation_graph/custom_gpu_nodes.html)
+> - [Create custom GPU node Tutorial]({{base_url}}/creation_graph/custom_gpu_nodes.html)
 
 
 
 Typically these are function nodes (see `data/shaders/nodes`) that won't compile into anything without getting connected to an "output" node. We ship with a few built-in output nodes (see `data/shaders/output_nodes`) responsible for declaring the actual shader stages and glue everything together. 
 
->  **Note:** For more details on the Shader Language itself, please check the [Shader Reference](https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html) or the Chapter [The Machinery Shading Language]({{the_machinery_book}}graphics/the_machinery_shading_language.html).
+>  **Note:** For more details on the Shader Language itself, please check the [Shader Reference](https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html) or the Chapter [The Machinery Shading Language]({{base_url}}graphics/the_machinery_shading_language.html).
 
 The whole Shader System is explained in more detail within these posts:
 
@@ -39,4 +39,4 @@ The whole Shader System is explained in more detail within these posts:
 
 ## Custom shaders how?
 
-If you intend to write custom shaders you can. All your custom shaders need to be placed under the `bin\data\shaders` of the engine. They will be automatically compiled (if needed) on boot up of the Editor. For help with how to write a custom shader please follow the [`The Machinery Shading Language Guide`]({{the_machinery_book}}/graphics/the_machinery_shading_language.html)
+If you intend to write custom shaders you can. All your custom shaders need to be placed under the `bin\data\shaders` of the engine. They will be automatically compiled (if needed) on boot up of the Editor. For help with how to write a custom shader please follow the [`The Machinery Shading Language Guide`]({{base_url}}/graphics/the_machinery_shading_language.html)

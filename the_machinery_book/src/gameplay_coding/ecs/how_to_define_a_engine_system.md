@@ -45,7 +45,7 @@ They translate `.write` and `.components.` With those fields, we tell the schedu
 
 In the `tm_engine_i` you can provide a way to filter your component. Thus you can decide on which components the engine shall run.  The field `.excluded` is used for this in there you can define which components an entity type shall **not** have. This means that when the engine is scheduled all entities will be ignored with those components. 
 
-For more information see [Tagging Entities]({{the_machinery_book}}/gameplay_coding/ecs/tagging_entities.html) and [Filtering Entities]({{the_machinery_book}}/gameplay_coding/ecs/filtering_entities.html)
+For more information see [Tagging Entities]({{base_url}}/gameplay_coding/ecs/tagging_entities.html) and [Filtering Entities]({{base_url}}/gameplay_coding/ecs/filtering_entities.html)
 
 **Should my operation be exclusive? Hence not to be executed in parallel?**
 

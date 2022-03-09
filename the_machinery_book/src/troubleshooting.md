@@ -78,7 +78,7 @@ If the following variable is not set, the tool will assume that you intend to us
 
 - `TM_LIB_DIR` - The folder which determines where to download and install all dependencies (besides the build environments)
 
-Make sure you have added the needed environment variables. Follow this guide on [tmbuild]({{the_machinery_book}}/helper_tools/tmbuild.html).
+Make sure you have added the needed environment variables. Follow this guide on [tmbuild]({{base_url}}/helper_tools/tmbuild.html).
 
 
 

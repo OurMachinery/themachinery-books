@@ -63,11 +63,11 @@ This file tells tmbuild what kind of binary dependencies you have and what versi
 
 #### The Build Scripts
 
-Every plugin that is generated with the engines comes with a `build.bat` or `build.sh` at the moment. They are here to help you with your workflow. Whenever you execute them for the first time (double click on them) the script will ask you if you want your plugin to be copied into the plugins folder or if you want a plugin asset. If you decide to create a plugin asset, you need to import the Shared Lib once into your project and then use the Import Change option. More infos on Plugin Asset [here]({{the_machinery_book}}extending_the_machinery/plugin-assets.html).
+Every plugin that is generated with the engines comes with a `build.bat` or `build.sh` at the moment. They are here to help you with your workflow. Whenever you execute them for the first time (double click on them) the script will ask you if you want your plugin to be copied into the plugins folder or if you want a plugin asset. If you decide to create a plugin asset, you need to import the Shared Lib once into your project and then use the Import Change option. More infos on Plugin Asset [here]({{base_url}}extending_the_machinery/plugin-assets.html).
 
 *What is the difference between a Plugin Asset and an Engine Plugin?*
 
-The significant difference is that a plugin asset is an imported Shared Library that lives within your project as a binary data blob. A plugin asset means it is only available within this project and not within other projects. On the other hand, an Engine plugin lives in the engines plugin folder and is available within all projects. More on the difference [here]({{the_machinery_book}}/extending_the_machinery/the_plugin_system.html).
+The significant difference is that a plugin asset is an imported Shared Library that lives within your project as a binary data blob. A plugin asset means it is only available within this project and not within other projects. On the other hand, an Engine plugin lives in the engines plugin folder and is available within all projects. More on the difference [here]({{base_url}}/extending_the_machinery/the_plugin_system.html).
 
 #### Source Code
 
@@ -83,7 +83,7 @@ We can register everything we need to register to the Engines Plugin System. You
 
  It is not recommended to use this function to initialize and deinitialize data. For such things, we recommend using the `init` or `shutdown` call-back, especially since they are guaranteed to be only called when an initialization or a shutdown happens. This is in contrast to the `tm_load_plugin()` since this function is also called on reload.
 
-> More about hot reload here: [Hot-Reloading]({{the_machinery_book}}/extending_the_machinery/hot-reloading.html)
+> More about hot reload here: [Hot-Reloading]({{base_url}}/extending_the_machinery/hot-reloading.html)
 
 
 

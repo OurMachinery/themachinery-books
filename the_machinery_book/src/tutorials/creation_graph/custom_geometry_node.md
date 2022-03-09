@@ -1,6 +1,6 @@
 # Creating Custom Geometry Nodes
 
-In this tutorial we well be creating a CPU node for the [*Creation Graph*]({{the_machinery_book}}/creation_graphs/concept.html) that creates a mesh that can be used by rendering nodes. This tutorial expects some basic knowledge of the creation graph and node creation. it is recommended to read [*Creating custom CPU nodes*]({{tutorials}}/creation_graph/custom_cpu_nodes.html) before reading this.
+In this tutorial we well be creating a CPU node for the [*Creation Graph*]({{base_url}}/creation_graphs/concept.html) that creates a mesh that can be used by rendering nodes. This tutorial expects some basic knowledge of the creation graph and node creation. it is recommended to read [*Creating custom CPU nodes*]({{base_url}}/creation_graph/custom_cpu_nodes.html) before reading this.
 
 ![](https://www.dropbox.com/s/5xbu16zov1k5h4b/tm_tut_creation_graph_geometry_node.png?dl=1)
 

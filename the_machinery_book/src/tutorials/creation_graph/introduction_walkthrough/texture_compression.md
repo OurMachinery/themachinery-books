@@ -1,6 +1,6 @@
 # Texture Compression
 
-This walkthrough shows you some basics of the [Creation Graph]({{the_machinery_book}}/creation_graphs/concept.html). In this part we discuss texture compression.
+This walkthrough shows you some basics of the [Creation Graph]({{base_url}}/creation_graphs/concept.html). In this part we discuss texture compression.
 
 This tutorial will teach you:
 

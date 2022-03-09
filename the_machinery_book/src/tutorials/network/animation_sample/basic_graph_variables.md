@@ -1,6 +1,6 @@
 # Part 5: Basic Graph Variable replication
 
-In this tutorial you’ll learn how to replicate a graph variable across the network.  This tutorial build on the learnings of the pervious tutorial: [Part 4]({{tutorials}}//network/animation_sample/support_multiple_players.html)
+In this tutorial you’ll learn how to replicate a graph variable across the network.  This tutorial build on the learnings of the pervious tutorial: [Part 4]({{base_url}}//network/animation_sample/support_multiple_players.html)
 
 >  **Note:**  we start with making sure that you have the Networking feature flag enabled, you can do that in the **Tools→Feature Flags Menu**. 
 

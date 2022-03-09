@@ -58,7 +58,7 @@ The Movement Engine and Jump Engine will pick them up and apply the same logic t
 
 An Engine update is running on a subset of components that possess some set of components. Some entity component systems are referred to as *systems* instead, but we choose *Engine* because it is less ambiguous.
 
-On the other hand, a system is an update function that runs on the entire entity context. Therefore you can not filter for specific components. For more information see [the chapter about the Entity Component System]({{the_machinery_book}}/gameplay_coding/ecs/index.html).
+On the other hand, a system is an update function that runs on the entire entity context. Therefore you can not filter for specific components. For more information see [the chapter about the Entity Component System]({{base_url}}/gameplay_coding/ecs/index.html).
 
 
 

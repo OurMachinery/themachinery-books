@@ -1,6 +1,6 @@
 # Custom GPU nodes
 
-The [*Creation Graph*]({{the_machinery_book}}/creation_graphs/concept.html) is a powerful visual scripting language that can generate shader code through its GPU nodes. Extending this with custom nodes allows for more complex algorithms, custom material types and much more. In this tutorial we will demonstrate how to create some basic GPU nodes. To learn the difference between CPU and GPU nodes, check out [*Node Types*]({{the_machinery_book}}/creation_graphs/node_types.html). 
+The [*Creation Graph*]({{base_url}}/creation_graphs/concept.html) is a powerful visual scripting language that can generate shader code through its GPU nodes. Extending this with custom nodes allows for more complex algorithms, custom material types and much more. In this tutorial we will demonstrate how to create some basic GPU nodes. To learn the difference between CPU and GPU nodes, check out [*Node Types*]({{base_url}}/creation_graphs/node_types.html). 
 
 A creation graph GPU node needs to be in a `.tmsl` file, these can be compiled by the shader system. Note that there can only be **one** creation graph node per `.tmsl` file, additional definitions will be ignored. If these shaders are placed in the `bin/data/shaders/` directory, they will be loaded automatically.  `.tmsl` files are written in a Simplified JSON format with less strict punctuation requirements. For a full reference on the shader files, check out the [Shader System Reference]({{docs}}doc/shader_system_reference.md.html).
 

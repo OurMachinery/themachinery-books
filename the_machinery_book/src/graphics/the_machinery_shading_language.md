@@ -54,7 +54,7 @@ We also need to define a `compile` or `system` block in order for our shader to 
 Note that shaders don’t have to be written and compiled in this way. You can generate shaders directly from code using the `tm_shader_repository_api`. You can create a new shader declaration by calling `create_shader_declaration()`, populate it with your custom code by using the `tm_shader_declaration_api`, and compile it using `create_from_declaration()`. Any `tmsl` file will go through the same pipeline. 
 
 
-> **Note:** Shader are also used to create GPU nodes for the Creation Graph, see Creation Graph: [Shader System Interaction]({{the_machinery_book}}/creation_graphs/shader_system.html) for more information.
+> **Note:** Shader are also used to create GPU nodes for the Creation Graph, see Creation Graph: [Shader System Interaction]({{base_url}}/creation_graphs/shader_system.html) for more information.
 
 
 

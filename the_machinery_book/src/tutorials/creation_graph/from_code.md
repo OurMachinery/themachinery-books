@@ -1,6 +1,6 @@
 # Calling Creation Graphs from Code
 
-In this tutorial we will create a very simple component that uses a [Creation Graph]({{the_machinery_book}}/creation_graphs/concept.html) to render to the viewport. The Creation Graph used for this example can be seen in the image below.
+In this tutorial we will create a very simple component that uses a [Creation Graph]({{base_url}}/creation_graphs/concept.html) to render to the viewport. The Creation Graph used for this example can be seen in the image below.
 
 The goal of this Creation Graph is to create an image output that we can copy to the viewport. In this example, the image is created by the creation graph and the viewport UV is rendered onto it using an unlit pass. Notice that no geometry has to be defined, as we use the `Construct Quad` node in clip space. This will procedurally encompass the entire viewport.
 

@@ -1,6 +1,6 @@
 # Creating a Custom Asset Type
 
-This walkthrough series shows you how to add a custom asset type to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{the_machinery_book}}extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to create a text file asset type.
+This walkthrough series shows you how to add a custom asset type to the Engine. You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{base_url}}extending_the_machinery/the_plugin_system.html). The goal for this walkthrough is to create a text file asset type.
 
 We will cover the following topics:
 

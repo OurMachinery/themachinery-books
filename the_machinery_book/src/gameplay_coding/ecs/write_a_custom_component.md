@@ -5,7 +5,7 @@ This walkthrough shows you how to add a custom component to the Engine. During t
 - How to create a component from scratch.
 - Where and how do we register a component.
 
-You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{base_url}}extending_the_machinery/the_plugin_system.html) and the [Write a plugin guide]({{the_machinery_book}}extending_the_machinery/write-a-plugin.html#build-requirements). The goal of this walkthrough is to dissect the component plugin provided by the Engine.
+You should have basic knowledge about how to write a custom plugin. If not, you might want to check this [Guide]({{base_url}}extending_the_machinery/the_plugin_system.html) and the [Write a plugin guide]({{base_url}}extending_the_machinery/write-a-plugin.html#build-requirements). The goal of this walkthrough is to dissect the component plugin provided by the Engine.
 
 
 
@@ -21,7 +21,7 @@ In this example, we want to create a new plugin, which contains our component. W
 
 > **Tip:** Maybe store your plugin in a folder next to your game project.
 
-After this, we see that the Engine created some files for us. Now we need to ensure that we can build our project. In the root folder (The folder with the `premake` file), we run `tmbuild,` and if there is no issue, we see that it will build our projects once and generate the `.sln` file (on windows). If there is an issue, we should ensure we have set up the Environment variables correctly and installed all the needed dependencies. For more information, please read this [guide]({{the_machinery_book}}helper_tools/tmbuild.html).
+After this, we see that the Engine created some files for us. Now we need to ensure that we can build our project. In the root folder (The folder with the `premake` file), we run `tmbuild,` and if there is no issue, we see that it will build our projects once and generate the `.sln` file (on windows). If there is an issue, we should ensure we have set up the Environment variables correctly and installed all the needed dependencies. For more information, please read this [guide]({{base_url}}helper_tools/tmbuild.html).
 
 Now we can open the `.c` file with our favourite IDE. The file will contain the following content:
 

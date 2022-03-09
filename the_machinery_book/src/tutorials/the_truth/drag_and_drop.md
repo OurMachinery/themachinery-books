@@ -10,7 +10,7 @@ You will learn:
 
 
 
-This walkthrough will refer to the text asset example as the asset we want to extend! If you have not followed it here is the link: [Custom Asset]({{tutorials}}/the_truth/custom_asset/index.html)
+This walkthrough will refer to the text asset example as the asset we want to extend! If you have not followed it here is the link: [Custom Asset]({{base_url}}/the_truth/custom_asset/index.html)
 
 **Table of Content**
 
@@ -46,7 +46,7 @@ Before we can make use of this we need some component to be created for our Text
 
 Let us create a use case for our text file. Let us assume we wanted to make a very simple story-based game, and all our text files are the basis for our stories. This means we need to create first a story component.
 
-> **Note**: For more details on how to create a component, follow this [guide]({{the_machinery_book}}/gameplay_coding/ecs/write_a_custom_component.html).
+> **Note**: For more details on how to create a component, follow this [guide]({{base_url}}/gameplay_coding/ecs/write_a_custom_component.html).
 
 Here we have the whole source code for the story component:
 

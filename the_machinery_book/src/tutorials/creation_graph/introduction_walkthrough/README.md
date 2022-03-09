@@ -1,6 +1,6 @@
 # Creation Graph Introduction
 
-This walkthrough shows you some basics of the [Creation Graph]({{the_machinery_book}}/creation_graphs/concept.html). During this walkthrough series you will familiarize yourself with the following concepts:
+This walkthrough shows you some basics of the [Creation Graph]({{base_url}}/creation_graphs/concept.html). During this walkthrough series you will familiarize yourself with the following concepts:
 
 - What Are Creation Graphs?
 - Simple Texture Compression

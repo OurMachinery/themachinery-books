@@ -35,15 +35,15 @@ These are things that differ from std C practices.
 
 While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use `malloc, free or realloc`. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as `malloc`), we give a `tm_allocator_i` object down. This allows you to allocate memory like you would with `malloc`. Like in std C you need to free the memory allocated via a `tm_allocator_i` at the end of its use. Otherwise you may leak. Using our built-in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. 
 
-> **Note:** more about leak detection and memory usage check the chapter about the [Memory Usage Tab]({{the_machinery_book}}/qa_pipeline/memory.html)
+> **Note:** more about leak detection and memory usage check the chapter about the [Memory Usage Tab]({{base_url}}/qa_pipeline/memory.html)
 
 
 
 ### Child Allocators
 
-In case you check our projects you will find that we are making extensive use of child allocators. This allows us to log the use of their memory in our [Memory Usage Tab]({{the_machinery_book}}/qa_pipeline/memory.html).
+In case you check our projects you will find that we are making extensive use of child allocators. This allows us to log the use of their memory in our [Memory Usage Tab]({{base_url}}/qa_pipeline/memory.html).
 
-In case you check our [`Write a custom Tab` example]({{the_machinery_book}}extending_the_machinery/write-a-tab.html) you will find in its create function this code:
+In case you check our [`Write a custom Tab` example]({{base_url}}extending_the_machinery/write-a-tab.html) you will find in its create function this code:
 
 ```c
 static tm_tab_i* tab__create(tm_tab_create_context_t* context, tm_ui_o *ui)
@@ -121,7 +121,7 @@ The [tm_temp_allocator_api](https://ourmachinery.com//apidoc/foundation/temp_all
 
 Both the frame as well as the temp allocator are great for using when you need to have a string with formatting! Infact the `tm_temp_allocator_api` provided an extra function for this: `tm_temp_allocator_api.printf()` /`tm_temp_allocator_api.frame_printf()`
 
-> **Note:** About formatting checkout the `tm_sprintf_api`  or [the logging chapter]({{the_machinery_book}}/qa_pipeline/logging.html)
+> **Note:** About formatting checkout the `tm_sprintf_api`  or [the logging chapter]({{base_url}}/qa_pipeline/logging.html)
 
 
 

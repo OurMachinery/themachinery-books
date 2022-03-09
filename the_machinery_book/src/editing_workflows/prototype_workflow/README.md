@@ -87,5 +87,5 @@ instances, you can override specific nodes in the graph instance to customize th
 
 ## What is next?
 
-- [How to create a prototype?]({{tutorials}}/workflows/how_to_create_prototypes.html)
-- [How to instantiate Prototypes]({{tutorials}}workflows/how_to_instantiate_prototypes.html#how-to-instantiate-prototypes)
+- [How to create a prototype?]({{base_url}}/workflows/how_to_create_prototypes.html)
+- [How to instantiate Prototypes]({{base_url}}workflows/how_to_instantiate_prototypes.html#how-to-instantiate-prototypes)

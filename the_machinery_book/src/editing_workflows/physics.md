@@ -72,7 +72,7 @@ projects.
 
 ## Physics scripting
 
-Physics can be scripted using the visual scripting language in the [*Entity Graph*]({{the_machinery_book}}editing_workflows/visual-scripting.html).
+Physics can be scripted using the visual scripting language in the [*Entity Graph*]({{base_url}}editing_workflows/visual-scripting.html).
 
 We can divide the PhysX scripting nodes into a few categories.
 

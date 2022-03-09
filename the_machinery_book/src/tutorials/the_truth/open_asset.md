@@ -14,7 +14,7 @@ You will learn:
 
 
 
-This walkthrough will refer to the text asset example as the asset we want to extend! If you have not followed it, here is the link: [Custom Asset]({{tutorials}}/the_truth/custom_asset/index.html).
+This walkthrough will refer to the text asset example as the asset we want to extend! If you have not followed it, here is the link: [Custom Asset]({{base_url}}/the_truth/custom_asset/index.html).
 
 **Table of Content**
 

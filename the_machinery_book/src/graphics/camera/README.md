@@ -5,14 +5,14 @@ In The Machinery a [camera]({{docs}}plugins/entity/camera_component.h.html) is a
 
 ## Adding a camera to the scene
 
-A camera must be used to view any scene, the [Scene Tab]({{the_machinery_book}}the_editor/scene_tab.html) therefor starts with a default camera. But once you wish to simulate this world an additional camera is needed. This can be done by adding a Camera Component to any entity in the scene and setting it as the viewing camera using the Set Camera node.
+A camera must be used to view any scene, the [Scene Tab]({{base_url}}the_editor/scene_tab.html) therefor starts with a default camera. But once you wish to simulate this world an additional camera is needed. This can be done by adding a Camera Component to any entity in the scene and setting it as the viewing camera using the Set Camera node.
 
 ![](https://www.dropbox.com/s/7cwc768hu7ltll4/tm_guide_camera_tree_tab.png?dl=1)
 
 ![](https://www.dropbox.com/s/foeulmeuaef5c2j/tm_guide_camera_graph.png?dl=1)
 
 
-You can see a preview of the newly added camera in real time in the [Preview Tab]({{the_machinery_book}}the_editor/preview_tab.html) when selecting the camera component.
+You can see a preview of the newly added camera in real time in the [Preview Tab]({{base_url}}the_editor/preview_tab.html) when selecting the camera component.
 
 ![](https://www.dropbox.com/s/y7rafonxt7abm7h/tm_guide_camera_perspective.png?dl=1)
 
@@ -62,7 +62,7 @@ The Machinery can simulate various camera effects as desired. These are implemen
 
 | **Effect**     | **Description**                                                                                                                                                                                                                      |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Bloom]({{tutorials}}post_processing/bloom.html)       | The bloom effects adds fringes of light extending from the borders of bright areas of the scene. This simulates the real world glow that comes from viewing bright lights through a lens.                                            |
-| [Exposure]({{tutorials}}post_processing/exposure.html) | Exposure controls the amount of light that hits the sensor. This has the effect of brightening or darkening the scene as desired. This can either be set using real world camera parameters or automatically as the human eye would. |
+| [Bloom]({{base_url}}post_processing/bloom.html)       | The bloom effects adds fringes of light extending from the borders of bright areas of the scene. This simulates the real world glow that comes from viewing bright lights through a lens.                                            |
+| [Exposure]({{base_url}}post_processing/exposure.html) | Exposure controls the amount of light that hits the sensor. This has the effect of brightening or darkening the scene as desired. This can either be set using real world camera parameters or automatically as the human eye would. |
 | Depth of Field                                         | Real world lenses cannot focus on the entire scene at the same time. The depth of field effect simulated this be blurring out of focus areas of the scene.                                                                           |
 

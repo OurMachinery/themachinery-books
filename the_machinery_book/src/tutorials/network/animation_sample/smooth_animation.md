@@ -1,6 +1,6 @@
 # Part 6: Smooth Animation
 
-In this tutorial you’ll learn how to synchronize an animation across multiple simulation instances. This tutorial build on the learnings of the pervious tutorial: [Part 5]({{tutorials}}//network/animation_sample/basic_graph_variables.html)
+In this tutorial you’ll learn how to synchronize an animation across multiple simulation instances. This tutorial build on the learnings of the pervious tutorial: [Part 5]({{base_url}}//network/animation_sample/basic_graph_variables.html)
 
 >  **Note:**  we start with making sure that you have the Networking feature flag enabled, you can do that in the **Tools→Feature Flags Menu**. 
 

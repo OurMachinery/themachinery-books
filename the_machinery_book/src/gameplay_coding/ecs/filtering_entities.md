@@ -44,7 +44,7 @@ To avoid all of this we can just tell the engine to ignore all entity types whic
 
 ## Filtering Entities by using Tag Components
 
-> **Note**: You can define a `Tag` Component which should not be confused with the `Tag Component`. A tag component is a simple typedef of a `unit64_t` (or something else) or an empty struct in C++ to a component without properties. The function of this component is it to modify the Entity Type / Archetype to group entities together with them.For more information see the [Tagging Entities]({{the_machinery_book}}/gameplay_coding/ecs/tagging_entities.html) Chapter.
+> **Note**: You can define a `Tag` Component which should not be confused with the `Tag Component`. A tag component is a simple typedef of a `unit64_t` (or something else) or an empty struct in C++ to a component without properties. The function of this component is it to modify the Entity Type / Archetype to group entities together with them.For more information see the [Tagging Entities]({{base_url}}/gameplay_coding/ecs/tagging_entities.html) Chapter.
 
 You have a Movement / Input System which should always work. At some point you do not want an entity to receive any input. 
 

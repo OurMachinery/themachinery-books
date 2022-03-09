@@ -1,6 +1,6 @@
 # Part 7: Spawning Entities
 
-In this tutorial you’ll learn how to Spawn an Entity with Prediction.  This tutorial build on the learnings of the pervious tutorial: [Part 6]({{tutorials}}//network/animation_sample/smooth_animation.html)
+In this tutorial you’ll learn how to Spawn an Entity with Prediction.  This tutorial build on the learnings of the pervious tutorial: [Part 6]({{base_url}}//network/animation_sample/smooth_animation.html)
 
 >  **Note:**  we start with making sure that you have the Networking feature flag enabled, you can do that in the **Tools→Feature Flags Menu**. 
 
