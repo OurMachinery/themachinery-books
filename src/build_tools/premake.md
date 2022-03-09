@@ -1,11 +1,12 @@
 ## Premake Guide
 
-At Our Machinery we are using [Premake](https://premake.github.io/) for our meta build system generator. Premake generates for us the actual build scripts that we then build with `tmbuild` our one-click build tool. More on tmbuild [here](./helper_tools/tmbuild.md).
+At Our Machinery we are using [Premake](https://premake.github.io/) for our meta build system generator. Premake generates for us the actual build scripts that we then build with `tmbuild` our one-click build tool. More on tmbuild [here](./tmbuild.html).
 
 **Table of Content**
 
 * auto-gen TOC;
 {:toc}
+
 ## Why Use a Build Configurator?
 
 Maintaining different *Makefiles* and *Visual Studio Solution* files for a cross platform project can be a lot of work. Especially since you have to adjust the generator a lot for every new platform you support.
@@ -390,13 +391,15 @@ util("my-untility")
 
 ## The Machinery Project Recommendation
 
-We recommend you to make use of one single premake file that manages all your plugins at one build. This avoids the need to go in each of the folder to build your project. As recommended in the the chapter [Project Setup: Possible folder structure for a project](./getting_started/project_setup.html#possible-folder-structure-for-a-project) we recommend also to seperate your plugins into sub folders. The following image shows a potential setup for your game plugins:
+We recommend you to make use of one single premake file that manages all your plugins at one build. This avoids the need to go in each of the folder to build your project. As recommended in the the chapter [Project Setup: Possible folder structure for a project]({{base_url}}/getting_started/project_setup.html#possible-folder-structure-for-a-project) we recommend also to seperate your plugins into sub folders. The following image shows a potential setup for your game plugins:
 
 ![](https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?dl=1)
 
 In here we have one single `premake` file and a single `libs.json` as well as the `libs` folder. This allows you to run `tmbuild` just in this folder and all plugins or the ones you want to build can be built at once. 
 
 In this case the premake file could look like this:
+
+> **TODO** move this to code snippets!
 
 ```lua
 -- premake5.lua
