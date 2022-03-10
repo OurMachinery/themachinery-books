@@ -5,8 +5,7 @@ We will only talk about how physics is set up in The Machinery.
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 ## The physics simulation system
 

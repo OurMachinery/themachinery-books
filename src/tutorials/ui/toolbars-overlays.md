@@ -8,8 +8,7 @@ In this walkthrough, we will learn how to write our little toolbar for our newly
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## Implement a Toolbar in a Tab
 
 To begin with, we need to create a new tab plugin. We go on **File -> New Plugin -> Tab.** 

@@ -11,8 +11,7 @@ While Systems are just an update with a provided access to the entity context. W
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## What is an Entity?
 
 An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. The entity itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore an entity acts as an identifier or key to the data stored in components.

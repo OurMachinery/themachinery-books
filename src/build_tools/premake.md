@@ -4,8 +4,7 @@ At Our Machinery we are using [Premake](https://premake.github.io/) for our meta
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 ## Why Use a Build Configurator?
 

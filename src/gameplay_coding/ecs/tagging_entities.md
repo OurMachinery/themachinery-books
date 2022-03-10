@@ -9,8 +9,7 @@ The Machinery knows 2 kind of ways to Tag Entities:
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## Using the Tag Component
 
 The difference is that the first solution can be used via the `tag_component_api` and you can add Tags via the Editor to any Entity that has a Tag Component. Later on in your System or Engine you can access the Tagged Entity.

@@ -6,8 +6,7 @@ You have to pass the  `tm_entity_system_i` or `tm_engine_i` instance in your reg
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## Ask yourself those questions before you design an Engine / System
 
 The following questions are better explained in the chapter: [How entities can interact.]({{base_url}}/gameplay_coding/ecs/how_entites_can_interact.html)

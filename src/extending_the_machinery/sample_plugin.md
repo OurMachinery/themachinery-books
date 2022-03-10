@@ -18,8 +18,7 @@ editor to open up its tab:
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ### What are the build Requirements

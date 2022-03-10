@@ -4,8 +4,7 @@ The Machinery is based around a collection of editing *Tabs*, each with its spec
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## About Tab-Wells

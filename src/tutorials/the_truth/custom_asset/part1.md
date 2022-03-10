@@ -14,8 +14,7 @@ The next part will explore how to store more complex data in an asset and how to
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 ## **First Step:** What Kind of Asset Do We Want to Create?
 

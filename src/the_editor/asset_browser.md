@@ -8,8 +8,7 @@ As the image shows, the asset browser contains two components: The Directory Tre
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## Structure

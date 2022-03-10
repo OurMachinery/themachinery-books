@@ -25,8 +25,7 @@ Also, you will learn some more advanced topics such as:
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 

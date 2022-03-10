@@ -12,8 +12,7 @@ This walkthrough shows you how to create your first plugin.
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## Programming in C

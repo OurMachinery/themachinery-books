@@ -14,8 +14,7 @@ Besides, it is essential to remember is that *The Machinery* does not have speci
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## How to edit a Scene / Entity
 
 In this tab, you can edit any entity from the current project. To start editing, you can either use **Right Click → Open** or **Double Click** the entity to open them. This action will update the Scene Tab and the entity tree view tab. If you close the Scene Tab, the Entity Tree Tab will display an empty tree.

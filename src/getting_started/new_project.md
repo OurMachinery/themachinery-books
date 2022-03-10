@@ -12,8 +12,7 @@ This part will cover the following topics:
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 # About Scenes
 

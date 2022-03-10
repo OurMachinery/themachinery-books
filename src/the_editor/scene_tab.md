@@ -4,8 +4,7 @@ The **Scene** tab is the view into your world. You can use the **Scene tab** to 
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## Navigate through your Scene

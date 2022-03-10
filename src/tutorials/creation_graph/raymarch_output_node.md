@@ -5,8 +5,7 @@ In this tutorial, we'll learn a little bit more about the Creation Graph system 
 
 **Table of Contents**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## Introduction

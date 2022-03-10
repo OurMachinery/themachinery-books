@@ -17,8 +17,7 @@ After this walkthrough you could check out the ["Create a custom asset"]({{base_
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 ## Define a Type
 

@@ -4,8 +4,7 @@ To manipulate an object, you need to have its ID (`tm_tt_id_t`). When you create
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 In this example, we have a function that gets an object and the Truth instance of that object.
 

@@ -8,8 +8,7 @@ When *The Machinery* launches, it loads all the plugins named `tm_*.dll` in its 
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## What are the types of plugins?
 
 In *The Machinery* you can have 2 type of plugins: *Engine Plugins* and *Plugin Assets*.

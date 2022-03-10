@@ -4,8 +4,7 @@ The Machinery allows you to hook your code into specific customization points. T
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## Application Create

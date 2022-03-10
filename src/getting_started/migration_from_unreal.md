@@ -4,8 +4,7 @@ When migrating from Unreal Engine 4 (UE4) to The Machinery, there are a few thin
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 **Quick Glossary**

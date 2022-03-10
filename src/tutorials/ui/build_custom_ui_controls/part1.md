@@ -6,8 +6,7 @@ During this tutorial, you’ll implement the `tm_ui_custom_controls` plugin, whi
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 ## Environment setup
 

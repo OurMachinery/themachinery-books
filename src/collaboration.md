@@ -9,8 +9,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## Who's project is edited?
 
 In our collaboration model, one of the users always acts as a host. The host invites others to join her in editing *her* project. All the changes made by the participants in the session end up in the host’s project and it’s the host’s responsibility to save the project, check in the changes into version control, or do whatever else is needed to make the changes permanent.

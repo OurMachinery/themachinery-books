@@ -13,8 +13,7 @@ Steps are defined as a normal `json` object. The following list displays all the
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## Utilities

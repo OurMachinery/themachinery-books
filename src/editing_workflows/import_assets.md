@@ -10,8 +10,7 @@ This part will cover the following topics:
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## Import differences between Meshes and Textures
 
 Assets that are created by e.g. Maya will be of type after they are imported.  Where DCC stands for Digital Content Creation.  Materials wont be imported untill the `dcc_asset` has been dragged into the scene or used otherweise.

@@ -11,8 +11,7 @@ The [next part]({{base_url}}/tutorials/the_truth/custom_asset/part3.html) shows 
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## Adding More Properties to the The Truth Type
 
 The Truth type we created in Part 1 cannot do much, because it doesn't have any properties:

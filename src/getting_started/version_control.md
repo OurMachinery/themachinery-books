@@ -4,8 +4,7 @@ At [Our Machinery](https://ourmachinery.com/about.html) we are using [Git](https
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## What are git, perforce and Plastic SCM?

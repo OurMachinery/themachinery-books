@@ -4,8 +4,7 @@ When migrating from Godot to The Machinery, there are a few things that are diff
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 **Quick Glossary**

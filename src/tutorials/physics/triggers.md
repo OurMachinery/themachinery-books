@@ -4,8 +4,7 @@ This walkthrough shows you how to create a trigger with the Graph Component. You
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 ## Assemble a Trigger
 

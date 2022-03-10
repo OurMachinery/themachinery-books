@@ -5,8 +5,7 @@ other entities.
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 So you can for example create an entity asset that represents a

@@ -11,8 +11,7 @@ You should have basic knowledge about how to write a custom plugin. If not, you 
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## Where do we start?

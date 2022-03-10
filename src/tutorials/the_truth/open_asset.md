@@ -18,8 +18,7 @@ This walkthrough will refer to the text asset example as the asset we want to ex
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## New Tab

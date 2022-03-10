@@ -14,7 +14,7 @@ enable = true
 [preprocessor.toc]
 command = "tmbook toc"
 renderer = ["html"]
-marker = "* auto-gen TOC;\n{:toc}"
+marker = "* {:toc}"
 
 [preprocessor.links]
 

@@ -6,8 +6,7 @@ specific, e.g., the gameplay code for a particular game.
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 
 ## The two ways of achieving plugin only assets

@@ -9,8 +9,7 @@ The Machinery knows 2 kind of ways to Tag Entities:
 
 **Table of Content**
 
-* auto-gen TOC;
-{:toc}
+* {:toc}
 ## Filtering Entities 
 
 In an Engine (`tm_engine_i`) you can define the `.excluded` field. This tells the scheduler that this engine shall **not** run on any entity type that contains these components.

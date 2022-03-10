@@ -5,8 +5,7 @@ In this tutorial we will create a very simple component that uses a [Creation Gr
 The goal of this Creation Graph is to create an image output that we can copy to the viewport. In this example, the image is created by the creation graph and the viewport UV is rendered onto it using an unlit pass. Notice that no geometry has to be defined, as we use the `Construct Quad` node in clip space. This will procedurally encompass the entire viewport.
 
 **Contents**
-* auto-gen TOC;
-{:toc}
+* {:toc}
 
 ![](https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?dl=1)
 
