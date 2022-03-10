@@ -42,10 +42,7 @@ Edit the markdown files with your editor of choice (we like [Typora](https://typ
 If you want to see the changes live, run:
 ```bash
 # For the_machinery_book
-$ cd the_machinery_book && ../tmbook serve
-
-# For the tutorials
-$ cd tutorials && ../tmbook serve
+$ ./tmbook serve
 ```
 
 If you want to add new pages to the system just add them to `SUMMARY.md`. As soon as they are in there they will be used for the book.
@@ -55,8 +52,6 @@ If you want to add new pages to the system just add them to `SUMMARY.md`. As soo
 If you want to link anything within the book please make use of 
 
 - `{{base_url}}` for the base address of your current book
-- `{{the_machinery_book}}` to cross link to this book
-- `{{tutorials}}` to cross link to this book
 - `{{docs}}` to link to the documentation e.g. `{{docs}}plugins/physx/physx_scene.h.html#structtm_physx_scene_api`
 
 They will be replaced on build with the correct URL's. 
@@ -145,12 +140,9 @@ Open your markdown editor of choice (e.g. [Typora](https://typora.io/)) and chec
 To verify everything run: (choose the correct book)
 
 ```bash
-# For the_machinery_book
-$ cd the_machinery_book && mdbook serve
-
-# For the tutorials
-$ cd tutorials && mdbook serve
+$ ./tmbook serve
 ```
+
 _Open the in the browser using http://localhost:3000_.
 
 If everything works and looks like it supposed to you can commit to master and push.
@@ -161,11 +153,7 @@ If everything works and looks like it supposed to you can commit to master and p
 To build the book, type:
 
 ```bash
-# For the_machinery_book
-$ cd the_machinery_book && ../tmbook build
-
-# For the tutorials
-$ cd tutorials && ../tmbook build
+$ ./tmbook build
 ```
 
 The output will appear in the `book` subdirectory. To check it out, open it in your web browser:
