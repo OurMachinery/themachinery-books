@@ -126,4 +126,4 @@ For an example of how to use physics, see the [Physics Sample Project](https://o
 
 ## Tutorials
 
-For more information and guides checkout out the [The Machinery Tutorials Book]({{base_url}}) as well as our [Physics Sample](https://ourmachinery.com/samples.html).
+For more information and guides checkout out the [tutorial chapter]({{base_url}}tutorials/physics/index.html) as well as our [Physics Sample](https://ourmachinery.com/samples.html).

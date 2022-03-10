@@ -182,4 +182,4 @@ That is all we need to do to define properties for our Type! Also thanks to our 
 
 ## What is next?
 
-You can find more in depth and practical tutorials in the [tutorial book]({{base_url}}/the_truth/index.html)
+You can find more in depth and practical tutorials in the [tutorial chapter]({{base_url}}/tutorials/the_truth/index.html)
