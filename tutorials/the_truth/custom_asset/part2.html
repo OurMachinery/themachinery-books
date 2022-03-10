@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Part 2 - Custom UI - The Machinery Book</title>
+        <!-- Custom HTML head -->
+<meta name="twitter:card" content="summary_large_image" />
+
+<meta name="twitter:image" content="https://ourmachinery.com/images/machinery-logo.png" />
+<meta name="twitter:title" content="Our Machinery">
+<meta name="twitter:description" content="Our Machinery" />
+
+<meta name="twitter:site" content="@ourmachinery" />
+
+
+<meta property="og:title" content="Tutorials &middot; Our Machinery" />
+<meta property="og:site_name" content="Our Machinery" />
+<meta property="og:url" content="https://ourmachinery.com/tutorials/" />
+
+<meta property="og:image" content="https://ourmachinery.com/images/machinery-logo.png" />
+
+
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Our Machinery" />        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li class="chapter-item "><a href="../../../what_is_the_machinery.html"><strong aria-hidden="true">2.</strong> What is The Machinery</a></li><li class="chapter-item "><a href="../../../licenses.html"><strong aria-hidden="true">3.</strong> Licenses</a></li><li class="chapter-item "><a href="../../../faq.html"><strong aria-hidden="true">4.</strong> FAQ</a></li><li class="chapter-item "><a href="../../../glossary.html"><strong aria-hidden="true">5.</strong> Glossary</a></li><li class="chapter-item "><a href="../../../troubleshooting.html"><strong aria-hidden="true">6.</strong> Troubleshooting</a></li><li class="chapter-item "><a href="../../../contributing.html"><strong aria-hidden="true">7.</strong> Contribution</a></li><li class="chapter-item "><a href="../../../getting_started/index.html"><strong aria-hidden="true">8.</strong> Getting Started</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../getting_started/what_is_in_the_package.html"><strong aria-hidden="true">8.1.</strong> What is in this package</a></li><li class="chapter-item "><a href="../../../getting_started/logging_in.html"><strong aria-hidden="true">8.2.</strong> Sign In</a></li><li class="chapter-item "><a href="../../../getting_started/project_setup.html"><strong aria-hidden="true">8.3.</strong> Project Setup</a></li><li class="chapter-item "><a href="../../../getting_started/version_control.html"><strong aria-hidden="true">8.4.</strong> Version Control</a></li><li class="chapter-item "><a href="../../../getting_started/new_project.html"><strong aria-hidden="true">8.5.</strong> New Project</a></li><li class="chapter-item "><a href="../../../getting_started/first_gameplay_project.html"><strong aria-hidden="true">8.6.</strong> First Gameplay Project</a></li><li class="chapter-item "><a href="../../../getting_started/sample-projects.html"><strong aria-hidden="true">8.7.</strong> Sample Projects</a></li><li class="chapter-item "><a href="../../../getting_started/migration_from_unity.html"><strong aria-hidden="true">8.8.</strong> The Machinery for Unity Dev's</a></li><li class="chapter-item "><a href="../../../getting_started/migration_from_unreal.html"><strong aria-hidden="true">8.9.</strong> The Machinery for Unreal 4 Dev's</a></li><li class="chapter-item "><a href="../../../getting_started/migration_from_godot.html"><strong aria-hidden="true">8.10.</strong> The Machinery for Godot Dev's</a></li><li class="chapter-item "><a href="../../../getting_started/introduction_to_c.html"><strong aria-hidden="true">8.11.</strong> Introduction to C</a></li></ol></li><li class="chapter-item "><a href="../../../the_editor/index.html"><strong aria-hidden="true">9.</strong> The Editor</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../the_editor/tabs.html"><strong aria-hidden="true">9.1.</strong> About Tabs</a></li><li class="chapter-item "><a href="../../../the_editor/entity_tree_tab.html"><strong aria-hidden="true">9.2.</strong> Entity Tree Tab</a></li><li class="chapter-item "><a href="../../../the_editor/scene_tab.html"><strong aria-hidden="true">9.3.</strong> Scene Tab</a></li><li class="chapter-item "><a href="../../../the_editor/properties_tab.html"><strong aria-hidden="true">9.4.</strong> Properties Tab</a></li><li class="chapter-item "><a href="../../../the_editor/asset_browser.html"><strong aria-hidden="true">9.5.</strong> Asset Browser</a></li><li class="chapter-item "><a href="../../../the_editor/simulate_tab.html"><strong aria-hidden="true">9.6.</strong> Simulate Tab</a></li><li class="chapter-item "><a href="../../../the_editor/preview_tab.html"><strong aria-hidden="true">9.7.</strong> Preview Tab</a></li><li class="chapter-item "><a href="../../../the_editor/customizations.html"><strong aria-hidden="true">9.8.</strong> Customizations</a></li></ol></li><li class="chapter-item "><a href="../../../editing_workflows/index.html"><strong aria-hidden="true">10.</strong> Editing Workflows</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../editing_workflows/entities.html"><strong aria-hidden="true">10.1.</strong> Entities</a></li><li class="chapter-item "><a href="../../../editing_workflows/import_assets.html"><strong aria-hidden="true">10.2.</strong> Import Assets</a></li><li class="chapter-item "><a href="../../../editing_workflows/import_projects.html"><strong aria-hidden="true">10.3.</strong> Import Projects</a></li><li class="chapter-item "><a href="../../../editing_workflows/asset_pipeline.html"><strong aria-hidden="true">10.4.</strong> Asset pipeline by Example</a></li><li class="chapter-item "><a href="../../../editing_workflows/prototype_workflow/index.html"><strong aria-hidden="true">10.5.</strong> Prototypes</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../editing_workflows/prototype_workflow/how_to_create_prototypes.html"><strong aria-hidden="true">10.5.1.</strong> How to Create Prototypes</a></li><li class="chapter-item "><a href="../../../editing_workflows/prototype_workflow/how_to_instantiate_prototypes.html"><strong aria-hidden="true">10.5.2.</strong> How to Instantiate Prototypes</a></li></ol></li><li class="chapter-item "><a href="../../../editing_workflows/shaders_materials.html"><strong aria-hidden="true">10.6.</strong> Meshes / Materials / Shaders</a></li><li class="chapter-item "><a href="../../../editing_workflows/simulation.html"><strong aria-hidden="true">10.7.</strong> Simulation</a></li><li class="chapter-item "><a href="../../../editing_workflows/visual-scripting.html"><strong aria-hidden="true">10.8.</strong> Visual Scripting: Entity Graphs</a></li><li class="chapter-item "><a href="../../../editing_workflows/physics.html"><strong aria-hidden="true">10.9.</strong> Physics</a></li><li class="chapter-item "><a href="../../../editing_workflows/animation/index.html"><strong aria-hidden="true">10.10.</strong> Animation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../editing_workflows/animation/animation-state-machine.html"><strong aria-hidden="true">10.10.1.</strong> Animation State Machines</a></li><li class="chapter-item "><a href="../../../editing_workflows/animation/animation-compression.html"><strong aria-hidden="true">10.10.2.</strong> Animation Compression</a></li></ol></li><li class="chapter-item "><a href="../../../editing_workflows/sound.html"><strong aria-hidden="true">10.11.</strong> Sound</a></li><li class="chapter-item "><a href="../../../editing_workflows/publish.html"><strong aria-hidden="true">10.12.</strong> Publish</a></li><li class="chapter-item "><a href="../../../editing_workflows/sculpting.html"><strong aria-hidden="true">10.13.</strong> Sculpt Tool / White boxing</a></li></ol></li><li class="chapter-item "><a href="../../../the_truth/index.html"><strong aria-hidden="true">11.</strong> The Truth</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../the_truth/access_values.html"><strong aria-hidden="true">11.1.</strong> Access values</a></li><li class="chapter-item "><a href="../../../the_truth/create_an_object.html"><strong aria-hidden="true">11.2.</strong> Create an object</a></li><li class="chapter-item "><a href="../../../the_truth/modify_an_object.html"><strong aria-hidden="true">11.3.</strong> Modify an object</a></li><li class="chapter-item "><a href="../../../the_truth/common_types.html"><strong aria-hidden="true">11.4.</strong> Common Types</a></li><li class="chapter-item "><a href="../../../the_truth/aspects.html"><strong aria-hidden="true">11.5.</strong> Aspects</a></li><li class="chapter-item "><a href="../../../the_truth/custom_truth_type.html"><strong aria-hidden="true">11.6.</strong> Create a Truth Type</a></li></ol></li><li class="chapter-item "><a href="../../../creation_graphs/concept.html"><strong aria-hidden="true">12.</strong> Creation Graphs</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../creation_graphs/intro_unity.html"><strong aria-hidden="true">12.1.</strong> Creation Graphs for Untiy Dev's</a></li><li class="chapter-item "><a href="../../../creation_graphs/intro_unreal.html"><strong aria-hidden="true">12.2.</strong> Creation Graphs for Unreal 4 Dev's</a></li><li class="chapter-item "><a href="../../../creation_graphs/node_types.html"><strong aria-hidden="true">12.3.</strong> Node Types</a></li><li class="chapter-item "><a href="../../../creation_graphs/shader_system.html"><strong aria-hidden="true">12.4.</strong> Shader System Interaction</a></li></ol></li><li class="chapter-item "><a href="../../../graphics/index.html"><strong aria-hidden="true">13.</strong> Graphics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../graphics/camera/index.html"><strong aria-hidden="true">13.1.</strong> Camera</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../graphics/camera/physical_light_and_camera.html"><strong aria-hidden="true">13.1.1.</strong> Physically Based Light and Cameras</a></li></ol></li><li class="chapter-item "><a href="../../../graphics/default_render_pipeline.html"><strong aria-hidden="true">13.2.</strong> Default Render Pipeline</a></li><li class="chapter-item "><a href="../../../graphics/mesh_materials.html"><strong aria-hidden="true">13.3.</strong> Meshes / Materials</a></li><li class="chapter-item "><a href="../../../graphics/shaders.html"><strong aria-hidden="true">13.4.</strong> Shaders</a></li><li class="chapter-item "><a href="../../../graphics/the_machinery_shading_language.html"><strong aria-hidden="true">13.5.</strong> The Machinery Shading Language</a></li><li class="chapter-item "><a href="../../../graphics/tmsl_vs.html"><strong aria-hidden="true">13.6.</strong> .tmsl Visual Studio Extension</a></li><li class="chapter-item "><a href="../../../graphics/post_processing/index.html"><strong aria-hidden="true">13.7.</strong> Post Processing</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../graphics/post_processing/aa.html"><strong aria-hidden="true">13.7.1.</strong> Anti-Aliasing</a></li><li class="chapter-item "><a href="../../../graphics/post_processing/exposure.html"><strong aria-hidden="true">13.7.2.</strong> Exposure</a></li><li class="chapter-item "><a href="../../../graphics/post_processing/bloom.html"><strong aria-hidden="true">13.7.3.</strong> Bloom</a></li><li class="chapter-item "><a href="../../../graphics/post_processing/color_grading.html"><strong aria-hidden="true">13.7.4.</strong> Color Grading</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../extending_the_machinery/index.html"><strong aria-hidden="true">14.</strong> Extending The Machinery</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../extending_the_machinery/the_plugin_system.html"><strong aria-hidden="true">14.1.</strong> The Plugin System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../extending_the_machinery/write-a-plugin.html"><strong aria-hidden="true">14.1.1.</strong> Write a plugin</a></li><li class="chapter-item "><a href="../../../extending_the_machinery/sample_plugin.html"><strong aria-hidden="true">14.1.2.</strong> Sample Plugins</a></li><li class="chapter-item "><a href="../../../extending_the_machinery/write-a-tab.html"><strong aria-hidden="true">14.1.3.</strong> Write a tab</a></li><li class="chapter-item "><a href="../../../extending_the_machinery/plugin-assets.html"><strong aria-hidden="true">14.1.4.</strong> Plugin assets</a></li></ol></li><li class="chapter-item "><a href="../../../extending_the_machinery/hot-reloading.html"><strong aria-hidden="true">14.2.</strong> Hot-reloading</a></li><li class="chapter-item "><a href="../../../extending_the_machinery/application_hooks.html"><strong aria-hidden="true">14.3.</strong> Application Hooks</a></li><li class="chapter-item "><a href="../../../build_tools/premake.html"><strong aria-hidden="true">14.4.</strong> Premake</a></li><li class="chapter-item "><a href="../../../build_tools/tmbuild.html"><strong aria-hidden="true">14.5.</strong> tmbuild</a></li></ol></li><li class="chapter-item "><a href="../../../gameplay_coding/index.html"><strong aria-hidden="true">15.</strong> Gameplay coding</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../gameplay_coding/simulation_entry.html"><strong aria-hidden="true">15.1.</strong> Simulation Entry in C</a></li><li class="chapter-item "><a href="../../../gameplay_coding/visual_scripting/index.html"><strong aria-hidden="true">15.2.</strong> Visual Scripting</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../gameplay_coding/visual_scripting/subgraphs.html"><strong aria-hidden="true">15.2.1.</strong> Subgraphs</a></li><li class="chapter-item "><a href="../../../gameplay_coding/visual_scripting/debugger.html"><strong aria-hidden="true">15.2.2.</strong> Debugger</a></li><li class="chapter-item "><a href="../../../gameplay_coding/visual_scripting/extend_the_entity_graph.html"><strong aria-hidden="true">15.2.3.</strong> Extending the Entity Graph</a></li><li class="chapter-item "><a href="../../../gameplay_coding/visual_scripting/provide_custom_data_type_to_the_entity_graph.html"><strong aria-hidden="true">15.2.4.</strong> Custom Data Type for the Entity Graph</a></li></ol></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/index.html"><strong aria-hidden="true">15.3.</strong> Entity Component System</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../gameplay_coding/ecs/what_are_components.html"><strong aria-hidden="true">15.3.1.</strong> What are components</a></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/how_entites_can_interact.html"><strong aria-hidden="true">15.3.2.</strong> How can Entities Interact?</a></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/how_to_design_system_or_engine.html"><strong aria-hidden="true">15.3.3.</strong> How to design a System or an Engine?</a></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/how_to_define_a_engine_system.html"><strong aria-hidden="true">15.3.4.</strong> How to define a System or an Engine?</a></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/how_to_register_a_system_or_engine.html"><strong aria-hidden="true">15.3.5.</strong> How to register a System or an Engine?</a></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/write_a_custom_component.html"><strong aria-hidden="true">15.3.6.</strong> Write a custom component</a></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/tagging_entities.html"><strong aria-hidden="true">15.3.7.</strong> Tagging Entities</a></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/filtering_entities.html"><strong aria-hidden="true">15.3.8.</strong> Filtering Entities</a></li><li class="chapter-item "><a href="../../../gameplay_coding/ecs/simulation_lifecycle.html"><strong aria-hidden="true">15.3.9.</strong> Simulation Lifecycle</a></li></ol></li><li class="chapter-item "><a href="../../../gameplay_coding/gameplay_entry_comparison.html"><strong aria-hidden="true">15.4.</strong> Gameplay Entry Point Comparison</a></li></ol></li><li class="chapter-item expanded "><a href="../../../tutorials/index.html"><strong aria-hidden="true">16.</strong> Tutorials</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../tutorials/creation_graph/index.html"><strong aria-hidden="true">16.1.</strong> Creation Graph</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../tutorials/creation_graph/introduction_walkthrough/index.html"><strong aria-hidden="true">16.1.1.</strong> Creation Graph Introduction Series</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../tutorials/creation_graph/introduction_walkthrough/texture_compression.html"><strong aria-hidden="true">16.1.1.1.</strong> Simple Texture Compression</a></li><li class="chapter-item "><a href="../../../tutorials/creation_graph/introduction_walkthrough/creation_graph_prototype.html"><strong aria-hidden="true">16.1.1.2.</strong> Creation Graph Prototype</a></li><li class="chapter-item "><a href="../../../tutorials/creation_graph/introduction_walkthrough/custom_import_settings.html"><strong aria-hidden="true">16.1.1.3.</strong> Custom Import Settings</a></li></ol></li><li class="chapter-item "><a href="../../../tutorials/creation_graph/custom_gpu_nodes.html"><strong aria-hidden="true">16.1.2.</strong> Creating Custom GPU Nodes</a></li><li class="chapter-item "><a href="../../../tutorials/creation_graph/custom_cpu_nodes.html"><strong aria-hidden="true">16.1.3.</strong> Creating Custom CPU Nodes</a></li><li class="chapter-item "><a href="../../../tutorials/creation_graph/custom_geometry_node.html"><strong aria-hidden="true">16.1.4.</strong> Creating Custom Geometry Nodes</a></li><li class="chapter-item "><a href="../../../tutorials/creation_graph/from_code.html"><strong aria-hidden="true">16.1.5.</strong> Calling Creation Graphs from Code</a></li><li class="chapter-item "><a href="../../../tutorials/creation_graph/raymarch_output_node.html"><strong aria-hidden="true">16.1.6.</strong> Creating a Custom Raymarching Output Node</a></li></ol></li><li class="chapter-item "><a href="../../../tutorials/physics/index.html"><strong aria-hidden="true">16.2.</strong> Physics</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../tutorials/physics/triggers.html"><strong aria-hidden="true">16.2.1.</strong> Triggers</a></li></ol></li><li class="chapter-item expanded "><a href="../../../tutorials/the_truth/index.html"><strong aria-hidden="true">16.3.</strong> The Truth</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../tutorials/the_truth/custom_asset/index.html"><strong aria-hidden="true">16.3.1.</strong> Creating a Custom Asset Type</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../tutorials/the_truth/custom_asset/part1.html"><strong aria-hidden="true">16.3.1.1.</strong> Part 1 - Create an Asset Truth Type, Addable via Asset Browser</a></li><li class="chapter-item expanded "><a href="../../../tutorials/the_truth/custom_asset/part2.html" class="active"><strong aria-hidden="true">16.3.1.2.</strong> Part 2 - Custom UI</a></li><li class="chapter-item "><a href="../../../tutorials/the_truth/custom_asset/part3.html"><strong aria-hidden="true">16.3.1.3.</strong> Part 3 - Custom Importer</a></li></ol></li><li class="chapter-item "><a href="../../../tutorials/the_truth/drag_and_drop.html"><strong aria-hidden="true">16.3.2.</strong> Adding Drag and Drop to Assets</a></li><li class="chapter-item "><a href="../../../tutorials/the_truth/open_asset.html"><strong aria-hidden="true">16.3.3.</strong> Open Asset in Tab</a></li></ol></li><li class="chapter-item "><a href="../../../tutorials/network/index.html"><strong aria-hidden="true">16.4.</strong> Network</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../tutorials/network/animation_sample/network_assets.html"><strong aria-hidden="true">16.4.1.</strong> Part 1: Network Asset</a></li><li class="chapter-item "><a href="../../../tutorials/network/animation_sample/multiple_network_instances.html"><strong aria-hidden="true">16.4.2.</strong> Part 2: Multiple Instances</a></li><li class="chapter-item "><a href="../../../tutorials/network/animation_sample/entity_control.html"><strong aria-hidden="true">16.4.3.</strong> Part 3: Entity Control</a></li><li class="chapter-item "><a href="../../../tutorials/network/animation_sample/support_multiple_players.html"><strong aria-hidden="true">16.4.4.</strong> Part 4: Multiple Players</a></li><li class="chapter-item "><a href="../../../tutorials/network/animation_sample/basic_graph_variables.html"><strong aria-hidden="true">16.4.5.</strong> Part 5: Variable Replication (Graph)</a></li><li class="chapter-item "><a href="../../../tutorials/network/animation_sample/smooth_animation.html"><strong aria-hidden="true">16.4.6.</strong> Part 6: Smooth Animation</a></li><li class="chapter-item "><a href="../../../tutorials/network/animation_sample/spawning_entities.html"><strong aria-hidden="true">16.4.7.</strong> Part 7: Spawning Entities</a></li></ol></li><li class="chapter-item "><a href="../../../tutorials/ui/index.html"><strong aria-hidden="true">16.5.</strong> UI</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../tutorials/ui/build_custom_ui_controls/index.html"><strong aria-hidden="true">16.5.1.</strong> Build Custom UI Controls</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../tutorials/ui/build_custom_ui_controls/part1.html"><strong aria-hidden="true">16.5.1.1.</strong> Part 1</a></li></ol></li><li class="chapter-item "><a href="../../../tutorials/ui/toolbars-overlays.html"><strong aria-hidden="true">16.5.2.</strong> Toolbars and Overlays</a></li><li class="chapter-item "><a href="../../../tutorials/ui/custom_layouts.html"><strong aria-hidden="true">16.5.3.</strong> Custom Tab Layouts</a></li></ol></li></ol></li><li class="chapter-item "><a href="../../../collaboration.html"><strong aria-hidden="true">17.</strong> Collaboration</a></li><li class="chapter-item "><a href="../../../qa_pipeline/index.html"><strong aria-hidden="true">18.</strong> QA Pipeline</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../qa_pipeline/statistics.html"><strong aria-hidden="true">18.1.</strong> Statistics Tab</a></li><li class="chapter-item "><a href="../../../qa_pipeline/profiler.html"><strong aria-hidden="true">18.2.</strong> Profiler Tab</a></li><li class="chapter-item "><a href="../../../qa_pipeline/memory.html"><strong aria-hidden="true">18.3.</strong> Memory Usage Tab</a></li><li class="chapter-item "><a href="../../../qa_pipeline/logging.html"><strong aria-hidden="true">18.4.</strong> Logging</a></li><li class="chapter-item "><a href="../../../qa_pipeline/how_to_write_unit_tests.html"><strong aria-hidden="true">18.5.</strong> Write your own unit tests</a></li><li class="chapter-item "><a href="../../../qa_pipeline/how_to_write_integration_tests.html"><strong aria-hidden="true">18.6.</strong> Write your own integration tests</a></li></ol></li><li class="chapter-item "><a href="../../../build_tools/index.html"><strong aria-hidden="true">19.</strong> Build Tools</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../../build_tools/tmbuild.html"><strong aria-hidden="true">19.1.</strong> How to use tmbuild</a></li><li class="chapter-item "><a href="../../../build_tools/hash.html"><strong aria-hidden="true">19.2.</strong> How to use hash</a></li><li class="chapter-item "><a href="../../../build_tools/tmbuild_package_reference.html"><strong aria-hidden="true">19.3.</strong> tmbuild package reference</a></li><li class="chapter-item "><a href="../../../build_tools/libs_json_reference.html"><strong aria-hidden="true">19.4.</strong> Libs json reference</a></li><li class="chapter-item "><a href="../../../build_tools/premake.html"><strong aria-hidden="true">19.5.</strong> Premake</a></li></ol></li><li class="chapter-item "><a href="../../../writing_an_executable.html"><strong aria-hidden="true">20.</strong> Writing an executable</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Machinery Book</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/OurMachinery/themachinery-books" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="create-a-custom-asset-type-part-2"><a class="header" href="#create-a-custom-asset-type-part-2">Create a Custom Asset Type: Part 2</a></h1>
+<p>This part will cover the following topics:</p>
+<ul>
+<li>How to store data in a buffer that is associated with the asset file.</li>
+<li>How to give the asset a custom UI in the Property View.</li>
+</ul>
+<p>The <a href="https://ourmachinery.github.io/themachinery-books//tutorials/the_truth/custom_asset/part3.html">next part</a> shows how to write an importer for the asset.</p>
+<blockquote>
+<p>You can find the whole source code in its git repo: <a href="https://github.com/simon-ourmachinery/example-text-file-asset">example-text-file-asset</a></p>
+</blockquote>
+<p><strong>Table of Content</strong></p>
+<ul>
+<li>auto-gen TOC;
+{:toc}</li>
+</ul>
+<h2 id="adding-more-properties-to-the-the-truth-type"><a class="header" href="#adding-more-properties-to-the-the-truth-type">Adding More Properties to the The Truth Type</a></h2>
+<p>The Truth type we created in Part 1 cannot do much, because it doesn't have any properties:</p>
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt) {
+  // we have properties this is why the last arguments are &quot;0, 0&quot;
+  const tm_tt_type_t type =
+      tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, 0, 0);
+  tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;my_asset&quot;);
+}
+</code></pre>
+<p>To actually store some data in the objects, we want to add some properties to the Truth type. Note that we pass in an array of properties when we create the type with <code>tm_the_truth_api-&gt;create_object_type()</code>.</p>
+<p>For our text file objects that are two pieces of data that we want to store:</p>
+<ol>
+<li>The text data itself.</li>
+<li>The path on disk (if any) that the text file was imported from.</li>
+</ol>
+<p>Storing the <em>import path</em> is not strictly necessary, but we'll use it to implement a &quot;reimport&quot; feature. This lets our data type work nicely with text files that are edited in external programs.</p>
+<p>Here's how we can define these properties:</p>
+<pre><code class="language-c">static tm_the_truth_property_definition_t my_asset_properties[] = {
+    {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+    {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+};
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> The type <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t"><em>tm_the_truth_property_definition_t</em></a> has a lot more options. For example, is it possible to hide properties from the editor, etc. For more information, read the documentation <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#structtm_the_truth_property_definition_t"><em>here</em></a><em>.</em></p>
+</blockquote>
+<p>In this case we decided to store the text as a <em>buffer</em> instead of a <em>string</em>. Buffers can be streamed in and out of memory easily, so if we expect the text files to be large, using a buffer makes more sense than using a string.</p>
+<p>We can now create the Truth type with these properties:</p>
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt) {
+  tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
+}
+</code></pre>
+<p>Let's also change the asset name to something more meaningful than <code>my_asset</code>. We'll call it <code>txt</code>. We need to update this new name in four places:</p>
+<ul>
+<li>Asset Name</li>
+<li>Menu Name</li>
+<li>File extension</li>
+<li>The source file: <code>my_asset.c/h</code> -&gt; <code>txt.c/h</code></li>
+</ul>
+<p>This will change the code as follows:</p>
+<pre><code class="language-c">static void create_truth_types(struct tm_the_truth_o *tt) {
+  tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
+}
+// .. other code
+static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
+    .menu_name = TM_LOCALIZE_LATER(&quot;New Text File&quot;),
+    .asset_name = TM_LOCALIZE_LATER(&quot;New Text File&quot;),
+    .create = asset_browser_create,
+};
+}
+
+</code></pre>
+<p>Let's have a look at how it looks in the editor:</p>
+<p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926443262_image.png" alt="creating a new asset" /></p>
+<p>If we create a new <em>Text</em> file and select it, this is what we will see in the Properties View:</p>
+<p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609926772154_image.png" alt="" /></p>
+<p>The <code>Data</code> property is <code>nil</code> because we haven't loaded any data into the file yet. Let's add a UI that let's us import text files from disk.</p>
+<p>(Another option would be to add a <em>Text Editor</em> UI that would let us edit the text data directly in the editor. However, writing a good text editor is a big task, so for this tutorial, let's use an import workflow instead.)</p>
+<h3 id="custom-ui"><a class="header" href="#custom-ui">Custom UI</a></h3>
+<p>To show an <strong>Import</strong> button in the Properties View, we need to customize the Properties View UI of our type. We can do this by adding a <code>TM_TT_ASPECT__PROPERTIES</code> to the Truth type.</p>
+<p>The <code>TM_TT_ASPECT__PROPERTIES</code> is implemented with a <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i"><code>tm_properties_aspect_i</code></a> struct. This struct has a lot of field that can be used to customize various parts of the Properties View (for more information on them, check out the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i">documentation</a>). For our purposes, we are interested in the <code>custom_ui()</code> field that lets us use a custom callback for drawing the type in the Properties View.</p>
+<p><code>custom_ui()</code> wants a function pointer of the type <code>float (*custom_ui)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)</code>.</p>
+<p>Let us quickly go over this:</p>
+<table><thead><tr><th><strong>Argument</strong></th><th><strong>Data Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
+<tr><td><code>args</code></td><td><a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t"><code>tm_properties_ui_args_t</code></a></td><td>A struct with information from the Properties View that can be used in drawing the UI. For example, this has the <code>ui</code> instance as well as the <code>uistyle</code> which you will need in any <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api"><code>tm_ui_api</code></a> calls. For more information check the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">documentation</a>.</td></tr>
+<tr><td><code>item_rect</code></td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_rect_t"><code>tm_rect_t</code></a></td><td>The rect in the Properties View UI where the item should be drawn. Note that the height in this struct (<code>item_rect.h</code>) is the height of a standard property field. You can use more or less height to draw your type as long as you return the right <code>y</code> value (see below).</td></tr>
+<tr><td><code>object</code></td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t"><code>tm_tt_id_t</code></a></td><td>The ID of the Truth object that the Properties View wants to draw.</td></tr>
+</tbody></table>
+<table><thead><tr><th><strong>Return value</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
+<tr><td>float</td><td>Returns the <code>y</code> coordinate where the next item in the Propertiew View should be drawn. This should be <code>item_rect.y</code> + however much vertical space your controls are using.</td></tr>
+</tbody></table>
+<p>To implement the <code>custom_ui()</code> function we can make use of the functions for drawing property UIs found in <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api"><code>tm_properties_view_api</code></a>, or we can draw UI directly using <a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api"><code>tm_ui_api</code></a>. Once we've implemented <code>custom_ui()</code> we need a instance of <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_aspect_i"><code>tm_properties_aspect_i</code></a> to register. This instance must have global lifetime so it doesn't get destroyed:</p>
+<pre><code class="language-c">//.. other code
+static float properties__custom_ui(struct tm_properties_ui_args_t *args,
+                                   tm_rect_t item_rect, tm_tt_id_t object) {
+  return item_rect.y;
+}
+static tm_properties_aspect_i properties_aspect = {
+    .custom_ui = properties__custom_ui,
+};
+// .. other code
+</code></pre>
+<p>Now we can register this aspect with <code>tm_truth_api</code>:</p>
+<pre><code class="language-c">//.. other code
+
+static void create_truth_types(struct tm_the_truth_o *tt) {
+  static tm_properties_aspect_i properties_aspect = {
+      .custom_ui = properties__custom_ui,
+  };
+  tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
+}
+//... the other code
+</code></pre>
+<p>In the editor, the change is imminently visible. The UI is gone, because it is now using our <code>custom_ui()</code> function, but our <code>custom_ui()</code> function isn't drawing anything.</p>
+<p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609928409366_image.png" alt="" /></p>
+<p>Let's add the <code>Imported Path</code> property back to the UI. We can look at the <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api">properties view API</a> for a suitable function to draw this property (if we can't find anything we may have to write a custom drawer ourselves).</p>
+<p>We could use <code>tm_properties_view_api-&gt;ui_property_default()</code>. This would use the default editor based on the property type. For a <code>STRING</code> property, this is just a text edit field, the same thing that we saw before implementing our <code>custom_ui()</code> function. (If we don't have a custom UI, the default UI for each property will be used.)</p>
+<p>We chould also use <code>tm_properties_view_api-&gt;ui_string()</code>. This is just another way of drawing the default <code>STRING</code> UI.</p>
+<p>But for our purposes, <code>tm_properties_view_api-&gt;ui_open_path()</code> is better. This is a property UI specifically for file system path. It will draw a button, and if you click the button a system file dialog is shown that let's you pick a path.</p>
+<p>Note that in order to use <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api"><code>tm_properties_view_api</code></a> we need to load it in our <code>tm_load_plugin()</code> function:</p>
+<pre><code class="language-c">static struct tm_properties_view_api *tm_properties_view_api;
+#include &lt;plugins/editor_views/properties.h&gt;
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load) {
+  tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+}
+</code></pre>
+<p>Now we can call <code>ui_open_path()</code> . Let's start by looking at its <a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_view_api.ui_open_path()">signature</a>:</p>
+<p><code>float (*ui_open_path)(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, const char *name, const char *tooltip, tm_tt_id_t object, uint32_t property, const char *extensions, const char *description, bool *picked)</code></p>
+<table><thead><tr><th><strong>Argument</strong></th><th><strong>Data Type</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
+<tr><td><code>args</code></td><td><a href="https://ourmachinery.com/apidoc/plugins/editor_views/properties.h.html#structtm_properties_ui_args_t">tm_properties_ui_args_t</a></td><td>For this argument, we should pass along the <code>args</code> pointer we got in our <code>custom_ui()</code> function.</td></tr>
+<tr><td><code>item_rect</code></td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_rect_t">tm_rect_t</a></td><td>The rect where we want the UI of the control to be drawn (including the label).</td></tr>
+<tr><td><code>name</code></td><td><code>const char*</code></td><td>The label that the Properties View UI will display in front of the button.</td></tr>
+<tr><td><code>tooltip</code></td><td><code>const char*</code></td><td>Tooltip that will be shown if the mouse is hovered over the label.</td></tr>
+<tr><td><code>object</code></td><td><a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t">tm_tt_id_t</a></td><td>The Truth object that holds the path <code>STRING</code> that should be edited.</td></tr>
+<tr><td><code>property</code></td><td><code>uint32_t</code></td><td>The index of the <code>STRING</code> property that should be edited.</td></tr>
+<tr><td><code>extension</code></td><td><code>const char*</code></td><td>List of file extensions that the open file dialog should show (separated by space).</td></tr>
+<tr><td><code>description</code></td><td><code>const char*</code></td><td>Description of the file to open shown in the open file dialog.</td></tr>
+<tr><td><code>picked</code></td><td><code>bool*</code></td><td>Optional out pointer that is set to <code>true</code> if a new file was picked in the file dialog.</td></tr>
+</tbody></table>
+<table><thead><tr><th><strong>Return value</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
+<tr><td>float</td><td>The <code>y</code> coordinate where the next property should be drawn.</td></tr>
+</tbody></table>
+<p>We can now implement the function:</p>
+<pre><code class="language-c">bool picked = false;
+item_rect.y = tm_properties_view_api-&gt;ui_open_path(
+    args, item_rect, TM_LOCALIZE_LATER(&quot;Import Path&quot;),
+    TM_LOCALIZE_LATER(&quot;Path that the text file was imported from.&quot;), object,
+    TM_TT_PROP__MY_ASSET__FILE, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
+if (picked) {
+}
+</code></pre>
+<p>Note that we are using the property index <code>TM_TT_PROP__MY_ASSET__FILE</code> that we defined in the header file hearlier:</p>
+<pre><code class="language-c">#pragma once
+#include &lt;foundation/api_types.h&gt;
+//... more code
+#define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
+#define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
+
+enum
+{
+    TM_TT_PROP__MY_ASSET__FILE,
+    TM_TT_PROP__MY_ASSET__DATA,
+};
+</code></pre>
+<p>We can now test this in the engine. We see an <strong>Import Path</strong> label with a button and when we click it, we get asked to import a file.</p>
+<p><img src="https://paper-attachments.dropbox.com/s_892FB4725BEE1D4E7D7CCEA6A89558987964DFF4B0524E03B4E0F6FFCF6E0FED_1609931496164_image.png" alt="" /></p>
+<p>Next, we want to make sure that when the user picks a file using this method, we load the file and store it in our <code>DATA</code> buffer.</p>
+<p>To load files we can use the <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_api"><code>tm_os_api</code></a> which gives us access to OS functionality. <a href="https://ourmachinery.com/apidoc/foundation/os.h.html#structtm_os_api"><code>tm_os_api</code></a> has a lot of sub-APIs for different purposes (files, memory, threading, etc). In our case, what we need is <code>tm_os_api-&gt;file_io</code> which provides access to File I/O functionality:</p>
+<pre><code class="language-c">//other includes
+#include &lt;foundation/os.h&gt;
+#include &lt;foundation/buffer.h&gt;
+//.. other code
+static float properties__custom_ui(struct tm_properties_ui_args_t *args,
+                                   tm_rect_t item_rect, tm_tt_id_t object) {
+  return item_rect.y;
+}
+static tm_properties_aspect_i properties_aspect = {
+    .custom_ui = properties__custom_ui,
+};
+</code></pre>
+<p>When a new file is picked in the UI (checked with the <code>picked</code> variable) we get the file path from The Truth, read the file data and store it in The Truth.</p>
+<p>To manage buffers, we make use of the interface in <code>buffers.h</code>. Creating a buffer is a three step process:</p>
+<ul>
+<li>Allocating the memory for the buffer (based on the file size).</li>
+<li>Filling the buffer with content (in this case, from the text file).</li>
+<li>Adding the buffer to the <a href="https://ourmachinery.com/apidoc/foundation/buffer.h.html#structtm_buffers_i"><code>tm_buffers_i</code></a> object.</li>
+</ul>
+<p>Once we have created the buffer, we need to set the <code>BUFFER</code> <code>data</code> item in the Truth object to this buffer. Changing a value in The Truth is another three step process:</p>
+<ul>
+<li>Ask the Truth for a <em>write pointer</em> to the object using <code>write()</code>.</li>
+<li>Set the buffer for the <em>write pointer</em> using <code>set_buffer()</code>.</li>
+<li>Commit the changes to the Truth using <code>commit()</code>.</li>
+</ul>
+<p>We need this somewhat complicated procedure because objects in The Truth are immutable by default. This ensures that The Truth can be used from multiple threads simulatenously. When you change a Truth object using the <code>write()</code>/<code>commit()</code> protocol, the changes are applied atomically. I.e., other threads will either see the old Truth object or the new one, never a half-old, half-new object.</p>
+<p>If you want the change to go into the undo stack so that you can revert it with <strong>Edit → Undo</strong>, you need some additional steps:</p>
+<ul>
+<li>Create an <em>undo scope</em> for the action using <code>create_undo_scope()</code>.</li>
+<li>Pass that undo scope into <code>commit()</code>.</li>
+<li>Register the undo scope with the application's undo stack (found in <code>args-&gt;undo_stack</code>).</li>
+</ul>
+<p>To simplify this example, we've skipped that step and instead we use <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html#tm_tt_no_undo_scope"><code>TM_TT_NO_UNDO_SCOPE</code></a> for the <code>commit()</code> action which means the action will not be undoable.</p>
+<h2 id="what-is-next"><a class="header" href="#what-is-next">What Is Next?</a></h2>
+<p>In the next part we'll show how to add an <em>Importer</em> for our asset type. This will let us drag and drop text files from the explorer into the asset browser.</p>
+<p><a href="#">Part 3</a></p>
+<h2 id="full-example-of-basic-asset"><a class="header" href="#full-example-of-basic-asset">Full Example of Basic Asset</a></h2>
+<p><code>my_asset.h</code></p>
+<pre><code class="language-c">#pragma once
+#include &lt;foundation/api_types.h&gt;
+//... more code
+#define TM_TT_TYPE__MY_ASSET &quot;tm_my_asset&quot;
+#define TM_TT_TYPE_HASH__MY_ASSET TM_STATIC_HASH(&quot;tm_my_asset&quot;, 0x1e12ba1f91b99960ULL)
+
+enum
+{
+    TM_TT_PROP__MY_ASSET__FILE,
+    TM_TT_PROP__MY_ASSET__DATA,
+};
+</code></pre>
+<p>(Do not forget to run hash.exe when you create a <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#tm_static_hash()"><code>TM_STATIC_HASH</code></a>)</p>
+<p><code>my_asset.c</code></p>
+<pre><code class="language-c">// -- api's
+static struct tm_the_truth_api *tm_the_truth_api;
+static struct tm_properties_view_api *tm_properties_view_api;
+static struct tm_os_api *tm_os_api;
+// -- inlcudes
+#include &lt;foundation/api_registry.h&gt;
+#include &lt;foundation/buffer.h&gt;
+#include &lt;foundation/localizer.h&gt;
+#include &lt;foundation/macros.h&gt;
+#include &lt;foundation/os.h&gt;
+#include &lt;foundation/the_truth.h&gt;
+#include &lt;foundation/the_truth_assets.h&gt;
+#include &lt;foundation/undo.h&gt;
+
+#include &lt;plugins/editor_views/asset_browser.h&gt;
+#include &lt;plugins/editor_views/properties.h&gt;
+
+#include &quot;txt.h&quot;
+
+//custom ui
+static float properties__custom_ui(struct tm_properties_ui_args_t *args, tm_rect_t item_rect, tm_tt_id_t object)
+{
+    tm_the_truth_o *tt = args-&gt;tt;
+    bool picked = false;
+    item_rect.y = tm_properties_view_api-&gt;ui_open_path(args, item_rect, TM_LOCALIZE_LATER(&quot;Import Path&quot;), TM_LOCALIZE_LATER(&quot;Path that the text file was imported from.&quot;), object, TM_TT_PROP__MY_ASSET__FILE, &quot;txt&quot;, &quot;text files&quot;, &amp;picked);
+    if (picked)
+    {
+        const char *file = tm_the_truth_api-&gt;get_string(tt, tm_tt_read(tt, object), TM_TT_PROP__MY_ASSET__FILE);
+        tm_file_stat_t stat = tm_os_api-&gt;file_system-&gt;stat(file);
+        tm_buffers_i *buffers = tm_the_truth_api-&gt;buffers(tt);
+        void *buffer = buffers-&gt;allocate(buffers-&gt;inst, stat.size, false);
+        tm_file_o f = tm_os_api-&gt;file_io-&gt;open_input(file);
+        tm_os_api-&gt;file_io-&gt;read(f, buffer, stat.size);
+        tm_os_api-&gt;file_io-&gt;close(f);
+        const uint32_t buffer_id = buffers-&gt;add(buffers-&gt;inst, buffer, stat.size, 0);
+        tm_the_truth_object_o *asset_obj = tm_the_truth_api-&gt;write(tt, object);
+        tm_the_truth_api-&gt;set_buffer(tt, asset_obj, TM_TT_PROP__MY_ASSET__DATA, buffer_id);
+        tm_the_truth_api-&gt;commit(tt, asset_obj, TM_TT_NO_UNDO_SCOPE);
+    }
+    return item_rect.y;
+}
+// -- create truth type
+static void create_truth_types(struct tm_the_truth_o *tt)
+{
+    static tm_the_truth_property_definition_t my_asset_properties[] = {
+        {&quot;import_path&quot;, TM_THE_TRUTH_PROPERTY_TYPE_STRING},
+        {&quot;data&quot;, TM_THE_TRUTH_PROPERTY_TYPE_BUFFER},
+    };
+    const tm_tt_type_t type = tm_the_truth_api-&gt;create_object_type(tt, TM_TT_TYPE__MY_ASSET, my_asset_properties, TM_ARRAY_COUNT(my_asset_properties));
+    tm_tt_set_aspect(tt, type, tm_tt_assets_file_extension_aspect_i, &quot;txt&quot;);
+    static tm_properties_aspect_i properties_aspect = {
+        .custom_ui = properties__custom_ui,
+    };
+    tm_tt_set_aspect(tt, type, tm_properties_aspect_i, &amp;properties_aspect);
+}
+
+// -- asset browser regsiter interface
+static tm_tt_id_t asset_browser_create(struct tm_asset_browser_create_asset_o *inst, tm_the_truth_o *tt, tm_tt_undo_scope_t undo_scope)
+{
+    const tm_tt_type_t type = tm_the_truth_api-&gt;object_type_from_name_hash(tt, TM_TT_TYPE_HASH__MY_ASSET);
+    return tm_the_truth_api-&gt;create_object_of_type(tt, type, undo_scope);
+}
+static tm_asset_browser_create_asset_i asset_browser_create_my_asset = {
+    .menu_name = TM_LOCALIZE_LATER(&quot;New Text File&quot;),
+    .asset_name = TM_LOCALIZE_LATER(&quot;New Text File&quot;),
+    .create = asset_browser_create,
+};
+// -- load plugin
+TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
+{
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_os_api = tm_get_api(reg, tm_os_api);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, create_truth_types);
+    tm_add_or_remove_implementation(reg, load, tm_asset_browser_create_asset_i, &amp;asset_browser_create_my_asset);
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../tutorials/the_truth/custom_asset/part1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../../tutorials/the_truth/custom_asset/part3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../tutorials/the_truth/custom_asset/part1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../../tutorials/the_truth/custom_asset/part3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
