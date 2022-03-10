@@ -34,7 +34,7 @@ Click a parent entity's drop-down arrow (on the left-hand side of its name) to s
 
 The Entity Tree view, prototype instances are shown in yellow to distinguish them from locally owned child entities (which are shown in white).
 
-**Prototypes:** Prototypes are just entities that live in the Asset Browser as assets (.entity and the current entity in the Entity Tree View is based upon those entity assets. You can overwrite them in the Entity Tree View and make them unique, but any change to the asset will propagate to the entities based on the original prototype. [More here]({{base_url}}editing_workflows/prototypes.html)
+**Prototypes:** Prototypes are just entities that live in the Asset Browser as assets (.entity and the current entity in the Entity Tree View is based upon those entity assets. You can overwrite them in the Entity Tree View and make them unique, but any change to the asset will propagate to the entities based on the original prototype. [More here]({{base_url}}editing_workflows/prototype_workflow/index.html)
 
 If you expand an instance, you will notice that most of its components and child entities are grayed out. They cannot be selected because they are inherited from the prototype, and the prototype controls their values.
 

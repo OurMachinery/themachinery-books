@@ -11,7 +11,7 @@ We will cover the following topics:
 - How to define a Type.
 - Type Properties
 
-After this walkthrough you could check out the ["Create a custom asset"]({{base_url}}/the_truth/custom_asset/index.html) tutorial! 
+After this walkthrough you could check out the ["Create a custom asset"]({{base_url}}tutorials/the_truth/custom_asset/index.html) tutorial! 
 
 
 

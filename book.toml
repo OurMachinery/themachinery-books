@@ -34,3 +34,4 @@ command = "./tmbook auto_doc"
 renderer = ["html"]
 books = ["the_machinery_book"]
 command = "./tmbook auto_include"
+

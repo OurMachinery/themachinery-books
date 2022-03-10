@@ -32,7 +32,7 @@ A new project is not empty. It comes with the so-called "**Core**," a collection
 
 > A prototype in The Machinery is an entity that has been saved as an Asset. Prototypes are indicated by yellow text in the Entity Tree View. 
 >
-> For more information about Prototypes, click [here]({{base_url}}editing_workflows/prototypes.html).
+> For more information about Prototypes, click [here]({{base_url}}editing_workflows/prototype_workflow/index.html).
 
 
 ![the content of the world entity](https://paper-attachments.dropbox.com/s_09462F237550F87F4C86951FAA779F713337E632E917FE6E6B8E3406BD58F125_1615455893513_image.png)

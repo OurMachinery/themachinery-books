@@ -1,6 +1,6 @@
 # Creating tab layouts through code
 
-The Machinery allows you to fully customize the editor layout. For personal layouts this system can be fully utilized without using code (see [Interface Customizations]({{base_url}}the_editor/customizations) for more information), but you might want to create custom default layouts that get defined procedurally, this allows for more control when loading and saving the layout.
+The Machinery allows you to fully customize the editor layout. For personal layouts this system can be fully utilized without using code (see [Interface Customizations]({{base_url}}the_editor/customizations.html) for more information), but you might want to create custom default layouts that get defined procedurally, this allows for more control when loading and saving the layout.
 
 Creating layouts in code can be done though the `tm_tab_layout_api`. Here various functions are available for tab management. In this tutorial we’ll go over how the default workspace is created using the `save_layout` function.
 

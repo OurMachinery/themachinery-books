@@ -29,7 +29,7 @@ Moreover, if you dock a *Preview* tab in the same window as an *Asset Browser*, 
 The Machinery has a prototype system that allows entity assets to be used within each other. Therefore you can create an Entity-Asset that represents a room and then create a house Entity with a bunch of these room entities placed within. 
 We call the room asset a *prototype*, and we call each placed room entity an *instance* of this prototype. 
 
-Any Entity-Asset can be a prototype, with instances of it placed in another entity asset. Note that prototypes are not special assets. More about this [here.]({{base_url}}editing_workflows/prototypes.html)
+Any Entity-Asset can be a prototype, with instances of it placed in another entity asset. Note that prototypes are not special assets. More about this [here.]({{base_url}}editing_workflows/prototype_workflow/index.html)
 
 ![](https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625428959141_image.png)
 

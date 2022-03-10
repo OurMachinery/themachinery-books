@@ -27,7 +27,7 @@ After this, we see that the Engine created some files for us.
 
 Now we need to ensure that we can build our project. In the root folder (The folder with the premake file), we can run `tmbuild` and see if there is no issue. We will build our projects once and generate the `.sln` file (on windows). 
 
-If there is an issue, we should ensure we have set up the Environment variables correctly and installed all the needed dependencies. For more information, please read this [guide]({{base_url}}helper_tools/tmbuild.html).
+If there is an issue, we should ensure we have set up the Environment variables correctly and installed all the needed dependencies. For more information, please read this [guide]({{base_url}}build_tools/tmbuild.html).
 
 Now we can open the `.c` file with our favorite IDE. The file will contain the following content:
 

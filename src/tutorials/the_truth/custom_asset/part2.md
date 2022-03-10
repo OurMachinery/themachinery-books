@@ -5,7 +5,7 @@ This part will cover the following topics:
 - How to store data in a buffer that is associated with the asset file.
 - How to give the asset a custom UI in the Property View.
 
-The [next part]({{base_url}}the_truth/custom_asset/part3.html) shows how to write an importer for the asset.
+The [next part]({{base_url}}/tutorials/the_truth/custom_asset/part3.html) shows how to write an importer for the asset.
 
 >  You can find the whole source code in its git repo: [example-text-file-asset](https://github.com/simon-ourmachinery/example-text-file-asset)
 

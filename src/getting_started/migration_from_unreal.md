@@ -15,7 +15,7 @@ The following table contains common UE4 terms on the left and their The Machiner
 | UE4                                                          | The Machinery                                                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Actor, Pawn                                                  | Are composed of Entities and Components and Systems          |
-| Blueprint Class (only the inheritance aspect and that they can represent actors) | [Prototypes]({{base_url}}editing_workflows/prototypes.html)  |
+| Blueprint Class (only the inheritance aspect and that they can represent actors) | [Prototypes]({{base_url}}editing_workflows/prototype_workflow/index.html)  |
 | Material Instance, Shaders, Textures, Particle Effects, Static Mesh, Geometry,Skeletal Mesh, Material Editor | [Creation Graphs]({{base_url}}creation_graphs/concept.html)  |
 | **UI**                                                       | **UI**                                                       |
 | World Outliner                                               | [Entity Tree]({{base_url}}the_editor/entity_tree_tab.html)   |

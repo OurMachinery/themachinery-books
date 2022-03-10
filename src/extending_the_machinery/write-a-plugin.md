@@ -45,19 +45,19 @@ The Engine provides an easy way to create plugins for you via the **file -> New 
 
 #### Premake5
 
-We are using [Premake](https://premake.github.io/) for our meta-build system generator at Our Machinery. This file defines our plugin binary dependencies and builds options for all the Machinery platforms. Premake generates the actual build scripts that we then build with tmbuild, our one-click build tool. More on tmbuild [here](https://books.ourmachinery.com/the_machinery_book/extending_the_machinery/helper_tools/tmbuild.html).
+We are using [Premake](https://premake.github.io/) for our meta-build system generator at Our Machinery. This file defines our plugin binary dependencies and builds options for all the Machinery platforms. Premake generates the actual build scripts that we then build with tmbuild, our one-click build tool. More on tmbuild [here]({{base_url}}build_tools/tmbuild.html).
 
-We recommend you to use one single premake file that manages all your plugins. Having a main premake file avoids going into each project folder to build your project. As recommended in the chapter [Project Setup: Possible folder structure for a project](https://books.ourmachinery.com/the_machinery_book/extending_the_machinery/getting_started/project_setup.html#possible-folder-structure-for-a-project), we also recommend separating your plugins into subfolders. 
+We recommend you to use one single premake file that manages all your plugins. Having a main premake file avoids going into each project folder to build your project. As recommended in the chapter [Project Setup: Possible folder structure for a project]({{base_url}}getting_started/project_setup.html#possible-folder-structure-for-a-project), we also recommend separating your plugins into subfolders. 
 
 > **Note:** The current plugin templates always create all metafiles directly for you, but you can just adjust the main premake file and delete the other ones. This workflow is in review.
 
-In the Book Chapter [Premake]({{base_url}}extending_the_machinery/premake.html) you can find more in-depth information about the premake file. 
+In the Book Chapter [Premake]({{base_url}}build_tools/premake.html) you can find more in-depth information about the premake file. 
 
 
 
 #### Libs.json 
 
-This file tells tmbuild what kind of binary dependencies you have and what versions you need. tmbuild will automatically download them for you. For more information on the libs.json file, read its [chapter]({{base_url}}/helper_tools/libs_json_reference.md).
+This file tells tmbuild what kind of binary dependencies you have and what versions you need. tmbuild will automatically download them for you. For more information on the libs.json file, read its [chapter]({{base_url}}/build_tools/libs_json_reference.html).
 
 
 
@@ -77,7 +77,7 @@ Your actual plugin code lives within the source files within Source Files and he
 
 The `tm_load_plugin()` function is our entry point.  In this function, we get access to the API Registry. All our APIs or Interfaces are living within this API.
 
->  The difference is that APIs only have a single implementation, whereas interfaces can have many implementations. For more information: Check the [Plugin System Chapter](https://books.ourmachinery.com/the_machinery_book/extending_the_machinery/the_plugin_system.html).
+>  The difference is that APIs only have a single implementation, whereas interfaces can have many implementations. For more information: Check the [Plugin System Chapter]({{base_url}}extending_the_machinery/the_plugin_system.html).
 
 We can register everything we need to register to the Engines Plugin System. You mustn't execute heavy code in this function or rely on other plugins since they might not be loaded yet! This function is just there to perform load and register operations.
 

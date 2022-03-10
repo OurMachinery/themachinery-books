@@ -20,7 +20,7 @@ Inserting the `creation_graph` block in the `.tmsl` file will get exposed as a n
 >
 > - [Shader system interaction]({{base_url}}/creation_graphs/shader_system.html)
 >
-> - [Create custom GPU node Tutorial]({{base_url}}/creation_graph/custom_gpu_nodes.html)
+> - [Create custom GPU node Tutorial]({{base_url}}/tutorials/creation_graph/custom_gpu_nodes.html)
 
 
 

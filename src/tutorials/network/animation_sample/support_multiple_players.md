@@ -1,6 +1,6 @@
 # Part 4: Supporting Multiple players
 
-In this tutorial you’ll learn how spawn an entity every time a client connects. This tutorial build on the learnings of the pervious tutorial: [Part 3]({{base_url}}//network/animation_sample/entity_control.html)
+In this tutorial you’ll learn how spawn an entity every time a client connects. This tutorial build on the learnings of the pervious tutorial: [Part 3]({{base_url}}/tutorials/network/animation_sample/entity_control.html)
 
 > **Note:**  we start with making sure that you have the Networking feature flag enabled, you can do that in the **Tools→Feature Flags Menu**. 
 

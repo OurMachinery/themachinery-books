@@ -15,7 +15,7 @@ The following table contains common Unity terms on the left and their The Machin
 | Unity                                                        | The Machinery                                                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | GameObjects                                                  | Are composed of Entities and Components and Systems          |
-| Prefabs                                                      | [Prototypes]({{base_url}}editing_workflows/prototypes.html)  |
+| Prefabs                                                      | [Prototypes]({{base_url}}editing_workflows/prototype_workflow/index.html)  |
 | Materials, Shaders, Textures, Particle Effects, Mesh, Geometry, Shader Graph, Material Editor | [Creation Graphs]({{base_url}}creation_graphs/concept.html)  |
 | **UI**                                                       | **UI**                                                       |
 | Hierarchy Panel                                              | [Entity Tree]({{base_url}}the_editor/entity_tree_tab.html)   |
@@ -67,7 +67,7 @@ On the other hand, a system is an update function that runs on the entire entity
 
 ### Where are my Prefabs?
 
-What Unity calls Prefabs is more or less what we call [Prototypes]({{base_url}}editing_workflows/prototypes.html). Our prototype system allows entity assets to be used inside other entities. Therefore, you can create an entity asset that represents a room and then creates a house entity that has a bunch of these room entities placed into it. For more information on Prototypes, check out its [Prototypes]({{base_url}}editing_workflows/prototypes.html).
+What Unity calls Prefabs is more or less what we call [Prototypes]({{base_url}}editing_workflows/prototype_workflow/index.html). Our prototype system allows entity assets to be used inside other entities. Therefore, you can create an entity asset that represents a room and then creates a house entity that has a bunch of these room entities placed into it. For more information on Prototypes, check out its [Prototypes]({{base_url}}editing_workflows/prototype_workflow/index.html).
 
 
 

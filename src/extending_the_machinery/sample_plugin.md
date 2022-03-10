@@ -67,7 +67,7 @@ tmbuild completed in: 23.471 s
 2. Run `premake5` to create a Visual Studio project from the `premake5.lua` script.
 3. Build the Visual Studio project to build the plugin.
 
-> **Note:** You can learn more about [tmbuild]({{base_url}}helper_tools/tmbuild.html) in its own section.
+> **Note:** You can learn more about [tmbuild]({{base_url}}build_tools/tmbuild.html) in its own section.
 
 
 

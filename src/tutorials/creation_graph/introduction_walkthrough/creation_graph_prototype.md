@@ -1,6 +1,6 @@
 # Creation Graph Prototypes
 
-This walkthrough shows you some basics of the [Creation Graph]({{base_url}}/creation_graphs/concept.html). In this part we discuss creation graph prototypes. To read more in general about the prototype system please checkout the following [Guide: Prototypes]({{base_url}}editing_workflows/prototypes.html)
+This walkthrough shows you some basics of the [Creation Graph]({{base_url}}/creation_graphs/concept.html). In this part we discuss creation graph prototypes. To read more in general about the prototype system please checkout the following [Guide: Prototypes]({{base_url}}editing_workflows/prototype_workflow/index.html)
 
 > **Note:** The walkthrough series makes use of the following free assets: [KhronosGroup](https://github.com/KhronosGroup)/**[glTF-Sample-Models](https://github.com/KhronosGroup/glTF-Sample-Models)**.
 
@@ -16,7 +16,7 @@ This tutorial will teach you:
 
 ## Setup
 
-We could do this by opening all textures and following the steps described in the [Simple Texture Compression Walkthrough]({{base_url}}/creation_graph/introduction_walkthrough/texture_compression.html) but this would be a time consuming and error prone job. It would be easier to just create one prototype for all.
+We could do this by opening all textures and following the steps described in the [Simple Texture Compression Walkthrough]({{base_url}}/tutorials/creation_graph/introduction_walkthrough/texture_compression.html) but this would be a time consuming and error prone job. It would be easier to just create one prototype for all.
 
 ## Adding texture compression to all textures in the project
 
@@ -26,7 +26,7 @@ There are 2 effective ways of doing this:
 
 1. Change the prototype of all dcc images use: `core/creation_graphs/dcc-image`
 
-We open this prototype and apply all our changes described in  [Simple Texture Compression Walkthrough]({{base_url}}/creation_graph/introduction_walkthrough/texture_compression.html). Changes to the prototype will propagate to all creation graph instances of this prototype.
+We open this prototype and apply all our changes described in  [Simple Texture Compression Walkthrough]({{base_url}}/tutorials/creation_graph/introduction_walkthrough/texture_compression.html). Changes to the prototype will propagate to all creation graph instances of this prototype.
 
 
 
@@ -36,7 +36,7 @@ In this alternative approach we create with **Right Click** in the asset browser
 
 {image}
 
-In this selection we search for `dcc-image` and base (inherit) our new creation graph on the existing creation graph. After this we can modify this graph as described in the [Simple Texture Compression Walkthrough]({{base_url}}/creation_graph/introduction_walkthrough/texture_compression.html).
+In this selection we search for `dcc-image` and base (inherit) our new creation graph on the existing creation graph. After this we can modify this graph as described in the [Simple Texture Compression Walkthrough]({{base_url}}/tutorials/creation_graph/introduction_walkthrough/texture_compression.html).
 
 ### Applying the new prototype to all texture assets
 

@@ -83,9 +83,9 @@ you want to reuse in different places you can create a Graph Asset to hold the g
 instantiate that asset in the various places where you want to use it. Just as with the entity
 instances, you can override specific nodes in the graph instance to customize the behavior.
 
-
+TODO: Add link
 
 ## What is next?
 
-- [How to create a prototype?]({{base_url}}/workflows/how_to_create_prototypes.html)
-- [How to instantiate Prototypes]({{base_url}}workflows/how_to_instantiate_prototypes.html#how-to-instantiate-prototypes)
+- [How to create a prototype?]({{base_url}}/editing_workflows/prototype_workflow/how_to_create_prototypes.html)
+- [How to instantiate Prototypes]({{base_url}}editing_workflows/prototype_workflow/how_to_instantiate_prototypes.html#how-to-instantiate-prototypes)

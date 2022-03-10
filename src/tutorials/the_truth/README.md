@@ -1,6 +1,6 @@
 ## Tutorials
 
-This section introduces you to some more complex topics such as [*How to Create your Own Asset Type*]({{base_url}}/the_truth/custom_asset/index.html).
+This section introduces you to some more complex topics such as [*How to Create your Own Asset Type*]({{base_url}}tutorials/the_truth/custom_asset/index.html).
 
 For more information checkout the [documentation]({{docs}}foundation/the_truth.h.html) and these blog posts
 

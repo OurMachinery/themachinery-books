@@ -159,7 +159,7 @@ So far things are not that exciting. But we are getting there!
 
 In the next part we will refactor code and show how to make the asset more useful by adding some actual data to it.
 
-[Part 2]({{base_url}}/the_truth/custom_asset/part2.html)
+[Part 2]({{base_url}}tutorials/the_truth/custom_asset/part2.html)
 
 
 
