@@ -164,7 +164,18 @@
 <p>You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a> and the <a href="https://ourmachinery.github.io/themachinery-books/extending_the_machinery/write-a-plugin.html#build-requirements">Write a plugin guide</a>. The goal of this walkthrough is to dissect the Tab plugin provided by the Engine.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="#where-do-we-start">Where do we start?</a></li>
+<li><a href="#code-structure">Code structure</a>
+<ul>
+<li><a href="#api-and-include-region">API and include region</a></li>
+<li><a href="#define-your-data">Define your Data</a></li>
+<li><a href="#define-the-actual-tab">Define the actual Tab</a></li>
+<li><a href="#define-the-metadata-functions">Define the metadata functions</a></li>
+<li><a href="#define-create-and-destroy-the-tab">Define create and destroy the Tab</a></li>
+</ul>
+</li>
+<li><a href="#define-the-ui-update">Define the UI update</a></li>
+<li><a href="#register-the-tab">Register the Tab</a></li>
 </ul>
 <h2 id="where-do-we-start"><a class="header" href="#where-do-we-start">Where do we start?</a></h2>
 <p>In this example, we want to create a new plugin, which contains our Tab. We open the Engine go to <strong>file -&gt; New Plugin -&gt; Editor Tab.</strong> The file dialog will pop up and ask us where we want to save our file. Pick a location that suits you.</p>

@@ -157,7 +157,10 @@
                         <h1 id="memory-management"><a class="header" href="#memory-management">Memory Management</a></h1>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="#child-allocators">Child Allocators</a></li>
+<li><a href="#rule-of-the-thumb">Rule of the thumb</a></li>
+<li><a href="#temporary-allocator">Temporary Allocator</a></li>
+<li><a href="#great-use-case-formatted-strings">Great use case: Formatted Strings</a></li>
 </ul>
 <p>While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use <code>malloc, free or realloc</code>. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as <code>malloc</code>), we give a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i"><code>tm_allocator_i</code></a> object down. This allows you to allocate memory like you would with <code>malloc</code>. Like in std C you need to free the memory allocated via a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i"><code>tm_allocator_i</code></a> at the end of its use. Otherwise you may leak. Using our built-in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. </p>
 <blockquote>

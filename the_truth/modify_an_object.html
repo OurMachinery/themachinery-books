@@ -158,7 +158,11 @@
 <p>To manipulate an object, you need to have its ID (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t"><code>tm_tt_id_t</code></a>). When you create an object, you should keep its ID around if you intend to edit it later.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="#1-make-the-object-writable">1. Make the object writable</a></li>
+<li><a href="#2-write-to-the-object">2. Write to the object.</a></li>
+<li><a href="#3-save-the-change">3. Save the change</a></li>
+<li><a href="#4-get-a-value">4. Get a value</a></li>
+<li><a href="#5-make-the-code-robust">5. Make the code robust</a></li>
 </ul>
 <p>In this example, we have a function that gets an object and the Truth instance of that object.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object) {}

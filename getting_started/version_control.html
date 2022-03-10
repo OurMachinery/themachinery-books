@@ -158,7 +158,31 @@
 <p>At <a href="https://ourmachinery.com/about.html">Our Machinery</a> we are using <a href="https://git-scm.com/">Git</a> as our version control tool. This guide shall show you how you can use <a href="https://git-scm.com/">Git</a> with both the <a href="https://ourmachinery.com/download.html">binary version</a> and the <a href="https://github.com/OurMachinery/themachinery/">source version</a> of the Engine. This guide will also give some insights about how a potential setup for The Machinery and <a href="https://git-scm.com/">Git</a>, <a href="https://www.perforce.com/">Perforce (Helix Core)</a> and <a href="https://www.plasticscm.com/">PlasticSCM</a> could look like.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="#what-are-git-perforce-and-plastic-scm">What are git, perforce and Plastic SCM?</a>
+<ul>
+<li><a href="#the-three-source-control-systems-in-a-overview">The three source control systems in a overview</a></li>
+<li><a href="#where-can-i-host-my-version-control">Where can I host my version control?</a>
+<ul>
+<li><a href="#git">Git</a></li>
+<li><a href="#perforce-helix-core">Perforce (Helix Core)</a></li>
+<li><a href="#plastic-scm">Plastic SCM</a></li>
+</ul>
+</li>
+<li><a href="#ui-clients">UI Clients</a></li>
+</ul>
+</li>
+<li><a href="#git-setup-for-the-machinery">Git Setup for The Machinery</a>
+<ul>
+<li><a href="#gitattributes"><code>.gitattributes</code></a></li>
+</ul>
+</li>
+<li><a href="#perforce-setup-for-the-machinery">Perforce Setup for The Machinery</a>
+<ul>
+<li><a href="#windows-example">Windows Example</a></li>
+</ul>
+</li>
+<li><a href="#plastic-setup-for-the-machinery">Plastic Setup for The Machinery</a></li>
+<li><a href="#the-machinery-source-code--git-workflow">The Machinery Source Code &amp; Git Workflow</a></li>
 </ul>
 <h2 id="what-are-git-perforce-and-plastic-scm"><a class="header" href="#what-are-git-perforce-and-plastic-scm">What are git, perforce and Plastic SCM?</a></h2>
 <p><a href="https://git-scm.com/">Git</a> is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. It is also a decentralized source control tool. This means that there is no central repository that you have to use to either fetch the latest or push your changes too. All your changes are locally stored as well as the entire project history. In case you have set up a remote repository you can push your changes to the remote repository. This means you can work offline and and still make use of the benefits of version control. To support large files such as binary files you need to setup <a href="https://git-lfs.github.com/">Git Large File Storage (LFS)</a>. The default workflow is CLI (command line based) but there are many different alternatives for a GUI (See later).</p>

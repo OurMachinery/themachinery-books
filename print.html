@@ -377,7 +377,17 @@ You can also drop in on our <a href="https://discord.gg/SHHSZaH">Discord Server<
 <p>We are welcoming all contributions to the <a href="https://github.com/OurMachinery/themachinery">Engine</a> or the <a href="https://github.com/OurMachinery/themachinery-books">Books</a>. Any kind of contributions must follow the following requirements.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="contributing.html#contributing-to-books">Contributing to Books</a>
+<ul>
+<li><a href="contributing.html#contributors-license-agreement">Contributor's License Agreement</a></li>
+</ul>
+</li>
+<li><a href="contributing.html#contribution-to-the-machinery">Contribution to The Machinery</a>
+<ul>
+<li><a href="contributing.html#contributors-license-agreement-1">Contributor's License Agreement</a></li>
+</ul>
+</li>
+<li><a href="contributing.html#code-of-conduct">Code of Conduct</a></li>
 </ul>
 <h2 id="contributing-to-books"><a class="header" href="#contributing-to-books">Contributing to Books</a></h2>
 <p>If you want to make a contribution to <a href="https://github.com/OurMachinery/themachinery-books">this repository</a> (other than a small spelling or formatting fix), please first create an <em>Issue</em> or a <em>Discussion</em> thread, discussing the addition you want to make. Otherwise, there is a chance your submission will be rejected if we decide it does not fit into the structure of this document.</p>
@@ -568,7 +578,31 @@ src/libs/*
 <p>At <a href="https://ourmachinery.com/about.html">Our Machinery</a> we are using <a href="https://git-scm.com/">Git</a> as our version control tool. This guide shall show you how you can use <a href="https://git-scm.com/">Git</a> with both the <a href="https://ourmachinery.com/download.html">binary version</a> and the <a href="https://github.com/OurMachinery/themachinery/">source version</a> of the Engine. This guide will also give some insights about how a potential setup for The Machinery and <a href="https://git-scm.com/">Git</a>, <a href="https://www.perforce.com/">Perforce (Helix Core)</a> and <a href="https://www.plasticscm.com/">PlasticSCM</a> could look like.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/version_control.html#what-are-git-perforce-and-plastic-scm">What are git, perforce and Plastic SCM?</a>
+<ul>
+<li><a href="getting_started/version_control.html#the-three-source-control-systems-in-a-overview">The three source control systems in a overview</a></li>
+<li><a href="getting_started/version_control.html#where-can-i-host-my-version-control">Where can I host my version control?</a>
+<ul>
+<li><a href="getting_started/version_control.html#git">Git</a></li>
+<li><a href="getting_started/version_control.html#perforce-helix-core">Perforce (Helix Core)</a></li>
+<li><a href="getting_started/version_control.html#plastic-scm">Plastic SCM</a></li>
+</ul>
+</li>
+<li><a href="getting_started/version_control.html#ui-clients">UI Clients</a></li>
+</ul>
+</li>
+<li><a href="getting_started/version_control.html#git-setup-for-the-machinery">Git Setup for The Machinery</a>
+<ul>
+<li><a href="getting_started/version_control.html#gitattributes"><code>.gitattributes</code></a></li>
+</ul>
+</li>
+<li><a href="getting_started/version_control.html#perforce-setup-for-the-machinery">Perforce Setup for The Machinery</a>
+<ul>
+<li><a href="getting_started/version_control.html#windows-example">Windows Example</a></li>
+</ul>
+</li>
+<li><a href="getting_started/version_control.html#plastic-setup-for-the-machinery">Plastic Setup for The Machinery</a></li>
+<li><a href="getting_started/version_control.html#the-machinery-source-code--git-workflow">The Machinery Source Code &amp; Git Workflow</a></li>
 </ul>
 <h2 id="what-are-git-perforce-and-plastic-scm"><a class="header" href="#what-are-git-perforce-and-plastic-scm">What are git, perforce and Plastic SCM?</a></h2>
 <p><a href="https://git-scm.com/">Git</a> is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. It is also a decentralized source control tool. This means that there is no central repository that you have to use to either fetch the latest or push your changes too. All your changes are locally stored as well as the entire project history. In case you have set up a remote repository you can push your changes to the remote repository. This means you can work offline and and still make use of the benefits of version control. To support large files such as binary files you need to setup <a href="https://git-lfs.github.com/">Git Large File Storage (LFS)</a>. The default workflow is CLI (command line based) but there are many different alternatives for a GUI (See later).</p>
@@ -853,7 +887,14 @@ feature_flags.json
 </ul>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/new_project.html#about-scenes">About Scenes</a></li>
+<li><a href="getting_started/new_project.html#new-project">New Project</a>
+<ul>
+<li><a href="getting_started/new_project.html#the-core">The Core</a></li>
+<li><a href="getting_started/new_project.html#how-to-add-some-life-to-your-project">How to add some life to your project</a></li>
+<li><a href="getting_started/new_project.html#project-structure-recommendation">Project Structure Recommendation</a></li>
+</ul>
+</li>
 </ul>
 <h1 id="about-scenes"><a class="header" href="#about-scenes">About Scenes</a></h1>
 <p>In The Machinery, we do not have a concept of scenes in the traditional sense. All we have are Entities. Therefore any Entity can function as a scene. All you need is to add child entities to a parent Entity. The Editor will remember the last opened Entity. 
@@ -930,7 +971,10 @@ my_project/game_plugins // the main folder for all your gameplay code, plugins
 </ul>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/first_gameplay_project.html#how-to-add-some-life-to-your-project">How to add some life to your project</a></li>
+<li><a href="getting_started/first_gameplay_project.html#add-some-movement">Add some movement</a></li>
+<li><a href="getting_started/first_gameplay_project.html#add-physics-based-movement">Add physics-based movement</a></li>
+<li><a href="getting_started/first_gameplay_project.html#what-is-next">What is next?</a></li>
 </ul>
 <h2 id="how-to-add-some-life-to-your-project-1"><a class="header" href="#how-to-add-some-life-to-your-project-1">How to add some life to your project</a></h2>
 <p>Let us create a new project and than add some gameplay to it. Before this, let us define a goal:
@@ -1019,7 +1063,25 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <p>When migrating from Unity to The Machinery, there are a few things that are different.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/migration_from_unity.html#ui-differences">UI Differences</a></li>
+<li><a href="getting_started/migration_from_unity.html#questions-you-might-have">Questions you might have</a>
+<ul>
+<li><a href="getting_started/migration_from_unity.html#where-are-my-gameobjects">Where are my GameObjects?</a>
+<ul>
+<li><a href="getting_started/migration_from_unity.html#what-is-the-difference-between-a-system-and-an-engine">What is the difference between a System and an Engine?</a></li>
+</ul>
+</li>
+<li><a href="getting_started/migration_from_unity.html#where-are-my-prefabs">Where are my Prefabs?</a></li>
+<li><a href="getting_started/migration_from_unity.html#how-do-i-script">How do I script?</a></li>
+<li><a href="getting_started/migration_from_unity.html#where-are-my-materials-shaders-textures-particle-effects">Where are my Materials, Shaders, Textures, Particle Effects?</a></li>
+<li><a href="getting_started/migration_from_unity.html#project-data">Project data?</a></li>
+<li><a href="getting_started/migration_from_unity.html#where-do-i-put-my-assets">Where do I put my assets?</a></li>
+<li><a href="getting_started/migration_from_unity.html#import-difference-between-unity-and-the-machinery-dcc_asset">Import difference between Unity and The Machinery: <code>.dcc_asset</code></a></li>
+<li><a href="getting_started/migration_from_unity.html#what-are-common-file-formats-supported">What are common file formats supported?</a></li>
+<li><a href="getting_started/migration_from_unity.html#where-do-my-source-code-files-go">Where do my source code files go?</a></li>
+<li><a href="getting_started/migration_from_unity.html#using-visual-scripting">Using Visual Scripting</a></li>
+</ul>
+</li>
 </ul>
 <p><strong>Quick Glossary</strong></p>
 <p>The following table contains common Unity terms on the left and their The Machinery equivalents (or rough equivalent) on the right.</p>
@@ -1106,7 +1168,19 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <p>When migrating from Unreal Engine 4 (UE4) to The Machinery, there are a few things that are different.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/migration_from_unreal.html#questions-you-might-have">Questions you might have</a>
+<ul>
+<li><a href="getting_started/migration_from_unreal.html#where-are-my-actors">Where are my Actors?</a></li>
+<li><a href="getting_started/migration_from_unreal.html#where-are-my-blueprints">Where are my Blueprints?</a></li>
+<li><a href="getting_started/migration_from_unreal.html#what-is-the-difference-between-a-system-and-an-engine">What is the difference between a System and an Engine?</a></li>
+<li><a href="getting_started/migration_from_unreal.html#where-are-my-material-instance-shaders-textures-particle-effects-static-mesh-geometry-skeletal-mesh-material-editor">Where are my Material Instance, Shaders, Textures, Particle Effects, Static Mesh, Geometry, Skeletal Mesh, Material Editor?</a></li>
+<li><a href="getting_started/migration_from_unreal.html#project-data">Project data?</a></li>
+<li><a href="getting_started/migration_from_unreal.html#where-do-i-put-my-assets">Where do I put my assets?</a></li>
+<li><a href="getting_started/migration_from_unreal.html#what-are-common-file-formats-supported">What are common file formats supported?</a></li>
+<li><a href="getting_started/migration_from_unreal.html#where-do-my-source-code-files-go">Where do my source code files go?</a></li>
+<li><a href="getting_started/migration_from_unreal.html#using-visual-scripting">Using Visual Scripting</a></li>
+</ul>
+</li>
 </ul>
 <p><strong>Quick Glossary</strong></p>
 <p>The following table contains common UE4 terms on the left and their The Machinery equivalents (or rough equivalent) on the right.</p>
@@ -1168,7 +1242,22 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <p>When migrating from Godot to The Machinery, there are a few things that are different.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/migration_from_godot.html#questions-you-might-have">Questions you might have</a>
+<ul>
+<li><a href="getting_started/migration_from_godot.html#where-are-my-nodes">Where are my Nodes?</a>
+<ul>
+<li><a href="getting_started/migration_from_godot.html#what-is-the-difference-between-a-system-and-an-engine">What is the difference between a System and an Engine?</a></li>
+</ul>
+</li>
+<li><a href="getting_started/migration_from_godot.html#how-do-i-script">How do I script?</a></li>
+<li><a href="getting_started/migration_from_godot.html#where-are-my-materials-shaders-textures-particle-effects">Where are my Materials, Shaders, Textures, Particle Effects?</a></li>
+<li><a href="getting_started/migration_from_godot.html#project-data">Project data?</a></li>
+<li><a href="getting_started/migration_from_godot.html#where-do-i-put-my-assets">Where do I put my assets?</a></li>
+<li><a href="getting_started/migration_from_godot.html#what-are-common-file-formats-supported">What are common file formats supported?</a></li>
+<li><a href="getting_started/migration_from_godot.html#where-do-my-source-code-files-go">Where do my source code files go?</a></li>
+<li><a href="getting_started/migration_from_godot.html#using-visual-scripting">Using Visual Scripting</a></li>
+</ul>
+</li>
 </ul>
 <p><strong>Quick Glossary</strong></p>
 <p>The following table contains common Godot terms on the left and their The Machinery equivalents (or rough equivalent) on the right.</p>
@@ -1240,7 +1329,10 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <p>This page will link to useful resources about the C Programming language.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/introduction_to_c/index.html#reference">Reference</a></li>
+<li><a href="getting_started/introduction_to_c/index.html#tutorials">Tutorials</a></li>
+<li><a href="getting_started/introduction_to_c/index.html#videos">Videos</a></li>
+<li><a href="getting_started/introduction_to_c/index.html#the-machinery-specials">The Machinery specials</a></li>
 </ul>
 <h2 id="reference"><a class="header" href="#reference">Reference</a></h2>
 <ul>
@@ -1264,7 +1356,10 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="memory-management"><a class="header" href="#memory-management">Memory Management</a></h1>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/introduction_to_c/memory_management.html#child-allocators">Child Allocators</a></li>
+<li><a href="getting_started/introduction_to_c/memory_management.html#rule-of-the-thumb">Rule of the thumb</a></li>
+<li><a href="getting_started/introduction_to_c/memory_management.html#temporary-allocator">Temporary Allocator</a></li>
+<li><a href="getting_started/introduction_to_c/memory_management.html#great-use-case-formatted-strings">Great use case: Formatted Strings</a></li>
 </ul>
 <p>While programming plugins for the Machinery, you will encounter the need to allocate things on the heap or generally speaking. In standard C code, you might tend to use <code>malloc, free or realloc</code>. Since we try to be as allocator aware as possible, we pass allocators actively down to systems. This means that wherever you need a long-life allocator (such as <code>malloc</code>), we give a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i"><code>tm_allocator_i</code></a> object down. This allows you to allocate memory like you would with <code>malloc</code>. Like in std C you need to free the memory allocated via a <a href="https://ourmachinery.com/apidoc/foundation/allocator.h.html#structtm_allocator_i"><code>tm_allocator_i</code></a> at the end of its use. Otherwise you may leak. Using our built-in allocators gives you the benefits of automatic leak detection at the end of your program. Since all allocations are registered and analyzed at the end of the application, you will be notified if there is a leak. </p>
 <blockquote>
@@ -1336,7 +1431,8 @@ TM_SHUTDOWN_TEMP_ALLOCATOR(ta);
 <div style="break-before: page; page-break-before: always;"></div><h1 id="arrays-vectors-lists-where-is-my-stdvector-or-list"><a class="header" href="#arrays-vectors-lists-where-is-my-stdvector-or-list">Arrays, Vectors, Lists where is my <code>std::vector&lt;&gt;</code> or <code>List&lt;&gt;</code></a></h1>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="getting_started/introduction_to_c/list_arrays_vector.html#how-to-access-an-element">How to access an element?</a></li>
+<li><a href="getting_started/introduction_to_c/list_arrays_vector.html#iterate-over-them">Iterate over them</a></li>
 </ul>
 <p>In the foundation we have a great header file or better inline header file the <code>foundation/carray.inl</code> which contains our solution for dynamic growing arrays, lists etc.  When used you are responsible for its memory and have to free the used memory at the end! Do not worry, the API makes it quite easy. </p>
 <p>Let us create an Array of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t"><code>tm_tt_id_t</code></a>. All we need to do is declare our variable as a pointer of <a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t"><code>tm_tt_id_t</code></a>.</p>
@@ -1410,7 +1506,13 @@ Here's a brief description of what you can see:</p>
 <p>The Machinery is based around a collection of editing <em>Tabs</em>, each with its specific purpose. You can drag the tabs around to rearrange them. Use the <em>Tab</em> menu to open new tabs. It is possible to have multiple tabs of the same type.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="the_editor/tabs.html#about-tab-wells">About Tab-Wells</a></li>
+<li><a href="the_editor/tabs.html#pinning-tabs">Pinning tabs</a>
+<ul>
+<li><a href="the_editor/tabs.html#pinning-options">Pinning options</a></li>
+</ul>
+</li>
+<li><a href="the_editor/tabs.html#keyboard-bindings">Keyboard bindings</a></li>
 </ul>
 <h2 id="about-tab-wells"><a class="header" href="#about-tab-wells">About Tab-Wells</a></h2>
 <p>Windows in The Machinery have a root <strong>tab-well</strong> covering the whole window. A tab-wells are rectangular areas containing one or more tabs. You can split them either horizontally or vertically to form two-child tab-wells. Also, you can switch around tabs within a tab-well via the keyboard using Ctrl + 1-9 or via Ctrl Page Up/Down.</p>
@@ -1443,7 +1545,15 @@ Here's a brief description of what you can see:</p>
 <p><img src="https://paper-attachments.dropbox.com/s_688CFE67758A45D845E788E6DA05448A2BCF730C2B07FEF2D06AB18D2C46F736_1625427931504_image.png" alt="" /></p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="the_editor/entity_tree_tab.html#how-to-edit-a-scene--entity">How to edit a Scene / Entity</a></li>
+<li><a href="the_editor/entity_tree_tab.html#managing-entities">Managing Entities</a>
+<ul>
+<li><a href="the_editor/entity_tree_tab.html#prototypes-in-the-entity-tree-view">Prototypes in the Entity Tree View</a></li>
+<li><a href="the_editor/entity_tree_tab.html#adding-new-child-entities">Adding new child entities</a></li>
+<li><a href="the_editor/entity_tree_tab.html#searching-and-changing-the-visibility-of-entities">Searching and changing the visibility of Entities</a></li>
+</ul>
+</li>
+<li><a href="the_editor/entity_tree_tab.html#keyboard-bindings">Keyboard bindings</a></li>
 </ul>
 <h2 id="how-to-edit-a-scene--entity"><a class="header" href="#how-to-edit-a-scene--entity">How to edit a Scene / Entity</a></h2>
 <p>In this tab, you can edit any entity from the current project. To start editing, you can either use <strong>Right Click → Open</strong> or <strong>Double Click</strong> the entity to open them. This action will update the Scene Tab and the entity tree view tab. If you close the Scene Tab, the Entity Tree Tab will display an empty tree.</p>
@@ -1487,7 +1597,18 @@ Here's a brief description of what you can see:</p>
 <p>The <strong>Scene</strong> tab is the view into your world. You can use the <strong>Scene tab</strong> to select, manipulate assets, and position new ones in your world. </p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="the_editor/scene_tab.html#navigate-through-your-scene">Navigate through your Scene</a>
+<ul>
+<li><a href="the_editor/scene_tab.html#opening-an-entity-asset">Opening an Entity Asset</a></li>
+</ul>
+</li>
+<li><a href="the_editor/scene_tab.html#working-in-the-scene">Working in the Scene</a>
+<ul>
+<li><a href="the_editor/scene_tab.html#box-select-in-the-scene-tab">Box Select in the Scene Tab</a></li>
+</ul>
+</li>
+<li><a href="the_editor/scene_tab.html#simulate-your-scene-or-change-visualization-modes">Simulate your Scene or change visualization modes</a></li>
+<li><a href="the_editor/scene_tab.html#keyboard-bindings">Keyboard bindings</a></li>
 </ul>
 <h2 id="navigate-through-your-scene"><a class="header" href="#navigate-through-your-scene">Navigate through your Scene</a></h2>
 <p>The Scene Tab allows for different ways of navigating through your world. The primary method of navigating through the Scene is via the mouse and the keyboard. </p>
@@ -1599,7 +1720,10 @@ We call the room asset a <em>prototype</em>, and we call each placed room entity
 <p>As the image shows, the asset browser contains two components: The Directory Tree View of your project and the actual Asset View Panel.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="the_editor/asset_browser.html#structure">Structure</a></li>
+<li><a href="the_editor/asset_browser.html#search">Search</a></li>
+<li><a href="the_editor/asset_browser.html#asset-management">Asset management</a></li>
+<li><a href="the_editor/asset_browser.html#keyboard-bindings">Keyboard bindings</a></li>
 </ul>
 <h2 id="structure"><a class="header" href="#structure">Structure</a></h2>
 <p><strong>The Directory Tree View</strong> reflects all directories and subdirectories of your project. You can use it to navigate quickly through your project. The navigation works either via mouse or via keyboard. You have the same management functionality as in the Asset View Panel:</p>
@@ -1888,7 +2012,19 @@ Machinery is just an entity with a lot of child entities.</p>
 </ul>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="editing_workflows/import_assets.html#import-differences-between-meshes-and-textures">Import differences between Meshes and Textures</a></li>
+<li><a href="editing_workflows/import_assets.html#major-supported-formats">Major supported formats</a></li>
+<li><a href="editing_workflows/import_assets.html#how-to-import-assets-into-the-project">How to import assets into the project</a>
+<ul>
+<li><a href="editing_workflows/import_assets.html#import-via-the-file-menu">Import via the file menu</a></li>
+<li><a href="editing_workflows/import_assets.html#import-from-url">Import from URL</a></li>
+<li><a href="editing_workflows/import_assets.html#drag-and-drop">Drag and drop</a></li>
+</ul>
+</li>
+<li><a href="editing_workflows/import_assets.html#adding-the-asset-to-our-scene">Adding the asset to our scene</a></li>
+<li><a href="editing_workflows/import_assets.html#about-import-setting">About Import Setting</a></li>
+<li><a href="editing_workflows/import_assets.html#video-about-importing-and-creating-an-entity">Video about importing and creating an Entity</a></li>
+<li><a href="editing_workflows/import_assets.html#complete-list-of-supported-file-formats">Complete list of supported file formats</a></li>
 </ul>
 <h2 id="import-differences-between-meshes-and-textures"><a class="header" href="#import-differences-between-meshes-and-textures">Import differences between Meshes and Textures</a></h2>
 <p>Assets that are created by e.g. Maya will be of type after they are imported.  Where DCC stands for Digital Content Creation.  Materials wont be imported untill the <code>dcc_asset</code> has been dragged into the scene or used otherweise.</p>
@@ -2185,7 +2321,12 @@ understanding of to get started working with The Machinery.</p>
 other entities. </p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="editing_workflows/prototype_workflow/index.html#difference-between-a-prototype-an-instance-and-an-asset">Difference between a Prototype, an Instance and an Asset</a></li>
+<li><a href="editing_workflows/prototype_workflow/index.html#instance-properties-inspect">Instance Properties: Inspect</a></li>
+<li><a href="editing_workflows/prototype_workflow/index.html#instance-properties-override">Instance Properties: Override</a></li>
+<li><a href="editing_workflows/prototype_workflow/index.html#instance-properties-reset-or-propagate">Instance Properties: Reset or Propagate</a></li>
+<li><a href="editing_workflows/prototype_workflow/index.html#other-forms-of-prototypes-eg-graphs">Other forms of prototypes: e.g. Graphs</a></li>
+<li><a href="editing_workflows/prototype_workflow/index.html#what-is-next">What is next?</a></li>
 </ul>
 <p>So you can for example create an entity asset that represents a
 room, and then create a house entity that has a bunch of these room entities
@@ -2356,7 +2497,15 @@ component:</p>
 We will only talk about how physics is set up in The Machinery.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="editing_workflows/physics.html#the-physics-simulation-system">The physics simulation system</a>
+<ul>
+<li><a href="editing_workflows/physics.html#physics-assets">Physics Assets</a></li>
+<li><a href="editing_workflows/physics.html#physics-components">Physics Components</a></li>
+</ul>
+</li>
+<li><a href="editing_workflows/physics.html#physics-scripting">Physics scripting</a></li>
+<li><a href="editing_workflows/physics.html#missing-features">Missing Features</a></li>
+<li><a href="editing_workflows/physics.html#tutorials">Tutorials</a></li>
 </ul>
 <h2 id="the-physics-simulation-system"><a class="header" href="#the-physics-simulation-system">The physics simulation system</a></h2>
 <p>The physics simulation system introduces two new assets: <em>Physics Material</em> and <em>Physics Collision</em>
@@ -2746,7 +2895,11 @@ of the sound playing nodes in the visual scripting language.</p>
 <p>To manipulate an object, you need to have its ID (<a href="https://ourmachinery.com/apidoc/foundation/api_types.h.html#structtm_tt_id_t"><code>tm_tt_id_t</code></a>). When you create an object, you should keep its ID around if you intend to edit it later.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="the_truth/modify_an_object.html#1-make-the-object-writable">1. Make the object writable</a></li>
+<li><a href="the_truth/modify_an_object.html#2-write-to-the-object">2. Write to the object.</a></li>
+<li><a href="the_truth/modify_an_object.html#3-save-the-change">3. Save the change</a></li>
+<li><a href="the_truth/modify_an_object.html#4-get-a-value">4. Get a value</a></li>
+<li><a href="the_truth/modify_an_object.html#5-make-the-code-robust">5. Make the code robust</a></li>
 </ul>
 <p>In this example, we have a function that gets an object and the Truth instance of that object.</p>
 <pre><code class="language-c">void modify_my_object(tm_the_truth_o *tt, tm_tt_id_t my_object) {}
@@ -2870,7 +3023,10 @@ typedef struct tm_debug_print_aspect_i {
 <p>After this walkthrough you could check out the <a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/index.html">&quot;Create a custom asset&quot;</a> tutorial! </p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="the_truth/custom_truth_type.html#define-a-type">Define a Type</a></li>
+<li><a href="the_truth/custom_truth_type.html#about-properties">About Properties</a></li>
+<li><a href="the_truth/custom_truth_type.html#adding-properties">Adding properties</a></li>
+<li><a href="the_truth/custom_truth_type.html#what-is-next">What is next?</a></li>
 </ul>
 <h2 id="define-a-type"><a class="header" href="#define-a-type">Define a Type</a></h2>
 <p>A Truth-Type in The Machinery consists out of a name (its identifier) and properties. </p>
@@ -3379,7 +3535,10 @@ In The Machinery this is implemented as multiple Gaussian blurs that only affect
 </blockquote>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="extending_the_machinery/the_plugin_system.html#what-are-the-types-of-plugins">What are the types of plugins?</a></li>
+<li><a href="extending_the_machinery/the_plugin_system.html#what-are-plugins">What are plugins?</a></li>
+<li><a href="extending_the_machinery/the_plugin_system.html#about-apis">About API's</a></li>
+<li><a href="extending_the_machinery/the_plugin_system.html#about-interfaces">About Interfaces</a></li>
 </ul>
 <h2 id="what-are-the-types-of-plugins"><a class="header" href="#what-are-the-types-of-plugins">What are the types of plugins?</a></h2>
 <p>In <em>The Machinery</em> you can have 2 type of plugins: <em>Engine Plugins</em> and <em>Plugin Assets</em>.</p>
@@ -3465,7 +3624,27 @@ pointers in the struct.)</p>
 </ul>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="extending_the_machinery/write-a-plugin.html#programming-in-c">Programming in C</a></li>
+<li><a href="extending_the_machinery/write-a-plugin.html#basic-plugin-template">Basic Plugin Template</a>
+<ul>
+<li><a href="extending_the_machinery/write-a-plugin.html#what-do-we-have">What do we have?</a>
+<ul>
+<li><a href="extending_the_machinery/write-a-plugin.html#premake5">Premake5</a></li>
+<li><a href="extending_the_machinery/write-a-plugin.html#libsjson">Libs.json</a></li>
+<li><a href="extending_the_machinery/write-a-plugin.html#the-build-scripts">The Build Scripts</a></li>
+<li><a href="extending_the_machinery/write-a-plugin.html#source-code">Source Code</a></li>
+<li><a href="extending_the_machinery/write-a-plugin.html#entry-point">Entry Point</a></li>
+</ul>
+</li>
+<li><a href="extending_the_machinery/write-a-plugin.html#plugin-callbacks-init-shutdown-tick">Plugin callbacks (Init, Shutdown, Tick)</a></li>
+</ul>
+</li>
+<li><a href="extending_the_machinery/write-a-plugin.html#our-very-first-api---the-command-api">Our very first API - The Command API</a>
+<ul>
+<li><a href="extending_the_machinery/write-a-plugin.html#write-your-own-api">Write your own API</a></li>
+<li><a href="extending_the_machinery/write-a-plugin.html#basic-steps-towards-the-command-api">Basic Steps towards the Command API</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="programming-in-c"><a class="header" href="#programming-in-c">Programming in C</a></h2>
 <p><em>The Machinery</em> uses C99 as its interface language. I.e., all the header files that you use to communicate with <em>The Machinery</em> are C99 header files, and when you write a plugin, you should expose C99 headers for your APIs. The <em>implementation</em> of a plugin can be written in whichever language you like, as long as it exposes and communicates through a C99 header. In particular, you can write the implementation in C++ if you want to. (At Our Machinery, we write the implementations in C99.)</p>
@@ -3610,7 +3789,9 @@ editor to open up its tab:</p>
 <p><img src="https://www.dropbox.com/s/hats2jgr3wroahz/pong-tab.png?dl=1" alt="Pong tab." /></p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="extending_the_machinery/sample_plugin.html#what-are-the-build-requirements">What are the build Requirements</a></li>
+<li><a href="extending_the_machinery/sample_plugin.html#build-the-sample-plugin">Build the sample plugin</a></li>
+<li><a href="extending_the_machinery/sample_plugin.html#sample-plugins">Sample Plugins:</a></li>
 </ul>
 <h3 id="what-are-the-build-requirements"><a class="header" href="#what-are-the-build-requirements">What are the build Requirements</a></h3>
 <p>To build plugins you need three things:</p>
@@ -3676,7 +3857,18 @@ variable to use a shared <code>libs</code> directory for all your projects.)</li
 <p>You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/the_machinery_book/extending_the_machinery/the_plugin_system.html">Guide</a> and the <a href="https://ourmachinery.github.io/themachinery-books/extending_the_machinery/write-a-plugin.html#build-requirements">Write a plugin guide</a>. The goal of this walkthrough is to dissect the Tab plugin provided by the Engine.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="extending_the_machinery/write-a-tab.html#where-do-we-start">Where do we start?</a></li>
+<li><a href="extending_the_machinery/write-a-tab.html#code-structure">Code structure</a>
+<ul>
+<li><a href="extending_the_machinery/write-a-tab.html#api-and-include-region">API and include region</a></li>
+<li><a href="extending_the_machinery/write-a-tab.html#define-your-data">Define your Data</a></li>
+<li><a href="extending_the_machinery/write-a-tab.html#define-the-actual-tab">Define the actual Tab</a></li>
+<li><a href="extending_the_machinery/write-a-tab.html#define-the-metadata-functions">Define the metadata functions</a></li>
+<li><a href="extending_the_machinery/write-a-tab.html#define-create-and-destroy-the-tab">Define create and destroy the Tab</a></li>
+</ul>
+</li>
+<li><a href="extending_the_machinery/write-a-tab.html#define-the-ui-update">Define the UI update</a></li>
+<li><a href="extending_the_machinery/write-a-tab.html#register-the-tab">Register the Tab</a></li>
 </ul>
 <h2 id="where-do-we-start"><a class="header" href="#where-do-we-start">Where do we start?</a></h2>
 <p>In this example, we want to create a new plugin, which contains our Tab. We open the Engine go to <strong>file -&gt; New Plugin -&gt; Editor Tab.</strong> The file dialog will pop up and ask us where we want to save our file. Pick a location that suits you.</p>
@@ -4016,7 +4208,8 @@ and used by all projects. This is convenient, but sometimes you want plugins tha
 specific, e.g., the gameplay code for a particular game.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="extending_the_machinery/plugin-assets.html#the-two-ways-of-achieving-plugin-only-assets">The two ways of achieving plugin only assets</a></li>
+<li><a href="extending_the_machinery/plugin-assets.html#how-to-create-a-plugin-asset">How to create a plugin asset</a></li>
 </ul>
 <h2 id="the-two-ways-of-achieving-plugin-only-assets"><a class="header" href="#the-two-ways-of-achieving-plugin-only-assets">The two ways of achieving plugin only assets</a></h2>
 <p>There are two ways of doing this.</p>
@@ -4097,7 +4290,16 @@ something like this:</p>
 <p>The Machinery allows you to hook your code into specific customization points. Those points happen in different phases and have specific purposes. The biggest difference between the Runner and the Editor is that only the customization points differ in the central update loop.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="extending_the_machinery/application_hooks.html#application-create">Application Create</a></li>
+<li><a href="extending_the_machinery/application_hooks.html#update">Update</a>
+<ul>
+<li><a href="extending_the_machinery/application_hooks.html#editor">Editor</a></li>
+<li><a href="extending_the_machinery/application_hooks.html#runner">Runner</a></li>
+</ul>
+</li>
+<li><a href="extending_the_machinery/application_hooks.html#project-hooks">Project Hooks</a></li>
+<li><a href="extending_the_machinery/application_hooks.html#application-shutdown">Application Shutdown</a></li>
+<li><a href="extending_the_machinery/application_hooks.html#overview">Overview</a></li>
 </ul>
 <h2 id="application-create"><a class="header" href="#application-create">Application Create</a></h2>
 <p><img src="https://www.dropbox.com/s/vsl0d53ty9rsvbi/tm_guide_app_hook_create.png?dl=1" alt="" /></p>
@@ -4141,7 +4343,12 @@ something like this:</p>
 <p>At Our Machinery we are using <a href="https://premake.github.io/">Premake</a> for our meta build system generator. Premake generates for us the actual build scripts that we then build with <code>tmbuild</code> our one-click build tool. More on tmbuild <a href="build_tools/./tmbuild.html">here</a>.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="build_tools/premake.html#why-use-a-build-configurator">Why Use a Build Configurator?</a></li>
+<li><a href="build_tools/premake.html#what-is-premake">What is premake</a></li>
+<li><a href="build_tools/premake.html#the-basic-the-machinery-premake-setup">The Basic The Machinery Premake Setup</a></li>
+<li><a href="build_tools/premake.html#advanced-premake5-adding-functions-to-make-our-live-easier">Advanced Premake5: Adding functions to make our live easier</a></li>
+<li><a href="build_tools/premake.html#the-machinery-project-recommendation">The Machinery Project Recommendation</a></li>
+<li><a href="build_tools/premake.html#basic-premake5-cheat-sheet">Basic Premake5 Cheat Sheet</a></li>
 </ul>
 <h2 id="why-use-a-build-configurator"><a class="header" href="#why-use-a-build-configurator">Why Use a Build Configurator?</a></h2>
 <p>Maintaining different <em>Makefiles</em> and <em>Visual Studio Solution</em> files for a cross platform project can be a lot of work. Especially since you have to adjust the generator a lot for every new platform you support.</p>
@@ -4753,7 +4960,13 @@ plugin(&quot;plugin-b&quot;)
 </ul>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="build_tools/tmbuild.html#installing-tmbuild">Installing tmbuild</a></li>
+<li><a href="build_tools/tmbuild.html#set-up-our-environment-variables">Set up our environment variables</a></li>
+<li><a href="build_tools/tmbuild.html#let-us-build-a-plugin">Let us Build a plugin.</a></li>
+<li><a href="build_tools/tmbuild.html#let-us-build-a-specific-project">Let us build a specific project.</a></li>
+<li><a href="build_tools/tmbuild.html#how-how-to-package-a-project-via-tmbuild">How how to package a project via tmbuild?</a></li>
+<li><a href="build_tools/tmbuild.html#how-to-build-or-manipulate-tmbuild-from-source">How to build or manipulate tmbuild from source</a></li>
+<li><a href="build_tools/tmbuild.html#how-to-add-tmbuild-globally-accessible">How to add tmbuild globally accessible?</a></li>
 </ul>
 <h2 id="installing-tmbuild"><a class="header" href="#installing-tmbuild"><strong>Installing tmbuild</strong></a></h2>
 <p>When you download and unzip <a href="https://ourmachinery.com/">The Machinery</a> either via the <a href="https://ourmachinery.com/beta.html">website</a> or via the <a href="build_tools/tmbuild.html#">download tab</a> you can find tmbuild in the bin folder in the root. </p>
@@ -5390,7 +5603,25 @@ allows us to compose complex objects from simpler components in a flexible and p
 <p>While Systems are just an update with a provided access to the entity context. When we refer to a context in this chapter we mean the entity context.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="gameplay_coding/ecs/index.html#what-is-an-entity">What is an Entity?</a></li>
+<li><a href="gameplay_coding/ecs/index.html#what-is-an-entity-context">What is an Entity Context?</a></li>
+<li><a href="gameplay_coding/ecs/index.html#where-do-entities-live-lifecycle">Where do Entities live? (Lifecycle)</a></li>
+<li><a href="gameplay_coding/ecs/index.html#how-is-the-data-stored">How is the data stored?</a></li>
+<li><a href="gameplay_coding/ecs/index.html#what-is-an-entity-type--archetype">What is an Entity type / Archetype?</a></li>
+<li><a href="gameplay_coding/ecs/index.html#what-are-components">What are Components?</a>
+<ul>
+<li><a href="gameplay_coding/ecs/index.html#best-practice">Best Practice</a></li>
+</ul>
+</li>
+<li><a href="gameplay_coding/ecs/index.html#what-is-a-component-manager">What is a Component Manager?</a></li>
+<li><a href="gameplay_coding/ecs/index.html#game-logic">Game Logic</a>
+<ul>
+<li><a href="gameplay_coding/ecs/index.html#what-are-engines">What are Engines?</a></li>
+<li><a href="gameplay_coding/ecs/index.html#what-are-systems">What are Systems?</a></li>
+</ul>
+</li>
+<li><a href="gameplay_coding/ecs/index.html#how-are-entity-assets-translated-to-ecs-entities">How are Entity Assets translated to ECS Entities?</a></li>
+<li><a href="gameplay_coding/ecs/index.html#child-entities">Child entities</a></li>
 </ul>
 <h2 id="what-is-an-entity"><a class="header" href="#what-is-an-entity">What is an Entity?</a></h2>
 <p>An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. The entity itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore an entity acts as an identifier or key to the data stored in components.</p>
@@ -5665,7 +5896,12 @@ tm_entity_api-&gt;register_engine(ctx, &amp;movement_engine);
 <p>You have to pass the  <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_system_i"><code>tm_entity_system_i</code></a> or <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i"><code>tm_engine_i</code></a> instance in your register function.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="gameplay_coding/ecs/how_to_define_a_engine_system.html#ask-yourself-those-questions-before-you-design-an-engine--system">Ask yourself those questions before you design an Engine / System</a>
+<ul>
+<li><a href="gameplay_coding/ecs/how_to_define_a_engine_system.html#how-do-those-questions-translate">How do those questions translate?</a></li>
+</ul>
+</li>
+<li><a href="gameplay_coding/ecs/how_to_define_a_engine_system.html#what-is-next">What is next?</a></li>
 </ul>
 <h2 id="ask-yourself-those-questions-before-you-design-an-engine--system"><a class="header" href="#ask-yourself-those-questions-before-you-design-an-engine--system">Ask yourself those questions before you design an Engine / System</a></h2>
 <p>The following questions are better explained in the chapter: <a href="https://ourmachinery.github.io/themachinery-books//gameplay_coding/ecs/how_entites_can_interact.html">How entities can interact.</a></p>
@@ -5774,7 +6010,18 @@ tm_entity_api-&gt;register_system(ctx, &amp;winning_system);
 <p>You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/extending_the_machinery/the_plugin_system.html">Guide</a> and the <a href="https://ourmachinery.github.io/themachinery-books/extending_the_machinery/write-a-plugin.html#build-requirements">Write a plugin guide</a>. The goal of this walkthrough is to dissect the component plugin provided by the Engine.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#where-do-we-start">Where do we start?</a></li>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#code-structure">Code structure</a>
+<ul>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#api-and-include-region">API and include region</a></li>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#define-your-data">Define your Data</a></li>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#add-your-component-to-the-truth">Add your component to the Truth</a></li>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#define-your-component">Define your component</a></li>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#define-your-engine-update">Define your engine update</a></li>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#register-your-engine-to-the-system">Register your Engine to the system</a></li>
+<li><a href="gameplay_coding/ecs/write_a_custom_component.html#the-plugin-load-function">The plugin load function</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="where-do-we-start-1"><a class="header" href="#where-do-we-start-1">Where do we start?</a></h2>
 <p>In this example, we want to create a new plugin, which contains our component. We open the Engine go to <strong>file -&gt; New Plugin -&gt; Entity Component.</strong> The file dialog will pop up and ask us where we want to save our file. Pick a location that suits you.</p>
@@ -6199,7 +6446,14 @@ for (const tm_entity_blackboard_value_t *bb = data-&gt;blackboard_start;
 </ol>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#using-the-tag-component">Using the Tag Component</a>
+<ul>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#adding-them-via-the-editor">Adding them via The Editor</a></li>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#adding-and-accessing-tags-via-c">Adding and Accessing Tags via C</a></li>
+</ul>
+</li>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#tag-components---entity-type-filter">Tag Components - Entity Type Filter</a></li>
+<li><a href="gameplay_coding/ecs/tagging_entities.html#filtering">Filtering</a></li>
 </ul>
 <h2 id="using-the-tag-component"><a class="header" href="#using-the-tag-component">Using the Tag Component</a></h2>
 <p>The difference is that the first solution can be used via the <code>tag_component_api</code> and you can add Tags via the Editor to any Entity that has a Tag Component. Later on in your System or Engine you can access the Tagged Entity.</p>
@@ -6259,7 +6513,8 @@ tm_entity_t upper_bounding_box = tm_tag_component_api-&gt;find_first(tag_mgr, TM
 </ol>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="gameplay_coding/ecs/filtering_entities.html#filtering-entities">Filtering Entities</a></li>
+<li><a href="gameplay_coding/ecs/filtering_entities.html#filtering-entities-by-using-tag-components">Filtering Entities by using Tag Components</a></li>
 </ul>
 <h2 id="filtering-entities-1"><a class="header" href="#filtering-entities-1">Filtering Entities</a></h2>
 <p>In an Engine (<a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i"><code>tm_engine_i</code></a>) you can define the <code>.excluded</code> field. This tells the scheduler that this engine shall <strong>not</strong> run on any entity type that contains these components.</p>
@@ -7104,7 +7359,9 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>The goal of this Creation Graph is to create an image output that we can copy to the viewport. In this example, the image is created by the creation graph and the viewport UV is rendered onto it using an unlit pass. Notice that no geometry has to be defined, as we use the <code>Construct Quad</code> node in clip space. This will procedurally encompass the entire viewport.</p>
 <p><strong>Contents</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/creation_graph/from_code.html#using-the-creation-graph-api">Using the Creation Graph API</a></li>
+<li><a href="tutorials/creation_graph/from_code.html#remarks">Remarks</a></li>
+<li><a href="tutorials/creation_graph/from_code.html#full-code">Full Code</a></li>
 </ul>
 <p><img src="https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?dl=1" alt="" /></p>
 <h2 id="using-the-creation-graph-api"><a class="header" href="#using-the-creation-graph-api">Using the Creation Graph API</a></h2>
@@ -7426,7 +7683,15 @@ TM_DLL_EXPORT void load_plugin(struct tm_api_registry_api *reg, bool load)
 </blockquote>
 <p><strong>Table of Contents</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#introduction">Introduction</a></li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#what-are-our-goals">What Are Our Goals?</a></li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#enable-alpha-blending">Enable Alpha Blending:</a></li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#disable-face-culling">Disable Face Culling:</a></li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#getting-the-entitys-world-transform">Getting the Entity's World Transform</a></li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#the-vertex-shader">The Vertex Shader</a></li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#the-generic-output-node">The Generic Output Node</a></li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#pixel-shader">Pixel Shader</a></li>
+<li><a href="tutorials/creation_graph/raymarch_output_node.html#the-compile-block">The compile block</a></li>
 </ul>
 <h2 id="introduction-2"><a class="header" href="#introduction-2">Introduction</a></h2>
 <p>Note that in this tutorial, we don't use any geometric data, our node only queries the signed distance field. Therefore you can do any kind of geometric figure using the other creation graph nodes. You can extend it to play with volumetric effects or other kinds of nice effects.</p>
@@ -7687,7 +7952,16 @@ common : [[
 <p>This walkthrough shows you how to create a trigger with the Graph Component. You can find the &quot;source code&quot; in our <a href="https://ourmachinery.com/samples.html">Physic Samples</a>.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/physics/triggers.html#assemble-a-trigger">Assemble a Trigger</a>
+<ul>
+<li><a href="tutorials/physics/triggers.html#create-the-trigger-entity">Create the Trigger Entity</a></li>
+<li><a href="tutorials/physics/triggers.html#add-the-logic-to-the-graph">Add the logic to the graph</a></li>
+<li><a href="tutorials/physics/triggers.html#create-the-ball">Create the ball</a></li>
+<li><a href="tutorials/physics/triggers.html#creating-the-scene">Creating the Scene</a></li>
+<li><a href="tutorials/physics/triggers.html#spawn-balls">Spawn balls</a></li>
+</ul>
+</li>
+<li><a href="tutorials/physics/triggers.html#conclusion">Conclusion</a></li>
 </ul>
 <h2 id="assemble-a-trigger"><a class="header" href="#assemble-a-trigger">Assemble a Trigger</a></h2>
 <p>What is a trigger? </p>
@@ -7802,7 +8076,16 @@ common : [[
 </blockquote>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/the_truth/custom_asset/part1.html#first-step-what-kind-of-asset-do-we-want-to-create">First Step: What Kind of Asset Do We Want to Create?</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part1.html#creating-a-type-in-the-truth">Creating a Type in The Truth</a>
+<ul>
+<li><a href="tutorials/the_truth/custom_asset/part1.html#what-is-the-difference-between-a-truth-type-and-an-asset">What Is the Difference between a Truth Type and an Asset?</a></li>
+</ul>
+</li>
+<li><a href="tutorials/the_truth/custom_asset/part1.html#exposing-the-type-to-the-asset-browser">Exposing the Type to the Asset Browser</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part1.html#what-is-next">What is next?</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part1.html#appendix-creating-an-asset-from-code">Appendix: Creating an Asset from Code</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part1.html#full-example-of-basic-asset">Full Example of Basic Asset</a></li>
 </ul>
 <h2 id="first-step-what-kind-of-asset-do-we-want-to-create"><a class="header" href="#first-step-what-kind-of-asset-do-we-want-to-create"><strong>First Step:</strong> What Kind of Asset Do We Want to Create?</a></h2>
 <p>The Machinery comes with some predefined asset types, but these types might not cover all types of data you want to represent in the engine. Luckily, you can extend the asset types supported by using plugins.</p>
@@ -8022,7 +8305,13 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </blockquote>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/the_truth/custom_asset/part2.html#adding-more-properties-to-the-the-truth-type">Adding More Properties to the The Truth Type</a>
+<ul>
+<li><a href="tutorials/the_truth/custom_asset/part2.html#custom-ui">Custom UI</a></li>
+</ul>
+</li>
+<li><a href="tutorials/the_truth/custom_asset/part2.html#what-is-next">What Is Next?</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part2.html#full-example-of-basic-asset">Full Example of Basic Asset</a></li>
 </ul>
 <h2 id="adding-more-properties-to-the-the-truth-type"><a class="header" href="#adding-more-properties-to-the-the-truth-type">Adding More Properties to the The Truth Type</a></h2>
 <p>The Truth type we created in Part 1 cannot do much, because it doesn't have any properties:</p>
@@ -8310,7 +8599,16 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </blockquote>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/the_truth/custom_asset/part3.html#custom-importer-for-text-files">Custom importer for text files</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part3.html#import-task-setup">Import Task Setup</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part3.html#import-task-implementation">Import Task Implementation</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part3.html#enabling-reimport">Enabling Reimport</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part3.html#refactor-the-custom-ui-import-functionality">Refactor the Custom UI Import Functionality</a></li>
+<li><a href="tutorials/the_truth/custom_asset/part3.html#the-end">The End</a>
+<ul>
+<li><a href="tutorials/the_truth/custom_asset/part3.html#full-example-of-basic-asset">Full Example of Basic Asset</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="custom-importer-for-text-files"><a class="header" href="#custom-importer-for-text-files">Custom importer for text files</a></h2>
 <p>In this part, we will add the ability to import a text file into the Engine. To implement an importer, we need the following APIs:</p>
@@ -8938,7 +9236,19 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>This walkthrough will refer to the text asset example as the asset we want to extend! If you have not followed it here is the link: <a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/index.html">Custom Asset</a></p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/the_truth/drag_and_drop.html#adding-drag-and-drop-to-our-asset">Adding Drag and Drop to our asset</a>
+<ul>
+<li><a href="tutorials/the_truth/drag_and_drop.html#asset-scene-aspect">Asset Scene Aspect</a></li>
+</ul>
+</li>
+<li><a href="tutorials/the_truth/drag_and_drop.html#the-story-component">The story component</a>
+<ul>
+<li><a href="tutorials/the_truth/drag_and_drop.html#custom-ui">Custom UI</a></li>
+</ul>
+</li>
+<li><a href="tutorials/the_truth/drag_and_drop.html#using-the-asset-picker-property-aspect">Using the Asset Picker Property Aspect</a></li>
+<li><a href="tutorials/the_truth/drag_and_drop.html#drag-and-drop-a-text-asset-into-the-scene-and-create-an-entity">Drag and drop a Text Asset into the Scene and create an entity</a></li>
+<li><a href="tutorials/the_truth/drag_and_drop.html#modify-a-already-existing-asset">Modify a already existing asset</a></li>
 </ul>
 <h2 id="adding-drag-and-drop-to-our-asset"><a class="header" href="#adding-drag-and-drop-to-our-asset">Adding Drag and Drop to our asset</a></h2>
 <p>In this example, we are going back to our text asset sample. In that sample, we have the following function to register the asset to the Truth:</p>
@@ -9510,7 +9820,20 @@ static void create_truth_types_modify(struct tm_the_truth_o *tt) {
 <p>This walkthrough will refer to the text asset example as the asset we want to extend! If you have not followed it, here is the link: <a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/index.html">Custom Asset</a>.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/the_truth/open_asset.html#new-tab">New Tab</a>
+<ul>
+<li><a href="tutorials/the_truth/open_asset.html#implementing-the-functions">Implementing the functions</a>
+<ul>
+<li><a href="tutorials/the_truth/open_asset.html#the-create-function">The Create Function</a></li>
+<li><a href="tutorials/the_truth/open_asset.html#the-update-function">The Update Function</a></li>
+<li><a href="tutorials/the_truth/open_asset.html#the-set-root--root-function">The set root / root function</a></li>
+</ul>
+</li>
+<li><a href="tutorials/the_truth/open_asset.html#let-us-test-the-tab">Let us test the Tab</a></li>
+<li><a href="tutorials/the_truth/open_asset.html#source-code">Source Code</a></li>
+</ul>
+</li>
+<li><a href="tutorials/the_truth/open_asset.html#open-the-tab">Open the Tab</a></li>
 </ul>
 <h2 id="new-tab"><a class="header" href="#new-tab">New Tab</a></h2>
 <p>The first cause of action is to create the Tab we want to open. </p>
@@ -10143,7 +10466,9 @@ else
 <p>During this tutorial, you’ll implement the <code>tm_ui_custom_controls</code> plugin, which will contain the <code>tm_ui_custom_controls_api</code> for draw custom controls in UI and <code>tm_ui_custom_controls_tab</code> custom tab in order to visualize results in a separate tab.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/ui/build_custom_ui_controls/part1.html#environment-setup">Environment setup</a></li>
+<li><a href="tutorials/ui/build_custom_ui_controls/part1.html#circular-custom-button">Circular Custom Button:</a></li>
+<li><a href="tutorials/ui/build_custom_ui_controls/part1.html#drawing-text">Drawing text</a></li>
 </ul>
 <h2 id="environment-setup"><a class="header" href="#environment-setup">Environment setup</a></h2>
 <p>During this tutorial, you’ll build the <code>tm_ui_custom_controls</code> plugin, which will contain the <code>tm_ui_custom_controls_api</code> for draw custom controls and <code>tm_ui_custom_controls_tab</code> custom tab in order to visualize results in a separate tab.</p>
@@ -10365,7 +10690,9 @@ else
 <p>In this walkthrough, we will learn how to write our little toolbar for our newly added tab! This walkthrough requires you to know how our plugin system works.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="tutorials/ui/toolbars-overlays.html#implement-a-toolbar-in-a-tab">Implement a Toolbar in a Tab</a></li>
+<li><a href="tutorials/ui/toolbars-overlays.html#tab-overlays">Tab Overlays</a></li>
+<li><a href="tutorials/ui/toolbars-overlays.html#how-to-use-toolbars-outside-of-the-machinery-tabs">How to use toolbars outside of The Machinery tabs</a></li>
 </ul>
 <h2 id="implement-a-toolbar-in-a-tab"><a class="header" href="#implement-a-toolbar-in-a-tab">Implement a Toolbar in a Tab</a></h2>
 <p>To begin with, we need to create a new tab plugin. We go on <strong>File -&gt; New Plugin -&gt; Tab.</strong> </p>
@@ -10668,7 +10995,23 @@ etc, are supported in the collaborative workflow.</p>
 same machine (just start two instances of the_machinery.exe) and connect using the LAN option.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="collaboration.html#whos-project-is-edited">Who's project is edited?</a></li>
+<li><a href="collaboration.html#host-or-join-sessions">Host or Join Sessions</a>
+<ul>
+<li><a href="collaboration.html#host-a-lan-server">Host a LAN Server</a>
+<ul>
+<li><a href="collaboration.html#join-a-local-server">Join a local Server</a></li>
+</ul>
+</li>
+<li><a href="collaboration.html#host-internet-server">Host Internet Server</a>
+<ul>
+<li><a href="collaboration.html#join-an-internet-server">Join an internet Server</a></li>
+</ul>
+</li>
+<li><a href="collaboration.html#host-a-discord-based-session">Host a Discord based Session</a></li>
+</ul>
+</li>
+<li><a href="collaboration.html#connected">Connected</a></li>
 </ul>
 <h2 id="whos-project-is-edited"><a class="header" href="#whos-project-is-edited">Who's project is edited?</a></h2>
 <p>In our collaboration model, one of the users always acts as a host. The host invites others to join her in editing <em>her</em> project. All the changes made by the participants in the session end up in the host’s project and it’s the host’s responsibility to save the project, check in the changes into version control, or do whatever else is needed to make the changes permanent.</p>
@@ -11097,7 +11440,13 @@ static void my_test_tick(tm_integration_test_runner_i *test_runner)
 </ul>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="build_tools/tmbuild.html#installing-tmbuild">Installing tmbuild</a></li>
+<li><a href="build_tools/tmbuild.html#set-up-our-environment-variables">Set up our environment variables</a></li>
+<li><a href="build_tools/tmbuild.html#let-us-build-a-plugin">Let us Build a plugin.</a></li>
+<li><a href="build_tools/tmbuild.html#let-us-build-a-specific-project">Let us build a specific project.</a></li>
+<li><a href="build_tools/tmbuild.html#how-how-to-package-a-project-via-tmbuild">How how to package a project via tmbuild?</a></li>
+<li><a href="build_tools/tmbuild.html#how-to-build-or-manipulate-tmbuild-from-source">How to build or manipulate tmbuild from source</a></li>
+<li><a href="build_tools/tmbuild.html#how-to-add-tmbuild-globally-accessible">How to add tmbuild globally accessible?</a></li>
 </ul>
 <h2 id="installing-tmbuild-1"><a class="header" href="#installing-tmbuild-1"><strong>Installing tmbuild</strong></a></h2>
 <p>When you download and unzip <a href="https://ourmachinery.com/">The Machinery</a> either via the <a href="https://ourmachinery.com/beta.html">website</a> or via the <a href="build_tools/tmbuild.html#">download tab</a> you can find tmbuild in the bin folder in the root. </p>
@@ -11279,7 +11628,29 @@ Every package <code>json</code> file is structured in its core like this:</p>
 Steps are defined as a normal <code>json</code> object. The following list displays all the functions which can be used plus adequate examples.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="build_tools/tmbuild_package_reference.html#utilities">Utilities</a>
+<ul>
+<li><a href="build_tools/tmbuild_package_reference.html#logging">Logging</a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#change-directory">Change directory</a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#platforms">Platforms</a></li>
+</ul>
+</li>
+<li><a href="build_tools/tmbuild_package_reference.html#actions">Actions</a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#filesystem-operations">Filesystem operations</a>
+<ul>
+<li><a href="build_tools/tmbuild_package_reference.html#build"><code>build</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#copy-files"><code>copy-files</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#copy-file-patterns"><code>copy-file-patterns</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#delete-dirs"><code>delete-dirs</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#delete-file-patterns"><code>delete-file-patterns</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#docgen"><code>docgen</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#localize"><code>localize</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#set-sdk-dir"><code>set-sdk-dir</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#zip"><code>zip</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#test"><code>test</code></a></li>
+<li><a href="build_tools/tmbuild_package_reference.html#clean"><code>clean</code></a></li>
+</ul>
+</li>
 </ul>
 <h2 id="utilities"><a class="header" href="#utilities">Utilities</a></h2>
 <h3 id="logging-1"><a class="header" href="#logging-1">Logging</a></h3>
@@ -11449,7 +11820,12 @@ Steps are defined as a normal <code>json</code> object. The following list displ
 <p>At Our Machinery we are using <a href="https://premake.github.io/">Premake</a> for our meta build system generator. Premake generates for us the actual build scripts that we then build with <code>tmbuild</code> our one-click build tool. More on tmbuild <a href="build_tools/./tmbuild.html">here</a>.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="build_tools/premake.html#why-use-a-build-configurator">Why Use a Build Configurator?</a></li>
+<li><a href="build_tools/premake.html#what-is-premake">What is premake</a></li>
+<li><a href="build_tools/premake.html#the-basic-the-machinery-premake-setup">The Basic The Machinery Premake Setup</a></li>
+<li><a href="build_tools/premake.html#advanced-premake5-adding-functions-to-make-our-live-easier">Advanced Premake5: Adding functions to make our live easier</a></li>
+<li><a href="build_tools/premake.html#the-machinery-project-recommendation">The Machinery Project Recommendation</a></li>
+<li><a href="build_tools/premake.html#basic-premake5-cheat-sheet">Basic Premake5 Cheat Sheet</a></li>
 </ul>
 <h2 id="why-use-a-build-configurator-1"><a class="header" href="#why-use-a-build-configurator-1">Why Use a Build Configurator?</a></h2>
 <p>Maintaining different <em>Makefiles</em> and <em>Visual Studio Solution</em> files for a cross platform project can be a lot of work. Especially since you have to adjust the generator a lot for every new platform you support.</p>

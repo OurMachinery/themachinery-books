@@ -167,7 +167,27 @@
 </ul>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="#programming-in-c">Programming in C</a></li>
+<li><a href="#basic-plugin-template">Basic Plugin Template</a>
+<ul>
+<li><a href="#what-do-we-have">What do we have?</a>
+<ul>
+<li><a href="#premake5">Premake5</a></li>
+<li><a href="#libsjson">Libs.json</a></li>
+<li><a href="#the-build-scripts">The Build Scripts</a></li>
+<li><a href="#source-code">Source Code</a></li>
+<li><a href="#entry-point">Entry Point</a></li>
+</ul>
+</li>
+<li><a href="#plugin-callbacks-init-shutdown-tick">Plugin callbacks (Init, Shutdown, Tick)</a></li>
+</ul>
+</li>
+<li><a href="#our-very-first-api---the-command-api">Our very first API - The Command API</a>
+<ul>
+<li><a href="#write-your-own-api">Write your own API</a></li>
+<li><a href="#basic-steps-towards-the-command-api">Basic Steps towards the Command API</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="programming-in-c"><a class="header" href="#programming-in-c">Programming in C</a></h2>
 <p><em>The Machinery</em> uses C99 as its interface language. I.e., all the header files that you use to communicate with <em>The Machinery</em> are C99 header files, and when you write a plugin, you should expose C99 headers for your APIs. The <em>implementation</em> of a plugin can be written in whichever language you like, as long as it exposes and communicates through a C99 header. In particular, you can write the implementation in C++ if you want to. (At Our Machinery, we write the implementations in C99.)</p>

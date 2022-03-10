@@ -163,7 +163,18 @@
 <p>You should have basic knowledge about how to write a custom plugin. If not, you might want to check this <a href="https://ourmachinery.github.io/themachinery-books/extending_the_machinery/the_plugin_system.html">Guide</a> and the <a href="https://ourmachinery.github.io/themachinery-books/extending_the_machinery/write-a-plugin.html#build-requirements">Write a plugin guide</a>. The goal of this walkthrough is to dissect the component plugin provided by the Engine.</p>
 <p><strong>Table of Content</strong></p>
 <ul>
-<li>{:toc}</li>
+<li><a href="#where-do-we-start">Where do we start?</a></li>
+<li><a href="#code-structure">Code structure</a>
+<ul>
+<li><a href="#api-and-include-region">API and include region</a></li>
+<li><a href="#define-your-data">Define your Data</a></li>
+<li><a href="#add-your-component-to-the-truth">Add your component to the Truth</a></li>
+<li><a href="#define-your-component">Define your component</a></li>
+<li><a href="#define-your-engine-update">Define your engine update</a></li>
+<li><a href="#register-your-engine-to-the-system">Register your Engine to the system</a></li>
+<li><a href="#the-plugin-load-function">The plugin load function</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="where-do-we-start"><a class="header" href="#where-do-we-start">Where do we start?</a></h2>
 <p>In this example, we want to create a new plugin, which contains our component. We open the Engine go to <strong>file -&gt; New Plugin -&gt; Entity Component.</strong> The file dialog will pop up and ask us where we want to save our file. Pick a location that suits you.</p>
