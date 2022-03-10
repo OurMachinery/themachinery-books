@@ -30,15 +30,11 @@ jobs:
         run: |
           wget https://github.com/simon-ourmachinery/tmbook/releases/download/latest/tmbook
           chmod +x tmbook
-      - name: download css and js dependencies
-        run: |
-          mkdir public
-          cp CNAME public/CNAME
-          cd public
       - name: Build book
         run: |
           sed -i "s/#//" book.toml
           ./tmbook build
+          cp CNAME book/CNAME
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
