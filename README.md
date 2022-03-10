@@ -47,6 +47,10 @@ $ ./tmbook serve
 
 If you want to add new pages to the system just add them to `SUMMARY.md`. As soon as they are in there they will be used for the book.
 
+_About Images_
+
+You should store your images in dropbox: `images/walkthroughs` in the OM org.
+
 *About Links*
 
 If you want to link anything within the book please make use of 
