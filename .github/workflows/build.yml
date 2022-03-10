@@ -39,13 +39,11 @@ jobs:
         run: |
           sed -i "s/#//" book.toml
           ./tmbook build
-          echo "move data from book to ../public/"
-          mv -v book/ ../public/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: ./book
       - name: Report
         uses: 8398a7/action-slack@v3
         with:
