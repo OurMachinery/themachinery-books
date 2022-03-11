@@ -118,6 +118,7 @@
         - [Creating a Custom Raymarching Output Node](./tutorials/creation_graph/raymarch_output_node.md)
     - [Physics](./tutorials/physics/README.md)
         - [Triggers](./tutorials/physics/triggers.md)
+        - [Arkanoid](./tutorials/physics/arkanoid.md)
     - [The Truth](./tutorials/the_truth/README.md)
         - [Creating a Custom Asset Type](./tutorials/the_truth/custom_asset/README.md)
             - [Part 1 - Create an Asset Truth Type, Addable via Asset Browser](./tutorials/the_truth/custom_asset/part1.md)
