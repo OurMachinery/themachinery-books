@@ -4,29 +4,23 @@
 
 * {:toc}
 
-## Where do I find a roadmap?
+## Do you have a public roadmap?
 
-Yes you an find the roadmap online on our website: [Open Roadmap](https://ourmachinery.com/roadmap.html).
+Yes, you can find the roadmap online on our website: [Open Roadmap](https://ourmachinery.com/roadmap.html).
 
-## I have a bug what do I do?
+## I found a bug, what do I do?
 
 Have you checked: [Troubleshooting](https://books.ourmachinery.com/troubleshooting.html) if you cannot solve your issue with its help you can report a bug here: [GitHub issues page](https://github.com/OurMachinery/themachinery-public/issues)
 
-## Can I directly add Assets to my project from the File Explorer of my OS?
+## Do you have a Discord server?
 
-No, the editor will not import assets directly added to the project folder via your OS File
-Explorer. However you can modify The Machinery files (in a directory project) during runtime or
-before. If you do this the Engine will warn you.
-
-> Changes to the project on disk where detected: [Import] [Ignore]
-
-More information on this topic [here](https://github.com/OurMachinery/themachinery-public/issues/435).
+Yes, here's an invite link: https://discord.com/invite/SHHSZaH
 
 ## What counts as a "user"?
 
 An individual that is using *The Machinery* as part of their work or working on a team building a game in *The Machinery*, whether they are a programmer, artist, animator, level designer, etc.
 
-## have multiple machines and platforms, do I need separate licenses?
+## I have multiple machines and platforms, do I need separate licenses?
 
 No, the license is per user. You can use your license on as many different machines and platforms as you like.
 
@@ -65,8 +59,6 @@ No. As long as you are actively working on the game (making updates, patches, et
 ## Can I evaluate the engine without buying a license?
 
 Yes, you can download the binary version of the engine and use it for evaluation purposes without obtaining a license. You may not use the engine in production while evaluating it. If you are interested in evaluating the source code, please [contact us.](mailto:ping@ourmachinery.com)
-
-
 
 ## I bought an early adopters license, will I continue to pay the discounted price when my subscription renews?
 

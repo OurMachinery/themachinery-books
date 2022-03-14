@@ -1,8 +1,6 @@
 Hi,
 
-Thanks for using *The Machinery*. We’re excited to share with the
-world what we have cooked up and happy to have you among the people that are trying out the engine.
-This book is here to give you a little bit of background and information about what you’re looking at.
+Thanks for using *The Machinery*. We're excited to share with the world what we have cooked up and happy to have you among the people that are trying out the engine. This book is here to give you a little bit of background and information about what you're looking at.
 
 Besides this book we have several other resources which might be good to checkout:
 
@@ -19,16 +17,13 @@ Also feel free to checkout our internal
 
 > The purpose of this [Programming Guidebook](https://ourmachinery.com/apidoc/doc/guidebook.md.html) is to lay down principles and guidelines for how to write code and work together at Our Machinery.
 
-> **Info:** ⚠This project is currently a work in progress.⚠ Feel free to contribute to it via [OurMachinery/themachinery-books](https://github.com/OurMachinery/themachinery-books). Just make a PR and we will review it or create a issue.
-> 
-> ℹ️ **Dropbox usage:**
-> Moreover this book makes use of Dropbox for our image storage. Therefore if you are using a agressive ad-blocker some images might not load.
-
 Enjoy!
 
 *The Machinery Team*
 
-
+> ⚠ **This book is currently a work in progress:** Feel free to contribute to it via [OurMachinery/themachinery-books](https://github.com/OurMachinery/themachinery-books). Either create a Pull Request, or submit an issue.
+> 
+> ℹ️ **Dropbox usage:** This book makes use of Dropbox for our image storage. Therefore if you are using a agressive ad-blocker some images might not load.
 
 ## Introduction to the Engine
 
