@@ -83,8 +83,4 @@ When you do commits to the git repository, we automatically run `clang-format` a
 ## Where to report bugs or feedback
 
 1. If you have any problems running the software, encounter bugs or crashes, etc, then please report them on our [public bug tracker](https://github.com/OurMachinery/themachinery-public/issues). We will fix bugs as soon as we can and provide updated executables for download on the website. If you have a source code license and fixed something yourself, we'd gladly review and accept Pull Requests.
-2. If you have other feedback or questions, post them on our [forum](https://github.com/OurMachinery/themachinery-public/discussions). We appreciate candid, honest opinions.
-
-Note that you need to create a separate login to log in to the forum (we might unify the logins in the future).
-You can also join our [Discord Server](https://discord.gg/SHHSZaH). You will frequently find us there, answering questions.
-
+2. If you have other feedback or questions, ask them on our [Discord Server](https://discord.gg/SHHSZaH) or post them on our [forum](https://github.com/OurMachinery/themachinery-public/discussions). We appreciate candid, honest opinions.
