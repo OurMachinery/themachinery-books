@@ -45,7 +45,7 @@ Related videos to these topics are:
 
 ## Source Code access
 
-You can make use of `tmbuild` (from the binary build) to download the engine (source code) and install all needed dependencies as well. This can be done via `tmbuild --install` in this case you may want to use `--github-token` as well and provide your token. As alternative you just clone the repo as you are used to from any other git repositry.
+You can make use of `tmbuild` (from the binary build) to download the engine (source code) and install all needed dependencies as well. This can be done via `tmbuild --install` in this case you may want to use `--github-token` as well and provide your token. Alternatively you can also manually clone the repo as you are used to from any other git repositories
 
 
 
@@ -54,3 +54,5 @@ You can make use of `tmbuild` (from the binary build) to download the engine (so
 Make sure your GitHub account is correctly entered on the [Profile](https://ourmachinery.com/profile.html) page. It should be your account name, not your email.
 
 GitHub invites frequently end up in the Spam folder. Check there or go to the [repository](https://github.com/ourmachinery/themachinery) to see your invite.
+
+If you still have problems despite this, then contact us on ping@ourmachinery.com.

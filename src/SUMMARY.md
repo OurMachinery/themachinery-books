@@ -8,7 +8,7 @@
 - [Troubleshooting](./troubleshooting.md)
 - [Contribution](contributing.md)
 - [Getting Started](./getting_started/README.md)
-    - [What is in this package](./getting_started/what_is_in_the_package.md)
+    - [Contents of binary distribution](./getting_started/what_is_in_the_package.md)
     - [Sign In](./getting_started/logging_in.md)
     - [Project Setup](./getting_started/project_setup.md)
     - [Version Control](./getting_started/version_control.md)

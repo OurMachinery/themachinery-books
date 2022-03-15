@@ -1,18 +1,18 @@
 # Project Setup
 
-Let us talk about the concept behind projects first. In The Machinery, we have two kinds of projects: A database project and a directory project.  It is possible to save a database project as a directory project and vice versa. 
+In The Machinery, we have two kinds of projects: A database project and a directory project.  It is possible to save a database project as a directory project and vice versa. 
 
-> **Note:** If resaving a Database project as a Directory project or vice versa, be aware that these are two different projects. Hence changes to one will not apply to the other.
+> **Note:** When saving a Database project as a Directory project or vice versa, be aware that these are two different projects. Hence changes to one will not apply to the other.
 
 ## The Directory Project
 
-A directory project saves all your assets, etc., in a specified project folder. This file format is better suited for source control.
+A directory project saves all your assets, etc., in a specified project folder. The assets that make up the project are saved as combination of JSON files and binary buffers. This file format is better suited for source control.
 
 ![view of a directory project in the Windows explorer](https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?dl=1)
 
 ## The Asset database Project
 
-The difference between both is that a database project results in one file rather than multiple files. It has the file ending `.the_machinery_db`. This database will contain all your assets.
+In contract to the Directory project, the database project results in one file rather than multiple files. It has the file ending `.the_machinery_db`. This database will contain all your assets. It loads faster. It is the file format used by the *Runner*, the stand-alone application that is used to run games made within The Machinery.
 
 ![database project in the file explorer](https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?dl=1)
 

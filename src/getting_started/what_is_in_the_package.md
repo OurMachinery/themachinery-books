@@ -1,6 +1,6 @@
-# What is in this package?
+# Contents of the binary distribution
 
-In the distribution package you will find this:
+For those who use the binary distribution, i.e. downloaded a prebuilt packageo of the engine, this page describes that contents of that package.
 
 | Folder                               | Content                                                      |
 | ------------------------------------ | ------------------------------------------------------------ |
