@@ -1,30 +1,24 @@
 # Creation Graphs
 
-The creation graph is (as the name implies) a graph based tool for creating assets. It allows developers to define and alter various types of assets using visual scripting. More broadly speaking, the creation graph can be used for arbitrary data processing tasks.
+The Creation Graph is used to create asset pipelines and also define GPU-related things such as materials and shaders. In essence it lets you set up a graph that takes some inputs and processes them using nodes that may run on either the CPU or GPU, the graph can then output things such as shader instances, images or draw calls. The big power of the Creation Graph is that it lets you reason about data that lives in the borderland between GPU and CPU, but being able to do so within one single graph.
 
-A creation graph thus defines the asset’s pipeline into its final state. For instance, an image asset will have a file that defines the data of the image, but the creation graph asset specifies how that data should be processed. Should it generate mipmaps, should it be compressed, do we need a CPU copy of it, etc.
+Creations Graphs live separately from Entity Graphs. You often find Creation Graphs living under Render Components (for issuing draw calls), or within `.creation_graph` assets, where they are used to define materials and images. As an example, a Creation Graph that outputs an image probably takes an image that lives on the disk as input, uploads it to the GPU and then has the graph output a GPU image. However, the user is then free to add nodes in-between these steps, for example node for compression or mipmap generation. Compared to other game engines, things that often end up in the properties panel of an import image, can here be done dynamically in a graph, depending on the needs of your project.
 
-A more familiar example might be a material shader. In The Machinery this is also defined using a creation graph. This case maps very well to Unity’s shader assets and Unreal’s material assets. In the image below you can see a simple default material with a saturated red base color.
+Within the `core` folder that we ship with the engine you will find several creation graphs, many of these are used for defining defaul materials and also as defaults graph for use within our DCC asset import pipeline.
 
 ![Simple red material](https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?dl=1)
-
 
 Image loading and material creation are just a few examples of what can be achieved with the creation graph. The table below shows when a creation graph is used compared to the tools one could use in Unity and Unreal.
 
 | Asset Type           | Unity                | Unreal      | The Machinery                   |
 | -------------------- | -------------------- | ----------- | ------------------------------- |
-| Images               | Texture              | Texture     | Creation graphs                 |
-| Materials            | Shader               | Material    | Creation graphs                 |
-| Particles            | Particle Effect      | Cascade     | Creation graphs                 |
-| Post processing      | Shader               | Material    | Creation graphs                 |
-| Procedural materials | Procedural Materials | Material    | Creation graphs                 |
-| Meshes               | Mesh                 | Static Mesh | DCC Asset + <br>Creation graphs |
+| Images               | Texture              | Texture     | Creation Graph with Image Output node                 |
+| Materials            | Shader               | Material    | Creation Graph with Shader Instance Output node               |
+| Particles            | Particle Effect      | Cascade     | Creation Graph with GPUSim nodes that emits particles             |
+| Procedural materials | Procedural Materials | Material    | Creation Graph with Image Output node with dynamic logic                 |
+| Meshes               | Mesh                 | Static Mesh | DCC Asset referred to by Creation Graph within Render Component |
 
-Another example for the creation graph is mesh processing. A graph like this will define how the mesh should be draw or traced against. The graph below takes two inputs, a material creation graph and the mesh data from a DCC asset. This data is than imported and passed to the various outputs of our mesh pipeline. In this case those are: a ray tracing instance, a normal draw call, a bounding volume, and a physics shape. Note that not all of these outputs have to be used, rather the code that uses this creation graph might only look for the rendering outputs and ignore the physics shape, whilst some other code might only care about the physics shape output.
+The engine comes with a Creation Graphs sample, it contains examples of how to make materials and particle systems.
 
-![Mesh processing](https://www.dropbox.com/s/103bvtqaz6lnsog/tm_guide_creation_graph_mesh_processing.png?dl=1)
-
-
-Like the entity graph, the creation graph can executes nodes in sequence from an event. Some examples of this are the `Tick`, `Init`, and `Compile` events which are executed at known intervals. Most of the creation graphs however work with a reverse flow, compiling the graph into a sequence of nodes for a specific output. The two examples presented earlier show this workflow. Some outputs are: `Draw Call`, `Shader Instance`, `Image`, and `Physics Shape`. Note that these outputs are just blobs of data, an implementation can define more output type in code.
-
+Like the entity graph, the creation graph can executes nodes in sequence from an event. Some examples of this are the `Tick`, `Init`, and `Compile` events which are executed at known points or intervals. However, creation graphs commonly work using a a reverse flow where an output node is triggered and then all the nodes it depends on are run, in order to supply the output. Examples of these outputs are `Draw Call`, `Shader Instance`, `Image`, and `Physics Shape`. Note that these outputs are just blobs of data interpreted by the code that uses them. You can in other words add your own output nodes and types from code.
 
