@@ -16,7 +16,7 @@ For Engines, you pass an instance of the `tm_entity_system_i` to the register fu
 
 ```c
 // example:
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_system_engine.c,entity_register_engines_i)}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_system_engine.c,tm_entity_system_i)}}
 ```
 
 
@@ -24,7 +24,7 @@ For Engines, you pass an instance of the `tm_entity_system_i` to the register fu
 For Systems, you pass an instance of the `tm_engine_i` to the register function.
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_system_engine.c,tm_entity_system_i)}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_system_engine.c,entity_register_engines_i)}}
 ```
 
 In the above example the scheduler will schedule this system after the `maze_generation_system` system! Since we did not provide any further information in `.writes` or in `.components` the scheduler has no other information to work with. In this case it is best to not write anything!

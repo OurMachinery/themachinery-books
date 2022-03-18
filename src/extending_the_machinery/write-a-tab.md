@@ -125,7 +125,7 @@ In the cause of the rest of this walkthrough, we will discuss:`tab__create_menu_
 As we can see in our definition of the `custom_tab_vt` object we provide the `tm_tab_vt.create_menu_name()` and the `tm_tab_vt.title()`. The `create_menu_name` is an optional function to allow you to provide a name for the create tab menu. In contrast, the `title()` function is not optional and is needed. It provides the name of the Tab, which the editor shall show in the tab bar.
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_tab.c,tab_meta}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_tab.c,tab_meta)}}
 ```
 
 ### Define create and destroy the Tab

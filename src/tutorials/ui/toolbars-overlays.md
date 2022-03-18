@@ -46,7 +46,7 @@ To our definition, we add a [`toolbars()`]({{docs}}plugins/ui/docking.h.html#str
 After we have added this, we need actually to define the function itself:
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,tab__toolbars}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,tab__toolbars)}}
 ```
 
 
@@ -77,7 +77,7 @@ Let us provide the essential things:
 3. The draw_mode_mask to indicate where we want the toolbar to be drawn.
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,tab__toolbars,off}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,tab__toolbars,off)}}
 ```
 
 
@@ -87,7 +87,7 @@ In our UI function, we can add the button via the [`tm_ui_api`]({{docs}}plugins/
 > **Note:** You need include the `plugins/ui/ui.h` and the `foundation/log.h` as well as get the API's first!
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,toolbar__ui}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,toolbar__ui)}}
 ```
 
 

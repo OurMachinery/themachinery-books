@@ -147,7 +147,7 @@ The last step before we are done is actually to make the text appear on the scre
 The last function which we need is the set root function. This function allows us to set a root object of the Tab from the outside. Its code is quite straightforward:
 
 ```c
-{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/open_asset/tab.c,root}}
+{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/open_asset/tab.c,root)}}
 ```
 
 > **Note**: The root function is also called when ever the current "main" Truth changes. This can be used to swap the truth.

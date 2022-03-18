@@ -62,7 +62,7 @@ After this, we have the region in which we define the category of our component.
 
 We need to define a `tm_ci_editor_ui_i` object which uses this function.  Later we register this function to the `tm_ci_editor_ui_i` aspect of our truth type. If you do not add this aspect later to your Truth Type, the Editor will not know that this Component Type exists, and you can not add it via the Editor, but in C.
 
-> **Note:** More about aspects you can read in the [aspects guide](#).
+> **Note:** More about aspects you can read in the [aspects guide]({{base_url}}/the_truth/aspects.html).
 
 ```c 
 {{insert_code(env.TM_BOOK_CODE_SNIPPETS/gameplay_code/ecs_component_example.c,comp_meta)}}
@@ -212,7 +212,7 @@ The filter function will be called on all entity types to determine if the Engin
 
 represented by its component mask) to determine if the Engine should run on that entity type. If no `tm_engine_i.filter()` function is supplied and no `excludes[]` flags are set, the update will run on entity types that have all the components in the `components` array. If some `excludes[]` flags are set, the Engine will run on all entity types that **do not** have any of the components whose `excludes[]` flags are set, but have all the other components in the `components` array. 
 
-> **Note:** For more information, check the [documentation](https://ourmachinery.com//apidoc/plugins/entity/entity.h.html#structtm_engine_i.filter()).
+> **Note:** For more information, check the [documentation](https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i.filter()).
 
 The last thing the register function needs to do is register the Engine to the Entity Context.
 
