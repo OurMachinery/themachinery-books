@@ -197,7 +197,8 @@
 };
 </code></pre>
 <p>After we have added this, we need actually to define the function itself:</p>
-<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,tab__toolbars}}
+<pre><code class="language-c">static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab,
+                                          tm_temp_allocator_i *ta) {}
 </code></pre>
 <p>Within this function, we define our toolbars. Our toolbar will have an essential job! It will have a button that prints &quot;Hello World&quot;.</p>
 <p>To make this work, we need to create a C-Array of <a href="https://ourmachinery.com/apidoc/plugins/ui/toolbar.h.html#structtm_toolbar_i"><code>tm_toolbar_i</code></a> objects and add our toolbar to it. This interface expects the following things:</p>
@@ -221,13 +222,20 @@
 <li>The UI function is to be able to draw something.</li>
 <li>The draw_mode_mask to indicate where we want the toolbar to be drawn.</li>
 </ol>
-<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,tab__toolbars,off}}
+<pre><code class="language-c">static struct tm_toolbar_i *tab__toolbars(tm_tab_o *tab,
+                                          tm_temp_allocator_i *ta) {}
 </code></pre>
 <p>In our UI function, we can add the button via the [<a href="https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api"><code>tm_ui_api</code></a>](https://ourmachinery.com/apidoc/plugins/ui/ui.h.html#structtm_ui_api). Then log the string &quot;Hello World&quot; to the screen with the <a href="https://ourmachinery.com/apidoc/foundation/log.h.html#log.h">logger API</a>.</p>
 <blockquote>
 <p><strong>Note:</strong> You need include the <code>plugins/ui/ui.h</code> and the <code>foundation/log.h</code> as well as get the API's first!</p>
 </blockquote>
-<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/toolbars_overlays.c,toolbar__ui}}
+<pre><code class="language-c">static tm_rect_t toolbar__ui(tm_toolbar_i *toolbar, struct tm_ui_o *ui,
+                             const struct tm_ui_style_t *uistyle,
+                             tm_rect_t toolbar_r,
+                             enum tm_toolbar_draw_mode dm) {
+  // ui code...
+  return toolbar_r;
+}
 </code></pre>
 <h2 id="tab-overlays"><a class="header" href="#tab-overlays">Tab Overlays</a></h2>
 <p><img src="https://paper-attachments.dropbox.com/s_538DCFE5C2E14B8A7C343B96D5CD2C3E2C191E06DD3EF47F66924FDF7AE2C192_1617105468374_image.png" alt="An image with visualization modes enabled using the Visualize overlay, as well as a Renderer Statistics overlay. The Visualize overlay is found in Top right toolbar → Render → Lighting Module → Show as overlay. The Statistics overlay is found in Top right toolbar → Statistics." /></p>

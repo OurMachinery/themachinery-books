@@ -165,7 +165,18 @@
 </blockquote>
 <p>For Engines, you pass an instance of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_entity_system_i"><code>tm_entity_system_i</code></a> to the register function.</p>
 <pre><code class="language-c">// example:
-static void entity_register_engines_i(struct tm_entity_context_o *ctx) {
+const tm_entity_system_i winning_system = {
+    .ui_name = &quot;winning_system_update&quot;,
+    .hash = TM_STATIC_HASH(&quot;winning_system_update&quot;, 0x8f8676e599ca5c7aULL),
+    .update = winning_system_update,
+    .before_me[0] =
+        TM_STATIC_HASH(&quot;maze_generation_system&quot;, 0x7f1fcbd9ee85c3cfULL),
+    .exclusive = true,
+};
+tm_entity_api-&gt;register_system(ctx, &amp;winning_system);
+</code></pre>
+<p>For Systems, you pass an instance of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i"><code>tm_engine_i</code></a> to the register function.</p>
+<pre><code class="language-c">static void entity_register_engines_i(struct tm_entity_context_o *ctx) {
 
   tm_component_type_t keyboard_component = tm_entity_api-&gt;lookup_component_type(
       ctx, TM_TT_TYPE_HASH__KEYBOARD_COMPONENT);
@@ -188,17 +199,6 @@ static void entity_register_engines_i(struct tm_entity_context_o *ctx) {
   };
   tm_entity_api-&gt;register_engine(ctx, &amp;movement_engine);
 }
-</code></pre>
-<p>For Systems, you pass an instance of the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i"><code>tm_engine_i</code></a> to the register function.</p>
-<pre><code class="language-c">const tm_entity_system_i winning_system = {
-    .ui_name = &quot;winning_system_update&quot;,
-    .hash = TM_STATIC_HASH(&quot;winning_system_update&quot;, 0x8f8676e599ca5c7aULL),
-    .update = winning_system_update,
-    .before_me[0] =
-        TM_STATIC_HASH(&quot;maze_generation_system&quot;, 0x7f1fcbd9ee85c3cfULL),
-    .exclusive = true,
-};
-tm_entity_api-&gt;register_system(ctx, &amp;winning_system);
 </code></pre>
 <p>In the above example the scheduler will schedule this system after the <code>maze_generation_system</code> system! Since we did not provide any further information in <code>.writes</code> or in <code>.components</code> the scheduler has no other information to work with. In this case it is best to not write anything!</p>
 <p><em>Example load function:</em></p>

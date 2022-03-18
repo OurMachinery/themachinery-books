@@ -362,7 +362,11 @@ static struct tm_allocator_api *tm_allocator_api;
 <p>In the cause of the rest of this walkthrough, we will discuss:<code>tab__create_menu_name</code>,  <code>tab__create</code>, <code>tab__destroy</code> , <code>tab__title</code> and <code>tab__ui</code>.</p>
 <h3 id="define-the-metadata-functions"><a class="header" href="#define-the-metadata-functions">Define the metadata functions</a></h3>
 <p>As we can see in our definition of the <code>custom_tab_vt</code> object we provide the <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.create_menu_name()"><code>tm_tab_vt.create_menu_name()</code></a> and the <a href="https://ourmachinery.com/apidoc/plugins/ui/docking.h.html#structtm_tab_vt.title()"><code>tm_tab_vt.title()</code></a>. The <code>create_menu_name</code> is an optional function to allow you to provide a name for the create tab menu. In contrast, the <code>title()</code> function is not optional and is needed. It provides the name of the Tab, which the editor shall show in the tab bar.</p>
-<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/plugins/my_tab.c,tab_meta}}
+<pre><code class="language-c">static const char *tab__create_menu_name(void) { return &quot;Custom Tab&quot;; }
+
+static const char *tab__title(tm_tab_o *tab, struct tm_ui_o *ui) {
+  return &quot;Custom Tab&quot;;
+}
 </code></pre>
 <h3 id="define-create-and-destroy-the-tab"><a class="header" href="#define-create-and-destroy-the-tab">Define create and destroy the Tab</a></h3>
 <p>As mentioned before, the data of a tab is bound to its lifetime. Therefore you should create the data on <code>create</code> and let go of it on <code>destroy.</code></p>

@@ -438,7 +438,14 @@ tm_ui_api-&gt;wrapped_text(ui, uistyle, text);
 </code></pre>
 <h4 id="the-set-root--root-function"><a class="header" href="#the-set-root--root-function">The set root / root function</a></h4>
 <p>The last function which we need is the set root function. This function allows us to set a root object of the Tab from the outside. Its code is quite straightforward:</p>
-<pre><code class="language-c">{{insert_code(env.TM_BOOK_CODE_SNIPPETS/custom_assets/open_asset/tab.c,root}}
+<pre><code class="language-c">void tab__set_root(tm_tab_o *inst, struct tm_the_truth_o *tt, tm_tt_id_t root) {
+  inst-&gt;asset = root;
+  inst-&gt;tt = tt;
+}
+
+static tm_tab_vt_root_t tab__root(tm_tab_o *tab) {
+  return (tm_tab_vt_root_t){tab-&gt;tt, tab-&gt;asset};
+}
 </code></pre>
 <blockquote>
 <p><strong>Note</strong>: The root function is also called when ever the current &quot;main&quot; Truth changes. This can be used to swap the truth.</p>

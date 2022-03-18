@@ -364,7 +364,7 @@ struct tm_custom_component_t {
 <p>After this, we have the region in which we define the category of our component. The Editor will call it to categorize the component into the correct section. </p>
 <p>We need to define a <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h.html#structtm_ci_editor_ui_i"><code>tm_ci_editor_ui_i</code></a> object which uses this function.  Later we register this function to the <a href="https://ourmachinery.com/apidoc/plugins/the_machinery_shared/component_interfaces/editor_ui_interface.h.html#structtm_ci_editor_ui_i"><code>tm_ci_editor_ui_i</code></a> aspect of our truth type. If you do not add this aspect later to your Truth Type, the Editor will not know that this Component Type exists, and you can not add it via the Editor, but in C.</p>
 <blockquote>
-<p><strong>Note:</strong> More about aspects you can read in the <a href="#">aspects guide</a>.</p>
+<p><strong>Note:</strong> More about aspects you can read in the <a href="https://ourmachinery.github.io/themachinery-books//the_truth/aspects.html">aspects guide</a>.</p>
 </blockquote>
 <pre><code class="language-c">static const char *component__category(void) { return TM_LOCALIZE(&quot;Samples&quot;); }
 
@@ -568,7 +568,7 @@ for (const tm_entity_blackboard_value_t *bb = data-&gt;blackboard_start;
 <p>The filter function will be called on all entity types to determine if the Engine shall run on them or not.  To provide this function is optional. If present it specifies a filter function called for each entity type (as</p>
 <p>represented by its component mask) to determine if the Engine should run on that entity type. If no <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i.filter()"><code>tm_engine_i.filter()</code></a> function is supplied and no <code>excludes[]</code> flags are set, the update will run on entity types that have all the components in the <code>components</code> array. If some <code>excludes[]</code> flags are set, the Engine will run on all entity types that <strong>do not</strong> have any of the components whose <code>excludes[]</code> flags are set, but have all the other components in the <code>components</code> array. </p>
 <blockquote>
-<p><strong>Note:</strong> For more information, check the <a href="https://ourmachinery.com//apidoc/plugins/entity/entity.h.html#structtm_engine_i.filter()">documentation</a>.</p>
+<p><strong>Note:</strong> For more information, check the <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_engine_i.filter()">documentation</a>.</p>
 </blockquote>
 <p>The last thing the register function needs to do is register the Engine to the Entity Context.</p>
 <pre><code class="language-c"> tm_entity_api-&gt;register_engine(ctx, &amp;custom_component_engine);
