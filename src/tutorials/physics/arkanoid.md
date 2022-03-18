@@ -1,7 +1,7 @@
 The Arkanoid scene shows you a physically accurate version of the famous Pong game.
 The goal is to bounce the ball around and hit as many bricks as possible: the Bat can be controlled by moving the mouse left/right.
 
-# **Scene Breakdown**
+# **Arkanoid Scene breakdown**
 
 ## **Bat** (Prototype location: Special Objects/Bat.entity)
 
