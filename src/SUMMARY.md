@@ -21,6 +21,7 @@
     - [Introduction to C](./getting_started/introduction_to_c/README.md)
         - [Memory Management](./getting_started/introduction_to_c/memory_management.md)
         - [List, Arrays, Vectors](./getting_started/introduction_to_c/list_arrays_vector.md)
+        - [HashMaps & Sets](./getting_started/introduction_to_c/hashmaps_and_set.md)
         - [Concurrency in Machinery](./getting_started/introduction_to_c/concurrency.md)
         - [String processing](./getting_started/introduction_to_c/strings.md)
         - [Types: void* and struct padding](./getting_started/introduction_to_c/other.md)
