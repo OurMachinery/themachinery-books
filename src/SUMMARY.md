@@ -73,6 +73,8 @@
     - [Shaders](./graphics/shaders.md)
     - [The Machinery Shading Language](./graphics/the_machinery_shading_language.md)
     - [.tmsl Visual Studio Extension](./graphics/tmsl_vs.md)
+    - [Lighting](./graphics/lighting/README.md)
+        - [Ambient Occlusion](./graphics/lighting/ambient_occlusion.md)
     - [Post Processing](./graphics/post_processing/README.md)
         - [Anti-Aliasing](./graphics/post_processing/aa.md)
         - [Exposure](./graphics/post_processing/exposure.md)
