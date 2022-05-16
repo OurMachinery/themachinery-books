@@ -27,7 +27,7 @@ This walkthrough shows you how to create your first plugin.
 
 The Engine provides an easy way to create plugins for you via the **file -> New Plugins** menu. There you can choose default plugin templates. Let us choose the minimal plugin. They come with default files:
 
-![](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1)
+![](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?raw=1)
 
 *In this case, we choose the Tab template. The only difference is that the `custom_tab` would be `minimal`.*
 

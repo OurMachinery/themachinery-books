@@ -22,7 +22,7 @@ In this example, we want to create a new plugin, which contains our Tab. We open
 
 After this, we see that the Engine created some files for us.
 
-![folder structure new plugin](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1)
+![folder structure new plugin](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?raw=1)
 
 Now we need to ensure that we can build our project. In the root folder (The folder with the premake file), we can run `tmbuild` and see if there is no issue. We will build our projects once and generate the `.sln` file (on windows). 
 

@@ -38,7 +38,7 @@ You would usually couple your logic together with data when working in Godot. Th
 
 In The Machinery, you separated them into Components and Systems / Engines. They represent your data and Systems or Engines that represent your Behaviour. They operate on multiple entities at the same time. Each Entity Context (the isolated world of Entities) has several systems/engines registered to them. In the following image we broke down an example player in Godot into separate parts (components) and its methods into separate Engines.
 
-![](https://www.dropbox.com/s/mw0hb5itj5zck7g/tm_guide_object_to_ecs.png?dl=1)
+![](https://www.dropbox.com/s/mw0hb5itj5zck7g/tm_guide_object_to_ecs.png?raw=1)
 
 Important to understand is that the Player Class on the left does not equal the Entity on the left! Since the Entity on the left is just a weak reference to the components, it does not own the data, unlike the Player Class. The Components together form the player and the Systems/Engines on the far right just consume a few of those components, they do not need to understand them all!
 

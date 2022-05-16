@@ -12,7 +12,7 @@ They are data, that is all they are. Designing them is the most important task y
 
 You can add callbacks to the component interface which allow you to perform actions on `add` and `remove`. The general lifetime of a component is bound to the Entity Context.
 
-![](https://www.dropbox.com/s/1d39bh17zqgeloy/tm_guide_ecs_component.png?dl=1)
+![](https://www.dropbox.com/s/1d39bh17zqgeloy/tm_guide_ecs_component.png?raw=1)
 
 
 

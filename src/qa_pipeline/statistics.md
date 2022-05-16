@@ -13,5 +13,5 @@ The Statistic tab consists of a Property View in which you can define your desir
 
 During the simulation in the simulate tab you have the ability to open different statistic overlays.
 
-![https://www.dropbox.com/s/cmk3u9lt4d8l3n0/tm_guide_statistics_in_simulate.png?dl=1](https://www.dropbox.com/s/cmk3u9lt4d8l3n0/tm_guide_statistics_in_simulate.png?dl=1)
+![https://www.dropbox.com/s/cmk3u9lt4d8l3n0/tm_guide_statistics_in_simulate.png?dl=1](https://www.dropbox.com/s/cmk3u9lt4d8l3n0/tm_guide_statistics_in_simulate.png?raw=1)
 

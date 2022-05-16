@@ -64,7 +64,7 @@ The Machinery has three different ways of importing assets. The Import local fil
 ### Import via the file menu
 
 The first method of important an asset is via the **File** menu. There, we have an entry called *Import File,* which opens a file dialog. There you can import any of the supported file formats. *Import File* allows for importing any supported asset archive of the type zip or 7zip. This archive will be unpacked and recursively checked for supported assets.
-![](https://www.dropbox.com/s/kb50fpjuqwz7o6o/tm_guide_import_assets.png?dl=1)
+![](https://www.dropbox.com/s/kb50fpjuqwz7o6o/tm_guide_import_assets.png?raw=1)
 
 ### Import from URL
 

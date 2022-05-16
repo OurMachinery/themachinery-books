@@ -48,13 +48,13 @@ When adding the Physic Shape, we need to consider the Type. By default, the Type
 
 If you look now into the Scene Tab, you see nothing. To change that, you can turn on the Debug Visualization:
 
-![](https://www.dropbox.com/s/jp8oxoz8zl0f5d7/tm_tut_physics_viz.png?dl=1)
+![](https://www.dropbox.com/s/jp8oxoz8zl0f5d7/tm_tut_physics_viz.png?raw=1)
 
 Having a Trigger that cannot be seen might be applicable for some games. In our case, we choose to make the Trigger Visible with a box.
 
 Luckily the core provides a Box Entity for us: `core/geometry/box.entity`. 
 
-![](https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1)
+![](https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?raw=1)
 
 This location is something we keep in mind!
 
@@ -73,12 +73,12 @@ We connect the Entity from the "Physx Set Velocity" entity connector to the *Tou
 
 We need to get the current Velocity of this Entity. We can do this by using the "Physx Get Velocity" node. The result we modify with, let us say -1 and apply it at the end. (*The lower the value, the stronger the ball will bounce off.*)
 
-![](https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?dl=1)
+![](https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?raw=1)
 
 
 This is how our trigger Entity looks like:
 
-![](https://www.dropbox.com/s/njipx8mfsjsqcgj/tm_tut_physics_trigger_entity.png?dl=1)
+![](https://www.dropbox.com/s/njipx8mfsjsqcgj/tm_tut_physics_trigger_entity.png?raw=1)
 
 > **Note:** The Box Entity will be displayed yellow because it is a prototype instance of the Entity within the `core/geometry/` folder. Any changes to this prototype will apply to this instance as well. 
 
@@ -105,7 +105,7 @@ After this, we need to ensure that our ball has Continuous Collision Detection (
 
 Now that we have adjusted all the components let us add the actual ball. Again we can drag and drop the `sphere.entity` from the `core/geometry/` folder onto our Entity.
 
-![](https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1)
+![](https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?raw=1)
 
 
 
@@ -135,7 +135,7 @@ When we look at the Scene Tab now, we see our new floor entity! Let us drag in o
 
 The result could look like this:
 
-![](https://www.dropbox.com/s/w4xqxvhcblinopu/tm_tut_physics_trigger_scene.png?dl=1)
+![](https://www.dropbox.com/s/w4xqxvhcblinopu/tm_tut_physics_trigger_scene.png?raw=1)
 
 
 
@@ -151,7 +151,7 @@ In there, we add a "Tick Event" we need to poll every tick if the space key has 
 
 We push the ball via "Physx Push" with a calculated velocity.
 
-![](https://www.dropbox.com/s/q9k4qp08lumgzef/tm_tut_physics_graph_spawn_ball.png?dl=1)
+![](https://www.dropbox.com/s/q9k4qp08lumgzef/tm_tut_physics_graph_spawn_ball.png?raw=1)
 
 
 

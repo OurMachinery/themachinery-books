@@ -14,7 +14,7 @@ The distribution already comes with pre-built .dlls for the sample plugins, such
 `bin/plugins/tm_pong_tab.dll`. You can see this plugin in action by selecting **Tab > Pong** in the
 editor to open up its tab:
 
-![Pong tab.](https://www.dropbox.com/s/hats2jgr3wroahz/pong-tab.png?dl=1)
+![Pong tab.](https://www.dropbox.com/s/hats2jgr3wroahz/pong-tab.png?raw=1)
 
 **Table of Content**
 

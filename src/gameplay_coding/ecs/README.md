@@ -16,7 +16,7 @@ While Systems are just an update with a provided access to the entity context. W
 
 An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. The entity itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore an entity acts as an identifier or key to the data stored in components.
 
-![](https://www.dropbox.com/s/5956267ltb4l14x/tm_guide_entity.png?dl=1)
+![](https://www.dropbox.com/s/5956267ltb4l14x/tm_guide_entity.png?raw=1)
 
 > **Note:** In this example both entities have the same set of components, but they do not own the data they just refer to it!
 
@@ -53,7 +53,7 @@ The Entity Context is the simulation world. It contains all the Entities and Sys
 
 An Entity Types is a unique combination of component types. The Entity API uses the entity type to group all entities that have the same sets of components.
 
-![](https://www.dropbox.com/s/453d1nqrwnsntbw/tm_guide_entity_entity_type.png?dl=1)
+![](https://www.dropbox.com/s/453d1nqrwnsntbw/tm_guide_entity_entity_type.png?raw=1)
 
 > **Note:** In this example Entities A-B are of the same entity type while C has a different entity type!
 
@@ -76,13 +76,13 @@ An Entity Types is a unique combination of component types. The Entity API uses 
 
   
 
-![](https://www.dropbox.com/s/kre84a4vqouq37z/tm_guide_component_manager.png?dl=1)
+![](https://www.dropbox.com/s/kre84a4vqouq37z/tm_guide_component_manager.png?raw=1)
 
 ## Game Logic
 
 The behavior is defined in Systems and Engines which process those components. Systems and Engines can be seen as data transformation actions. They take some input (components) and process them to some output (changed component data, different rendering) and a chain of small systems together makes up your game!
 
- ![](https://www.dropbox.com/s/5wqvcf27vvx5b7v/engines.png?dl=1)
+ ![](https://www.dropbox.com/s/5wqvcf27vvx5b7v/engines.png?raw=1)
 
 ### What are Engines?
 
@@ -98,7 +98,7 @@ The behavior is defined in Systems and Engines which process those components. S
   
   The following image shows how a time based movement System could look like:
   
-  ![](https://www.dropbox.com/s/vn3n7ai2y28u695/tm_guide_ecs_engine_flow.png?dl=1)
+  ![](https://www.dropbox.com/s/vn3n7ai2y28u695/tm_guide_ecs_engine_flow.png?raw=1)
   
   
 
@@ -116,7 +116,7 @@ The behavior is defined in Systems and Engines which process those components. S
 
 Since the Truth is an editor concept and our main data model, your scene is stored in the Truth. When you start the simulation your Assets get translated to the ECS via the `asset_load()` function. In your `tm_component_i` you can provide this function if you want your component to translate to the ECS world. In there you have access to the Truth, afterwards not anymore. Besides, you can provide some other callbacks for different stages of the translation process. 
 
-![](https://www.dropbox.com/s/ao6cs4fpyx9i078/truth_ecs%20%282%29.png?dl=1)
+![](https://www.dropbox.com/s/ao6cs4fpyx9i078/truth_ecs%20%282%29.png?raw=1)
 
 >  **Important:** A Component representation in The Truth may **not** reflect the runtime ECS representation. This can be used to separate a Truth representation into smaller bits for gameplay programming sake but keep the simplicity for the Front End user.
 

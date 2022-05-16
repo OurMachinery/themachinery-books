@@ -24,7 +24,7 @@ You have three options to host or join a collaboration Session:
 
 Host a server on your LAN. The system will choose a free port on your machine for hosting. Other users on the same LAN can join your session by choosing *Join LAN Server* and selecting your machine.
 
-![Host locally](https://www.dropbox.com/s/0amm9km2jiejxx1/tm_guide_collab_host_local.png?dl=1)
+![Host locally](https://www.dropbox.com/s/0amm9km2jiejxx1/tm_guide_collab_host_local.png?raw=1)
 
 1. Select "Host LAN Server" from the dropdown
 2. Your Handle, in case of hosting this will be the name the session will have as well as your username.
@@ -34,7 +34,7 @@ Host a server on your LAN. The system will choose a free port on your machine fo
 
 When you open the collaboration tab the default view is the "Join LAN Server" view. In this view you can join a local server.
 
-![The default view of the collab tab is the join local option](https://www.dropbox.com/s/1cx17p05swuu6mg/tm_guide_collab_join_local.png?dl=1)
+![The default view of the collab tab is the join local option](https://www.dropbox.com/s/1cx17p05swuu6mg/tm_guide_collab_join_local.png?raw=1)
 
 1. Select "Join LAN Server" from the dropdown
 2. You can select a collaboration session. If there is no session available this field is disabled.
@@ -45,7 +45,7 @@ When you open the collaboration tab the default view is the "Join LAN Server" vi
 
 Host a server that can be accessed over the internet on a specified port.
 
-![Host Internet Server](https://www.dropbox.com/s/q3q7ltunpqmepeq/tm_guide_collab_host_internet.png?dl=1)
+![Host Internet Server](https://www.dropbox.com/s/q3q7ltunpqmepeq/tm_guide_collab_host_internet.png?raw=1)
 
 1. You can select the port of your session. If your router does not support **UPnP** you might have to port forward your selected port.
 2. Your Handle, the name the other user can see on their side.
@@ -58,7 +58,7 @@ Host a server that can be accessed over the internet on a specified port.
 
 To connect, an external user would choose *Join Internet Server* and specify your external IP address.
 
-![Join a Internet Server](https://www.dropbox.com/s/n1fhqm7p3jr6yx8/tm_guide_collab_join_internet.png?dl=1)
+![Join a Internet Server](https://www.dropbox.com/s/n1fhqm7p3jr6yx8/tm_guide_collab_join_internet.png?raw=1)
 
 1. You need the Online Host's IP Address. In the format: `89.89.89.89:1234`. 
 2. Your Handle, the name the other user can see on their side.
@@ -78,10 +78,10 @@ The Machinery allows you to connect via Discord with your co-workers, team mates
 
 After this setting is enabled you need to add The Machinery as a game so others can see you are playing it. This allows you now to invite your friends via the Engine into your session and vice versa.
 
-![](https://www.dropbox.com/s/6e6lanbsz5etfkm/tm_guide_collab_discord_host.png?dl=1)
+![](https://www.dropbox.com/s/6e6lanbsz5etfkm/tm_guide_collab_discord_host.png?raw=1)
 
 ## Connected
 
 When you are connected to a collaboration session you have this view. In the connected view you can chat with the other participants of the chat. The session will **not** terminate / disconnect if you close the tab.
 
-![](https://www.dropbox.com/s/ehg9x2l8frvlo04/tm_guide_collab_connected.png?dl=1)
+![](https://www.dropbox.com/s/ehg9x2l8frvlo04/tm_guide_collab_connected.png?raw=1)

@@ -1,3 +1,5 @@
 book
 mdbook-bin
 *.exe
+
+code_snippets/

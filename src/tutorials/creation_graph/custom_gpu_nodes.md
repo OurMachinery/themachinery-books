@@ -6,7 +6,7 @@ A creation graph GPU node needs to be in a `.tmsl` file, these can be compiled b
 
 
 ## Cube Node
-![](https://www.dropbox.com/s/z6faxvwm0sb7i9o/tut_creation_graph_custom_cube.png?dl=1)
+![](https://www.dropbox.com/s/z6faxvwm0sb7i9o/tut_creation_graph_custom_cube.png?raw=1)
 
 ```json
 function: [[
@@ -42,7 +42,7 @@ Note that we didn’t specify a `type` parameter for our input field. This makes
 
 
 ## Depth Output Node
-![](https://www.dropbox.com/s/o947fbjy9uddltn/tut_creation_graph_custom_depth_output.png?dl=1)
+![](https://www.dropbox.com/s/o947fbjy9uddltn/tut_creation_graph_custom_depth_output.png?raw=1)
 
 
 Output nodes are more complex than function nodes. Instead of a single `function` block, these nodes take the form of a render pass that can have variations based on the systems used with it and the connected inputs. The example above creates a very simple material node that displays a gray-scale interpretation of the object’s distance to the viewing camera.

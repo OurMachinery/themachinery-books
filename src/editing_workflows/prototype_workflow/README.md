@@ -12,7 +12,7 @@ So you can for example create an entity asset that represents a
 room, and then create a house entity that has a bunch of these room entities
 placed into it:
 
-![Three Room entities placed to form a House entity.](https://www.dropbox.com/s/2hpnogh7bff9jge/house-entity.png?dl=1)
+![Three Room entities placed to form a House entity.](https://www.dropbox.com/s/2hpnogh7bff9jge/house-entity.png?raw=1)
 
 
 
@@ -49,7 +49,7 @@ or child entities on the overridden entity.
 > parents will automatically get overridden too. Let's modify the position of the barrel in the
 > front-most room:
 
-![Barrel position overridden.](https://www.dropbox.com/s/uy0rzwhrjzen42i/override.png?dl=1)
+![Barrel position overridden.](https://www.dropbox.com/s/uy0rzwhrjzen42i/override.png?raw=1)
 
 The overridden entities and components are drawn in blue. We change the x and z components of the
 position to move the barrel. Note how the changed values are shown in white, while the values that

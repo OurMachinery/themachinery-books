@@ -1,6 +1,6 @@
 # Kinematic Scene breakdown
 
-![image-20220317102629794](https://www.dropbox.com/s/jvy8da7ptkl5uk0/image-20220317102629794.png?dl=1)
+![image-20220317102629794](https://www.dropbox.com/s/jvy8da7ptkl5uk0/image-20220317102629794.png?raw=1)
 
 ## Plane
 
@@ -18,7 +18,7 @@ The Rigid body component has the "Kinematic" flag set so that Physx knows that t
 
 The Velocity component is used to apply (in this case) a constant angular velocity to the entity to make it rotate on its own axis.
 
-![image-20220318094033356](https://www.dropbox.com/s/timq3uy7mfltzfp/image-20220318094033356.png?dl=1)
+![image-20220318094033356](https://www.dropbox.com/s/timq3uy7mfltzfp/image-20220318094033356.png?raw=1)
 
 ## Spawners
 
@@ -28,7 +28,7 @@ Notice that the spawned entities won't have any force applied to them, so they w
 
 You can find the objects that will be spawned for each of the spawners under the Shapes folder. 
 
-![image-20220317102210569](https://www.dropbox.com/s/elydub9tniba8a7/image-20220317102210569.png?dl=1)
+![image-20220317102210569](https://www.dropbox.com/s/elydub9tniba8a7/image-20220317102210569.png?raw=1)
 
 ## Ball Thrower (Prototype location: Special Objects/Ball Thrower)
 

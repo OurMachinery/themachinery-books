@@ -4,7 +4,7 @@ The *Entity Graph* implements a visual scripting language based on nodes and con
 it, right-click on an entity to add a Graph Component and then double click on the Graph Component
 to open it in the Graph Editor:
 
-![Graph editor.](https://www.dropbox.com/s/ssasbp5sb0vq7gy/graph-editor.png?dl=1)
+![Graph editor.](https://www.dropbox.com/s/ssasbp5sb0vq7gy/graph-editor.png?raw=1)
 
 The visual scripting language uses *Events* to tick the execution of nodes. For example, the
 *Tick Event* node will trigger its out connector whenever the application ticks its frame. Connect

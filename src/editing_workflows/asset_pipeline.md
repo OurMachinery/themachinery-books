@@ -36,7 +36,7 @@ For a more in detail explanation about how to import assets checkout the [Asset 
 If you click on a `dcc_asset` that contains a mesh in the Asset Browser, you will be presented
 with importer settings in the Properties tab:
 
-![Inspecting a `dcc_asset`](https://www.dropbox.com/s/n6njdkl84dzem8n/dcc-asset-before-entity-rig.png?dl=1)
+![Inspecting a `dcc_asset`](https://www.dropbox.com/s/n6njdkl84dzem8n/dcc-asset-before-entity-rig.png?raw=1)
 
 The Preview tab does just enough to show you what the `dcc_asset` contains, but what you probably
 want is an `entity` that contains child entities representing the meshes found inside the
@@ -85,7 +85,7 @@ batch processing step we refer to as *Resource Extraction*.
 
 Here's an example of what a generic creation graph prototype for extracting images might look like:
 
-![Simple image processing.](https://www.dropbox.com/s/z2e3s5w1h8yiv1k/image-cg.png?dl=1)
+![Simple image processing.](https://www.dropbox.com/s/z2e3s5w1h8yiv1k/image-cg.png?raw=1)
 
 To quickly get up and running we provide a number of pre-authored creation graphs for some of the
 more common operations:
@@ -107,7 +107,7 @@ These pre-authored creation graphs are shipped as part of our Core project which
 copied into new projects. How they are used when working with assets is exposed through the
 `import_settings` asset:
 
-![Default Import Settings.](https://www.dropbox.com/s/sr52qac8i1i757l/import-settings.png?dl=1)
+![Default Import Settings.](https://www.dropbox.com/s/sr52qac8i1i757l/import-settings.png?raw=1)
 
 By exposing these settings through an asset it is possible to easily change the default behavior of
 how imported assets are treated when placed under a specific folder. 

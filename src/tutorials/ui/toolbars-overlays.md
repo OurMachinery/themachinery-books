@@ -15,7 +15,7 @@ To begin with, we need to create a new tab plugin. We go on **File -> New Plugin
 
 A file dialog pops up, and we can decide where to store our plugin.
 
-![](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1)
+![](https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?raw=1)
 
 We open the `custom_tab.c` (or however we called it) file with our favorite editor.
 

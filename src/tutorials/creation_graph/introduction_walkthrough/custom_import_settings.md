@@ -41,7 +41,7 @@ Now we make use of the previously created `dcc-image-compress`. This creation gr
 
 Now can can change in the Import Settings the for the DCC Asset Creation Graphs: Images
 
-![](https://www.dropbox.com/s/dtkra0xs17yxvlq/tm_tut_cg_walkthough_import_settings.png?dl=1)
+![](https://www.dropbox.com/s/dtkra0xs17yxvlq/tm_tut_cg_walkthough_import_settings.png?raw=1)
 
 We change this to our `dcc-image-compress` creation graph.
 
@@ -70,7 +70,7 @@ We just apply the same technique as we already did in the `dcc-image-compress`.
 
 The graph should look like this:
 
-![](https://www.dropbox.com/s/xnpj45zjxkw5kez/tm_tut_cgw_image_import_cg.png?dl=1)
+![](https://www.dropbox.com/s/xnpj45zjxkw5kez/tm_tut_cgw_image_import_cg.png?raw=1)
 
 ### Apply the correct settings to the Import Settings
 

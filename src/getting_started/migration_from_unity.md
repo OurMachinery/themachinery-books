@@ -29,11 +29,11 @@ The following table contains common Unity terms on the left and their The Machin
 
 **Unity**
 
-![](https://www.dropbox.com/s/0a47vz1walkm79r/tm_guide_unity_editor.png?dl=1)
+![](https://www.dropbox.com/s/0a47vz1walkm79r/tm_guide_unity_editor.png?raw=1)
 
 **The Machinery**
 
-![](https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?dl=1)
+![](https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?raw=1)
 
 1. The **Main Menu**: It allows you to navigate through the Engine, such as opening new tabs or import assets
 2. The **Entity Tree** shows a tree view of the entity you are editing. It shows the entity's components and child entities. You start editing an entity by double-clicking it in the asset browser. 

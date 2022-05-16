@@ -11,7 +11,7 @@ mode would correspond to running the game.
 
 To *simulate* a scene, open a scene in the *Simulate* tab.
 
-![Simulate tab.](https://www.dropbox.com/s/7t8elpzqllqkqrb/simulate-tab.png?dl=1)
+![Simulate tab.](https://www.dropbox.com/s/7t8elpzqllqkqrb/simulate-tab.png?raw=1)
 
 You can use the controls in the tab to pause, play, or restart the simulation or change the
 simulation speed. Note that if you haven't added any simulation components to the scene, the

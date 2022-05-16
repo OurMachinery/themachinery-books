@@ -6,7 +6,7 @@ Creations Graphs live separately from Entity Graphs. You often find Creation Gra
 
 Within the `core` folder that we ship with the engine you will find several creation graphs, many of these are used for defining defaul materials and also as defaults graph for use within our DCC asset import pipeline.
 
-![Simple red material](https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?dl=1)
+![Simple red material](https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?raw=1)
 
 Image loading and material creation are just a few examples of what can be achieved with the creation graph. The table below shows when a creation graph is used compared to the tools one could use in Unity and Unreal.
 

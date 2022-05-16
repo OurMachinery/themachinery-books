@@ -6,7 +6,7 @@
 
 You need to add a Graph Component to an Entity of your choice. 
 
-![](https://www.dropbox.com/s/29u0c1gsu0vjghg/tm_guide_entity_graph_add_component.png?dl=1)
+![](https://www.dropbox.com/s/29u0c1gsu0vjghg/tm_guide_entity_graph_add_component.png?raw=1)
 
 After that, you have two ways of opening the Graph:
 
@@ -14,7 +14,7 @@ After that, you have two ways of opening the Graph:
 
 - Click in the Property View on Edit
 
-![](https://www.dropbox.com/s/p1hkay3ouhezbmh/tm_guide_entity_graph_open.gif?dl=1)
+![](https://www.dropbox.com/s/p1hkay3ouhezbmh/tm_guide_entity_graph_open.gif?raw=1)
 
 Now the Graph Editor Opens and you can start adding nodes via:
 
@@ -56,7 +56,7 @@ Moreover, the Visual Scripting language knows two different types of wires:
 - **Event Wires** They regulate the execution flow.
 - **Data Wires** Transport the data from node to node!
 
-![](https://www.dropbox.com/s/i95s1frdzhcsev1/tm_guide_entity_graph_wire_types.png?dl=1)
+![](https://www.dropbox.com/s/i95s1frdzhcsev1/tm_guide_entity_graph_wire_types.png?raw=1)
 
 
 
@@ -68,41 +68,41 @@ Graphs can have inputs. They can be used to allow the user of your graph to pass
 
 1. You click on the Settings button which opens the Graphs Settings
 
-![image](https://www.dropbox.com/s/na7s582ljyxmnnf/tm_guide_entity_graph_settings.png?dl=1)
+![image](https://www.dropbox.com/s/na7s582ljyxmnnf/tm_guide_entity_graph_settings.png?raw=1)
 
 2. You expand the Input Accordion and press "Add"
 
-   ![](https://www.dropbox.com/s/hv7qiqqhy4gbauw/tm_guide_entity_graph_add_input.png?dl=1)
+   ![](https://www.dropbox.com/s/hv7qiqqhy4gbauw/tm_guide_entity_graph_add_input.png?raw=1)
 
    
 
 3. This will add a new Input to your graph! There you have a few options. 
 
-   ![](https://www.dropbox.com/s/s50hbn0sqhixlx3/tm_guide_entity_graph_input_node_settings.png?dl=1)
+   ![](https://www.dropbox.com/s/s50hbn0sqhixlx3/tm_guide_entity_graph_input_node_settings.png?raw=1)
 
 To make your node public just check the publicly accessible from another graph or from the Editor check the Public checkbox
 
-![](https://www.dropbox.com/s/1m243i24lhwbosw/tm_guide_entity_graph_input_node_make_public.png?dl=1)
+![](https://www.dropbox.com/s/1m243i24lhwbosw/tm_guide_entity_graph_input_node_make_public.png?raw=1)
 
 If you now select the Graph Component of your Entity you will be able to change the value:
 
-![](https://www.dropbox.com/s/ojite1pycbs75pq/tm_guide_entity_graph_input_node_public.png?dl=1)
+![](https://www.dropbox.com/s/ojite1pycbs75pq/tm_guide_entity_graph_input_node_public.png?raw=1)
 
 This can be a nice way to customize behaviour of your graph and entity!
 
 4. Add an Input node to your graph. There you have access to the data.
 
-   ![](https://www.dropbox.com/s/l20w7d0utoet9ti/tm_guide_entity_graph_input_node.png?dl=1)
+   ![](https://www.dropbox.com/s/l20w7d0utoet9ti/tm_guide_entity_graph_input_node.png?raw=1)
 
    The Input Node also allows you to access the settings. Hover over the name of the Input and a Settings option becomes available. 
 
-   ![](https://www.dropbox.com/s/wrg5hk7lbx0l1rs/tm_guide_entity_graph_input_node_on_settings.png?dl=1)
+   ![](https://www.dropbox.com/s/wrg5hk7lbx0l1rs/tm_guide_entity_graph_input_node_on_settings.png?raw=1)
 
 ### Variables
 
 You can store data within your Graph! The Set / Get Variable nodes are the way to go. They give you access to this function. You can also access variables from distance Entities by using the Set / Get Remote Variable nodes.
 
-![](https://www.dropbox.com/s/dgddk1xmw16dlp1/tm_guide_entity_graph_create_remote_variable.png?dl=1)
+![](https://www.dropbox.com/s/dgddk1xmw16dlp1/tm_guide_entity_graph_create_remote_variable.png?raw=1)
 
 
 
@@ -117,7 +117,7 @@ Besides, you have two nodes for loops:
 
 *The Grid node for example:*
 
-![](https://www.dropbox.com/s/9fawc756lyf0k3h/tm_guide_entity_graph_loop.png?dl=1)
+![](https://www.dropbox.com/s/9fawc756lyf0k3h/tm_guide_entity_graph_loop.png?raw=1)
 
 
 

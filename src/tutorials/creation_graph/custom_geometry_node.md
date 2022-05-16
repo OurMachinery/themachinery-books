@@ -2,7 +2,7 @@
 
 In this tutorial we well be creating a CPU node for the [*Creation Graph*]({{base_url}}/creation_graphs/concept.html) that creates a mesh that can be used by rendering nodes. This tutorial expects some basic knowledge of the creation graph and node creation. it is recommended to read [*Creating custom CPU nodes*]({{base_url}}/tutorials/creation_graph/custom_cpu_nodes.html) before reading this.
 
-![](https://www.dropbox.com/s/5xbu16zov1k5h4b/tm_tut_creation_graph_geometry_node.png?dl=1)
+![](https://www.dropbox.com/s/5xbu16zov1k5h4b/tm_tut_creation_graph_geometry_node.png?raw=1)
 
 The main output of this node will be a `tm_gpu_geometry_t` and a `tm_renderer_draw_call_info_t`. Together these will make out `GPU Geometry` output. Additionally we will be outputting a bounding box for the triangle that can be used for culling and other calculations. But before we can populate those, we’ll need to consider the vertex format of our mesh. For this example, this will be a simple position, normal, and color per vertex:
 

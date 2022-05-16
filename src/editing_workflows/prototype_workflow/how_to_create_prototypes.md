@@ -22,7 +22,7 @@ This will add a new asset to your project. Any changes made to the asset will be
 
 You can create a Prototype from an Entity by simply dragging and dropping it from the Entity Tree into the Asset Browser.
 
-![](https://www.dropbox.com/s/erc3f4wqjoy5djt/tm_tut_prototype_create_drag.png?dl=1)
+![](https://www.dropbox.com/s/erc3f4wqjoy5djt/tm_tut_prototype_create_drag.png?raw=1)
 
 This creates a new asset with the file extension `.entity`. It also replaces the entity in the Entity Tree with an instance of the newly created prototype.
 
@@ -30,7 +30,7 @@ This creates a new asset with the file extension `.entity`. It also replaces the
 
 You can also create a prototype by using the context menu in the Entity Tree View on the Entity you want to turn into a Prototype:
 
-![](https://www.dropbox.com/s/ys17wsljt82s2me/tm_tut_prototype_create_context.png?dl=1)
+![](https://www.dropbox.com/s/ys17wsljt82s2me/tm_tut_prototype_create_context.png?raw=1)
 
 
 
@@ -40,6 +40,6 @@ You can turn a Subgraph into a prototype by choosing **Create Subgraph Prototype
 
 To make a change that propagates to all instances of the prototype, open the prototype in the asset browser, or by using the **Open Prototype** button in the Properties view of the Subgraph node.
 
-![](https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?dl=1)
+![](https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?raw=1)
 
 

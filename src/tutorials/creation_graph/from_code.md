@@ -7,7 +7,7 @@ The goal of this Creation Graph is to create an image output that we can copy to
 **Contents**
 * {:toc}
 
-![](https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?dl=1)
+![](https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?raw=1)
 
 ## Using the Creation Graph API
 The component itself is very simple, it only has a single property which is our creation graph asset:

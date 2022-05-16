@@ -9,7 +9,7 @@ The Machinery allows you to hook your code into specific customization points. T
 
 ## Application Create
 
-![](https://www.dropbox.com/s/vsl0d53ty9rsvbi/tm_guide_app_hook_create.png?dl=1)
+![](https://www.dropbox.com/s/vsl0d53ty9rsvbi/tm_guide_app_hook_create.png?raw=1)
 ## Update
 
 **Important side note** here `tm_plugin_tick_i` should **not** be used for **gameplay**. To manage your gameplay you should rely on the given gameplay hooks:
@@ -24,19 +24,19 @@ They are the only recommended way of handling gameplay in the Engine.
 
 ### Editor
 
-![](https://www.dropbox.com/s/ibyjx33p4lci62w/tm_guide_app_hooks_update_editor.png?dl=1)
+![](https://www.dropbox.com/s/ibyjx33p4lci62w/tm_guide_app_hooks_update_editor.png?raw=1)
 
 ### Runner
 
-![](https://www.dropbox.com/s/9nq4ysh2gefzks1/tm_guide_app_hooks_update_runner.png?dl=1)
+![](https://www.dropbox.com/s/9nq4ysh2gefzks1/tm_guide_app_hooks_update_runner.png?raw=1)
 
 ## Project Hooks
 
-![](https://www.dropbox.com/s/jtsk5df9rykp8di/tm_guide_app_hook_project.png?dl=1)
+![](https://www.dropbox.com/s/jtsk5df9rykp8di/tm_guide_app_hook_project.png?raw=1)
 
 ## Application Shutdown
 
-![](https://www.dropbox.com/s/ecssnn4hvv42avi/tm_guide_app_hook_shutdown.png?dl=1)
+![](https://www.dropbox.com/s/ecssnn4hvv42avi/tm_guide_app_hook_shutdown.png?raw=1)
 
 ## Overview
 

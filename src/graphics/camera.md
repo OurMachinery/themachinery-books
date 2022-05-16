@@ -7,14 +7,14 @@ In The Machinery a [camera]({{docs}}plugins/entity/camera_component.h.html) is a
 
 A camera must be used to view any scene, the [Scene Tab]({{base_url}}the_editor/scene_tab.html) therefor starts with a default camera. But once you wish to simulate this world an additional camera is needed. This can be done by adding a Camera Component to any entity in the scene and setting it as the viewing camera using the Set Camera node.
 
-![](https://www.dropbox.com/s/7cwc768hu7ltll4/tm_guide_camera_tree_tab.png?dl=1)
+![](https://www.dropbox.com/s/7cwc768hu7ltll4/tm_guide_camera_tree_tab.png?raw=1)
 
-![](https://www.dropbox.com/s/foeulmeuaef5c2j/tm_guide_camera_graph.png?dl=1)
+![](https://www.dropbox.com/s/foeulmeuaef5c2j/tm_guide_camera_graph.png?raw=1)
 
 
 You can see a preview of the newly added camera in real time in the [Preview Tab]({{base_url}}the_editor/preview_tab.html) when selecting the camera component.
 
-![](https://www.dropbox.com/s/y7rafonxt7abm7h/tm_guide_camera_perspective.png?dl=1)
+![](https://www.dropbox.com/s/y7rafonxt7abm7h/tm_guide_camera_perspective.png?raw=1)
 
 ## Customizing the camera
 
@@ -23,12 +23,12 @@ The first thing to consider when adding a camera to a scene is which projection 
 **Physical** cameras use the same projection as perspective cameras, but instead of controlling the camera using FoV, this camera is controlled using focal length. This camera is intended for users familiar with real world cameras and aims to be more physically descriptive than its protective counterpart. \
 **Orthographic** cameras use parallel projection instead of linear projection. This means that depth has no impact on the objects scale. These cameras are often useful when making a 2D or isometric game. This camera is controlled using the box height property.
 
-![Orthographic camera](https://www.dropbox.com/s/qpk260eul8fms22/tm_guide_camera_orthographic.png?dl=1)
+![Orthographic camera](https://www.dropbox.com/s/qpk260eul8fms22/tm_guide_camera_orthographic.png?raw=1)
 
 
 Additionally all projection modes define near and far plane properties. These directly correlate to the visible range of the camera. Lowering the visible range can improve precision within that range which might reduce depth artifacts. But this can also be used to create impossible shots, like being able to view through walls.
 
-![Setting the near plane to 4 allows us to place the camera outside of the room whilst still being able to view into it.](https://www.dropbox.com/s/8l33j979p9spfty/tm_guide_camera_near_clipping.png?dl=1)
+![Setting the near plane to 4 allows us to place the camera outside of the room whilst still being able to view into it.](https://www.dropbox.com/s/8l33j979p9spfty/tm_guide_camera_near_clipping.png?raw=1)
 
 
 ## All camera properties

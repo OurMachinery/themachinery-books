@@ -53,7 +53,7 @@ You can create a plugin asset in the Asset Browser. **Righ Click -> New -> New P
 
 The plugin asset settings look as following:
 
-![](https://www.dropbox.com/s/hc12tcagz448ffz/tm_guide_plugin_asset.png?dl=1)
+![](https://www.dropbox.com/s/hc12tcagz448ffz/tm_guide_plugin_asset.png?raw=1)
 
 You would have to repeat the above described workflow every time you change the code of your plugin. This is very annoying, but do not worry hot-reloading comes to rescue!
 

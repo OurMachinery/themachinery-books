@@ -15,7 +15,7 @@ After this we can start to define our actual tab layout. This is done through th
 - We can split the tabwell horizontally, creating top and bottom child tabwells.
 - We can split the tabwell vertically, creating left and right child tabwells.
 - We can define (up to 3) tabs that should be in this tabwell.
-![](https://www.dropbox.com/s/ggiq4uv6htgwnpj/tm_tut_default_layout.png?dl=1)
+![](https://www.dropbox.com/s/ggiq4uv6htgwnpj/tm_tut_default_layout.png?raw=1)
 
 ```c
 {{insert_code(env.TM_BOOK_CODE_SNIPPETS/ui/custom_layouts.c,tm_tab_layout_t)}}

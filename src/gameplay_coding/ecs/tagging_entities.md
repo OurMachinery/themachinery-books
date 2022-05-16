@@ -20,13 +20,13 @@ The difference is that the first solution can be used via the `tag_component_api
 
 You need to select an Entity and **Right Click -> Add Component**
 
-![](https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?dl=1)
+![](https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?raw=1)
 
 This will add the *Entity Tag* Component. When selected you have the chance to add Tags to the Entity by using a simple autocomplete textbox. 
 
 **Beware:** The Engine will create an entity tag folder in your root folder. This is also the place where the Entity Tag API will search for the assets.
 
-![](https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?dl=1)
+![](https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?raw=1)
 
 ### Adding and Accessing Tags via C
 
