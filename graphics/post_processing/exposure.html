@@ -158,9 +158,9 @@
 <p>In photography, exposure is the amount of light per unit area. The Machinery uses physically based lighting, materials, and cameras, so setting up the scene exposure correctly is important to getting the final image to look correct. To start using exposure, add an <a href="https://ourmachinery.com/apidoc/plugins/default_render_pipe/post_processing/exposure_component.h.html">Exposure Component</a> to your scene.</p>
 <h2 id="tools"><a class="header" href="#tools">Tools</a></h2>
 <p>Exposure is generally measured in EV100 (<a href="https://en.wikipedia.org/wiki/Exposure_value">Exposure Value</a> at ISO 100) or <a href="https://en.wikipedia.org/wiki/IRE_(unit)">IRE</a>. Both can be visualized in The Machinery in the <code>Render/Exposure/</code> menu.</p>
-<p><img src="https://www.dropbox.com/s/8spmtkfs33jf7xw/tm_tut_exposure_ev100.png?dl=1" alt="EV100 Visualization" /></p>
+<p><img src="https://www.dropbox.com/s/8spmtkfs33jf7xw/tm_tut_exposure_ev100.png?raw=1" alt="EV100 Visualization" /></p>
 <p>The EV100 visualizer shows the luminance per pixel relative to the camera’s exposure range. By default the camera has a range of [-1, 15], but in this scene it is [-1.2, 15]. In this view, higher values mean higher luminance. Note that this is an absolute scale, values in the higher and lower ranges might be clipped after exposure is applied.</p>
-<p><img src="https://www.dropbox.com/s/6sygin0tafnxdfk/tm_tut_exposure_ire.png?dl=1" alt="IRE Visualization" /></p>
+<p><img src="https://www.dropbox.com/s/6sygin0tafnxdfk/tm_tut_exposure_ire.png?raw=1" alt="IRE Visualization" /></p>
 <p>The IRE visualizer (false color) shows the luminance per pixel after exposure. This scale is relative to the dynamic range of <a href="https://en.wikipedia.org/wiki/SRGB">sRGB</a>. The view works by splitting the luminance range into bands (where red is fully clipped at the top range). This view is useful when exposing a specific element in your scene. The [43, 47] (green) band is the typical range for middle grey and the [77, 84] band is a typical Caucasian skin tone.</p>
 <p>The Machinery offers three workflows for metering exposure:</p>
 <ul>
@@ -169,14 +169,14 @@
 <li><strong>Automatic</strong>: this mode (also known as eye adaptation) is best used on characters or other moving cameras in your scene.</li>
 </ul>
 <h2 id="using-manual-exposure"><a class="header" href="#using-manual-exposure">Using Manual Exposure</a></h2>
-<p><img src="https://www.dropbox.com/s/568lt9m1jcdlxqb/tm_tut_exposure_manual.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/568lt9m1jcdlxqb/tm_tut_exposure_manual.png?raw=1" alt="" /></p>
 <p>Manual exposure just has one setting to change, <code>Exposure Compensation</code>. This value is added to the target exposure (zero for manual mode). Therefore this value should be increased if the luminance of the scene is increased as well (higher compensation corresponds to a darker scene).</p>
 <h2 id="using-camera-driven-exposure"><a class="header" href="#using-camera-driven-exposure">Using Camera Driven Exposure</a></h2>
-<p><img src="https://www.dropbox.com/s/reniyj1qgfgc3dr/tm_tut_exposure_camera_driven.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/reniyj1qgfgc3dr/tm_tut_exposure_camera_driven.png?raw=1" alt="" /></p>
 <p>Camera Driven Exposure has no settings of its own. Instead, the <code>Shutter Speed</code>, <code>Aperture</code>, and <code>ISO</code> settings are using from the viewing <a href="https://ourmachinery.com/apidoc/foundation/camera.h.html#structtm_camera_settings_t">camera</a>. This mode is best used if you have a good understanding of camera properties, but in general: lowering shutter speed darkens the scene, increasing aperture (f-number) darkens the scene, and lowering ISO darkens the scene.</p>
 <h2 id="using-automatic-exposure"><a class="header" href="#using-automatic-exposure">Using Automatic Exposure</a></h2>
-<p><img src="https://www.dropbox.com/s/btprh1pkb273q7r/tm_tut_exposure_automatic.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/axil4eizps5oiwk/tm_tut_exposure_histogram.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/btprh1pkb273q7r/tm_tut_exposure_automatic.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/axil4eizps5oiwk/tm_tut_exposure_histogram.png?raw=1" alt="" /></p>
 <p>Automatic Exposure uses a histogram to calculate the average exposure value of the scene and exposes it accordingly. The histogram can be visualized in the <code>Render/Exposure/</code> menu. The settings for this mode are:</p>
 <ul>
 <li><strong>Min/Max EV100</strong>: these settings define the acceptable range of the automatic exposure, any value outside of this range is clamped to the outer buckets.</li>
@@ -186,15 +186,15 @@
 </ul>
 <h2 id="general-workflow"><a class="header" href="#general-workflow">General workflow</a></h2>
 <p>Let’s use the tools to manually expose this scene. Note that there is no right way to apply exposure to a scene. The example shown below is meant to be a bit dark, so making it brighter might go against the artistic direction.</p>
-<p><img src="https://www.dropbox.com/s/phk7fzqyqz623ql/tm_tut_exposure_example_source.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/rl8hwrwl72yxnk5/tm_tut_exposure_example_source_ire.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/phk7fzqyqz623ql/tm_tut_exposure_example_source.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/rl8hwrwl72yxnk5/tm_tut_exposure_example_source_ire.png?raw=1" alt="" /></p>
 <p>In the false color visualization we can see that there are many areas where the scene is too dark to distinguish the colors. We can also see a little bit of bright clipping on the top side of the rock. The background sky on the other hand is pretty well exposed. Let’s try to brighten up the scene to focus more on the foreground rather than the background. I’ve done this by decreasing the exposure compensation from -0.4 to -1.3.</p>
-<p><img src="https://www.dropbox.com/s/yjm0vbr6pyy9axq/tm_tut_exposure_example_dest.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/xslx4rbbq3zqe4b/tm_tut_exposure_example_dest_ire.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/yjm0vbr6pyy9axq/tm_tut_exposure_example_dest.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/xslx4rbbq3zqe4b/tm_tut_exposure_example_dest_ire.png?raw=1" alt="" /></p>
 <p>You can see that the scene feels a lot brighter (and somewhat warmer) than before. The foliage has noticeably more detail and the highlight on the rock is more pronounced. The sky in the background is now clipping a lot, but it is not as noticeable.</p>
 <h2 id="localized-exposure"><a class="header" href="#localized-exposure">Localized Exposure</a></h2>
 <p>Often, you want to have exposure settings localized to a specific region in your scene. This is done using the <a href="https://ourmachinery.com/apidoc/plugins/default_render_pipe/volume_component.h.html">Volume Component</a>. Once the camera enters a region defined by the Volume Component it will use the highest order Exposure Component it can find. In this example it would use the Exposure Component on the same entity as the Volume Component if the camera is inside the volume and the global exposure component if it’s outside the volume. For more information see the Volume Component documentation.</p>
-<p><img src="https://www.dropbox.com/s/pluala3w4h59gx9/tm_tut_exposure_volume.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/pluala3w4h59gx9/tm_tut_exposure_volume.png?raw=1" alt="" /></p>
 
                     </main>
 

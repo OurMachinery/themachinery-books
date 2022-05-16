@@ -565,7 +565,7 @@ license information.</p>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="sign-in"><a class="header" href="#sign-in">Sign in</a></h2>
 <p>When you first run <code>the-machinery.exe</code>, you will encounter a login screen:</p>
-<p><img src="https://www.dropbox.com/s/07rcwx7b1pggnxe/sign-in.png?dl=1" alt="Login screen." /></p>
+<p><img src="https://www.dropbox.com/s/07rcwx7b1pggnxe/sign-in.png?raw=1" alt="Login screen." /></p>
 <p>To use the editor, you must log in with an Our Machinery account. If you haven't done so already, press the <em>Sign Up</em> button to create an account, or go directly to <a href="https://ourmachinery.com/sign-up.html">https://ourmachinery.com/sign-up.html</a>.</p>
 <p>In addition, you also need to agree to our <a href="https://www.ourmachinery.com/eula.html">EULA</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="project-setup"><a class="header" href="#project-setup">Project Setup</a></h1>
@@ -575,10 +575,10 @@ license information.</p>
 </blockquote>
 <h2 id="the-directory-project"><a class="header" href="#the-directory-project">The Directory Project</a></h2>
 <p>A directory project saves all your assets, etc., in a specified project folder. The assets that make up the project are saved as combination of JSON files and binary buffers. This file format is better suited for source control.</p>
-<p><img src="https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?dl=1" alt="view of a directory project in the Windows explorer" /></p>
+<p><img src="https://www.dropbox.com/s/7xqwlu6yi6y35nz/tm_guide_directory_project.png?raw=1" alt="view of a directory project in the Windows explorer" /></p>
 <h2 id="the-asset-database-project"><a class="header" href="#the-asset-database-project">The Asset database Project</a></h2>
 <p>In contract to the Directory project, the database project results in one file rather than multiple files. It has the file ending <code>.the_machinery_db</code>. This database will contain all your assets. It loads faster. It is the file format used by the <em>Runner</em>, the stand-alone application that is used to run games made within The Machinery.</p>
-<p><img src="https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?dl=1" alt="database project in the file explorer" /></p>
+<p><img src="https://www.dropbox.com/s/kjmrx89my0olh6z/tm_guide_db_project.png?raw=1" alt="database project in the file explorer" /></p>
 <h2 id="project-management"><a class="header" href="#project-management">Project Management</a></h2>
 <p><strong>Can I directly add Assets to my project from the File Explorer of my OS?</strong></p>
 <p><strong>No</strong>, the editor will not import assets directly added to the project folder via your OS File Explorer. However you can modify The Machinery files (in a directory project) during runtime or before. If you do this the Engine will warn you.</p>
@@ -587,10 +587,10 @@ license information.</p>
 </blockquote>
 <p>More information on this topic <a href="https://github.com/OurMachinery/themachinery-public/issues/435">here</a>.</p>
 <p>You handle the main project management steps through the <strong>File Menu.</strong> Such as Create and Save. By default, (1) The Machinery will save your project as a directory project. However you can save your current project as an Asset Database (2).</p>
-<p><img src="https://www.dropbox.com/s/qosmerpjea1agss/tm_guide_saving_project.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/qosmerpjea1agss/tm_guide_saving_project.png?raw=1" alt="" /></p>
 <h2 id="possible-folder-structure-for-a-project"><a class="header" href="#possible-folder-structure-for-a-project">Possible folder structure for a project</a></h2>
 <p>The following project shows a possible folder structure of a game project. <strong>This is not a recommendation just a suggestion</strong>. At the end it depends on your needs and your workflows how your projects should be structured.</p>
-<p><img src="https://www.dropbox.com/s/sbdsy1k5wjay89c/tm_guide_possible_folder_structure.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/sbdsy1k5wjay89c/tm_guide_possible_folder_structure.png?raw=1" alt="" /></p>
 <ol>
 <li><code>game_project</code> contains a The Machinery Directory Project</li>
 <li><code>plugins</code> contains the dll of  your plugins (should not be checked in into source control)</li>
@@ -598,7 +598,7 @@ license information.</p>
 <li><code>src</code> contains the source code of your plugins. They can be in multiple sub folder depending on your liking and need.</li>
 </ol>
 <p><strong>Example <code>src</code> folder</strong></p>
-<p><img src="https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?raw=1" alt="" /></p>
 <p>In here we have one single <code>premake</code> file and a single <code>libs.json</code> as well as the <code>libs</code> folder. This allows you to run <code>tmbuild</code> just in this folder and all plugins or the ones you want to build can be built at once. Besides it will generate one solution for Visual Studio. In this example all plugins will copy their <code>.dll/so</code> files into the <code>../plugins</code> folder. </p>
 <p>A possible <code>.gitignore</code></p>
 <pre><code>plugins/*
@@ -1131,9 +1131,9 @@ happens via the &quot;Scene Entity&quot; node. </p>
 </tbody></table>
 <h2 id="ui-differences"><a class="header" href="#ui-differences">UI Differences</a></h2>
 <p><strong>Unity</strong></p>
-<p><img src="https://www.dropbox.com/s/0a47vz1walkm79r/tm_guide_unity_editor.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/0a47vz1walkm79r/tm_guide_unity_editor.png?raw=1" alt="" /></p>
 <p><strong>The Machinery</strong></p>
-<p><img src="https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?raw=1" alt="" /></p>
 <ol>
 <li>The <strong>Main Menu</strong>: It allows you to navigate through the Engine, such as opening new tabs or import assets</li>
 <li>The <strong>Entity Tree</strong> shows a tree view of the entity you are editing. It shows the entity's components and child entities. You start editing an entity by double-clicking it in the asset browser. </li>
@@ -1310,7 +1310,7 @@ happens via the &quot;Scene Entity&quot; node. </p>
 <p>Everything within the Game World lives within the Entity Component System (ECS). To be exact, it lives within the Entity Context, an isolated world of entities. Your Nodes are split into data and behaviour.</p>
 <p>You would usually couple your logic together with data when working in Godot. This coupling happens because Godot uses the Object-oriented approach while The Machinery uses the Data-Oriented approach. Hence you would inherit classes to compose different kinds of behaviour. </p>
 <p>In The Machinery, you separated them into Components and Systems / Engines. They represent your data and Systems or Engines that represent your Behaviour. They operate on multiple entities at the same time. Each Entity Context (the isolated world of Entities) has several systems/engines registered to them. In the following image we broke down an example player in Godot into separate parts (components) and its methods into separate Engines.</p>
-<p><img src="https://www.dropbox.com/s/mw0hb5itj5zck7g/tm_guide_object_to_ecs.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/mw0hb5itj5zck7g/tm_guide_object_to_ecs.png?raw=1" alt="" /></p>
 <p>Important to understand is that the Player Class on the left does not equal the Entity on the left! Since the Entity on the left is just a weak reference to the components, it does not own the data, unlike the Player Class. The Components together form the player and the Systems/Engines on the far right just consume a few of those components, they do not need to understand them all!</p>
 <p>This setup allows you to compose entities that are reusing the same engines/systems! For example all your other entities that can move can use the Movement Engine and Jump Engine to get the jump function.  All you need to do is compose entities with the:</p>
 <ul>
@@ -1605,7 +1605,7 @@ if(tm_set_hash(&amp;hash, key))
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-editor"><a class="header" href="#the-editor">The Editor</a></h1>
 <p>After opening the Engine, you should see the Editor's interface with menus along the top of the interface, and the basic tabs opened. The following image will show you the default engine layout.
 Here's a brief description of what you can see:</p>
-<p><img src="https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/67sdkq7sxnkbkou/tm_editor.png?raw=1" alt="" /></p>
 <ol>
 <li>The <strong>Main Menu</strong>: It allows you to navigate through the Engine, such as opening new tabs or import assets</li>
 <li>The <strong>Entity Tree</strong> shows a tree view of the entity you are editing. It shows the entity's components and child entities. You start editing an entity by double-clicking it in the asset browser. </li>
@@ -1964,7 +1964,7 @@ It allows for the same Free-Camera controls as the Scene Tab. </p>
 </ul>
 <h2 id="change-theme"><a class="header" href="#change-theme">Change Theme</a></h2>
 <p>Sometimes we do not like the default theme or, based on reasons such as color blindness, and we cannot use the default theme. In the Machinery, you can change the default theme via <strong>Window -&gt; Theme</strong>. You will find a list of themes the user can select and use.</p>
-<p><img src="https://www.dropbox.com/s/yt180qozhyrw2zc/tm_guide_theme_picker.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/yt180qozhyrw2zc/tm_guide_theme_picker.png?raw=1" alt="" /></p>
 <p>The Engine comes by default with some base themes you can build your themes on top of:</p>
 <table><thead><tr><th>Theme</th></tr></thead><tbody>
 <tr><td>Dark</td></tr>
@@ -1974,16 +1974,16 @@ It allows for the same Free-Camera controls as the Scene Tab. </p>
 </tbody></table>
 <h2 id="custom-theme"><a class="header" href="#custom-theme">Custom Theme</a></h2>
 <p>If you like to customize the default themes or create a new theme, click on the &quot;<strong>New Theme&quot;</strong> menu in the same menu as the theme selection. After clicking this, the current Theme will be used as your base, and the Theme Editor Tab opens.</p>
-<p><img src="https://www.dropbox.com/s/imcy0y9wgxh252k/tm_guide_theme_create.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/imcy0y9wgxh252k/tm_guide_theme_create.png?raw=1" alt="" /></p>
 <p>If you do not like the base, you can choose a different theme as a base.</p>
-<p><img src="https://www.dropbox.com/s/o7evmfhx8xn3gfn/tm_guide_theme_change_base.png?dl=1" alt="change base of theme" /></p>
+<p><img src="https://www.dropbox.com/s/o7evmfhx8xn3gfn/tm_guide_theme_change_base.png?raw=1" alt="change base of theme" /></p>
 <p>All changes are applied and saved directly. All changes will be immediately visible since your new Theme is selected as your current Theme.</p>
-<p><img src="https://www.dropbox.com/s/z6sseczp8ccyhui/tm_guide_theme_changes_visible.png?dl=1" alt="changes are directly visible" /></p>
+<p><img src="https://www.dropbox.com/s/z6sseczp8ccyhui/tm_guide_theme_changes_visible.png?raw=1" alt="changes are directly visible" /></p>
 <h2 id="export--import-a-theme"><a class="header" href="#export--import-a-theme">Export / Import a theme</a></h2>
 <p>You can export a custom theme from the <strong>Window -&gt; Theme</strong> and later import it there as well. The Theme will be saved as a <code>.tm_theme</code> file. These files are simple <code>json</code> like files.</p>
 <h2 id="change-the-scale-of-the-ui"><a class="header" href="#change-the-scale-of-the-ui">Change the Scale of the UI</a></h2>
 <p>In the <strong>Window</strong> menu, you have a menu point <strong>Zoom</strong>. </p>
-<p><img src="https://www.dropbox.com/s/mvdzunm81gj4qj4/tm_guide_window_zoom.png?dl=1" alt="zom option" /></p>
+<p><img src="https://www.dropbox.com/s/mvdzunm81gj4qj4/tm_guide_window_zoom.png?raw=1" alt="zom option" /></p>
 <p>This allows you to zoom in or out. You can also use the key bindings:</p>
 <table><thead><tr><th>Meaning</th><th>Keys</th></tr></thead><tbody>
 <tr><td>Zoom In</td><td>CTRL + Equal, CTRL + Num + Plus</td></tr>
@@ -1991,28 +1991,28 @@ It allows for the same Free-Camera controls as the Scene Tab. </p>
 </tbody></table>
 <h2 id="custom-layout"><a class="header" href="#custom-layout">Custom Layout</a></h2>
 <p>In case you do not like your current layout, you can always restore the default layout by using the <strong>Window -&gt; Restore Default Layout</strong> menu point. </p>
-<p><img src="https://www.dropbox.com/s/coy73d8esv1jdew/tm_guide_window_restore_layout.png?dl=1" alt="restore default layout" /></p>
+<p><img src="https://www.dropbox.com/s/coy73d8esv1jdew/tm_guide_window_restore_layout.png?raw=1" alt="restore default layout" /></p>
 <p>If you want to store your current layout, it would be very useful for the later time you can save your current window layout.</p>
-<p><img src="https://www.dropbox.com/s/3vfmrnstcrf35gy/tm_guide_window_save_layout.png?dl=1" alt="save current layout" /></p>
+<p><img src="https://www.dropbox.com/s/3vfmrnstcrf35gy/tm_guide_window_save_layout.png?raw=1" alt="save current layout" /></p>
 <p>You can create a new window or workspace with a layout in case you need it.</p>
-<p><img src="https://www.dropbox.com/s/dxy29xlb31xsbv9/tm_guide_create_window_with_layout.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/dxy29xlb31xsbv9/tm_guide_create_window_with_layout.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>Note:</strong> The Engine should restore the last used layout when it shutdown.</p>
 </blockquote>
 <p>If you need to change some details of your Window layout you can do this via the Edit layout menu. </p>
-<p><img src="https://www.dropbox.com/s/bbc8ke0bqgp7vkh/tm_guide_window_edit.png?dl=1" alt="edit layout" /></p>
+<p><img src="https://www.dropbox.com/s/bbc8ke0bqgp7vkh/tm_guide_window_edit.png?raw=1" alt="edit layout" /></p>
 <p>This will open the settings of the current Layout:</p>
-<p><img src="https://www.dropbox.com/s/1qt0q6ho4k3jn4d/tm_guide_window_edit_layout.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/1qt0q6ho4k3jn4d/tm_guide_window_edit_layout.png?raw=1" alt="" /></p>
 <h2 id="world-grid"><a class="header" href="#world-grid">World Grid</a></h2>
 <p>In case you need to adjust the World Grid, you can do this at two places:</p>
 <ol>
 <li>Via the Application Settings</li>
 </ol>
-<p><img src="https://www.dropbox.com/s/61rdistx6vuxaow/tm_guide_change_grid_settings.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/61rdistx6vuxaow/tm_guide_change_grid_settings.png?raw=1" alt="" /></p>
 <ol start="2">
 <li>Via any Scene or Preview Tab Application Menu entry.</li>
 </ol>
-<p><img src="https://www.dropbox.com/s/doenzd3d3gniq0u/tm_guide_change_grid_scene_tab.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/doenzd3d3gniq0u/tm_guide_change_grid_scene_tab.png?raw=1" alt="" /></p>
 <p>Changes made there will only be applied to the specific tab.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="basic-editing-workflow"><a class="header" href="#basic-editing-workflow">Basic editing workflow</a></h1>
 <p>The basic scene editing workflow in <em>The Machinery</em> looks something like this:</p>
@@ -2189,7 +2189,7 @@ Machinery is just an entity with a lot of child entities.</p>
 <p>The Machinery has three different ways of importing assets. The Import local files, Import remote files, Drag and Drop.</p>
 <h3 id="import-via-the-file-menu"><a class="header" href="#import-via-the-file-menu">Import via the file menu</a></h3>
 <p>The first method of important an asset is via the <strong>File</strong> menu. There, we have an entry called <em>Import File,</em> which opens a file dialog. There you can import any of the supported file formats. <em>Import File</em> allows for importing any supported asset archive of the type zip or 7zip. This archive will be unpacked and recursively checked for supported assets.
-<img src="https://www.dropbox.com/s/kb50fpjuqwz7o6o/tm_guide_import_assets.png?dl=1" alt="" /></p>
+<img src="https://www.dropbox.com/s/kb50fpjuqwz7o6o/tm_guide_import_assets.png?raw=1" alt="" /></p>
 <h3 id="import-from-url"><a class="header" href="#import-from-url">Import from URL</a></h3>
 <p>It is possible to import assets from a remote location. In the <strong>File</strong> menu, the entry <em>Import from URL</em> allows for importing any supported asset archive of the type zip or 7zip. This archive will be unpacked and recursively checked for supported assets.</p>
 <p><img src="https://paper-attachments.dropbox.com/s_8A68AE93396574AC0D937BFA8CFC626D302DBC4E0617A82A7B5162043ADD88EF_1615467083098_image.png" alt="" /></p>
@@ -2358,7 +2358,7 @@ use <em>Creation Graphs</em> for any type of data processing. </p>
 <h3 id="basic-entity-rigging-with-image-and-material-extraction"><a class="header" href="#basic-entity-rigging-with-image-and-material-extraction">Basic entity rigging, with image and material extraction</a></h3>
 <p>If you click on a <code>dcc_asset</code> that contains a mesh in the Asset Browser, you will be presented
 with importer settings in the Properties tab:</p>
-<p><img src="https://www.dropbox.com/s/n6njdkl84dzem8n/dcc-asset-before-entity-rig.png?dl=1" alt="Inspecting a dcc_asset" /></p>
+<p><img src="https://www.dropbox.com/s/n6njdkl84dzem8n/dcc-asset-before-entity-rig.png?raw=1" alt="Inspecting a dcc_asset" /></p>
 <p>The Preview tab does just enough to show you what the <code>dcc_asset</code> contains, but what you probably
 want is an <code>entity</code> that contains child entities representing the meshes found inside the
 <code>dcc_asset</code>. Also, you probably want it to extract the images and materials from the <code>dcc_asset</code> so
@@ -2403,7 +2403,7 @@ This can either be done by manually assembling creation graphs for each image an
 building a generic creation graph for each asset <em>type</em> and use that as a prototype when running a
 batch processing step we refer to as <em>Resource Extraction</em>.</p>
 <p>Here's an example of what a generic creation graph prototype for extracting images might look like:</p>
-<p><img src="https://www.dropbox.com/s/z2e3s5w1h8yiv1k/image-cg.png?dl=1" alt="Simple image processing." /></p>
+<p><img src="https://www.dropbox.com/s/z2e3s5w1h8yiv1k/image-cg.png?raw=1" alt="Simple image processing." /></p>
 <p>To quickly get up and running we provide a number of pre-authored creation graphs for some of the
 more common operations:</p>
 <ul>
@@ -2429,7 +2429,7 @@ Scene Tab.</p>
 <p>These pre-authored creation graphs are shipped as part of our Core project which is automatically
 copied into new projects. How they are used when working with assets is exposed through the
 <code>import_settings</code> asset:</p>
-<p><img src="https://www.dropbox.com/s/sr52qac8i1i757l/import-settings.png?dl=1" alt="Default Import Settings." /></p>
+<p><img src="https://www.dropbox.com/s/sr52qac8i1i757l/import-settings.png?raw=1" alt="Default Import Settings." /></p>
 <p>By exposing these settings through an asset it is possible to easily change the default behavior of
 how imported assets are treated when placed under a specific folder. </p>
 <blockquote>
@@ -2451,7 +2451,7 @@ other entities. </p>
 <p>So you can for example create an entity asset that represents a
 room, and then create a house entity that has a bunch of these room entities
 placed into it:</p>
-<p><img src="https://www.dropbox.com/s/2hpnogh7bff9jge/house-entity.png?dl=1" alt="Three Room entities placed to form a House entity." /></p>
+<p><img src="https://www.dropbox.com/s/2hpnogh7bff9jge/house-entity.png?raw=1" alt="Three Room entities placed to form a House entity." /></p>
 <h2 id="difference-between-a-prototype-an-instance-and-an-asset"><a class="header" href="#difference-between-a-prototype-an-instance-and-an-asset">Difference between a Prototype, an Instance and an Asset</a></h2>
 <p>We call the room asset a <em>prototype</em>, and we call each placed room entity an
 <em>instance</em> of that prototype. Note that prototypes are not special assets, any
@@ -2478,7 +2478,7 @@ or child entities on the overridden entity.</p>
 parents will automatically get overridden too. Let's modify the position of the barrel in the
 front-most room:</p>
 </blockquote>
-<p><img src="https://www.dropbox.com/s/uy0rzwhrjzen42i/override.png?dl=1" alt="Barrel position overridden." /></p>
+<p><img src="https://www.dropbox.com/s/uy0rzwhrjzen42i/override.png?raw=1" alt="Barrel position overridden." /></p>
 <p>The overridden entities and components are drawn in blue. We change the x and z components of the
 position to move the barrel. Note how the changed values are shown in white, while the values that
 are inherited from the prototype are shown in gray.</p>
@@ -2524,40 +2524,40 @@ instances, you can override specific nodes in the graph instance to customize th
 <p>This will add a new asset to your project. Any changes made to the asset will be applied to all instances of the prototype.</p>
 <h2 id="entity-prototype-drag-and-drop"><a class="header" href="#entity-prototype-drag-and-drop">Entity Prototype: Drag and Drop</a></h2>
 <p>You can create a Prototype from an Entity by simply dragging and dropping it from the Entity Tree into the Asset Browser.</p>
-<p><img src="https://www.dropbox.com/s/erc3f4wqjoy5djt/tm_tut_prototype_create_drag.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/erc3f4wqjoy5djt/tm_tut_prototype_create_drag.png?raw=1" alt="" /></p>
 <p>This creates a new asset with the file extension <code>.entity</code>. It also replaces the entity in the Entity Tree with an instance of the newly created prototype.</p>
 <h2 id="entity-prototype-create-prototype-from-entity"><a class="header" href="#entity-prototype-create-prototype-from-entity">Entity Prototype: Create Prototype from Entity</a></h2>
 <p>You can also create a prototype by using the context menu in the Entity Tree View on the Entity you want to turn into a Prototype:</p>
-<p><img src="https://www.dropbox.com/s/ys17wsljt82s2me/tm_tut_prototype_create_context.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/ys17wsljt82s2me/tm_tut_prototype_create_context.png?raw=1" alt="" /></p>
 <h2 id="graph-prototypes-from-subgraphs"><a class="header" href="#graph-prototypes-from-subgraphs">Graph Prototypes from Subgraphs</a></h2>
 <p>You can turn a Subgraph into a prototype by choosing <strong>Create Subgraph Prototype</strong> in the Subgraph node's context menu. This creates a Subgraph Prototype Asset (<code>.entity_graph</code>) in your Asset Browser. It will also change the Subgraph to become an instance of the newly created prototype. If you open the Subgraph node at this point all the nodes will be grayed out. This shows that they are inherited from the prototype. Any changes you make there will be local to that instance.</p>
 <p>To make a change that propagates to all instances of the prototype, open the prototype in the asset browser, or by using the <strong>Open Prototype</strong> button in the Properties view of the Subgraph node.</p>
-<p><img src="https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?raw=1" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="instantiating-prototypes"><a class="header" href="#instantiating-prototypes">Instantiating Prototypes</a></h1>
 <p>How you create prototype instances depend on what kind of prototype you want to instance.</p>
 <h2 id="entity-prototypes"><a class="header" href="#entity-prototypes">Entity Prototypes</a></h2>
 <p>To create an instance of an entity prototype, you can simply drag an drop the entity from the Asset Browser into the Entity Tree or the Scene Tab:</p>
-<p><img src="https://www.dropbox.com/s/hxrfnyppjfrzrjg/tm_tut_prototype_entity_drag.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/hxrfnyppjfrzrjg/tm_tut_prototype_entity_drag.png?raw=1" alt="" /></p>
 <p>You can also use the context menu in the Entity Tree to replace any entity with an instantiated asset:</p>
-<p><img src="https://www.dropbox.com/s/7977n6966p9qhbh/tm_tut_prototype_replace_asset.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/7977n6966p9qhbh/tm_tut_prototype_replace_asset.png?raw=1" alt="" /></p>
 <p>At runtime, you can create instances of an entity asset by spawning them from the Entity Graph:</p>
-<p><img src="https://www.dropbox.com/s/n5h5art3g8ws53y/tm_tut_prototype_spawn_entity.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/n5h5art3g8ws53y/tm_tut_prototype_spawn_entity.png?raw=1" alt="" /></p>
 <h2 id="subgraph-prototypes"><a class="header" href="#subgraph-prototypes">Subgraph Prototypes</a></h2>
 <p>You can add an instance of a Subgraph by dropping the <code>.graph</code> asset from the Asset Browser into the Graph editor.</p>
 <p>Note that the dropped graph must be of the same type as the graph you are editing. I.e. Creation Graph Subgraphs can only be used in Creation Graphs, Entity Graph Subgraphs can only be used in Entity Graphs.</p>
-<p><img src="https://www.dropbox.com/s/zf0vgfw6jm3yj09/tm_tut_prototype_subgraph_drag.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/zf0vgfw6jm3yj09/tm_tut_prototype_subgraph_drag.png?raw=1" alt="" /></p>
 <p>Another way of creating an instance of a Subgraph is to create an empty Subgraph node in the Graph and then picking a prototype for it in the Properties view:</p>
-<p><img src="https://www.dropbox.com/s/cdmcftplipgysx5/tm_tut_prototype_subgraph_node.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/cdmcftplipgysx5/tm_tut_prototype_subgraph_node.png?raw=1" alt="" /></p>
 <h2 id="creation-graph-prototypes"><a class="header" href="#creation-graph-prototypes">Creation Graph Prototypes</a></h2>
 <p>The Render Component and other components that make use of Creation Graphs typically let you specify the prototype to use for the Creation Graph in the Properties View:</p>
-<p><img src="https://www.dropbox.com/s/duklb4r264uqrt5/tm_tut_prototype_creation_graph.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/duklb4r264uqrt5/tm_tut_prototype_creation_graph.png?raw=1" alt="" /></p>
 <p>The <strong>Edit</strong> button in this view lets you open the specific Creation Graph instance used by this component for editing.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="meshes--materials--shaders"><a class="header" href="#meshes--materials--shaders">Meshes / Materials / Shaders</a></h1>
 <p>In the Machinery Creation Graphs represent Meshes, Materials and Shaders all at the same time.</p>
 <p>The Creation Graph is used to create asset pipelines and also define GPU-related things such as materials and shaders. In essence it lets you set up a graph that takes some inputs and processes them using nodes that may run on either the CPU or GPU, the graph can then output things such as shader instances, images or draw calls. The big power of the Creation Graph is that it lets you reason about data that lives in the borderland between GPU and CPU, but being able to do so within one single graph.</p>
 <p>Creations Graphs live separately from Entity Graphs. You often find Creation Graphs living under Render Components (for issuing draw calls), or within <code>.creation_graph</code> assets, where they are used to define materials and images. As an example, a Creation Graph that outputs an image probably takes an image that lives on the disk as input, uploads it to the GPU and then has the graph output a GPU image. However, the user is then free to add nodes in-between these steps, for example node for compression or mipmap generation. Compared to other game engines, things that often end up in the properties panel of an import image, can here be done dynamically in a graph, depending on the needs of your project.</p>
 <p>Within the <code>core</code> folder that we ship with the engine you will find several creation graphs, many of these are used for defining defaul materials and also as defaults graph for use within our DCC asset import pipeline.</p>
-<p><img src="https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?dl=1" alt="Simple red material" /></p>
+<p><img src="https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?raw=1" alt="Simple red material" /></p>
 <p>Image loading and material creation are just a few examples of what can be achieved with the creation graph. The table below shows when a creation graph is used compared to the tools one could use in Unity and Unreal.</p>
 <table><thead><tr><th>Asset Type</th><th>Unity</th><th>Unreal</th><th>The Machinery</th></tr></thead><tbody>
 <tr><td>Images</td><td>Texture</td><td>Texture</td><td>Creation Graph with Image Output node</td></tr>
@@ -2577,7 +2577,7 @@ tricky.)</p>
 allows you to see the runtime behavior of your entities. If you are building a game, the simulation
 mode would correspond to running the game.</p>
 <p>To <em>simulate</em> a scene, open a scene in the <em>Simulate</em> tab.</p>
-<p><img src="https://www.dropbox.com/s/7t8elpzqllqkqrb/simulate-tab.png?dl=1" alt="Simulate tab." /></p>
+<p><img src="https://www.dropbox.com/s/7t8elpzqllqkqrb/simulate-tab.png?raw=1" alt="Simulate tab." /></p>
 <p>You can use the controls in the tab to pause, play, or restart the simulation or change the
 simulation speed. Note that if you haven't added any simulation components to the scene, the
 <em>Simulate</em> tab will be just as static as the Scene tab. In order to get something to happen, you
@@ -2594,7 +2594,7 @@ scene that you specified.</p>
 <p>The <em>Entity Graph</em> implements a visual scripting language based on nodes and connections. To use
 it, right-click on an entity to add a Graph Component and then double click on the Graph Component
 to open it in the Graph Editor:</p>
-<p><img src="https://www.dropbox.com/s/ssasbp5sb0vq7gy/graph-editor.png?dl=1" alt="Graph editor." /></p>
+<p><img src="https://www.dropbox.com/s/ssasbp5sb0vq7gy/graph-editor.png?raw=1" alt="Graph editor." /></p>
 <p>The visual scripting language uses <em>Events</em> to tick the execution of nodes. For example, the
 <em>Tick Event</em> node will trigger its out connector whenever the application ticks its frame. Connect
 its output event connector to another node to run that node during the application's update.</p>
@@ -3292,7 +3292,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>The Creation Graph is used to create asset pipelines and also define GPU-related things such as materials and shaders. In essence it lets you set up a graph that takes some inputs and processes them using nodes that may run on either the CPU or GPU, the graph can then output things such as shader instances, images or draw calls. The big power of the Creation Graph is that it lets you reason about data that lives in the borderland between GPU and CPU, but being able to do so within one single graph.</p>
 <p>Creations Graphs live separately from Entity Graphs. You often find Creation Graphs living under Render Components (for issuing draw calls), or within <code>.creation_graph</code> assets, where they are used to define materials and images. As an example, a Creation Graph that outputs an image probably takes an image that lives on the disk as input, uploads it to the GPU and then has the graph output a GPU image. However, the user is then free to add nodes in-between these steps, for example node for compression or mipmap generation. Compared to other game engines, things that often end up in the properties panel of an import image, can here be done dynamically in a graph, depending on the needs of your project.</p>
 <p>Within the <code>core</code> folder that we ship with the engine you will find several creation graphs, many of these are used for defining defaul materials and also as defaults graph for use within our DCC asset import pipeline.</p>
-<p><img src="https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?dl=1" alt="Simple red material" /></p>
+<p><img src="https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?raw=1" alt="Simple red material" /></p>
 <p>Image loading and material creation are just a few examples of what can be achieved with the creation graph. The table below shows when a creation graph is used compared to the tools one could use in Unity and Unreal.</p>
 <table><thead><tr><th>Asset Type</th><th>Unity</th><th>Unreal</th><th>The Machinery</th></tr></thead><tbody>
 <tr><td>Images</td><td>Texture</td><td>Texture</td><td>Creation Graph with Image Output node</td></tr>
@@ -3305,20 +3305,20 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>Like the entity graph, the creation graph can executes nodes in sequence from an event. Some examples of this are the <code>Tick</code>, <code>Init</code>, and <code>Compile</code> events which are executed at known points or intervals. However, creation graphs commonly work using a a reverse flow where an output node is triggered and then all the nodes it depends on are run, in order to supply the output. Examples of these outputs are <code>Draw Call</code>, <code>Shader Instance</code>, <code>Image</code>, and <code>Physics Shape</code>. Note that these outputs are just blobs of data interpreted by the code that uses them. You can in other words add your own output nodes and types from code.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creation-graphs-for-unity-developers"><a class="header" href="#creation-graphs-for-unity-developers">Creation Graphs for Unity Developers</a></h1>
 <p>When a creation graph is used as a surface shader it most closely resembles to Unity's shader graph. This is what we will focus on first.</p>
-<p><img src="https://www.dropbox.com/s/lg5dir5rxbz8c6l/tm_guide_creation_graph_unity.png?dl=1" alt="Simple surface shader" /></p>
+<p><img src="https://www.dropbox.com/s/lg5dir5rxbz8c6l/tm_guide_creation_graph_unity.png?raw=1" alt="Simple surface shader" /></p>
 <p>In the example above the editor's layout was made to resemble Unity's shader graph view. When creating a material shader you need to have a <code>Shader Instance</code> output node. From here we can specify our shader by adding node to the left of the <code>Shader Instance</code> node. In this example the <code>Lit</code> node closely resembles Unity's <code>PBR Master</code> node.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creation-graphs-for-unreal-engine-developers"><a class="header" href="#creation-graphs-for-unreal-engine-developers">Creation Graphs for Unreal Engine developers</a></h1>
 <p>Creation graphs are used for many different assets in The Machinery. When a creation graph is used for a shader it most closely relates to Unreal’s materials (any domain). This is what we will focus on first.</p>
-<p><img src="https://www.dropbox.com/s/nxy6jtq7f5drmin/tm_guide_creation_graph_unreal_material.png?dl=1" alt="Simple brick material" /></p>
+<p><img src="https://www.dropbox.com/s/nxy6jtq7f5drmin/tm_guide_creation_graph_unreal_material.png?raw=1" alt="Simple brick material" /></p>
 <p>In the example above the editor closely resembles the material editor from Unreal, this is however not the default layout. You can see the creation graph in the center with its output being a <code>Shader Instance</code>. Adding this allows any consuming code to query the material from this creation graph and it will allow the preview tab to display your material. </p>
-<p><img src="https://www.dropbox.com/s/kpf05fwzl47d0ip/tm_guide_creation_graph_unreal_particle.png?dl=1" alt="Simple rotating particle" /></p>
+<p><img src="https://www.dropbox.com/s/kpf05fwzl47d0ip/tm_guide_creation_graph_unreal_particle.png?raw=1" alt="Simple rotating particle" /></p>
 <p>The previous example showed a surface or material shader. This example shows a creation graph that fully defines a simple particle. The <code>Shader Instance</code> (material) is now passed to a <code>Draw Call</code> node, with this combination we can now fully render the particle without the need of an explicit mesh. Instead we use the <code>Construct Quad</code> node for a procedural quad mesh. Note that we specify the <code>Instance Count</code> and <code>Num Vertices</code> (for a single quad that is 6).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="node-types"><a class="header" href="#node-types">Node types</a></h1>
 <p>Nodes in the creation graph can be subdivided into four types, understanding the difference between these nodes is important when creating new nodes. The diagram below shows how each node can be categorized.</p>
-<p><img src="https://www.dropbox.com/s/h4uni5g7syk0zgn/tm_guide_creation_graph_node_types_graph.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/h4uni5g7syk0zgn/tm_guide_creation_graph_node_types_graph.png?raw=1" alt="" /></p>
 <p>GPU nodes are somewhat special as they will be compiled down into a single shader instead of being interpreted like the CPU part of the creation graph. Note that GPU nodes also have a different background color to distinguish them. GPU nodes will not connect to any CPU node unless their output is a <code>Shader Instance</code>, this is the point at which the GPU portion of the graph is compiled and passed to the CPU.</p>
 <p>The CPU portion of a creation graph is very similar to the entity graph in terms of layout with one exception. The creation graph often works by querying <code>output nodes</code> from the creation graph and working its way back from there. <code>event nodes</code> on the other hand allow you to follow the same flow as the entity graph, beginning from some event and continuing into other nodes. </p>
-<p><img src="https://www.dropbox.com/s/poi2rg73gttdixz/tm_guide_creation_graph_node_types_practical.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/poi2rg73gttdixz/tm_guide_creation_graph_node_types_practical.png?raw=1" alt="" /></p>
 <p>In the example above you can see a creation graph that uses the <code>Draw Call</code> and <code>Bounding Volume</code> output nodes. A Creation Graph with these kinds of nodes is commonly found living under the Render Component, since such a componen will automatically process any draw calls. The inputs to this graph are: a DCC mesh and a <code>Lit Shader Instance</code>, where the latter can be thought of as a shader or material. Note the <code>Variable</code> GPU node that is used to pass the color from the CPU side to the GPU side, this is the only way to connect CPU nodes to GPU nodes.
 Currently we support the following output nodes, note that multiple of these can be present in a single creation graph.</p>
 <table><thead><tr><th><strong>Name</strong></th><th><strong>Information</strong></th></tr></thead><tbody>
@@ -3339,9 +3339,9 @@ Currently we support the following output nodes, note that multiple of these can
 </ul>
 <p>The last point is a technical detail that doesn’t matter for anyone extending or using the creation graph so it won’t be covered in this guide. Additional information about the <code>creation_graph_node</code> shader block can be found in the <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">Shader System Reference</a>.</p>
 <p>Any GPU node that can be used in the creation graph has an associated <code>.tmsl</code> shader file. Most of these can be found here: <code>the_machinery/shaders/nodes/*.tmsl</code>. We also supply a <a href="https://marketplace.visualstudio.com/items?itemName=OurMachinery.tmShaderLang">Visual Studio extension</a> for this file format which adds syntax highlighting, this extension will be used in this guide. </p>
-<p><img src="https://www.dropbox.com/s/4o13cq3rzvqm813/tm_guide_creation_graph_sin_node.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/4o13cq3rzvqm813/tm_guide_creation_graph_sin_node.png?raw=1" alt="" /></p>
 <p>This is the shader code for the <code>Sin</code> node. It defines one input (<code>a</code>) and one output (<code>res</code>, which is the same type as <code>a</code>). This shader file will be constructed using the shader system into a single <code>.hlsl</code> function. For more information on how to create basic GPU nodes see <a href="https://ourmachinery.github.io/themachinery-books/tutorials/creation_graph/custom_gpu_nodes.html">Creating custom GPU Nodes</a>.</p>
-<p><img src="https://www.dropbox.com/s/cs31mi8njs9gpno/tm_guide_creation_graph_linkage.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/cs31mi8njs9gpno/tm_guide_creation_graph_linkage.png?raw=1" alt="" /></p>
 <p>This is an example of the shader code needed in the creation graph output nodes. When a creation graph node outputs a <code>Shader Instance</code> and has any inputs; it should define these three functions in it’s shader code block so the graph can be evaluated. The <code>tm_graph_read</code> function passes all the stage input variables to the graph (like position, color, uv, etc.). The <code>tm_graph_evaluate</code> function does most of the work. It uses the <code>tm_graph_io_t</code> struct to evaluate the graph by calling the functions generated by the normal nodes. Finally the <code>tm_graph_write</code> function passes all the graph variable to the stage output. It is important to note that whilst the <code>tm_graph_evaluate</code> function is necessary for graph evaluation; the <code>tm_graph_read</code> and <code>tm_graph_write</code> are not, they are helper function. For more information on how to create GPU output nodes see <a href="https://ourmachinery.github.io/themachinery-books/tutorials/creation_graph/custom_gpu_nodes.html">Creating custom GPU Nodes</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="graphics-1"><a class="header" href="#graphics-1">Graphics</a></h1>
 <p><img src="https://ourmachinery.com/images/eap.jpg" alt="" /></p>
@@ -3356,18 +3356,18 @@ Currently we support the following output nodes, note that multiple of these can
 <p>In The Machinery a <a href="https://ourmachinery.com/apidoc/plugins/entity/camera_component.h.html">camera</a> is an object that converts the simulated world into a two-dimensional image. It can do this with in a physically plausible way or in a more arcade way depending on how it is set up. The method chosen is called the projection mode and The Machinery offers three modes: Perspective, Orthographic, and Physical.</p>
 <h2 id="adding-a-camera-to-the-scene"><a class="header" href="#adding-a-camera-to-the-scene">Adding a camera to the scene</a></h2>
 <p>A camera must be used to view any scene, the <a href="https://ourmachinery.github.io/themachinery-books/the_editor/scene_tab.html">Scene Tab</a> therefor starts with a default camera. But once you wish to simulate this world an additional camera is needed. This can be done by adding a Camera Component to any entity in the scene and setting it as the viewing camera using the Set Camera node.</p>
-<p><img src="https://www.dropbox.com/s/7cwc768hu7ltll4/tm_guide_camera_tree_tab.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/foeulmeuaef5c2j/tm_guide_camera_graph.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/7cwc768hu7ltll4/tm_guide_camera_tree_tab.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/foeulmeuaef5c2j/tm_guide_camera_graph.png?raw=1" alt="" /></p>
 <p>You can see a preview of the newly added camera in real time in the <a href="https://ourmachinery.github.io/themachinery-books/the_editor/preview_tab.html">Preview Tab</a> when selecting the camera component.</p>
-<p><img src="https://www.dropbox.com/s/y7rafonxt7abm7h/tm_guide_camera_perspective.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/y7rafonxt7abm7h/tm_guide_camera_perspective.png?raw=1" alt="" /></p>
 <h2 id="customizing-the-camera"><a class="header" href="#customizing-the-camera">Customizing the camera</a></h2>
 <p>The first thing to consider when adding a camera to a scene is which projection mode it should use.<br />
 <strong>Perspective</strong> is the default projection mode. This projection mode linearly projects three-dimensional objects into two-dimensions, this was the effect that objects further away from the camera appear smaller than objects near the camera. This camera is controlled by changed the Vertical Field of View property.<br />
 <strong>Physical</strong> cameras use the same projection as perspective cameras, but instead of controlling the camera using FoV, this camera is controlled using focal length. This camera is intended for users familiar with real world cameras and aims to be more physically descriptive than its protective counterpart.<br />
 <strong>Orthographic</strong> cameras use parallel projection instead of linear projection. This means that depth has no impact on the objects scale. These cameras are often useful when making a 2D or isometric game. This camera is controlled using the box height property.</p>
-<p><img src="https://www.dropbox.com/s/qpk260eul8fms22/tm_guide_camera_orthographic.png?dl=1" alt="Orthographic camera" /></p>
+<p><img src="https://www.dropbox.com/s/qpk260eul8fms22/tm_guide_camera_orthographic.png?raw=1" alt="Orthographic camera" /></p>
 <p>Additionally all projection modes define near and far plane properties. These directly correlate to the visible range of the camera. Lowering the visible range can improve precision within that range which might reduce depth artifacts. But this can also be used to create impossible shots, like being able to view through walls.</p>
-<p><img src="https://www.dropbox.com/s/8l33j979p9spfty/tm_guide_camera_near_clipping.png?dl=1" alt="Setting the near plane to 4 allows us to place the camera outside of the room whilst still being able to view into it." /></p>
+<p><img src="https://www.dropbox.com/s/8l33j979p9spfty/tm_guide_camera_near_clipping.png?raw=1" alt="Setting the near plane to 4 allows us to place the camera outside of the room whilst still being able to view into it." /></p>
 <h2 id="all-camera-properties"><a class="header" href="#all-camera-properties">All camera properties</a></h2>
 <table><thead><tr><th><strong>Property</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>Projection Mode</td><td>Specifies which projection mode to use.</td></tr>
@@ -3452,12 +3452,12 @@ Your browser does not support the video tag.
 <li><a href="https://www.youtube.com/watch?v=_lZvF-YyP0s">The Challenges of High-Speed Filming</a>: visual explanation of shutter speed and aperture relative to exposure.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id=""><a class="header" href="#"></a></h1>
-<p><img src="https://www.dropbox.com/s/61buexu1hw0pvms/tm_default_render_pipeline.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/61buexu1hw0pvms/tm_default_render_pipeline.png?raw=1" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creation-graphs-1"><a class="header" href="#creation-graphs-1">Creation Graphs</a></h1>
 <p>The Creation Graph is used to create asset pipelines and also define GPU-related things such as materials and shaders. In essence it lets you set up a graph that takes some inputs and processes them using nodes that may run on either the CPU or GPU, the graph can then output things such as shader instances, images or draw calls. The big power of the Creation Graph is that it lets you reason about data that lives in the borderland between GPU and CPU, but being able to do so within one single graph.</p>
 <p>Creations Graphs live separately from Entity Graphs. You often find Creation Graphs living under Render Components (for issuing draw calls), or within <code>.creation_graph</code> assets, where they are used to define materials and images. As an example, a Creation Graph that outputs an image probably takes an image that lives on the disk as input, uploads it to the GPU and then has the graph output a GPU image. However, the user is then free to add nodes in-between these steps, for example node for compression or mipmap generation. Compared to other game engines, things that often end up in the properties panel of an import image, can here be done dynamically in a graph, depending on the needs of your project.</p>
 <p>Within the <code>core</code> folder that we ship with the engine you will find several creation graphs, many of these are used for defining defaul materials and also as defaults graph for use within our DCC asset import pipeline.</p>
-<p><img src="https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?dl=1" alt="Simple red material" /></p>
+<p><img src="https://www.dropbox.com/s/w5ty4r8tttntt0t/tm_guide_creation_graph_simple_material.png?raw=1" alt="Simple red material" /></p>
 <p>Image loading and material creation are just a few examples of what can be achieved with the creation graph. The table below shows when a creation graph is used compared to the tools one could use in Unity and Unreal.</p>
 <table><thead><tr><th>Asset Type</th><th>Unity</th><th>Unreal</th><th>The Machinery</th></tr></thead><tbody>
 <tr><td>Images</td><td>Texture</td><td>Texture</td><td>Creation Graph with Image Output node</td></tr>
@@ -3570,15 +3570,15 @@ compile: {}
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ambient-occlusion"><a class="header" href="#ambient-occlusion">Ambient Occlusion</a></h1>
 <p>Ambient Occlusion is an effect as part of global illumination that approximates the attenuation of light due to occlusion. </p>
-<p><img src="https://www.dropbox.com/s/9hemw29ib130jf3/tm_tut_ssao.png?dl=1" alt="SSAO" /></p>
+<p><img src="https://www.dropbox.com/s/9hemw29ib130jf3/tm_tut_ssao.png?raw=1" alt="SSAO" /></p>
 <p>The easiest way to get AO in your scene is by adding SSAO component which is a method that calculates ambient occlusion in screen space using the depth and normal buffer from the GBuffer rendering pass.</p>
 <table><thead><tr><th style="text-align: left"><strong>Property</strong></th><th style="text-align: left"><strong>Description</strong></th></tr></thead><tbody>
 <tr><td style="text-align: left">Radius</td><td style="text-align: left">Defines the sample radius in world space units. Larger radius needs more step count to be more correct but higher step count can hurt performance. Having larger radius also makes cutoffs on the edges of the screen more visible because screen space effects don't have scene information outside of screen.</td></tr>
-<tr><td style="text-align: left"></td><td style="text-align: left"> <img src="https://www.dropbox.com/s/pcekns9g3qbzh5d/tm_tut_ssao_radius_comp.png?dl=1" alt="SSAO radius compare" /> <em>SSAO with radius set to 1(Left)   SSAO with radius set to 5(Right)</em></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left"> <img src="https://www.dropbox.com/s/pcekns9g3qbzh5d/tm_tut_ssao_radius_comp.png?raw=1" alt="SSAO radius compare" /> <em>SSAO with radius set to 1(Left)   SSAO with radius set to 5(Right)</em></td></tr>
 <tr><td style="text-align: left">Power</td><td style="text-align: left">Controls the strength of the darkening effect that, increases the contrast.</td></tr>
-<tr><td style="text-align: left"></td><td style="text-align: left"> <img src="https://www.dropbox.com/s/ktp9l66mmqptrrk/tm_tut_ssao_power_comp.png?dl=1" alt="SSAO power compare" /> <em>SSAO with power set to 1.5(Left)   SSAO with power set to 3.0(Right)</em></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left"> <img src="https://www.dropbox.com/s/ktp9l66mmqptrrk/tm_tut_ssao_power_comp.png?raw=1" alt="SSAO power compare" /> <em>SSAO with power set to 1.5(Left)   SSAO with power set to 3.0(Right)</em></td></tr>
 <tr><td style="text-align: left">Bias</td><td style="text-align: left">Depth buffer precision in the distance and high-frequency details in normals can cause some artifacts and noise. This parameter allows you to tweak it. But higher value will reduce details.</td></tr>
-<tr><td style="text-align: left"></td><td style="text-align: left"> <img src="https://www.dropbox.com/s/m1h2qic1g7fpwh0/tm_tut_ssao_bias_comp.png?dl=1" alt="SSAO power compare" /> <em>SSAO with bias set to 0.0(Left)   SSAO with bias set to 0.1(Right)</em></td></tr>
+<tr><td style="text-align: left"></td><td style="text-align: left"> <img src="https://www.dropbox.com/s/m1h2qic1g7fpwh0/tm_tut_ssao_bias_comp.png?raw=1" alt="SSAO power compare" /> <em>SSAO with bias set to 0.0(Left)   SSAO with bias set to 0.1(Right)</em></td></tr>
 <tr><td style="text-align: left">Step Count</td><td style="text-align: left">The number of depth samples for each sample direction. This property has direct corelation with performance. Keeping it in 4-6 range will result optimal performance/quality ratio.</td></tr>
 </tbody></table>
 <h2 id="technical-details"><a class="header" href="#technical-details">Technical Details</a></h2>
@@ -3600,15 +3600,15 @@ compile: {}
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="adjusting-anti-aliasing"><a class="header" href="#adjusting-anti-aliasing">Adjusting Anti-Aliasing</a></h1>
 <p>Anti-Aliasing (AA) refers to various techniques for smoothing aliased, or jagged edges when dealing with a finite number of samples, like a monitor. The Machinery supports Temporal Anti-Aliasing (TAA) as a post-processing effect. Multisample Anti-Aliasing (MSAA) support is planned on a per image level, but is currently not available to all render backends.</p>
-<p><img src="https://www.dropbox.com/s/98wyr2w26dbe8r6/tm_tut_aa.png?dl=1" alt="No TAA (left) vs TAA (right)" /></p>
-<p><img src="https://www.dropbox.com/s/8196q7vpn5bujx8/tm_tut_aa_settings.png?dl=1" alt="TAA Settings" /></p>
+<p><img src="https://www.dropbox.com/s/98wyr2w26dbe8r6/tm_tut_aa.png?raw=1" alt="No TAA (left) vs TAA (right)" /></p>
+<p><img src="https://www.dropbox.com/s/8196q7vpn5bujx8/tm_tut_aa_settings.png?raw=1" alt="TAA Settings" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="adjusting-exposure"><a class="header" href="#adjusting-exposure">Adjusting exposure</a></h1>
 <p>In photography, exposure is the amount of light per unit area. The Machinery uses physically based lighting, materials, and cameras, so setting up the scene exposure correctly is important to getting the final image to look correct. To start using exposure, add an <a href="https://ourmachinery.com/apidoc/plugins/default_render_pipe/post_processing/exposure_component.h.html">Exposure Component</a> to your scene.</p>
 <h2 id="tools"><a class="header" href="#tools">Tools</a></h2>
 <p>Exposure is generally measured in EV100 (<a href="https://en.wikipedia.org/wiki/Exposure_value">Exposure Value</a> at ISO 100) or <a href="https://en.wikipedia.org/wiki/IRE_(unit)">IRE</a>. Both can be visualized in The Machinery in the <code>Render/Exposure/</code> menu.</p>
-<p><img src="https://www.dropbox.com/s/8spmtkfs33jf7xw/tm_tut_exposure_ev100.png?dl=1" alt="EV100 Visualization" /></p>
+<p><img src="https://www.dropbox.com/s/8spmtkfs33jf7xw/tm_tut_exposure_ev100.png?raw=1" alt="EV100 Visualization" /></p>
 <p>The EV100 visualizer shows the luminance per pixel relative to the camera’s exposure range. By default the camera has a range of [-1, 15], but in this scene it is [-1.2, 15]. In this view, higher values mean higher luminance. Note that this is an absolute scale, values in the higher and lower ranges might be clipped after exposure is applied.</p>
-<p><img src="https://www.dropbox.com/s/6sygin0tafnxdfk/tm_tut_exposure_ire.png?dl=1" alt="IRE Visualization" /></p>
+<p><img src="https://www.dropbox.com/s/6sygin0tafnxdfk/tm_tut_exposure_ire.png?raw=1" alt="IRE Visualization" /></p>
 <p>The IRE visualizer (false color) shows the luminance per pixel after exposure. This scale is relative to the dynamic range of <a href="https://en.wikipedia.org/wiki/SRGB">sRGB</a>. The view works by splitting the luminance range into bands (where red is fully clipped at the top range). This view is useful when exposing a specific element in your scene. The [43, 47] (green) band is the typical range for middle grey and the [77, 84] band is a typical Caucasian skin tone.</p>
 <p>The Machinery offers three workflows for metering exposure:</p>
 <ul>
@@ -3617,14 +3617,14 @@ compile: {}
 <li><strong>Automatic</strong>: this mode (also known as eye adaptation) is best used on characters or other moving cameras in your scene.</li>
 </ul>
 <h2 id="using-manual-exposure"><a class="header" href="#using-manual-exposure">Using Manual Exposure</a></h2>
-<p><img src="https://www.dropbox.com/s/568lt9m1jcdlxqb/tm_tut_exposure_manual.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/568lt9m1jcdlxqb/tm_tut_exposure_manual.png?raw=1" alt="" /></p>
 <p>Manual exposure just has one setting to change, <code>Exposure Compensation</code>. This value is added to the target exposure (zero for manual mode). Therefore this value should be increased if the luminance of the scene is increased as well (higher compensation corresponds to a darker scene).</p>
 <h2 id="using-camera-driven-exposure"><a class="header" href="#using-camera-driven-exposure">Using Camera Driven Exposure</a></h2>
-<p><img src="https://www.dropbox.com/s/reniyj1qgfgc3dr/tm_tut_exposure_camera_driven.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/reniyj1qgfgc3dr/tm_tut_exposure_camera_driven.png?raw=1" alt="" /></p>
 <p>Camera Driven Exposure has no settings of its own. Instead, the <code>Shutter Speed</code>, <code>Aperture</code>, and <code>ISO</code> settings are using from the viewing <a href="https://ourmachinery.com/apidoc/foundation/camera.h.html#structtm_camera_settings_t">camera</a>. This mode is best used if you have a good understanding of camera properties, but in general: lowering shutter speed darkens the scene, increasing aperture (f-number) darkens the scene, and lowering ISO darkens the scene.</p>
 <h2 id="using-automatic-exposure"><a class="header" href="#using-automatic-exposure">Using Automatic Exposure</a></h2>
-<p><img src="https://www.dropbox.com/s/btprh1pkb273q7r/tm_tut_exposure_automatic.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/axil4eizps5oiwk/tm_tut_exposure_histogram.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/btprh1pkb273q7r/tm_tut_exposure_automatic.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/axil4eizps5oiwk/tm_tut_exposure_histogram.png?raw=1" alt="" /></p>
 <p>Automatic Exposure uses a histogram to calculate the average exposure value of the scene and exposes it accordingly. The histogram can be visualized in the <code>Render/Exposure/</code> menu. The settings for this mode are:</p>
 <ul>
 <li><strong>Min/Max EV100</strong>: these settings define the acceptable range of the automatic exposure, any value outside of this range is clamped to the outer buckets.</li>
@@ -3634,19 +3634,19 @@ compile: {}
 </ul>
 <h2 id="general-workflow"><a class="header" href="#general-workflow">General workflow</a></h2>
 <p>Let’s use the tools to manually expose this scene. Note that there is no right way to apply exposure to a scene. The example shown below is meant to be a bit dark, so making it brighter might go against the artistic direction.</p>
-<p><img src="https://www.dropbox.com/s/phk7fzqyqz623ql/tm_tut_exposure_example_source.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/rl8hwrwl72yxnk5/tm_tut_exposure_example_source_ire.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/phk7fzqyqz623ql/tm_tut_exposure_example_source.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/rl8hwrwl72yxnk5/tm_tut_exposure_example_source_ire.png?raw=1" alt="" /></p>
 <p>In the false color visualization we can see that there are many areas where the scene is too dark to distinguish the colors. We can also see a little bit of bright clipping on the top side of the rock. The background sky on the other hand is pretty well exposed. Let’s try to brighten up the scene to focus more on the foreground rather than the background. I’ve done this by decreasing the exposure compensation from -0.4 to -1.3.</p>
-<p><img src="https://www.dropbox.com/s/yjm0vbr6pyy9axq/tm_tut_exposure_example_dest.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/xslx4rbbq3zqe4b/tm_tut_exposure_example_dest_ire.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/yjm0vbr6pyy9axq/tm_tut_exposure_example_dest.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/xslx4rbbq3zqe4b/tm_tut_exposure_example_dest_ire.png?raw=1" alt="" /></p>
 <p>You can see that the scene feels a lot brighter (and somewhat warmer) than before. The foliage has noticeably more detail and the highlight on the rock is more pronounced. The sky in the background is now clipping a lot, but it is not as noticeable.</p>
 <h2 id="localized-exposure"><a class="header" href="#localized-exposure">Localized Exposure</a></h2>
 <p>Often, you want to have exposure settings localized to a specific region in your scene. This is done using the <a href="https://ourmachinery.com/apidoc/plugins/default_render_pipe/volume_component.h.html">Volume Component</a>. Once the camera enters a region defined by the Volume Component it will use the highest order Exposure Component it can find. In this example it would use the Exposure Component on the same entity as the Volume Component if the camera is inside the volume and the global exposure component if it’s outside the volume. For more information see the Volume Component documentation.</p>
-<p><img src="https://www.dropbox.com/s/pluala3w4h59gx9/tm_tut_exposure_volume.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/pluala3w4h59gx9/tm_tut_exposure_volume.png?raw=1" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="bloom"><a class="header" href="#bloom">Bloom</a></h1>
 <p>Bloom (or glow) is an effect for real world lenses that produces fringes of light that extend from the borders of bright areas in the scene. It is produced by diffraction patterns of light sources through a lens aperture. This particularly affects lights sources and emissive materials.
 In The Machinery this is implemented as multiple Gaussian blurs that only affect the bright areas on the scene.</p>
-<p><img src="https://www.dropbox.com/s/zqx30bzzt86rqyo/tm_tut_bloom_on_off.png?dl=1" alt="Bloom On (left) and Off (right)" /></p>
+<p><img src="https://www.dropbox.com/s/zqx30bzzt86rqyo/tm_tut_bloom_on_off.png?raw=1" alt="Bloom On (left) and Off (right)" /></p>
 <table><thead><tr><th><strong>Property</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>Threshold</td><td>The luminance threshold for bloom to start considering a sample. This is roughly measured in Lux.</td></tr>
 <tr><td>Falloff</td><td>Defines the size of the bloom fringes. More falloff means larger fringes.</td></tr>
@@ -3654,10 +3654,10 @@ In The Machinery this is implemented as multiple Gaussian blurs that only affect
 </tbody></table>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="color-grading"><a class="header" href="#color-grading">Color Grading</a></h1>
 <p>The Machinery supports industry standard methods for color grading for HDR colors. Currently, there is no support for custom tone mappers:</p>
-<p><img src="https://www.dropbox.com/s/f51xt0yd696w3jv/tm_tut_color_grading_lgg_sop.png?dl=1" alt="Controls" /></p>
+<p><img src="https://www.dropbox.com/s/f51xt0yd696w3jv/tm_tut_color_grading_lgg_sop.png?raw=1" alt="Controls" /></p>
 <p>The <a href="https://ourmachinery.com/apidoc//plugins/default_render_pipe/post_processing/color_grading_component.h.html#color_grading_component.h">Color Grading</a> component allows you to use either Lift/Gamma/Gain controls or ASC-CDL controls. Regardless of the method used, the shader will apply a single ASC-CDL transform per channel. The resulting transform is visualized using the graph. Color grading is applied just before the tone mapper in ACEScg space.</p>
-<p><img src="https://www.dropbox.com/s/v8xm2u9ln0dy065/tm_tut_color_grading_flow.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/9080y9197sr1p5v/tm_tut_color_grading_tools.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/v8xm2u9ln0dy065/tm_tut_color_grading_flow.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/9080y9197sr1p5v/tm_tut_color_grading_tools.png?raw=1" alt="" /></p>
 <p>The Color Scopes Tab can be used to visualize the color spread in your scene. This might aid in color grading. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="extending-the-machinery"><a class="header" href="#extending-the-machinery">Extending The Machinery</a></h1>
 <p>In The Machinery, <strong>everything is a <a href="https://ourmachinery.github.io/themachinery-books/extending_the_machinery/the_plugin_system.html">plugin</a></strong>. You can <strong>extend</strong>, <strong>modify</strong> or <strong>replace</strong> existing engine functionality with your plugins. </p>
@@ -3794,7 +3794,7 @@ pointers in the struct.)</p>
 </blockquote>
 <h2 id="basic-plugin-template"><a class="header" href="#basic-plugin-template">Basic Plugin Template</a></h2>
 <p>The Engine provides an easy way to create plugins for you via the <strong>file -&gt; New Plugins</strong> menu. There you can choose default plugin templates. Let us choose the minimal plugin. They come with default files:</p>
-<p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?raw=1" alt="" /></p>
 <p><em>In this case, we choose the Tab template. The only difference is that the <code>custom_tab</code> would be <code>minimal</code>.</em></p>
 <p><em>The folder structure for a minimal is called minimal.</em></p>
 <ul>
@@ -3927,7 +3927,7 @@ new <code>.c</code> file for the plugin together with some helper files for comp
 <p>The distribution already comes with pre-built .dlls for the sample plugins, such as
 <code>bin/plugins/tm_pong_tab.dll</code>. You can see this plugin in action by selecting <strong>Tab &gt; Pong</strong> in the
 editor to open up its tab:</p>
-<p><img src="https://www.dropbox.com/s/hats2jgr3wroahz/pong-tab.png?dl=1" alt="Pong tab." /></p>
+<p><img src="https://www.dropbox.com/s/hats2jgr3wroahz/pong-tab.png?raw=1" alt="Pong tab." /></p>
 <p><strong>Table of Content</strong></p>
 <ul>
 <li><a href="extending_the_machinery/sample_plugin.html#what-are-the-build-requirements">What are the build Requirements</a></li>
@@ -4017,7 +4017,7 @@ variable to use a shared <code>libs</code> directory for all your projects.)</li
 <p><strong>Tip:</strong> Maybe store your plugin in a folder next to your game project.</p>
 </blockquote>
 <p>After this, we see that the Engine created some files for us.</p>
-<p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1" alt="folder structure new plugin" /></p>
+<p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?raw=1" alt="folder structure new plugin" /></p>
 <p>Now we need to ensure that we can build our project. In the root folder (The folder with the premake file), we can run <code>tmbuild</code> and see if there is no issue. We will build our projects once and generate the <code>.sln</code> file (on windows). </p>
 <p>If there is an issue, we should ensure we have set up the Environment variables correctly and installed all the needed dependencies. For more information, please read this <a href="https://ourmachinery.github.io/themachinery-books/build_tools/tmbuild.html">guide</a>.</p>
 <p>Now we can open the <code>.c</code> file with our favorite IDE. The file will contain the following content:</p>
@@ -4392,7 +4392,7 @@ version of The Machinery. Otherwise, the plugin will most likely crash.</p>
 <p><strong>Note:</strong> The asset plugin will store the path absolute.</p>
 </blockquote>
 <p>The plugin asset settings look as following:</p>
-<p><img src="https://www.dropbox.com/s/hc12tcagz448ffz/tm_guide_plugin_asset.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/hc12tcagz448ffz/tm_guide_plugin_asset.png?raw=1" alt="" /></p>
 <p>You would have to repeat the above described workflow every time you change the code of your plugin. This is very annoying, but do not worry hot-reloading comes to rescue!</p>
 <p>You can enable hot-reload for plugin assets by checking the <strong><em>Import When Changed</em> checkbox (1)</strong> in the plugin
 properties. If checked, the editor will monitor the plugin's import path for changes and if it
@@ -4447,7 +4447,7 @@ something like this:</p>
 <li><a href="extending_the_machinery/application_hooks.html#overview">Overview</a></li>
 </ul>
 <h2 id="application-create"><a class="header" href="#application-create">Application Create</a></h2>
-<p><img src="https://www.dropbox.com/s/vsl0d53ty9rsvbi/tm_guide_app_hook_create.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/vsl0d53ty9rsvbi/tm_guide_app_hook_create.png?raw=1" alt="" /></p>
 <h2 id="update"><a class="header" href="#update">Update</a></h2>
 <p><strong>Important side note</strong> here <a href="https://ourmachinery.com/apidoc/foundation/plugin_callbacks.h.html#structtm_plugin_tick_i"><code>tm_plugin_tick_i</code></a> should <strong>not</strong> be used for <strong>gameplay</strong>. To manage your gameplay you should rely on the given gameplay hooks:</p>
 <ul>
@@ -4460,13 +4460,13 @@ something like this:</p>
 <p><strong>Note:</strong> Plugin reloads only happen if a plugin has been identified as replaced.</p>
 </blockquote>
 <h3 id="editor"><a class="header" href="#editor">Editor</a></h3>
-<p><img src="https://www.dropbox.com/s/ibyjx33p4lci62w/tm_guide_app_hooks_update_editor.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/ibyjx33p4lci62w/tm_guide_app_hooks_update_editor.png?raw=1" alt="" /></p>
 <h3 id="runner"><a class="header" href="#runner">Runner</a></h3>
-<p><img src="https://www.dropbox.com/s/9nq4ysh2gefzks1/tm_guide_app_hooks_update_runner.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/9nq4ysh2gefzks1/tm_guide_app_hooks_update_runner.png?raw=1" alt="" /></p>
 <h2 id="project-hooks"><a class="header" href="#project-hooks">Project Hooks</a></h2>
-<p><img src="https://www.dropbox.com/s/jtsk5df9rykp8di/tm_guide_app_hook_project.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/jtsk5df9rykp8di/tm_guide_app_hook_project.png?raw=1" alt="" /></p>
 <h2 id="application-shutdown"><a class="header" href="#application-shutdown">Application Shutdown</a></h2>
-<p><img src="https://www.dropbox.com/s/ecssnn4hvv42avi/tm_guide_app_hook_shutdown.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/ecssnn4hvv42avi/tm_guide_app_hook_shutdown.png?raw=1" alt="" /></p>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
 <table><thead><tr><th>Interface</th><th>Description</th></tr></thead><tbody>
 <tr><td><code>TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)</code></td><td>Entry point for all plugins</td></tr>
@@ -4831,7 +4831,7 @@ util(&quot;my-untility&quot;)
 </code></pre>
 <h2 id="the-machinery-project-recommendation"><a class="header" href="#the-machinery-project-recommendation">The Machinery Project Recommendation</a></h2>
 <p>We recommend you to make use of one single premake file that manages all your plugins at one build. This avoids the need to go in each of the folder to build your project. As recommended in the the chapter <a href="https://ourmachinery.github.io/themachinery-books//getting_started/project_setup.html#possible-folder-structure-for-a-project">Project Setup: Possible folder structure for a project</a> we recommend also to seperate your plugins into sub folders. The following image shows a potential setup for your game plugins:</p>
-<p><img src="https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?raw=1" alt="" /></p>
 <p>In here we have one single <code>premake</code> file and a single <code>libs.json</code> as well as the <code>libs</code> folder. This allows you to run <code>tmbuild</code> just in this folder and all plugins or the ones you want to build can be built at once. </p>
 <p>In this case the premake file could look like this:</p>
 <blockquote>
@@ -5354,11 +5354,11 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <p>The <em>Entity Graph</em> implements a visual scripting language based on nodes and connections. To use
 it, right-click on an entity to add a Graph Component and then double click on the Graph Component
 to open it in the Graph Editor:</p>
-<p><img src="https://www.dropbox.com/s/ssasbp5sb0vq7gy/graph-editor.png?dl=1" alt="Graph editor." /></p>
+<p><img src="https://www.dropbox.com/s/ssasbp5sb0vq7gy/graph-editor.png?raw=1" alt="Graph editor." /></p>
 <h2 id="basic-concepts"><a class="header" href="#basic-concepts">Basic Concepts</a></h2>
 <h3 id="how-to-use-the-entity-graph"><a class="header" href="#how-to-use-the-entity-graph">How to use the Entity Graph?</a></h3>
 <p>You need to add a Graph Component to an Entity of your choice. </p>
-<p><img src="https://www.dropbox.com/s/29u0c1gsu0vjghg/tm_guide_entity_graph_add_component.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/29u0c1gsu0vjghg/tm_guide_entity_graph_add_component.png?raw=1" alt="" /></p>
 <p>After that, you have two ways of opening the Graph:</p>
 <ul>
 <li>
@@ -5368,7 +5368,7 @@ to open it in the Graph Editor:</p>
 <p>Click in the Property View on Edit</p>
 </li>
 </ul>
-<p><img src="https://www.dropbox.com/s/p1hkay3ouhezbmh/tm_guide_entity_graph_open.gif?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/p1hkay3ouhezbmh/tm_guide_entity_graph_open.gif?raw=1" alt="" /></p>
 <p>Now the Graph Editor Opens and you can start adding nodes via:</p>
 <ul>
 <li><strong>Right Click -&gt; Add Node</strong></li>
@@ -5401,40 +5401,40 @@ to open it in the Graph Editor:</p>
 <li><strong>Event Wires</strong> They regulate the execution flow.</li>
 <li><strong>Data Wires</strong> Transport the data from node to node!</li>
 </ul>
-<p><img src="https://www.dropbox.com/s/i95s1frdzhcsev1/tm_guide_entity_graph_wire_types.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/i95s1frdzhcsev1/tm_guide_entity_graph_wire_types.png?raw=1" alt="" /></p>
 <h2 id="inputs"><a class="header" href="#inputs">Inputs</a></h2>
 <p>Graphs can have inputs. They can be used to allow the user of your graph to pass data from the outside (e.g. the Editor) to the graph. This happens via the Input Nodes. In the General Graph settings you can add Inputs from the outside world.</p>
 <h3 id="adding-a-public-input"><a class="header" href="#adding-a-public-input">Adding a Public Input</a></h3>
 <ol>
 <li>You click on the Settings button which opens the Graphs Settings</li>
 </ol>
-<p><img src="https://www.dropbox.com/s/na7s582ljyxmnnf/tm_guide_entity_graph_settings.png?dl=1" alt="image" /></p>
+<p><img src="https://www.dropbox.com/s/na7s582ljyxmnnf/tm_guide_entity_graph_settings.png?raw=1" alt="image" /></p>
 <ol start="2">
 <li>
 <p>You expand the Input Accordion and press &quot;Add&quot;</p>
-<p><img src="https://www.dropbox.com/s/hv7qiqqhy4gbauw/tm_guide_entity_graph_add_input.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/hv7qiqqhy4gbauw/tm_guide_entity_graph_add_input.png?raw=1" alt="" /></p>
 </li>
 <li>
 <p>This will add a new Input to your graph! There you have a few options. </p>
-<p><img src="https://www.dropbox.com/s/s50hbn0sqhixlx3/tm_guide_entity_graph_input_node_settings.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/s50hbn0sqhixlx3/tm_guide_entity_graph_input_node_settings.png?raw=1" alt="" /></p>
 </li>
 </ol>
 <p>To make your node public just check the publicly accessible from another graph or from the Editor check the Public checkbox</p>
-<p><img src="https://www.dropbox.com/s/1m243i24lhwbosw/tm_guide_entity_graph_input_node_make_public.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/1m243i24lhwbosw/tm_guide_entity_graph_input_node_make_public.png?raw=1" alt="" /></p>
 <p>If you now select the Graph Component of your Entity you will be able to change the value:</p>
-<p><img src="https://www.dropbox.com/s/ojite1pycbs75pq/tm_guide_entity_graph_input_node_public.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/ojite1pycbs75pq/tm_guide_entity_graph_input_node_public.png?raw=1" alt="" /></p>
 <p>This can be a nice way to customize behaviour of your graph and entity!</p>
 <ol start="4">
 <li>
 <p>Add an Input node to your graph. There you have access to the data.</p>
-<p><img src="https://www.dropbox.com/s/l20w7d0utoet9ti/tm_guide_entity_graph_input_node.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/l20w7d0utoet9ti/tm_guide_entity_graph_input_node.png?raw=1" alt="" /></p>
 <p>The Input Node also allows you to access the settings. Hover over the name of the Input and a Settings option becomes available. </p>
-<p><img src="https://www.dropbox.com/s/wrg5hk7lbx0l1rs/tm_guide_entity_graph_input_node_on_settings.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/wrg5hk7lbx0l1rs/tm_guide_entity_graph_input_node_on_settings.png?raw=1" alt="" /></p>
 </li>
 </ol>
 <h3 id="variables"><a class="header" href="#variables">Variables</a></h3>
 <p>You can store data within your Graph! The Set / Get Variable nodes are the way to go. They give you access to this function. You can also access variables from distance Entities by using the Set / Get Remote Variable nodes.</p>
-<p><img src="https://www.dropbox.com/s/dgddk1xmw16dlp1/tm_guide_entity_graph_create_remote_variable.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/dgddk1xmw16dlp1/tm_guide_entity_graph_create_remote_variable.png?raw=1" alt="" /></p>
 <h3 id="branches-and-loops"><a class="header" href="#branches-and-loops">Branches and loops</a></h3>
 <p>The Language comes with built-in support for branches, the If node. The Language supports multiple bool operators to compare values.</p>
 <p>Besides, you have two nodes for loops:</p>
@@ -5443,7 +5443,7 @@ to open it in the Graph Editor:</p>
 <li>The For node</li>
 </ul>
 <p><em>The Grid node for example:</em></p>
-<p><img src="https://www.dropbox.com/s/9fawc756lyf0k3h/tm_guide_entity_graph_loop.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/9fawc756lyf0k3h/tm_guide_entity_graph_loop.png?raw=1" alt="" /></p>
 <h3 id="subgraphs"><a class="header" href="#subgraphs">Subgraphs</a></h3>
 <p>You can organize your code into smaller reusable units and combine nodes as a subgraph! Using subgraphs makes your Graph more user-friendly, and it will look less like spaghetti. You can store your subgraph as a <code>.entity_graph</code> asset in your asset browser and allow it to be reused across your project! Which enables you to have maximal flexibility! </p>
 <h2 id="what-is-next-5"><a class="header" href="#what-is-next-5">What is next?</a></h2>
@@ -5452,10 +5452,10 @@ to open it in the Graph Editor:</p>
 <p>Subgraphs are a way to organize your graph better and create smaller units. They make them easier to maintain and easy to follow. In its essence a subgraph is a graph within a graph. They are interfaced via a subgraph node. They can produce Input and Output, such as a normal node could. They can also call and react to normal Events!</p>
 <h2 id="create-a-subgraph"><a class="header" href="#create-a-subgraph">Create a subgraph</a></h2>
 <p>You create a new subgraph by simply selecting all nodes that shall be part of the subgraph. After that, click on them with the right mouse and select Create Subgraph from the context menu**.** The subgraph will replace the selected nodes. You can change its label in the property view. By simply double click you open the subgraph.</p>
-<p><img src="https://www.dropbox.com/s/k688sg41w5507mn/tm_guide_entity_graph_create_subgraph.gif?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/k688sg41w5507mn/tm_guide_entity_graph_create_subgraph.gif?raw=1" alt="" /></p>
 <h2 id="subgraph-inputs"><a class="header" href="#subgraph-inputs">Subgraph Inputs</a></h2>
 <p>A subgraph can have inputs and outputs. You can add them to them the same way as for a normal Graph. But you can also just connect the needed wires with the subgraph node, as the following image shows:</p>
-<p><img src="https://www.dropbox.com/s/18b2z2f1ed80ex6/tm_guide_entity_graph_create_subgraph_input_output.gif?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/18b2z2f1ed80ex6/tm_guide_entity_graph_create_subgraph_input_output.gif?raw=1" alt="" /></p>
 <h2 id="subgraph-prototypes-1"><a class="header" href="#subgraph-prototypes-1">Subgraph Prototypes</a></h2>
 <p>The Machinery's  <strong>Prototype</strong> system allows you to create, configure, and store an Entity/Creation Graph complete with all its subgraphs, input/output nodes as a reusable Entity / Creation Graph Asset. </p>
 <blockquote>
@@ -5467,16 +5467,16 @@ to open it in the Graph Editor:</p>
 </blockquote>
 <h3 id="create-a-subgraph-prototype"><a class="header" href="#create-a-subgraph-prototype">Create a subgraph Prototype</a></h3>
 <p>You can turn a subgraph into a prototype by simply using the context menu of the subgraph node and selecting Create Subgraph prototype. This will create a Subgraph Prototype Asset (<code>.entity_graph</code>) in your Asset Browser. When you open it you are opening the instanced version. Any change to this version will not be shared across all other versions! Only changes made to the prototype will propagate to all changes! To open a prototype you can use the &quot;Open Prototype&quot; Button. </p>
-<p><img src="https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/kstww1jbo3dpvwj/tm_guide_entity_graph_create_subgraph_prototype.gif?raw=1" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="debugger"><a class="header" href="#debugger">Debugger</a></h1>
 <p>The Entity Graph has a Debugger. You can use this Debugger to inspect the current values or set a breakpoint to see if the Graph behaves the way it should. Besides the graph indicated if a node is executed by a highlighted border!</p>
 <blockquote>
 <p><strong>Note:</strong>  The Debugger only works if the simulate tab and the graph tab are open at the same time!</p>
 </blockquote>
-<p><img src="https://www.dropbox.com/s/80ld50b4n6ohjio/tm_guide_entity_graph_debugger_basic.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/80ld50b4n6ohjio/tm_guide_entity_graph_debugger_basic.png?raw=1" alt="" /></p>
 <p>You can find the Debugger when you click on the button in the upper toolbar with the bug symbol <strong>(1)</strong>. It will open the Debugger Overlay. Besides the &quot;Bug&quot; button, you can find a dropdown menu <strong>(2)</strong>. This dropdown menu lets you switch between Graph instances quickly. This is useful if the Graph is part of an Entity Prototype or itself a Subgraph prototype! </p>
 <h2 id="debug-overlay"><a class="header" href="#debug-overlay">Debug Overlay</a></h2>
-<p><img src="https://www.dropbox.com/s/wly93rk8vz97upm/tm_guide_entity_graph_debug_overlay.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/wly93rk8vz97upm/tm_guide_entity_graph_debug_overlay.png?raw=1" alt="" /></p>
 <p>In this overlay, you find three-tab:</p>
 <ol>
 <li><strong>Watch Wires;</strong> Contains all data wires you are watching.</li>
@@ -5485,23 +5485,23 @@ to open it in the Graph Editor:</p>
 </ol>
 <h2 id="watch-wires"><a class="header" href="#watch-wires">Watch Wires</a></h2>
 <p>Like in a normal code editor, you can hover over any data wire and observe the values during the execution. If a value changed, it would be red, otherwise white.</p>
-<p><img src="https://www.dropbox.com/s/cw86wtsfcb8sg50/tm_guide_entity_graph_watch_wires.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/cw86wtsfcb8sg50/tm_guide_entity_graph_watch_wires.png?raw=1" alt="" /></p>
 <p>This might be cucumber some and difficult for observing multiple wires. This is why you can add them to the watch wire list.</p>
-<p><img src="https://www.dropbox.com/s/1j09t2vxxk4t11b/tm_guide_entity_graph_add_watch_wires.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/1j09t2vxxk4t11b/tm_guide_entity_graph_add_watch_wires.png?raw=1" alt="" /></p>
 <p>The Watch Wire list will indicate as well if a value has changed. You can also remove them there again and find the node with the find node button.</p>
-<p><img src="https://www.dropbox.com/s/lpx1duqf5lpee0n/tm_guide_entity_graph_watch_wires_overlay.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/lpx1duqf5lpee0n/tm_guide_entity_graph_watch_wires_overlay.png?raw=1" alt="" /></p>
 <p>Keep in mind that this list only works within the current graph instance and its subgraph.</p>
 <h2 id="breakpoints"><a class="header" href="#breakpoints">Breakpoints</a></h2>
 <p>Unlike watching wires which require no extra step, you cannot just add a breakpoint, and it will break immediately since such behaviour could be annoying. You can add breakpoints at any point in time via <strong>Right-Click on a node</strong> -&gt; <strong>Add Breakpoint.</strong> </p>
 <blockquote>
 <p><strong>Note:</strong> You can only add breakpoints to all nodes besides Event and Query nodes.</p>
 </blockquote>
-<p><img src="https://www.dropbox.com/s/us6lrw5ad9qpcbg/tm_guide_entity_graph_add_breakpoints.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/us6lrw5ad9qpcbg/tm_guide_entity_graph_add_breakpoints.png?raw=1" alt="" /></p>
 <p>To activate the breakpoints, you need to connect to the Simulation by pressing the Connect Button in the Debug Overlay.</p>
-<p><img src="https://www.dropbox.com/s/34jbcvkt49814kk/tm_guide_entity_graph_connect.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/34jbcvkt49814kk/tm_guide_entity_graph_connect.png?raw=1" alt="" /></p>
 <p>(<em>Alternatively, the Breakpoint Overview will inform you that you need to connect to the Simulation)</em></p>
 <p>The moment you are connected, the Simulation will react appropriately, and your breakpoints will happen.</p>
-<p><img src="https://www.dropbox.com/s/26awwgjzz93mcu4/tm_guide_entity_graph_debug_mode.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/26awwgjzz93mcu4/tm_guide_entity_graph_debug_mode.png?raw=1" alt="" /></p>
 <ol>
 <li>You can disconnect from the Simulation.</li>
 <li>You can continue till the next breakpoint hits.</li>
@@ -5770,7 +5770,7 @@ allows us to compose complex objects from simpler components in a flexible and p
 </ul>
 <h2 id="what-is-an-entity"><a class="header" href="#what-is-an-entity">What is an Entity?</a></h2>
 <p>An entity is the fundamental part of the Entity Component System. An entity is a handle to your data. The entity itself does not store any data or behavior.  The data is stored in components, which are associated with the Entity. The behavior is defined in Systems and Engines which process those components. Therefore an entity acts as an identifier or key to the data stored in components.</p>
-<p><img src="https://www.dropbox.com/s/5956267ltb4l14x/tm_guide_entity.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/5956267ltb4l14x/tm_guide_entity.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>Note:</strong> In this example both entities have the same set of components, but they do not own the data they just refer to it!</p>
 </blockquote>
@@ -5796,7 +5796,7 @@ IDs (i.e., weak referencing through <code>is_alive()</code>.</li>
 </ul>
 <h2 id="what-is-an-entity-type--archetype"><a class="header" href="#what-is-an-entity-type--archetype">What is an Entity type / Archetype?</a></h2>
 <p>An Entity Types is a unique combination of component types. The Entity API uses the entity type to group all entities that have the same sets of components.</p>
-<p><img src="https://www.dropbox.com/s/453d1nqrwnsntbw/tm_guide_entity_entity_type.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/453d1nqrwnsntbw/tm_guide_entity_entity_type.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>Note:</strong> In this example Entities A-B are of the same entity type while C has a different entity type!</p>
 </blockquote>
@@ -5819,7 +5819,7 @@ must be copied over to the new type.</li>
 lists, strings, buffers, etc.</li>
 </ul>
 <p>You can add callbacks to the component interface which allow you to perform actions on <code>add</code> and <code>remove</code>. The general lifetime of a component is bound to the Entity Context.</p>
-<p><img src="https://www.dropbox.com/s/1d39bh17zqgeloy/tm_guide_ecs_component.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/1d39bh17zqgeloy/tm_guide_ecs_component.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>It's all about the data</strong></p>
 <p>Data is all we have. Data is what we need to transform in order to create a user experience. Data is what we load when we open a document. Data is the graphics on the screen and the pulses from the buttons on your gamepad and the cause of your speakers and headphones producing waves in the air and the method by which you level up and how the bad guy knew where you were to shoot at you and how long the dynamite took to explode and how many rings you dropped when you fell on the spikes and the current velocity of every particle in the beautiful scene that ended the game, that was loaded off the disc and into your life. Any application is nothing without its data. Photoshop without the images is nothing. Word is nothing without the characters. Cubase is worthless without the events. All the applications that have ever been written have been written to output data based on some input data. The form of that data can be extremely complex, or so simple it requires no documentation at all, but all applications produce and need data. (<a href="https://www.dataorienteddesign.com/dodmain/node3.html">Source</a>)</p>
@@ -5838,10 +5838,10 @@ lists, strings, buffers, etc.</li>
 <p>Can provide a way to allocate data on adding/removing a component</p>
 </li>
 </ul>
-<p><img src="https://www.dropbox.com/s/kre84a4vqouq37z/tm_guide_component_manager.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/kre84a4vqouq37z/tm_guide_component_manager.png?raw=1" alt="" /></p>
 <h2 id="game-logic"><a class="header" href="#game-logic">Game Logic</a></h2>
 <p>The behavior is defined in Systems and Engines which process those components. Systems and Engines can be seen as data transformation actions. They take some input (components) and process them to some output (changed component data, different rendering) and a chain of small systems together makes up your game!</p>
-<p><img src="https://www.dropbox.com/s/5wqvcf27vvx5b7v/engines.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/5wqvcf27vvx5b7v/engines.png?raw=1" alt="" /></p>
 <h3 id="what-are-engines"><a class="header" href="#what-are-engines">What are Engines?</a></h3>
 <blockquote>
 <p><strong>Note</strong>: in some entity systems, these are referred to as <em>systems</em> instead, but we choose <em>engine</em>, because it is less ambiguous.</p>
@@ -5858,7 +5858,7 @@ lists, strings, buffers, etc.</li>
 Before running, an engine waits for the previous engines that wrote to the components that the
 engine is interested in.</p>
 <p>The following image shows how a time based movement System could look like:</p>
-<p><img src="https://www.dropbox.com/s/vn3n7ai2y28u695/tm_guide_ecs_engine_flow.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/vn3n7ai2y28u695/tm_guide_ecs_engine_flow.png?raw=1" alt="" /></p>
 </li>
 </ul>
 <h3 id="what-are-systems"><a class="header" href="#what-are-systems">What are Systems?</a></h3>
@@ -5875,7 +5875,7 @@ engine is interested in.</p>
 </ul>
 <h2 id="how-are-entity-assets-translated-to-ecs-entities"><a class="header" href="#how-are-entity-assets-translated-to-ecs-entities">How are Entity Assets translated to ECS Entities?</a></h2>
 <p>Since the Truth is an editor concept and our main data model, your scene is stored in the Truth. When you start the simulation your Assets get translated to the ECS via the <code>asset_load()</code> function. In your <a href="https://ourmachinery.com/apidoc/plugins/entity/entity.h.html#structtm_component_i"><code>tm_component_i</code></a> you can provide this function if you want your component to translate to the ECS world. In there you have access to the Truth, afterwards not anymore. Besides, you can provide some other callbacks for different stages of the translation process. </p>
-<p><img src="https://www.dropbox.com/s/ao6cs4fpyx9i078/truth_ecs%20%282%29.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/ao6cs4fpyx9i078/truth_ecs%20%282%29.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>Important:</strong> A Component representation in The Truth may <strong>not</strong> reflect the runtime ECS representation. This can be used to separate a Truth representation into smaller bits for gameplay programming sake but keep the simplicity for the Front End user.</p>
 </blockquote>
@@ -5904,7 +5904,7 @@ automatically delete it from its parent — it will remain in the parent as a de
 lists, strings, buffers, etc.</li>
 </ul>
 <p>You can add callbacks to the component interface which allow you to perform actions on <code>add</code> and <code>remove</code>. The general lifetime of a component is bound to the Entity Context.</p>
-<p><img src="https://www.dropbox.com/s/1d39bh17zqgeloy/tm_guide_ecs_component.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/1d39bh17zqgeloy/tm_guide_ecs_component.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>It's all about the data</strong></p>
 <p>Data is all we have. Data is what we need to transform in order to create a user experience. Data is what we load when we open a document. Data is the graphics on the screen and the pulses from the buttons on your gamepad and the cause of your speakers and headphones producing waves in the air and the method by which you level up and how the bad guy knew where you were to shoot at you and how long the dynamite took to explode and how many rings you dropped when you fell on the spikes and the current velocity of every particle in the beautiful scene that ended the game, that was loaded off the disc and into your life. Any application is nothing without its data. Photoshop without the images is nothing. Word is nothing without the characters. Cubase is worthless without the events. All the applications that have ever been written have been written to output data based on some input data. The form of that data can be extremely complex, or so simple it requires no documentation at all, but all applications produce and need data. (<a href="https://www.dataorienteddesign.com/dodmain/node3.html">Source</a>)</p>
@@ -6607,10 +6607,10 @@ for (const tm_entity_blackboard_value_t *bb = data-&gt;blackboard_start;
 </blockquote>
 <h3 id="adding-them-via-the-editor"><a class="header" href="#adding-them-via-the-editor">Adding them via The Editor</a></h3>
 <p>You need to select an Entity and <strong>Right Click -&gt; Add Component</strong></p>
-<p><img src="https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?raw=1" alt="" /></p>
 <p>This will add the <em>Entity Tag</em> Component. When selected you have the chance to add Tags to the Entity by using a simple autocomplete textbox. </p>
 <p><strong>Beware:</strong> The Engine will create an entity tag folder in your root folder. This is also the place where the Entity Tag API will search for the assets.</p>
-<p><img src="https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?raw=1" alt="" /></p>
 <h3 id="adding-and-accessing-tags-via-c"><a class="header" href="#adding-and-accessing-tags-via-c">Adding and Accessing Tags via C</a></h3>
 <p>You can also add tags via the <code>tag_component_api</code> but you need access to the <code>Tag Component Manager</code>. In your System or on Simulate Entry <code>start()</code>:</p>
 <pre><code class="language-c">tm_tag_component_manager_o *tag_mgr = (tm_tag_component_manager_o *)tm_entity_api-&gt;component_manager(ctx, tag_component);
@@ -6779,7 +6779,7 @@ tm_entity_api-&gt;register_engine(ctx, &amp;movement_engine);
 <p>As you can see the Movement Engine will now update all other entities in the game which do not have the No Movement Tag.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="overview-of-the-entity-context-lifecycle"><a class="header" href="#overview-of-the-entity-context-lifecycle">Overview of the Entity Context Lifecycle</a></h1>
 <p>This page describes the lifecycle of the entity context / the simulation and all its stages.</p>
-<p><img src="https://www.dropbox.com/s/vxq89spqcwzdvy8/tm_guide_ecs_life_cycle.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/vxq89spqcwzdvy8/tm_guide_ecs_life_cycle.png?raw=1" alt="" /></p>
 <h2 id="update-phases"><a class="header" href="#update-phases">Update Phases</a></h2>
 <p>In your Engine / Systems you an define in which Phase of the Update loop, your Engine / System shall run. This can be managed via the:  <code>.before_me</code>, <code>.after_me</code> and <code>.phase</code>  fields of your engine or system definition. </p>
 <p>Please keep in mind that the Scheduler will order your system based on what kind of components you might modify or not! This is why it is always recommended to say what kind of components your system/engine will operate on and what they will do with them (Write to them or not). Depending on your dependencies the scheduler will decide if your engine/system can run in parallel.</p>
@@ -6975,7 +6975,7 @@ processing arbitrary data on the CPUs and GPUs, exposed through a graph front-en
 <p>Now we make use of the previously created <code>dcc-image-compress</code>. This creation graph enables image compression and exposed the compression settings as a public input.</p>
 <p>{image}</p>
 <p>Now can can change in the Import Settings the for the DCC Asset Creation Graphs: Images</p>
-<p><img src="https://www.dropbox.com/s/dtkra0xs17yxvlq/tm_tut_cg_walkthough_import_settings.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/dtkra0xs17yxvlq/tm_tut_cg_walkthough_import_settings.png?raw=1" alt="" /></p>
 <p>We change this to our <code>dcc-image-compress</code> creation graph.</p>
 <h2 id="import-asset"><a class="header" href="#import-asset">Import Asset</a></h2>
 <p>Now when we import the dcc asset we can see that the textures are auto compressed when we extract all the textures from the dcc asset.</p>
@@ -6993,14 +6993,14 @@ processing arbitrary data on the CPUs and GPUs, exposed through a graph front-en
 <li>We also expose the compression settings as new input and also set it via the property panel to public</li>
 </ol>
 <p>The graph should look like this:</p>
-<p><img src="https://www.dropbox.com/s/xnpj45zjxkw5kez/tm_tut_cgw_image_import_cg.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/xnpj45zjxkw5kez/tm_tut_cgw_image_import_cg.png?raw=1" alt="" /></p>
 <h3 id="apply-the-correct-settings-to-the-import-settings"><a class="header" href="#apply-the-correct-settings-to-the-import-settings">Apply the correct settings to the Import Settings</a></h3>
 <p>What is left to do is change the creation graph for Import Images to our new <code>import-image-compress</code> creation graph in the Import Settings.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="custom-gpu-nodes"><a class="header" href="#custom-gpu-nodes">Custom GPU nodes</a></h1>
 <p>The <a href="https://ourmachinery.github.io/themachinery-books//creation_graphs/concept.html"><em>Creation Graph</em></a> is a powerful visual scripting language that can generate shader code through its GPU nodes. Extending this with custom nodes allows for more complex algorithms, custom material types and much more. In this tutorial we will demonstrate how to create some basic GPU nodes. To learn the difference between CPU and GPU nodes, check out <a href="https://ourmachinery.github.io/themachinery-books//creation_graphs/node_types.html"><em>Node Types</em></a>. </p>
 <p>A creation graph GPU node needs to be in a <code>.tmsl</code> file, these can be compiled by the shader system. Note that there can only be <strong>one</strong> creation graph node per <code>.tmsl</code> file, additional definitions will be ignored. If these shaders are placed in the <code>bin/data/shaders/</code> directory, they will be loaded automatically.  <code>.tmsl</code> files are written in a Simplified JSON format with less strict punctuation requirements. For a full reference on the shader files, check out the <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">Shader System Reference</a>.</p>
 <h2 id="cube-node"><a class="header" href="#cube-node">Cube Node</a></h2>
-<p><img src="https://www.dropbox.com/s/z6faxvwm0sb7i9o/tut_creation_graph_custom_cube.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/z6faxvwm0sb7i9o/tut_creation_graph_custom_cube.png?raw=1" alt="" /></p>
 <pre><code class="language-json">function: [[
 	output.res = x * x * x;
 ]]
@@ -7029,7 +7029,7 @@ creation_graph_node: {
 </ul>
 <p>Note that we didn’t specify a <code>type</code> parameter for our input field. This makes it a fuzzy input and anything that supports the multiplication operator can be passed. Our output parameter does have a <code>type</code> field, but instead of defining a fixed type, it uses a generic syntax that sets the output type to whatever the input type was. For more information about this syntax see the <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">Shader System Reference</a>.</p>
 <h2 id="depth-output-node"><a class="header" href="#depth-output-node">Depth Output Node</a></h2>
-<p><img src="https://www.dropbox.com/s/o947fbjy9uddltn/tut_creation_graph_custom_depth_output.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/o947fbjy9uddltn/tut_creation_graph_custom_depth_output.png?raw=1" alt="" /></p>
 <p>Output nodes are more complex than function nodes. Instead of a single <code>function</code> block, these nodes take the form of a render pass that can have variations based on the systems used with it and the connected inputs. The example above creates a very simple material node that displays a gray-scale interpretation of the object’s distance to the viewing camera.</p>
 <pre><code class="language-json">depth_stencil_states: {
 	depth_test_enable: true
@@ -7117,7 +7117,7 @@ pixel_shader: {
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-custom-cpu-nodes"><a class="header" href="#creating-custom-cpu-nodes">Creating custom CPU nodes</a></h1>
 <p>In this tutorial we will create a simple CPU node for the <a href="https://ourmachinery.github.io/themachinery-books//creation_graphs/concept.html"><em>Creation Graph</em></a>. The definition for these nodes is based on the Entity Graph Nodes, so there is some overlap. For this example we will create a node that generates a random <code>uint32_t</code> node with a settable maximum. To learn the difference between CPU and GPU nodes, check out <a href="https://ourmachinery.github.io/themachinery-books//creation_graphs/node_types.html"><em>Node Types</em></a>.</p>
-<p><img src="https://www.dropbox.com/s/04s5rzhmg9iwz68/tut_creation_graph_cpu_random.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/04s5rzhmg9iwz68/tut_creation_graph_cpu_random.png?raw=1" alt="" /></p>
 <p>Let’s first create the code for this node. This function will be called by the creation graph every time it needs to evaluate the node. Our only input to this function is the context of the creation graph. The first thing we will do is read our input from the context. We can query wires from the <a href="https://ourmachinery.com/apidoc/plugins/creation_graph/creation_graph_interpreter.h.html#structtm_creation_graph_interpreter_api"><code>tm_creation_graph_interpreter_api</code></a> using the <code>read_wire()</code> function. If this wire is not connected (or set directly) we early out with an error. After this, we start writing to our output wire. Note that this uses a very similar syntax, expect that we write to a pre-allocated pointer.</p>
 <blockquote>
 <p><strong>Note</strong> that the indices of these wires is relative to the way they are defined. Our input wire is defined first so its index is 0. The output wire is defined second so it gets the index 1.</p>
@@ -7208,7 +7208,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="creating-custom-geometry-nodes"><a class="header" href="#creating-custom-geometry-nodes">Creating Custom Geometry Nodes</a></h1>
 <p>In this tutorial we well be creating a CPU node for the <a href="https://ourmachinery.github.io/themachinery-books//creation_graphs/concept.html"><em>Creation Graph</em></a> that creates a mesh that can be used by rendering nodes. This tutorial expects some basic knowledge of the creation graph and node creation. it is recommended to read <a href="https://ourmachinery.github.io/themachinery-books//tutorials/creation_graph/custom_cpu_nodes.html"><em>Creating custom CPU nodes</em></a> before reading this.</p>
-<p><img src="https://www.dropbox.com/s/5xbu16zov1k5h4b/tm_tut_creation_graph_geometry_node.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/5xbu16zov1k5h4b/tm_tut_creation_graph_geometry_node.png?raw=1" alt="" /></p>
 <p>The main output of this node will be a <a href="https://ourmachinery.com/apidoc/plugins/creation_graph/geometry_nodes.h.html#structtm_gpu_geometry_t"><code>tm_gpu_geometry_t</code></a> and a <a href="https://ourmachinery.com/apidoc/plugins/renderer/commands.h.html#structtm_renderer_draw_call_info_t"><code>tm_renderer_draw_call_info_t</code></a>. Together these will make out <code>GPU Geometry</code> output. Additionally we will be outputting a bounding box for the triangle that can be used for culling and other calculations. But before we can populate those, we’ll need to consider the vertex format of our mesh. For this example, this will be a simple position, normal, and color per vertex:</p>
 <pre><code class="language-c">typedef struct tm_triangle_vertex_t {
   tm_vec3_t pos;
@@ -7508,7 +7508,7 @@ TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api *reg, bool load)
 <li><a href="tutorials/creation_graph/from_code.html#remarks">Remarks</a></li>
 <li><a href="tutorials/creation_graph/from_code.html#full-code">Full Code</a></li>
 </ul>
-<p><img src="https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/k4y8wlwx7y8vll3/tm_tut_creation_graphs_from_code.png?raw=1" alt="" /></p>
 <h2 id="using-the-creation-graph-api"><a class="header" href="#using-the-creation-graph-api">Using the Creation Graph API</a></h2>
 <p>The component itself is very simple, it only has a single property which is our creation graph asset:</p>
 <pre><code class="language-c">static const tm_the_truth_property_definition_t properties[] = {
@@ -8081,14 +8081,14 @@ common : [[
 </blockquote>
 <p>In this section we will discuss some of the Samples in more detail. </p>
 <p>You can download the Physics Sample projects from the Download Tab: <strong>Help → Download Sample Projects</strong> </p>
-<p><img src="https://www.dropbox.com/s/1w81dsmhazf6pfn/tm_tut_physics_sample_download.png?dl=1" alt="Where to find the samples" /></p>
+<p><img src="https://www.dropbox.com/s/1w81dsmhazf6pfn/tm_tut_physics_sample_download.png?raw=1" alt="Where to find the samples" /></p>
 <p>After you have downloaded the Physics Sample Project, you can open it:</p>
-<p><img src="https://www.dropbox.com/s/igj4b4ao1ntb4zw/tm_tut_physics_scenes.png?dl=1" alt="Where to find the scene" /></p>
+<p><img src="https://www.dropbox.com/s/igj4b4ao1ntb4zw/tm_tut_physics_scenes.png?raw=1" alt="Where to find the scene" /></p>
 <p>The <code>Scenes</code> folder contains all sample scenes (entities). Double click on a sample scene of your choice to load it.</p>
 <p>Each of the Sample Scenes is composed of multiple Entity Prototypes. You can find them in the <code>Special Objects</code> or in the <code>Shapes</code> folder:</p>
-<p><img src="https://www.dropbox.com/s/cafrzpkal6sd1y7/tm_tut_physics_special_objects.png?dl=1" alt="Special Objects folder" /></p>
+<p><img src="https://www.dropbox.com/s/cafrzpkal6sd1y7/tm_tut_physics_special_objects.png?raw=1" alt="Special Objects folder" /></p>
 <p><em>Special Objects</em> are entities with Graph Components attached that have associated logic.</p>
-<p><img src="https://www.dropbox.com/s/og7wipthmw1hl7d/tm_tut_physics_shapes.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/og7wipthmw1hl7d/tm_tut_physics_shapes.png?raw=1" alt="" /></p>
 <p><em>Shapes</em> are reused Entities to demonstrate different kind of Physic Bodies.</p>
 <blockquote>
 <p><strong>Note:</strong> If you change the Prototypes, all the instances will change as well. Keep this in mind when playing around with the samples. If you mess things up, you can always re-download a fresh sample project.</p>
@@ -8135,10 +8135,10 @@ common : [[
 </ul>
 <p>When adding the Physic Shape, we need to consider the Type. By default, the Type is Sphere, but that would not suit our needs since we want it to be a red box. We change the Type to Box and tick the Checkbox &quot;Is Trigger&quot; to make sure it is a Trigger. We can also change the Half Extent value if we like.</p>
 <p>If you look now into the Scene Tab, you see nothing. To change that, you can turn on the Debug Visualization:</p>
-<p><img src="https://www.dropbox.com/s/jp8oxoz8zl0f5d7/tm_tut_physics_viz.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/jp8oxoz8zl0f5d7/tm_tut_physics_viz.png?raw=1" alt="" /></p>
 <p>Having a Trigger that cannot be seen might be applicable for some games. In our case, we choose to make the Trigger Visible with a box.</p>
 <p>Luckily the core provides a Box Entity for us: <code>core/geometry/box.entity</code>. </p>
-<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?raw=1" alt="" /></p>
 <p>This location is something we keep in mind!</p>
 <p>Let us also add the Box (<code>core/geometry/box.entity</code>) from the core to our Entity as a child. This Box makes it easier for us to test it later because we can see it in the Scene Window.</p>
 <h3 id="add-the-logic-to-the-graph"><a class="header" href="#add-the-logic-to-the-graph">Add the logic to the graph</a></h3>
@@ -8147,9 +8147,9 @@ common : [[
 <p>The goal was to apply Velocity to any entity that touches the Trigger the first time. That is why we add a connector from the &quot;First Touch&quot; to the newly added Physx Set Velocity node.</p>
 <p>We connect the Entity from the &quot;Physx Set Velocity&quot; entity connector to the <em>Touched Entity Connector</em> at the &quot;Physx On Trigger Event&quot; node. </p>
 <p>We need to get the current Velocity of this Entity. We can do this by using the &quot;Physx Get Velocity&quot; node. The result we modify with, let us say -1 and apply it at the end. (<em>The lower the value, the stronger the ball will bounce off.</em>)</p>
-<p><img src="https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?raw=1" alt="" /></p>
 <p>This is how our trigger Entity looks like:</p>
-<p><img src="https://www.dropbox.com/s/njipx8mfsjsqcgj/tm_tut_physics_trigger_entity.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/njipx8mfsjsqcgj/tm_tut_physics_trigger_entity.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>Note:</strong> The Box Entity will be displayed yellow because it is a prototype instance of the Entity within the <code>core/geometry/</code> folder. Any changes to this prototype will apply to this instance as well. </p>
 </blockquote>
@@ -8162,7 +8162,7 @@ common : [[
 </blockquote>
 <p>After this, we need to ensure that our ball has Continuous Collision Detection (CCD) enabled. Also, the Inertia Tensor should be set to 0.4, and Angular Damping should be set to 0.05.</p>
 <p>Now that we have adjusted all the components let us add the actual ball. Again we can drag and drop the <code>sphere.entity</code> from the <code>core/geometry/</code> folder onto our Entity.</p>
-<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?raw=1" alt="" /></p>
 <h3 id="creating-the-scene"><a class="header" href="#creating-the-scene">Creating the Scene</a></h3>
 <p>After we have nearly all the components to create our little Scene, all that is missing is the playground. The playground can be defined as just a plane with a trigger on it.</p>
 <p>We can create a new Folder in the Asset Browser root and call it &quot;Scenes&quot;. In there, we create a new Entity and call it &quot;Triggers&quot;. We open this Entity.</p>
@@ -8174,7 +8174,7 @@ common : [[
 <p>If we do not use the Physics Visualization mode, we see nothing in the Scene Tab. We can change this by adding a new Child Entity to our floor Entity. We right-click on the Plane / Floor Entity <strong>-&gt;Add Child Entity -&gt; From Asset</strong>, and we search for the Plane Entity. It is also located in the core.</p>
 <p>When we look at the Scene Tab now, we see our new floor entity! Let us drag in our Trigger. We need to drag and drop the Trigger Entity from the Asset Browser in the Scene and adjust it with the Tools within the Scene Tab.</p>
 <p>The result could look like this:</p>
-<p><img src="https://www.dropbox.com/s/w4xqxvhcblinopu/tm_tut_physics_trigger_scene.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/w4xqxvhcblinopu/tm_tut_physics_trigger_scene.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>Note:</strong> We should add a Light Entity. Otherwise, it might be quite dark. Luckily the core has our back also here. We can just right-click the main Entity and <strong>Add Child Entity -&gt; From Asset -&gt; Light</strong>.</p>
 </blockquote>
@@ -8182,7 +8182,7 @@ common : [[
 <p>The Scene itself is not what we want because we cannot spawn balls yet. To do this, we add a graph to the Scene itself.</p>
 <p>In there, we add a &quot;Tick Event&quot; we need to poll every tick if the space key has was pressed. If you pressed space, we would spawn the ball from the camera direction. </p>
 <p>We push the ball via &quot;Physx Push&quot; with a calculated velocity.</p>
-<p><img src="https://www.dropbox.com/s/q9k4qp08lumgzef/tm_tut_physics_graph_spawn_ball.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/q9k4qp08lumgzef/tm_tut_physics_graph_spawn_ball.png?raw=1" alt="" /></p>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
 <p>All of the above described &quot;code you can&quot; find when you download the Physics Sample projects from the Download Tab: <em><strong>Help -&gt; Download Sample Projects</strong></em> </p>
 <div style="break-before: page; page-break-before: always;"></div><p>The Arkanoid scene shows you a physically accurate version of the famous Pong game.
@@ -8197,19 +8197,19 @@ Relevant components:</p>
 <p>By examining the <code>Physics Shape</code> properties we can see that bot the Material and the Collision properties are set.</p>
 </li>
 </ul>
-<p><img src="https://www.dropbox.com/s/mqprbsna9v3jlh3/image-20220311135902320.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/mqprbsna9v3jlh3/image-20220311135902320.png?raw=1" alt="" /></p>
 <p>The Bouncy Material (<code>Physics Materials/Bouncy.physics_material</code>) has a Restitution Coefficient of 1. This is what makes the ball &quot;bounce&quot;.</p>
-<p><img src="https://www.dropbox.com/s/5f93mvh8iaq828v/image-20220311140003187.png?dl=1" alt="image-20220311140003187" /></p>
+<p><img src="https://www.dropbox.com/s/5f93mvh8iaq828v/image-20220311140003187.png?raw=1" alt="image-20220311140003187" /></p>
 <p>The Bat Collision (<code>Physics Materials/Bat.physics_collision</code>) specifies the fact that shapes with this collision should only collide with entities that Have the <code>Default</code> Collision type. (Which can itself be found in the <code>Physics Materials</code> folder).
 As you can imagine then, the Ball will have the Default collision set on its Shape.</p>
-<p><img src="https://www.dropbox.com/s/ow0v79qrk1hstvu/image-20220311140028100.png?dl=1" alt="image-20220311140028100" /></p>
+<p><img src="https://www.dropbox.com/s/ow0v79qrk1hstvu/image-20220311140028100.png?raw=1" alt="image-20220311140028100" /></p>
 <ul>
 <li>
 <p><code>Physics Body</code>, to make the Bat movement around the world Physically accurate.</p>
 <p>Examining the <code>Physics Body</code> properties, we notice that the <code>Kinematic</code> checkbox is flagged: this means that the position of the Bat Entity won't be driven by the Physics simulation itself, but that it will be driven by the position that is present in the transform component instead. In this case we'll alter the transform component position via the <code>Entity Graph</code> of the Bat: then the position of the <code>transform component</code> will be reflected automatically in the Physics simulation.</p>
 </li>
 </ul>
-<p><img src="https://www.dropbox.com/s/twwcnz91jlrkv54/image-20220311140100012.png?dl=1" alt="image-20220311140100012" /></p>
+<p><img src="https://www.dropbox.com/s/twwcnz91jlrkv54/image-20220311140100012.png?raw=1" alt="image-20220311140100012" /></p>
 <ul>
 <li>
 <p>Entity Graph, which is used to:</p>
@@ -8217,7 +8217,7 @@ As you can imagine then, the Ball will have the Default collision set on its Sha
 <p>b) Push the ball in the opposite direction when the bat and the ball collides.</p>
 </li>
 </ul>
-<p><img src="https://www.dropbox.com/s/oj6tsxdiua3wbb0/image-20220311140128319.png?dl=1" alt="image-20220311140128319" /></p>
+<p><img src="https://www.dropbox.com/s/oj6tsxdiua3wbb0/image-20220311140128319.png?raw=1" alt="image-20220311140128319" /></p>
 <blockquote>
 <p>You may be wondering why it's not enough to just push the ball in the correct direction to make it bounce, and we have to set the restitution coefficient to 1 in addition to doing so.
 The answer is that if we leave the restitution coefficient to 0, the ball will loose all of its &quot;energy&quot; when it collides with the Bat, thus even if we later on push it in the correct direction it will still move very slowly.</p>
@@ -8229,7 +8229,7 @@ They're practially very similar to the Bat entity, just that they don't have:</p
 <li>The <code>Physics body</code> component (we don't want walls to be able to move around).</li>
 <li>The <code>Entity Graph</code> component, as we don't need any logic applied to them: walls are just static entities.</li>
 </ul>
-<p><img src="https://www.dropbox.com/s/gycvtqu2vq4l1bo/image-20220311140301191.png?dl=1" alt="image-20220311140301191" /></p>
+<p><img src="https://www.dropbox.com/s/gycvtqu2vq4l1bo/image-20220311140301191.png?raw=1" alt="image-20220311140301191" /></p>
 <h2 id="bricks-prototype-location-special-objectsbrick"><a class="header" href="#bricks-prototype-location-special-objectsbrick"><strong>Bricks</strong> (Prototype location: Special Objects/brick)</a></h2>
 <p>The &quot;standard&quot; brick (the one without a fancy blue ball on it) Is nothing more than a static Shape like walls are, with a small addition: we want bricks to be destroyed when they collide with the ball.</p>
 <p>To accomplish that, they:</p>
@@ -8237,25 +8237,25 @@ They're practially very similar to the Bat entity, just that they don't have:</p
 <li>Have the <code>Notify Touch</code> collision type, so that collisions with the ball are notified.</li>
 <li>Have an <code>Entity Graph</code> component that implements this very simple logic: they register the <code>Physx on contact event</code> and, once that triggers, they just delete themselves from the game by calling <code>destroy entity</code>.</li>
 </ul>
-<p><img src="https://www.dropbox.com/s/9v4veqzlx8qyxd5/image-20220311140414076.png?dl=1" alt="image-20220311140414076" /></p>
+<p><img src="https://www.dropbox.com/s/9v4veqzlx8qyxd5/image-20220311140414076.png?raw=1" alt="image-20220311140414076" /></p>
 <h2 id="special-bricks-prototype-location-special-objectsmultiball-brickentity"><a class="header" href="#special-bricks-prototype-location-special-objectsmultiball-brickentity"><strong>Special Bricks</strong> (Prototype location: Special Objects/Multiball Brick.entity)</a></h2>
 <p>This special kind of brick works exactly like a standard brick, but with a simple addition: its <code>Entity Graph</code> is made so that when hit it will spawn an additional ball spawn in the game.</p>
-<p><img src="https://www.dropbox.com/s/c7gdhs5dtdzvhmh/image-20220311140520748.png?dl=1" alt="image-20220311140520748" /></p>
+<p><img src="https://www.dropbox.com/s/c7gdhs5dtdzvhmh/image-20220311140520748.png?raw=1" alt="image-20220311140520748" /></p>
 <p>To see how it works, lets dive into his Entity Graph component, which is pretty similar to the standard brick's one.</p>
 <p>In there we can see that, just after self-destroying itself, it will execute the <code>Spawn a new Ball</code> subgraph, which will simply spawn a new ball and push it.</p>
-<p><img src="https://www.dropbox.com/s/uchnbo0baqzljw6/image-20220311140558642.png?dl=1" alt="image-20220311140558642" /></p>
+<p><img src="https://www.dropbox.com/s/uchnbo0baqzljw6/image-20220311140558642.png?raw=1" alt="image-20220311140558642" /></p>
 <blockquote>
 <p>Notice how we're using a <code>vec3</code> variable to store the position at which we want to spawn the additional ball in the <code>Save Position for New Ball</code> subgraph.</p>
 </blockquote>
 <h2 id="lost-ball-trigger"><a class="header" href="#lost-ball-trigger"><strong>Lost ball trigger</strong></a></h2>
 <p>The Lost ball trigger is the Entity responsible for re-spawning the ball when it goes out of bounds.
 The way it works is by having a <code>Physic Shape</code>  (you can see it in yellow by clicking on it in the Entity Tree) With the <code>Notify Touch</code> Collision type <em>and</em> with the <code>is_trigger</code> checkbox flagged:</p>
-<p><img src="https://www.dropbox.com/s/x3hzrnufansths4/image-20220311140709526.png?dl=1" alt="image-20220311140709526" /></p>
+<p><img src="https://www.dropbox.com/s/x3hzrnufansths4/image-20220311140709526.png?raw=1" alt="image-20220311140709526" /></p>
 <blockquote>
 <p>Physics Shapes flagged with the <code>is_trigger</code> checkbox will still exists in the Physical world, but when a collision with them happen the collision will be notified but the objects will be allowed to &quot;interpenetrate&quot; with each other.</p>
 </blockquote>
 <p>This means that it won't collide with the Ball (which has the Default collision, remember), and once the collision happens the <code>Physx On Trigger even</code>t will be triggered: (We can find it in the Entity Graph)</p>
-<p><img src="https://www.dropbox.com/s/vodlc8pohlz9xus/image-20220311140758376.png?dl=1" alt="image-20220311140758376" /></p>
+<p><img src="https://www.dropbox.com/s/vodlc8pohlz9xus/image-20220311140758376.png?raw=1" alt="image-20220311140758376" /></p>
 <p>Here we can see that once it's triggered, this event will:</p>
 <ul>
 <li>destroy the ball (Which is the <em>Touched</em> entity, notice the difference between this trigger and the one in the Brick's graph: there we are deleting the brick itself)</li>
@@ -8263,23 +8263,23 @@ The way it works is by having a <code>Physic Shape</code>  (you can see it in ye
 </ul>
 <h2 id="arkanoid"><a class="header" href="#arkanoid"><strong>Arkanoid</strong></a></h2>
 <p>In addition to containing all the other entities as children, the Arkanoid entity also has the Entity Graph component that is used for Spawning a ball when the game starts (or when the ball goes out of bounds).</p>
-<p><img src="https://www.dropbox.com/s/0veudm4fv1zqoun/image-20220311140926242.png?dl=1" alt="image-20220311140926242" /></p>
+<p><img src="https://www.dropbox.com/s/0veudm4fv1zqoun/image-20220311140926242.png?raw=1" alt="image-20220311140926242" /></p>
 <p>You can see that the Spawn Ball event is called both at the beginning of the Game (When the Init event will be called) but also when a <code>Lost ball</code> event is triggered.</p>
 <p>This concludes the tour of the Arkanoid scene, try to experiment it a bit and don't be scared of breaking stuff, you can always re-download the sample if you screw things up.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contacts-scene-breakdown"><a class="header" href="#contacts-scene-breakdown">Contacts scene breakdown</a></h1>
-<p><img src="https://www.dropbox.com/s/s2ocyt0bcywxjkl/image-20220318094339252.png?dl=1" alt="image-20220318094339252" /></p>
+<p><img src="https://www.dropbox.com/s/s2ocyt0bcywxjkl/image-20220318094339252.png?raw=1" alt="image-20220318094339252" /></p>
 <h2 id="plane"><a class="header" href="#plane">Plane</a></h2>
 <p>The Plane Entity is just a simple Entity with a Shape attached to it.</p>
 <h2 id="spawn-pile"><a class="header" href="#spawn-pile">Spawn Pile</a></h2>
 <p>The Spawn Pile doesn't have any Physics component attached to it, but its Entity Graph will spawn a new Box every Three seconds and Push it down towards the Ground.</p>
-<p><img src="https://www.dropbox.com/s/pn0mnz7l1vcac8u/image-20220317093117838.png?dl=1" alt="image-20220317093117838" /></p>
+<p><img src="https://www.dropbox.com/s/pn0mnz7l1vcac8u/image-20220317093117838.png?raw=1" alt="image-20220317093117838" /></p>
 <h2 id="ball-thrower-prototype-location-special-objectsball-thrower"><a class="header" href="#ball-thrower-prototype-location-special-objectsball-thrower">Ball thrower (Prototype location: Special Objects/Ball Thrower)</a></h2>
 <p>The Ball Thrower doesn't have any Physics component either, but it will spawn a new ball in the viewing direction if the spacebar is pressed. The Logic is pretty similar to the one of the Spawn Pile: Spawn a new entity and use the Physx Push Node to push it in a specific direction, in this case the camera viewing direction.</p>
-<p><img src="https://www.dropbox.com/s/yxmcg9znvubo4jp/image-20220317093549002.png?dl=1" alt="image-20220317093549002" /></p>
+<p><img src="https://www.dropbox.com/s/yxmcg9znvubo4jp/image-20220317093549002.png?raw=1" alt="image-20220317093549002" /></p>
 <p>That's it for the Contacts scene, it's a pretty simple one.</p>
 <p>You will notice that the Boxes only collide with the blue spheres and the Ground plane: as an exercise try to make it so that the boxes also collides with each other.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="kinematic-scene-breakdown"><a class="header" href="#kinematic-scene-breakdown">Kinematic Scene breakdown</a></h1>
-<p><img src="https://www.dropbox.com/s/jvy8da7ptkl5uk0/image-20220317102629794.png?dl=1" alt="image-20220317102629794" /></p>
+<p><img src="https://www.dropbox.com/s/jvy8da7ptkl5uk0/image-20220317102629794.png?raw=1" alt="image-20220317102629794" /></p>
 <h2 id="plane-1"><a class="header" href="#plane-1">Plane</a></h2>
 <p>Just static geometry like we saw in previous scenes.</p>
 <h2 id="walls"><a class="header" href="#walls">Walls</a></h2>
@@ -8288,16 +8288,16 @@ The way it works is by having a <code>Physic Shape</code>  (you can see it in ye
 <p>The sweeper is a simple rigid body with a rectangular shape that will perpetually rotate on it's own Y axis.</p>
 <p>The Rigid body component has the &quot;Kinematic&quot; flag set so that Physx knows that the position of the entity will be driven by its transform component.</p>
 <p>The Velocity component is used to apply (in this case) a constant angular velocity to the entity to make it rotate on its own axis.</p>
-<p><img src="https://www.dropbox.com/s/timq3uy7mfltzfp/image-20220318094033356.png?dl=1" alt="image-20220318094033356" /></p>
+<p><img src="https://www.dropbox.com/s/timq3uy7mfltzfp/image-20220318094033356.png?raw=1" alt="image-20220318094033356" /></p>
 <h2 id="spawners"><a class="header" href="#spawners">Spawners</a></h2>
 <p>There are four different spawners in the scene, placed at the four corners of the plane, and each one of them will spawn a physic object once every second.</p>
 <p>Notice that the spawned entities won't have any force applied to them, so they will just fall on the ground. (Until they get swept by the Sweeper, I mean)</p>
 <p>You can find the objects that will be spawned for each of the spawners under the Shapes folder. </p>
-<p><img src="https://www.dropbox.com/s/elydub9tniba8a7/image-20220317102210569.png?dl=1" alt="image-20220317102210569" /></p>
+<p><img src="https://www.dropbox.com/s/elydub9tniba8a7/image-20220317102210569.png?raw=1" alt="image-20220317102210569" /></p>
 <h2 id="ball-thrower-prototype-location-special-objectsball-thrower-1"><a class="header" href="#ball-thrower-prototype-location-special-objectsball-thrower-1">Ball Thrower (Prototype location: Special Objects/Ball Thrower)</a></h2>
 <p>The same ball thrower that we saw in the Contacts scene: press Space to throw a ball in the scene.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="stack-scene-breakdown"><a class="header" href="#stack-scene-breakdown">Stack Scene Breakdown</a></h1>
-<p><img src="https://www.dropbox.com/s/hwqnbbewblkiifb/image-20220317110041697.png?dl=1" alt="image-20220317110041697" /></p>
+<p><img src="https://www.dropbox.com/s/hwqnbbewblkiifb/image-20220317110041697.png?raw=1" alt="image-20220317110041697" /></p>
 <h2 id="plane-2"><a class="header" href="#plane-2">Plane</a></h2>
 <p>Simple static geometry.</p>
 <h2 id="stack"><a class="header" href="#stack">Stack</a></h2>
@@ -8306,7 +8306,7 @@ The way it works is by having a <code>Physic Shape</code>  (you can see it in ye
 <p>Class Ball thrower that we already saw.</p>
 <h2 id="sniper"><a class="header" href="#sniper">Sniper</a></h2>
 <p>The sniper will cast a ray into the scene using the <code>Physx Raycast</code> node if the Left mouse button is pressed and, if something is hit, it will push the hit entity in the camera direction.</p>
-<p><img src="https://www.dropbox.com/s/m02p85cft958l4q/image-20220317110122631.png?dl=1" alt="image-20220317110122631" /></p>
+<p><img src="https://www.dropbox.com/s/m02p85cft958l4q/image-20220317110122631.png?raw=1" alt="image-20220317110122631" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="tutorials-3"><a class="header" href="#tutorials-3">Tutorials</a></h2>
 <p>This section introduces you to some more complex topics such as <a href="https://ourmachinery.github.io/themachinery-books/tutorials/the_truth/custom_asset/index.html"><em>How to Create your Own Asset Type</em></a>.</p>
 <p>For more information checkout the <a href="https://ourmachinery.com/apidoc/foundation/the_truth.h.html">documentation</a> and these blog posts</p>
@@ -10971,7 +10971,7 @@ else
 <h2 id="implement-a-toolbar-in-a-tab"><a class="header" href="#implement-a-toolbar-in-a-tab">Implement a Toolbar in a Tab</a></h2>
 <p>To begin with, we need to create a new tab plugin. We go on <strong>File -&gt; New Plugin -&gt; Tab.</strong> </p>
 <p>A file dialog pops up, and we can decide where to store our plugin.</p>
-<p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/jhrqv8t8bbhr20u/tm_tut_new_tab.png?raw=1" alt="" /></p>
 <p>We open the <code>custom_tab.c</code> (or however we called it) file with our favorite editor.</p>
 <p>We search for the line in which we define the tab itself:</p>
 <pre><code class="language-c">static tm_tab_vt *custom_tab_vt = &amp;(tm_tab_vt){
@@ -11089,7 +11089,7 @@ else
 <li>We can split the tabwell horizontally, creating top and bottom child tabwells.</li>
 <li>We can split the tabwell vertically, creating left and right child tabwells.</li>
 <li>We can define (up to 3) tabs that should be in this tabwell.
-<img src="https://www.dropbox.com/s/ggiq4uv6htgwnpj/tm_tut_default_layout.png?dl=1" alt="" /></li>
+<img src="https://www.dropbox.com/s/ggiq4uv6htgwnpj/tm_tut_default_layout.png?raw=1" alt="" /></li>
 </ul>
 <pre><code class="language-c">tm_tab_layout_t layout = {
     .split = TM_TAB_LAYOUT_SPLIT_TYPE__HORIZONTAL,
@@ -11304,7 +11304,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <p>You have three options to host or join a collaboration Session:</p>
 <h3 id="host-a-lan-server"><a class="header" href="#host-a-lan-server">Host a LAN Server</a></h3>
 <p>Host a server on your LAN. The system will choose a free port on your machine for hosting. Other users on the same LAN can join your session by choosing <em>Join LAN Server</em> and selecting your machine.</p>
-<p><img src="https://www.dropbox.com/s/0amm9km2jiejxx1/tm_guide_collab_host_local.png?dl=1" alt="Host locally" /></p>
+<p><img src="https://www.dropbox.com/s/0amm9km2jiejxx1/tm_guide_collab_host_local.png?raw=1" alt="Host locally" /></p>
 <ol>
 <li>Select &quot;Host LAN Server&quot; from the dropdown</li>
 <li>Your Handle, in case of hosting this will be the name the session will have as well as your username.</li>
@@ -11312,7 +11312,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 </ol>
 <h4 id="join-a-local-server"><a class="header" href="#join-a-local-server">Join a local Server</a></h4>
 <p>When you open the collaboration tab the default view is the &quot;Join LAN Server&quot; view. In this view you can join a local server.</p>
-<p><img src="https://www.dropbox.com/s/1cx17p05swuu6mg/tm_guide_collab_join_local.png?dl=1" alt="The default view of the collab tab is the join local option" /></p>
+<p><img src="https://www.dropbox.com/s/1cx17p05swuu6mg/tm_guide_collab_join_local.png?raw=1" alt="The default view of the collab tab is the join local option" /></p>
 <ol>
 <li>Select &quot;Join LAN Server&quot; from the dropdown</li>
 <li>You can select a collaboration session. If there is no session available this field is disabled.</li>
@@ -11321,7 +11321,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 </ol>
 <h3 id="host-internet-server"><a class="header" href="#host-internet-server">Host Internet Server</a></h3>
 <p>Host a server that can be accessed over the internet on a specified port.</p>
-<p><img src="https://www.dropbox.com/s/q3q7ltunpqmepeq/tm_guide_collab_host_internet.png?dl=1" alt="Host Internet Server" /></p>
+<p><img src="https://www.dropbox.com/s/q3q7ltunpqmepeq/tm_guide_collab_host_internet.png?raw=1" alt="Host Internet Server" /></p>
 <ol>
 <li>You can select the port of your session. If your router does not support <strong>UPnP</strong> you might have to port forward your selected port.</li>
 <li>Your Handle, the name the other user can see on their side.</li>
@@ -11333,7 +11333,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 </blockquote>
 <h4 id="join-an-internet-server"><a class="header" href="#join-an-internet-server">Join an internet Server</a></h4>
 <p>To connect, an external user would choose <em>Join Internet Server</em> and specify your external IP address.</p>
-<p><img src="https://www.dropbox.com/s/n1fhqm7p3jr6yx8/tm_guide_collab_join_internet.png?dl=1" alt="Join a Internet Server" /></p>
+<p><img src="https://www.dropbox.com/s/n1fhqm7p3jr6yx8/tm_guide_collab_join_internet.png?raw=1" alt="Join a Internet Server" /></p>
 <ol>
 <li>You need the Online Host's IP Address. In the format: <code>89.89.89.89:1234</code>. </li>
 <li>Your Handle, the name the other user can see on their side.</li>
@@ -11349,10 +11349,10 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <p><strong>Note:</strong> Host and client cannot be invisible otherwise invites wont work!</p>
 </blockquote>
 <p>After this setting is enabled you need to add The Machinery as a game so others can see you are playing it. This allows you now to invite your friends via the Engine into your session and vice versa.</p>
-<p><img src="https://www.dropbox.com/s/6e6lanbsz5etfkm/tm_guide_collab_discord_host.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/6e6lanbsz5etfkm/tm_guide_collab_discord_host.png?raw=1" alt="" /></p>
 <h2 id="connected"><a class="header" href="#connected">Connected</a></h2>
 <p>When you are connected to a collaboration session you have this view. In the connected view you can chat with the other participants of the chat. The session will <strong>not</strong> terminate / disconnect if you close the tab.</p>
-<p><img src="https://www.dropbox.com/s/ehg9x2l8frvlo04/tm_guide_collab_connected.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/ehg9x2l8frvlo04/tm_guide_collab_connected.png?raw=1" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="qa-pipeline"><a class="header" href="#qa-pipeline">QA Pipeline</a></h1>
 <p>The Machinery comes with some built-in tools to support you in building games.</p>
 <ul>
@@ -11368,7 +11368,7 @@ same machine (just start two instances of the_machinery.exe) and connect using t
 <p><img src="https://paper-attachments.dropbox.com/s_5086E710AFB88B222C81207791AF7092731DB9D2900AFABEA044A0AC0B80DFFB_1625604230068_image.png" alt="" /></p>
 <h2 id="statistics-overlay"><a class="header" href="#statistics-overlay">Statistics Overlay</a></h2>
 <p>During the simulation in the simulate tab you have the ability to open different statistic overlays.</p>
-<p><img src="https://www.dropbox.com/s/cmk3u9lt4d8l3n0/tm_guide_statistics_in_simulate.png?dl=1" alt="https://www.dropbox.com/s/cmk3u9lt4d8l3n0/tm_guide_statistics_in_simulate.png?dl=1" /></p>
+<p><img src="https://www.dropbox.com/s/cmk3u9lt4d8l3n0/tm_guide_statistics_in_simulate.png?raw=1" alt="https://www.dropbox.com/s/cmk3u9lt4d8l3n0/tm_guide_statistics_in_simulate.png?dl=1" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="profiler-tab"><a class="header" href="#profiler-tab">Profiler Tab</a></h1>
 <p>The profiler tab will display all scopes that have been added to the profiler API. With the tab, you can record for a few moments all scopes and then afterward analyze them.</p>
 <p><img src="https://paper-attachments.dropbox.com/s_5086E710AFB88B222C81207791AF7092731DB9D2900AFABEA044A0AC0B80DFFB_1625602954215_image.png" alt="" /></p>
@@ -12445,7 +12445,7 @@ util(&quot;my-untility&quot;)
 </code></pre>
 <h2 id="the-machinery-project-recommendation-1"><a class="header" href="#the-machinery-project-recommendation-1">The Machinery Project Recommendation</a></h2>
 <p>We recommend you to make use of one single premake file that manages all your plugins at one build. This avoids the need to go in each of the folder to build your project. As recommended in the the chapter <a href="https://ourmachinery.github.io/themachinery-books//getting_started/project_setup.html#possible-folder-structure-for-a-project">Project Setup: Possible folder structure for a project</a> we recommend also to seperate your plugins into sub folders. The following image shows a potential setup for your game plugins:</p>
-<p><img src="https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/l1429g7p5xx8kj2/tm_guide_possible_subfolder.png?raw=1" alt="" /></p>
 <p>In here we have one single <code>premake</code> file and a single <code>libs.json</code> as well as the <code>libs</code> folder. This allows you to run <code>tmbuild</code> just in this folder and all plugins or the ones you want to build can be built at once. </p>
 <p>In this case the premake file could look like this:</p>
 <blockquote>
@@ -12702,14 +12702,14 @@ initialization code for booting up all the systems that you want to use as well 
 code that runs the executable.</p>
 <p><code>bin/simple-draw.exe</code> is a sample executable that uses the UI / Draw2D interfaces of The Machinery
 to implement a simple drawing program:</p>
-<p><img src="https://www.dropbox.com/s/bilirde9yud4rn3/simple-draw.png?dl=1" alt="Simple Draw executable." /></p>
+<p><img src="https://www.dropbox.com/s/bilirde9yud4rn3/simple-draw.png?raw=1" alt="Simple Draw executable." /></p>
 <p>The source code of this sample program is available in the <code>samples</code> directory. By playing with
 and modifying this, you can see how to build your own applications on top of <em>The Machinery</em>.</p>
 <p>Note that just as when writing plugins, you need a Visual Studio installation (2019) to build an
 executable. You need to set <code>TM_SDK_DIR</code> to the location of The Machinery SDK you are using, and you
 use <code>tmbuild.exe</code> to build the executable.</p>
 <p><code>bin/simple-3d.exe</code> is a sample executable that uses the full 3D API.</p>
-<p><img src="https://www.dropbox.com/s/oz9zob150yksnhr/simple-3d.png?dl=1" alt="Simple 3D executable." /></p>
+<p><img src="https://www.dropbox.com/s/oz9zob150yksnhr/simple-3d.png?raw=1" alt="Simple 3D executable." /></p>
 <p>You will find the source code for this too in the samples directory.</p>
 
                     </main>

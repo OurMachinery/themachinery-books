@@ -196,10 +196,10 @@
 </ul>
 <p>When adding the Physic Shape, we need to consider the Type. By default, the Type is Sphere, but that would not suit our needs since we want it to be a red box. We change the Type to Box and tick the Checkbox &quot;Is Trigger&quot; to make sure it is a Trigger. We can also change the Half Extent value if we like.</p>
 <p>If you look now into the Scene Tab, you see nothing. To change that, you can turn on the Debug Visualization:</p>
-<p><img src="https://www.dropbox.com/s/jp8oxoz8zl0f5d7/tm_tut_physics_viz.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/jp8oxoz8zl0f5d7/tm_tut_physics_viz.png?raw=1" alt="" /></p>
 <p>Having a Trigger that cannot be seen might be applicable for some games. In our case, we choose to make the Trigger Visible with a box.</p>
 <p>Luckily the core provides a Box Entity for us: <code>core/geometry/box.entity</code>. </p>
-<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?raw=1" alt="" /></p>
 <p>This location is something we keep in mind!</p>
 <p>Let us also add the Box (<code>core/geometry/box.entity</code>) from the core to our Entity as a child. This Box makes it easier for us to test it later because we can see it in the Scene Window.</p>
 <h3 id="add-the-logic-to-the-graph"><a class="header" href="#add-the-logic-to-the-graph">Add the logic to the graph</a></h3>
@@ -208,9 +208,9 @@
 <p>The goal was to apply Velocity to any entity that touches the Trigger the first time. That is why we add a connector from the &quot;First Touch&quot; to the newly added Physx Set Velocity node.</p>
 <p>We connect the Entity from the &quot;Physx Set Velocity&quot; entity connector to the <em>Touched Entity Connector</em> at the &quot;Physx On Trigger Event&quot; node. </p>
 <p>We need to get the current Velocity of this Entity. We can do this by using the &quot;Physx Get Velocity&quot; node. The result we modify with, let us say -1 and apply it at the end. (<em>The lower the value, the stronger the ball will bounce off.</em>)</p>
-<p><img src="https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/g8yhrs5e7wugau4/tm_tut_physics_graph_trigger_event.png?raw=1" alt="" /></p>
 <p>This is how our trigger Entity looks like:</p>
-<p><img src="https://www.dropbox.com/s/njipx8mfsjsqcgj/tm_tut_physics_trigger_entity.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/njipx8mfsjsqcgj/tm_tut_physics_trigger_entity.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>Note:</strong> The Box Entity will be displayed yellow because it is a prototype instance of the Entity within the <code>core/geometry/</code> folder. Any changes to this prototype will apply to this instance as well. </p>
 </blockquote>
@@ -223,7 +223,7 @@
 </blockquote>
 <p>After this, we need to ensure that our ball has Continuous Collision Detection (CCD) enabled. Also, the Inertia Tensor should be set to 0.4, and Angular Damping should be set to 0.05.</p>
 <p>Now that we have adjusted all the components let us add the actual ball. Again we can drag and drop the <code>sphere.entity</code> from the <code>core/geometry/</code> folder onto our Entity.</p>
-<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/xd9gjg8pbw6p8kj/tm_tut_physics_core_gom.png?raw=1" alt="" /></p>
 <h3 id="creating-the-scene"><a class="header" href="#creating-the-scene">Creating the Scene</a></h3>
 <p>After we have nearly all the components to create our little Scene, all that is missing is the playground. The playground can be defined as just a plane with a trigger on it.</p>
 <p>We can create a new Folder in the Asset Browser root and call it &quot;Scenes&quot;. In there, we create a new Entity and call it &quot;Triggers&quot;. We open this Entity.</p>
@@ -235,7 +235,7 @@
 <p>If we do not use the Physics Visualization mode, we see nothing in the Scene Tab. We can change this by adding a new Child Entity to our floor Entity. We right-click on the Plane / Floor Entity <strong>-&gt;Add Child Entity -&gt; From Asset</strong>, and we search for the Plane Entity. It is also located in the core.</p>
 <p>When we look at the Scene Tab now, we see our new floor entity! Let us drag in our Trigger. We need to drag and drop the Trigger Entity from the Asset Browser in the Scene and adjust it with the Tools within the Scene Tab.</p>
 <p>The result could look like this:</p>
-<p><img src="https://www.dropbox.com/s/w4xqxvhcblinopu/tm_tut_physics_trigger_scene.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/w4xqxvhcblinopu/tm_tut_physics_trigger_scene.png?raw=1" alt="" /></p>
 <blockquote>
 <p><strong>Note:</strong> We should add a Light Entity. Otherwise, it might be quite dark. Luckily the core has our back also here. We can just right-click the main Entity and <strong>Add Child Entity -&gt; From Asset -&gt; Light</strong>.</p>
 </blockquote>
@@ -243,7 +243,7 @@
 <p>The Scene itself is not what we want because we cannot spawn balls yet. To do this, we add a graph to the Scene itself.</p>
 <p>In there, we add a &quot;Tick Event&quot; we need to poll every tick if the space key has was pressed. If you pressed space, we would spawn the ball from the camera direction. </p>
 <p>We push the ball via &quot;Physx Push&quot; with a calculated velocity.</p>
-<p><img src="https://www.dropbox.com/s/q9k4qp08lumgzef/tm_tut_physics_graph_spawn_ball.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/q9k4qp08lumgzef/tm_tut_physics_graph_spawn_ball.png?raw=1" alt="" /></p>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
 <p>All of the above described &quot;code you can&quot; find when you download the Physics Sample projects from the Download Tab: <em><strong>Help -&gt; Download Sample Projects</strong></em> </p>
 

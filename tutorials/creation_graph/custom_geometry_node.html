@@ -156,7 +156,7 @@
                     <main>
                         <h1 id="creating-custom-geometry-nodes"><a class="header" href="#creating-custom-geometry-nodes">Creating Custom Geometry Nodes</a></h1>
 <p>In this tutorial we well be creating a CPU node for the <a href="https://ourmachinery.github.io/themachinery-books//creation_graphs/concept.html"><em>Creation Graph</em></a> that creates a mesh that can be used by rendering nodes. This tutorial expects some basic knowledge of the creation graph and node creation. it is recommended to read <a href="https://ourmachinery.github.io/themachinery-books//tutorials/creation_graph/custom_cpu_nodes.html"><em>Creating custom CPU nodes</em></a> before reading this.</p>
-<p><img src="https://www.dropbox.com/s/5xbu16zov1k5h4b/tm_tut_creation_graph_geometry_node.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/5xbu16zov1k5h4b/tm_tut_creation_graph_geometry_node.png?raw=1" alt="" /></p>
 <p>The main output of this node will be a <a href="https://ourmachinery.com/apidoc/plugins/creation_graph/geometry_nodes.h.html#structtm_gpu_geometry_t"><code>tm_gpu_geometry_t</code></a> and a <a href="https://ourmachinery.com/apidoc/plugins/renderer/commands.h.html#structtm_renderer_draw_call_info_t"><code>tm_renderer_draw_call_info_t</code></a>. Together these will make out <code>GPU Geometry</code> output. Additionally we will be outputting a bounding box for the triangle that can be used for culling and other calculations. But before we can populate those, we’ll need to consider the vertex format of our mesh. For this example, this will be a simple position, normal, and color per vertex:</p>
 <pre><code class="language-c">typedef struct tm_triangle_vertex_t {
   tm_vec3_t pos;

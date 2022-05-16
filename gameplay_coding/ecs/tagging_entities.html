@@ -178,10 +178,10 @@
 </blockquote>
 <h3 id="adding-them-via-the-editor"><a class="header" href="#adding-them-via-the-editor">Adding them via The Editor</a></h3>
 <p>You need to select an Entity and <strong>Right Click -&gt; Add Component</strong></p>
-<p><img src="https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/x6pntlc4u0vw9pa/tm_guide_entity_tag_add_component.png?raw=1" alt="" /></p>
 <p>This will add the <em>Entity Tag</em> Component. When selected you have the chance to add Tags to the Entity by using a simple autocomplete textbox. </p>
 <p><strong>Beware:</strong> The Engine will create an entity tag folder in your root folder. This is also the place where the Entity Tag API will search for the assets.</p>
-<p><img src="https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/ve5lr0e0qcs221e/tm_guide_entity_tag.png?raw=1" alt="" /></p>
 <h3 id="adding-and-accessing-tags-via-c"><a class="header" href="#adding-and-accessing-tags-via-c">Adding and Accessing Tags via C</a></h3>
 <p>You can also add tags via the <code>tag_component_api</code> but you need access to the <code>Tag Component Manager</code>. In your System or on Simulate Entry <code>start()</code>:</p>
 <pre><code class="language-c">tm_tag_component_manager_o *tag_mgr = (tm_tag_component_manager_o *)tm_entity_api-&gt;component_manager(ctx, tag_component);

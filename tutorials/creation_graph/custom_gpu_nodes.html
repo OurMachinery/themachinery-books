@@ -158,7 +158,7 @@
 <p>The <a href="https://ourmachinery.github.io/themachinery-books//creation_graphs/concept.html"><em>Creation Graph</em></a> is a powerful visual scripting language that can generate shader code through its GPU nodes. Extending this with custom nodes allows for more complex algorithms, custom material types and much more. In this tutorial we will demonstrate how to create some basic GPU nodes. To learn the difference between CPU and GPU nodes, check out <a href="https://ourmachinery.github.io/themachinery-books//creation_graphs/node_types.html"><em>Node Types</em></a>. </p>
 <p>A creation graph GPU node needs to be in a <code>.tmsl</code> file, these can be compiled by the shader system. Note that there can only be <strong>one</strong> creation graph node per <code>.tmsl</code> file, additional definitions will be ignored. If these shaders are placed in the <code>bin/data/shaders/</code> directory, they will be loaded automatically.  <code>.tmsl</code> files are written in a Simplified JSON format with less strict punctuation requirements. For a full reference on the shader files, check out the <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">Shader System Reference</a>.</p>
 <h2 id="cube-node"><a class="header" href="#cube-node">Cube Node</a></h2>
-<p><img src="https://www.dropbox.com/s/z6faxvwm0sb7i9o/tut_creation_graph_custom_cube.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/z6faxvwm0sb7i9o/tut_creation_graph_custom_cube.png?raw=1" alt="" /></p>
 <pre><code class="language-json">function: [[
 	output.res = x * x * x;
 ]]
@@ -187,7 +187,7 @@ creation_graph_node: {
 </ul>
 <p>Note that we didn’t specify a <code>type</code> parameter for our input field. This makes it a fuzzy input and anything that supports the multiplication operator can be passed. Our output parameter does have a <code>type</code> field, but instead of defining a fixed type, it uses a generic syntax that sets the output type to whatever the input type was. For more information about this syntax see the <a href="https://ourmachinery.com/apidoc/doc/shader_system_reference.md.html">Shader System Reference</a>.</p>
 <h2 id="depth-output-node"><a class="header" href="#depth-output-node">Depth Output Node</a></h2>
-<p><img src="https://www.dropbox.com/s/o947fbjy9uddltn/tut_creation_graph_custom_depth_output.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/o947fbjy9uddltn/tut_creation_graph_custom_depth_output.png?raw=1" alt="" /></p>
 <p>Output nodes are more complex than function nodes. Instead of a single <code>function</code> block, these nodes take the form of a render pass that can have variations based on the systems used with it and the connected inputs. The example above creates a very simple material node that displays a gray-scale interpretation of the object’s distance to the viewing camera.</p>
 <pre><code class="language-json">depth_stencil_states: {
 	depth_test_enable: true

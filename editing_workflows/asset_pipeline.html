@@ -182,7 +182,7 @@ use <em>Creation Graphs</em> for any type of data processing. </p>
 <h3 id="basic-entity-rigging-with-image-and-material-extraction"><a class="header" href="#basic-entity-rigging-with-image-and-material-extraction">Basic entity rigging, with image and material extraction</a></h3>
 <p>If you click on a <code>dcc_asset</code> that contains a mesh in the Asset Browser, you will be presented
 with importer settings in the Properties tab:</p>
-<p><img src="https://www.dropbox.com/s/n6njdkl84dzem8n/dcc-asset-before-entity-rig.png?dl=1" alt="Inspecting a dcc_asset" /></p>
+<p><img src="https://www.dropbox.com/s/n6njdkl84dzem8n/dcc-asset-before-entity-rig.png?raw=1" alt="Inspecting a dcc_asset" /></p>
 <p>The Preview tab does just enough to show you what the <code>dcc_asset</code> contains, but what you probably
 want is an <code>entity</code> that contains child entities representing the meshes found inside the
 <code>dcc_asset</code>. Also, you probably want it to extract the images and materials from the <code>dcc_asset</code> so
@@ -227,7 +227,7 @@ This can either be done by manually assembling creation graphs for each image an
 building a generic creation graph for each asset <em>type</em> and use that as a prototype when running a
 batch processing step we refer to as <em>Resource Extraction</em>.</p>
 <p>Here's an example of what a generic creation graph prototype for extracting images might look like:</p>
-<p><img src="https://www.dropbox.com/s/z2e3s5w1h8yiv1k/image-cg.png?dl=1" alt="Simple image processing." /></p>
+<p><img src="https://www.dropbox.com/s/z2e3s5w1h8yiv1k/image-cg.png?raw=1" alt="Simple image processing." /></p>
 <p>To quickly get up and running we provide a number of pre-authored creation graphs for some of the
 more common operations:</p>
 <ul>
@@ -253,7 +253,7 @@ Scene Tab.</p>
 <p>These pre-authored creation graphs are shipped as part of our Core project which is automatically
 copied into new projects. How they are used when working with assets is exposed through the
 <code>import_settings</code> asset:</p>
-<p><img src="https://www.dropbox.com/s/sr52qac8i1i757l/import-settings.png?dl=1" alt="Default Import Settings." /></p>
+<p><img src="https://www.dropbox.com/s/sr52qac8i1i757l/import-settings.png?raw=1" alt="Default Import Settings." /></p>
 <p>By exposing these settings through an asset it is possible to easily change the default behavior of
 how imported assets are treated when placed under a specific folder. </p>
 <blockquote>

@@ -156,9 +156,9 @@
                     <main>
                         <h1 id="creation-graphs-for-unreal-engine-developers"><a class="header" href="#creation-graphs-for-unreal-engine-developers">Creation Graphs for Unreal Engine developers</a></h1>
 <p>Creation graphs are used for many different assets in The Machinery. When a creation graph is used for a shader it most closely relates to Unreal’s materials (any domain). This is what we will focus on first.</p>
-<p><img src="https://www.dropbox.com/s/nxy6jtq7f5drmin/tm_guide_creation_graph_unreal_material.png?dl=1" alt="Simple brick material" /></p>
+<p><img src="https://www.dropbox.com/s/nxy6jtq7f5drmin/tm_guide_creation_graph_unreal_material.png?raw=1" alt="Simple brick material" /></p>
 <p>In the example above the editor closely resembles the material editor from Unreal, this is however not the default layout. You can see the creation graph in the center with its output being a <code>Shader Instance</code>. Adding this allows any consuming code to query the material from this creation graph and it will allow the preview tab to display your material. </p>
-<p><img src="https://www.dropbox.com/s/kpf05fwzl47d0ip/tm_guide_creation_graph_unreal_particle.png?dl=1" alt="Simple rotating particle" /></p>
+<p><img src="https://www.dropbox.com/s/kpf05fwzl47d0ip/tm_guide_creation_graph_unreal_particle.png?raw=1" alt="Simple rotating particle" /></p>
 <p>The previous example showed a surface or material shader. This example shows a creation graph that fully defines a simple particle. The <code>Shader Instance</code> (material) is now passed to a <code>Draw Call</code> node, with this combination we can now fully render the particle without the need of an explicit mesh. Instead we use the <code>Construct Quad</code> node for a procedural quad mesh. Note that we specify the <code>Instance Count</code> and <code>Num Vertices</code> (for a single quad that is 6).</p>
 
                     </main>

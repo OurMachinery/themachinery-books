@@ -166,19 +166,19 @@ Relevant components:</p>
 <p>By examining the <code>Physics Shape</code> properties we can see that bot the Material and the Collision properties are set.</p>
 </li>
 </ul>
-<p><img src="https://www.dropbox.com/s/mqprbsna9v3jlh3/image-20220311135902320.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/mqprbsna9v3jlh3/image-20220311135902320.png?raw=1" alt="" /></p>
 <p>The Bouncy Material (<code>Physics Materials/Bouncy.physics_material</code>) has a Restitution Coefficient of 1. This is what makes the ball &quot;bounce&quot;.</p>
-<p><img src="https://www.dropbox.com/s/5f93mvh8iaq828v/image-20220311140003187.png?dl=1" alt="image-20220311140003187" /></p>
+<p><img src="https://www.dropbox.com/s/5f93mvh8iaq828v/image-20220311140003187.png?raw=1" alt="image-20220311140003187" /></p>
 <p>The Bat Collision (<code>Physics Materials/Bat.physics_collision</code>) specifies the fact that shapes with this collision should only collide with entities that Have the <code>Default</code> Collision type. (Which can itself be found in the <code>Physics Materials</code> folder).
 As you can imagine then, the Ball will have the Default collision set on its Shape.</p>
-<p><img src="https://www.dropbox.com/s/ow0v79qrk1hstvu/image-20220311140028100.png?dl=1" alt="image-20220311140028100" /></p>
+<p><img src="https://www.dropbox.com/s/ow0v79qrk1hstvu/image-20220311140028100.png?raw=1" alt="image-20220311140028100" /></p>
 <ul>
 <li>
 <p><code>Physics Body</code>, to make the Bat movement around the world Physically accurate.</p>
 <p>Examining the <code>Physics Body</code> properties, we notice that the <code>Kinematic</code> checkbox is flagged: this means that the position of the Bat Entity won't be driven by the Physics simulation itself, but that it will be driven by the position that is present in the transform component instead. In this case we'll alter the transform component position via the <code>Entity Graph</code> of the Bat: then the position of the <code>transform component</code> will be reflected automatically in the Physics simulation.</p>
 </li>
 </ul>
-<p><img src="https://www.dropbox.com/s/twwcnz91jlrkv54/image-20220311140100012.png?dl=1" alt="image-20220311140100012" /></p>
+<p><img src="https://www.dropbox.com/s/twwcnz91jlrkv54/image-20220311140100012.png?raw=1" alt="image-20220311140100012" /></p>
 <ul>
 <li>
 <p>Entity Graph, which is used to:</p>
@@ -186,7 +186,7 @@ As you can imagine then, the Ball will have the Default collision set on its Sha
 <p>b) Push the ball in the opposite direction when the bat and the ball collides.</p>
 </li>
 </ul>
-<p><img src="https://www.dropbox.com/s/oj6tsxdiua3wbb0/image-20220311140128319.png?dl=1" alt="image-20220311140128319" /></p>
+<p><img src="https://www.dropbox.com/s/oj6tsxdiua3wbb0/image-20220311140128319.png?raw=1" alt="image-20220311140128319" /></p>
 <blockquote>
 <p>You may be wondering why it's not enough to just push the ball in the correct direction to make it bounce, and we have to set the restitution coefficient to 1 in addition to doing so.
 The answer is that if we leave the restitution coefficient to 0, the ball will loose all of its &quot;energy&quot; when it collides with the Bat, thus even if we later on push it in the correct direction it will still move very slowly.</p>
@@ -198,7 +198,7 @@ They're practially very similar to the Bat entity, just that they don't have:</p
 <li>The <code>Physics body</code> component (we don't want walls to be able to move around).</li>
 <li>The <code>Entity Graph</code> component, as we don't need any logic applied to them: walls are just static entities.</li>
 </ul>
-<p><img src="https://www.dropbox.com/s/gycvtqu2vq4l1bo/image-20220311140301191.png?dl=1" alt="image-20220311140301191" /></p>
+<p><img src="https://www.dropbox.com/s/gycvtqu2vq4l1bo/image-20220311140301191.png?raw=1" alt="image-20220311140301191" /></p>
 <h2 id="bricks-prototype-location-special-objectsbrick"><a class="header" href="#bricks-prototype-location-special-objectsbrick"><strong>Bricks</strong> (Prototype location: Special Objects/brick)</a></h2>
 <p>The &quot;standard&quot; brick (the one without a fancy blue ball on it) Is nothing more than a static Shape like walls are, with a small addition: we want bricks to be destroyed when they collide with the ball.</p>
 <p>To accomplish that, they:</p>
@@ -206,25 +206,25 @@ They're practially very similar to the Bat entity, just that they don't have:</p
 <li>Have the <code>Notify Touch</code> collision type, so that collisions with the ball are notified.</li>
 <li>Have an <code>Entity Graph</code> component that implements this very simple logic: they register the <code>Physx on contact event</code> and, once that triggers, they just delete themselves from the game by calling <code>destroy entity</code>.</li>
 </ul>
-<p><img src="https://www.dropbox.com/s/9v4veqzlx8qyxd5/image-20220311140414076.png?dl=1" alt="image-20220311140414076" /></p>
+<p><img src="https://www.dropbox.com/s/9v4veqzlx8qyxd5/image-20220311140414076.png?raw=1" alt="image-20220311140414076" /></p>
 <h2 id="special-bricks-prototype-location-special-objectsmultiball-brickentity"><a class="header" href="#special-bricks-prototype-location-special-objectsmultiball-brickentity"><strong>Special Bricks</strong> (Prototype location: Special Objects/Multiball Brick.entity)</a></h2>
 <p>This special kind of brick works exactly like a standard brick, but with a simple addition: its <code>Entity Graph</code> is made so that when hit it will spawn an additional ball spawn in the game.</p>
-<p><img src="https://www.dropbox.com/s/c7gdhs5dtdzvhmh/image-20220311140520748.png?dl=1" alt="image-20220311140520748" /></p>
+<p><img src="https://www.dropbox.com/s/c7gdhs5dtdzvhmh/image-20220311140520748.png?raw=1" alt="image-20220311140520748" /></p>
 <p>To see how it works, lets dive into his Entity Graph component, which is pretty similar to the standard brick's one.</p>
 <p>In there we can see that, just after self-destroying itself, it will execute the <code>Spawn a new Ball</code> subgraph, which will simply spawn a new ball and push it.</p>
-<p><img src="https://www.dropbox.com/s/uchnbo0baqzljw6/image-20220311140558642.png?dl=1" alt="image-20220311140558642" /></p>
+<p><img src="https://www.dropbox.com/s/uchnbo0baqzljw6/image-20220311140558642.png?raw=1" alt="image-20220311140558642" /></p>
 <blockquote>
 <p>Notice how we're using a <code>vec3</code> variable to store the position at which we want to spawn the additional ball in the <code>Save Position for New Ball</code> subgraph.</p>
 </blockquote>
 <h2 id="lost-ball-trigger"><a class="header" href="#lost-ball-trigger"><strong>Lost ball trigger</strong></a></h2>
 <p>The Lost ball trigger is the Entity responsible for re-spawning the ball when it goes out of bounds.
 The way it works is by having a <code>Physic Shape</code>  (you can see it in yellow by clicking on it in the Entity Tree) With the <code>Notify Touch</code> Collision type <em>and</em> with the <code>is_trigger</code> checkbox flagged:</p>
-<p><img src="https://www.dropbox.com/s/x3hzrnufansths4/image-20220311140709526.png?dl=1" alt="image-20220311140709526" /></p>
+<p><img src="https://www.dropbox.com/s/x3hzrnufansths4/image-20220311140709526.png?raw=1" alt="image-20220311140709526" /></p>
 <blockquote>
 <p>Physics Shapes flagged with the <code>is_trigger</code> checkbox will still exists in the Physical world, but when a collision with them happen the collision will be notified but the objects will be allowed to &quot;interpenetrate&quot; with each other.</p>
 </blockquote>
 <p>This means that it won't collide with the Ball (which has the Default collision, remember), and once the collision happens the <code>Physx On Trigger even</code>t will be triggered: (We can find it in the Entity Graph)</p>
-<p><img src="https://www.dropbox.com/s/vodlc8pohlz9xus/image-20220311140758376.png?dl=1" alt="image-20220311140758376" /></p>
+<p><img src="https://www.dropbox.com/s/vodlc8pohlz9xus/image-20220311140758376.png?raw=1" alt="image-20220311140758376" /></p>
 <p>Here we can see that once it's triggered, this event will:</p>
 <ul>
 <li>destroy the ball (Which is the <em>Touched</em> entity, notice the difference between this trigger and the one in the Brick's graph: there we are deleting the brick itself)</li>
@@ -232,7 +232,7 @@ The way it works is by having a <code>Physic Shape</code>  (you can see it in ye
 </ul>
 <h2 id="arkanoid"><a class="header" href="#arkanoid"><strong>Arkanoid</strong></a></h2>
 <p>In addition to containing all the other entities as children, the Arkanoid entity also has the Entity Graph component that is used for Spawning a ball when the game starts (or when the ball goes out of bounds).</p>
-<p><img src="https://www.dropbox.com/s/0veudm4fv1zqoun/image-20220311140926242.png?dl=1" alt="image-20220311140926242" /></p>
+<p><img src="https://www.dropbox.com/s/0veudm4fv1zqoun/image-20220311140926242.png?raw=1" alt="image-20220311140926242" /></p>
 <p>You can see that the Spawn Ball event is called both at the beginning of the Game (When the Init event will be called) but also when a <code>Lost ball</code> event is triggered.</p>
 <p>This concludes the tour of the Arkanoid scene, try to experiment it a bit and don't be scared of breaking stuff, you can always re-download the sample if you screw things up.</p>
 

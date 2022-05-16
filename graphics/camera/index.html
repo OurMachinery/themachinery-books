@@ -158,18 +158,18 @@
 <p>In The Machinery a <a href="https://ourmachinery.com/apidoc/plugins/entity/camera_component.h.html">camera</a> is an object that converts the simulated world into a two-dimensional image. It can do this with in a physically plausible way or in a more arcade way depending on how it is set up. The method chosen is called the projection mode and The Machinery offers three modes: Perspective, Orthographic, and Physical.</p>
 <h2 id="adding-a-camera-to-the-scene"><a class="header" href="#adding-a-camera-to-the-scene">Adding a camera to the scene</a></h2>
 <p>A camera must be used to view any scene, the <a href="https://ourmachinery.github.io/themachinery-books/the_editor/scene_tab.html">Scene Tab</a> therefor starts with a default camera. But once you wish to simulate this world an additional camera is needed. This can be done by adding a Camera Component to any entity in the scene and setting it as the viewing camera using the Set Camera node.</p>
-<p><img src="https://www.dropbox.com/s/7cwc768hu7ltll4/tm_guide_camera_tree_tab.png?dl=1" alt="" /></p>
-<p><img src="https://www.dropbox.com/s/foeulmeuaef5c2j/tm_guide_camera_graph.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/7cwc768hu7ltll4/tm_guide_camera_tree_tab.png?raw=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/foeulmeuaef5c2j/tm_guide_camera_graph.png?raw=1" alt="" /></p>
 <p>You can see a preview of the newly added camera in real time in the <a href="https://ourmachinery.github.io/themachinery-books/the_editor/preview_tab.html">Preview Tab</a> when selecting the camera component.</p>
-<p><img src="https://www.dropbox.com/s/y7rafonxt7abm7h/tm_guide_camera_perspective.png?dl=1" alt="" /></p>
+<p><img src="https://www.dropbox.com/s/y7rafonxt7abm7h/tm_guide_camera_perspective.png?raw=1" alt="" /></p>
 <h2 id="customizing-the-camera"><a class="header" href="#customizing-the-camera">Customizing the camera</a></h2>
 <p>The first thing to consider when adding a camera to a scene is which projection mode it should use.<br />
 <strong>Perspective</strong> is the default projection mode. This projection mode linearly projects three-dimensional objects into two-dimensions, this was the effect that objects further away from the camera appear smaller than objects near the camera. This camera is controlled by changed the Vertical Field of View property.<br />
 <strong>Physical</strong> cameras use the same projection as perspective cameras, but instead of controlling the camera using FoV, this camera is controlled using focal length. This camera is intended for users familiar with real world cameras and aims to be more physically descriptive than its protective counterpart.<br />
 <strong>Orthographic</strong> cameras use parallel projection instead of linear projection. This means that depth has no impact on the objects scale. These cameras are often useful when making a 2D or isometric game. This camera is controlled using the box height property.</p>
-<p><img src="https://www.dropbox.com/s/qpk260eul8fms22/tm_guide_camera_orthographic.png?dl=1" alt="Orthographic camera" /></p>
+<p><img src="https://www.dropbox.com/s/qpk260eul8fms22/tm_guide_camera_orthographic.png?raw=1" alt="Orthographic camera" /></p>
 <p>Additionally all projection modes define near and far plane properties. These directly correlate to the visible range of the camera. Lowering the visible range can improve precision within that range which might reduce depth artifacts. But this can also be used to create impossible shots, like being able to view through walls.</p>
-<p><img src="https://www.dropbox.com/s/8l33j979p9spfty/tm_guide_camera_near_clipping.png?dl=1" alt="Setting the near plane to 4 allows us to place the camera outside of the room whilst still being able to view into it." /></p>
+<p><img src="https://www.dropbox.com/s/8l33j979p9spfty/tm_guide_camera_near_clipping.png?raw=1" alt="Setting the near plane to 4 allows us to place the camera outside of the room whilst still being able to view into it." /></p>
 <h2 id="all-camera-properties"><a class="header" href="#all-camera-properties">All camera properties</a></h2>
 <table><thead><tr><th><strong>Property</strong></th><th><strong>Description</strong></th></tr></thead><tbody>
 <tr><td>Projection Mode</td><td>Specifies which projection mode to use.</td></tr>
