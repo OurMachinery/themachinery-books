@@ -1,6 +1,6 @@
 # Contents of the binary distribution
 
-For those who use the binary distribution, i.e. downloaded a prebuilt packageo of the engine, this page describes that contents of that package.
+For those who use the binary distribution, i.e. downloaded a prebuilt package of the engine, this page describes that contents of that package.
 
 | Folder                               | Content                                                      |
 | ------------------------------------ | ------------------------------------------------------------ |
